@@ -9,7 +9,7 @@ BrawLMOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             IV = NULL,
             DV = NULL,
             inferWhich = "r",
-            whichR = "Unique", ...) {
+            whichR = "Direct", ...) {
 
             super$initialize(
                 package="BrawStats",
@@ -38,7 +38,7 @@ BrawLMOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "Unique",
                     "Total",
                     "Full"),
-                default="Unique")
+                default="Direct")
 
             self$.addOption(private$..IV)
             self$.addOption(private$..DV)
@@ -131,7 +131,7 @@ BrawLM <- function(
     IV,
     DV,
     inferWhich = "r",
-    whichR = "Unique") {
+    whichR = "Direct") {
 
     if ( ! requireNamespace("jmvcore", quietly=TRUE))
         stop("BrawLM requires jmvcore to be installed (restart may be required)")
