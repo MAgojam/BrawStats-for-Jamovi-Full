@@ -12,9 +12,6 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
     .run = function() {
       # debug information
 
-      # if (self$options$doProject1AsBtn) return()
-      # if (self$options$doProject2AsBtn) return()
-      
       # self$results$debug$setContent(braw.res)
       # self$results$debug$setVisible(TRUE)
       # return()
@@ -49,6 +46,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                                       simHelpWhich=0,
                                       openJamovi=0,
                                       planMode=NULL,
+                                      LearnMethod="LearnHelp",
                                       nrowTableLM=1,
                                       nrowTableSEM=1
           )
@@ -61,6 +59,13 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       } else {
         statusStore<-braw.res$statusStore
         history<-braw.res$historyStore
+      }
+
+      if (self$options$LearnMethod!=statusStore$LearnMethod) {
+        statusStore$LearnMethod<-self$options$LearnMethod
+        setBrawRes("statusStore",statusStore)
+        setBrawRes("historyStore",history)
+        return()
       }
 
       if (self$options$showHTML) {

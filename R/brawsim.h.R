@@ -6,6 +6,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
     inherit = jmvcore::Options,
     public = list(
         initialize = function(
+            LearnMethod = NULL,
             demosHelp = NULL,
             demo1Help = NULL,
             demo2Help = NULL,
@@ -250,6 +251,14 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 requiresData=FALSE,
                 ...)
 
+            private$..LearnMethod <- jmvcore::OptionList$new(
+                "LearnMethod",
+                LearnMethod,
+                options=list(
+                    "LearnHelp",
+                    "LearnDemo",
+                    "LearnSim",
+                    "Settings"))
             private$..demosHelp <- jmvcore::OptionAction$new(
                 "demosHelp",
                 demosHelp)
@@ -1695,6 +1704,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "4c"),
                 default="none")
 
+            self$.addOption(private$..LearnMethod)
             self$.addOption(private$..demosHelp)
             self$.addOption(private$..demo1Help)
             self$.addOption(private$..demo2Help)
@@ -1937,6 +1947,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..lastDemo)
         }),
     active = list(
+        LearnMethod = function() private$..LearnMethod$value,
         demosHelp = function() private$..demosHelp$value,
         demo1Help = function() private$..demo1Help$value,
         demo2Help = function() private$..demo2Help$value,
@@ -2178,6 +2189,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         doProject4C3Btn = function() private$..doProject4C3Btn$value,
         lastDemo = function() private$..lastDemo$value),
     private = list(
+        ..LearnMethod = NA,
         ..demosHelp = NA,
         ..demo1Help = NA,
         ..demo2Help = NA,
@@ -2563,6 +2575,7 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' BrawStats:Simulate Data
 #'
 #' 
+#' @param LearnMethod .
 #' @param demosHelp .
 #' @param demo1Help .
 #' @param demo2Help .
@@ -2815,6 +2828,7 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #'
 #' @export
 BrawSim <- function(
+    LearnMethod,
     demosHelp,
     demo1Help,
     demo2Help,
@@ -3058,6 +3072,7 @@ BrawSim <- function(
 
 
     options <- BrawSimOptions$new(
+        LearnMethod = LearnMethod,
         demosHelp = demosHelp,
         demo1Help = demo1Help,
         demo2Help = demo2Help,

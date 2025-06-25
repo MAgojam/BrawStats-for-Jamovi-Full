@@ -123,7 +123,7 @@ BrawSEMClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                  "MetaSingle"  =outputGraph<-showMetaSingle(),
                  "MetaMultiple"  =outputGraph<-showMetaMultiple(),
                  "Explore"   =outputGraph<-showExplore(showType=image$state[2],dimension=image$state[3],effectType=image$state[4]),
-                 "LM" =outputGraph<-plotGLM(DV=braw.res$lm$DV,IVs=braw.res$lm$IVs,braw.res$lm$result,braw.res$lm$whichR),
+                 "LM" =outputGraph<-plotGLM(lm,image$state[2]),
                  "SEM" =outputGraph<-plotSEMModel(braw.res$sem)
           )
           print(outputGraph)

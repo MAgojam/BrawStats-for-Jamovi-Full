@@ -6,6 +6,19 @@ version: '1.0.0'
 jas: '1.2'
 
 options:
+    - name: LearnMethod
+      title: ' '
+      type: List
+      options:
+      - name: LearnHelp
+        title: 'Learn with:'
+      - name: LearnDemo
+        title: Demos
+      - name: LearnSim
+        title: Simulations
+      - name: Settings
+        title: Settings
+
     - name: demosHelp
       type: Action
       title: '?'
