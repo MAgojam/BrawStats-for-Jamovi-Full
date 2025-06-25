@@ -1,0 +1,109 @@
+---
+name:  BrawSim
+title: BrawStats:Simulate Data
+jrs:   '1.1'
+
+items:
+    - name: BrawStatsInstructions 
+      type: Html
+      visible: TRUE
+
+    - name: SystemHTML
+      type: Html
+      visible: FALSE
+
+    - name: simGraphHTML
+      type: Html
+      visible: FALSE
+
+    - name: simGraph
+      title: ' '
+      type: Image
+      width:  550
+      height: 400
+      visible: TRUE
+      renderFun: .plotSimGraph
+      clearWith:
+      - showHypothesisLst
+      - makeSampleBtn
+      - showSampleType
+      - showInferParam
+      - inferVar1
+      - inferVar2
+      - reportInferStats
+      - showInferDimension
+      - makeMultipleBtn
+      - showMultipleParam
+      - showMultipleDimension
+      - makeExploreBtn
+      - showExploreParam
+      - showExploreDimension
+      - showExploreStyle
+      - whichShowMultiple
+      - MetaAnalysisType
+      - MetaAnalysisMethod
+      - MetaAnalysisPrior
+      - MetaAnalysisBias
+      - MetaAnalysisNulls
+      - goBack
+      - goForwards
+
+    - name: simReport
+      # title: ' '
+      type: Html
+      # width:  600
+      # height: 200
+      visible: TRUE
+      clearWith:
+      - showHypothesisLst
+      - makeSampleBtn
+      - showSampleType
+      - showInferParam
+      - singleVar1
+      - singleVar2
+      - showInferDimension
+      - makeMultipleBtn
+      - showMultipleParam
+      - multipleVar1
+      - multipleVar2
+      - showMultipleDimension
+      - reportMultipleStats
+      - makeExploreBtn
+      - showExploreParam
+      - exploreVar1
+      - exploreVar2
+      - showExploreDimension
+      - reportExploreStats
+      - whichShowMultiple
+     
+    - name: debug
+      type: Preformatted
+      visible: FALSE
+
+    - name: sendSample
+      type: Output
+      measureType: nominal
+      varTitle: Sample
+      items: 4
+      clearWith:
+       - makeSampleBtn
+
+    - name: sendMultiple
+      type: Output
+      measureType: continuous
+      varTitle: "Mult"
+      items: 4
+      clearWith:
+       - makeMultipleBtn
+
+    - name: sendExplore
+      type: Output
+      measureType: continuous
+      varTitle: "Explore"
+      items: 5
+      clearWith:
+       - makeExploreBtn
+
+refs: brawstats
+      book
+...

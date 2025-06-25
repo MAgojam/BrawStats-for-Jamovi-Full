@@ -100,7 +100,7 @@ BrawSEMClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         setBrawRes("sem",sem)
         
         self$results$semGraph$setState("SEM")
-        outputReport<-reportSEMModel(sem,self$options$ShowType,"AIC",TRUE)
+        outputReport<-reportSEMModel(sem,self$options$ShowType,TRUE)
         self$results$reportSEM$setContent(outputReport)
         
         },

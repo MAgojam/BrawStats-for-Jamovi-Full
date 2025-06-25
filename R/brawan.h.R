@@ -77,7 +77,7 @@ BrawAnResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             super$initialize(
                 options=options,
                 name="",
-                title="BrawStats:Analyze Data")
+                title="BrawStats:Simple Models")
             self$add(jmvcore::Image$new(
                 options=options,
                 name="graphPlot",
@@ -115,7 +115,7 @@ BrawAnBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 weightsSupport = 'auto')
         }))
 
-#' BrawStats:Analyze Data
+#' BrawStats:Simple Models
 #'
 #' 
 #' @param data .

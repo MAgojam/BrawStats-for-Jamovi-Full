@@ -1,11 +1,13 @@
 Package: BrawStats
 Type: Package
 Title: Some BrawStats functions (Title Case)
-Version: 0.1.1
+Version: 2.1.0
 Author: Roger Watt
 Maintainer: Roger Watt <r.j.watt@stir.ac.uk>
-Description: This implements some features of BrawStats in Jamovi.
-    For now, focussing on normalized effect sizes.
+Description: This implements BrawStats in Jamovi.
+    BrawStats is software intended for teaching the principles of statistics.
+    It simulates data in a wide variety of situations.
+    One thing that students like is the ability to make a data set in BrawStats, see the correct analysis of it and then replicate that analysis for themselves in the main Jamovi modules.
 License: Creative Commons
 Encoding: UTF-8
 LazyData: true

@@ -26,12 +26,11 @@ BrawLMClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           data<-dataFull$data[c("participant",self$options$DV,self$options$IV)]
 
           result<-generalAnalysis(data,InteractionOn=FALSE)
-          lm<-list(result=result,DV=list(name=self$options$DV),IVs=list(name=self$options$IV),
-                   whichR=self$options$whichR,p_or_r=self$options$inferWhich)
+          lm<-list(result=result,DV=list(name=self$options$DV),IVs=list(name=self$options$IV))
           setBrawRes("lm",lm)
           
-          self$results$lmGraph$setState("LM")
-          outputText<-reportGLM(DV=lm$DV,IVs=lm$IVs,lm$result,p_or_r=lm$p_or_r)
+          self$results$lmGraph$setState(c("LM",self$options$whichR))
+          outputText<-reportGLM(lm,p_or_r=self$options$inferWhich)
           self$results$lmReport$setContent(outputText)
           
       },
@@ -54,7 +53,7 @@ BrawLMClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                  "MetaSingle"  =outputGraph<-showMetaSingle(),
                  "MetaMultiple"  =outputGraph<-showMetaMultiple(),
                  "Explore"   =outputGraph<-showExplore(showType=image$state[2],dimension=image$state[3],effectType=image$state[4]),
-                 "LM" =outputGraph<-plotGLM(DV=braw.res$lm$DV,IVs=braw.res$lm$IVs,braw.res$lm$result,braw.res$lm$whichR),
+                 "LM" =outputGraph<-plotGLM(braw.res$lm,image$state[2]),
                  "SEM" =outputGraph<-plotPathModel(braw.res$sem)
           )
           print(outputGraph)
