@@ -99,7 +99,7 @@ options:
     #         type: Variable
       
     - name: clearHistory
-      title: clear
+      title: clear history
       type: Action
       
     - name: addDest

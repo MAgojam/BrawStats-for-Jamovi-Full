@@ -39,6 +39,6 @@ options:
           title: Total
         - name: Full
           title: Full Model
-      default: Unique
+      default: Direct
 
 ...
