@@ -319,7 +319,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       setBrawDef("explore",explore)
       setBrawDef("metaAnalysis",metaAnalysis)
 
-      addHistory<-FALSE
+      addHistory<-FALSE # or replace last entry?
       openSystem<-0
       # now deal with a request for help/instructions
       # after we have set up the hypothesis
@@ -506,7 +506,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           # do we need to do this, or are we just returning to the existing one?
           if (is.null(braw.res$multiple) || statusStore$lastOutput=="Multiple") {
           doMultiple(nsims=numberSamples,multipleResult=braw.res$multiple)
-            if (changedH || changedD || changedE) addHistory<-TRUE
+            if (statusStore$lastOutput!="Multiple" || changedH || changedD || changedE) addHistory<-TRUE
           } 
           outputNow<-"Multiple"
         }
@@ -519,7 +519,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         if (is.null(braw.res$explore) || statusStore$lastOutput=="Explore") {
           exploreResult<-doExplore(nsims=numberExplores,exploreResult=braw.res$explore,
                                    doingMetaAnalysis=self$options$MetaAnalysisOn)
-          if (changedH || changedD || changedE || changedX) addHistory<-TRUE
+          if (statusStore$lastOutput!="Explore" || changedH || changedD || changedE || changedX) addHistory<-TRUE
         }
         outputNow<-"Explore"
       }
@@ -533,6 +533,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         showInferParam<-historyOptions$showInferParam
         showInferDimension<-historyOptions$showInferDimension
         showMultipleParam<-historyOptions$showMultipleParam
+        showMultipleOrient<-historyOptions$showMultipleOrient
         showMultipleDimension<-historyOptions$showMultipleDimension
         whichShowMultipleOut<-historyOptions$whichShowMultipleOut
         showExploreParam<-historyOptions$showExploreParam
@@ -544,6 +545,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         setBrawRes("explore",history$historyData[[history$historyPlace]]$explore)
         setBrawRes("metaSingle",history$historyData[[history$historyPlace]]$metaSingle)
         setBrawRes("metaMultiple",history$historyData[[history$historyPlace]]$metaMultiple)
+        # self$results$debug$setContent(c(nhist,history$historyPlace))
+        # self$results$debug$setVisible(TRUE)
       }
 
       # what are we showing?
@@ -701,8 +704,9 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         historyOptions<-list(showSampleType=showSampleType,
                               showInferParam=showInferParam,
                               showInferDimension=showInferDimension,
-                              showMultipleParam=showMultipleParam,
-                              showMultipleDimension=showMultipleDimension,
+                             showMultipleParam=showMultipleParam,
+                             showMultipleOrient=showMultipleOrient,
+                             showMultipleDimension=showMultipleDimension,
                               whichShowMultipleOut=whichShowMultipleOut,
                               showExploreParam=showExploreParam,
                               showExploreStyle=showExploreStyle,
@@ -714,15 +718,16 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           if (addHistory) nD<-length(history$history)+1
           else            nD<-length(history$history)
         }
-          history$history[nD]<-outputNow
-          history$historyData[[nD]]<-list(result=braw.res$result,
-                                          multiple=braw.res$multiple,
-                                          explore=braw.res$explore,
-                                          metaSingle=braw.res$metaSingle,
-                                          metaMultiple=braw.res$metaMultiple
-                                          )
-          history$historyOptions[[nD]]<-historyOptions
-          if (nD>nHistory) {
+        history$history[nD]<-outputNow
+        
+        history$historyData[[nD]]<-list(result=braw.res$result,
+                                        multiple=braw.res$multiple,
+                                        explore=braw.res$explore,
+                                        metaSingle=braw.res$metaSingle,
+                                        metaMultiple=braw.res$metaMultiple
+        )
+        history$historyOptions[[nD]]<-historyOptions
+        if (nD>nHistory) {
             use<-(nD-(nHistory-1)):nD
             history$history<-history$history[use]
             history$historyData<-history$historyData[use]
@@ -786,6 +791,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         )
         self$results$sendExplore$setValues(newExplore)
       }
+      
       setBrawRes("statusStore",statusStore)
       setBrawRes("historyStore",history)
       # end of .run()
