@@ -3226,6 +3226,7 @@ children:
                                                     label: Variable effect sizes and sample size
                                                   - type: ComboBox
                                                     name: presetWorld
+                                                    margin: none
                                                     events:
                                                       change: ./brawsim.events::onChange_presetWorld
                                                 - type: CollapseBox
