@@ -7,7 +7,7 @@ children:
   - type: Label
     label: Learning Stats 
     children:
-    - name: LearnMethod
+    - name: learnMode
       type: ModeSelector
       margin: none
       children:
@@ -2430,7 +2430,7 @@ children:
                               minWidth: 470
                               maxWidth: 470
                               children:
-                                - name: planOptions
+                                - name: planMode
                                   type: ModeSelector
                                   margin: none
                                   children:
@@ -2457,6 +2457,7 @@ children:
                                                   collapsed: true
                                                   label: Variables
                                                   margin: none
+                                                  minWidth: 450
                                                   verticalAlignment: top
                                                   children:
                                                     - type: Label
@@ -2894,6 +2895,7 @@ children:
                                                   label: Sampling
                                                   collapsed: true
                                                   margin: none
+                                                  minWidth: 450
                                                   children:
                                                     - type: LayoutBox
                                                       style: list
@@ -3037,6 +3039,7 @@ children:
                                                   label: Describe
                                                   collapsed: true
                                                   margin: none
+                                                  minWidth: 450
                                                   children:
                                                     - type: Label
                                                       label: Process
@@ -3201,6 +3204,141 @@ children:
                                                               type: ComboBox
                                                               enable: (likelihoodType:Samples)
                                     - type: Content
+                                      name: planW
+                                      children:
+                                        - type: LayoutBox
+                                          style: inline
+                                          children:
+                                            - type: Label
+                                              label: ' '
+                                              verticalAlignment: center
+                                              margin: small
+                                              minWidth: 13
+                                            - type: LayoutBox
+                                              style: list
+                                              margin: none
+                                              children:
+                                                - type: LayoutBox
+                                                  style: inline
+                                                  margin: none
+                                                  children:
+                                                  - type: Label
+                                                    label: Variable effect sizes and sample size
+                                                  - type: ComboBox
+                                                    name: presetWorld
+                                                    events:
+                                                      change: ./brawsim.events::onChange_presetWorld
+                                                - type: CollapseBox
+                                                  label: Effect Sizes
+                                                  collapsed: true
+                                                  margin: none
+                                                  minWidth: 450
+                                                  children:
+                                                  - type: LayoutBox
+                                                    style: inline
+                                                    margin: none
+                                                    children:
+                                                      - type: LayoutBox
+                                                        style: inline
+                                                        margin: none
+                                                        cell:
+                                                          row: 0
+                                                          column: 0
+                                                        children:
+                                                          - type: Label
+                                                            label: Vary effect sizes
+                                                            margin: none
+                                                          - type: CheckBox
+                                                            name: WorldOn
+                                                      - type: ComboBox
+                                                        name: WorldPDF
+                                                        enable: (WorldOn)
+                                                        cell:
+                                                          row: 0
+                                                          column: 1
+                                                      - type: ComboBox
+                                                        name: WorldRZ
+                                                        enable: (WorldOn)
+                                                        cell:
+                                                          row: 0
+                                                          column: 2
+                                                      - type: TextBox
+                                                        name: WorldLambda
+                                                        horizontalAlignment: right
+                                                        format: number
+                                                        enable: (WorldOn)
+                                                        cell:
+                                                          row: 1
+                                                          column: 2
+                                                      - type: TextBox
+                                                        name: WorldNullP
+                                                        format: number
+                                                        enable: (WorldOn)
+                                                        cell:
+                                                          row: 1
+                                                          column: 3
+                                                      - name: WorldSample
+                                                        type: ComboBox
+                                                        cell:
+                                                          row: 2
+                                                          column: 1
+                                                      - type: TextBox
+                                                        name: WorldMn
+                                                        format: number
+                                                        enable: (WorldOn && WorldSample!="none")
+                                                        cell:
+                                                          row: 2
+                                                          column: 2
+                                                      - type: TextBox
+                                                        name: WorldSd
+                                                        format: number
+                                                        enable: (WorldOn && WorldSample!="none")
+                                                        cell:
+                                                          row: 2
+                                                          column: 3
+                                                - type: CollapseBox
+                                                  label: Sample Sizes
+                                                  minWidth: 450
+                                                  children:
+                                                  - type: LayoutBox
+                                                    style: inline
+                                                    margin: none
+                                                    children:
+                                                      - type: LayoutBox
+                                                        style: inline
+                                                        margin: none
+                                                        cell:
+                                                          row: 0
+                                                          column: 0
+                                                        children:
+                                                          - type: Label
+                                                            label: Vary sample sizes
+                                                            margin: none
+                                                          - type: CheckBox
+                                                            name: SampleSpreadOn
+                                                      - type: ComboBox
+                                                        name: SampleSizeDist
+                                                        enable: (SampleSpreadOn)
+                                                        cell:
+                                                          row: 0
+                                                          column: 1
+                                                      - type: TextBox
+                                                        name: SampleSizeM
+                                                        margin: none
+                                                        format: number
+                                                        enable: (SampleSpreadOn)
+                                                        cell:
+                                                          row: 0
+                                                          column: 2
+                                                      - type: TextBox
+                                                        name: SampleSD
+                                                        margin: none
+                                                        format: number
+                                                        enable: (SampleSpreadOn)
+                                                        cell:
+                                                          row: 0
+                                                          column: 3
+                                    - type: Content
                                       name: planM
                                       children:
                                         - type: LayoutBox
@@ -3218,121 +3356,9 @@ children:
                                                 - type: Label
                                                   label: Some more advanced options
                                                 - type: CollapseBox
-                                                  label: World
-                                                  collapsed: true
-                                                  margin: none
-                                                  children:
-                                                    - type: LayoutBox
-                                                      style: list
-                                                      margin: none
-                                                      children:
-                                                        - type: LayoutBox
-                                                          style: inline
-                                                          margin: none
-                                                          children:
-                                                            - type: ComboBox
-                                                              name: presetWorld
-                                                              events:
-                                                                change: ./brawsim.events::onChange_presetWorld
-                                                        - type: LayoutBox
-                                                          style: inline
-                                                          margin: none
-                                                          children:
-                                                            - type: LayoutBox
-                                                              style: inline
-                                                              margin: none
-                                                              cell:
-                                                                row: 0
-                                                                column: 0
-                                                              children:
-                                                                - type: Label
-                                                                  label: Vary effect sizes
-                                                                  margin: none
-                                                                - type: CheckBox
-                                                                  name: WorldOn
-                                                            - type: ComboBox
-                                                              name: WorldPDF
-                                                              enable: (WorldOn)
-                                                              cell:
-                                                                row: 0
-                                                                column: 1
-                                                            - type: ComboBox
-                                                              name: WorldRZ
-                                                              enable: (WorldOn)
-                                                              cell:
-                                                                row: 0
-                                                                column: 2
-                                                            - type: TextBox
-                                                              name: WorldLambda
-                                                              horizontalAlignment: right
-                                                              format: number
-                                                              enable: (WorldOn)
-                                                              cell:
-                                                                row: 1
-                                                                column: 2
-                                                            - type: TextBox
-                                                              name: WorldNullP
-                                                              format: number
-                                                              enable: (WorldOn)
-                                                              cell:
-                                                                row: 1
-                                                                column: 3
-                                                            - name: WorldSample
-                                                              type: ComboBox
-                                                              cell:
-                                                                row: 2
-                                                                column: 1
-                                                            - type: TextBox
-                                                              name: WorldMn
-                                                              format: number
-                                                              enable: (WorldOn && WorldSample!="none")
-                                                              cell:
-                                                                row: 2
-                                                                column: 2
-                                                            - type: TextBox
-                                                              name: WorldSd
-                                                              format: number
-                                                              enable: (WorldOn && WorldSample!="none")
-                                                              cell:
-                                                                row: 2
-                                                                column: 3
-                                                            - type: LayoutBox
-                                                              style: inline
-                                                              margin: none
-                                                              cell:
-                                                                row: 3
-                                                                column: 0
-                                                              children:
-                                                                - type: Label
-                                                                  label: Vary sample sizes
-                                                                  margin: none
-                                                                - type: CheckBox
-                                                                  name: SampleSpreadOn
-                                                            - type: ComboBox
-                                                              name: SampleSizeDist
-                                                              enable: (SampleSpreadOn)
-                                                              cell:
-                                                                row: 3
-                                                                column: 1
-                                                            - type: TextBox
-                                                              name: SampleSizeM
-                                                              margin: none
-                                                              format: number
-                                                              enable: (SampleSpreadOn)
-                                                              cell:
-                                                                row: 3
-                                                                column: 2
-                                                            - type: TextBox
-                                                              name: SampleSD
-                                                              margin: none
-                                                              format: number
-                                                              enable: (SampleSpreadOn)
-                                                              cell:
-                                                                row: 3
-                                                                column: 3
-                                                - type: CollapseBox
                                                   label: Replication
                                                   collapsed: true
+                                                  minWidth: 450
                                                   margin: none
                                                   children:
                                                     - type: LayoutBox
@@ -3400,6 +3426,7 @@ children:
                                                   label: MetaAnalysis
                                                   collapsed: true
                                                   margin: none
+                                                  minWidth: 450
                                                   children:
                                                     - type: LayoutBox
                                                       style: inline

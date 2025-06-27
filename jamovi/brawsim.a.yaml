@@ -6,7 +6,7 @@ version: '1.0.0'
 jas: '1.2'
 
 options:
-    - name: LearnMethod
+    - name: learnMode
       title: ' '
       type: List
       options:
@@ -59,7 +59,7 @@ options:
       type: Action
       title: '?'
       
-    - name: planOptions
+    - name: planMode
       title: ' '
       type: List
       options:
@@ -69,6 +69,8 @@ options:
         title: Design
       - name: planA
         title: Analysis
+      - name: planW
+        title: World
       - name: planM
         title: More
 
@@ -518,7 +520,7 @@ options:
       default: 0.0
 
     - name: WorldSample
-      title: sample
+      title: 'prior sample'
       type: List
       options:
       - name: none
@@ -1463,7 +1465,7 @@ options:
     - name: showHTML
       title: HTML graphics
       type: Bool
-      default: false
+      default: true
 
     - name: fixedAxes
       title: Fixed axes

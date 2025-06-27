@@ -6,7 +6,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
     inherit = jmvcore::Options,
     public = list(
         initialize = function(
-            LearnMethod = NULL,
+            learnMode = NULL,
             demosHelp = NULL,
             demo1Help = NULL,
             demo2Help = NULL,
@@ -17,7 +17,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             simSingleHelp = NULL,
             simMultipleHelp = NULL,
             simExploreHelp = NULL,
-            planOptions = NULL,
+            planMode = NULL,
             presetDV = "DV",
             presetIV = "IV",
             presetIV2 = "none",
@@ -161,7 +161,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             showExploreStyle = "stats",
             whichShowMultiple = "all",
             brawHelp = TRUE,
-            showHTML = FALSE,
+            showHTML = TRUE,
             fixedAxes = FALSE,
             shorthandCalculations = FALSE,
             showHypothesisLst = "Default",
@@ -251,9 +251,9 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 requiresData=FALSE,
                 ...)
 
-            private$..LearnMethod <- jmvcore::OptionList$new(
-                "LearnMethod",
-                LearnMethod,
+            private$..learnMode <- jmvcore::OptionList$new(
+                "learnMode",
+                learnMode,
                 options=list(
                     "LearnHelp",
                     "LearnDemo",
@@ -289,13 +289,14 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             private$..simExploreHelp <- jmvcore::OptionAction$new(
                 "simExploreHelp",
                 simExploreHelp)
-            private$..planOptions <- jmvcore::OptionList$new(
-                "planOptions",
-                planOptions,
+            private$..planMode <- jmvcore::OptionList$new(
+                "planMode",
+                planMode,
                 options=list(
                     "planH",
                     "planD",
                     "planA",
+                    "planW",
                     "planM"))
             private$..presetDV <- jmvcore::OptionList$new(
                 "presetDV",
@@ -1221,7 +1222,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             private$..showHTML <- jmvcore::OptionBool$new(
                 "showHTML",
                 showHTML,
-                default=FALSE)
+                default=TRUE)
             private$..fixedAxes <- jmvcore::OptionBool$new(
                 "fixedAxes",
                 fixedAxes,
@@ -1704,7 +1705,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "4c"),
                 default="none")
 
-            self$.addOption(private$..LearnMethod)
+            self$.addOption(private$..learnMode)
             self$.addOption(private$..demosHelp)
             self$.addOption(private$..demo1Help)
             self$.addOption(private$..demo2Help)
@@ -1715,7 +1716,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..simSingleHelp)
             self$.addOption(private$..simMultipleHelp)
             self$.addOption(private$..simExploreHelp)
-            self$.addOption(private$..planOptions)
+            self$.addOption(private$..planMode)
             self$.addOption(private$..presetDV)
             self$.addOption(private$..presetIV)
             self$.addOption(private$..presetIV2)
@@ -1947,7 +1948,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..lastDemo)
         }),
     active = list(
-        LearnMethod = function() private$..LearnMethod$value,
+        learnMode = function() private$..learnMode$value,
         demosHelp = function() private$..demosHelp$value,
         demo1Help = function() private$..demo1Help$value,
         demo2Help = function() private$..demo2Help$value,
@@ -1958,7 +1959,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         simSingleHelp = function() private$..simSingleHelp$value,
         simMultipleHelp = function() private$..simMultipleHelp$value,
         simExploreHelp = function() private$..simExploreHelp$value,
-        planOptions = function() private$..planOptions$value,
+        planMode = function() private$..planMode$value,
         presetDV = function() private$..presetDV$value,
         presetIV = function() private$..presetIV$value,
         presetIV2 = function() private$..presetIV2$value,
@@ -2189,7 +2190,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         doProject4C3Btn = function() private$..doProject4C3Btn$value,
         lastDemo = function() private$..lastDemo$value),
     private = list(
-        ..LearnMethod = NA,
+        ..learnMode = NA,
         ..demosHelp = NA,
         ..demo1Help = NA,
         ..demo2Help = NA,
@@ -2200,7 +2201,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..simSingleHelp = NA,
         ..simMultipleHelp = NA,
         ..simExploreHelp = NA,
-        ..planOptions = NA,
+        ..planMode = NA,
         ..presetDV = NA,
         ..presetIV = NA,
         ..presetIV2 = NA,
@@ -2464,14 +2465,37 @@ BrawSimResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$add(jmvcore::Html$new(
                 options=options,
                 name="simGraphHTML",
-                visible=FALSE))
+                visible=TRUE,
+                clearWith=list(
+                    "showHypothesisLst",
+                    "makeSampleBtn",
+                    "showSampleType",
+                    "showInferParam",
+                    "singleVar1",
+                    "singleVar2",
+                    "showInferDimension",
+                    "makeMultipleBtn",
+                    "showMultipleParam",
+                    "multipleVar1",
+                    "multipleVar2",
+                    "showMultipleDimension",
+                    "reportMultipleStats",
+                    "makeExploreBtn",
+                    "showExploreParam",
+                    "exploreVar1",
+                    "exploreVar2",
+                    "showExploreDimension",
+                    "reportExploreStats",
+                    "whichShowMultiple",
+                    "goBack",
+                    "goForwards")))
             self$add(jmvcore::Image$new(
                 options=options,
                 name="simGraph",
                 title=" ",
                 width=550,
                 height=400,
-                visible=TRUE,
+                visible=FALSE,
                 renderFun=".plotSimGraph",
                 clearWith=list(
                     "showHypothesisLst",
@@ -2521,7 +2545,9 @@ BrawSimResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "exploreVar2",
                     "showExploreDimension",
                     "reportExploreStats",
-                    "whichShowMultiple")))
+                    "whichShowMultiple",
+                    "goBack",
+                    "goForwards")))
             self$add(jmvcore::Preformatted$new(
                 options=options,
                 name="debug",
@@ -2575,7 +2601,7 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' BrawStats:Simulate Data
 #'
 #' 
-#' @param LearnMethod .
+#' @param learnMode .
 #' @param demosHelp .
 #' @param demo1Help .
 #' @param demo2Help .
@@ -2586,7 +2612,7 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param simSingleHelp .
 #' @param simMultipleHelp .
 #' @param simExploreHelp .
-#' @param planOptions .
+#' @param planMode .
 #' @param presetDV .
 #' @param presetIV .
 #' @param presetIV2 .
@@ -2828,7 +2854,7 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #'
 #' @export
 BrawSim <- function(
-    LearnMethod,
+    learnMode,
     demosHelp,
     demo1Help,
     demo2Help,
@@ -2839,7 +2865,7 @@ BrawSim <- function(
     simSingleHelp,
     simMultipleHelp,
     simExploreHelp,
-    planOptions,
+    planMode,
     presetDV = "DV",
     presetIV = "IV",
     presetIV2 = "none",
@@ -2983,7 +3009,7 @@ BrawSim <- function(
     showExploreStyle = "stats",
     whichShowMultiple = "all",
     brawHelp = TRUE,
-    showHTML = FALSE,
+    showHTML = TRUE,
     fixedAxes = FALSE,
     shorthandCalculations = FALSE,
     showHypothesisLst = "Default",
@@ -3072,7 +3098,7 @@ BrawSim <- function(
 
 
     options <- BrawSimOptions$new(
-        LearnMethod = LearnMethod,
+        learnMode = learnMode,
         demosHelp = demosHelp,
         demo1Help = demo1Help,
         demo2Help = demo2Help,
@@ -3083,7 +3109,7 @@ BrawSim <- function(
         simSingleHelp = simSingleHelp,
         simMultipleHelp = simMultipleHelp,
         simExploreHelp = simExploreHelp,
-        planOptions = planOptions,
+        planMode = planMode,
         presetDV = presetDV,
         presetIV = presetIV,
         presetIV2 = presetIV2,

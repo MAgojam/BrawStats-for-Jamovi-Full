@@ -14,14 +14,37 @@ items:
 
     - name: simGraphHTML
       type: Html
-      visible: FALSE
+      visible: TRUE
+      clearWith:
+      - showHypothesisLst
+      - makeSampleBtn
+      - showSampleType
+      - showInferParam
+      - singleVar1
+      - singleVar2
+      - showInferDimension
+      - makeMultipleBtn
+      - showMultipleParam
+      - multipleVar1
+      - multipleVar2
+      - showMultipleDimension
+      - reportMultipleStats
+      - makeExploreBtn
+      - showExploreParam
+      - exploreVar1
+      - exploreVar2
+      - showExploreDimension
+      - reportExploreStats
+      - whichShowMultiple
+      - goBack
+      - goForwards
 
     - name: simGraph
       title: ' '
       type: Image
       width:  550
       height: 400
-      visible: TRUE
+      visible: FALSE
       renderFun: .plotSimGraph
       clearWith:
       - showHypothesisLst
@@ -75,7 +98,9 @@ items:
       - showExploreDimension
       - reportExploreStats
       - whichShowMultiple
-     
+      - goBack
+      - goForwards
+
     - name: debug
       type: Preformatted
       visible: FALSE

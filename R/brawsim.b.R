@@ -40,13 +40,13 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                                       showExploreParam="Basic",
                                       showExploreStyle="stats",
                                       whichShowExploreOut="all",
-                                      exploreMode="Design",
                                       basicHelpWhich=0,
                                       demoHelpWhich=c(0,0),
                                       simHelpWhich=0,
                                       openJamovi=0,
-                                      planMode=NULL,
-                                      LearnMethod="LearnHelp",
+                                      planMode="planH",
+                                      learnMode="LearnHelp",
+                                      exploreMode="Design",
                                       nrowTableLM=1,
                                       nrowTableSEM=1
           )
@@ -61,13 +61,26 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         history<-braw.res$historyStore
       }
 
-      if (self$options$LearnMethod!=statusStore$LearnMethod) {
-        statusStore$LearnMethod<-self$options$LearnMethod
+      # ignore changes in the ModeSelectors
+      if (self$options$learnMode!=statusStore$learnMode) {
+        statusStore$learnMode<-self$options$learnMode
         setBrawRes("statusStore",statusStore)
         setBrawRes("historyStore",history)
         return()
       }
-
+      if (self$options$planMode!=statusStore$planMode) {
+        statusStore$planMode<-self$options$planMode
+        setBrawRes("statusStore",statusStore)
+        setBrawRes("historyStore",history)
+        return()
+      }
+      if (self$options$exploreMode!=statusStore$exploreMode) {
+        statusStore$exploreMode<-self$options$exploreMode
+        setBrawRes("statusStore",statusStore)
+        setBrawRes("historyStore",history)
+        return()
+      }
+      
       if (self$options$showHTML) {
         if (self$results$simGraph$visible) self$results$simGraph$setVisible(FALSE)
         if (self$results$simReport$visible) self$results$simReport$setVisible(FALSE)
@@ -485,14 +498,14 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         # make a sample - either striaght sample or single metaAnalysis
         if (self$options$MetaAnalysisOn) {
           # do we need to do this, or are we just returning to the existing one?
-          if (is.null(braw.res$metaSingle) || statusStore$lastOutput=="MetaSingle") {
+          if (self$options$showHTML || is.null(braw.res$metaSingle) || statusStore$lastOutput=="MetaSingle") {
             doMetaAnalysis(NULL)
             addHistory<-TRUE
           }
           outputNow<-"MetaSingle"
         } else {
           # do we need to do this, or are we just returning to the existing one?
-          if (is.null(braw.res$result) || statusStore$lastOutput==showSampleType) {
+          if (self$options$showHTML || is.null(braw.res$result) || statusStore$lastOutput==showSampleType) {
             doSingle()
             addHistory<-TRUE
           }
@@ -504,14 +517,15 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       if (makeMultipleNow) {
         numberSamples<-self$options$numberSamples
         if (self$options$MetaAnalysisOn) {
-          if (is.null(braw.res$metaMultiple) || statusStore$lastOutput=="MetaMultiple") 
+          # do we need to do this, or are we just returning to the existing one?
+          if (self$options$showHTML || is.null(braw.res$metaMultiple) || statusStore$lastOutput=="MetaMultiple") 
             doMetaMultiple(numberSamples,braw.res$metaMultiple)
           outputNow<-"MetaMultiple"
         } else {
           # do we need to do this, or are we just returning to the existing one?
           if (is.null(braw.res$multiple) || statusStore$lastOutput=="Multiple") {
           doMultiple(nsims=numberSamples,multipleResult=braw.res$multiple)
-            if (statusStore$lastOutput!="Multiple" || changedH || changedD || changedE) addHistory<-TRUE
+            if (self$options$showHTML || statusStore$lastOutput!="Multiple" || changedH || changedD || changedE) addHistory<-TRUE
           } 
           outputNow<-"Multiple"
         }
@@ -521,7 +535,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       if (makeExploreNow) {
         numberExplores<-self$options$numberExplores
         # do we need to do this, or are we just returning to the existing one?
-        if (is.null(braw.res$explore) || statusStore$lastOutput=="Explore") {
+        if (self$options$showHTML || is.null(braw.res$explore) || statusStore$lastOutput=="Explore") {
           exploreResult<-doExplore(nsims=numberExplores,exploreResult=braw.res$explore,
                                    doingMetaAnalysis=self$options$MetaAnalysisOn)
           if (statusStore$lastOutput!="Explore" || changedH || changedD || changedE || changedX) addHistory<-TRUE
