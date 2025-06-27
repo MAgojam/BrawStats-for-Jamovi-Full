@@ -11,56 +11,64 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
     
     .run = function() {
       # debug information
-
+      
       # self$results$debug$setContent(braw.res)
       # self$results$debug$setVisible(TRUE)
       # return()
 
-      doDemos<-4 # set to 6 to include path demos
-      nHistory<-15
-      systemAsHTML<-TRUE
-      nestedHelp<-TRUE
-      joinSystem<-TRUE
-      
+      # initialization code here
       if (is.null(braw.res$statusStore)) {
-        if (joinSystem) self$results$SystemHTML$setVisible(FALSE)
-        else            self$results$SystemHTML$setVisible(TRUE)
+        self$results$SystemHTML$setVisible(FALSE)
         
         setBrawOpts(reducedOutput=TRUE,reportHTML=TRUE,
                     fontScale=1.5,fullGraphSize=0.5,
                     autoPrint=FALSE
         )
         statusStore<-list(lastOutput="System",
-                                      showSampleType="Variables",
-                                      showInferParam="Basic",
-                                      showInferDimension="1D",
-                                      showMultipleParam="Basic",
-                                      showMultipleDimension="1D",
-                                      whichShowMultipleOut="all",
-                                      showExploreParam="Basic",
-                                      showExploreStyle="stats",
-                                      whichShowExploreOut="all",
-                                      basicHelpWhich=0,
-                                      demoHelpWhich=c(0,0),
-                                      simHelpWhich=0,
-                                      openJamovi=0,
-                                      planMode="planH",
-                                      learnMode="LearnHelp",
-                                      exploreMode="Design",
-                                      nrowTableLM=1,
-                                      nrowTableSEM=1
-          )
-          history<-list(
-            history=NULL,
-            historyData=NULL,
-            historyOptions=NULL,
-            historyPlace=0
-          )
+                          showSampleType="Variables",
+                          showInferParam="Basic",
+                          showInferDimension="1D",
+                          showMultipleParam="Basic",
+                          showMultipleDimension="1D",
+                          whichShowMultipleOut="all",
+                          showExploreParam="Basic",
+                          showExploreStyle="stats",
+                          whichShowExploreOut="all",
+                          doDemos=4,
+                          nestedHelp=TRUE,
+                          basicHelpWhich=0,
+                          demoHelpWhich=c(0,0),
+                          simHelpWhich=0,
+                          openJamovi=0,
+                          planMode="planH",
+                          learnMode="LearnHelp",
+                          exploreMode="Design",
+                          nrowTableLM=1,
+                          nrowTableSEM=1
+        )
+        history<-list(
+          history=NULL,
+          historyData=NULL,
+          historyOptions=NULL,
+          historyPlace=0
+        )
+        
       } else {
         statusStore<-braw.res$statusStore
         history<-braw.res$historyStore
       }
-
+      
+      # check which results are visible
+      if (self$options$showHTML) {
+        if (self$results$simGraph$visible) self$results$simGraph$setVisible(FALSE)
+        if (self$results$simReport$visible) self$results$simReport$setVisible(FALSE)
+        if (!self$results$simGraphHTML$visible) self$results$simGraphHTML$setVisible(TRUE)
+      } else {
+        if (self$results$simGraphHTML$visible) self$results$simGraphHTML$setVisible(FALSE)
+        if (!self$results$simGraph$visible) self$results$simGraph$setVisible(TRUE)
+        if (!self$results$simReport$visible) self$results$simReport$setVisible(TRUE)
+      }
+      
       # ignore changes in the ModeSelectors
       if (self$options$learnMode!=statusStore$learnMode) {
         statusStore$learnMode<-self$options$learnMode
@@ -81,473 +89,48 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         return()
       }
       
-      if (self$options$showHTML) {
-        if (self$results$simGraph$visible) self$results$simGraph$setVisible(FALSE)
-        if (self$results$simReport$visible) self$results$simReport$setVisible(FALSE)
-        if (!self$results$simGraphHTML$visible) self$results$simGraphHTML$setVisible(TRUE)
-      } else {
-        if (self$results$simGraphHTML$visible) self$results$simGraphHTML$setVisible(FALSE)
-        if (!self$results$simGraph$visible) self$results$simGraph$setVisible(TRUE)
-        if (!self$results$simReport$visible) self$results$simReport$setVisible(TRUE)
-      }
-
-      old_simHelpWhich<-statusStore$simHelpWhich
-      if (self$options$simHelp) statusStore$simHelpWhich<-1
-      if (self$options$simPlanHelp) statusStore$simHelpWhich<-2
-      if (self$options$simSingleHelp) statusStore$simHelpWhich<-3
-      if (self$options$simMultipleHelp) statusStore$simHelpWhich<-4
-      if (self$options$simExploreHelp) statusStore$simHelpWhich<-5
-      if (statusStore$simHelpWhich==old_simHelpWhich) statusStore$simHelpWhich<-0
-
-      old_demoHelpWhich<-statusStore$demoHelpWhich
-      if (self$options$demosHelp) statusStore$demoHelpWhich<-c(1,0)
-      if (self$options$demo1Help) statusStore$demoHelpWhich<-c(2,1)
-      if (self$options$demo2Help) statusStore$demoHelpWhich<-c(3,1)
-      if (doDemos>2 && self$options$demo3Help) statusStore$demoHelpWhich<-c(4,1)
-      if (doDemos>3 && self$options$demo4Help) statusStore$demoHelpWhich<-c(5,1)
-      if (self$options$doProject1AhBtn) statusStore$demoHelpWhich<-c(2,2)
-      if (self$options$doProject1BhBtn) statusStore$demoHelpWhich<-c(2,3)
-      if (self$options$doProject1ChBtn) statusStore$demoHelpWhich<-c(2,4)
-      if (self$options$doProject2AhBtn) statusStore$demoHelpWhich<-c(3,2)
-      if (self$options$doProject2BhBtn) statusStore$demoHelpWhich<-c(3,3)
-      if (self$options$doProject2ChBtn) statusStore$demoHelpWhich<-c(4,4)
-      if (self$options$doProject3AhBtn) statusStore$demoHelpWhich<-c(4,2)
-      if (self$options$doProject3BhBtn) statusStore$demoHelpWhich<-c(4,3)
-      if (self$options$doProject3ChBtn) statusStore$demoHelpWhich<-c(4,4)
-      if (doDemos>3) {
-        if (self$options$doProject4AhBtn) statusStore$demoHelpWhich<-c(5,2)
-        # if (self$options$doProject4BhBtn) statusStore$demoHelpWhich<-c(5,3)
-        # if (self$options$doProject4ChBtn) statusStore$demoHelpWhich<-c(5,4)
-      }
-      if (doDemos>4) {
-        if (self$options$doProject5AhBtn) statusStore$demoHelpWhich<-c(6,2)
-      }
-      if (all(statusStore$demoHelpWhich==old_demoHelpWhich))statusStore$demoHelpWhich<-c(0,0)
+      # get which tabs are open in help structure
+      statusStore<-whichTabsOpen(self,statusStore)
       
-      statusStore$openJamovi<-0
-      if (self$options$doProject1A2Btn) statusStore$openJamovi<-1
-      if (self$options$doProject4A2Btn) statusStore$openJamovi<-1
-      
-      if (!self$options$goBack && !self$options$goForwards) {
-      # get some display parameters for later
-      # single sample
-      makeSampleNow<-self$options$makeSampleBtn
-      showSampleType<-self$options$showSampleType
-      showInferParam<-paste0(self$options$inferVar1,";",self$options$inferVar2)
-      showInferDimension<-self$options$showInferDimension
-      
-      # self$results$debug$setContent(c(0,self$options$Settings4))
-      # self$results$debug$setVisible(TRUE)
-      
-      # multiple samples
-      makeMultipleNow<-self$options$makeMultipleBtn
-      showMultipleParam<-self$options$showMultipleParam
-      if (is.element(showMultipleParam,c("Basic","Custom"))) {
-        showMultipleParam<-paste0(self$options$inferVar1,";",self$options$inferVar2)
-      } 
-      if (is.element(showMultipleParam,c("Single"))) {
-        showMultipleParam<-self$options$inferVar1
-        showMultipleOrient<-"horz"
-      } else showMultipleOrient<-"vert"
-      showMultipleDimension<-self$options$showMultipleDimension
-      whichShowMultipleOut<-self$options$whichShowMultiple
-      
-      # explore
-      makeExploreNow<-self$options$makeExploreBtn
-      showExploreParam<-self$options$showExploreParam
-      if (is.element(showExploreParam,c("Single"))) {
-        showExploreParam<-self$options$inferVar1
-      } 
-      if (is.element(showExploreParam,c("Basic","Custom"))) {
-        showExploreParam<-paste0(self$options$inferVar1,";",self$options$inferVar2)
-      } 
-      showExploreStyle<-self$options$showExploreStyle
-      whichShowExploreOut<-self$options$whichShowMultiple
-      
-      # metaAnalysis 
-      showMetaParam<-paste0(self$options$metaVar1,";",self$options$metaVar2)
-      showMetaDimension<-self$options$showMultipleDimension
+      # save the existing definitions
+      oldH<-braw.def$hypothesis
+      oldD<-braw.def$design
+      oldE<-braw.def$evidence
+      oldX<-braw.def$explore
+      oldM<-braw.def$metaAnalysis
       
       # make all the standard things we need
-      
-      # the hypothesis has IV, DV and effect
-      oldH<-braw.def$hypothesis
-      #
-      DV<-makeVariable(self$options$DVname,self$options$DVtype,
-                       mu=self$options$DVmu,sd=self$options$DVsd,skew=self$options$DVskew,kurtosis=self$options$DVkurt,
-                       ncats=self$options$DVncats,cases=self$options$DVcases,proportions=self$options$DVprops,
-                       nlevs=self$options$DVnlevs,iqr=self$options$DViqr)
-      IV<-makeVariable(self$options$IVname,self$options$IVtype,
-                       mu=self$options$IVmu,sd=self$options$IVsd,skew=self$options$IVskew,kurtosis=self$options$IVkurt,
-                       ncats=self$options$IVncats,cases=self$options$IVcases,proportions=self$options$IVprops,
-                       nlevs=self$options$IVnlevs,iqr=self$options$IViqr)
-      if (self$options$presetIV2!="none") {
-        IV2<-makeVariable(self$options$IV2name,self$options$IV2type,
-                          mu=self$options$IV2mu,sd=self$options$IV2sd,skew=self$options$IV2skew,kurtosis=self$options$IV2kurt,
-                          ncats=self$options$IV2ncats,cases=self$options$IV2cases,proportions=self$options$IV2props,
-                          nlevs=self$options$IV2nlevs,iqr=self$options$IV2iqr)
-      } else {
-        IV2<-NULL
-      }
-      
-      effect<-makeEffect(rIV=self$options$EffectSize1,
-                         rIV2=self$options$EffectSize2,
-                         rIVIV2=self$options$EffectSize3,
-                         rIVIV2DV=self$options$EffectSize12,
-                         rSD=self$options$rSD,
-                         Heteroscedasticity=self$options$Heteroscedasticity,
-                         ResidDistr=self$options$Residuals,
-                         world=makeWorld(worldOn=self$options$WorldOn,
-                                         populationPDF=self$options$WorldPDF,
-                                         populationRZ = self$options$WorldRZ,
-                                         populationPDFk = self$options$WorldLambda,
-                                         populationNullp = self$options$WorldNullP,
-                                         populationPDFsample = self$options$WorldSample!="none",
-                                         populationSamplemn = self$options$WorldMn,
-                                         populationSamplesd = self$options$WorldSd,
-                                         populationSamplebias = self$options$WorldSample=="bias"
-                         )
-      )
-
-      
-      hypothesis<-makeHypothesis(IV,IV2,DV,effect,layout=self$options$EffectConfig)
-      changedH<- !identical(oldH,hypothesis)
-
-      # set up the design variable
-      oldD<-braw.def$design
-      #
-      design<-makeDesign(sN=self$options$SampleSize,
-                         sNRand=self$options$SampleSpreadOn,sNRandSD=self$options$SampleSD,
-                         sNRandDist=self$options$SampleSizeDist,
-                         sMethod=makeSampling(self$options$SampleMethod),
-                         sMethodSeverity=self$options$PoorSamplingAmount,
-                                sIV1Use=self$options$SampleUsage1,
-                                sIV2Use=self$options$SampleUsage2,
-                                sDependence=self$options$Dependence,
-                                sOutliers=self$options$Outliers,
-                                sNonResponse=self$options$NonResponse,
-                                sRangeOn=self$options$LimitRange=="yes", 
-                                sIVRange=(c(self$options$RangeMin,self$options$RangeMax)-hypothesis$IV$mu)/hypothesis$IV$sd, 
-                                sCheating=self$options$Cheating,sCheatingLimit="Budget",sCheatingBudget=self$options$CheatingBudget,
-                         Replication=makeReplication(On=self$options$ReplicationOn,
-                                                     Power=self$options$ReplicationPower,
-                                                     Repeats=self$options$ReplicationAttempts,
-                                                     Keep=self$options$ReplicationDecision,
-                                                     forceSigOriginal=self$options$ReplicationSigOriginal=="yes",forceSign=(self$options$ReplicationSign=="yes"),
-                                                     maxN=self$options$RepMaxN,
-                                                     RepAlpha=self$options$ReplicationAlpha,
-                                                     PowerPrior=self$options$ReplicationPrior
-                                                     )
-                         )
-      if (design$sNRand) design$sN<-self$options$SampleSizeM
-      changedD<- !identical(oldD,design)
-      
-      # set up the evidence variable
-      oldE<-braw.def$evidence
-      #
-      switch(self$options$likelihoodUsePrior,
-             "none"={
-               prior<-makeWorld(worldOn=TRUE,
-                                populationPDF="Uniform",
-                                populationRZ="r",
-                                populationNullp=0.5)
-             },
-             "world"={
-               prior<-hypothesis$effect$world
-               prior$worldOn<-TRUE
-             },
-             "prior"={
-               prior<-makeWorld(worldOn=TRUE,
-                         populationPDF=self$options$priorPDF,
-                         populationRZ=self$options$priorRZ,
-                         populationPDFk=self$options$priorLambda,
-                         populationNullp=self$options$priorNullP)
-             })
-      evidence<-makeEvidence(rInteractionOn=self$options$interaction=="yes",
-                             ssqType=self$options$ssq,sigOnly=FALSE,
-                             Welch=self$options$equalVar=="no",
-                             Transform=self$options$Transform,
-                             minRp=self$options$minRp,
-                             shortHand=self$options$shorthandCalculations,
-                             prior=prior,
-                             doSEM=self$options$doSEM,useAIC=self$options$useAIC
-      )
-      changedE<- !identical(oldE,evidence)
-      setBrawEnv("alphaSig",self$options$alphaSig)
-      setBrawEnv("RZ",self$options$dispRZ)
-      setBrawEnv("STMethod",self$options$STMethod)
-
-      # set up the explore variable
-      oldX<-braw.def$explore
-      #
-      switch(self$options$exploreMode,
-             "hypothesisExplore"={
-               typeExplore<-self$options$hypothesisExploreList
-               minV<-as.numeric(self$options$exploreMinValH)
-               maxV<-as.numeric(self$options$exploreMaxValH)
-               xlog<-self$options$exploreXLogH
-               exploreNPoints<-as.numeric(self$options$exploreNPointsH)
-             },
-             "designExplore"={
-               typeExplore<-self$options$designExploreList
-               minV<-as.numeric(self$options$exploreMinValD)
-               maxV<-as.numeric(self$options$exploreMaxValD)
-               xlog<-self$options$exploreXLogD
-               exploreNPoints<-as.numeric(self$options$exploreNPointsD)
-             },
-             "analysisExplore"={
-               typeExplore<-self$options$analysisExploreList
-               minV<-as.numeric(self$options$exploreMinValA)
-               maxV<-as.numeric(self$options$exploreMaxValA)
-               xlog<-self$options$exploreXLogA
-               exploreNPoints<-as.numeric(self$options$exploreNPointsA)
-             },
-             "moreExplore"={
-               typeExplore<-self$options$moreExploreList
-               minV<-as.numeric(self$options$exploreMinValM)
-               maxV<-as.numeric(self$options$exploreMaxValM)
-               xlog<-self$options$exploreXLogM
-               exploreNPoints<-as.numeric(self$options$exploreNPointsM)
-             }
-      )
-      explore<-makeExplore(exploreType=typeExplore,
-                           exploreNPoints=exploreNPoints,
-                           minVal=minV,maxVal=maxV,
-                           xlog=xlog)
-      changedX<- !identical(oldX,explore)
-
-      # set up the metaAnalysis variable
-      oldM<-braw.def$metaAnalysis
-      #
-      metaAnalysis<-makeMetaAnalysis(nstudies=self$options$MetaAnalysisNStudies,
-                                     method=self$options$MetaAnalysisMethod,
-                                     analysisType=self$options$MetaAnalysisType,
-                                     analysisVar=self$options$MetaAnalysisRandVar,
-                                     analysisPrior=self$options$MetaAnalysisPrior,
-                                     modelPDF="All",
-                                     sourceBias=self$options$MetaAnalysisStudiesSig,
-                                     modelNulls=self$options$MetaAnalysisNulls=="yes",
-                                     analyseBias=self$options$MetaAnalysisBias=="yes"
-                                     )
-      changedM<- !identical(oldM,metaAnalysis)
-      
       # store the option variables inside the braw package
-      setBrawDef("hypothesis",hypothesis)
-      setBrawDef("design",design)
-      setBrawDef("evidence",evidence)
-      setBrawDef("explore",explore)
-      setBrawDef("metaAnalysis",metaAnalysis)
-
-      addHistory<-FALSE # or replace last entry?
-      openSystem<-0
-      # now deal with a request for help/instructions
-      # after we have set up the hypothesis
-      indent<-0
-      titleWidth<-135
-      if (nestedHelp) {
-        indent<-50
-        titleWidth<-0
-      }
-      if (self$options$brawHelp) {
-        basicHelp<-brawbasicHelp(open=statusStore$basicHelpWhich,indent,titleWidth)
-        simHelp<-brawsimHelp(open=statusStore$simHelpWhich,indent,titleWidth)
-        jamoviHelp<-brawJamoviHelp(open=statusStore$openJamovi,indent,titleWidth,
-                                   hypothesis,design)
-
-        demoHelp<-brawDemosHelp(statusStore$demoHelpWhich,indent,titleWidth,doDemos)
-
-        if (nestedHelp) {
-          open0<-max(0,statusStore$basicHelpWhich,any(statusStore$demoHelpWhich>0)*2,(statusStore$simHelpWhich>0)*3,(statusStore$openJamovi>0)*4)
-          help<-generate_tab(
-            title="Help:",
-            plainTabs=TRUE,
-            titleWidth=50,
-            tabs=c("Basic","Demos","Simulations","Jamovi","Key"),
-            tabContents=c(basicHelp,demoHelp,simHelp,jamoviHelp,BrawInstructions("Key")),
-            open=open0
-          )
-        } else help<-paste0(basicHelp,demoHelp,simHelp,jamoviHelp) 
-        statusStore$basicHelpWhich<-0 # so closed next time round
-      } else help<-''
+      setBraw(self)
       
-      if (systemAsHTML) {
-        switch(self$options$showHypothesisLst,
-               "Default"={
-                 openSystem<-0
-                 if (changedD && design$sNRand) openSystem<-2
-                 if (changedD && !design$sNRand) openSystem<-1
-                 if (changedH) openSystem<-1
-                 if (changedE) openSystem<-1
-               },
-               "Hypothesis"={openSystem<-1},
-               "Design"={openSystem<-2},
-               "Likelihood"={openSystem<-3}) 
-        
-        assign("graphicsType","HTML",braw.env)
-        svgBox(200*self$options$systemMag)
-        h<-showSystem("hypothesis")
-        svgBox(180*self$options$systemMag)
-        sd<-showSystem("design")
-        svgBox(180)
-        rd<-reportDesign()
-        svgBox(200*self$options$systemMag)
-        e<-showSystem("prediction")
-        # l<-showPossible(NA,showType="Samples")
-        systemHTML<-generate_tab(
-          titleWidth=50,
-          title="Plan:",
-          plain=(nchar(help)>0),
-          tabs=c("Hypothesis","Design"),
-          tabContents = c(
-            joinHTML(h,e),
-            joinHTML(sd,rd)
-          ),
-          open=openSystem
-        )
-        if (self$options$showHTML)
-          assign("graphicsType","HTML",braw.env)
-        else
-          assign("graphicsType","ggplot",braw.env)
-        
-        svgBox(400)
-        if (joinSystem) {
-          help<-paste0(help,'<div><br></div>',systemHTML)
-        } else {
-          self$results$SystemHTML$setContent(systemHTML)
-        }
-      }
+      changedH<- !identical(oldH,braw.def$hypothesis)
+      changedD<- !identical(oldD,braw.def$design)
+      changedE<- !identical(oldE,braw.def$evidence)
+      changedX<- !identical(oldX,braw.def$explore)
+      changedM<- !identical(oldM,braw.def$metaAnalysis)
+      
+      # now set up help/instructions
+      # this is done after we have set up the hypothesis
+      helpOutput<-makeHelpOut(self,statusStore)
+      systemHTML<-makeSystemOut(self,statusStore,changedH,changedD,changedE,helpOutput)
 
-      if (nchar(help)>0) {
-        self$results$BrawStatsInstructions$setContent(help)
-        if (!self$results$BrawStatsInstructions$visible) self$results$BrawStatsInstructions$setVisible(TRUE)
+      if (nchar(systemHTML)>0) {
+        self$results$BrawStatsInstructions$setContent(systemHTML)
+        if (!self$results$BrawStatsInstructions$visible) 
+          self$results$BrawStatsInstructions$setVisible(TRUE)
       } else {
-        if (self$results$BrawStatsInstructions$visible)  self$results$BrawStatsInstructions$setVisible(FALSE)
+        if (self$results$BrawStatsInstructions$visible)  
+          self$results$BrawStatsInstructions$setVisible(FALSE)
       }
       
-      # unless we have done something, we will make the same output as last time
-      outputNow<-NULL
-      
-      # are we asking for a different display of the current explore?
-      if (!is.null(braw.res$explore) && statusStore$lastOutput=="Explore") {
-        if (showExploreParam != statusStore$showExploreParam ||
-            showExploreStyle != statusStore$showExploreStyle ||
-            whichShowExploreOut != statusStore$whichShowExploreOut)
-          outputNow<-"Explore"
-      }
-      # or multiple?
-      if (!is.null(braw.res$multiple) && statusStore$lastOutput=="Multiple") {
-        if (showMultipleParam != statusStore$showMultipleParam ||
-            showMultipleDimension != statusStore$showInferDimension || 
-            whichShowMultipleOut != statusStore$whichShowMultipleOut)
-          outputNow<-"Multiple"
-      }
-      # or result?
-      if (!is.null(braw.res$result) && is.element(statusStore$lastOutput,c("Basic","Sample","Describe","Infer","Variables","Likelihood"))) {
-        if (showInferParam != statusStore$showInferParam ||
-            showInferDimension != statusStore$showInferDimension)
-          outputNow<-"Infer"
-        if (showSampleType != statusStore$showSampleType)
-          outputNow<-showSampleType
-      }
-      
-      # are any of the existing stored results now invalid?
-      if (changedH || changedD) {
-        setBrawRes("result",NULL)
-        setBrawRes("multiple",NULL)
-        setBrawRes("explore",NULL)
-        setBrawRes("metaAnalysis",NULL)
-        setBrawRes("metaMultiple",NULL)
-        outputNow<-"System"
-      }
-      if (changedE) {
-        setBrawRes("multiple",NULL)
-        setBrawRes("explore",NULL)
-        setBrawRes("metaAnalysis",NULL)
-        setBrawRes("metaMultiple",NULL)
-        if (!is.null(braw.res$result) && is.element(statusStore$lastOutput,c("Basic","Sample","Describe","Infer","Variables","Likelihood"))) {
-          setBrawRes("result",doAnalysis(sample=braw.res$result))
-          addHistory<-TRUE
-          outputNow<-showSampleType
-        }
-      }
-      if (changedX) {
-        setBrawRes("explore",NULL)
-      }
-
-      if (changedM) {
-        setBrawRes("metaMultiple",NULL)
-        changedMsource<-(oldM$nstudies!=metaAnalysis$nstudies 
-                         || oldM$sourceBias!=metaAnalysis$sourceBias)
-        if (changedMsource) {
-          setBrawRes("metaSingle",NULL)
-        }
-        if (statusStore$lastOutput=="MetaSingle" && !changedMsource) {
-          # same data new analsis
-          braw.res$metaSingle<-doMetaAnalysis(braw.res$metaSingle,keepStudies=TRUE)
-          addHistory<-TRUE
-          outputNow<-"MetaSingle"
-        }
-        if (statusStore$lastOutput=="Explore" && self$options$MetaAnalysisOn)
-          setBrawRes("explore",NULL)
-      }
-
-      if (systemAsHTML && !is.null(outputNow) && outputNow=="System") outputNow<-NULL
-
-      # now we start doing things
-      # did we ask for a new sample?
-      if (makeSampleNow) {
-        # make a sample - either striaght sample or single metaAnalysis
-        if (self$options$MetaAnalysisOn) {
-          # do we need to do this, or are we just returning to the existing one?
-          if (self$options$showHTML || is.null(braw.res$metaSingle) || statusStore$lastOutput=="MetaSingle") {
-            doMetaAnalysis(NULL)
-            addHistory<-TRUE
-          }
-          outputNow<-"MetaSingle"
-        } else {
-          # do we need to do this, or are we just returning to the existing one?
-          if (self$options$showHTML || is.null(braw.res$result) || statusStore$lastOutput==showSampleType) {
-            doSingle()
-            addHistory<-TRUE
-          }
-          outputNow<-showSampleType
-        }
-      }
-
-      # did we ask for new multiples?
-      if (makeMultipleNow) {
-        numberSamples<-self$options$numberSamples
-        if (self$options$MetaAnalysisOn) {
-          # do we need to do this, or are we just returning to the existing one?
-          if (self$options$showHTML || is.null(braw.res$metaMultiple) || statusStore$lastOutput=="MetaMultiple") 
-            doMetaMultiple(numberSamples,braw.res$metaMultiple)
-          outputNow<-"MetaMultiple"
-        } else {
-          # do we need to do this, or are we just returning to the existing one?
-          if (is.null(braw.res$multiple) || statusStore$lastOutput=="Multiple") {
-          doMultiple(nsims=numberSamples,multipleResult=braw.res$multiple)
-            if (self$options$showHTML || statusStore$lastOutput!="Multiple" || changedH || changedD || changedE) addHistory<-TRUE
-          } 
-          outputNow<-"Multiple"
-        }
-      }
-      
-      # did we ask for new explore?
-      if (makeExploreNow) {
-        numberExplores<-self$options$numberExplores
-        # do we need to do this, or are we just returning to the existing one?
-        if (self$options$showHTML || is.null(braw.res$explore) || statusStore$lastOutput=="Explore") {
-          exploreResult<-doExplore(nsims=numberExplores,exploreResult=braw.res$explore,
-                                   doingMetaAnalysis=self$options$MetaAnalysisOn)
-          if (statusStore$lastOutput!="Explore" || changedH || changedD || changedE || changedX) addHistory<-TRUE
-        }
-        outputNow<-"Explore"
-      }
-      } else {
+      # we are going back or forwards in the history
+      if (self$options$goBack || self$options$goForwards) { 
         nhist<-length(history$history)
         if (self$options$goBack) history$historyPlace<-max(history$historyPlace-1,1)
         if (self$options$goForwards) history$historyPlace<-min(history$historyPlace+1,nhist)
+
         outputNow<-history$history[history$historyPlace]
+        
         historyOptions<-history$historyOptions[[history$historyPlace]]
         showSampleType<-historyOptions$showSampleType
         showInferParam<-historyOptions$showInferParam
@@ -565,14 +148,170 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         setBrawRes("explore",history$historyData[[history$historyPlace]]$explore)
         setBrawRes("metaSingle",history$historyData[[history$historyPlace]]$metaSingle)
         setBrawRes("metaMultiple",history$historyData[[history$historyPlace]]$metaMultiple)
-        # self$results$debug$setContent(c(nhist,history$historyPlace))
-        # self$results$debug$setVisible(TRUE)
       }
+      
+      if (!self$options$goBack && !self$options$goForwards) {
+        # unless we have done something, we will make the same output as last time
+        outputNow<-NULL
+        # at this stage, we assume nothing new for the history
+        addHistory<-FALSE 
+        
+        # get some display parameters for later
+        # single sample
+        makeSampleNow<-self$options$makeSampleBtn
+        showSampleType<-self$options$showSampleType
+        showInferParam<-paste0(self$options$inferVar1,";",self$options$inferVar2)
+        showInferDimension<-self$options$showInferDimension
+        
+        # multiple samples
+        makeMultipleNow<-self$options$makeMultipleBtn
+        showMultipleParam<-self$options$showMultipleParam
+        if (is.element(showMultipleParam,c("Basic","Custom"))) {
+          showMultipleParam<-paste0(self$options$inferVar1,";",self$options$inferVar2)
+        } 
+        if (is.element(showMultipleParam,c("Single"))) {
+          showMultipleParam<-self$options$inferVar1
+          showMultipleOrient<-"horz"
+        } else showMultipleOrient<-"vert"
+        showMultipleDimension<-self$options$showMultipleDimension
+        whichShowMultipleOut<-self$options$whichShowMultiple
+        
+        # explore
+        makeExploreNow<-self$options$makeExploreBtn
+        showExploreParam<-self$options$showExploreParam
+        if (is.element(showExploreParam,c("Single"))) {
+          showExploreParam<-self$options$inferVar1
+        } 
+        if (is.element(showExploreParam,c("Basic","Custom"))) {
+          showExploreParam<-paste0(self$options$inferVar1,";",self$options$inferVar2)
+        } 
+        showExploreStyle<-self$options$showExploreStyle
+        whichShowExploreOut<-self$options$whichShowMultiple
+        
+        # metaAnalysis 
+        showMetaParam<-paste0(self$options$metaVar1,";",self$options$metaVar2)
+        showMetaDimension<-self$options$showMultipleDimension
+        
+        # are we just asking for a different display of the current explore?
+        if (!self$options$showHTML && !is.null(braw.res$explore) && statusStore$lastOutput=="Explore") {
+          if (showExploreParam != statusStore$showExploreParam ||
+              showExploreStyle != statusStore$showExploreStyle ||
+              whichShowExploreOut != statusStore$whichShowExploreOut)
+            outputNow<-"Explore"
+        }
+        # or multiple?
+        if (!self$options$showHTML && !is.null(braw.res$multiple) && statusStore$lastOutput=="Multiple") {
+          if (showMultipleParam != statusStore$showMultipleParam ||
+              showMultipleDimension != statusStore$showInferDimension || 
+              whichShowMultipleOut != statusStore$whichShowMultipleOut)
+            outputNow<-"Multiple"
+        }
+        # or result?
+        if (!self$options$showHTML && !is.null(braw.res$result) && is.element(statusStore$lastOutput,c("Basic","Sample","Describe","Infer","Variables","Likelihood"))) {
+          if (showInferParam != statusStore$showInferParam ||
+              showInferDimension != statusStore$showInferDimension)
+            outputNow<-"Infer"
+          if (showSampleType != statusStore$showSampleType)
+            outputNow<-showSampleType
+        }
+        
+        # are any of the existing stored results now invalid?
+        if (changedH || changedD) {
+          setBrawRes("result",NULL)
+          setBrawRes("multiple",NULL)
+          setBrawRes("explore",NULL)
+          setBrawRes("metaAnalysis",NULL)
+          setBrawRes("metaMultiple",NULL)
+          outputNow<-NULL
+        }
+        if (changedX) {
+          setBrawRes("explore",NULL)
+        }
+        # are any of the existing stored results needing new analysis?
+        if (changedE) {
+          setBrawRes("multiple",NULL)
+          setBrawRes("explore",NULL)
+          setBrawRes("metaAnalysis",NULL)
+          setBrawRes("metaMultiple",NULL)
+          if (!is.null(braw.res$result) && is.element(statusStore$lastOutput,c("Basic","Sample","Describe","Infer","Variables","Likelihood"))) {
+            setBrawRes("result",doAnalysis(sample=braw.res$result))
+            addHistory<-TRUE
+            outputNow<-showSampleType
+          }
+        }
+        if (changedM) {
+          setBrawRes("metaMultiple",NULL)
+          changedMsource<-(oldM$nstudies!=braw.def$metaAnalysis$nstudies 
+                           || oldM$sourceBias!=braw.def$metaAnalysis$sourceBias)
+          if (changedMsource) {
+            setBrawRes("metaSingle",NULL)
+          }
+          if (statusStore$lastOutput=="MetaSingle" && !changedMsource) {
+            # same data new analsis
+            braw.res$metaSingle<-doMetaAnalysis(braw.res$metaSingle,keepStudies=TRUE)
+            addHistory<-TRUE
+            outputNow<-"MetaSingle"
+          }
+          if (statusStore$lastOutput=="Explore" && self$options$MetaAnalysisOn)
+            setBrawRes("explore",NULL)
+        }
 
+        # now we start doing new things
+        # did we ask for a new sample?
+        if (makeSampleNow) {
+          # make a sample - either striaght sample or single metaAnalysis
+          if (self$options$MetaAnalysisOn) {
+            # do we need to do this, or are we just returning to the existing one?
+            if (self$options$showHTML || is.null(braw.res$metaSingle) || statusStore$lastOutput=="MetaSingle") {
+              doMetaAnalysis(NULL)
+              addHistory<-TRUE
+            }
+            outputNow<-"MetaSingle"
+          } else {
+            # do we need to do this, or are we just returning to the existing one?
+            if (self$options$showHTML || is.null(braw.res$result) || statusStore$lastOutput==showSampleType) {
+              doSingle()
+              addHistory<-TRUE
+            }
+            outputNow<-showSampleType
+          }
+        }
+        
+        # did we ask for new multiples?
+        if (makeMultipleNow) {
+          numberSamples<-self$options$numberSamples
+          if (self$options$MetaAnalysisOn) {
+            # do we need to do this, or are we just returning to the existing one?
+            if (self$options$showHTML || is.null(braw.res$metaMultiple) || statusStore$lastOutput=="MetaMultiple") 
+              doMetaMultiple(numberSamples,braw.res$metaMultiple)
+            outputNow<-"MetaMultiple"
+          } else {
+            # do we need to do this, or are we just returning to the existing one?
+            if (is.null(braw.res$multiple) || statusStore$lastOutput=="Multiple") {
+              doMultiple(nsims=numberSamples,multipleResult=braw.res$multiple)
+              if (self$options$showHTML || statusStore$lastOutput!="Multiple" || changedH || changedD || changedE) addHistory<-TRUE
+            } 
+            outputNow<-"Multiple"
+          }
+        }
+        
+        # did we ask for new explore?
+        if (makeExploreNow) {
+          numberExplores<-self$options$numberExplores
+          # do we need to do this, or are we just returning to the existing one?
+          if (self$options$showHTML || is.null(braw.res$explore) || statusStore$lastOutput=="Explore") {
+            exploreResult<-doExplore(nsims=numberExplores,exploreResult=braw.res$explore,
+                                     doingMetaAnalysis=self$options$MetaAnalysisOn)
+            if (statusStore$lastOutput!="Explore" || changedH || changedD || changedE || changedX) addHistory<-TRUE
+          }
+          outputNow<-"Explore"
+        }
+      } 
+      
       # what are we showing?
       # main results graphs/reports
       if (!is.null(outputNow))  {
-
+        
         if (outputNow=="Likelihood") {
           possible<-makePossible(UsePrior=self$options$likelihoodUsePrior,
                                  prior=makeWorld(worldOn=TRUE,
@@ -585,92 +324,60 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           likelihoodCutaway<-(self$options$likelihoodCutaway=="cutaway")
         }
         
-          if (self$options$showHTML) {
-            svgBox(height=350,aspect=1.5)
-            # if (outputNow=="System") svgBox(aspect=1.5)
-            # if (is.element(outputNow,c("Basic","Describe"))) svgBox(height=300)
-            # if (outputNow=="Likelihood") svgBox(aspect=1.5)
-            # if (is.element(outputNow,c("Infer","Multiple")) && is.element(showMultipleParam,c("Basic","Custom")) && showMultipleDimension=="2D") svgBox(height=250)
-            # if (is.element(outputNow,c("Infer","Multiple")) && showMultipleDimension=="1D") svgBox(aspect=1.6)
-            # if (outputNow=="Explore" && is.element(showExploreParam,c("Basic","Custom")) && showExploreDimension=="2D") svgBox(height=250)
-            # if (outputNow=="Explore" && is.element(showExploreParam,c("Basic","Custom")) && showExploreDimension=="1D") svgBox(aspect=1.6)
-            # if (outputNow=="Explore" && showExploreParam=="NHST") svgBox(aspect=1.6)
-            assign("graphHTML",TRUE,braw.env)
-            graphSystem<-paste0(showSystem(),reportSystem())
-            if (!is.null(braw.res$result))
-              switch(self$options$showSampleType,
-                     "Basic"= graphSingle<-paste0(showDescription(),reportInference()),
-                     "Variables" = graphSingle<-paste0(showMarginals(style="all"),reportSample()),
-                     "Sample"= graphSingle<-paste0(showSample(),reportSample()),
-                     "Describe"= graphSingle<-paste0(showDescription(),reportDescription()),
-                     "Infer"= graphSingle<-paste0(showInference(showType=showInferParam,dimension=showInferDimension),reportInference()),
-                     "Likelihood"=graphSingle<-paste0(showPossible(showType=self$options$likelihoodType,cutaway=likelihoodCutaway),reportLikelihood()),
-                     "MetaSingle"  =graphSingle<-paste0(showMetaSingle(),reportMetaSingle()),
-                     "MetaMultiple"  =graphSingle<-paste0(showMetaMultiple(showType=showMetaParam,dimension=showMetaDimension),reportMetaMultiple()),
-              )
-            else graphSingle<-nullPlot()
-            if (!is.null(braw.res$multiple))
-              graphMultiple<-paste0(showMultiple(showType=showMultipleParam,dimension=showMultipleDimension,effectType=whichShowMultipleOut),
-                                    reportMultiple(showType=showMultipleParam,effectType=whichShowMultipleOut,reportStats=self$options$reportInferStats)
-              )
-            else graphMultiple<-nullPlot()
-            if (!is.null(braw.res$explore))
-              graphExplore<-paste0(showExplore(showType=showExploreParam,showHist=(showExploreStyle=="hist"),effectType=whichShowExploreOut),
-                                   reportExplore(showType=showExploreParam,effectType=whichShowExploreOut,reportStats=self$options$reportInferStats)
-                                   )
-            else graphExplore<-nullPlot()
-            switch(outputNow,
-                   "System"= open<-0,
-                   "Basic"= open<-1,
-                   "Variables"= open<-1,
-                   "Sample"= open<-1,
-                   "Describe"= open<-1,
-                   "Infer"= open<-1,
-                   "Likelihood"=open<-1,
-                   "Multiple"= open<-2,
-                   "Explore"= open<-3,
-                   {open<-0}
+        if (self$options$showHTML) {
+          svgBox(height=350,aspect=1.5)
+          setBrawEnv("graphicsType","HTML")
+          if (!is.null(braw.res$result))
+            switch(self$options$showSampleType,
+                   "Basic"= graphSingle<-paste0(showDescription(),reportInference()),
+                   "Variables" = graphSingle<-paste0(showMarginals(style="all"),reportSample()),
+                   "Sample"= graphSingle<-paste0(showSample(),reportSample()),
+                   "Describe"= graphSingle<-paste0(showDescription(),reportDescription()),
+                   "Infer"= graphSingle<-paste0(showInference(showType=showInferParam,dimension=showInferDimension),reportInference()),
+                   "Likelihood"=graphSingle<-paste0(showPossible(showType=self$options$likelihoodType,cutaway=likelihoodCutaway),reportLikelihood()),
+                   "MetaSingle"  =graphSingle<-paste0(showMetaSingle(),reportMetaSingle()),
+                   "MetaMultiple"  =graphSingle<-paste0(showMetaMultiple(showType=showMetaParam,dimension=showMetaDimension),reportMetaMultiple()),
             )
-      if (systemAsHTML) {
-        brawResults<-generate_tab(
-          title="Results:",
-          titleWidth=50,
-          tabs=c("Single Sample","Multiple Samples","Explore"),
-          tabContents = c(
-            graphSingle,
-            graphMultiple,
-            graphExplore
-          ),
-          open=open
-        )
-      } else {
-        brawResults<-generate_tab(
-          title="BrawStats Results:",
-          tabs=c("Plan","Single Sample","Multiple Samples","Explore"),
-          tabContents = c(
-            graphSystem,
-            graphSingle,
-            graphMultiple,
-            graphExplore
-          ),
-          open=open
-        )
-      }
-      self$results$simGraphHTML$setContent(brawResults)
-            # switch(outputNow,
-            #        "System"= self$results$graphHTML$setContent(showSystem()),
-            #        "Basic"= self$results$graphHTML$setContent(showDescription()),
-            #        "Sample"= self$results$graphHTML$setContent(showMarginals(style=self$options$showSample)),
-            #        "Describe"= self$results$graphHTML$setContent(showDescription()),
-            #        "Infer"= self$results$graphHTML$setContent(showInference(showType=showInferParam,dimension=showInferDimension)),
-            #        "Likelihood"=self$results$graphHTML$setContent(showPossible(showType=self$options$likelihoodType,cutaway=likelihoodCutaway)),
-            #        "Multiple"= self$results$graphHTML$setContent(showMultiple(showType=showMultipleParam,dimension=showMultipleDimension,effectType=whichShowMultipleOut)),
-            #        "Explore"= self$results$graphHTML$setContent(showExplore(showType=showExploreParam,dimension=showExploreDimension,effectType=whichShowExploreOut)),
-            #        self$results$graphHTML$setContent(NULL)
-            # )
-            # svgBox(300)
-          } else {
-
+          else graphSingle<-nullPlot()
+          if (!is.null(braw.res$multiple))
+            graphMultiple<-paste0(showMultiple(showType=showMultipleParam,dimension=showMultipleDimension,effectType=whichShowMultipleOut),
+                                  reportMultiple(showType=showMultipleParam,effectType=whichShowMultipleOut,reportStats=self$options$reportInferStats)
+            )
+          else graphMultiple<-nullPlot()
+          if (!is.null(braw.res$explore))
+            graphExplore<-paste0(showExplore(showType=showExploreParam,showHist=(showExploreStyle=="hist"),effectType=whichShowExploreOut),
+                                 reportExplore(showType=showExploreParam,effectType=whichShowExploreOut,reportStats=self$options$reportInferStats)
+            )
+          else graphExplore<-nullPlot()
+          switch(outputNow,
+                 "System"= open<-0,
+                 "Basic"= open<-1,
+                 "Variables"= open<-1,
+                 "Sample"= open<-1,
+                 "Describe"= open<-1,
+                 "Infer"= open<-1,
+                 "Likelihood"=open<-1,
+                 "Multiple"= open<-2,
+                 "Explore"= open<-3,
+                 {open<-0}
+          )
+            brawResults<-generate_tab(
+              title="Results:",
+              titleWidth=50,
+              tabs=c("Single Sample","Multiple Samples","Explore"),
+              tabContents = c(
+                graphSingle,
+                graphMultiple,
+                graphExplore
+              ),
+              open=open
+            )
+            # self$results$debug$setContent(outputNow)
+            # self$results$debug$setVisible(TRUE)
+            
+          self$results$simGraphHTML$setContent(brawResults)
+        } else {
+          
           switch(outputNow,
                  "System"= self$results$simGraph$setState(outputNow),
                  "Basic"= self$results$simGraph$setState("Describe"),
@@ -685,22 +392,22 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                  "MetaMultiple"  =self$results$simGraph$setState(c(outputNow,showMetaParam,showMetaDimension)),
                  self$results$simGraph$setState(outputNow)
           )
-            
-            switch(outputNow,
-                   "System"= self$results$simReport$setContent(reportPlot(NULL)),
-                   "Basic"= self$results$simReport$setContent(reportInference()),
-                   "Variables"= self$results$simReport$setContent(reportSample()),
-                   "Sample"= self$results$simReport$setContent(reportSample()),
-                   "Describe"= self$results$simReport$setContent(reportDescription()),
-                   "Infer"= self$results$simReport$setContent(reportInference()),
-                   "Likelihood"=self$results$simReport$setContent(reportLikelihood()),
-                   "Multiple"= self$results$simReport$setContent(reportMultiple(showType=showMultipleParam,effectType=whichShowMultipleOut,reportStats=self$options$reportInferStats)),
-                   "Explore"= self$results$simReport$setContent(reportExplore(showType=showExploreParam,reportStats=self$options$reportInferStats)),
-                   "MetaSingle"  =self$results$simReport$setContent(reportMetaSingle()),
-                   "MetaMultiple"  =self$results$simReport$setContent(reportMetaMultiple(reportStats=self$options$reportInferStats)),
-                   self$results$simReport$setContent(reportPlot(NULL))
-            )
-          }
+          
+          switch(outputNow,
+                 "System"= self$results$simReport$setContent(reportPlot(NULL)),
+                 "Basic"= self$results$simReport$setContent(reportInference()),
+                 "Variables"= self$results$simReport$setContent(reportSample()),
+                 "Sample"= self$results$simReport$setContent(reportSample()),
+                 "Describe"= self$results$simReport$setContent(reportDescription()),
+                 "Infer"= self$results$simReport$setContent(reportInference()),
+                 "Likelihood"=self$results$simReport$setContent(reportLikelihood()),
+                 "Multiple"= self$results$simReport$setContent(reportMultiple(showType=showMultipleParam,effectType=whichShowMultipleOut,reportStats=self$options$reportInferStats)),
+                 "Explore"= self$results$simReport$setContent(reportExplore(showType=showExploreParam,reportStats=self$options$reportInferStats)),
+                 "MetaSingle"  =self$results$simReport$setContent(reportMetaSingle()),
+                 "MetaMultiple"  =self$results$simReport$setContent(reportMetaMultiple(reportStats=self$options$reportInferStats)),
+                 self$results$simReport$setContent(reportPlot(NULL))
+          )
+        }
       } else {
         if (!self$options$showHTML) {
           # self$results$simReport$setContent(reportPlot(NULL))
@@ -719,42 +426,20 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       statusStore$showExploreStyle<-showExploreStyle
       statusStore$whichShowExploreOut<-whichShowExploreOut
       if (!is.null(outputNow))  statusStore$lastOutput<-outputNow
-
+      
       if (!is.null(outputNow) && !self$options$goBack && !self$options$goForwards) {
         historyOptions<-list(showSampleType=showSampleType,
-                              showInferParam=showInferParam,
-                              showInferDimension=showInferDimension,
+                             showInferParam=showInferParam,
+                             showInferDimension=showInferDimension,
                              showMultipleParam=showMultipleParam,
                              showMultipleOrient=showMultipleOrient,
                              showMultipleDimension=showMultipleDimension,
-                              whichShowMultipleOut=whichShowMultipleOut,
-                              showExploreParam=showExploreParam,
-                              showExploreStyle=showExploreStyle,
-                              whichShowExploreOut=whichShowExploreOut
+                             whichShowMultipleOut=whichShowMultipleOut,
+                             showExploreParam=showExploreParam,
+                             showExploreStyle=showExploreStyle,
+                             whichShowExploreOut=whichShowExploreOut
         )
-        if (is.null(history$history)) {
-          nD<-1
-        } else {
-          if (addHistory) nD<-length(history$history)+1
-          else            nD<-length(history$history)
-        }
-        history$history[nD]<-outputNow
-        
-        history$historyData[[nD]]<-list(result=braw.res$result,
-                                        multiple=braw.res$multiple,
-                                        explore=braw.res$explore,
-                                        metaSingle=braw.res$metaSingle,
-                                        metaMultiple=braw.res$metaMultiple
-        )
-        history$historyOptions[[nD]]<-historyOptions
-        if (nD>nHistory) {
-            use<-(nD-(nHistory-1)):nD
-            history$history<-history$history[use]
-            history$historyData<-history$historyData[use]
-            history$historyOptions<-history$historyOptions[use]
-            nD<-nHistory
-          }
-          history$historyPlace<-nD
+        history<-updateHistory(history,historyOptions,outputNow,addHistory)
       }
       
       # now we save any results to the Jamovi spreadsheet
@@ -767,7 +452,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           newVariables<-data.frame(braw.res$result$participant,braw.res$result$dv,braw.res$result$iv,braw.res$result$iv2)
           names(newVariables)<-c("ID",braw.def$hypothesis$DV$name,braw.def$hypothesis$IV$name,braw.def$hypothesis$IV2$name)
         }
-
+        
         keys<-1:length(newVariables)
         measureTypes<-sapply(newVariables,function(x) { if (is.character(x)) "Nominal" else "Continuous"})
         
@@ -780,25 +465,25 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       # then multiple result
       q<-NULL
       if (self$options$sendMultiple) {
-      if (!is.null(outputNow) && outputNow=="MetaSingle") {
+        if (!is.null(outputNow) && outputNow=="MetaSingle") {
           q<-braw.res$metaSingle$result
-      } 
-      if (!is.null(outputNow) && outputNow=="Multiple") {
-        q<-mergeMultiple(braw.res$multiple$result,braw.res$multiple$nullresult)
-      }
-      if (!is.null(q)) {
-        newMultiple<-data.frame(q$rIV,q$nval+0.0,q$pIV)
-        newMultiple<-newMultiple[!is.na(q$rIV),]
-        names(newMultiple)<-c("rs","n","p")
-        nvars<-ncol(newMultiple)
-        
-        keys<-1:nvars
-        self$results$sendMultiple$set(keys=keys,titles=names(newMultiple),
-                                      descriptions=rep("simulated",nvars),
-                                      measureTypes=rep("Continuous",nvars)
-        )
-        self$results$sendMultiple$setValues(newMultiple)
-      }
+        } 
+        if (!is.null(outputNow) && outputNow=="Multiple") {
+          q<-mergeMultiple(braw.res$multiple$result,braw.res$multiple$nullresult)
+        }
+        if (!is.null(q)) {
+          newMultiple<-data.frame(q$rIV,q$nval+0.0,q$pIV)
+          newMultiple<-newMultiple[!is.na(q$rIV),]
+          names(newMultiple)<-c("rs","n","p")
+          nvars<-ncol(newMultiple)
+          
+          keys<-1:nvars
+          self$results$sendMultiple$set(keys=keys,titles=names(newMultiple),
+                                        descriptions=rep("simulated",nvars),
+                                        measureTypes=rep("Continuous",nvars)
+          )
+          self$results$sendMultiple$setValues(newMultiple)
+        }
       }
       if (self$options$sendExplore && !is.null(outputNow) && outputNow=="Explore") {
         newExplore<-reportExplore(returnDataFrame=TRUE,showType=showExploreParam,reportStats=self$options$reportInferStats)
@@ -806,8 +491,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         
         keys<-1:nvars
         self$results$sendExplore$set(keys=keys,titles=names(newExplore),
-                                      descriptions=rep("simulated",nvars),
-                                      measureTypes=rep("Continuous",nvars)
+                                     descriptions=rep("simulated",nvars),
+                                     measureTypes=rep("Continuous",nvars)
         )
         self$results$sendExplore$setValues(newExplore)
       }
@@ -820,7 +505,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
     .plotSimGraph=function(image, ...) {
       outputGraph <- image$state[1]
       if (!is.null(outputGraph)) {
-        assign("graphHTML",FALSE,braw.env)
+        setBrawEnv("graphicsType","ggplot")
         switch(outputGraph,
                "System"    =outputGraph<-showSystem("all"),
                "Hypothesis"=outputGraph<-showSystem("hypothesis"),
