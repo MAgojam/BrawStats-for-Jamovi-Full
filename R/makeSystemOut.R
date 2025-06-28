@@ -11,7 +11,6 @@ makeSystemOut<-function(self,statusStore,changedH,changedD,changedE,helpOutput) 
     plain<-FALSE
   }
 
-  openSystem<-0
   switch(self$options$showHypothesisLst,
          "Default"={
            openSystem<-0
@@ -21,8 +20,8 @@ makeSystemOut<-function(self,statusStore,changedH,changedD,changedE,helpOutput) 
            if (changedE) openSystem<-1
          },
          "Hypothesis"={openSystem<-1},
-         "Design"={openSystem<-2},
-         "Likelihood"={openSystem<-3}) 
+         "Design"={openSystem<-2}
+  ) 
   
   svgBox(200*self$options$systemMag)
   h<-showSystem("hypothesis")

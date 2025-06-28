@@ -7,7 +7,7 @@ children:
   - type: Label
     label: Learning Stats 
     children:
-    - name: learnMode
+    - name: basicMode
       type: ModeSelector
       margin: none
       children:
@@ -4143,8 +4143,6 @@ children:
                         - type: CheckBox
                           name: showHTML
                           minWidth: 100
-                        - type: ComboBox
-                          name: showHypothesisLst
                     - type: LayoutBox
                       style: inline
                       margin: none
@@ -4155,5 +4153,7 @@ children:
                         - type: Label
                           label: ' '
                           minWidth: 13
+                        - type: ComboBox
+                          name: showHypothesisLst
                         - type: ComboBox
                           name: lastDemo

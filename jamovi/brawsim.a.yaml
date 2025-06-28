@@ -6,7 +6,7 @@ version: '1.0.0'
 jas: '1.2'
 
 options:
-    - name: learnMode
+    - name: basicMode
       title: ' '
       type: List
       options:
@@ -2180,7 +2180,7 @@ options:
       type: Action
 
     - name: lastDemo
-      title: ''
+      title: 'demo display:'
       type: List
       options:
       - name: none

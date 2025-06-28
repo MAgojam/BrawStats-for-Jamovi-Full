@@ -11,12 +11,13 @@ items:
     - name: SystemHTML
       type: Html
       visible: FALSE
+      clearWith:
+      - makeSampleBtn
 
     - name: simGraphHTML
       type: Html
       visible: TRUE
       clearWith:
-      - showHypothesisLst
       - makeSampleBtn
       - showSampleType
       - showInferParam
@@ -47,7 +48,6 @@ items:
       visible: FALSE
       renderFun: .plotSimGraph
       clearWith:
-      - showHypothesisLst
       - makeSampleBtn
       - showSampleType
       - showInferParam
@@ -78,7 +78,6 @@ items:
       # height: 200
       visible: TRUE
       clearWith:
-      - showHypothesisLst
       - makeSampleBtn
       - showSampleType
       - showInferParam
@@ -129,6 +128,7 @@ items:
       clearWith:
        - makeExploreBtn
 
-refs: brawstats
-      book
+refs: 
+  - brawstats
+  - book
 ...

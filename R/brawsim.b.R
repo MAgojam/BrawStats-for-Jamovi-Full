@@ -16,10 +16,11 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       # self$results$debug$setVisible(TRUE)
       # return()
 
+      firstRun<-FALSE
       # initialization code here
       if (is.null(braw.res$statusStore)) {
-        self$results$SystemHTML$setVisible(FALSE)
-        
+        firstRun<-TRUE
+
         setBrawOpts(reducedOutput=TRUE,reportHTML=TRUE,
                     fontScale=1.5,fullGraphSize=0.5,
                     autoPrint=FALSE
@@ -41,7 +42,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                           simHelpWhich=0,
                           openJamovi=0,
                           planMode="planH",
-                          learnMode="LearnHelp",
+                          basicMode="LearnHelp",
                           exploreMode="Design",
                           nrowTableLM=1,
                           nrowTableSEM=1
@@ -69,26 +70,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         if (!self$results$simReport$visible) self$results$simReport$setVisible(TRUE)
       }
       
-      # ignore changes in the ModeSelectors
-      if (self$options$learnMode!=statusStore$learnMode) {
-        statusStore$learnMode<-self$options$learnMode
-        setBrawRes("statusStore",statusStore)
-        setBrawRes("historyStore",history)
-        return()
-      }
-      if (self$options$planMode!=statusStore$planMode) {
-        statusStore$planMode<-self$options$planMode
-        setBrawRes("statusStore",statusStore)
-        setBrawRes("historyStore",history)
-        return()
-      }
-      if (self$options$exploreMode!=statusStore$exploreMode) {
-        statusStore$exploreMode<-self$options$exploreMode
-        setBrawRes("statusStore",statusStore)
-        setBrawRes("historyStore",history)
-        return()
-      }
-      
+## help structure
       # get which tabs are open in help structure
       statusStore<-whichTabsOpen(self,statusStore)
       
@@ -114,6 +96,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       helpOutput<-makeHelpOut(self,statusStore)
       systemHTML<-makeSystemOut(self,statusStore,changedH,changedD,changedE,helpOutput)
 
+      # only change this if there has been a change in what it displays
+      if (any(c(firstRun,changedH,changedD,changedE)))
       if (nchar(systemHTML)>0) {
         self$results$BrawStatsInstructions$setContent(systemHTML)
         if (!self$results$BrawStatsInstructions$visible) 
@@ -123,6 +107,28 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           self$results$BrawStatsInstructions$setVisible(FALSE)
       }
       
+## changes in the mode selectors can now be ignored
+      # ignore changes in the ModeSelectors
+      if (self$options$basicMode!=statusStore$basicMode) {
+        statusStore$basicMode<-self$options$basicMode
+        setBrawRes("statusStore",statusStore)
+        setBrawRes("historyStore",history)
+        return()
+      }
+      if (self$options$planMode!=statusStore$planMode) {
+        statusStore$planMode<-self$options$planMode
+        setBrawRes("statusStore",statusStore)
+        setBrawRes("historyStore",history)
+        return()
+      }
+      if (self$options$exploreMode!=statusStore$exploreMode) {
+        statusStore$exploreMode<-self$options$exploreMode
+        setBrawRes("statusStore",statusStore)
+        setBrawRes("historyStore",history)
+        return()
+      }
+      
+## basic computations start here
       # we are going back or forwards in the history
       if (self$options$goBack || self$options$goForwards) { 
         nhist<-length(history$history)
@@ -193,21 +199,21 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         showMetaDimension<-self$options$showMultipleDimension
         
         # are we just asking for a different display of the current explore?
-        if (!self$options$showHTML && !is.null(braw.res$explore) && statusStore$lastOutput=="Explore") {
+        if (!is.null(braw.res$explore) && statusStore$lastOutput=="Explore") {
           if (showExploreParam != statusStore$showExploreParam ||
               showExploreStyle != statusStore$showExploreStyle ||
               whichShowExploreOut != statusStore$whichShowExploreOut)
             outputNow<-"Explore"
         }
         # or multiple?
-        if (!self$options$showHTML && !is.null(braw.res$multiple) && statusStore$lastOutput=="Multiple") {
+        if (!is.null(braw.res$multiple) && statusStore$lastOutput=="Multiple") {
           if (showMultipleParam != statusStore$showMultipleParam ||
               showMultipleDimension != statusStore$showInferDimension || 
               whichShowMultipleOut != statusStore$whichShowMultipleOut)
             outputNow<-"Multiple"
         }
         # or result?
-        if (!self$options$showHTML && !is.null(braw.res$result) && is.element(statusStore$lastOutput,c("Basic","Sample","Describe","Infer","Variables","Likelihood"))) {
+        if (!is.null(braw.res$result) && is.element(statusStore$lastOutput,c("Basic","Sample","Describe","Infer","Variables","Likelihood"))) {
           if (showInferParam != statusStore$showInferParam ||
               showInferDimension != statusStore$showInferDimension)
             outputNow<-"Infer"
@@ -287,9 +293,9 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
             outputNow<-"MetaMultiple"
           } else {
             # do we need to do this, or are we just returning to the existing one?
-            if (is.null(braw.res$multiple) || statusStore$lastOutput=="Multiple") {
+            if (self$options$showHTML || is.null(braw.res$multiple) || statusStore$lastOutput=="Multiple") {
               doMultiple(nsims=numberSamples,multipleResult=braw.res$multiple)
-              if (self$options$showHTML || statusStore$lastOutput!="Multiple" || changedH || changedD || changedE) addHistory<-TRUE
+              if (statusStore$lastOutput!="Multiple" || changedH || changedD || changedE) addHistory<-TRUE
             } 
             outputNow<-"Multiple"
           }
