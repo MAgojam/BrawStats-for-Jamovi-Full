@@ -23,8 +23,7 @@ description: |-
 
   BrawStats functions:
     i.   data simulation
-    ii.  general linear models
-    iii. path models
+    ii.  analyse data with linear models & path models
 analyses:
   - title: BrawStats:Simulate Data
     name: BrawSim
@@ -33,20 +32,13 @@ analyses:
     menuSubgroup: Simulate
     menuTitle: BrawStats:Simulate Data
     category: analyses
-  - title: BrawStats:Linear Models
-    name: BrawLM
+  - title: BrawStats:Analyse Data
+    name: BrawAN
     ns: BrawStats
     menuGroup: BrawStats
     menuSubgroup: Analyze
-    menuTitle: BrawStats:Linear Models
     category: analyses
-  - title: BrawStats:Path Models
-    name: BrawSEM
-    ns: BrawStats
-    menuGroup: BrawStats
-    menuSubgroup: Analyze
-    menuTitle: BrawStats:Path Models
-    category: analyses
+    menuTitle: BrawStats:Analyse Data
 usesNative: true
 minApp: 1.0.8
 

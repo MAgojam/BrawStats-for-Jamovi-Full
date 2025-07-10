@@ -1,0 +1,37 @@
+---
+name:  BrawAN
+title: BrawStats:Analyse Data
+jrs:   '1.1'
+
+items:
+    - name: lmGraph
+      title: ' '
+      type: Image
+      width:  500
+      height: 300
+      renderFun: .lmPlotGraph
+      visible: FALSE
+
+    - name: lmReport
+      title: ' '
+      type: Html
+      visible: FALSE
+
+    - name: semGraph
+      title: ' '
+      type: Image
+      width:  500
+      height: 300
+      renderFun: .semPlotGraph
+      visible: FALSE
+
+    - name: semReport
+      title: ' '
+      type: Html
+      visible: FALSE
+
+    - name: debug
+      type: Preformatted
+      visible: FALSE
+
+...

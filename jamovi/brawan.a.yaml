@@ -1,12 +1,58 @@
 ---
-name:  BrawSEM
-title: BrawStats:Path Models
+name:  BrawAN
+title: BrawStats:Analyse Data
 menuGroup: BrawStats
 version: '1.0.0'
 jas: '1.2'
 
 options:
-    - name: data
+    - name: analysisMode
+      title: ' '
+      type: List
+      options:
+      - name: AnalyseData
+        title: 'Analyse with:'
+      - name: LinearModel
+        title: 'Linear Model'
+      - name: PathModel
+        title: 'Path Model'
+
+    - name: dataLM
+      type: Data
+
+    - name: IV
+      title: Independent Variable
+      type: Variables
+
+    - name: DV
+      title: Dependent Variable
+      type: Variable
+
+    - name: inferWhich
+      title: report
+      type: List
+      options:
+        - name: r
+          title: r
+        - name: p
+          title: p
+      default: r
+
+    - name: whichR
+      title: graph
+      type: List
+      options:
+        - name: Direct
+          title: Direct
+        - name: Unique
+          title: Unique
+        - name: Total
+          title: Total
+        - name: Full
+          title: Full Model
+      default: Direct
+
+    - name: dataSEM
       type: Data
 
     - name: Stage5
@@ -62,7 +108,7 @@ options:
           title: up
         - name: down
           title: down
-      default: up
+      default: down
 
     - name: Depth
       title: Depth

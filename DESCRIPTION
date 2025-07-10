@@ -11,5 +11,20 @@ Description: This implements BrawStats in Jamovi.
 License: Creative Commons
 Encoding: UTF-8
 LazyData: true
-Imports: jmvcore (>= 2.3.4), R6
+Imports: jmvcore (>= 2.3.4), R6,
+    ggplot2,
+    ggtext,
+    grDevices,
+    grid,
+    mnormt,     
+    lme4,       
+    readxl,  
+    writexl,  
+    stringr,    
+    clipr,      
+    car,      
+    pracma,   
+    abind,
+    meta,
+    lavaan
 Remotes: rjwatt42/BrawPackage
