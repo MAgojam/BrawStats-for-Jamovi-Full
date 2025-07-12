@@ -12,6 +12,11 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             demo2Help = NULL,
             demo3Help = NULL,
             demo4Help = NULL,
+            metaHelp = NULL,
+            meta1Help = NULL,
+            meta2Help = NULL,
+            meta3Help = NULL,
+            meta4Help = NULL,
             simHelp = NULL,
             simPlanHelp = NULL,
             simSingleHelp = NULL,
@@ -169,81 +174,101 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             systemMag = 1,
             goBack = NULL,
             goForwards = NULL,
-            doProject1AhBtn = NULL,
-            doProject1A1Btn = NULL,
-            doProject1A2Btn = NULL,
-            doProject1sLst = "Perfectionism",
-            doProject1sLstA = "ExamGrade",
-            doProject1sLstB = 0.3,
-            doProject1sLstC = "Basic",
-            doProject1sLstD = "Random",
-            doProject1sLstE = 42,
-            doProject1BhBtn = NULL,
-            doProject1B1Btn = NULL,
-            doProject1B2Btn = NULL,
-            doProject1ChBtn = NULL,
-            doProject1C1Btn = NULL,
-            doProject2AhBtn = NULL,
-            doProject2A1Btn = NULL,
-            doProject2A2Btn = NULL,
-            doProject2BhBtn = NULL,
-            doProject2B1Btn = NULL,
-            doProject2B2Btn = NULL,
-            doProject2ChBtn = NULL,
-            doProject2C1Btn = NULL,
-            doProject2sLst = "Perfectionism",
-            doProject2sLstA = "ExamGrade",
-            doProject2sLstB = 0.3,
-            doProject2sLstC = "Infer",
-            doProject2sLstD = "Random",
-            doProject2sLstE = 42,
-            doProject2sLstF = "Basic",
-            doProject2sLstG = "off",
-            doProject3sLst = "Interval",
-            doProject3sLstA = "Interval",
-            doProject3sLstB = 0.3,
-            doProject3sLstC = "Infer",
-            doProject3sLstD = "Random",
-            doProject3sLstE = 42,
-            doProject3sLstF = "Basic",
-            doProject3sLstG = "off",
-            doProject3sLstH = "n",
-            doProject3sLstK = 20,
-            doProject3sLstI = "Basic",
-            doProject3sLstJ = "Between",
-            doProject3AhBtn = NULL,
-            doProject3A1Btn = NULL,
-            doProject3A3Btn = NULL,
-            doProject3BhBtn = NULL,
-            doProject3B1Btn = NULL,
-            doProject3ChBtn = NULL,
-            doProject3C1Btn = NULL,
-            doProject3C3Btn = NULL,
-            doProject4sLstA1 = "RiskTaker",
-            doProject4sLstA2 = "Musician",
-            doProject4sLst = "ExamGrade",
-            doProject4sLstB = 0.5,
-            doProject4sLstC = -0.5,
-            doProject4sLstD = 0,
-            doProject4sLstE = "no",
-            doProject4sLstF = 0,
-            doProject4sLstG = "Basic",
-            doProject4sLstI = "all",
-            doProject4sLstJ = "Covariation",
-            doProject4sLstL = 20,
-            doProject4sLstK = 200,
-            doProject4AhBtn = NULL,
-            doProject4A1Btn = NULL,
-            doProject4A2Btn = NULL,
-            doProject4BhBtn = NULL,
-            doProject4B1Btn = NULL,
-            doProject4B2Btn = NULL,
-            doProject4B3Btn = NULL,
-            doProject4ChBtn = NULL,
-            doProject4C1Btn = NULL,
-            doProject4C2Btn = NULL,
-            doProject4C3Btn = NULL,
-            lastDemo = "none", ...) {
+            doDemo1AhBtn = NULL,
+            doDemo1A1Btn = NULL,
+            doDemo1A2Btn = NULL,
+            doDemo1sLst = "Perfectionism",
+            doDemo1sLstA = "ExamGrade",
+            doDemo1sLstB = 0.3,
+            doDemo1sLstC = "Basic",
+            doDemo1sLstD = "Random",
+            doDemo1sLstE = 42,
+            doDemo1BhBtn = NULL,
+            doDemo1B1Btn = NULL,
+            doDemo1B2Btn = NULL,
+            doDemo1ChBtn = NULL,
+            doDemo1C1Btn = NULL,
+            doDemo2AhBtn = NULL,
+            doDemo2A1Btn = NULL,
+            doDemo2A2Btn = NULL,
+            doDemo2BhBtn = NULL,
+            doDemo2B1Btn = NULL,
+            doDemo2B2Btn = NULL,
+            doDemo2ChBtn = NULL,
+            doDemo2C1Btn = NULL,
+            doDemo2sLst = "Perfectionism",
+            doDemo2sLstA = "ExamGrade",
+            doDemo2sLstB = 0.3,
+            doDemo2sLstC = "Infer",
+            doDemo2sLstD = "Random",
+            doDemo2sLstE = 42,
+            doDemo2sLstF = "Basic",
+            doDemo2sLstG = "off",
+            doDemo3sLst = "Interval",
+            doDemo3sLstA = "Interval",
+            doDemo3sLstB = 0.3,
+            doDemo3sLstC = "Infer",
+            doDemo3sLstD = "Random",
+            doDemo3sLstE = 42,
+            doDemo3sLstF = "Basic",
+            doDemo3sLstG = "off",
+            doDemo3sLstH = "n",
+            doDemo3sLstK = 20,
+            doDemo3sLstI = "Basic",
+            doDemo3sLstJ = "Between",
+            doDemo3AhBtn = NULL,
+            doDemo3A1Btn = NULL,
+            doDemo3A3Btn = NULL,
+            doDemo3BhBtn = NULL,
+            doDemo3B1Btn = NULL,
+            doDemo3ChBtn = NULL,
+            doDemo3C1Btn = NULL,
+            doDemo3C3Btn = NULL,
+            doDemo4sLstA1 = "RiskTaker",
+            doDemo4sLstA2 = "Musician",
+            doDemo4sLst = "ExamGrade",
+            doDemo4sLstB = 0.5,
+            doDemo4sLstC = -0.5,
+            doDemo4sLstD = 0,
+            doDemo4sLstE = "no",
+            doDemo4sLstF = 0,
+            doDemo4sLstG = "Basic",
+            doDemo4sLstI = "all",
+            doDemo4sLstJ = "Covariation",
+            doDemo4sLstL = 20,
+            doDemo4sLstK = 200,
+            doDemo4AhBtn = NULL,
+            doDemo4A1Btn = NULL,
+            doDemo4A2Btn = NULL,
+            doDemo4BhBtn = NULL,
+            doDemo4B1Btn = NULL,
+            doDemo4B2Btn = NULL,
+            doDemo4B3Btn = NULL,
+            doDemo4ChBtn = NULL,
+            doDemo4C1Btn = NULL,
+            doDemo4C2Btn = NULL,
+            doDemo4C3Btn = NULL,
+            lastDemo = "none",
+            metaSampleSize = 50,
+            metaSampleMethod = "Random",
+            doMeta1ABtn = NULL,
+            doMeta1AmBtn = NULL,
+            doMeta1BBtn = NULL,
+            doMeta1BmBtn = NULL,
+            meta2SampleSize = 50,
+            meta2IndivSampleSize = 500,
+            meta2SampleBudget = 500,
+            metaCheating = "None",
+            doMeta2ABtn = NULL,
+            doMeta2BBtn = NULL,
+            doMeta2BmBtn = NULL,
+            doMeta3ABtn = NULL,
+            doMeta3AmBtn = NULL,
+            doMeta3BBtn = NULL,
+            doMeta3BmBtn = NULL,
+            meta3SampleSize = 50,
+            meta3SampleMethod = "Random",
+            lastMeta = "none", ...) {
 
             super$initialize(
                 package="BrawStats",
@@ -257,6 +282,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 options=list(
                     "LearnHelp",
                     "LearnDemo",
+                    "LearnMeta",
                     "LearnSim",
                     "Settings"))
             private$..demosHelp <- jmvcore::OptionAction$new(
@@ -274,6 +300,21 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             private$..demo4Help <- jmvcore::OptionAction$new(
                 "demo4Help",
                 demo4Help)
+            private$..metaHelp <- jmvcore::OptionAction$new(
+                "metaHelp",
+                metaHelp)
+            private$..meta1Help <- jmvcore::OptionAction$new(
+                "meta1Help",
+                meta1Help)
+            private$..meta2Help <- jmvcore::OptionAction$new(
+                "meta2Help",
+                meta2Help)
+            private$..meta3Help <- jmvcore::OptionAction$new(
+                "meta3Help",
+                meta3Help)
+            private$..meta4Help <- jmvcore::OptionAction$new(
+                "meta4Help",
+                meta4Help)
             private$..simHelp <- jmvcore::OptionAction$new(
                 "simHelp",
                 simHelp)
@@ -1256,18 +1297,18 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             private$..goForwards <- jmvcore::OptionAction$new(
                 "goForwards",
                 goForwards)
-            private$..doProject1AhBtn <- jmvcore::OptionAction$new(
-                "doProject1AhBtn",
-                doProject1AhBtn)
-            private$..doProject1A1Btn <- jmvcore::OptionAction$new(
-                "doProject1A1Btn",
-                doProject1A1Btn)
-            private$..doProject1A2Btn <- jmvcore::OptionAction$new(
-                "doProject1A2Btn",
-                doProject1A2Btn)
-            private$..doProject1sLst <- jmvcore::OptionList$new(
-                "doProject1sLst",
-                doProject1sLst,
+            private$..doDemo1AhBtn <- jmvcore::OptionAction$new(
+                "doDemo1AhBtn",
+                doDemo1AhBtn)
+            private$..doDemo1A1Btn <- jmvcore::OptionAction$new(
+                "doDemo1A1Btn",
+                doDemo1A1Btn)
+            private$..doDemo1A2Btn <- jmvcore::OptionAction$new(
+                "doDemo1A2Btn",
+                doDemo1A2Btn)
+            private$..doDemo1sLst <- jmvcore::OptionList$new(
+                "doDemo1sLst",
+                doDemo1sLst,
                 options=list(
                     "IQ",
                     "Diligence",
@@ -1283,85 +1324,85 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "StudySubject",
                     "BirthOrder"),
                 default="Perfectionism")
-            private$..doProject1sLstA <- jmvcore::OptionList$new(
-                "doProject1sLstA",
-                doProject1sLstA,
+            private$..doDemo1sLstA <- jmvcore::OptionList$new(
+                "doDemo1sLstA",
+                doDemo1sLstA,
                 options=list(
                     "ExamGrade",
                     "ExamPass"),
                 default="ExamGrade")
-            private$..doProject1sLstB <- jmvcore::OptionNumber$new(
-                "doProject1sLstB",
-                doProject1sLstB,
+            private$..doDemo1sLstB <- jmvcore::OptionNumber$new(
+                "doDemo1sLstB",
+                doDemo1sLstB,
                 default=0.3,
                 min=-0.95,
                 max=0.95)
-            private$..doProject1sLstC <- jmvcore::OptionList$new(
-                "doProject1sLstC",
-                doProject1sLstC,
+            private$..doDemo1sLstC <- jmvcore::OptionList$new(
+                "doDemo1sLstC",
+                doDemo1sLstC,
                 options=list(
                     "Basic",
                     "Variables",
                     "Sample",
                     "Describe"),
                 default="Basic")
-            private$..doProject1sLstD <- jmvcore::OptionList$new(
-                "doProject1sLstD",
-                doProject1sLstD,
+            private$..doDemo1sLstD <- jmvcore::OptionList$new(
+                "doDemo1sLstD",
+                doDemo1sLstD,
                 options=list(
                     "Random",
                     "Convenience",
                     "Snowball",
                     "Cluster"),
                 default="Random")
-            private$..doProject1sLstE <- jmvcore::OptionNumber$new(
-                "doProject1sLstE",
-                doProject1sLstE,
+            private$..doDemo1sLstE <- jmvcore::OptionNumber$new(
+                "doDemo1sLstE",
+                doDemo1sLstE,
                 default=42,
                 min=10,
                 max=50000)
-            private$..doProject1BhBtn <- jmvcore::OptionAction$new(
-                "doProject1BhBtn",
-                doProject1BhBtn)
-            private$..doProject1B1Btn <- jmvcore::OptionAction$new(
-                "doProject1B1Btn",
-                doProject1B1Btn)
-            private$..doProject1B2Btn <- jmvcore::OptionAction$new(
-                "doProject1B2Btn",
-                doProject1B2Btn)
-            private$..doProject1ChBtn <- jmvcore::OptionAction$new(
-                "doProject1ChBtn",
-                doProject1ChBtn)
-            private$..doProject1C1Btn <- jmvcore::OptionAction$new(
-                "doProject1C1Btn",
-                doProject1C1Btn)
-            private$..doProject2AhBtn <- jmvcore::OptionAction$new(
-                "doProject2AhBtn",
-                doProject2AhBtn)
-            private$..doProject2A1Btn <- jmvcore::OptionAction$new(
-                "doProject2A1Btn",
-                doProject2A1Btn)
-            private$..doProject2A2Btn <- jmvcore::OptionAction$new(
-                "doProject2A2Btn",
-                doProject2A2Btn)
-            private$..doProject2BhBtn <- jmvcore::OptionAction$new(
-                "doProject2BhBtn",
-                doProject2BhBtn)
-            private$..doProject2B1Btn <- jmvcore::OptionAction$new(
-                "doProject2B1Btn",
-                doProject2B1Btn)
-            private$..doProject2B2Btn <- jmvcore::OptionAction$new(
-                "doProject2B2Btn",
-                doProject2B2Btn)
-            private$..doProject2ChBtn <- jmvcore::OptionAction$new(
-                "doProject2ChBtn",
-                doProject2ChBtn)
-            private$..doProject2C1Btn <- jmvcore::OptionAction$new(
-                "doProject2C1Btn",
-                doProject2C1Btn)
-            private$..doProject2sLst <- jmvcore::OptionList$new(
-                "doProject2sLst",
-                doProject2sLst,
+            private$..doDemo1BhBtn <- jmvcore::OptionAction$new(
+                "doDemo1BhBtn",
+                doDemo1BhBtn)
+            private$..doDemo1B1Btn <- jmvcore::OptionAction$new(
+                "doDemo1B1Btn",
+                doDemo1B1Btn)
+            private$..doDemo1B2Btn <- jmvcore::OptionAction$new(
+                "doDemo1B2Btn",
+                doDemo1B2Btn)
+            private$..doDemo1ChBtn <- jmvcore::OptionAction$new(
+                "doDemo1ChBtn",
+                doDemo1ChBtn)
+            private$..doDemo1C1Btn <- jmvcore::OptionAction$new(
+                "doDemo1C1Btn",
+                doDemo1C1Btn)
+            private$..doDemo2AhBtn <- jmvcore::OptionAction$new(
+                "doDemo2AhBtn",
+                doDemo2AhBtn)
+            private$..doDemo2A1Btn <- jmvcore::OptionAction$new(
+                "doDemo2A1Btn",
+                doDemo2A1Btn)
+            private$..doDemo2A2Btn <- jmvcore::OptionAction$new(
+                "doDemo2A2Btn",
+                doDemo2A2Btn)
+            private$..doDemo2BhBtn <- jmvcore::OptionAction$new(
+                "doDemo2BhBtn",
+                doDemo2BhBtn)
+            private$..doDemo2B1Btn <- jmvcore::OptionAction$new(
+                "doDemo2B1Btn",
+                doDemo2B1Btn)
+            private$..doDemo2B2Btn <- jmvcore::OptionAction$new(
+                "doDemo2B2Btn",
+                doDemo2B2Btn)
+            private$..doDemo2ChBtn <- jmvcore::OptionAction$new(
+                "doDemo2ChBtn",
+                doDemo2ChBtn)
+            private$..doDemo2C1Btn <- jmvcore::OptionAction$new(
+                "doDemo2C1Btn",
+                doDemo2C1Btn)
+            private$..doDemo2sLst <- jmvcore::OptionList$new(
+                "doDemo2sLst",
+                doDemo2sLst,
                 options=list(
                     "IQ",
                     "Diligence",
@@ -1377,22 +1418,22 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "StudySubject",
                     "BirthOrder"),
                 default="Perfectionism")
-            private$..doProject2sLstA <- jmvcore::OptionList$new(
-                "doProject2sLstA",
-                doProject2sLstA,
+            private$..doDemo2sLstA <- jmvcore::OptionList$new(
+                "doDemo2sLstA",
+                doDemo2sLstA,
                 options=list(
                     "ExamGrade",
                     "ExamPass"),
                 default="ExamGrade")
-            private$..doProject2sLstB <- jmvcore::OptionNumber$new(
-                "doProject2sLstB",
-                doProject2sLstB,
+            private$..doDemo2sLstB <- jmvcore::OptionNumber$new(
+                "doDemo2sLstB",
+                doDemo2sLstB,
                 default=0.3,
                 min=-0.95,
                 max=0.95)
-            private$..doProject2sLstC <- jmvcore::OptionList$new(
-                "doProject2sLstC",
-                doProject2sLstC,
+            private$..doDemo2sLstC <- jmvcore::OptionList$new(
+                "doDemo2sLstC",
+                doDemo2sLstC,
                 options=list(
                     "Basic",
                     "Variables",
@@ -1400,59 +1441,59 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "Describe",
                     "Infer"),
                 default="Infer")
-            private$..doProject2sLstD <- jmvcore::OptionList$new(
-                "doProject2sLstD",
-                doProject2sLstD,
+            private$..doDemo2sLstD <- jmvcore::OptionList$new(
+                "doDemo2sLstD",
+                doDemo2sLstD,
                 options=list(
                     "Random",
                     "Convenience",
                     "Snowball",
                     "Cluster"),
                 default="Random")
-            private$..doProject2sLstE <- jmvcore::OptionNumber$new(
-                "doProject2sLstE",
-                doProject2sLstE,
+            private$..doDemo2sLstE <- jmvcore::OptionNumber$new(
+                "doDemo2sLstE",
+                doDemo2sLstE,
                 default=42,
                 min=10,
                 max=50000)
-            private$..doProject2sLstF <- jmvcore::OptionList$new(
-                "doProject2sLstF",
-                doProject2sLstF,
+            private$..doDemo2sLstF <- jmvcore::OptionList$new(
+                "doDemo2sLstF",
+                doDemo2sLstF,
                 options=list(
                     "Basic",
                     "NHST",
                     "p(sig)"),
                 default="Basic")
-            private$..doProject2sLstG <- jmvcore::OptionList$new(
-                "doProject2sLstG",
-                doProject2sLstG,
+            private$..doDemo2sLstG <- jmvcore::OptionList$new(
+                "doDemo2sLstG",
+                doDemo2sLstG,
                 options=list(
                     "off",
                     "eq"),
                 default="off")
-            private$..doProject3sLst <- jmvcore::OptionList$new(
-                "doProject3sLst",
-                doProject3sLst,
+            private$..doDemo3sLst <- jmvcore::OptionList$new(
+                "doDemo3sLst",
+                doDemo3sLst,
                 options=list(
                     "Interval",
                     "Categorical"),
                 default="Interval")
-            private$..doProject3sLstA <- jmvcore::OptionList$new(
-                "doProject3sLstA",
-                doProject3sLstA,
+            private$..doDemo3sLstA <- jmvcore::OptionList$new(
+                "doDemo3sLstA",
+                doDemo3sLstA,
                 options=list(
                     "Interval",
                     "Categorical"),
                 default="Interval")
-            private$..doProject3sLstB <- jmvcore::OptionNumber$new(
-                "doProject3sLstB",
-                doProject3sLstB,
+            private$..doDemo3sLstB <- jmvcore::OptionNumber$new(
+                "doDemo3sLstB",
+                doDemo3sLstB,
                 default=0.3,
                 min=-0.95,
                 max=0.95)
-            private$..doProject3sLstC <- jmvcore::OptionList$new(
-                "doProject3sLstC",
-                doProject3sLstC,
+            private$..doDemo3sLstC <- jmvcore::OptionList$new(
+                "doDemo3sLstC",
+                doDemo3sLstC,
                 options=list(
                     "Basic",
                     "Variables",
@@ -1460,91 +1501,91 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "Describe",
                     "Infer"),
                 default="Infer")
-            private$..doProject3sLstD <- jmvcore::OptionList$new(
-                "doProject3sLstD",
-                doProject3sLstD,
+            private$..doDemo3sLstD <- jmvcore::OptionList$new(
+                "doDemo3sLstD",
+                doDemo3sLstD,
                 options=list(
                     "Random",
                     "Convenience",
                     "Snowball",
                     "Cluster"),
                 default="Random")
-            private$..doProject3sLstE <- jmvcore::OptionNumber$new(
-                "doProject3sLstE",
-                doProject3sLstE,
+            private$..doDemo3sLstE <- jmvcore::OptionNumber$new(
+                "doDemo3sLstE",
+                doDemo3sLstE,
                 default=42,
                 min=10,
                 max=50000)
-            private$..doProject3sLstF <- jmvcore::OptionList$new(
-                "doProject3sLstF",
-                doProject3sLstF,
+            private$..doDemo3sLstF <- jmvcore::OptionList$new(
+                "doDemo3sLstF",
+                doDemo3sLstF,
                 options=list(
                     "Basic",
                     "NHST",
                     "p(sig)"),
                 default="Basic")
-            private$..doProject3sLstG <- jmvcore::OptionList$new(
-                "doProject3sLstG",
-                doProject3sLstG,
+            private$..doDemo3sLstG <- jmvcore::OptionList$new(
+                "doDemo3sLstG",
+                doDemo3sLstG,
                 options=list(
                     "off",
                     "eq"),
                 default="off")
-            private$..doProject3sLstH <- jmvcore::OptionList$new(
-                "doProject3sLstH",
-                doProject3sLstH,
+            private$..doDemo3sLstH <- jmvcore::OptionList$new(
+                "doDemo3sLstH",
+                doDemo3sLstH,
                 options=list(
                     "n",
                     "rIV"),
                 default="n")
-            private$..doProject3sLstK <- jmvcore::OptionNumber$new(
-                "doProject3sLstK",
-                doProject3sLstK,
+            private$..doDemo3sLstK <- jmvcore::OptionNumber$new(
+                "doDemo3sLstK",
+                doDemo3sLstK,
                 default=20,
                 min=10,
                 max=50000)
-            private$..doProject3sLstI <- jmvcore::OptionList$new(
-                "doProject3sLstI",
-                doProject3sLstI,
+            private$..doDemo3sLstI <- jmvcore::OptionList$new(
+                "doDemo3sLstI",
+                doDemo3sLstI,
                 options=list(
                     "Basic",
                     "NHST",
                     "p(sig)"),
                 default="Basic")
-            private$..doProject3sLstJ <- jmvcore::OptionList$new(
-                "doProject3sLstJ",
-                doProject3sLstJ,
+            private$..doDemo3sLstJ <- jmvcore::OptionList$new(
+                "doDemo3sLstJ",
+                doDemo3sLstJ,
                 options=list(
                     "Between",
                     "Within"),
                 default="Between")
-            private$..doProject3AhBtn <- jmvcore::OptionAction$new(
-                "doProject3AhBtn",
-                doProject3AhBtn)
-            private$..doProject3A1Btn <- jmvcore::OptionAction$new(
-                "doProject3A1Btn",
-                doProject3A1Btn)
-            private$..doProject3A3Btn <- jmvcore::OptionAction$new(
-                "doProject3A3Btn",
-                doProject3A3Btn)
-            private$..doProject3BhBtn <- jmvcore::OptionAction$new(
-                "doProject3BhBtn",
-                doProject3BhBtn)
-            private$..doProject3B1Btn <- jmvcore::OptionAction$new(
-                "doProject3B1Btn",
-                doProject3B1Btn)
-            private$..doProject3ChBtn <- jmvcore::OptionAction$new(
-                "doProject3ChBtn",
-                doProject3ChBtn)
-            private$..doProject3C1Btn <- jmvcore::OptionAction$new(
-                "doProject3C1Btn",
-                doProject3C1Btn)
-            private$..doProject3C3Btn <- jmvcore::OptionAction$new(
-                "doProject3C3Btn",
-                doProject3C3Btn)
-            private$..doProject4sLstA1 <- jmvcore::OptionList$new(
-                "doProject4sLstA1",
-                doProject4sLstA1,
+            private$..doDemo3AhBtn <- jmvcore::OptionAction$new(
+                "doDemo3AhBtn",
+                doDemo3AhBtn)
+            private$..doDemo3A1Btn <- jmvcore::OptionAction$new(
+                "doDemo3A1Btn",
+                doDemo3A1Btn)
+            private$..doDemo3A3Btn <- jmvcore::OptionAction$new(
+                "doDemo3A3Btn",
+                doDemo3A3Btn)
+            private$..doDemo3BhBtn <- jmvcore::OptionAction$new(
+                "doDemo3BhBtn",
+                doDemo3BhBtn)
+            private$..doDemo3B1Btn <- jmvcore::OptionAction$new(
+                "doDemo3B1Btn",
+                doDemo3B1Btn)
+            private$..doDemo3ChBtn <- jmvcore::OptionAction$new(
+                "doDemo3ChBtn",
+                doDemo3ChBtn)
+            private$..doDemo3C1Btn <- jmvcore::OptionAction$new(
+                "doDemo3C1Btn",
+                doDemo3C1Btn)
+            private$..doDemo3C3Btn <- jmvcore::OptionAction$new(
+                "doDemo3C3Btn",
+                doDemo3C3Btn)
+            private$..doDemo4sLstA1 <- jmvcore::OptionList$new(
+                "doDemo4sLstA1",
+                doDemo4sLstA1,
                 options=list(
                     "IQ",
                     "Diligence",
@@ -1560,9 +1601,9 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "StudySubject",
                     "BirthOrder"),
                 default="RiskTaker")
-            private$..doProject4sLstA2 <- jmvcore::OptionList$new(
-                "doProject4sLstA2",
-                doProject4sLstA2,
+            private$..doDemo4sLstA2 <- jmvcore::OptionList$new(
+                "doDemo4sLstA2",
+                doDemo4sLstA2,
                 options=list(
                     "IQ",
                     "Diligence",
@@ -1578,117 +1619,218 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "StudySubject",
                     "BirthOrder"),
                 default="Musician")
-            private$..doProject4sLst <- jmvcore::OptionList$new(
-                "doProject4sLst",
-                doProject4sLst,
+            private$..doDemo4sLst <- jmvcore::OptionList$new(
+                "doDemo4sLst",
+                doDemo4sLst,
                 options=list(
                     "ExamGrade",
                     "ExamPass"),
                 default="ExamGrade")
-            private$..doProject4sLstB <- jmvcore::OptionNumber$new(
-                "doProject4sLstB",
-                doProject4sLstB,
+            private$..doDemo4sLstB <- jmvcore::OptionNumber$new(
+                "doDemo4sLstB",
+                doDemo4sLstB,
                 default=0.5,
                 min=-0.95,
                 max=0.95)
-            private$..doProject4sLstC <- jmvcore::OptionNumber$new(
-                "doProject4sLstC",
-                doProject4sLstC,
+            private$..doDemo4sLstC <- jmvcore::OptionNumber$new(
+                "doDemo4sLstC",
+                doDemo4sLstC,
                 default=-0.5,
                 min=-0.95,
                 max=0.95)
-            private$..doProject4sLstD <- jmvcore::OptionNumber$new(
-                "doProject4sLstD",
-                doProject4sLstD,
+            private$..doDemo4sLstD <- jmvcore::OptionNumber$new(
+                "doDemo4sLstD",
+                doDemo4sLstD,
                 default=0,
                 min=-0.95,
                 max=0.95)
-            private$..doProject4sLstE <- jmvcore::OptionList$new(
-                "doProject4sLstE",
-                doProject4sLstE,
+            private$..doDemo4sLstE <- jmvcore::OptionList$new(
+                "doDemo4sLstE",
+                doDemo4sLstE,
                 options=list(
                     "no",
                     "yes"),
                 default="no")
-            private$..doProject4sLstF <- jmvcore::OptionNumber$new(
-                "doProject4sLstF",
-                doProject4sLstF,
+            private$..doDemo4sLstF <- jmvcore::OptionNumber$new(
+                "doDemo4sLstF",
+                doDemo4sLstF,
                 default=0,
                 min=-0.95,
                 max=0.95)
-            private$..doProject4sLstG <- jmvcore::OptionList$new(
-                "doProject4sLstG",
-                doProject4sLstG,
+            private$..doDemo4sLstG <- jmvcore::OptionList$new(
+                "doDemo4sLstG",
+                doDemo4sLstG,
                 options=list(
                     "Basic",
                     "Sample",
                     "Describe"),
                 default="Basic")
-            private$..doProject4sLstI <- jmvcore::OptionList$new(
-                "doProject4sLstI",
-                doProject4sLstI,
+            private$..doDemo4sLstI <- jmvcore::OptionList$new(
+                "doDemo4sLstI",
+                doDemo4sLstI,
                 options=list(
                     "direct",
                     "unique",
                     "total",
                     "all"),
                 default="all")
-            private$..doProject4sLstJ <- jmvcore::OptionList$new(
-                "doProject4sLstJ",
-                doProject4sLstJ,
+            private$..doDemo4sLstJ <- jmvcore::OptionList$new(
+                "doDemo4sLstJ",
+                doDemo4sLstJ,
                 options=list(
                     "EffectSize",
                     "Covariation",
                     "Interaction"),
                 default="Covariation")
-            private$..doProject4sLstL <- jmvcore::OptionNumber$new(
-                "doProject4sLstL",
-                doProject4sLstL,
+            private$..doDemo4sLstL <- jmvcore::OptionNumber$new(
+                "doDemo4sLstL",
+                doDemo4sLstL,
                 default=20,
                 min=10,
                 max=50000)
-            private$..doProject4sLstK <- jmvcore::OptionNumber$new(
-                "doProject4sLstK",
-                doProject4sLstK,
+            private$..doDemo4sLstK <- jmvcore::OptionNumber$new(
+                "doDemo4sLstK",
+                doDemo4sLstK,
                 default=200,
                 min=10,
                 max=50000)
-            private$..doProject4AhBtn <- jmvcore::OptionAction$new(
-                "doProject4AhBtn",
-                doProject4AhBtn)
-            private$..doProject4A1Btn <- jmvcore::OptionAction$new(
-                "doProject4A1Btn",
-                doProject4A1Btn)
-            private$..doProject4A2Btn <- jmvcore::OptionAction$new(
-                "doProject4A2Btn",
-                doProject4A2Btn)
-            private$..doProject4BhBtn <- jmvcore::OptionAction$new(
-                "doProject4BhBtn",
-                doProject4BhBtn)
-            private$..doProject4B1Btn <- jmvcore::OptionAction$new(
-                "doProject4B1Btn",
-                doProject4B1Btn)
-            private$..doProject4B2Btn <- jmvcore::OptionAction$new(
-                "doProject4B2Btn",
-                doProject4B2Btn)
-            private$..doProject4B3Btn <- jmvcore::OptionAction$new(
-                "doProject4B3Btn",
-                doProject4B3Btn)
-            private$..doProject4ChBtn <- jmvcore::OptionAction$new(
-                "doProject4ChBtn",
-                doProject4ChBtn)
-            private$..doProject4C1Btn <- jmvcore::OptionAction$new(
-                "doProject4C1Btn",
-                doProject4C1Btn)
-            private$..doProject4C2Btn <- jmvcore::OptionAction$new(
-                "doProject4C2Btn",
-                doProject4C2Btn)
-            private$..doProject4C3Btn <- jmvcore::OptionAction$new(
-                "doProject4C3Btn",
-                doProject4C3Btn)
+            private$..doDemo4AhBtn <- jmvcore::OptionAction$new(
+                "doDemo4AhBtn",
+                doDemo4AhBtn)
+            private$..doDemo4A1Btn <- jmvcore::OptionAction$new(
+                "doDemo4A1Btn",
+                doDemo4A1Btn)
+            private$..doDemo4A2Btn <- jmvcore::OptionAction$new(
+                "doDemo4A2Btn",
+                doDemo4A2Btn)
+            private$..doDemo4BhBtn <- jmvcore::OptionAction$new(
+                "doDemo4BhBtn",
+                doDemo4BhBtn)
+            private$..doDemo4B1Btn <- jmvcore::OptionAction$new(
+                "doDemo4B1Btn",
+                doDemo4B1Btn)
+            private$..doDemo4B2Btn <- jmvcore::OptionAction$new(
+                "doDemo4B2Btn",
+                doDemo4B2Btn)
+            private$..doDemo4B3Btn <- jmvcore::OptionAction$new(
+                "doDemo4B3Btn",
+                doDemo4B3Btn)
+            private$..doDemo4ChBtn <- jmvcore::OptionAction$new(
+                "doDemo4ChBtn",
+                doDemo4ChBtn)
+            private$..doDemo4C1Btn <- jmvcore::OptionAction$new(
+                "doDemo4C1Btn",
+                doDemo4C1Btn)
+            private$..doDemo4C2Btn <- jmvcore::OptionAction$new(
+                "doDemo4C2Btn",
+                doDemo4C2Btn)
+            private$..doDemo4C3Btn <- jmvcore::OptionAction$new(
+                "doDemo4C3Btn",
+                doDemo4C3Btn)
             private$..lastDemo <- jmvcore::OptionList$new(
                 "lastDemo",
                 lastDemo,
+                options=list(
+                    "none",
+                    "1a",
+                    "1b",
+                    "1c",
+                    "2a",
+                    "2b",
+                    "2c",
+                    "3a",
+                    "3b",
+                    "3c",
+                    "4a",
+                    "4b",
+                    "4c"),
+                default="none")
+            private$..metaSampleSize <- jmvcore::OptionNumber$new(
+                "metaSampleSize",
+                metaSampleSize,
+                default=50)
+            private$..metaSampleMethod <- jmvcore::OptionList$new(
+                "metaSampleMethod",
+                metaSampleMethod,
+                options=list(
+                    "Random",
+                    "Stratified",
+                    "Cluster",
+                    "Snowball",
+                    "Convenience"),
+                default="Random")
+            private$..doMeta1ABtn <- jmvcore::OptionAction$new(
+                "doMeta1ABtn",
+                doMeta1ABtn)
+            private$..doMeta1AmBtn <- jmvcore::OptionAction$new(
+                "doMeta1AmBtn",
+                doMeta1AmBtn)
+            private$..doMeta1BBtn <- jmvcore::OptionAction$new(
+                "doMeta1BBtn",
+                doMeta1BBtn)
+            private$..doMeta1BmBtn <- jmvcore::OptionAction$new(
+                "doMeta1BmBtn",
+                doMeta1BmBtn)
+            private$..meta2SampleSize <- jmvcore::OptionNumber$new(
+                "meta2SampleSize",
+                meta2SampleSize,
+                default=50)
+            private$..meta2IndivSampleSize <- jmvcore::OptionNumber$new(
+                "meta2IndivSampleSize",
+                meta2IndivSampleSize,
+                default=500)
+            private$..meta2SampleBudget <- jmvcore::OptionNumber$new(
+                "meta2SampleBudget",
+                meta2SampleBudget,
+                default=500)
+            private$..metaCheating <- jmvcore::OptionList$new(
+                "metaCheating",
+                metaCheating,
+                options=list(
+                    "None",
+                    "Grow",
+                    "Prune",
+                    "Replace",
+                    "Retry"),
+                default="None")
+            private$..doMeta2ABtn <- jmvcore::OptionAction$new(
+                "doMeta2ABtn",
+                doMeta2ABtn)
+            private$..doMeta2BBtn <- jmvcore::OptionAction$new(
+                "doMeta2BBtn",
+                doMeta2BBtn)
+            private$..doMeta2BmBtn <- jmvcore::OptionAction$new(
+                "doMeta2BmBtn",
+                doMeta2BmBtn)
+            private$..doMeta3ABtn <- jmvcore::OptionAction$new(
+                "doMeta3ABtn",
+                doMeta3ABtn)
+            private$..doMeta3AmBtn <- jmvcore::OptionAction$new(
+                "doMeta3AmBtn",
+                doMeta3AmBtn)
+            private$..doMeta3BBtn <- jmvcore::OptionAction$new(
+                "doMeta3BBtn",
+                doMeta3BBtn)
+            private$..doMeta3BmBtn <- jmvcore::OptionAction$new(
+                "doMeta3BmBtn",
+                doMeta3BmBtn)
+            private$..meta3SampleSize <- jmvcore::OptionNumber$new(
+                "meta3SampleSize",
+                meta3SampleSize,
+                default=50)
+            private$..meta3SampleMethod <- jmvcore::OptionList$new(
+                "meta3SampleMethod",
+                meta3SampleMethod,
+                options=list(
+                    "Random",
+                    "Stratified",
+                    "Cluster",
+                    "Snowball",
+                    "Convenience"),
+                default="Random")
+            private$..lastMeta <- jmvcore::OptionList$new(
+                "lastMeta",
+                lastMeta,
                 options=list(
                     "none",
                     "1a",
@@ -1711,6 +1853,11 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..demo2Help)
             self$.addOption(private$..demo3Help)
             self$.addOption(private$..demo4Help)
+            self$.addOption(private$..metaHelp)
+            self$.addOption(private$..meta1Help)
+            self$.addOption(private$..meta2Help)
+            self$.addOption(private$..meta3Help)
+            self$.addOption(private$..meta4Help)
             self$.addOption(private$..simHelp)
             self$.addOption(private$..simPlanHelp)
             self$.addOption(private$..simSingleHelp)
@@ -1871,81 +2018,101 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..systemMag)
             self$.addOption(private$..goBack)
             self$.addOption(private$..goForwards)
-            self$.addOption(private$..doProject1AhBtn)
-            self$.addOption(private$..doProject1A1Btn)
-            self$.addOption(private$..doProject1A2Btn)
-            self$.addOption(private$..doProject1sLst)
-            self$.addOption(private$..doProject1sLstA)
-            self$.addOption(private$..doProject1sLstB)
-            self$.addOption(private$..doProject1sLstC)
-            self$.addOption(private$..doProject1sLstD)
-            self$.addOption(private$..doProject1sLstE)
-            self$.addOption(private$..doProject1BhBtn)
-            self$.addOption(private$..doProject1B1Btn)
-            self$.addOption(private$..doProject1B2Btn)
-            self$.addOption(private$..doProject1ChBtn)
-            self$.addOption(private$..doProject1C1Btn)
-            self$.addOption(private$..doProject2AhBtn)
-            self$.addOption(private$..doProject2A1Btn)
-            self$.addOption(private$..doProject2A2Btn)
-            self$.addOption(private$..doProject2BhBtn)
-            self$.addOption(private$..doProject2B1Btn)
-            self$.addOption(private$..doProject2B2Btn)
-            self$.addOption(private$..doProject2ChBtn)
-            self$.addOption(private$..doProject2C1Btn)
-            self$.addOption(private$..doProject2sLst)
-            self$.addOption(private$..doProject2sLstA)
-            self$.addOption(private$..doProject2sLstB)
-            self$.addOption(private$..doProject2sLstC)
-            self$.addOption(private$..doProject2sLstD)
-            self$.addOption(private$..doProject2sLstE)
-            self$.addOption(private$..doProject2sLstF)
-            self$.addOption(private$..doProject2sLstG)
-            self$.addOption(private$..doProject3sLst)
-            self$.addOption(private$..doProject3sLstA)
-            self$.addOption(private$..doProject3sLstB)
-            self$.addOption(private$..doProject3sLstC)
-            self$.addOption(private$..doProject3sLstD)
-            self$.addOption(private$..doProject3sLstE)
-            self$.addOption(private$..doProject3sLstF)
-            self$.addOption(private$..doProject3sLstG)
-            self$.addOption(private$..doProject3sLstH)
-            self$.addOption(private$..doProject3sLstK)
-            self$.addOption(private$..doProject3sLstI)
-            self$.addOption(private$..doProject3sLstJ)
-            self$.addOption(private$..doProject3AhBtn)
-            self$.addOption(private$..doProject3A1Btn)
-            self$.addOption(private$..doProject3A3Btn)
-            self$.addOption(private$..doProject3BhBtn)
-            self$.addOption(private$..doProject3B1Btn)
-            self$.addOption(private$..doProject3ChBtn)
-            self$.addOption(private$..doProject3C1Btn)
-            self$.addOption(private$..doProject3C3Btn)
-            self$.addOption(private$..doProject4sLstA1)
-            self$.addOption(private$..doProject4sLstA2)
-            self$.addOption(private$..doProject4sLst)
-            self$.addOption(private$..doProject4sLstB)
-            self$.addOption(private$..doProject4sLstC)
-            self$.addOption(private$..doProject4sLstD)
-            self$.addOption(private$..doProject4sLstE)
-            self$.addOption(private$..doProject4sLstF)
-            self$.addOption(private$..doProject4sLstG)
-            self$.addOption(private$..doProject4sLstI)
-            self$.addOption(private$..doProject4sLstJ)
-            self$.addOption(private$..doProject4sLstL)
-            self$.addOption(private$..doProject4sLstK)
-            self$.addOption(private$..doProject4AhBtn)
-            self$.addOption(private$..doProject4A1Btn)
-            self$.addOption(private$..doProject4A2Btn)
-            self$.addOption(private$..doProject4BhBtn)
-            self$.addOption(private$..doProject4B1Btn)
-            self$.addOption(private$..doProject4B2Btn)
-            self$.addOption(private$..doProject4B3Btn)
-            self$.addOption(private$..doProject4ChBtn)
-            self$.addOption(private$..doProject4C1Btn)
-            self$.addOption(private$..doProject4C2Btn)
-            self$.addOption(private$..doProject4C3Btn)
+            self$.addOption(private$..doDemo1AhBtn)
+            self$.addOption(private$..doDemo1A1Btn)
+            self$.addOption(private$..doDemo1A2Btn)
+            self$.addOption(private$..doDemo1sLst)
+            self$.addOption(private$..doDemo1sLstA)
+            self$.addOption(private$..doDemo1sLstB)
+            self$.addOption(private$..doDemo1sLstC)
+            self$.addOption(private$..doDemo1sLstD)
+            self$.addOption(private$..doDemo1sLstE)
+            self$.addOption(private$..doDemo1BhBtn)
+            self$.addOption(private$..doDemo1B1Btn)
+            self$.addOption(private$..doDemo1B2Btn)
+            self$.addOption(private$..doDemo1ChBtn)
+            self$.addOption(private$..doDemo1C1Btn)
+            self$.addOption(private$..doDemo2AhBtn)
+            self$.addOption(private$..doDemo2A1Btn)
+            self$.addOption(private$..doDemo2A2Btn)
+            self$.addOption(private$..doDemo2BhBtn)
+            self$.addOption(private$..doDemo2B1Btn)
+            self$.addOption(private$..doDemo2B2Btn)
+            self$.addOption(private$..doDemo2ChBtn)
+            self$.addOption(private$..doDemo2C1Btn)
+            self$.addOption(private$..doDemo2sLst)
+            self$.addOption(private$..doDemo2sLstA)
+            self$.addOption(private$..doDemo2sLstB)
+            self$.addOption(private$..doDemo2sLstC)
+            self$.addOption(private$..doDemo2sLstD)
+            self$.addOption(private$..doDemo2sLstE)
+            self$.addOption(private$..doDemo2sLstF)
+            self$.addOption(private$..doDemo2sLstG)
+            self$.addOption(private$..doDemo3sLst)
+            self$.addOption(private$..doDemo3sLstA)
+            self$.addOption(private$..doDemo3sLstB)
+            self$.addOption(private$..doDemo3sLstC)
+            self$.addOption(private$..doDemo3sLstD)
+            self$.addOption(private$..doDemo3sLstE)
+            self$.addOption(private$..doDemo3sLstF)
+            self$.addOption(private$..doDemo3sLstG)
+            self$.addOption(private$..doDemo3sLstH)
+            self$.addOption(private$..doDemo3sLstK)
+            self$.addOption(private$..doDemo3sLstI)
+            self$.addOption(private$..doDemo3sLstJ)
+            self$.addOption(private$..doDemo3AhBtn)
+            self$.addOption(private$..doDemo3A1Btn)
+            self$.addOption(private$..doDemo3A3Btn)
+            self$.addOption(private$..doDemo3BhBtn)
+            self$.addOption(private$..doDemo3B1Btn)
+            self$.addOption(private$..doDemo3ChBtn)
+            self$.addOption(private$..doDemo3C1Btn)
+            self$.addOption(private$..doDemo3C3Btn)
+            self$.addOption(private$..doDemo4sLstA1)
+            self$.addOption(private$..doDemo4sLstA2)
+            self$.addOption(private$..doDemo4sLst)
+            self$.addOption(private$..doDemo4sLstB)
+            self$.addOption(private$..doDemo4sLstC)
+            self$.addOption(private$..doDemo4sLstD)
+            self$.addOption(private$..doDemo4sLstE)
+            self$.addOption(private$..doDemo4sLstF)
+            self$.addOption(private$..doDemo4sLstG)
+            self$.addOption(private$..doDemo4sLstI)
+            self$.addOption(private$..doDemo4sLstJ)
+            self$.addOption(private$..doDemo4sLstL)
+            self$.addOption(private$..doDemo4sLstK)
+            self$.addOption(private$..doDemo4AhBtn)
+            self$.addOption(private$..doDemo4A1Btn)
+            self$.addOption(private$..doDemo4A2Btn)
+            self$.addOption(private$..doDemo4BhBtn)
+            self$.addOption(private$..doDemo4B1Btn)
+            self$.addOption(private$..doDemo4B2Btn)
+            self$.addOption(private$..doDemo4B3Btn)
+            self$.addOption(private$..doDemo4ChBtn)
+            self$.addOption(private$..doDemo4C1Btn)
+            self$.addOption(private$..doDemo4C2Btn)
+            self$.addOption(private$..doDemo4C3Btn)
             self$.addOption(private$..lastDemo)
+            self$.addOption(private$..metaSampleSize)
+            self$.addOption(private$..metaSampleMethod)
+            self$.addOption(private$..doMeta1ABtn)
+            self$.addOption(private$..doMeta1AmBtn)
+            self$.addOption(private$..doMeta1BBtn)
+            self$.addOption(private$..doMeta1BmBtn)
+            self$.addOption(private$..meta2SampleSize)
+            self$.addOption(private$..meta2IndivSampleSize)
+            self$.addOption(private$..meta2SampleBudget)
+            self$.addOption(private$..metaCheating)
+            self$.addOption(private$..doMeta2ABtn)
+            self$.addOption(private$..doMeta2BBtn)
+            self$.addOption(private$..doMeta2BmBtn)
+            self$.addOption(private$..doMeta3ABtn)
+            self$.addOption(private$..doMeta3AmBtn)
+            self$.addOption(private$..doMeta3BBtn)
+            self$.addOption(private$..doMeta3BmBtn)
+            self$.addOption(private$..meta3SampleSize)
+            self$.addOption(private$..meta3SampleMethod)
+            self$.addOption(private$..lastMeta)
         }),
     active = list(
         basicMode = function() private$..basicMode$value,
@@ -1954,6 +2121,11 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         demo2Help = function() private$..demo2Help$value,
         demo3Help = function() private$..demo3Help$value,
         demo4Help = function() private$..demo4Help$value,
+        metaHelp = function() private$..metaHelp$value,
+        meta1Help = function() private$..meta1Help$value,
+        meta2Help = function() private$..meta2Help$value,
+        meta3Help = function() private$..meta3Help$value,
+        meta4Help = function() private$..meta4Help$value,
         simHelp = function() private$..simHelp$value,
         simPlanHelp = function() private$..simPlanHelp$value,
         simSingleHelp = function() private$..simSingleHelp$value,
@@ -2114,81 +2286,101 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         systemMag = function() private$..systemMag$value,
         goBack = function() private$..goBack$value,
         goForwards = function() private$..goForwards$value,
-        doProject1AhBtn = function() private$..doProject1AhBtn$value,
-        doProject1A1Btn = function() private$..doProject1A1Btn$value,
-        doProject1A2Btn = function() private$..doProject1A2Btn$value,
-        doProject1sLst = function() private$..doProject1sLst$value,
-        doProject1sLstA = function() private$..doProject1sLstA$value,
-        doProject1sLstB = function() private$..doProject1sLstB$value,
-        doProject1sLstC = function() private$..doProject1sLstC$value,
-        doProject1sLstD = function() private$..doProject1sLstD$value,
-        doProject1sLstE = function() private$..doProject1sLstE$value,
-        doProject1BhBtn = function() private$..doProject1BhBtn$value,
-        doProject1B1Btn = function() private$..doProject1B1Btn$value,
-        doProject1B2Btn = function() private$..doProject1B2Btn$value,
-        doProject1ChBtn = function() private$..doProject1ChBtn$value,
-        doProject1C1Btn = function() private$..doProject1C1Btn$value,
-        doProject2AhBtn = function() private$..doProject2AhBtn$value,
-        doProject2A1Btn = function() private$..doProject2A1Btn$value,
-        doProject2A2Btn = function() private$..doProject2A2Btn$value,
-        doProject2BhBtn = function() private$..doProject2BhBtn$value,
-        doProject2B1Btn = function() private$..doProject2B1Btn$value,
-        doProject2B2Btn = function() private$..doProject2B2Btn$value,
-        doProject2ChBtn = function() private$..doProject2ChBtn$value,
-        doProject2C1Btn = function() private$..doProject2C1Btn$value,
-        doProject2sLst = function() private$..doProject2sLst$value,
-        doProject2sLstA = function() private$..doProject2sLstA$value,
-        doProject2sLstB = function() private$..doProject2sLstB$value,
-        doProject2sLstC = function() private$..doProject2sLstC$value,
-        doProject2sLstD = function() private$..doProject2sLstD$value,
-        doProject2sLstE = function() private$..doProject2sLstE$value,
-        doProject2sLstF = function() private$..doProject2sLstF$value,
-        doProject2sLstG = function() private$..doProject2sLstG$value,
-        doProject3sLst = function() private$..doProject3sLst$value,
-        doProject3sLstA = function() private$..doProject3sLstA$value,
-        doProject3sLstB = function() private$..doProject3sLstB$value,
-        doProject3sLstC = function() private$..doProject3sLstC$value,
-        doProject3sLstD = function() private$..doProject3sLstD$value,
-        doProject3sLstE = function() private$..doProject3sLstE$value,
-        doProject3sLstF = function() private$..doProject3sLstF$value,
-        doProject3sLstG = function() private$..doProject3sLstG$value,
-        doProject3sLstH = function() private$..doProject3sLstH$value,
-        doProject3sLstK = function() private$..doProject3sLstK$value,
-        doProject3sLstI = function() private$..doProject3sLstI$value,
-        doProject3sLstJ = function() private$..doProject3sLstJ$value,
-        doProject3AhBtn = function() private$..doProject3AhBtn$value,
-        doProject3A1Btn = function() private$..doProject3A1Btn$value,
-        doProject3A3Btn = function() private$..doProject3A3Btn$value,
-        doProject3BhBtn = function() private$..doProject3BhBtn$value,
-        doProject3B1Btn = function() private$..doProject3B1Btn$value,
-        doProject3ChBtn = function() private$..doProject3ChBtn$value,
-        doProject3C1Btn = function() private$..doProject3C1Btn$value,
-        doProject3C3Btn = function() private$..doProject3C3Btn$value,
-        doProject4sLstA1 = function() private$..doProject4sLstA1$value,
-        doProject4sLstA2 = function() private$..doProject4sLstA2$value,
-        doProject4sLst = function() private$..doProject4sLst$value,
-        doProject4sLstB = function() private$..doProject4sLstB$value,
-        doProject4sLstC = function() private$..doProject4sLstC$value,
-        doProject4sLstD = function() private$..doProject4sLstD$value,
-        doProject4sLstE = function() private$..doProject4sLstE$value,
-        doProject4sLstF = function() private$..doProject4sLstF$value,
-        doProject4sLstG = function() private$..doProject4sLstG$value,
-        doProject4sLstI = function() private$..doProject4sLstI$value,
-        doProject4sLstJ = function() private$..doProject4sLstJ$value,
-        doProject4sLstL = function() private$..doProject4sLstL$value,
-        doProject4sLstK = function() private$..doProject4sLstK$value,
-        doProject4AhBtn = function() private$..doProject4AhBtn$value,
-        doProject4A1Btn = function() private$..doProject4A1Btn$value,
-        doProject4A2Btn = function() private$..doProject4A2Btn$value,
-        doProject4BhBtn = function() private$..doProject4BhBtn$value,
-        doProject4B1Btn = function() private$..doProject4B1Btn$value,
-        doProject4B2Btn = function() private$..doProject4B2Btn$value,
-        doProject4B3Btn = function() private$..doProject4B3Btn$value,
-        doProject4ChBtn = function() private$..doProject4ChBtn$value,
-        doProject4C1Btn = function() private$..doProject4C1Btn$value,
-        doProject4C2Btn = function() private$..doProject4C2Btn$value,
-        doProject4C3Btn = function() private$..doProject4C3Btn$value,
-        lastDemo = function() private$..lastDemo$value),
+        doDemo1AhBtn = function() private$..doDemo1AhBtn$value,
+        doDemo1A1Btn = function() private$..doDemo1A1Btn$value,
+        doDemo1A2Btn = function() private$..doDemo1A2Btn$value,
+        doDemo1sLst = function() private$..doDemo1sLst$value,
+        doDemo1sLstA = function() private$..doDemo1sLstA$value,
+        doDemo1sLstB = function() private$..doDemo1sLstB$value,
+        doDemo1sLstC = function() private$..doDemo1sLstC$value,
+        doDemo1sLstD = function() private$..doDemo1sLstD$value,
+        doDemo1sLstE = function() private$..doDemo1sLstE$value,
+        doDemo1BhBtn = function() private$..doDemo1BhBtn$value,
+        doDemo1B1Btn = function() private$..doDemo1B1Btn$value,
+        doDemo1B2Btn = function() private$..doDemo1B2Btn$value,
+        doDemo1ChBtn = function() private$..doDemo1ChBtn$value,
+        doDemo1C1Btn = function() private$..doDemo1C1Btn$value,
+        doDemo2AhBtn = function() private$..doDemo2AhBtn$value,
+        doDemo2A1Btn = function() private$..doDemo2A1Btn$value,
+        doDemo2A2Btn = function() private$..doDemo2A2Btn$value,
+        doDemo2BhBtn = function() private$..doDemo2BhBtn$value,
+        doDemo2B1Btn = function() private$..doDemo2B1Btn$value,
+        doDemo2B2Btn = function() private$..doDemo2B2Btn$value,
+        doDemo2ChBtn = function() private$..doDemo2ChBtn$value,
+        doDemo2C1Btn = function() private$..doDemo2C1Btn$value,
+        doDemo2sLst = function() private$..doDemo2sLst$value,
+        doDemo2sLstA = function() private$..doDemo2sLstA$value,
+        doDemo2sLstB = function() private$..doDemo2sLstB$value,
+        doDemo2sLstC = function() private$..doDemo2sLstC$value,
+        doDemo2sLstD = function() private$..doDemo2sLstD$value,
+        doDemo2sLstE = function() private$..doDemo2sLstE$value,
+        doDemo2sLstF = function() private$..doDemo2sLstF$value,
+        doDemo2sLstG = function() private$..doDemo2sLstG$value,
+        doDemo3sLst = function() private$..doDemo3sLst$value,
+        doDemo3sLstA = function() private$..doDemo3sLstA$value,
+        doDemo3sLstB = function() private$..doDemo3sLstB$value,
+        doDemo3sLstC = function() private$..doDemo3sLstC$value,
+        doDemo3sLstD = function() private$..doDemo3sLstD$value,
+        doDemo3sLstE = function() private$..doDemo3sLstE$value,
+        doDemo3sLstF = function() private$..doDemo3sLstF$value,
+        doDemo3sLstG = function() private$..doDemo3sLstG$value,
+        doDemo3sLstH = function() private$..doDemo3sLstH$value,
+        doDemo3sLstK = function() private$..doDemo3sLstK$value,
+        doDemo3sLstI = function() private$..doDemo3sLstI$value,
+        doDemo3sLstJ = function() private$..doDemo3sLstJ$value,
+        doDemo3AhBtn = function() private$..doDemo3AhBtn$value,
+        doDemo3A1Btn = function() private$..doDemo3A1Btn$value,
+        doDemo3A3Btn = function() private$..doDemo3A3Btn$value,
+        doDemo3BhBtn = function() private$..doDemo3BhBtn$value,
+        doDemo3B1Btn = function() private$..doDemo3B1Btn$value,
+        doDemo3ChBtn = function() private$..doDemo3ChBtn$value,
+        doDemo3C1Btn = function() private$..doDemo3C1Btn$value,
+        doDemo3C3Btn = function() private$..doDemo3C3Btn$value,
+        doDemo4sLstA1 = function() private$..doDemo4sLstA1$value,
+        doDemo4sLstA2 = function() private$..doDemo4sLstA2$value,
+        doDemo4sLst = function() private$..doDemo4sLst$value,
+        doDemo4sLstB = function() private$..doDemo4sLstB$value,
+        doDemo4sLstC = function() private$..doDemo4sLstC$value,
+        doDemo4sLstD = function() private$..doDemo4sLstD$value,
+        doDemo4sLstE = function() private$..doDemo4sLstE$value,
+        doDemo4sLstF = function() private$..doDemo4sLstF$value,
+        doDemo4sLstG = function() private$..doDemo4sLstG$value,
+        doDemo4sLstI = function() private$..doDemo4sLstI$value,
+        doDemo4sLstJ = function() private$..doDemo4sLstJ$value,
+        doDemo4sLstL = function() private$..doDemo4sLstL$value,
+        doDemo4sLstK = function() private$..doDemo4sLstK$value,
+        doDemo4AhBtn = function() private$..doDemo4AhBtn$value,
+        doDemo4A1Btn = function() private$..doDemo4A1Btn$value,
+        doDemo4A2Btn = function() private$..doDemo4A2Btn$value,
+        doDemo4BhBtn = function() private$..doDemo4BhBtn$value,
+        doDemo4B1Btn = function() private$..doDemo4B1Btn$value,
+        doDemo4B2Btn = function() private$..doDemo4B2Btn$value,
+        doDemo4B3Btn = function() private$..doDemo4B3Btn$value,
+        doDemo4ChBtn = function() private$..doDemo4ChBtn$value,
+        doDemo4C1Btn = function() private$..doDemo4C1Btn$value,
+        doDemo4C2Btn = function() private$..doDemo4C2Btn$value,
+        doDemo4C3Btn = function() private$..doDemo4C3Btn$value,
+        lastDemo = function() private$..lastDemo$value,
+        metaSampleSize = function() private$..metaSampleSize$value,
+        metaSampleMethod = function() private$..metaSampleMethod$value,
+        doMeta1ABtn = function() private$..doMeta1ABtn$value,
+        doMeta1AmBtn = function() private$..doMeta1AmBtn$value,
+        doMeta1BBtn = function() private$..doMeta1BBtn$value,
+        doMeta1BmBtn = function() private$..doMeta1BmBtn$value,
+        meta2SampleSize = function() private$..meta2SampleSize$value,
+        meta2IndivSampleSize = function() private$..meta2IndivSampleSize$value,
+        meta2SampleBudget = function() private$..meta2SampleBudget$value,
+        metaCheating = function() private$..metaCheating$value,
+        doMeta2ABtn = function() private$..doMeta2ABtn$value,
+        doMeta2BBtn = function() private$..doMeta2BBtn$value,
+        doMeta2BmBtn = function() private$..doMeta2BmBtn$value,
+        doMeta3ABtn = function() private$..doMeta3ABtn$value,
+        doMeta3AmBtn = function() private$..doMeta3AmBtn$value,
+        doMeta3BBtn = function() private$..doMeta3BBtn$value,
+        doMeta3BmBtn = function() private$..doMeta3BmBtn$value,
+        meta3SampleSize = function() private$..meta3SampleSize$value,
+        meta3SampleMethod = function() private$..meta3SampleMethod$value,
+        lastMeta = function() private$..lastMeta$value),
     private = list(
         ..basicMode = NA,
         ..demosHelp = NA,
@@ -2196,6 +2388,11 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..demo2Help = NA,
         ..demo3Help = NA,
         ..demo4Help = NA,
+        ..metaHelp = NA,
+        ..meta1Help = NA,
+        ..meta2Help = NA,
+        ..meta3Help = NA,
+        ..meta4Help = NA,
         ..simHelp = NA,
         ..simPlanHelp = NA,
         ..simSingleHelp = NA,
@@ -2356,81 +2553,101 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..systemMag = NA,
         ..goBack = NA,
         ..goForwards = NA,
-        ..doProject1AhBtn = NA,
-        ..doProject1A1Btn = NA,
-        ..doProject1A2Btn = NA,
-        ..doProject1sLst = NA,
-        ..doProject1sLstA = NA,
-        ..doProject1sLstB = NA,
-        ..doProject1sLstC = NA,
-        ..doProject1sLstD = NA,
-        ..doProject1sLstE = NA,
-        ..doProject1BhBtn = NA,
-        ..doProject1B1Btn = NA,
-        ..doProject1B2Btn = NA,
-        ..doProject1ChBtn = NA,
-        ..doProject1C1Btn = NA,
-        ..doProject2AhBtn = NA,
-        ..doProject2A1Btn = NA,
-        ..doProject2A2Btn = NA,
-        ..doProject2BhBtn = NA,
-        ..doProject2B1Btn = NA,
-        ..doProject2B2Btn = NA,
-        ..doProject2ChBtn = NA,
-        ..doProject2C1Btn = NA,
-        ..doProject2sLst = NA,
-        ..doProject2sLstA = NA,
-        ..doProject2sLstB = NA,
-        ..doProject2sLstC = NA,
-        ..doProject2sLstD = NA,
-        ..doProject2sLstE = NA,
-        ..doProject2sLstF = NA,
-        ..doProject2sLstG = NA,
-        ..doProject3sLst = NA,
-        ..doProject3sLstA = NA,
-        ..doProject3sLstB = NA,
-        ..doProject3sLstC = NA,
-        ..doProject3sLstD = NA,
-        ..doProject3sLstE = NA,
-        ..doProject3sLstF = NA,
-        ..doProject3sLstG = NA,
-        ..doProject3sLstH = NA,
-        ..doProject3sLstK = NA,
-        ..doProject3sLstI = NA,
-        ..doProject3sLstJ = NA,
-        ..doProject3AhBtn = NA,
-        ..doProject3A1Btn = NA,
-        ..doProject3A3Btn = NA,
-        ..doProject3BhBtn = NA,
-        ..doProject3B1Btn = NA,
-        ..doProject3ChBtn = NA,
-        ..doProject3C1Btn = NA,
-        ..doProject3C3Btn = NA,
-        ..doProject4sLstA1 = NA,
-        ..doProject4sLstA2 = NA,
-        ..doProject4sLst = NA,
-        ..doProject4sLstB = NA,
-        ..doProject4sLstC = NA,
-        ..doProject4sLstD = NA,
-        ..doProject4sLstE = NA,
-        ..doProject4sLstF = NA,
-        ..doProject4sLstG = NA,
-        ..doProject4sLstI = NA,
-        ..doProject4sLstJ = NA,
-        ..doProject4sLstL = NA,
-        ..doProject4sLstK = NA,
-        ..doProject4AhBtn = NA,
-        ..doProject4A1Btn = NA,
-        ..doProject4A2Btn = NA,
-        ..doProject4BhBtn = NA,
-        ..doProject4B1Btn = NA,
-        ..doProject4B2Btn = NA,
-        ..doProject4B3Btn = NA,
-        ..doProject4ChBtn = NA,
-        ..doProject4C1Btn = NA,
-        ..doProject4C2Btn = NA,
-        ..doProject4C3Btn = NA,
-        ..lastDemo = NA)
+        ..doDemo1AhBtn = NA,
+        ..doDemo1A1Btn = NA,
+        ..doDemo1A2Btn = NA,
+        ..doDemo1sLst = NA,
+        ..doDemo1sLstA = NA,
+        ..doDemo1sLstB = NA,
+        ..doDemo1sLstC = NA,
+        ..doDemo1sLstD = NA,
+        ..doDemo1sLstE = NA,
+        ..doDemo1BhBtn = NA,
+        ..doDemo1B1Btn = NA,
+        ..doDemo1B2Btn = NA,
+        ..doDemo1ChBtn = NA,
+        ..doDemo1C1Btn = NA,
+        ..doDemo2AhBtn = NA,
+        ..doDemo2A1Btn = NA,
+        ..doDemo2A2Btn = NA,
+        ..doDemo2BhBtn = NA,
+        ..doDemo2B1Btn = NA,
+        ..doDemo2B2Btn = NA,
+        ..doDemo2ChBtn = NA,
+        ..doDemo2C1Btn = NA,
+        ..doDemo2sLst = NA,
+        ..doDemo2sLstA = NA,
+        ..doDemo2sLstB = NA,
+        ..doDemo2sLstC = NA,
+        ..doDemo2sLstD = NA,
+        ..doDemo2sLstE = NA,
+        ..doDemo2sLstF = NA,
+        ..doDemo2sLstG = NA,
+        ..doDemo3sLst = NA,
+        ..doDemo3sLstA = NA,
+        ..doDemo3sLstB = NA,
+        ..doDemo3sLstC = NA,
+        ..doDemo3sLstD = NA,
+        ..doDemo3sLstE = NA,
+        ..doDemo3sLstF = NA,
+        ..doDemo3sLstG = NA,
+        ..doDemo3sLstH = NA,
+        ..doDemo3sLstK = NA,
+        ..doDemo3sLstI = NA,
+        ..doDemo3sLstJ = NA,
+        ..doDemo3AhBtn = NA,
+        ..doDemo3A1Btn = NA,
+        ..doDemo3A3Btn = NA,
+        ..doDemo3BhBtn = NA,
+        ..doDemo3B1Btn = NA,
+        ..doDemo3ChBtn = NA,
+        ..doDemo3C1Btn = NA,
+        ..doDemo3C3Btn = NA,
+        ..doDemo4sLstA1 = NA,
+        ..doDemo4sLstA2 = NA,
+        ..doDemo4sLst = NA,
+        ..doDemo4sLstB = NA,
+        ..doDemo4sLstC = NA,
+        ..doDemo4sLstD = NA,
+        ..doDemo4sLstE = NA,
+        ..doDemo4sLstF = NA,
+        ..doDemo4sLstG = NA,
+        ..doDemo4sLstI = NA,
+        ..doDemo4sLstJ = NA,
+        ..doDemo4sLstL = NA,
+        ..doDemo4sLstK = NA,
+        ..doDemo4AhBtn = NA,
+        ..doDemo4A1Btn = NA,
+        ..doDemo4A2Btn = NA,
+        ..doDemo4BhBtn = NA,
+        ..doDemo4B1Btn = NA,
+        ..doDemo4B2Btn = NA,
+        ..doDemo4B3Btn = NA,
+        ..doDemo4ChBtn = NA,
+        ..doDemo4C1Btn = NA,
+        ..doDemo4C2Btn = NA,
+        ..doDemo4C3Btn = NA,
+        ..lastDemo = NA,
+        ..metaSampleSize = NA,
+        ..metaSampleMethod = NA,
+        ..doMeta1ABtn = NA,
+        ..doMeta1AmBtn = NA,
+        ..doMeta1BBtn = NA,
+        ..doMeta1BmBtn = NA,
+        ..meta2SampleSize = NA,
+        ..meta2IndivSampleSize = NA,
+        ..meta2SampleBudget = NA,
+        ..metaCheating = NA,
+        ..doMeta2ABtn = NA,
+        ..doMeta2BBtn = NA,
+        ..doMeta2BmBtn = NA,
+        ..doMeta3ABtn = NA,
+        ..doMeta3AmBtn = NA,
+        ..doMeta3BBtn = NA,
+        ..doMeta3BmBtn = NA,
+        ..meta3SampleSize = NA,
+        ..meta3SampleMethod = NA,
+        ..lastMeta = NA)
 )
 
 BrawSimResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
@@ -2608,6 +2825,11 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param demo2Help .
 #' @param demo3Help .
 #' @param demo4Help .
+#' @param metaHelp .
+#' @param meta1Help .
+#' @param meta2Help .
+#' @param meta3Help .
+#' @param meta4Help .
 #' @param simHelp .
 #' @param simPlanHelp .
 #' @param simSingleHelp .
@@ -2765,81 +2987,101 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param systemMag .
 #' @param goBack .
 #' @param goForwards .
-#' @param doProject1AhBtn .
-#' @param doProject1A1Btn .
-#' @param doProject1A2Btn .
-#' @param doProject1sLst .
-#' @param doProject1sLstA .
-#' @param doProject1sLstB .
-#' @param doProject1sLstC .
-#' @param doProject1sLstD .
-#' @param doProject1sLstE .
-#' @param doProject1BhBtn .
-#' @param doProject1B1Btn .
-#' @param doProject1B2Btn .
-#' @param doProject1ChBtn .
-#' @param doProject1C1Btn .
-#' @param doProject2AhBtn .
-#' @param doProject2A1Btn .
-#' @param doProject2A2Btn .
-#' @param doProject2BhBtn .
-#' @param doProject2B1Btn .
-#' @param doProject2B2Btn .
-#' @param doProject2ChBtn .
-#' @param doProject2C1Btn .
-#' @param doProject2sLst .
-#' @param doProject2sLstA .
-#' @param doProject2sLstB .
-#' @param doProject2sLstC .
-#' @param doProject2sLstD .
-#' @param doProject2sLstE .
-#' @param doProject2sLstF .
-#' @param doProject2sLstG .
-#' @param doProject3sLst .
-#' @param doProject3sLstA .
-#' @param doProject3sLstB .
-#' @param doProject3sLstC .
-#' @param doProject3sLstD .
-#' @param doProject3sLstE .
-#' @param doProject3sLstF .
-#' @param doProject3sLstG .
-#' @param doProject3sLstH .
-#' @param doProject3sLstK .
-#' @param doProject3sLstI .
-#' @param doProject3sLstJ .
-#' @param doProject3AhBtn .
-#' @param doProject3A1Btn .
-#' @param doProject3A3Btn .
-#' @param doProject3BhBtn .
-#' @param doProject3B1Btn .
-#' @param doProject3ChBtn .
-#' @param doProject3C1Btn .
-#' @param doProject3C3Btn .
-#' @param doProject4sLstA1 .
-#' @param doProject4sLstA2 .
-#' @param doProject4sLst .
-#' @param doProject4sLstB .
-#' @param doProject4sLstC .
-#' @param doProject4sLstD .
-#' @param doProject4sLstE .
-#' @param doProject4sLstF .
-#' @param doProject4sLstG .
-#' @param doProject4sLstI .
-#' @param doProject4sLstJ .
-#' @param doProject4sLstL .
-#' @param doProject4sLstK .
-#' @param doProject4AhBtn .
-#' @param doProject4A1Btn .
-#' @param doProject4A2Btn .
-#' @param doProject4BhBtn .
-#' @param doProject4B1Btn .
-#' @param doProject4B2Btn .
-#' @param doProject4B3Btn .
-#' @param doProject4ChBtn .
-#' @param doProject4C1Btn .
-#' @param doProject4C2Btn .
-#' @param doProject4C3Btn .
+#' @param doDemo1AhBtn .
+#' @param doDemo1A1Btn .
+#' @param doDemo1A2Btn .
+#' @param doDemo1sLst .
+#' @param doDemo1sLstA .
+#' @param doDemo1sLstB .
+#' @param doDemo1sLstC .
+#' @param doDemo1sLstD .
+#' @param doDemo1sLstE .
+#' @param doDemo1BhBtn .
+#' @param doDemo1B1Btn .
+#' @param doDemo1B2Btn .
+#' @param doDemo1ChBtn .
+#' @param doDemo1C1Btn .
+#' @param doDemo2AhBtn .
+#' @param doDemo2A1Btn .
+#' @param doDemo2A2Btn .
+#' @param doDemo2BhBtn .
+#' @param doDemo2B1Btn .
+#' @param doDemo2B2Btn .
+#' @param doDemo2ChBtn .
+#' @param doDemo2C1Btn .
+#' @param doDemo2sLst .
+#' @param doDemo2sLstA .
+#' @param doDemo2sLstB .
+#' @param doDemo2sLstC .
+#' @param doDemo2sLstD .
+#' @param doDemo2sLstE .
+#' @param doDemo2sLstF .
+#' @param doDemo2sLstG .
+#' @param doDemo3sLst .
+#' @param doDemo3sLstA .
+#' @param doDemo3sLstB .
+#' @param doDemo3sLstC .
+#' @param doDemo3sLstD .
+#' @param doDemo3sLstE .
+#' @param doDemo3sLstF .
+#' @param doDemo3sLstG .
+#' @param doDemo3sLstH .
+#' @param doDemo3sLstK .
+#' @param doDemo3sLstI .
+#' @param doDemo3sLstJ .
+#' @param doDemo3AhBtn .
+#' @param doDemo3A1Btn .
+#' @param doDemo3A3Btn .
+#' @param doDemo3BhBtn .
+#' @param doDemo3B1Btn .
+#' @param doDemo3ChBtn .
+#' @param doDemo3C1Btn .
+#' @param doDemo3C3Btn .
+#' @param doDemo4sLstA1 .
+#' @param doDemo4sLstA2 .
+#' @param doDemo4sLst .
+#' @param doDemo4sLstB .
+#' @param doDemo4sLstC .
+#' @param doDemo4sLstD .
+#' @param doDemo4sLstE .
+#' @param doDemo4sLstF .
+#' @param doDemo4sLstG .
+#' @param doDemo4sLstI .
+#' @param doDemo4sLstJ .
+#' @param doDemo4sLstL .
+#' @param doDemo4sLstK .
+#' @param doDemo4AhBtn .
+#' @param doDemo4A1Btn .
+#' @param doDemo4A2Btn .
+#' @param doDemo4BhBtn .
+#' @param doDemo4B1Btn .
+#' @param doDemo4B2Btn .
+#' @param doDemo4B3Btn .
+#' @param doDemo4ChBtn .
+#' @param doDemo4C1Btn .
+#' @param doDemo4C2Btn .
+#' @param doDemo4C3Btn .
 #' @param lastDemo .
+#' @param metaSampleSize .
+#' @param metaSampleMethod .
+#' @param doMeta1ABtn .
+#' @param doMeta1AmBtn .
+#' @param doMeta1BBtn .
+#' @param doMeta1BmBtn .
+#' @param meta2SampleSize .
+#' @param meta2IndivSampleSize .
+#' @param meta2SampleBudget .
+#' @param metaCheating .
+#' @param doMeta2ABtn .
+#' @param doMeta2BBtn .
+#' @param doMeta2BmBtn .
+#' @param doMeta3ABtn .
+#' @param doMeta3AmBtn .
+#' @param doMeta3BBtn .
+#' @param doMeta3BmBtn .
+#' @param meta3SampleSize .
+#' @param meta3SampleMethod .
+#' @param lastMeta .
 #' @return A results object containing:
 #' \tabular{llllll}{
 #'   \code{results$BrawStatsInstructions} \tab \tab \tab \tab \tab a html \cr
@@ -2861,6 +3103,11 @@ BrawSim <- function(
     demo2Help,
     demo3Help,
     demo4Help,
+    metaHelp,
+    meta1Help,
+    meta2Help,
+    meta3Help,
+    meta4Help,
     simHelp,
     simPlanHelp,
     simSingleHelp,
@@ -3018,81 +3265,101 @@ BrawSim <- function(
     systemMag = 1,
     goBack,
     goForwards,
-    doProject1AhBtn,
-    doProject1A1Btn,
-    doProject1A2Btn,
-    doProject1sLst = "Perfectionism",
-    doProject1sLstA = "ExamGrade",
-    doProject1sLstB = 0.3,
-    doProject1sLstC = "Basic",
-    doProject1sLstD = "Random",
-    doProject1sLstE = 42,
-    doProject1BhBtn,
-    doProject1B1Btn,
-    doProject1B2Btn,
-    doProject1ChBtn,
-    doProject1C1Btn,
-    doProject2AhBtn,
-    doProject2A1Btn,
-    doProject2A2Btn,
-    doProject2BhBtn,
-    doProject2B1Btn,
-    doProject2B2Btn,
-    doProject2ChBtn,
-    doProject2C1Btn,
-    doProject2sLst = "Perfectionism",
-    doProject2sLstA = "ExamGrade",
-    doProject2sLstB = 0.3,
-    doProject2sLstC = "Infer",
-    doProject2sLstD = "Random",
-    doProject2sLstE = 42,
-    doProject2sLstF = "Basic",
-    doProject2sLstG = "off",
-    doProject3sLst = "Interval",
-    doProject3sLstA = "Interval",
-    doProject3sLstB = 0.3,
-    doProject3sLstC = "Infer",
-    doProject3sLstD = "Random",
-    doProject3sLstE = 42,
-    doProject3sLstF = "Basic",
-    doProject3sLstG = "off",
-    doProject3sLstH = "n",
-    doProject3sLstK = 20,
-    doProject3sLstI = "Basic",
-    doProject3sLstJ = "Between",
-    doProject3AhBtn,
-    doProject3A1Btn,
-    doProject3A3Btn,
-    doProject3BhBtn,
-    doProject3B1Btn,
-    doProject3ChBtn,
-    doProject3C1Btn,
-    doProject3C3Btn,
-    doProject4sLstA1 = "RiskTaker",
-    doProject4sLstA2 = "Musician",
-    doProject4sLst = "ExamGrade",
-    doProject4sLstB = 0.5,
-    doProject4sLstC = -0.5,
-    doProject4sLstD = 0,
-    doProject4sLstE = "no",
-    doProject4sLstF = 0,
-    doProject4sLstG = "Basic",
-    doProject4sLstI = "all",
-    doProject4sLstJ = "Covariation",
-    doProject4sLstL = 20,
-    doProject4sLstK = 200,
-    doProject4AhBtn,
-    doProject4A1Btn,
-    doProject4A2Btn,
-    doProject4BhBtn,
-    doProject4B1Btn,
-    doProject4B2Btn,
-    doProject4B3Btn,
-    doProject4ChBtn,
-    doProject4C1Btn,
-    doProject4C2Btn,
-    doProject4C3Btn,
-    lastDemo = "none") {
+    doDemo1AhBtn,
+    doDemo1A1Btn,
+    doDemo1A2Btn,
+    doDemo1sLst = "Perfectionism",
+    doDemo1sLstA = "ExamGrade",
+    doDemo1sLstB = 0.3,
+    doDemo1sLstC = "Basic",
+    doDemo1sLstD = "Random",
+    doDemo1sLstE = 42,
+    doDemo1BhBtn,
+    doDemo1B1Btn,
+    doDemo1B2Btn,
+    doDemo1ChBtn,
+    doDemo1C1Btn,
+    doDemo2AhBtn,
+    doDemo2A1Btn,
+    doDemo2A2Btn,
+    doDemo2BhBtn,
+    doDemo2B1Btn,
+    doDemo2B2Btn,
+    doDemo2ChBtn,
+    doDemo2C1Btn,
+    doDemo2sLst = "Perfectionism",
+    doDemo2sLstA = "ExamGrade",
+    doDemo2sLstB = 0.3,
+    doDemo2sLstC = "Infer",
+    doDemo2sLstD = "Random",
+    doDemo2sLstE = 42,
+    doDemo2sLstF = "Basic",
+    doDemo2sLstG = "off",
+    doDemo3sLst = "Interval",
+    doDemo3sLstA = "Interval",
+    doDemo3sLstB = 0.3,
+    doDemo3sLstC = "Infer",
+    doDemo3sLstD = "Random",
+    doDemo3sLstE = 42,
+    doDemo3sLstF = "Basic",
+    doDemo3sLstG = "off",
+    doDemo3sLstH = "n",
+    doDemo3sLstK = 20,
+    doDemo3sLstI = "Basic",
+    doDemo3sLstJ = "Between",
+    doDemo3AhBtn,
+    doDemo3A1Btn,
+    doDemo3A3Btn,
+    doDemo3BhBtn,
+    doDemo3B1Btn,
+    doDemo3ChBtn,
+    doDemo3C1Btn,
+    doDemo3C3Btn,
+    doDemo4sLstA1 = "RiskTaker",
+    doDemo4sLstA2 = "Musician",
+    doDemo4sLst = "ExamGrade",
+    doDemo4sLstB = 0.5,
+    doDemo4sLstC = -0.5,
+    doDemo4sLstD = 0,
+    doDemo4sLstE = "no",
+    doDemo4sLstF = 0,
+    doDemo4sLstG = "Basic",
+    doDemo4sLstI = "all",
+    doDemo4sLstJ = "Covariation",
+    doDemo4sLstL = 20,
+    doDemo4sLstK = 200,
+    doDemo4AhBtn,
+    doDemo4A1Btn,
+    doDemo4A2Btn,
+    doDemo4BhBtn,
+    doDemo4B1Btn,
+    doDemo4B2Btn,
+    doDemo4B3Btn,
+    doDemo4ChBtn,
+    doDemo4C1Btn,
+    doDemo4C2Btn,
+    doDemo4C3Btn,
+    lastDemo = "none",
+    metaSampleSize = 50,
+    metaSampleMethod = "Random",
+    doMeta1ABtn,
+    doMeta1AmBtn,
+    doMeta1BBtn,
+    doMeta1BmBtn,
+    meta2SampleSize = 50,
+    meta2IndivSampleSize = 500,
+    meta2SampleBudget = 500,
+    metaCheating = "None",
+    doMeta2ABtn,
+    doMeta2BBtn,
+    doMeta2BmBtn,
+    doMeta3ABtn,
+    doMeta3AmBtn,
+    doMeta3BBtn,
+    doMeta3BmBtn,
+    meta3SampleSize = 50,
+    meta3SampleMethod = "Random",
+    lastMeta = "none") {
 
     if ( ! requireNamespace("jmvcore", quietly=TRUE))
         stop("BrawSim requires jmvcore to be installed (restart may be required)")
@@ -3105,6 +3372,11 @@ BrawSim <- function(
         demo2Help = demo2Help,
         demo3Help = demo3Help,
         demo4Help = demo4Help,
+        metaHelp = metaHelp,
+        meta1Help = meta1Help,
+        meta2Help = meta2Help,
+        meta3Help = meta3Help,
+        meta4Help = meta4Help,
         simHelp = simHelp,
         simPlanHelp = simPlanHelp,
         simSingleHelp = simSingleHelp,
@@ -3262,81 +3534,101 @@ BrawSim <- function(
         systemMag = systemMag,
         goBack = goBack,
         goForwards = goForwards,
-        doProject1AhBtn = doProject1AhBtn,
-        doProject1A1Btn = doProject1A1Btn,
-        doProject1A2Btn = doProject1A2Btn,
-        doProject1sLst = doProject1sLst,
-        doProject1sLstA = doProject1sLstA,
-        doProject1sLstB = doProject1sLstB,
-        doProject1sLstC = doProject1sLstC,
-        doProject1sLstD = doProject1sLstD,
-        doProject1sLstE = doProject1sLstE,
-        doProject1BhBtn = doProject1BhBtn,
-        doProject1B1Btn = doProject1B1Btn,
-        doProject1B2Btn = doProject1B2Btn,
-        doProject1ChBtn = doProject1ChBtn,
-        doProject1C1Btn = doProject1C1Btn,
-        doProject2AhBtn = doProject2AhBtn,
-        doProject2A1Btn = doProject2A1Btn,
-        doProject2A2Btn = doProject2A2Btn,
-        doProject2BhBtn = doProject2BhBtn,
-        doProject2B1Btn = doProject2B1Btn,
-        doProject2B2Btn = doProject2B2Btn,
-        doProject2ChBtn = doProject2ChBtn,
-        doProject2C1Btn = doProject2C1Btn,
-        doProject2sLst = doProject2sLst,
-        doProject2sLstA = doProject2sLstA,
-        doProject2sLstB = doProject2sLstB,
-        doProject2sLstC = doProject2sLstC,
-        doProject2sLstD = doProject2sLstD,
-        doProject2sLstE = doProject2sLstE,
-        doProject2sLstF = doProject2sLstF,
-        doProject2sLstG = doProject2sLstG,
-        doProject3sLst = doProject3sLst,
-        doProject3sLstA = doProject3sLstA,
-        doProject3sLstB = doProject3sLstB,
-        doProject3sLstC = doProject3sLstC,
-        doProject3sLstD = doProject3sLstD,
-        doProject3sLstE = doProject3sLstE,
-        doProject3sLstF = doProject3sLstF,
-        doProject3sLstG = doProject3sLstG,
-        doProject3sLstH = doProject3sLstH,
-        doProject3sLstK = doProject3sLstK,
-        doProject3sLstI = doProject3sLstI,
-        doProject3sLstJ = doProject3sLstJ,
-        doProject3AhBtn = doProject3AhBtn,
-        doProject3A1Btn = doProject3A1Btn,
-        doProject3A3Btn = doProject3A3Btn,
-        doProject3BhBtn = doProject3BhBtn,
-        doProject3B1Btn = doProject3B1Btn,
-        doProject3ChBtn = doProject3ChBtn,
-        doProject3C1Btn = doProject3C1Btn,
-        doProject3C3Btn = doProject3C3Btn,
-        doProject4sLstA1 = doProject4sLstA1,
-        doProject4sLstA2 = doProject4sLstA2,
-        doProject4sLst = doProject4sLst,
-        doProject4sLstB = doProject4sLstB,
-        doProject4sLstC = doProject4sLstC,
-        doProject4sLstD = doProject4sLstD,
-        doProject4sLstE = doProject4sLstE,
-        doProject4sLstF = doProject4sLstF,
-        doProject4sLstG = doProject4sLstG,
-        doProject4sLstI = doProject4sLstI,
-        doProject4sLstJ = doProject4sLstJ,
-        doProject4sLstL = doProject4sLstL,
-        doProject4sLstK = doProject4sLstK,
-        doProject4AhBtn = doProject4AhBtn,
-        doProject4A1Btn = doProject4A1Btn,
-        doProject4A2Btn = doProject4A2Btn,
-        doProject4BhBtn = doProject4BhBtn,
-        doProject4B1Btn = doProject4B1Btn,
-        doProject4B2Btn = doProject4B2Btn,
-        doProject4B3Btn = doProject4B3Btn,
-        doProject4ChBtn = doProject4ChBtn,
-        doProject4C1Btn = doProject4C1Btn,
-        doProject4C2Btn = doProject4C2Btn,
-        doProject4C3Btn = doProject4C3Btn,
-        lastDemo = lastDemo)
+        doDemo1AhBtn = doDemo1AhBtn,
+        doDemo1A1Btn = doDemo1A1Btn,
+        doDemo1A2Btn = doDemo1A2Btn,
+        doDemo1sLst = doDemo1sLst,
+        doDemo1sLstA = doDemo1sLstA,
+        doDemo1sLstB = doDemo1sLstB,
+        doDemo1sLstC = doDemo1sLstC,
+        doDemo1sLstD = doDemo1sLstD,
+        doDemo1sLstE = doDemo1sLstE,
+        doDemo1BhBtn = doDemo1BhBtn,
+        doDemo1B1Btn = doDemo1B1Btn,
+        doDemo1B2Btn = doDemo1B2Btn,
+        doDemo1ChBtn = doDemo1ChBtn,
+        doDemo1C1Btn = doDemo1C1Btn,
+        doDemo2AhBtn = doDemo2AhBtn,
+        doDemo2A1Btn = doDemo2A1Btn,
+        doDemo2A2Btn = doDemo2A2Btn,
+        doDemo2BhBtn = doDemo2BhBtn,
+        doDemo2B1Btn = doDemo2B1Btn,
+        doDemo2B2Btn = doDemo2B2Btn,
+        doDemo2ChBtn = doDemo2ChBtn,
+        doDemo2C1Btn = doDemo2C1Btn,
+        doDemo2sLst = doDemo2sLst,
+        doDemo2sLstA = doDemo2sLstA,
+        doDemo2sLstB = doDemo2sLstB,
+        doDemo2sLstC = doDemo2sLstC,
+        doDemo2sLstD = doDemo2sLstD,
+        doDemo2sLstE = doDemo2sLstE,
+        doDemo2sLstF = doDemo2sLstF,
+        doDemo2sLstG = doDemo2sLstG,
+        doDemo3sLst = doDemo3sLst,
+        doDemo3sLstA = doDemo3sLstA,
+        doDemo3sLstB = doDemo3sLstB,
+        doDemo3sLstC = doDemo3sLstC,
+        doDemo3sLstD = doDemo3sLstD,
+        doDemo3sLstE = doDemo3sLstE,
+        doDemo3sLstF = doDemo3sLstF,
+        doDemo3sLstG = doDemo3sLstG,
+        doDemo3sLstH = doDemo3sLstH,
+        doDemo3sLstK = doDemo3sLstK,
+        doDemo3sLstI = doDemo3sLstI,
+        doDemo3sLstJ = doDemo3sLstJ,
+        doDemo3AhBtn = doDemo3AhBtn,
+        doDemo3A1Btn = doDemo3A1Btn,
+        doDemo3A3Btn = doDemo3A3Btn,
+        doDemo3BhBtn = doDemo3BhBtn,
+        doDemo3B1Btn = doDemo3B1Btn,
+        doDemo3ChBtn = doDemo3ChBtn,
+        doDemo3C1Btn = doDemo3C1Btn,
+        doDemo3C3Btn = doDemo3C3Btn,
+        doDemo4sLstA1 = doDemo4sLstA1,
+        doDemo4sLstA2 = doDemo4sLstA2,
+        doDemo4sLst = doDemo4sLst,
+        doDemo4sLstB = doDemo4sLstB,
+        doDemo4sLstC = doDemo4sLstC,
+        doDemo4sLstD = doDemo4sLstD,
+        doDemo4sLstE = doDemo4sLstE,
+        doDemo4sLstF = doDemo4sLstF,
+        doDemo4sLstG = doDemo4sLstG,
+        doDemo4sLstI = doDemo4sLstI,
+        doDemo4sLstJ = doDemo4sLstJ,
+        doDemo4sLstL = doDemo4sLstL,
+        doDemo4sLstK = doDemo4sLstK,
+        doDemo4AhBtn = doDemo4AhBtn,
+        doDemo4A1Btn = doDemo4A1Btn,
+        doDemo4A2Btn = doDemo4A2Btn,
+        doDemo4BhBtn = doDemo4BhBtn,
+        doDemo4B1Btn = doDemo4B1Btn,
+        doDemo4B2Btn = doDemo4B2Btn,
+        doDemo4B3Btn = doDemo4B3Btn,
+        doDemo4ChBtn = doDemo4ChBtn,
+        doDemo4C1Btn = doDemo4C1Btn,
+        doDemo4C2Btn = doDemo4C2Btn,
+        doDemo4C3Btn = doDemo4C3Btn,
+        lastDemo = lastDemo,
+        metaSampleSize = metaSampleSize,
+        metaSampleMethod = metaSampleMethod,
+        doMeta1ABtn = doMeta1ABtn,
+        doMeta1AmBtn = doMeta1AmBtn,
+        doMeta1BBtn = doMeta1BBtn,
+        doMeta1BmBtn = doMeta1BmBtn,
+        meta2SampleSize = meta2SampleSize,
+        meta2IndivSampleSize = meta2IndivSampleSize,
+        meta2SampleBudget = meta2SampleBudget,
+        metaCheating = metaCheating,
+        doMeta2ABtn = doMeta2ABtn,
+        doMeta2BBtn = doMeta2BBtn,
+        doMeta2BmBtn = doMeta2BmBtn,
+        doMeta3ABtn = doMeta3ABtn,
+        doMeta3AmBtn = doMeta3AmBtn,
+        doMeta3BBtn = doMeta3BBtn,
+        doMeta3BmBtn = doMeta3BmBtn,
+        meta3SampleSize = meta3SampleSize,
+        meta3SampleMethod = meta3SampleMethod,
+        lastMeta = lastMeta)
 
     analysis <- BrawSimClass$new(
         options = options,

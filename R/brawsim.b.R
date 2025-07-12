@@ -12,7 +12,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
     .run = function() {
       # debug information
       
-      # self$results$debug$setContent(braw.res)
+      # self$results$debug$setContent(self$options$basicMode)
       # self$results$debug$setVisible(TRUE)
       # return()
 
@@ -23,6 +23,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
 
         setBrawOpts(reducedOutput=TRUE,reportHTML=TRUE,
                     fontScale=1.5,fullGraphSize=0.5,
+                    npointsMax=1000,
                     autoPrint=FALSE
         )
         statusStore<-list(lastOutput="System",
@@ -36,9 +37,11 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                           showExploreStyle="stats",
                           whichShowExploreOut="all",
                           doDemos=4,
+                          showPlan=TRUE,
                           nestedHelp=TRUE,
                           basicHelpWhich=0,
                           demoHelpWhich=c(0,0),
+                          metaHelpWhich=0,
                           simHelpWhich=0,
                           openJamovi=0,
                           planMode="planH",
@@ -59,21 +62,25 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         history<-braw.res$historyStore
       }
       
-      # check which results are visible
+      # check which results are not visible
       if (self$options$showHTML) {
         if (self$results$simGraph$visible) self$results$simGraph$setVisible(FALSE)
-        if (self$results$simReport$visible) self$results$simReport$setVisible(FALSE)
-        if (!self$results$simGraphHTML$visible) self$results$simGraphHTML$setVisible(TRUE)
       } else {
         if (self$results$simGraphHTML$visible) self$results$simGraphHTML$setVisible(FALSE)
         if (!self$results$simGraph$visible) self$results$simGraph$setVisible(TRUE)
-        if (!self$results$simReport$visible) self$results$simReport$setVisible(TRUE)
       }
       
 ## help structure
       # get which tabs are open in help structure
+      opens<-c(statusStore$basicHelpWhich,statusStore$demoHelpWhich,statusStore$metaHelpWhich,statusStore$simHelpWhich)
       statusStore<-whichTabsOpen(self,statusStore)
+      newopens<-c(statusStore$basicHelpWhich,statusStore$demoHelpWhich,statusStore$metaHelpWhich,statusStore$simHelpWhich)
+      changedL<-!all(opens==newopens)
       
+      # # are we hiding the Plan display?
+      # newShowPlan<-(self$options$basicMode!="LearnMeta")
+      # changedL<-changedL || (newShowPlan!=statusStore$showPlan)
+      # statusStore$showPlan<-newShowPlan
       # save the existing definitions
       oldH<-braw.def$hypothesis
       oldD<-braw.def$design
@@ -85,6 +92,118 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       # store the option variables inside the braw package
       setBraw(self)
       
+      # are we doing meta investigations?
+      doingMeta<-which(c(self$options$doMeta1ABtn,self$options$doMeta1AmBtn,
+                         self$options$doMeta1BBtn,self$options$doMeta1BmBtn,
+                         self$options$doMeta2ABtn,FALSE,
+                         self$options$doMeta2BBtn,self$options$doMeta2BmBtn,
+                         self$options$doMeta3ABtn,self$options$doMeta3AmBtn,
+                         self$options$doMeta3BBtn,self$options$doMeta3BmBtn)
+                       )[1]
+      if (!is.na(doingMeta)) {
+        if (is.element(doingMeta,c(1,2)))
+          hypothesis<-makeHypothesis(effect=makeEffect(world=makeWorld(TRUE,"Single","r",populationPDFk=0.3,populationNullp=0.5)))
+        else
+          hypothesis<-makeHypothesis(effect=makeEffect(world=makeWorld(TRUE,"Exp","z",populationPDFk=0.3,populationNullp=0.72)))
+        setBrawDef("hypothesis",hypothesis)
+        
+        design<-makeDesign(sN=self$options$metaSampleSize,
+                           sMethod=makeSampling(self$options$metaSampleMethod)
+                           )
+        if (is.element(doingMeta,c(5))) {
+          design<-makeDesign(sN=self$options$meta2IndivSampleSize
+                             )
+        }
+        if (is.element(doingMeta,c(7,8))) {
+          design<-makeDesign(sN=self$options$meta2SampleSize,
+                             sCheating=self$options$metaCheating,sCheatingLimit="Budget",sCheatingBudget=0.25
+          )
+        }
+        if (is.element(doingMeta,c(9,10))) {
+          design<-makeDesign(sN=self$options$meta3SampleSize,
+                             Replication=makeReplication(TRUE,Keep="Cautious",
+                                                         Power=0.9)
+          )
+        }
+        if (is.element(doingMeta,c(11,12))) {
+          design<-makeDesign(sN=self$options$meta3SampleSize,
+                             Replication=makeReplication(TRUE,Keep="MetaAnalysis",
+                                                         Power=0.9)
+          )
+        }
+        setBrawDef("design",design)
+        
+        if (is.element(doingMeta,c(1,3,7,9,11))) {
+          doSingle()
+          open<-1
+        }
+        
+        if (is.element(doingMeta,c(2,4,10,12))) {
+          doMultiple(200)
+          open<-2
+          reportCounts=FALSE
+        }
+        
+        if (is.element(doingMeta,c(8))) {
+          doMultiple(50)
+          open<-2
+          reportCounts=FALSE
+        }
+        
+        if (is.element(doingMeta,c(5))) {
+          nreps<-floor(self$options$meta2SampleBudget/self$options$meta2SampleSize)
+          doMultiple(nreps)
+          open<-2
+          reportCounts<-TRUE
+        }
+
+        if (is.element(doingMeta,c(9,11))) {
+          setBrawRes("multiple",braw.res$result)
+          setBrawRes("result",braw.res$result)
+          open<-2
+        }
+        
+        if (self$options$showHTML) {
+          svgBox(height=350,aspect=1.5)
+          setBrawEnv("graphicsType","HTML")
+          if (!is.null(braw.res$result))
+            graphSingle<-paste0(showDescription(),reportInference())
+          else graphSingle<-nullPlot()
+          if (!is.null(braw.res$multiple))
+            if (is.element(doingMeta,c(9,11)))
+              graphMultiple<-paste0(showMultiple(),reportInference())
+          else
+            graphMultiple<-paste0(showMultiple(showType="rse",dimension="1D",orientation="horz"),
+                                  reportMultiple(showType="NHST",reportStats=self$options$reportInferStats,reportCounts=reportCounts)
+            )
+          else graphMultiple<-nullPlot()
+          graphExplore<-nullPlot()
+          brawResults<-generate_tab(
+            title="Results:",
+            titleWidth=50,
+            tabs=c("Single Sample","Multiple Samples","Explore"),
+            tabContents = c(
+              graphSingle,
+              graphMultiple,
+              graphExplore
+            ),
+            open=open
+          )
+          self$results$simGraphHTML$setContent(brawResults)
+          
+        } else {
+          switch(open,
+                 {
+                   self$results$simGraph$setState("Describe")
+                   self$results$simReport$setContent(reportInference())
+                 },
+                 {
+                   self$results$simGraph$setState(c("Multiple","rse","1D","direct","horz"))
+                   self$results$simReport$setContent(reportMultiple(showType="NHST",reportStats=self$options$reportInferStats))
+                 })
+        }
+      }
+
       changedH<- !identical(oldH,braw.def$hypothesis)
       changedD<- !identical(oldD,braw.def$design)
       changedE<- !identical(oldE,braw.def$evidence)
@@ -93,13 +212,14 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       
       # now set up help/instructions
       # this is done after we have set up the hypothesis
-      helpOutput<-makeHelpOut(self,statusStore)
-      systemHTML<-makeSystemOut(self,statusStore,changedH,changedD,changedE,helpOutput)
-
+      helpOutput<-makeHelpOut(self$options$brawHelp,statusStore)
+      if (statusStore$showPlan)
+        helpOutput<-makeSystemOut(self,statusStore,changedH,changedD,changedE,helpOutput)
+      
       # only change this if there has been a change in what it displays
-      if (any(c(firstRun,changedH,changedD,changedE)))
-      if (nchar(systemHTML)>0) {
-        self$results$BrawStatsInstructions$setContent(systemHTML)
+      if (any(c(firstRun,changedH,changedD,changedE,changedL)))
+      if (nchar(helpOutput)>0) {
+        self$results$BrawStatsInstructions$setContent(helpOutput)
         if (!self$results$BrawStatsInstructions$visible) 
           self$results$BrawStatsInstructions$setVisible(TRUE)
       } else {
@@ -107,7 +227,11 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           self$results$BrawStatsInstructions$setVisible(FALSE)
       }
       
-## changes in the mode selectors can now be ignored
+      if (!is.na(doingMeta)) { 
+        return()
+      }
+      
+      ## changes in the mode selectors can now be ignored
       # ignore changes in the ModeSelectors
       if (self$options$basicMode!=statusStore$basicMode) {
         statusStore$basicMode<-self$options$basicMode
@@ -130,7 +254,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       
 ## basic computations start here
       # we are going back or forwards in the history
-      if (self$options$goBack || self$options$goForwards) { 
+      if (self$options$goBack || self$options$goForwards) {
         nhist<-length(history$history)
         if (self$options$goBack) history$historyPlace<-max(history$historyPlace-1,1)
         if (self$options$goForwards) history$historyPlace<-min(history$historyPlace+1,nhist)
@@ -162,14 +286,17 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         # at this stage, we assume nothing new for the history
         addHistory<-FALSE 
         
+        if (!any(self$options$doMeta1ABtn,self$options$doMeta1BBtn)) {
         # get some display parameters for later
         # single sample
         makeSampleNow<-self$options$makeSampleBtn
         showSampleType<-self$options$showSampleType
         showInferParam<-paste0(self$options$inferVar1,";",self$options$inferVar2)
         showInferDimension<-self$options$showInferDimension
+        }
         
-        # multiple samples
+        if (!any(self$options$doMeta1AmBtn,self$options$doMeta1BmBtn)) {
+          # multiple samples
         makeMultipleNow<-self$options$makeMultipleBtn
         showMultipleParam<-self$options$showMultipleParam
         if (is.element(showMultipleParam,c("Basic","Custom"))) {
@@ -181,6 +308,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         } else showMultipleOrient<-"vert"
         showMultipleDimension<-self$options$showMultipleDimension
         whichShowMultipleOut<-self$options$whichShowMultiple
+        numberSamples<-self$options$numberSamples
+        }
         
         # explore
         makeExploreNow<-self$options$makeExploreBtn
@@ -285,7 +414,6 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         
         # did we ask for new multiples?
         if (makeMultipleNow) {
-          numberSamples<-self$options$numberSamples
           if (self$options$MetaAnalysisOn) {
             # do we need to do this, or are we just returning to the existing one?
             if (self$options$showHTML || is.null(braw.res$metaMultiple) || statusStore$lastOutput=="MetaMultiple") 
@@ -346,7 +474,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
             )
           else graphSingle<-nullPlot()
           if (!is.null(braw.res$multiple))
-            graphMultiple<-paste0(showMultiple(showType=showMultipleParam,dimension=showMultipleDimension,effectType=whichShowMultipleOut),
+            graphMultiple<-paste0(showMultiple(showType=showMultipleParam,dimension=showMultipleDimension,effectType=whichShowMultipleOut,orientation=showMultipleOrient),
                                   reportMultiple(showType=showMultipleParam,effectType=whichShowMultipleOut,reportStats=self$options$reportInferStats)
             )
           else graphMultiple<-nullPlot()
@@ -378,10 +506,9 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
               ),
               open=open
             )
-            # self$results$debug$setContent(outputNow)
-            # self$results$debug$setVisible(TRUE)
-            
+
           self$results$simGraphHTML$setContent(brawResults)
+          if (!self$results$simGraphHTML$visible) self$results$simGraphHTML$setVisible(TRUE)
         } else {
           
           switch(outputNow,

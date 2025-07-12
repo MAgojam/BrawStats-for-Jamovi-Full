@@ -14,6 +14,8 @@ options:
         title: 'Learn with:'
       - name: LearnDemo
         title: Demos
+      - name: LearnMeta
+        title: Investigations
       - name: LearnSim
         title: Simulations
       - name: Settings
@@ -36,6 +38,26 @@ options:
       title: '?'
       
     - name: demo4Help
+      type: Action
+      title: '?'
+      
+    - name: metaHelp
+      type: Action
+      title: '?'
+
+    - name: meta1Help
+      type: Action
+      title: '?'
+      
+    - name: meta2Help
+      type: Action
+      title: '?'
+      
+    - name: meta3Help
+      type: Action
+      title: '?'
+      
+    - name: meta4Help
       type: Action
       title: '?'
       
@@ -1512,19 +1534,19 @@ options:
       title: '>>'
       type: Action
 
-    - name: doProject1AhBtn
+    - name: doDemo1AhBtn
       title: '?'
       type: Action
 
-    - name: doProject1A1Btn
+    - name: doDemo1A1Btn
       title: 'do'
       type: Action
 
-    - name: doProject1A2Btn
+    - name: doDemo1A2Btn
       title: 'do'
       type: Action
 
-    - name: doProject1sLst
+    - name: doDemo1sLst
       title: ''
       type: List
       options:
@@ -1556,7 +1578,7 @@ options:
         title: BirthOrder
       default: Perfectionism
 
-    - name: doProject1sLstA
+    - name: doDemo1sLstA
       title: ''
       type: List
       options:
@@ -1566,14 +1588,14 @@ options:
         title: ExamPass?
       default: ExamGrade
 
-    - name: doProject1sLstB
+    - name: doDemo1sLstB
       title: ''
       type: Number
       default: 0.3
       min: -0.95
       max: 0.95
 
-    - name: doProject1sLstC
+    - name: doDemo1sLstC
       title: ''
       type: List
       options:
@@ -1587,7 +1609,7 @@ options:
         title: Describe
       default: Basic
 
-    - name: doProject1sLstD
+    - name: doDemo1sLstD
       title: ''
       type: List
       options:
@@ -1601,111 +1623,111 @@ options:
         title: Cluster
       default: Random
 
-    - name: doProject1sLstE
+    - name: doDemo1sLstE
       title: ''
       type: Number
       default: 42
       min: 10
       max: 50000
 
-    - name: doProject1BhBtn
+    - name: doDemo1BhBtn
       title: '?'
       type: Action
 
-    - name: doProject1B1Btn
+    - name: doDemo1B1Btn
       title: 'do'
       type: Action
 
-    - name: doProject1B2Btn
+    - name: doDemo1B2Btn
       title: 'do'
       type: Action
 
-    # - name: doProject1B3Btn
+    # - name: doDemo1B3Btn
     #   title: 'set'
     #   type: Action
 
 
-    - name: doProject1ChBtn
+    - name: doDemo1ChBtn
       title: '?'
       type: Action
 
-    - name: doProject1C1Btn
+    - name: doDemo1C1Btn
       title: 'do'
       type: Action
 
-    # - name: doProject1C2Btn
+    # - name: doDemo1C2Btn
     #   title: 'set'
     #   type: Action
     # 
-    # - name: doProject1C3Btn
+    # - name: doDemo1C3Btn
     #   title: 'set'
     #   type: Action
 
 
-    - name: doProject2AhBtn
+    - name: doDemo2AhBtn
       title: '?'
       type: Action
 
-    - name: doProject2A1Btn
+    - name: doDemo2A1Btn
       title: 'do'
       type: Action
 
-    - name: doProject2A2Btn
+    - name: doDemo2A2Btn
       title: 'do'
       type: Action
 
-    # - name: doProject2A3Btn
+    # - name: doDemo2A3Btn
     #   title: 'set'
     #   type: Action
 
 
-    - name: doProject2BhBtn
+    - name: doDemo2BhBtn
       title: '?'
       type: Action
 
-    - name: doProject2B1Btn
+    - name: doDemo2B1Btn
       title: 'do'
       type: Action
 
-    - name: doProject2B2Btn
+    - name: doDemo2B2Btn
       title: 'do'
       type: Action
 
-    # - name: doProject2B3Btn
+    # - name: doDemo2B3Btn
     #   title: 'set'
     #   type: Action
 
 
-    - name: doProject2ChBtn
+    - name: doDemo2ChBtn
       title: '?'
       type: Action
 
-    - name: doProject2C1Btn
+    - name: doDemo2C1Btn
       title: 'do'
       type: Action
       
-    # - name: doProject2C2Btn
+    # - name: doDemo2C2Btn
     #   title: 'set'
     #   type: Action
       
-    # - name: doProject2C3Btn
+    # - name: doDemo2C3Btn
     #   title: 'set'
     #   type: Action
 
       
-    # - name: doProject2sBtn
+    # - name: doDemo2sBtn
     #   title: 'show'
     #   type: Action
     # 
-    # - name: doProject2AsBtn
+    # - name: doDemo2AsBtn
     #   title: 'sample'
     #   type: Action
     # 
-    # - name: doProject2BsBtn
+    # - name: doDemo2BsBtn
     #   title: 'multiple'
     #   type: Action
     #   
-    - name: doProject2sLst
+    - name: doDemo2sLst
       title: ''
       type: List
       options:
@@ -1737,7 +1759,7 @@ options:
         title: BirthOrder
       default: Perfectionism
 
-    - name: doProject2sLstA
+    - name: doDemo2sLstA
       title: ''
       type: List
       options:
@@ -1747,14 +1769,14 @@ options:
         title: ExamPass?
       default: ExamGrade
 
-    - name: doProject2sLstB
+    - name: doDemo2sLstB
       title: ''
       type: Number
       default: 0.3
       min: -0.95
       max: 0.95
 
-    - name: doProject2sLstC
+    - name: doDemo2sLstC
       title: ''
       type: List
       options:
@@ -1770,7 +1792,7 @@ options:
         title: Infer
       default: Infer
 
-    - name: doProject2sLstD
+    - name: doDemo2sLstD
       title: ''
       type: List
       options:
@@ -1784,14 +1806,14 @@ options:
         title: Cluster
       default: Random
 
-    - name: doProject2sLstE
+    - name: doDemo2sLstE
       title: ''
       type: Number
       default: 42
       min: 10
       max: 50000
 
-    - name: doProject2sLstF
+    - name: doDemo2sLstF
       title: ''
       type: List
       options:
@@ -1803,7 +1825,7 @@ options:
         title: 'p(sig)'
       default: Basic
 
-    - name: doProject2sLstG
+    - name: doDemo2sLstG
       title: ''
       type: List
       options:
@@ -1813,7 +1835,7 @@ options:
         title: '0 & 0.3'
       default: off
 
-    - name: doProject3sLst
+    - name: doDemo3sLst
       title: ''
       type: List
       options:
@@ -1823,7 +1845,7 @@ options:
         title: Categorical
       default: Interval
 
-    - name: doProject3sLstA
+    - name: doDemo3sLstA
       title: ''
       type: List
       options:
@@ -1833,14 +1855,14 @@ options:
         title: Categorical
       default: Interval
 
-    - name: doProject3sLstB
+    - name: doDemo3sLstB
       title: ''
       type: Number
       default: 0.3
       min: -0.95
       max: 0.95
 
-    - name: doProject3sLstC
+    - name: doDemo3sLstC
       title: ''
       type: List
       options:
@@ -1856,7 +1878,7 @@ options:
         title: Infer
       default: Infer
 
-    - name: doProject3sLstD
+    - name: doDemo3sLstD
       title: ''
       type: List
       options:
@@ -1870,14 +1892,14 @@ options:
         title: Cluster
       default: Random
 
-    - name: doProject3sLstE
+    - name: doDemo3sLstE
       title: ''
       type: Number
       default: 42
       min: 10
       max: 50000
 
-    - name: doProject3sLstF
+    - name: doDemo3sLstF
       title: ''
       type: List
       options:
@@ -1889,7 +1911,7 @@ options:
         title: 'p(sig)'
       default: Basic
 
-    - name: doProject3sLstG
+    - name: doDemo3sLstG
       title: ''
       type: List
       options:
@@ -1899,7 +1921,7 @@ options:
         title: '0 & 0.3'
       default: off
 
-    - name: doProject3sLstH
+    - name: doDemo3sLstH
       title: ''
       type: List
       options:
@@ -1909,14 +1931,14 @@ options:
         title: 'r&#x209a;'
       default: n
 
-    - name: doProject3sLstK
+    - name: doDemo3sLstK
       title: ''
       type: Number
       default: 20
       min: 10
       max: 50000
       
-    - name: doProject3sLstI
+    - name: doDemo3sLstI
       title: ''
       type: List
       options:
@@ -1928,7 +1950,7 @@ options:
         title: 'p(sig)'
       default: Basic
 
-    - name: doProject3sLstJ
+    - name: doDemo3sLstJ
       title: ''
       type: List
       options:
@@ -1938,39 +1960,39 @@ options:
         title: Within
       default: Between
 
-    - name: doProject3AhBtn
+    - name: doDemo3AhBtn
       title: '?'
       type: Action
 
-    - name: doProject3A1Btn
+    - name: doDemo3A1Btn
       title: do
       type: Action
 
-    - name: doProject3A3Btn
+    - name: doDemo3A3Btn
       title: do
       type: Action
       
-    - name: doProject3BhBtn
+    - name: doDemo3BhBtn
       title: '?'
       type: Action
 
-    - name: doProject3B1Btn
+    - name: doDemo3B1Btn
       title: do
       type: Action
       
-    - name: doProject3ChBtn
+    - name: doDemo3ChBtn
       title: '?'
       type: Action
 
-    - name: doProject3C1Btn
+    - name: doDemo3C1Btn
       title: do
       type: Action
 
-    - name: doProject3C3Btn
+    - name: doDemo3C3Btn
       title: do
       type: Action
 
-    - name: doProject4sLstA1
+    - name: doDemo4sLstA1
       title: ''
       type: List
       options:
@@ -2003,7 +2025,7 @@ options:
       default: RiskTaker
 
 
-    - name: doProject4sLstA2
+    - name: doDemo4sLstA2
       title: ''
       type: List
       options:
@@ -2035,7 +2057,7 @@ options:
         title: BirthOrder
       default: Musician
       
-    - name: doProject4sLst
+    - name: doDemo4sLst
       title: ''
       type: List
       options:
@@ -2045,28 +2067,28 @@ options:
         title: ExamPass?
       default: ExamGrade
 
-    - name: doProject4sLstB
+    - name: doDemo4sLstB
       title: ''
       type: Number
       default: 0.5
       min: -0.95
       max: 0.95
       
-    - name: doProject4sLstC
+    - name: doDemo4sLstC
       title: ''
       type: Number
       default: -0.5
       min: -0.95
       max: 0.95
       
-    - name: doProject4sLstD
+    - name: doDemo4sLstD
       title: ''
       type: Number
       default: 0.0
       min: -0.95
       max: 0.95
       
-    - name: doProject4sLstE
+    - name: doDemo4sLstE
       title: ''
       type: List
       options:
@@ -2076,14 +2098,14 @@ options:
         title: yes
       default: no
       
-    - name: doProject4sLstF
+    - name: doDemo4sLstF
       title: ''
       type: Number
       default: 0.0
       min: -0.95
       max: 0.95
       
-    - name: doProject4sLstG
+    - name: doDemo4sLstG
       title: ''
       type: List
       options:
@@ -2095,7 +2117,7 @@ options:
         title: Describe
       default: Basic
 
-    - name: doProject4sLstI
+    - name: doDemo4sLstI
       title: ''
       type: List
       options:
@@ -2109,7 +2131,7 @@ options:
         title: all
       default: all
 
-    - name: doProject4sLstJ
+    - name: doDemo4sLstJ
       title: ''
       type: List
       options:
@@ -2121,66 +2143,217 @@ options:
         title: 'rIV*IV2→DV'
       default: Covariation
       
-    - name: doProject4sLstL
+    - name: doDemo4sLstL
       title: ''
       type: Number
       default: 20
       min: 10
       max: 50000
       
-    - name: doProject4sLstK
+    - name: doDemo4sLstK
       title: ''
       type: Number
       default: 200
       min: 10
       max: 50000
 
-    - name: doProject4AhBtn
+    - name: doDemo4AhBtn
       title: '?'
       type: Action
 
-    - name: doProject4A1Btn
+    - name: doDemo4A1Btn
       title: 'do'
       type: Action
 
-    - name: doProject4A2Btn
+    - name: doDemo4A2Btn
       title: 'do'
       type: Action
 
-    - name: doProject4BhBtn
+    - name: doDemo4BhBtn
       title: '?'
       type: Action
 
-    - name: doProject4B1Btn
+    - name: doDemo4B1Btn
       title: 'do'
       type: Action
 
-    - name: doProject4B2Btn
+    - name: doDemo4B2Btn
       title: 'do'
       type: Action
 
-    - name: doProject4B3Btn
+    - name: doDemo4B3Btn
       title: 'do'
       type: Action
 
-    - name: doProject4ChBtn
+    - name: doDemo4ChBtn
       title: '?'
       type: Action
 
-    - name: doProject4C1Btn
+    - name: doDemo4C1Btn
       title: 'do'
       type: Action
 
-    - name: doProject4C2Btn
+    - name: doDemo4C2Btn
       title: 'do'
       type: Action
 
-    - name: doProject4C3Btn
+    - name: doDemo4C3Btn
       title: 'do'
       type: Action
 
     - name: lastDemo
       title: 'demo display:'
+      type: List
+      options:
+      - name: none
+        title: none
+      - name: 1a
+        title: 1a
+      - name: 1b
+        title: 1b
+      - name: 1c
+        title: 1c
+      - name: 2a
+        title: 2a
+      - name: 2b
+        title: 2b
+      - name: 2c
+        title: 2c
+      - name: 3a
+        title: 3a
+      - name: 3b
+        title: 3b
+      - name: 3c
+        title: 3c
+      - name: 4a
+        title: 4a
+      - name: 4b
+        title: 4b
+      - name: 4c
+        title: 4c
+      default: none
+
+    - name: metaSampleSize
+      title: n 
+      type: Number
+      default: 50
+
+    - name: metaSampleMethod
+      title: 'Method'
+      type: List
+      options:
+        - name: Random
+          title: Random
+        - name: Stratified
+          title: Stratified
+        - name: Cluster
+          title: Cluster
+        - name: Snowball
+          title: Snowball
+        - name: Convenience
+          title: Convenience
+      default: Random
+
+    - name: doMeta1ABtn
+      title: 'do'
+      type: Action
+
+    - name: doMeta1AmBtn
+      title: '*'
+      type: Action
+
+    - name: doMeta1BBtn
+      title: 'do'
+      type: Action
+
+    - name: doMeta1BmBtn
+      title: '*'
+      type: Action
+
+
+    - name: meta2SampleSize
+      title: n 
+      type: Number
+      default: 50
+
+    - name: meta2IndivSampleSize
+      title: n 
+      type: Number
+      default: 500
+
+    - name: meta2SampleBudget
+      title: Budget
+      type: Number
+      default: 500
+
+    - name: metaCheating
+      title: Cheating
+      type: List
+      options:
+       - name: None
+         title: None
+       - name: Grow
+         title: Grow
+       - name: Prune
+         title: Prune
+       - name: Replace
+         title: Replace
+       - name: Retry
+         title: Retry
+      default: None
+
+    - name: doMeta2ABtn
+      title: 'do'
+      type: Action
+
+    - name: doMeta2BBtn
+      title: 'do'
+      type: Action
+
+    - name: doMeta2BmBtn
+      title: '*'
+      type: Action
+
+
+    - name: doMeta3ABtn
+      title: 'do'
+      type: Action
+
+    - name: doMeta3AmBtn
+      title: '*'
+      type: Action
+
+    - name: doMeta3BBtn
+      title: 'do'
+      type: Action
+
+    - name: doMeta3BmBtn
+      title: '*'
+      type: Action
+
+    - name: meta3SampleSize
+      title: n 
+      type: Number
+      default: 50
+
+    - name: meta3SampleMethod
+      title: 'Method'
+      type: List
+      options:
+        - name: Random
+          title: Random
+        - name: Stratified
+          title: Stratified
+        - name: Cluster
+          title: Cluster
+        - name: Snowball
+          title: Snowball
+        - name: Convenience
+          title: Convenience
+      default: Random
+
+    - name: lastMeta
+      title: 'invest display:'
       type: List
       options:
       - name: none

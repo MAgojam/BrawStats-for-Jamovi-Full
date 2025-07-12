@@ -1,4 +1,4 @@
-brawbasicHelp<-function(open=0,indent,titleWidth) {
+brawBasicHelp<-function(open=0,indent,titleWidth) {
   return(paste0(
     '<b>Help Tabs</b>',
     '<br>The help system contains useful information about BrawStats.',
@@ -13,7 +13,7 @@ brawbasicHelp<-function(open=0,indent,titleWidth) {
   )
 }
 
-brawsimHelp<-function(open=0,indent,titleWidth) {
+brawSimHelp<-function(open=0,indent,titleWidth) {
   return(
     generate_tab(
       title="BrawStats help:",
@@ -27,6 +27,26 @@ brawsimHelp<-function(open=0,indent,titleWidth) {
         BrawInstructions("Single"),
         BrawInstructions("Multiple"),
         BrawInstructions("Explore")
+      ),
+      open=open
+    )
+  )
+}
+
+brawMetaHelp<-function(open=0,indent,titleWidth) {
+  return(
+    generate_tab(
+      title="Investigations help:",
+      indent=indent,
+      titleWidth=titleWidth,
+      # titleTab="Click on the tabs for specific help.",
+      tabs=c("Start","Inferences?","Strategies?","Believable Results?","Real Differences"),
+      tabContents = c(
+        MetaInstructions("Overview"),
+        MetaInstructions("Inferences?"),
+        MetaInstructions("Strategies?"),
+        MetaInstructions("Believable Results?"),
+        MetaInstructions("Real Differences")
       ),
       open=open
     )

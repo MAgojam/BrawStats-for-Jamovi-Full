@@ -21,7 +21,7 @@ children:
           children:
             - type: Label
               label: 'Demos:'
-              minWidth: 80
+              minWidth: 90
               horizontalAlignment: right
               margin: none
             - type: LayoutBox
@@ -31,14 +31,14 @@ children:
               - type: Label
                 label: >-
                   Demos to work through to observe and learn
-                minWidth: 390
-                maxWidth: 390
+                minWidth: 380
+                maxWidth: 380
                 margin: none
               - type: Label
                 label: >-
                    the main principles of statistics
-                minWidth: 390
-                maxWidth: 390
+                minWidth: 380
+                maxWidth: 380
                 margin: none
             - type: ActionButton
               name: demosHelp
@@ -48,10 +48,41 @@ children:
               maxHeight: 24
         - type: LayoutBox
           style: inline
+          margin: none
+          children:
+            - type: Label
+              label: 'Investigations:'
+              minWidth: 90
+              horizontalAlignment: right
+              margin: none
+            - type: LayoutBox
+              style: list
+              margin: none
+              children:
+              - type: Label
+                label: >-
+                  Investigations to explore how statistical testing behaves
+                minWidth: 380
+                maxWidth: 380
+                margin: none
+              - type: Label
+                label: >-
+                   in large scale discipline-wide context
+                minWidth: 380
+                maxWidth: 380
+                margin: none
+            - type: ActionButton
+              name: metaHelp
+              margin: none
+              minWidth: 10
+              maxWidth: 10
+              maxHeight: 24
+        - type: LayoutBox
+          style: inline
           children:
             - type: Label
               label: 'Simulations:'
-              minWidth: 80
+              minWidth: 90
               verticalAlignment: top
               horizontalAlignment: right
             - type: LayoutBox
@@ -60,13 +91,13 @@ children:
                 - type: Label
                   label: >-
                     Simulate different research situations 
-                  minWidth: 390
-                  maxWidth: 390
+                  minWidth: 380
+                  maxWidth: 380
                 - type: Label
                   label: >-
                      to explore how they work
-                  minWidth: 390
-                  maxWidth: 390
+                  minWidth: 380
+                  maxWidth: 380
             - type: ActionButton
               name: simHelp
               margin: none
@@ -78,15 +109,6 @@ children:
         name: LearnDemo
         margin: none
         children:
-        # - type: LayoutBox
-        #   style: inline
-        #   children:
-        #     - type: CollapseBox
-        #       collapsed: true
-        #       label: Demos
-        #       minWidth: 540
-        #       maxWidth: 540
-        #       children:
                 - type: LayoutBox
                   style: inline
                   children:
@@ -117,7 +139,7 @@ children:
                                   cell:
                                     row: 0
                                     column: 1
-                                - name: doProject1sLst
+                                - name: doDemo1sLst
                                   type: ComboBox
                                   cell:
                                     row: 0
@@ -132,7 +154,7 @@ children:
                                   cell:
                                     row: 0
                                     column: 3
-                                - name: doProject1sLstA
+                                - name: doDemo1sLstA
                                   type: ComboBox
                                   margin: none
                                   cell:
@@ -147,7 +169,7 @@ children:
                                   cell:
                                     row: 1
                                     column: 1
-                                - name: doProject1sLstB
+                                - name: doDemo1sLstB
                                   type: TextBox
                                   format: number
                                   margin: none
@@ -163,7 +185,7 @@ children:
                                   cell:
                                     row: 2
                                     column: 1
-                                - name: doProject1sLstD
+                                - name: doDemo1sLstD
                                   type: ComboBox
                                   margin: none
                                   cell:
@@ -178,7 +200,7 @@ children:
                                   cell:
                                     row: 2
                                     column: 3
-                                - name: doProject1sLstE
+                                - name: doDemo1sLstE
                                   type: TextBox
                                   format: number
                                   margin: none
@@ -209,7 +231,7 @@ children:
                                   cell:
                                     row: 0
                                     column: 1
-                                - name: doProject1sLstC
+                                - name: doDemo1sLstC
                                   type: ComboBox
                                   margin: none
                                   cell:
@@ -265,7 +287,7 @@ children:
                                                           children:
                                                             - type: Label
                                                               label: 1. we make a sample
-                                                        - name: doProject1A1Btn
+                                                        - name: doDemo1A1Btn
                                                           type: ActionButton
                                                           margin: none
                                                           maxWidth: 79
@@ -282,7 +304,7 @@ children:
                                                           children:
                                                             - type: Label
                                                               label: 2. then look at the Jamovi Instructions
-                                                        - name: doProject1A2Btn
+                                                        - name: doDemo1A2Btn
                                                           type: ActionButton
                                                           margin: none
                                                           maxWidth: 79
@@ -314,7 +336,7 @@ children:
                                                                 - type: Label
                                                                   label: 'Suggestion: try some other variables'
                                         - type: ActionButton
-                                          name: doProject1AhBtn
+                                          name: doDemo1AhBtn
                                           margin: none
                                           minWidth: 10
                                           maxWidth: 10
@@ -365,7 +387,7 @@ children:
                                                                           minWidth: 13
                                                                         - type: Label
                                                                           label: '- do this several times'
-                                                        - name: doProject1B1Btn
+                                                        - name: doDemo1B1Btn
                                                           type: ActionButton
                                                           margin: none
                                                           maxWidth: 79
@@ -384,7 +406,7 @@ children:
                                                             - type: Label
                                                               label: 2. repeat, viewed as "Sample"
                                                         - type: ActionButton
-                                                          name: doProject1B2Btn
+                                                          name: doDemo1B2Btn
                                                           margin: none
                                                           maxWidth: 79
                                                           maxHeight: 24
@@ -428,7 +450,7 @@ children:
                                                               margin: none
                                                               maxWidth: 79
                                         - type: ActionButton
-                                          name: doProject1BhBtn
+                                          name: doDemo1BhBtn
                                           margin: none
                                           minWidth: 10
                                           maxWidth: 10
@@ -490,7 +512,7 @@ children:
                                                                 - type: Label
                                                                   label: ' '
                                                                   minWidth: 26
-                                                        - name: doProject1C1Btn
+                                                        - name: doDemo1C1Btn
                                                           type: ActionButton
                                                           margin: none
                                                           maxWidth: 79
@@ -578,7 +600,7 @@ children:
                                                                   label: ' '
                                                                   minWidth: 26
                                         - type: ActionButton
-                                          name: doProject1ChBtn
+                                          name: doDemo1ChBtn
                                           margin: none
                                           minWidth: 10
                                           maxWidth: 10
@@ -619,7 +641,7 @@ children:
                                   cell:
                                     row: 0
                                     column: 1
-                                - name: doProject2sLst
+                                - name: doDemo2sLst
                                   type: ComboBox
                                   cell:
                                     row: 0
@@ -634,7 +656,7 @@ children:
                                   cell:
                                     row: 0
                                     column: 3
-                                - name: doProject2sLstA
+                                - name: doDemo2sLstA
                                   type: ComboBox
                                   margin: none
                                   cell:
@@ -647,7 +669,7 @@ children:
                                   cell:
                                     row: 1
                                     column: 1
-                                - name: doProject2sLstB
+                                - name: doDemo2sLstB
                                   type: TextBox
                                   format: number
                                   margin: none
@@ -663,7 +685,7 @@ children:
                                   cell:
                                     row: 1
                                     column: 3
-                                - name: doProject2sLstG
+                                - name: doDemo2sLstG
                                   type: ComboBox
                                   margin: none
                                   cell:
@@ -678,7 +700,7 @@ children:
                                   cell:
                                     row: 2
                                     column: 1
-                                - name: doProject2sLstD
+                                - name: doDemo2sLstD
                                   type: ComboBox
                                   margin: none
                                   cell:
@@ -693,7 +715,7 @@ children:
                                   cell:
                                     row: 2
                                     column: 3
-                                - name: doProject2sLstE
+                                - name: doDemo2sLstE
                                   type: TextBox
                                   format: number
                                   margin: none
@@ -724,7 +746,7 @@ children:
                                   cell:
                                     row: 0
                                     column: 1
-                                - name: doProject2sLstC
+                                - name: doDemo2sLstC
                                   type: ComboBox
                                   margin: none
                                   cell:
@@ -739,7 +761,7 @@ children:
                                   cell:
                                     row: 0
                                     column: 3
-                                - name: doProject2sLstF
+                                - name: doDemo2sLstF
                                   type: ComboBox
                                   margin: none
                                   cell:
@@ -822,7 +844,7 @@ children:
                                                                 - type: Label
                                                                   label: ' '
                                                                   minWidth: 26
-                                                        - name: doProject2A1Btn
+                                                        - name: doDemo2A1Btn
                                                           type: ActionButton
                                                           margin: none
                                                           maxWidth: 79
@@ -846,7 +868,7 @@ children:
                                                           style: list
                                                           children:
                                                             - type: ActionButton
-                                                              name: doProject2A2Btn
+                                                              name: doDemo2A2Btn
                                                               margin: none
                                                               maxWidth: 79
                                                               maxHeight: 24
@@ -894,7 +916,7 @@ children:
                                                               margin: none
                                                               maxWidth: 79
                                         - type: ActionButton
-                                          name: doProject2AhBtn
+                                          name: doDemo2AhBtn
                                           margin: none
                                           minWidth: 10
                                           maxWidth: 10
@@ -964,7 +986,7 @@ children:
                                                                           minWidth: 13
                                                                         - type: Label
                                                                           label: '- do this several times'
-                                                        - name: doProject2B1Btn
+                                                        - name: doDemo2B1Btn
                                                           type: ActionButton
                                                           margin: none
                                                           maxWidth: 79
@@ -998,7 +1020,7 @@ children:
                                                                         - type: Label
                                                                           label: '- you can do this several times'
                                                         - type: ActionButton
-                                                          name: doProject2B2Btn
+                                                          name: doDemo2B2Btn
                                                           margin: none
                                                           maxWidth: 79
                                                           maxHeight: 24
@@ -1047,7 +1069,7 @@ children:
                                                               margin: none
                                                               maxWidth: 79
                                         - type: ActionButton
-                                          name: doProject2BhBtn
+                                          name: doDemo2BhBtn
                                           margin: none
                                           minWidth: 10
                                           maxWidth: 10
@@ -1104,7 +1126,7 @@ children:
                                                                         - type: Label
                                                                           label: ' '
                                                                           minWidth: 13
-                                                        - name: doProject2C1Btn
+                                                        - name: doDemo2C1Btn
                                                           type: ActionButton
                                                           margin: none
                                                           maxWidth: 79
@@ -1185,7 +1207,7 @@ children:
                                                                           label: ' '
                                                                           minWidth: 13
                                         - type: ActionButton
-                                          name: doProject2ChBtn
+                                          name: doDemo2ChBtn
                                           margin: none
                                           minWidth: 10
                                           maxWidth: 10
@@ -1226,7 +1248,7 @@ children:
                                   cell:
                                     row: 0
                                     column: 1
-                                - name: doProject3sLst
+                                - name: doDemo3sLst
                                   type: ComboBox
                                   cell:
                                     row: 0
@@ -1241,7 +1263,7 @@ children:
                                   cell:
                                     row: 0
                                     column: 3
-                                - name: doProject3sLstA
+                                - name: doDemo3sLstA
                                   type: ComboBox
                                   margin: none
                                   cell:
@@ -1256,7 +1278,7 @@ children:
                                   cell:
                                     row: 1
                                     column: 1
-                                - name: doProject3sLstB
+                                - name: doDemo3sLstB
                                   type: TextBox
                                   format: number
                                   margin: none
@@ -1272,7 +1294,7 @@ children:
                                   cell:
                                     row: 1
                                     column: 3
-                                - name: doProject3sLstG
+                                - name: doDemo3sLstG
                                   type: ComboBox
                                   margin: none
                                   verticalAlignment: top
@@ -1286,7 +1308,7 @@ children:
                                   cell:
                                     row: 2
                                     column: 1
-                                - name: doProject3sLstD
+                                - name: doDemo3sLstD
                                   type: ComboBox
                                   margin: none
                                   verticalAlignment: top
@@ -1302,7 +1324,7 @@ children:
                                   cell:
                                     row: 2
                                     column: 3
-                                - name: doProject3sLstE
+                                - name: doDemo3sLstE
                                   type: TextBox
                                   format: number
                                   margin: none
@@ -1311,7 +1333,7 @@ children:
                                     column: 4
                                   events:
                                     change: ./brawsim.events::onChange_Project3sH
-                                - name: doProject3sLstJ
+                                - name: doDemo3sLstJ
                                   type: ComboBox
                                   margin: none
                                   cell:
@@ -1327,7 +1349,7 @@ children:
                                     row: 3
                                     column: 1
                                 - type: ComboBox
-                                  name: doProject3sLstH
+                                  name: doDemo3sLstH
                                   margin: none
                                   cell:
                                     row: 3
@@ -1342,7 +1364,7 @@ children:
                                     row: 3
                                     column: 3
                                 - type: TextBox
-                                  name: doProject3sLstK
+                                  name: doDemo3sLstK
                                   format: number
                                   margin: none
                                   cell:
@@ -1371,7 +1393,7 @@ children:
                                   cell:
                                     row: 0
                                     column: 1
-                                - name: doProject3sLstC
+                                - name: doDemo3sLstC
                                   type: ComboBox
                                   margin: none
                                   cell:
@@ -1386,7 +1408,7 @@ children:
                                   cell:
                                     row: 0
                                     column: 3
-                                - name: doProject3sLstF
+                                - name: doDemo3sLstF
                                   type: ComboBox
                                   margin: none
                                   cell:
@@ -1402,7 +1424,7 @@ children:
                                     row: 2
                                     column: 1
                                 - type: ComboBox
-                                  name: doProject3sLstI
+                                  name: doDemo3sLstI
                                   margin: none
                                   cell:
                                     row: 2
@@ -1465,7 +1487,7 @@ children:
                                                                 - type: Label
                                                                   label: ' '
                                                                   minWidth: 26
-                                                        - name: doProject3A1Btn
+                                                        - name: doDemo3A1Btn
                                                           type: ActionButton
                                                           margin: none
                                                           maxWidth: 79
@@ -1552,14 +1574,14 @@ children:
                                                                   label: ' '
                                                                   minWidth: 26
                                                         - type: ActionButton
-                                                          name: doProject3A3Btn
+                                                          name: doDemo3A3Btn
                                                           margin: none
                                                           maxWidth: 79
                                                           maxHeight: 24
                                                           events:
                                                             change: ./brawsim.events::onChange_project3A3
                                         - type: ActionButton
-                                          name: doProject3AhBtn
+                                          name: doDemo3AhBtn
                                           margin: none
                                           minWidth: 10
                                           maxWidth: 10
@@ -1623,7 +1645,7 @@ children:
                                                                 - type: Label
                                                                   label: ' '
                                                                   minWidth: 26
-                                                        - name: doProject3B1Btn
+                                                        - name: doDemo3B1Btn
                                                           type: ActionButton
                                                           margin: none
                                                           maxWidth: 79
@@ -1711,7 +1733,7 @@ children:
                                                               margin: none
                                                               maxWidth: 79
                                         - type: ActionButton
-                                          name: doProject3BhBtn
+                                          name: doDemo3BhBtn
                                           margin: none
                                           minWidth: 10
                                           maxWidth: 10
@@ -1767,7 +1789,7 @@ children:
                                                                 - type: Label
                                                                   label: ' '
                                                                   minWidth: 26
-                                                        - name: doProject3C1Btn
+                                                        - name: doDemo3C1Btn
                                                           type: ActionButton
                                                           margin: none
                                                           maxWidth: 79
@@ -1847,7 +1869,7 @@ children:
                                                                 - type: Label
                                                                   label: ' '
                                                                   minWidth: 26
-                                                        - name: doProject3C3Btn
+                                                        - name: doDemo3C3Btn
                                                           type: ActionButton
                                                           margin: none
                                                           maxWidth: 79
@@ -1855,7 +1877,7 @@ children:
                                                           events:
                                                             change: ./brawsim.events::onChange_project3C3
                                         - type: ActionButton
-                                          name: doProject3ChBtn
+                                          name: doDemo3ChBtn
                                           margin: none
                                           minWidth: 10
                                           maxWidth: 10
@@ -1897,7 +1919,7 @@ children:
                                     row: 0
                                     column: 1
                                 - type: ComboBox
-                                  name: doProject4sLst
+                                  name: doDemo4sLst
                                   label: ''
                                   cell:
                                     row: 0
@@ -1912,7 +1934,7 @@ children:
                                     row: 1
                                     column: 1
                                 - type: ComboBox
-                                  name: doProject4sLstA1
+                                  name: doDemo4sLstA1
                                   label: ''
                                   cell:
                                     row: 1
@@ -1921,7 +1943,7 @@ children:
                                   events:
                                     change: ./brawsim.events::onChange_Project4sH
                                 - type: ComboBox
-                                  name: doProject4sLstA2
+                                  name: doDemo4sLstA2
                                   label: ''
                                   cell:
                                     row: 1
@@ -1937,7 +1959,7 @@ children:
                                     row: 2
                                     column: 1
                                 - type: TextBox
-                                  name: doProject4sLstB
+                                  name: doDemo4sLstB
                                   format: number
                                   margin: none
                                   cell:
@@ -1953,7 +1975,7 @@ children:
                                     row: 2
                                     column: 3
                                 - type: TextBox
-                                  name: doProject4sLstC
+                                  name: doDemo4sLstC
                                   format: number
                                   margin: none
                                   cell:
@@ -1976,7 +1998,7 @@ children:
                                     row: 3
                                     column: 3
                                 - type: TextBox
-                                  name: doProject4sLstD
+                                  name: doDemo4sLstD
                                   format: number
                                   margin: none
                                   cell:
@@ -1992,7 +2014,7 @@ children:
                                     row: 4
                                     column: 1
                                 - type: ComboBox
-                                  name: doProject4sLstE
+                                  name: doDemo4sLstE
                                   margin: none
                                   cell:
                                     row: 4
@@ -2001,14 +2023,14 @@ children:
                                     change: ./brawsim.events::onChange_Project4sH
                                 - type: Label
                                   label: 'rIV×IV2→DV:'
-                                  enable: (doProject4sLstE:yes)
+                                  enable: (doDemo4sLstE:yes)
                                   margin: none
                                   horizontalAlignment: right
                                   cell:
                                     row: 4
                                     column: 3
                                 - type: TextBox
-                                  name: doProject4sLstF
+                                  name: doDemo4sLstF
                                   format: number
                                   margin: none
                                   cell:
@@ -2016,7 +2038,7 @@ children:
                                     column: 4
                                   events:
                                     change: ./brawsim.events::onChange_Project4sH
-                                  enable: (doProject4sLstE:yes)
+                                  enable: (doDemo4sLstE:yes)
                                 - type: Label
                                   label: 'sample size:'
                                   margin: none
@@ -2025,7 +2047,7 @@ children:
                                     row: 5
                                     column: 1
                                 - type: TextBox
-                                  name: doProject4sLstK
+                                  name: doDemo4sLstK
                                   format: number
                                   margin: none
                                   cell:
@@ -2039,7 +2061,7 @@ children:
                                     row: 6
                                     column: 1
                                 - type: ComboBox
-                                  name: doProject4sLstJ
+                                  name: doDemo4sLstJ
                                   margin: none
                                   cell:
                                     row: 6
@@ -2052,7 +2074,7 @@ children:
                                     row: 6
                                     column: 3
                                 - type: TextBox
-                                  name: doProject4sLstL
+                                  name: doDemo4sLstL
                                   format: number
                                   margin: none
                                   cell:
@@ -2080,7 +2102,7 @@ children:
                                   cell:
                                     row: 0
                                     column: 1
-                                - name: doProject4sLstG
+                                - name: doDemo4sLstG
                                   type: ComboBox
                                   margin: none
                                   cell:
@@ -2096,7 +2118,7 @@ children:
                                     row: 2
                                     column: 1
                                 - type: ComboBox
-                                  name: doProject4sLstI
+                                  name: doDemo4sLstI
                                   margin: none
                                   cell:
                                     row: 2
@@ -2151,7 +2173,7 @@ children:
                                                           children:
                                                             - type: Label
                                                               label: 1. we make a sample
-                                                        - name: doProject4A1Btn
+                                                        - name: doDemo4A1Btn
                                                           type: ActionButton
                                                           margin: none
                                                           maxWidth: 79
@@ -2168,7 +2190,7 @@ children:
                                                           children:
                                                             - type: Label
                                                               label: 2. then look at the Jamovi Instructions
-                                                        - name: doProject4A2Btn
+                                                        - name: doDemo4A2Btn
                                                           type: ActionButton
                                                           margin: none
                                                           maxWidth: 79
@@ -2196,7 +2218,7 @@ children:
                                                                 Suggestion: try some other effect sizes
                                                                 and variables
                                         - type: ActionButton
-                                          name: doProject4AhBtn
+                                          name: doDemo4AhBtn
                                           margin: none
                                           minWidth: 10
                                           maxWidth: 10
@@ -2231,7 +2253,7 @@ children:
                                                           children:
                                                             - type: Label
                                                               label: 1. what is an interaction?
-                                                        - name: doProject4B1Btn
+                                                        - name: doDemo4B1Btn
                                                           type: ActionButton
                                                           margin: none
                                                           maxWidth: 79
@@ -2248,7 +2270,7 @@ children:
                                                           children:
                                                             - type: Label
                                                               label: 2. interaction as on/off switch
-                                                        - name: doProject4B2Btn
+                                                        - name: doDemo4B2Btn
                                                           type: ActionButton
                                                           margin: none
                                                           maxWidth: 79
@@ -2275,7 +2297,7 @@ children:
                                                           children:
                                                             - type: Label
                                                               label: 3. interaction as +/- switch
-                                                        - name: doProject4B3Btn
+                                                        - name: doDemo4B3Btn
                                                           type: ActionButton
                                                           margin: none
                                                           maxWidth: 79
@@ -2291,7 +2313,7 @@ children:
                                                         - type: Label
                                                           label: '- the main effects are zero'
                                         - type: ActionButton
-                                          name: doProject4BhBtn
+                                          name: doDemo4BhBtn
                                           margin: none
                                           minWidth: 10
                                           maxWidth: 10
@@ -2326,7 +2348,7 @@ children:
                                                           children:
                                                             - type: Label
                                                               label: 1. what is covariation?
-                                                        - name: doProject4C1Btn
+                                                        - name: doDemo4C1Btn
                                                           type: ActionButton
                                                           margin: none
                                                           maxWidth: 79
@@ -2351,7 +2373,7 @@ children:
                                                           children:
                                                             - type: Label
                                                               label: 2. covariation affects main effects
-                                                        - name: doProject4C2Btn
+                                                        - name: doDemo4C2Btn
                                                           type: ActionButton
                                                           margin: none
                                                           maxWidth: 79
@@ -2376,7 +2398,7 @@ children:
                                                           children:
                                                             - type: Label
                                                               label: 3. explore covariation
-                                                        - name: doProject4C3Btn
+                                                        - name: doDemo4C3Btn
                                                           type: ActionButton
                                                           margin: none
                                                           maxWidth: 79
@@ -2392,13 +2414,387 @@ children:
                                                         - type: Label
                                                           label: '- compare direct, unique and total'
                                         - type: ActionButton
-                                          name: doProject4ChBtn
+                                          name: doDemo4ChBtn
                                           margin: none
                                           minWidth: 10
                                           maxWidth: 10
                                           maxHeight: 24
                         - type: ActionButton
                           name: demo4Help
+                          margin: none
+                          minWidth: 10
+                          maxWidth: 10
+                          maxHeight: 24
+      - type: Content
+        name: LearnMeta
+        margin: none
+        children:
+                - type: LayoutBox
+                  style: list
+                  children:
+                    - type: LayoutBox
+                      style: inline
+                      children:
+                        - type: CollapseBox
+                          collapsed: true
+                          label: '1. Inferences: how safe are they?'
+                          margin: none
+                          minWidth: 470
+                          maxWidth: 470
+                          children:
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                            - type: Label
+                              label: ' '
+                              minWidth: 15
+                            - type: Label
+                              label: 'Sampling:'
+                            - type: TextBox
+                              name: metaSampleSize
+                              format: number
+                              margin: none
+                            - type: ComboBox
+                              name: metaSampleMethod
+                              margin: none
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                            - type: Label
+                              label: ' '
+                              minWidth: 30
+                            - type: CollapseBox
+                              collapsed: true
+                              label: 'a. did the result come from rₚ=0 or rₚ=0.3?'
+                              margin: none
+                              minWidth: 300
+                              children:
+                                - type: Label
+                                  label: ' '
+                                  cell:
+                                    row: 0
+                                    column: 0
+                                - type: Label
+                                  label: 'Press here for a new sample'
+                                  cell:
+                                    row: 0
+                                    column: 1
+                                - type: ActionButton
+                                  name: doMeta1ABtn
+                                  maxHeight: 24
+                                  margin: none
+                                  cell:
+                                    row: 0
+                                    column: 2
+                                - type: Label
+                                  label: 'Press here to see many samples'
+                                  cell:
+                                    row: 1
+                                    column: 1
+                                - type: ActionButton
+                                  name: doMeta1AmBtn
+                                  maxHeight: 24
+                                  margin: none
+                                  cell:
+                                    row: 1
+                                    column: 2
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                            - type: Label
+                              label: ' '
+                              minWidth: 30
+                            - type: CollapseBox
+                              collapsed: true
+                              label: 'b. a more realistic situation'
+                              margin: none
+                              minWidth: 300
+                              children:
+                                - type: Label
+                                  label: ' '
+                                  cell:
+                                    row: 0
+                                    column: 0
+                                - type: Label
+                                  label: 'Press here for a new sample'
+                                  cell:
+                                    row: 0
+                                    column: 1
+                                - type: ActionButton
+                                  name: doMeta1BBtn
+                                  maxHeight: 24
+                                  margin: none
+                                  cell:
+                                    row: 0
+                                    column: 2
+                                - type: Label
+                                  label: 'Press here to see many samples'
+                                  cell:
+                                    row: 1
+                                    column: 1
+                                - type: ActionButton
+                                  name: doMeta1BmBtn
+                                  maxHeight: 24
+                                  margin: none
+                                  cell:
+                                    row: 1
+                                    column: 2
+                        - type: ActionButton
+                          name: meta1Help
+                          margin: none
+                          minWidth: 10
+                          maxWidth: 10
+                          maxHeight: 24
+                    - type: LayoutBox
+                      style: inline
+                      children:
+                        - type: CollapseBox
+                          collapsed: true
+                          label: '2. Strategies: what are the optimal approaches?'
+                          margin: none
+                          minWidth: 470
+                          maxWidth: 470
+                          children:
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                            - type: Label
+                              label: ' '
+                              minWidth: 30
+                            - type: CollapseBox
+                              collapsed: true
+                              label: 'a. one big sample or many small samples?'
+                              margin: none
+                              minWidth: 300
+                              children:
+                              - type: LayoutBox
+                                style: list
+                                children:
+                                - type: LayoutBox
+                                  style: inline
+                                  children:
+                                  - type: Label
+                                    label: 'Each sample:'
+                                    margin: none
+                                  - type: TextBox
+                                    name: meta2IndivSampleSize
+                                    format: number
+                                    margin: none
+                                  - type: TextBox
+                                    name: meta2SampleBudget
+                                    format: number
+                                    margin: none
+                                - type: LayoutBox
+                                  style: inline
+                                  children:
+                                  - type: Label
+                                    label: 'Press here for a new set of samples'
+                                    cell:
+                                      row: 0
+                                      column: 1
+                                  - type: ActionButton
+                                    name: doMeta2ABtn
+                                    maxHeight: 24
+                                    margin: none
+                                    cell:
+                                      row: 0
+                                      column: 2
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                            - type: Label
+                              label: ' '
+                              minWidth: 30
+                            - type: CollapseBox
+                              collapsed: true
+                              label: 'b. cheating?'
+                              margin: none
+                              minWidth: 300
+                              children:
+                              - type: LayoutBox
+                                style: list
+                                children:
+                                - type: LayoutBox
+                                  style: inline
+                                  margin: none
+                                  children:
+                                  - type: Label
+                                    label: 'Sampling:'
+                                  - type: TextBox
+                                    name: meta2SampleSize
+                                    format: number
+                                    margin: none
+                                  - type: ComboBox
+                                    name: metaCheating
+                                    margin: none
+                                - type: LayoutBox
+                                  style: inline
+                                  margin: none
+                                  children:
+                                  - type: Label
+                                    label: 'Press here for a new sample'
+                                    cell:
+                                      row: 0
+                                      column: 1
+                                  - type: ActionButton
+                                    name: doMeta2BBtn
+                                    maxHeight: 24
+                                    margin: none
+                                    cell:
+                                      row: 0
+                                      column: 2
+                                  - type: Label
+                                    label: 'Press here to see many samples'
+                                    cell:
+                                      row: 1
+                                      column: 1
+                                  - type: ActionButton
+                                    name: doMeta2BmBtn
+                                    maxHeight: 24
+                                    margin: none
+                                    cell:
+                                      row: 1
+                                      column: 2
+                        - type: ActionButton
+                          name: meta2Help
+                          margin: none
+                          minWidth: 10
+                          maxWidth: 10
+                          maxHeight: 24
+                    - type: LayoutBox
+                      style: inline
+                      children:
+                        - type: CollapseBox
+                          collapsed: true
+                          label: '3. Believable Results: how good are replication and meta-analysis?'
+                          margin: none
+                          minWidth: 470
+                          maxWidth: 470
+                          children:
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                            - type: Label
+                              label: ' '
+                              minWidth: 15
+                            - type: Label
+                              label: 'Sampling:'
+                            - type: TextBox
+                              name: meta3SampleSize
+                              format: number
+                              margin: none
+                            - type: ComboBox
+                              name: meta3SampleMethod
+                              margin: none
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                            - type: Label
+                              label: ' '
+                              minWidth: 30
+                            - type: CollapseBox
+                              collapsed: true
+                              label: 'a. does replication help?'
+                              margin: none
+                              minWidth: 300
+                              children:
+                              - type: LayoutBox
+                                style: list
+                                children:
+                                - type: LayoutBox
+                                  style: inline
+                                  children:
+                                  - type: Label
+                                    label: 'Press here for the replication of a new sample'
+                                    cell:
+                                      row: 0
+                                      column: 1
+                                  - type: ActionButton
+                                    name: doMeta3ABtn
+                                    maxHeight: 24
+                                    margin: none
+                                    cell:
+                                      row: 0
+                                      column: 2
+                                  - type: Label
+                                    label: 'Press here to see many samples'
+                                    cell:
+                                      row: 1
+                                      column: 1
+                                  - type: ActionButton
+                                    name: doMeta3AmBtn
+                                    maxHeight: 24
+                                    margin: none
+                                    cell:
+                                      row: 1
+                                      column: 2
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                            - type: Label
+                              label: ' '
+                              minWidth: 30
+                            - type: CollapseBox
+                              collapsed: true
+                              label: 'b. meta-analysis?'
+                              margin: none
+                              minWidth: 300
+                              children:
+                              - type: LayoutBox
+                                style: list
+                                children:
+                                - type: LayoutBox
+                                  style: inline
+                                  margin: none
+                                  children:
+                                  - type: Label
+                                    label: 'Press here for meta-analysis of two new samples'
+                                    cell:
+                                      row: 0
+                                      column: 1
+                                  - type: ActionButton
+                                    name: doMeta3BBtn
+                                    maxHeight: 24
+                                    margin: none
+                                    cell:
+                                      row: 0
+                                      column: 2
+                                  - type: Label
+                                    label: 'Press here to see many samples'
+                                    cell:
+                                      row: 1
+                                      column: 1
+                                  - type: ActionButton
+                                    name: doMeta3BmBtn
+                                    maxHeight: 24
+                                    margin: none
+                                    cell:
+                                      row: 1
+                                      column: 2
+                        - type: ActionButton
+                          name: meta3Help
+                          margin: none
+                          minWidth: 10
+                          maxWidth: 10
+                          maxHeight: 24
+                    - type: LayoutBox
+                      style: inline
+                      children:
+                        - type: CollapseBox
+                          collapsed: true
+                          label: '4. Real Differences: how do large differences in results happen?'
+                          margin: none
+                          minWidth: 470
+                          maxWidth: 470
+                          children:
+                          - type: LayoutBox
+                            style: list
+                            margin: none
+                            children:
+                            - type: Label
+                              label: 'more&more'
+                        - type: ActionButton
+                          name: meta4Help
                           margin: none
                           minWidth: 10
                           maxWidth: 10
@@ -4157,3 +4553,5 @@ children:
                           name: showHypothesisLst
                         - type: ComboBox
                           name: lastDemo
+                        - type: ComboBox
+                          name: lastMeta

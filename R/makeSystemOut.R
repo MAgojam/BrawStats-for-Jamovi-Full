@@ -24,13 +24,18 @@ makeSystemOut<-function(self,statusStore,changedH,changedD,changedE,helpOutput) 
   ) 
   
   svgBox(200*self$options$systemMag)
-  h<-showSystem("hypothesis")
+  if (braw.def$hypothesis$effect$world$worldOn) {
+    h<-showSystem("world")
+  } else {
+    h<-showSystem("hypothesis")
+    e<-showSystem("prediction")
+    h<-joinHTML(h,e)
+  }
   svgBox(180*self$options$systemMag)
   sd<-showSystem("design")
   svgBox(180)
   rd<-reportDesign()
-  svgBox(200*self$options$systemMag)
-  e<-showSystem("prediction")
+  d<-joinHTML(sd,rd)
   # l<-showPossible(NA,showType="Samples")
   systemHTML<-paste0(systemHTML,
                      generate_tab(
@@ -38,10 +43,7 @@ makeSystemOut<-function(self,statusStore,changedH,changedD,changedE,helpOutput) 
                        title="Plan:",
                        plain=plain,
                        tabs=c("Hypothesis","Design"),
-                       tabContents = c(
-                         joinHTML(h,e),
-                         joinHTML(sd,rd)
-                       ),
+                       tabContents = c(h,d),
                        open=openSystem
                      )
   )
