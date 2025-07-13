@@ -55,8 +55,10 @@ setBraw<-function(self) {
                      sDependence=self$options$Dependence,
                      sOutliers=self$options$Outliers,
                      sNonResponse=self$options$NonResponse,
-                     sRangeOn=self$options$LimitRange=="yes", 
-                     sIVRange=(c(self$options$RangeMin,self$options$RangeMax)-braw.def$hypothesis$IV$mu)/braw.def$hypothesis$IV$sd, 
+                     sIVRangeOn=self$options$LimitRangeIV=="yes", 
+                     sIVRange=(c(self$options$RangeMinIV,self$options$RangeMaxIV)-braw.def$hypothesis$IV$mu)/braw.def$hypothesis$IV$sd, 
+                     sIV2RangeOn=self$options$LimitRangeIV2=="yes", 
+                     sIV2Range=(c(self$options$RangeMinIV2,self$options$RangeMaxIV2)-braw.def$hypothesis$IV$mu)/braw.def$hypothesis$IV$sd, 
                      sCheating=self$options$Cheating,sCheatingLimit="Budget",sCheatingBudget=self$options$CheatingBudget,
                      Replication=makeReplication(On=self$options$ReplicationOn,
                                                  Power=self$options$ReplicationPower,
@@ -91,7 +93,7 @@ setBraw<-function(self) {
                             populationPDFk=self$options$priorLambda,
                             populationNullp=self$options$priorNullP)
          })
-  evidence<-makeEvidence(rInteractionOn=self$options$interaction=="yes",
+  evidence<-makeEvidence(AnalysisTerms=1+(self$options$main2=="yes")+(self$options$interaction=="yes"),
                          ssqType=self$options$ssq,sigOnly=FALSE,
                          Welch=self$options$equalVar=="no",
                          Transform=self$options$Transform,

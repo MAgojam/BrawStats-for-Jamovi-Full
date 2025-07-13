@@ -21,7 +21,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       if (is.null(braw.res$statusStore)) {
         firstRun<-TRUE
 
-        setBrawOpts(reducedOutput=TRUE,reportHTML=TRUE,
+        setBrawOpts(fullOutput=0,reportHTML=TRUE,
                     fontScale=1.5,fullGraphSize=0.5,
                     npointsMax=1000,
                     autoPrint=FALSE
@@ -101,6 +101,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                          self$options$doMeta3BBtn,self$options$doMeta3BmBtn)
                        )[1]
       if (!is.na(doingMeta)) {
+        if (self$results$simGraph$visible) self$results$simGraph$setVisible(FALSE)
+        
         if (is.element(doingMeta,c(1,2)))
           hypothesis<-makeHypothesis(effect=makeEffect(world=makeWorld(TRUE,"Single","r",populationPDFk=0.3,populationNullp=0.5)))
         else
@@ -122,13 +124,13 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         if (is.element(doingMeta,c(9,10))) {
           design<-makeDesign(sN=self$options$meta3SampleSize,
                              Replication=makeReplication(TRUE,Keep="Cautious",
-                                                         Power=0.9)
+                                                         forceSigOriginal=TRUE,Power=0.9)
           )
         }
         if (is.element(doingMeta,c(11,12))) {
           design<-makeDesign(sN=self$options$meta3SampleSize,
                              Replication=makeReplication(TRUE,Keep="MetaAnalysis",
-                                                         Power=0.9)
+                                                         forceSigOriginal=TRUE,Power=0.9)
           )
         }
         setBrawDef("design",design)
@@ -151,7 +153,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         }
         
         if (is.element(doingMeta,c(5))) {
-          nreps<-floor(self$options$meta2SampleBudget/self$options$meta2SampleSize)
+          nreps<-floor(self$options$meta2SampleBudget/self$options$meta2IndivSampleSize)
           doMultiple(nreps)
           open<-2
           reportCounts<-TRUE
@@ -163,9 +165,28 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           open<-2
         }
         
-        if (self$options$showHTML) {
+        if (self$options$showHTML || 1==1) {
           svgBox(height=350,aspect=1.5)
           setBrawEnv("graphicsType","HTML")
+          if (1==1) {
+          switch(open,
+                 { setBrawEnv("fullOutput",1)
+                   brawResults<-paste0(showDescription(),reportInference())
+                   setBrawEnv("fullOutput",0)
+                 },
+                 {
+                   if (is.element(doingMeta,c(9,11))) {
+                     setBrawEnv("fullOutput",1)
+                     brawResults<-paste0(showMultiple(),reportInference())
+                     setBrawEnv("fullOutput",0)
+                   }
+                   else
+                     brawResults<-paste0(showMultiple(showType="rse",dimension="1D",orientation="horz"),
+                                           reportMultiple(showType="NHST",reportStats=self$options$reportInferStats,reportCounts=reportCounts)
+                     )
+                 }
+                 )
+          } else {
           if (!is.null(braw.res$result))
             graphSingle<-paste0(showDescription(),reportInference())
           else graphSingle<-nullPlot()
@@ -189,8 +210,9 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
             ),
             open=open
           )
-          self$results$simGraphHTML$setContent(brawResults)
-          
+          }
+          self$results$simMetaHTML$setContent(brawResults)
+          self$results$simMetaHTML$setVisible(TRUE)
         } else {
           switch(open,
                  {
@@ -229,6 +251,9 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       
       if (!is.na(doingMeta)) { 
         return()
+      } else {
+        self$results$simMetaHTML$setContent('')
+        self$results$simMetaHTML$setVisible(FALSE)
       }
       
       ## changes in the mode selectors can now be ignored

@@ -645,8 +645,8 @@ options:
       type: Number
       default: 0
       
-    - name: LimitRange
-      title: Limit range?
+    - name: LimitRangeIV
+      title: Limit IV range?
       type: List
       options:
       - name: yes
@@ -655,12 +655,32 @@ options:
         title: no
       default: no
         
-    - name: RangeMin
+    - name: RangeMinIV
       title: from
       type: Number
       default: -3
       
-    - name: RangeMax
+    - name: RangeMaxIV
+      title: to
+      type: Number
+      default: 3
+      
+    - name: LimitRangeIV2
+      title: Limit IV2 range?
+      type: List
+      options:
+      - name: yes
+        title: yes
+      - name: no
+        title: no
+      default: no
+        
+    - name: RangeMinIV2
+      title: from
+      type: Number
+      default: -3
+      
+    - name: RangeMaxIV2
       title: to
       type: Number
       default: 3
@@ -795,6 +815,16 @@ options:
       - name: Type3
         title: Type3
       default: Type3
+
+    - name: main2
+      title: 'Main 2?'
+      type: List
+      options:
+      - name: no
+        title: no
+      - name: yes
+        title: yes
+      default: no
 
     - name: interaction
       title: 'Interaction?'
@@ -1487,7 +1517,7 @@ options:
     - name: showHTML
       title: HTML graphics
       type: Bool
-      default: true
+      default: false
 
     - name: fixedAxes
       title: Fixed axes

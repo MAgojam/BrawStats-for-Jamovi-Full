@@ -88,9 +88,12 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             Dependence = 0,
             Outliers = 0,
             NonResponse = 0,
-            LimitRange = "no",
-            RangeMin = -3,
-            RangeMax = 3,
+            LimitRangeIV = "no",
+            RangeMinIV = -3,
+            RangeMaxIV = 3,
+            LimitRangeIV2 = "no",
+            RangeMinIV2 = -3,
+            RangeMaxIV2 = 3,
             Cheating = "None",
             CheatingBudget = 0.5,
             ReplicationOn = FALSE,
@@ -106,6 +109,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             alphaSig = 0.05,
             minRp = 0,
             ssq = "Type3",
+            main2 = "no",
             interaction = "no",
             equalVar = "yes",
             Transform = "None",
@@ -166,7 +170,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             showExploreStyle = "stats",
             whichShowMultiple = "all",
             brawHelp = TRUE,
-            showHTML = TRUE,
+            showHTML = FALSE,
             fixedAxes = FALSE,
             shorthandCalculations = FALSE,
             showHypothesisLst = "Default",
@@ -713,20 +717,35 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 "NonResponse",
                 NonResponse,
                 default=0)
-            private$..LimitRange <- jmvcore::OptionList$new(
-                "LimitRange",
-                LimitRange,
+            private$..LimitRangeIV <- jmvcore::OptionList$new(
+                "LimitRangeIV",
+                LimitRangeIV,
                 options=list(
                     "yes",
                     "no"),
                 default="no")
-            private$..RangeMin <- jmvcore::OptionNumber$new(
-                "RangeMin",
-                RangeMin,
+            private$..RangeMinIV <- jmvcore::OptionNumber$new(
+                "RangeMinIV",
+                RangeMinIV,
                 default=-3)
-            private$..RangeMax <- jmvcore::OptionNumber$new(
-                "RangeMax",
-                RangeMax,
+            private$..RangeMaxIV <- jmvcore::OptionNumber$new(
+                "RangeMaxIV",
+                RangeMaxIV,
+                default=3)
+            private$..LimitRangeIV2 <- jmvcore::OptionList$new(
+                "LimitRangeIV2",
+                LimitRangeIV2,
+                options=list(
+                    "yes",
+                    "no"),
+                default="no")
+            private$..RangeMinIV2 <- jmvcore::OptionNumber$new(
+                "RangeMinIV2",
+                RangeMinIV2,
+                default=-3)
+            private$..RangeMaxIV2 <- jmvcore::OptionNumber$new(
+                "RangeMaxIV2",
+                RangeMaxIV2,
                 default=3)
             private$..Cheating <- jmvcore::OptionList$new(
                 "Cheating",
@@ -814,6 +833,13 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "Type2",
                     "Type3"),
                 default="Type3")
+            private$..main2 <- jmvcore::OptionList$new(
+                "main2",
+                main2,
+                options=list(
+                    "no",
+                    "yes"),
+                default="no")
             private$..interaction <- jmvcore::OptionList$new(
                 "interaction",
                 interaction,
@@ -1263,7 +1289,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             private$..showHTML <- jmvcore::OptionBool$new(
                 "showHTML",
                 showHTML,
-                default=TRUE)
+                default=FALSE)
             private$..fixedAxes <- jmvcore::OptionBool$new(
                 "fixedAxes",
                 fixedAxes,
@@ -1929,9 +1955,12 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..Dependence)
             self$.addOption(private$..Outliers)
             self$.addOption(private$..NonResponse)
-            self$.addOption(private$..LimitRange)
-            self$.addOption(private$..RangeMin)
-            self$.addOption(private$..RangeMax)
+            self$.addOption(private$..LimitRangeIV)
+            self$.addOption(private$..RangeMinIV)
+            self$.addOption(private$..RangeMaxIV)
+            self$.addOption(private$..LimitRangeIV2)
+            self$.addOption(private$..RangeMinIV2)
+            self$.addOption(private$..RangeMaxIV2)
             self$.addOption(private$..Cheating)
             self$.addOption(private$..CheatingBudget)
             self$.addOption(private$..ReplicationOn)
@@ -1947,6 +1976,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..alphaSig)
             self$.addOption(private$..minRp)
             self$.addOption(private$..ssq)
+            self$.addOption(private$..main2)
             self$.addOption(private$..interaction)
             self$.addOption(private$..equalVar)
             self$.addOption(private$..Transform)
@@ -2197,9 +2227,12 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         Dependence = function() private$..Dependence$value,
         Outliers = function() private$..Outliers$value,
         NonResponse = function() private$..NonResponse$value,
-        LimitRange = function() private$..LimitRange$value,
-        RangeMin = function() private$..RangeMin$value,
-        RangeMax = function() private$..RangeMax$value,
+        LimitRangeIV = function() private$..LimitRangeIV$value,
+        RangeMinIV = function() private$..RangeMinIV$value,
+        RangeMaxIV = function() private$..RangeMaxIV$value,
+        LimitRangeIV2 = function() private$..LimitRangeIV2$value,
+        RangeMinIV2 = function() private$..RangeMinIV2$value,
+        RangeMaxIV2 = function() private$..RangeMaxIV2$value,
         Cheating = function() private$..Cheating$value,
         CheatingBudget = function() private$..CheatingBudget$value,
         ReplicationOn = function() private$..ReplicationOn$value,
@@ -2215,6 +2248,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         alphaSig = function() private$..alphaSig$value,
         minRp = function() private$..minRp$value,
         ssq = function() private$..ssq$value,
+        main2 = function() private$..main2$value,
         interaction = function() private$..interaction$value,
         equalVar = function() private$..equalVar$value,
         Transform = function() private$..Transform$value,
@@ -2464,9 +2498,12 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..Dependence = NA,
         ..Outliers = NA,
         ..NonResponse = NA,
-        ..LimitRange = NA,
-        ..RangeMin = NA,
-        ..RangeMax = NA,
+        ..LimitRangeIV = NA,
+        ..RangeMinIV = NA,
+        ..RangeMaxIV = NA,
+        ..LimitRangeIV2 = NA,
+        ..RangeMinIV2 = NA,
+        ..RangeMaxIV2 = NA,
         ..Cheating = NA,
         ..CheatingBudget = NA,
         ..ReplicationOn = NA,
@@ -2482,6 +2519,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..alphaSig = NA,
         ..minRp = NA,
         ..ssq = NA,
+        ..main2 = NA,
         ..interaction = NA,
         ..equalVar = NA,
         ..Transform = NA,
@@ -2656,6 +2694,7 @@ BrawSimResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
     active = list(
         BrawStatsInstructions = function() private$.items[["BrawStatsInstructions"]],
         SystemHTML = function() private$.items[["SystemHTML"]],
+        simMetaHTML = function() private$.items[["simMetaHTML"]],
         simGraphHTML = function() private$.items[["simGraphHTML"]],
         simGraph = function() private$.items[["simGraph"]],
         simReport = function() private$.items[["simReport"]],
@@ -2680,13 +2719,17 @@ BrawSimResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$add(jmvcore::Html$new(
                 options=options,
                 name="SystemHTML",
-                visible=FALSE,
+                visible=FALSE))
+            self$add(jmvcore::Html$new(
+                options=options,
+                name="simMetaHTML",
+                visible=TRUE,
                 clearWith=list(
                     "makeSampleBtn")))
             self$add(jmvcore::Html$new(
                 options=options,
                 name="simGraphHTML",
-                visible=TRUE,
+                visible=FALSE,
                 clearWith=list(
                     "makeSampleBtn",
                     "showSampleType",
@@ -2715,7 +2758,7 @@ BrawSimResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 title=" ",
                 width=550,
                 height=400,
-                visible=FALSE,
+                visible=TRUE,
                 renderFun=".plotSimGraph",
                 clearWith=list(
                     "makeSampleBtn",
@@ -2901,9 +2944,12 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param Dependence .
 #' @param Outliers .
 #' @param NonResponse .
-#' @param LimitRange .
-#' @param RangeMin .
-#' @param RangeMax .
+#' @param LimitRangeIV .
+#' @param RangeMinIV .
+#' @param RangeMaxIV .
+#' @param LimitRangeIV2 .
+#' @param RangeMinIV2 .
+#' @param RangeMaxIV2 .
 #' @param Cheating .
 #' @param CheatingBudget .
 #' @param ReplicationOn .
@@ -2919,6 +2965,7 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param alphaSig .
 #' @param minRp .
 #' @param ssq .
+#' @param main2 .
 #' @param interaction .
 #' @param equalVar .
 #' @param Transform .
@@ -3086,6 +3133,7 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' \tabular{llllll}{
 #'   \code{results$BrawStatsInstructions} \tab \tab \tab \tab \tab a html \cr
 #'   \code{results$SystemHTML} \tab \tab \tab \tab \tab a html \cr
+#'   \code{results$simMetaHTML} \tab \tab \tab \tab \tab a html \cr
 #'   \code{results$simGraphHTML} \tab \tab \tab \tab \tab a html \cr
 #'   \code{results$simGraph} \tab \tab \tab \tab \tab an image \cr
 #'   \code{results$simReport} \tab \tab \tab \tab \tab a html \cr
@@ -3179,9 +3227,12 @@ BrawSim <- function(
     Dependence = 0,
     Outliers = 0,
     NonResponse = 0,
-    LimitRange = "no",
-    RangeMin = -3,
-    RangeMax = 3,
+    LimitRangeIV = "no",
+    RangeMinIV = -3,
+    RangeMaxIV = 3,
+    LimitRangeIV2 = "no",
+    RangeMinIV2 = -3,
+    RangeMaxIV2 = 3,
     Cheating = "None",
     CheatingBudget = 0.5,
     ReplicationOn = FALSE,
@@ -3197,6 +3248,7 @@ BrawSim <- function(
     alphaSig = 0.05,
     minRp = 0,
     ssq = "Type3",
+    main2 = "no",
     interaction = "no",
     equalVar = "yes",
     Transform = "None",
@@ -3257,7 +3309,7 @@ BrawSim <- function(
     showExploreStyle = "stats",
     whichShowMultiple = "all",
     brawHelp = TRUE,
-    showHTML = TRUE,
+    showHTML = FALSE,
     fixedAxes = FALSE,
     shorthandCalculations = FALSE,
     showHypothesisLst = "Default",
@@ -3448,9 +3500,12 @@ BrawSim <- function(
         Dependence = Dependence,
         Outliers = Outliers,
         NonResponse = NonResponse,
-        LimitRange = LimitRange,
-        RangeMin = RangeMin,
-        RangeMax = RangeMax,
+        LimitRangeIV = LimitRangeIV,
+        RangeMinIV = RangeMinIV,
+        RangeMaxIV = RangeMaxIV,
+        LimitRangeIV2 = LimitRangeIV2,
+        RangeMinIV2 = RangeMinIV2,
+        RangeMaxIV2 = RangeMaxIV2,
         Cheating = Cheating,
         CheatingBudget = CheatingBudget,
         ReplicationOn = ReplicationOn,
@@ -3466,6 +3521,7 @@ BrawSim <- function(
         alphaSig = alphaSig,
         minRp = minRp,
         ssq = ssq,
+        main2 = main2,
         interaction = interaction,
         equalVar = equalVar,
         Transform = Transform,

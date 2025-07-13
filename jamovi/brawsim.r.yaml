@@ -11,12 +11,18 @@ items:
     - name: SystemHTML
       type: Html
       visible: FALSE
+      
+      
+    - name: simMetaHTML
+      type: Html
+      visible: TRUE
+
       clearWith:
       - makeSampleBtn
 
     - name: simGraphHTML
       type: Html
-      visible: TRUE
+      visible: FALSE
       clearWith:
       - makeSampleBtn
       - showSampleType
@@ -45,7 +51,7 @@ items:
       type: Image
       width:  550
       height: 400
-      visible: FALSE
+      visible: TRUE
       renderFun: .plotSimGraph
       clearWith:
       - makeSampleBtn
