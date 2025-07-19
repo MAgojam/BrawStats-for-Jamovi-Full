@@ -156,7 +156,15 @@ setBraw<-function(self) {
   )
   setBrawDef("metaAnalysis",metaAnalysis)
   
-  
+  possible<-makePossible(UsePrior=self$options$likelihoodUsePrior,
+                         prior=makeWorld(worldOn=TRUE,
+                                         populationPDF=self$options$priorPDF,
+                                         populationRZ=self$options$priorRZ,
+                                         populationPDFk=self$options$priorLambda,
+                                         populationNullp=self$options$priorNullP)
+  )
+  setBrawDef("possibleResult",possible)
+             
   setBrawEnv("alphaSig",self$options$alphaSig)
   setBrawEnv("RZ",self$options$dispRZ)
   setBrawEnv("STMethod",self$options$STMethod)

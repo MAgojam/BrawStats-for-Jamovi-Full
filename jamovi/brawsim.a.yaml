@@ -12,11 +12,11 @@ options:
       options:
       - name: LearnHelp
         title: 'Learn with:'
-      - name: LearnDemo
+      - name: Demonstrations
         title: Demos
-      - name: LearnMeta
+      - name: Investigations
         title: Investigations
-      - name: LearnSim
+      - name: Simulations
         title: Simulations
       - name: Settings
         title: Settings
@@ -1517,7 +1517,7 @@ options:
     - name: showHTML
       title: HTML graphics
       type: Bool
-      default: false
+      default: true
 
     - name: fixedAxes
       title: Fixed axes
@@ -2263,26 +2263,65 @@ options:
         title: 4c
       default: none
 
-    - name: metaSampleSize
-      title: n 
+    - name: meta1SampleSize
+      title: 'Sample size & method' 
       type: Number
       default: 50
 
-    - name: metaSampleMethod
-      title: 'Method'
+    - name: meta1SampleMethod
+      title: ' '
       type: List
       options:
         - name: Random
           title: Random
-        - name: Stratified
-          title: Stratified
-        - name: Cluster
-          title: Cluster
-        - name: Snowball
-          title: Snowball
         - name: Convenience
           title: Convenience
       default: Random
+
+    - name: meta1pNull
+      title: '   p(rₚ=0)'
+      type: Number
+      default: 0.5
+
+    - name: meta2SampleSize
+      title: 'Sample size & method' 
+      type: Number
+      default: 50
+
+    - name: meta2SampleMethod
+      title: ' '
+      type: List
+      options:
+        - name: Random
+          title: Random
+        - name: Convenience
+          title: Convenience
+      default: Random
+
+    - name: meta2pNull
+      title: '   p(rₚ=0)'
+      type: Number
+      default: 0.5
+
+    - name: meta3SampleSize
+      title: 'Sample size & method' 
+      type: Number
+      default: 50
+
+    - name: meta3SampleMethod
+      title: ' '
+      type: List
+      options:
+        - name: Random
+          title: Random
+        - name: Convenience
+          title: Convenience
+      default: Random
+
+    - name: meta3pNull
+      title: '   p(rₚ=0)'
+      type: Number
+      default: 0.5
 
     - name: doMeta1ABtn
       title: 'do'
@@ -2300,21 +2339,15 @@ options:
       title: '*'
       type: Action
 
-
-    - name: meta2SampleSize
-      title: n 
+    - name: meta2SampleSplits
+      title: sets
       type: Number
-      default: 50
-
-    - name: meta2IndivSampleSize
-      title: n 
-      type: Number
-      default: 500
+      default: 1
 
     - name: meta2SampleBudget
       title: Budget
       type: Number
-      default: 500
+      default: 320
 
     - name: metaCheating
       title: Cheating
@@ -2328,12 +2361,14 @@ options:
          title: Prune
        - name: Replace
          title: Replace
-       - name: Retry
-         title: Retry
       default: None
 
     - name: doMeta2ABtn
       title: 'do'
+      type: Action
+
+    - name: doMeta2AmBtn
+      title: '*'
       type: Action
 
     - name: doMeta2BBtn
@@ -2361,57 +2396,30 @@ options:
       title: '*'
       type: Action
 
-    - name: meta3SampleSize
-      title: n 
-      type: Number
-      default: 50
+    - name: doMeta4ABtn
+      title: 'do'
+      type: Action
 
-    - name: meta3SampleMethod
-      title: 'Method'
+    - name: doMeta4AmBtn
+      title: '*'
+      type: Action
+
+    - name: doMeta4BBtn
+      title: 'do'
+      type: Action
+
+    - name: doMeta4BmBtn
+      title: '*'
+      type: Action
+
+    - name: meta4SampleGroup
+      title: ' '
       type: List
       options:
-        - name: Random
-          title: Random
-        - name: Stratified
-          title: Stratified
-        - name: Cluster
-          title: Cluster
-        - name: Snowball
-          title: Snowball
-        - name: Convenience
-          title: Convenience
-      default: Random
-
-    - name: lastMeta
-      title: 'invest display:'
-      type: List
-      options:
-      - name: none
-        title: none
-      - name: 1a
-        title: 1a
-      - name: 1b
-        title: 1b
-      - name: 1c
-        title: 1c
-      - name: 2a
-        title: 2a
-      - name: 2b
-        title: 2b
-      - name: 2c
-        title: 2c
-      - name: 3a
-        title: 3a
-      - name: 3b
-        title: 3b
-      - name: 3c
-        title: 3c
-      - name: 4a
-        title: 4a
-      - name: 4b
-        title: 4b
-      - name: 4c
-        title: 4c
-      default: none
+        - name: a
+          title: A
+        - name: b
+          title: B
+      default: a
 
 ...

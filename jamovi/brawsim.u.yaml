@@ -102,7 +102,7 @@ children:
                     maxHeight: 24
                     verticalAlignment: top
           - type: Content
-            name: LearnDemo
+            name: Demonstrations
             margin: none
             children:
               - type: LayoutBox
@@ -172,36 +172,36 @@ children:
                                 events:
                                   change: ./brawsim.events::onChange_Project1sH
                               - type: Label
-                                label: 'sampling:'
+                                label: 'sample size:'
                                 margin: none
                                 horizontalAlignment: right
                                 cell:
                                   row: 2
                                   column: 1
-                              - name: doDemo1sLstD
-                                type: ComboBox
-                                margin: none
-                                cell:
-                                  row: 2
-                                  column: 2
-                                events:
-                                  change: ./brawsim.events::onChange_Project1sD
-                              - type: Label
-                                label: 'size:'
-                                margin: none
-                                horizontalAlignment: right
-                                cell:
-                                  row: 2
-                                  column: 3
                               - name: doDemo1sLstE
                                 type: TextBox
                                 format: number
                                 margin: none
                                 cell:
                                   row: 2
-                                  column: 4
+                                  column: 2
                                 events:
                                   change: ./brawsim.events::onChange_Project1sH
+                              - type: Label
+                                label: 'method:'
+                                margin: none
+                                horizontalAlignment: right
+                                cell:
+                                  row: 2
+                                  column: 3
+                              - name: doDemo1sLstD
+                                type: ComboBox
+                                margin: none
+                                cell:
+                                  row: 2
+                                  column: 4
+                                events:
+                                  change: ./brawsim.events::onChange_Project1sD
                               - type: Label
                                 label: ''
                                 margin: none
@@ -684,14 +684,15 @@ children:
                                 events:
                                   change: ./brawsim.events::onChange_Project2sH
                               - type: Label
-                                label: 'sampling:'
+                                label: 'sample size:'
                                 horizontalAlignment: right
                                 margin: none
                                 cell:
                                   row: 2
                                   column: 1
-                              - name: doDemo2sLstD
-                                type: ComboBox
+                              - name: doDemo2sLstE
+                                type: TextBox
+                                format: number
                                 margin: none
                                 cell:
                                   row: 2
@@ -699,15 +700,14 @@ children:
                                 events:
                                   change: ./brawsim.events::onChange_Project2sH
                               - type: Label
-                                label: 'size:'
+                                label: 'method:'
                                 horizontalAlignment: right
                                 margin: none
                                 cell:
                                   row: 2
                                   column: 3
-                              - name: doDemo2sLstE
-                                type: TextBox
-                                format: number
+                              - name: doDemo2sLstD
+                                type: ComboBox
                                 margin: none
                                 cell:
                                   row: 2
@@ -1289,37 +1289,37 @@ children:
                                   row: 1
                                   column: 4
                               - type: Label
-                                label: 'sampling:'
+                                label: 'sample size:'
                                 margin: none
                                 horizontalAlignment: right
                                 cell:
                                   row: 2
                                   column: 1
-                              - name: doDemo3sLstD
-                                type: ComboBox
-                                margin: none
-                                verticalAlignment: top
-                                cell:
-                                  row: 2
-                                  column: 2
-                                events:
-                                  change: ./brawsim.events::onChange_Project3sD
-                              - type: Label
-                                label: 'size:'
-                                margin: none
-                                horizontalAlignment: right
-                                cell:
-                                  row: 2
-                                  column: 3
                               - name: doDemo3sLstE
                                 type: TextBox
                                 format: number
                                 margin: none
                                 cell:
                                   row: 2
-                                  column: 4
+                                  column: 2
                                 events:
                                   change: ./brawsim.events::onChange_Project3sH
+                              - type: Label
+                                label: 'method:'
+                                margin: none
+                                horizontalAlignment: right
+                                cell:
+                                  row: 2
+                                  column: 3
+                              - name: doDemo3sLstD
+                                type: ComboBox
+                                margin: none
+                                verticalAlignment: top
+                                cell:
+                                  row: 2
+                                  column: 4
+                                events:
+                                  change: ./brawsim.events::onChange_Project3sD
                               - name: doDemo3sLstJ
                                 type: ComboBox
                                 margin: none
@@ -2410,7 +2410,7 @@ children:
                         maxWidth: 10
                         maxHeight: 24
           - type: Content
-            name: LearnMeta
+            name: Investigations
             margin: none
             children:
               - type: LayoutBox
@@ -2432,14 +2432,16 @@ children:
                               - type: Label
                                 label: ' '
                                 minWidth: 15
-                              - type: Label
-                                label: 'Sampling:'
                               - type: TextBox
-                                name: metaSampleSize
+                                name: meta1SampleSize
                                 format: number
                                 margin: none
                               - type: ComboBox
-                                name: metaSampleMethod
+                                name: meta1SampleMethod
+                                margin: none
+                              - type: TextBox
+                                name: meta1pNull
+                                format: number
                                 margin: none
                           - type: LayoutBox
                             style: inline
@@ -2459,7 +2461,7 @@ children:
                                       row: 0
                                       column: 0
                                   - type: Label
-                                    label: Press here for a new sample
+                                    label: Press here for a single sample
                                     cell:
                                       row: 0
                                       column: 1
@@ -2471,7 +2473,7 @@ children:
                                       row: 0
                                       column: 2
                                   - type: Label
-                                    label: Press here to see many samples
+                                    label: Press here to see multiple samples
                                     cell:
                                       row: 1
                                       column: 1
@@ -2500,7 +2502,7 @@ children:
                                       row: 0
                                       column: 0
                                   - type: Label
-                                    label: Press here for a new sample
+                                    label: Press here for a single sample
                                     cell:
                                       row: 0
                                       column: 1
@@ -2512,7 +2514,7 @@ children:
                                       row: 0
                                       column: 2
                                   - type: Label
-                                    label: Press here to see many samples
+                                    label: Press here to see multiple samples
                                     cell:
                                       row: 1
                                       column: 1
@@ -2544,6 +2546,26 @@ children:
                             children:
                               - type: Label
                                 label: ' '
+                                minWidth: 15
+                              - type: TextBox
+                                name: meta2SampleSize
+                                format: number
+                                margin: none
+                              - type: ComboBox
+                                name: meta2SampleMethod
+                                margin: none
+                              - type: TextBox
+                                name: meta2pNull
+                                format: number
+                                margin: none
+                              - type: Label
+                                label: ' '
+                                minWidth: 30
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
                                 minWidth: 30
                               - type: CollapseBox
                                 collapsed: true
@@ -2551,38 +2573,53 @@ children:
                                 margin: none
                                 minWidth: 380
                                 children:
-                                  - type: LayoutBox
-                                    style: list
-                                    children:
-                                      - type: LayoutBox
-                                        style: inline
-                                        children:
-                                          - type: Label
-                                            label: 'Each sample:'
-                                            margin: none
-                                          - type: TextBox
-                                            name: meta2IndivSampleSize
-                                            format: number
-                                            margin: none
-                                          - type: TextBox
-                                            name: meta2SampleBudget
-                                            format: number
-                                            margin: none
-                                      - type: LayoutBox
-                                        style: inline
-                                        children:
-                                          - type: Label
-                                            label: Press here for a new set of samples
-                                            cell:
-                                              row: 0
-                                              column: 1
-                                          - type: ActionButton
-                                            name: doMeta2ABtn
-                                            maxHeight: 24
-                                            margin: none
-                                            cell:
-                                              row: 0
-                                              column: 2
+                                    - type: LayoutBox
+                                      style: list
+                                      children:
+                                        - type: LayoutBox
+                                          style: inline
+                                          children:
+                                            - type: Label
+                                              label: 'Split into sets:'
+                                              margin: none
+                                            - type: TextBox
+                                              name: meta2SampleSplits
+                                              format: number
+                                              margin: none
+                                            - type: TextBox
+                                              name: meta2SampleBudget
+                                              format: number
+                                              margin: none
+                                        - type: LayoutBox
+                                          style: inline
+                                          children:
+                                            - type: Label
+                                              label: Press here for a new set of samples
+                                              cell:
+                                                row: 0
+                                                column: 1
+                                            - type: ActionButton
+                                              name: doMeta2ABtn
+                                              maxHeight: 24
+                                              margin: none
+                                              cell:
+                                                row: 0
+                                                column: 2
+                                        - type: LayoutBox
+                                          style: inline
+                                          children:
+                                            - type: Label
+                                              label: Press here see multiple sets (v slow!)
+                                              cell:
+                                                row: 0
+                                                column: 1
+                                            - type: ActionButton
+                                              name: doMeta2AmBtn
+                                              maxHeight: 24
+                                              margin: none
+                                              cell:
+                                                row: 0
+                                                column: 2
                           - type: LayoutBox
                             style: inline
                             children:
@@ -2602,12 +2639,6 @@ children:
                                         style: inline
                                         margin: none
                                         children:
-                                          - type: Label
-                                            label: 'Sampling:'
-                                          - type: TextBox
-                                            name: meta2SampleSize
-                                            format: number
-                                            margin: none
                                           - type: ComboBox
                                             name: metaCheating
                                             margin: none
@@ -2616,7 +2647,7 @@ children:
                                         margin: none
                                         children:
                                           - type: Label
-                                            label: Press here for a new sample
+                                            label: Press here for a single sample
                                             cell:
                                               row: 0
                                               column: 1
@@ -2628,7 +2659,7 @@ children:
                                               row: 0
                                               column: 2
                                           - type: Label
-                                            label: Press here to see many samples (slow)
+                                            label: Press here to see multiple samples (slow)
                                             cell:
                                               row: 1
                                               column: 1
@@ -2651,7 +2682,7 @@ children:
                       - type: CollapseBox
                         collapsed: true
                         label: >-
-                          3. Believable Results: how good are replication and
+                          3. Double Checking: how good are replication and
                           meta-analysis?
                         margin: none
                         minWidth: 470
@@ -2663,14 +2694,16 @@ children:
                               - type: Label
                                 label: ' '
                                 minWidth: 15
-                              - type: Label
-                                label: 'Sampling:'
                               - type: TextBox
                                 name: meta3SampleSize
                                 format: number
                                 margin: none
                               - type: ComboBox
                                 name: meta3SampleMethod
+                                margin: none
+                              - type: TextBox
+                                name: meta3pNull
+                                format: number
                                 margin: none
                           - type: LayoutBox
                             style: inline
@@ -2703,7 +2736,7 @@ children:
                                               row: 0
                                               column: 2
                                           - type: Label
-                                            label: Press here to see many samples (slow)
+                                            label: Press here to see multiple samples (slow)
                                             cell:
                                               row: 1
                                               column: 1
@@ -2748,7 +2781,7 @@ children:
                                               row: 0
                                               column: 2
                                           - type: Label
-                                            label: Press here to see many samples (slow)
+                                            label: Press here to see multiple samples (slow)
                                             cell:
                                               row: 1
                                               column: 1
@@ -2771,18 +2804,108 @@ children:
                       - type: CollapseBox
                         collapsed: true
                         label: >-
-                          4. Real Differences: how do large differences in
-                          results happen?
+                          4. Real Differences: sometimes replication should fail - why?
                         margin: none
                         minWidth: 470
                         maxWidth: 470
                         children:
                           - type: LayoutBox
-                            style: list
-                            margin: none
+                            style: inline
                             children:
                               - type: Label
-                                label: more to follow
+                                label: ' '
+                                minWidth: 15
+                              - type: Label
+                                label: 'Group:'
+                              - type: ComboBox
+                                name: meta4SampleGroup
+                                margin: none
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
+                                minWidth: 30
+                              - type: CollapseBox
+                                collapsed: true
+                                label: a. because of interactions
+                                margin: none
+                                minWidth: 380
+                                children:
+                                  - type: LayoutBox
+                                    style: list
+                                    children:
+                                      - type: LayoutBox
+                                        style: inline
+                                        children:
+                                          - type: Label
+                                            label: Press here for a single sample 
+                                            cell:
+                                              row: 0
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doMeta4ABtn
+                                            maxHeight: 24
+                                            margin: none
+                                            cell:
+                                              row: 0
+                                              column: 2
+                                          - type: Label
+                                            label: Press here to see multiple samples
+                                            cell:
+                                              row: 1
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doMeta4AmBtn
+                                            maxHeight: 24
+                                            margin: none
+                                            cell:
+                                              row: 1
+                                              column: 2
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
+                                minWidth: 30
+                              - type: CollapseBox
+                                collapsed: true
+                                label: b. because of covariation
+                                margin: none
+                                minWidth: 380
+                                children:
+                                  - type: LayoutBox
+                                    style: list
+                                    children:
+                                      - type: LayoutBox
+                                        style: inline
+                                        margin: none
+                                        children:
+                                          - type: Label
+                                            label: >-
+                                              Press here for a single sample
+                                            cell:
+                                              row: 0
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doMeta4BBtn
+                                            maxHeight: 24
+                                            margin: none
+                                            cell:
+                                              row: 0
+                                              column: 2
+                                          - type: Label
+                                            label: Press here to see multiple samples
+                                            cell:
+                                              row: 1
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doMeta4BmBtn
+                                            maxHeight: 24
+                                            margin: none
+                                            cell:
+                                              row: 1
+                                              column: 2
                       - type: ActionButton
                         name: meta4Help
                         margin: none
@@ -2790,7 +2913,7 @@ children:
                         maxWidth: 10
                         maxHeight: 24
           - type: Content
-            name: LearnSim
+            name: Simulations
             margin: none
             children:
               - type: LayoutBox
@@ -4533,5 +4656,3 @@ children:
                                 name: showHypothesisLst
                               - type: ComboBox
                                 name: lastDemo
-                              - type: ComboBox
-                                name: lastMeta

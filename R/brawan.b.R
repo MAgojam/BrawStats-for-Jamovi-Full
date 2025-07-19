@@ -16,6 +16,8 @@ BrawANClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       
       .run = function() {
 
+        setBrawEnv("graphicsType","ggplot")
+        
         switch (self$options$analysisMode,
             "AnalyseData"={
               self$results$lmGraph$setVisible(FALSE)

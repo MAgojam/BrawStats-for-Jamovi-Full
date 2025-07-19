@@ -4,54 +4,20 @@ title: BrawStats:Simulate Data
 jrs:   '1.1'
 
 items:
-    - name: BrawStatsInstructions 
+    - name: simSystemHTML
       type: Html
       visible: TRUE
-
-    - name: SystemHTML
-      type: Html
-      visible: FALSE
-      
-      
-    - name: simMetaHTML
-      type: Html
-      visible: TRUE
-
-      clearWith:
-      - makeSampleBtn
 
     - name: simGraphHTML
       type: Html
-      visible: FALSE
-      clearWith:
-      - makeSampleBtn
-      - showSampleType
-      - showInferParam
-      - singleVar1
-      - singleVar2
-      - showInferDimension
-      - makeMultipleBtn
-      - showMultipleParam
-      - multipleVar1
-      - multipleVar2
-      - showMultipleDimension
-      - reportMultipleStats
-      - makeExploreBtn
-      - showExploreParam
-      - exploreVar1
-      - exploreVar2
-      - showExploreDimension
-      - reportExploreStats
-      - whichShowMultiple
-      - goBack
-      - goForwards
+      visible: TRUE
 
     - name: simGraph
       title: ' '
       type: Image
       width:  550
       height: 400
-      visible: TRUE
+      visible: FALSE
       renderFun: .plotSimGraph
       clearWith:
       - makeSampleBtn
@@ -78,33 +44,8 @@ items:
       - goForwards
 
     - name: simReport
-      # title: ' '
       type: Html
-      # width:  600
-      # height: 200
-      visible: TRUE
-      clearWith:
-      - makeSampleBtn
-      - showSampleType
-      - showInferParam
-      - singleVar1
-      - singleVar2
-      - showInferDimension
-      - makeMultipleBtn
-      - showMultipleParam
-      - multipleVar1
-      - multipleVar2
-      - showMultipleDimension
-      - reportMultipleStats
-      - makeExploreBtn
-      - showExploreParam
-      - exploreVar1
-      - exploreVar2
-      - showExploreDimension
-      - reportExploreStats
-      - whichShowMultiple
-      - goBack
-      - goForwards
+      visible: FALSE
 
     - name: debug
       type: Preformatted

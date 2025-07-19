@@ -33,7 +33,7 @@ brawSimHelp<-function(open=0,indent,titleWidth) {
   )
 }
 
-brawMetaHelp<-function(open=0,indent,titleWidth) {
+brawInvestgHelp<-function(open=0,indent,titleWidth) {
   return(
     generate_tab(
       title="Investigations help:",
@@ -42,11 +42,11 @@ brawMetaHelp<-function(open=0,indent,titleWidth) {
       # titleTab="Click on the tabs for specific help.",
       tabs=c("Start","Inferences?","Strategies?","Believable Results?","Real Differences"),
       tabContents = c(
-        MetaInstructions("Overview"),
-        MetaInstructions("Inferences?"),
-        MetaInstructions("Strategies?"),
-        MetaInstructions("Believable Results?"),
-        MetaInstructions("Real Differences")
+        investgInstructions("Overview"),
+        investgInstructions("Inferences?"),
+        investgInstructions("Strategies?"),
+        investgInstructions("Believable Results?"),
+        investgInstructions("Real Differences")
       ),
       open=open
     )

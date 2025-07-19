@@ -118,7 +118,7 @@
                                    buttons<-''
                                    panels<-''
                                    if (titleWidth==0) titleShow<-''
-                                   else titleShow<-title
+                                   else titleShow<-paste0('<b>',title,'</b>')
                                    buttons <- paste0(buttons,
                                                      '  <button id="tabtitle',title,'" class="tablinks" onclick="closeTabs(event,\'',title,'\')"',
                                                         ' style="background-color:rgba(0,0,0,0);color:black;cursor:default;',

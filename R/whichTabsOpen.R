@@ -9,13 +9,13 @@ if (self$options$simExploreHelp) statusStore$simHelpWhich<-5
 if (statusStore$simHelpWhich==old_simHelpWhich) statusStore$simHelpWhich<-0
 
 
-old_metaHelpWhich<-statusStore$metaHelpWhich
-if (self$options$metaHelp) statusStore$metaHelpWhich<-1
-if (self$options$meta1Help) statusStore$metaHelpWhich<-2
-if (self$options$meta2Help) statusStore$metaHelpWhich<-3
-if (self$options$meta3Help) statusStore$metaHelpWhich<-4
-if (self$options$meta4Help) statusStore$metaHelpWhich<-5
-if (statusStore$metaHelpWhich==old_metaHelpWhich) statusStore$metaHelpWhich<-0
+old_investgHelpWhich<-statusStore$investgHelpWhich
+if (self$options$metaHelp) statusStore$investgHelpWhich<-1
+if (self$options$meta1Help) statusStore$investgHelpWhich<-2
+if (self$options$meta2Help) statusStore$investgHelpWhich<-3
+if (self$options$meta3Help) statusStore$investgHelpWhich<-4
+if (self$options$meta4Help) statusStore$investgHelpWhich<-5
+if (statusStore$investgHelpWhich==old_investgHelpWhich) statusStore$investgHelpWhich<-0
 
 old_demoHelpWhich<-statusStore$demoHelpWhich
 if (self$options$demosHelp) statusStore$demoHelpWhich<-c(1,0)
