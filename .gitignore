@@ -6,6 +6,8 @@
 # Session Data files
 .RData
 
+.DS_Store
+
 # jamovi
 build/
 build*/

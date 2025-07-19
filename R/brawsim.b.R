@@ -227,6 +227,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         statusStore$exploreMode<-self$options$exploreMode
         setBrawRes("statusStore",statusStore)
         setBrawRes("historyStore",history)
+        
+        sendData2Jamovi(statusStore$lastOutput,self)
         return()
       }
       }
@@ -242,6 +244,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
 
         if (is.element(doingInvestg,c(1,3,7,9,11,13,15))) {
           doSingle()
+          outputNow<-"Description"
           open<-1
           # we display replications as multiple results
           if (is.element(doingInvestg,c(9,11)))  setBrawRes("multiple",braw.res$result)
@@ -251,6 +254,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           setDesign(sN=floor(self$options$meta2SampleBudget/self$options$meta2SampleSplits))
           nreps<-floor(self$options$meta2SampleSplits)
           doMultiple(nreps,NULL)
+          outputNow<-"Description"
           open<-1
           reportCounts<-TRUE
         }
@@ -258,12 +262,14 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         if (is.element(doingInvestg,c(2,4,8,10,12,14,16))) {
           if (doingInvestg==8) doMultiple(50)
           else              doMultiple(200)
+          outputNow<-"Multiple"
           open<-2
         }
         
         if (is.element(doingInvestg,c(6))) {
           setDesign(sN=self$options$meta2SampleBudget)
           doExplore(50,makeExplore("nSplits",vals=2^c(0,1,2,3,4,5),xlog=TRUE))
+          outputNow<-"Explore"
           open<-2
           reportCounts<-TRUE
         }
@@ -325,6 +331,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         statusStore$lastOutput<-"investg"
         statusStore$investgResults<-investgResults
         setBrawRes("statusStore",statusStore)
+        
+        sendData2Jamovi(outputNow,self)
         return()
       }
 
@@ -615,64 +623,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       }
       
       # now we save any results to the Jamovi spreadsheet
-      # single result first
-      {
-      if (self$options$sendSample && !is.null(braw.res$result)) {
-        if (is.null(braw.def$hypothesis$IV2)) {
-          newVariables<-data.frame(braw.res$result$participant,braw.res$result$dv,braw.res$result$iv,braw.res$result$dv+NA)
-          names(newVariables)<-c("ID",braw.def$hypothesis$DV$name,braw.def$hypothesis$IV$name,"-")
-        } else {
-          newVariables<-data.frame(braw.res$result$participant,braw.res$result$dv,braw.res$result$iv,braw.res$result$iv2)
-          names(newVariables)<-c("ID",braw.def$hypothesis$DV$name,braw.def$hypothesis$IV$name,braw.def$hypothesis$IV2$name)
-        }
-        
-        keys<-1:length(newVariables)
-        measureTypes<-sapply(newVariables,function(x) { if (is.character(x)) "Nominal" else "Continuous"})
-        
-        self$results$sendSample$set(keys=keys,titles=names(newVariables),
-                                    descriptions=rep("simulated",length(newVariables)),
-                                    measureTypes=measureTypes
-        )
-        self$results$sendSample$setValues(newVariables)
-      }
-      # then multiple result
-      if (self$options$sendMultiple) {
-        q<-NULL
-        if (!is.null(outputNow) && outputNow=="MetaSingle") {
-          q<-braw.res$metaSingle$result
-        } 
-        if (!is.null(outputNow) && outputNow=="Multiple") {
-          q<-mergeMultiple(braw.res$multiple$result,braw.res$multiple$nullresult)
-        }
-        if (!is.null(q)) {
-          newMultiple<-data.frame(q$rIV,q$nval+0.0,q$pIV)
-          newMultiple<-newMultiple[!is.na(q$rIV),]
-          names(newMultiple)<-c("rs","n","p")
-          nvars<-ncol(newMultiple)
-          
-          keys<-1:nvars
-          self$results$sendMultiple$set(keys=keys,titles=names(newMultiple),
-                                        descriptions=rep("simulated",nvars),
-                                        measureTypes=rep("Continuous",nvars)
-          )
-          self$results$sendMultiple$setValues(newMultiple)
-        }
-      }
-      # then explore result
-      if (self$options$sendExplore && !is.null(outputNow) && outputNow=="Explore") {
-        newExplore<-reportExplore(returnDataFrame=TRUE,showType=showExploreParam,reportStats=self$options$reportInferStats)
-        nvars<-ncol(newExplore)
-        
-        keys<-1:nvars
-        self$results$sendExplore$set(keys=keys,titles=names(newExplore),
-                                     descriptions=rep("simulated",nvars),
-                                     measureTypes=rep("Continuous",nvars)
-        )
-        self$results$sendExplore$setValues(newExplore)
-      }
-      }
+      sendData2Jamovi(outputNow,self)
 
-      
       # end of .run()
     },
     

@@ -31,7 +31,7 @@ BrawANClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
               self$results$lmGraph$setVisible(TRUE)
               self$results$lmReport$setVisible(TRUE)
               
-              if (is.null(self$options$IV) || is.null(self$options$DV)) {
+              if (is.null(self$options$IV) || is.null(self$options$DV) || all(is.na(self$data))) {
                 self$results$lmGraph$setState(NULL)
                 self$results$lmReport$setState(NULL)
                 return()
@@ -118,7 +118,7 @@ BrawANClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                                 )
               )
               
-              if (length(stages)<=1) {
+              if (length(stages)<=1 || all(is.na(self$data))) {
                 self$results$semGraph$setState(NULL)
                 self$results$semReport$setState(NULL)
                 return()
