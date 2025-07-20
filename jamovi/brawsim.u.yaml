@@ -2573,53 +2573,53 @@ children:
                                 margin: none
                                 minWidth: 380
                                 children:
-                                    - type: LayoutBox
-                                      style: list
-                                      children:
-                                        - type: LayoutBox
-                                          style: inline
-                                          children:
-                                            - type: Label
-                                              label: 'Split into sets:'
-                                              margin: none
-                                            - type: TextBox
-                                              name: meta2SampleSplits
-                                              format: number
-                                              margin: none
-                                            - type: TextBox
-                                              name: meta2SampleBudget
-                                              format: number
-                                              margin: none
-                                        - type: LayoutBox
-                                          style: inline
-                                          children:
-                                            - type: Label
-                                              label: Press here for a new set of samples
-                                              cell:
-                                                row: 0
-                                                column: 1
-                                            - type: ActionButton
-                                              name: doMeta2ABtn
-                                              maxHeight: 24
-                                              margin: none
-                                              cell:
-                                                row: 0
-                                                column: 2
-                                        - type: LayoutBox
-                                          style: inline
-                                          children:
-                                            - type: Label
-                                              label: Press here see multiple sets (v slow!)
-                                              cell:
-                                                row: 0
-                                                column: 1
-                                            - type: ActionButton
-                                              name: doMeta2AmBtn
-                                              maxHeight: 24
-                                              margin: none
-                                              cell:
-                                                row: 0
-                                                column: 2
+                                  - type: LayoutBox
+                                    style: list
+                                    children:
+                                      - type: LayoutBox
+                                        style: inline
+                                        children:
+                                          - type: Label
+                                            label: 'Split into sets:'
+                                            margin: none
+                                          - type: TextBox
+                                            name: meta2SampleSplits
+                                            format: number
+                                            margin: none
+                                          - type: TextBox
+                                            name: meta2SampleBudget
+                                            format: number
+                                            margin: none
+                                      - type: LayoutBox
+                                        style: inline
+                                        children:
+                                          - type: Label
+                                            label: Press here for a new set of samples
+                                            cell:
+                                              row: 0
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doMeta2ABtn
+                                            maxHeight: 24
+                                            margin: none
+                                            cell:
+                                              row: 0
+                                              column: 2
+                                      - type: LayoutBox
+                                        style: inline
+                                        children:
+                                          - type: Label
+                                            label: Press here see multiple sets (v slow!)
+                                            cell:
+                                              row: 0
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doMeta2AmBtn
+                                            maxHeight: 24
+                                            margin: none
+                                            cell:
+                                              row: 0
+                                              column: 2
                           - type: LayoutBox
                             style: inline
                             children:
@@ -2659,7 +2659,9 @@ children:
                                               row: 0
                                               column: 2
                                           - type: Label
-                                            label: Press here to see multiple samples (slow)
+                                            label: >-
+                                              Press here to see multiple samples
+                                              (slow)
                                             cell:
                                               row: 1
                                               column: 1
@@ -2710,6 +2712,17 @@ children:
                             children:
                               - type: Label
                                 label: ' '
+                                minWidth: 15
+                              - type: ComboBox
+                                name: meta3SigOriginal
+                              - type: TextBox
+                                name: meta3RepPower
+                                format: number
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
                                 minWidth: 30
                               - type: CollapseBox
                                 collapsed: true
@@ -2736,7 +2749,9 @@ children:
                                               row: 0
                                               column: 2
                                           - type: Label
-                                            label: Press here to see multiple samples (slow)
+                                            label: >-
+                                              Press here to see multiple samples
+                                              (slow)
                                             cell:
                                               row: 1
                                               column: 1
@@ -2781,7 +2796,9 @@ children:
                                               row: 0
                                               column: 2
                                           - type: Label
-                                            label: Press here to see multiple samples (slow)
+                                            label: >-
+                                              Press here to see multiple samples
+                                              (slow)
                                             cell:
                                               row: 1
                                               column: 1
@@ -2804,7 +2821,8 @@ children:
                       - type: CollapseBox
                         collapsed: true
                         label: >-
-                          4. Real Differences: sometimes replication should fail - why?
+                          4. Real Differences: sometimes replication should fail
+                          - why?
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -2839,7 +2857,7 @@ children:
                                         style: inline
                                         children:
                                           - type: Label
-                                            label: Press here for a single sample 
+                                            label: Press here for a single sample
                                             cell:
                                               row: 0
                                               column: 1
@@ -2882,8 +2900,7 @@ children:
                                         margin: none
                                         children:
                                           - type: Label
-                                            label: >-
-                                              Press here for a single sample
+                                            label: Press here for a single sample
                                             cell:
                                               row: 0
                                               column: 1

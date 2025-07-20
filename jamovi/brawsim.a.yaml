@@ -2323,6 +2323,21 @@ options:
       type: Number
       default: 0.5
 
+    - name: meta3SigOriginal
+      title: "only significant originals?"
+      type: List
+      options:
+        - name: no
+          title: no
+        - name: yes
+          title: yes
+      default: no
+
+    - name: meta3RepPower
+      title: power
+      type: Number
+      default: 0.9
+      
     - name: doMeta1ABtn
       title: 'do'
       type: Action

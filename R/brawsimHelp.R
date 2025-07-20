@@ -45,7 +45,7 @@ brawInvestgHelp<-function(open=0,indent,titleWidth) {
         investgInstructions("Overview"),
         investgInstructions("Inferences?"),
         investgInstructions("Strategies?"),
-        investgInstructions("Believable Results?"),
+        investgInstructions("Double Checking?"),
         investgInstructions("Real Differences")
       ),
       open=open

@@ -38,7 +38,7 @@ investgInstructions <- function(HelpType="Plan") {
              '<b>In the first part of this investigation</b> we use a simple test situation.',
              '<ul style=margin:0px;>',
              '<li> The population effect size is either r<sub>p</sub>=0.0 or r<sub>p</sub>=0.3 with equal probability.',
-             '<li> The sample size is 42.',
+             '<li> The sample size is 50.',
              '</ul>',
              'Can you guess which population your result came from?',
              'Did you get a statistically significant result?',
@@ -49,8 +49,8 @@ investgInstructions <- function(HelpType="Plan") {
              '<br>',
              '<b>In the second part of this investigation</b> we use a world that models Psychology.',
              '<ul style=margin:0px;>',
-             '<li> The population effect size is either zero (75%) or drawn from an exponential distribution (25%).',
-             '<li> The sample size is 42.',
+             '<li> The population effect size is either zero (50%) or drawn from an exponential distribution (50%).',
+             '<li> The sample size is 50.',
              '</ul>',
              'What happens now? How likely is a significant result? And if you get a significant result, how likely is it false discovery?',
              '<br>'
@@ -59,7 +59,7 @@ investgInstructions <- function(HelpType="Plan") {
          
          "Strategies?"={output<-c(
            'Larger sample sizes cost more time, effort and often money. It is therefore worth asking whether two smaller studies are more productive than one large one.',
-           'The question is important not least because sample size offers diminishing returns.',
+           'The question is important not least because increasing sample size offers diminishing returns.',
            'The benefit of going from 20 to 40 data points is much, much greater than the benefit of going from 120 to 140.',
            'In this investigation, we look at this.',
            '<br>',
@@ -83,7 +83,7 @@ investgInstructions <- function(HelpType="Plan") {
            '<br>')
          },
          
-         "Believable Results?"={output<-c(
+         "Double Checking?"={output<-c(
            'False discoveries are inevitable. For the most part their frequency is driven by the number of false hypotheses.',
            'It is hard to know whether a hypothesis is true or false and so there are no really good ways of preventing false discoveries.',
            'Instead, we must check up on a promising looking result.',
@@ -96,6 +96,7 @@ investgInstructions <- function(HelpType="Plan") {
            'How do the two compare?',
            '<br><br>',
            '<b>In the first part of this investigation</b>, we look at replication.',
+           'The process only looks at results that were significant in the first place. ',
            'There are 3 types of outcome: ns no follow-up; sig, then ns; sig then sig.',
            'If the population effect size is zero, then the first two outcomes are correct.',
            'If the population effect size is not zero, then the third outcome is correct.',
@@ -118,7 +119,7 @@ investgInstructions <- function(HelpType="Plan") {
            'When a study fails to replicate, this is usually understood to be an indication that the original finding was a false discovery.',
            'And, <it>sometimes</it> it is thought that the original study was in some way faulty.',
            '<br><br>',
-           'In this investigation, we set up a situation where two different researchers get completely conflicting results.',
+           'In this investigation, we set up a situation where two different groups of researchers get completely conflicting results.',
            'However, there is a good reason for this. ',
            '<br><br>',
            'In short, the two researchers are, without noticing it, studying different populations as might happen if they worked in different countries.',

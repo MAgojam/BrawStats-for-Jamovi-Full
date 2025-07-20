@@ -176,10 +176,10 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         }
         if (is.element(doingInvestg,9:10))
           design$Replication<-makeReplication(TRUE,Keep="Cautious",
-                                              forceSigOriginal=TRUE,Power=0.9)
+                                              forceSigOriginal=self$options$meta3SigOriginal=="yes",Power=self$options$meta3RepPower)
         if (is.element(doingInvestg,11:12)) 
           design$Replication<-makeReplication(TRUE,Keep="MetaAnalysis",
-                                              forceSigOriginal=TRUE,Power=0.9)
+                                              forceSigOriginal=self$options$meta3SigOriginal=="yes",Power=self$options$meta3RepPower)
         setBrawDef("design",design)
         
         if (is.element(doingInvestg,13:16)) {
