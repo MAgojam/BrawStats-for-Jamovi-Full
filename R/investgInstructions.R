@@ -162,7 +162,8 @@ investgComment<-function(whichComment) {
   
   p<-'Under construction: a few comments to help understand this.'
   if (is.element(whichComment,c(1:2))) 
-    p<-paste0('<b>Detect the null hypotheses</b><br> ',
+    p<-paste0(
+      '<b>Detect the null hypotheses</b><br> ',
       'Some questions to ask yourself as you decide whether the sample comes from r<sub>p</sub>=0 or r<sub>p</sub>=0.3:',
       '<ul style=margin:0px;>',
       '<li> Is the p-value a good guide?',
@@ -181,7 +182,8 @@ investgComment<-function(whichComment) {
       'This is definitely an issue in the widespread use of NHST across a discipline.'
     )
   if (is.element(whichComment,c(3:4))) 
-    p<-paste0('<b>Detect the null hypotheses</b><br> ',
+    p<-paste0(
+      '<b>Detect the null hypotheses</b><br> ',
       "Psychology has lots of very small effects. And researchers also test a lot of hypotheses that are wrong. ",
       "These combine to make it much harder to determine whether an effect is real or not. ",
       "Even a much larger sample size doesn't help much. ",
@@ -194,8 +196,9 @@ investgComment<-function(whichComment) {
       
     )
   if (is.element(whichComment,c(5:6))) 
-    p<-paste0('<b>Choosing sample sizes with a limited budget</b><br> ',
-              'The choice of how to use a limited budget is a reality for most researchers. ',
+    p<-paste0(
+      '<b>Choosing sample sizes with a limited budget</b><br> ',
+      'The choice of how to use a limited budget is a reality for most researchers. ',
       'The simple issue here is that using more small samples will produce:',
       '<ul style=margin:0px;>',
       '<li> more significant results, which suits the researcher better,',
@@ -204,7 +207,8 @@ investgComment<-function(whichComment) {
       'This is the basic conflict of interest in the use of NHST: researcher vs their discipline?'
     )
   if (is.element(whichComment,c(7:8))) 
-    p<-paste0("<b>Cheating - does it matter how we get our data?</b><br> ",
+    p<-paste0(
+      '<b>Cheating - does it matter how we get our data?</b><br> ',
       'These examples are blatant cheating. They all involve manipulating the sample to nudge the result to where the researcher wants. ',
       'It is important to understand how much cheating can affect a result.',
       '<ul style=margin:0px;>',
@@ -221,76 +225,79 @@ investgComment<-function(whichComment) {
       'In other words, <i>we are always cheating</i>.'
     )
   if (is.element(whichComment,c(9:10))) 
-    p<-paste0('<b>Replication - does it really help? Sort of.</b><br> ',
-              'Pretty much the whole debate around statistical issues concerns false discoveries. But they are inescapable. ',
-              'A standard, much used and wholly relied on approach, is replication: repeat the research and see whether the same result holds. ',
-              '<ul style=margin:0px;>',
-              "<li> If is does, then all is well",
-              "<li> If is doesn't, then we have to ask which is more likely",
-              '<ul style=margin:0px;margin-left:0px;>',
-              '<li> original sample led to a Type I error',
-              '<li> replication sample led to a Type II error',
-              '</ul>',
-              '</ul>',
-              'It is always assumed that result from the replication sample should be preferred. ',
-              'In this example, the replication sample size is calculated to give an intended power of 90%. ',
-              "Even so, often it doesn't - check w<sub>p</sub> in the results of your simulation. ",
-              '<br><br>',
-              'How well does this work? ',
-              '<br>',
-              'You will see that replication removes nearly all false discoveries. But it also <i>always</i> removes further true discoveries. ',
-              ''
+    p<-paste0(
+      '<b>Replication - does it really help? Sort of.</b><br> ',
+      'Pretty much the whole debate around statistical issues concerns false discoveries. But they are inescapable. ',
+      'A standard, much used and wholly relied on approach, is replication: repeat the research and see whether the same result holds. ',
+      '<ul style=margin:0px;>',
+      "<li> If is does, then all is well",
+      "<li> If is doesn't, then we have to ask which is more likely",
+      '<ul style=margin:0px;margin-left:0px;>',
+      '<li> original sample led to a Type I error',
+      '<li> replication sample led to a Type II error',
+      '</ul>',
+      '</ul>',
+      'It is always assumed that result from the replication sample should be preferred. ',
+      'In this example, the replication sample size is calculated to give an intended power of 90%. ',
+      "Even so, often it doesn't - check w<sub>p</sub> in the results of your simulation. ",
+      '<br><br>',
+      'How well does this work? ',
+      '<br>',
+      'You will see that replication removes nearly all false discoveries. But it also <i>always</i> removes further true discoveries. '
     )
   if (is.element(whichComment,c(11:12))) 
-    p<-paste0('<b>Meta-analysis - any better?</b><br> ',
-              'Meta-analysis is also a standard, much used and wholly relied on procedure. ',
-              'And there is no reason why an original sample and a repeat sample cannot be combined by meta-analysis to give an alternative to the replication "winner-takes-all". ',
-              'The outcome can still have a sample effect size and a p-value: these will reflect both samples.',
-              '<br><br>',
-              'How well does this work? ',
-              '<br>',
-              'You will see that meta-analysis removes many but not all false discoveries. But it also preserves most true discoveries. ',
-              '<br><br>',
-              'This is meant as food for thought: replication is confrontational. Is that important or is it a hindrance? '
+    p<-paste0(
+      '<b>Meta-analysis - any better?</b><br> ',
+      'Meta-analysis is also a standard, much used and wholly relied on procedure. ',
+      'And there is no reason why an original sample and a repeat sample cannot be combined by meta-analysis to give an alternative to the replication "winner-takes-all". ',
+      'The outcome can still have a sample effect size and a p-value: these will reflect both samples.',
+      '<br><br>',
+      'How well does this work? ',
+      '<br>',
+      'You will see that meta-analysis removes many but not all false discoveries. But it also preserves most true discoveries. ',
+      '<br><br>',
+      'This is meant as food for thought: replication is confrontational. Is that important or is it a hindrance? '
     )
   if (is.element(whichComment,c(13:14))){
     setEvidence(AnalysisTerms=3)
     s1<-showHypothesis()
-    p<-paste0('<b>Actually, a failure to replicate can be meaningful.</b><br> ',
-              'In this, we will see some situations where replication should fail. Properly fail. ',
-              '<br>',
-              'They always involve an extra influence on the DV, a variable that is probably not even measured. ',
-              'When that extra variable interacts or covaries with the IV we did measure, interesting things can happen.',
-              'They also always involve the different groups having different ranges of values for that extra variable.',
-              '<br>',
-              '<div style="height:120px;padding:0;">',
-              '<div style="height:120px;margin:0;padding:0;float:left;width:50%;">',
-              '<br>',
-              '<b>Interactions (moderations)</b> are where the strength of an effect of an IV on a DV is affected by a second IV. ',
-              'This means that the measured main effect of IV1 will depend on the range of values of IV2 in the sample. ',
-              '</div>',
-              s1,'</svg>',
-              '</div>',
-              '<br>',
-              'In this example, group A have only the higher values for IV2 whereas group B have the lower values.',
-              '<br>'
+    p<-paste0(
+      '<b>Actually, a failure to replicate can be meaningful.</b><br> ',
+      'In this, we will see some situations where replication should fail. Properly fail. ',
+      '<br>',
+      'They always involve an extra influence on the DV, a variable that is probably not even measured. ',
+      'When that extra variable interacts or covaries with the IV we did measure, interesting things can happen.',
+      'They also always involve the different groups having different ranges of values for that extra variable.',
+      '<br>',
+      '<div style="height:120px;padding:0;">',
+      '<div style="height:120px;margin:0;padding:0;float:left;width:50%;">',
+      '<br>',
+      '<b>Interactions (moderations)</b> are where the strength of an effect of an IV on a DV is affected by a second IV. ',
+      'This means that the measured main effect of IV1 will depend on the range of values of IV2 in the sample. ',
+      '<br>',
+      'In this example, group A have only the higher values for IV2 whereas group B have the lower values.',
+      '<br>',
+      '</div>',
+      s1,'</svg>',
+      '</div>'
     )
   }
     if (is.element(whichComment,c(15:16))){
       setEvidence(AnalysisTerms=2)
       s2<-showHypothesis()
-      p<-paste0('<b>Actually, a failure to replicate can be meaningful.</b><br> ',
-                '<div style="height:120px;padding:0;">',
-                  '<div style="height:120px;margin:0;padding:0;float:left;width:50%;">',
-                  '<br>',
-                  '<b>Covariation</b> between two IVs. In this situation there are two separate effects of the IV on the DV: a direct one and an indirect one via the other IV.',
-                  'So the measured effect of IV on DV will depend on the range of values of IV2 in the sample. ',
-                  '</div>',
-                  s2,'</svg>',
-                '</div>',
-                '<br>',
-                'In this example, group A have a very restricted range of values for IV2 whereas group B have the full range.',
-                '<br>'
+      p<-paste0(
+        '<b>Actually, a failure to replicate can be meaningful.</b><br> ',
+        '<div style="height:120px;padding:0;">',
+        '<div style="height:120px;margin:0;padding:0;float:left;width:50%;">',
+        '<br>',
+        '<b>Covariation</b> between two IVs. In this situation there are two separate effects of the IV on the DV: a direct one and an indirect one via the other IV.',
+        'So the measured effect of IV on DV will depend on the range of values of IV2 in the sample. ',
+        '<br>',
+        'In this example, group A have a very restricted range of values for IV2 whereas group B have the full range.',
+        '<br>',
+        '</div>',
+        s2,'</svg>',
+        '</div>'
       )
     }
   
