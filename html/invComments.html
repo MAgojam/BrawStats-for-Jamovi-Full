@@ -1,0 +1,117 @@
+<b>Detect the null hypotheses</b><br> 
+Some questions to ask yourself as you decide whether the sample comes from r<sub>p</sub>=0 or r<sub>p</sub>=0.3:
+<ul style=margin:0px;>
+<li> Is the p-value a good guide?
+<li> Is the sample effect-size a good guide?
+</ul>
+Neither is very good because the sampling distributions for r<sub>p</sub>=0 and r<sub>p</sub>=0.3 overlap considerably. 
+A much larger sample size can help.
+<br><br>
+Note that NHST only allows us to reject r<sub>p</sub>=0 or not. 
+It does not allow us to reach a conclusion about r<sub>p</sub>=0.3. 
+Although in this toy world we've made it appears to.
+<br><br>
+Now try an experiment. Set the proportion of r<sub>p</sub>=0 to a much higher number (like p(H₀)=80%). 
+Repeat a few samples and see whether knowing that there is high a prior likelihood that the r<sub>p</sub>=0 changes how you decide. 
+The p-values do not change with this change in the a-priori likelihood of r<sub>p</sub>=0. 
+This is definitely an issue in the widespread use of NHST across a discipline.
+
+<b>Detect the null hypotheses</b><br> 
+Psychology has lots of very small effects. And researchers also test a lot of hypotheses that are wrong. 
+These combine to make it much harder to determine whether an effect is real or not. 
+Even a much larger sample size doesn't help much. 
+In terms of false discoveries, these small effects are a puzzle.
+<br><br>
+NHST works best (which may not be very good) when there is a lot of difference between r<sub>p</sub>=0 and r<sub>p</sub>≠0. 
+It also works best when the a priori likelihood of r<sub>p</sub>=0 is low. 
+<br>
+Neither holds in most real worlds.
+
+<b>Choosing sample sizes with a limited budget</b><br> 
+The choice of how to use a limited budget is a reality for most researchers. 
+The simple issue here is that using more small samples will produce:
+<ul style=margin:0px;>
+<li> more significant results, which suits the researcher better,
+<li> but more of these are false discoveries, to the detriment of the disipline.
+</ul>
+This is the basic conflict of interest in the use of NHST: researcher vs their discipline?
+
+<b>Cheating - does it matter how we get our data?</b><br> 
+These examples are blatant cheating. They all involve manipulating the sample to nudge the result to where the researcher wants. 
+It is important to understand how much cheating can affect a result.
+<ul style=margin:0px;>
+<li> grow: keep adding data until the result suits
+<li> prune: remove data until the results suit
+<li> replace: replace data until the results suit
+</ul>
+Note that they all produce samples that are real data. In theory, the data that these produce, <i>could</i> have been obtained fairly. 
+<br>
+Strictly speaking, unless the sample is obtained by absolutely <i>random</i> sampling, 
+NHST shouldn't be used. Any way in which the researcher is involved in data collection - advertising, paying, etc - 
+undermines the central assumption of NHST and is arguably cheating. 
+<br>
+In other words, <i>we are always cheating</i>.
+
+<b>Replication - does it really help? Sort of.</b><br> 
+Pretty much the whole debate around statistical issues concerns false discoveries. But they are inescapable. 
+A standard, much used and wholly relied on approach, is replication: repeat the research and see whether the same result holds. 
+<ul style=margin:0px;>
+<li> If is does, then all is well
+<li> If is doesn't, then we have to ask which is more likely
+<ul style=margin:0px;margin-left:0px;>
+<li> original sample led to a Type I error
+<li> replication sample led to a Type II error
+</ul>
+</ul>
+It is always assumed that result from the replication sample should be preferred. 
+In this example, the replication sample size is calculated to give an intended power of 90%. 
+Even so, often it doesn't - check w<sub>p</sub> in the results of your simulation. 
+<br><br>
+How well does this work? 
+<br>
+You will see that replication removes nearly all false discoveries. But it also <i>always</i> removes further true discoveries. 
+
+<b>Meta-analysis - any better?</b><br> 
+Meta-analysis is also a standard, much used and wholly relied on procedure. 
+And there is no reason why an original sample and a repeat sample cannot be combined by meta-analysis to give an alternative to the replication "winner-takes-all". 
+The outcome can still have a sample effect size and a p-value: these will reflect both samples.
+<br><br>
+How well does this work? 
+<br>
+You will see that meta-analysis removes many but not all false discoveries. But it also preserves most true discoveries. 
+<br><br>
+This is meant as food for thought: replication is confrontational. Is that important or is it a hindrance?
+
+<b>Actually, a failure to replicate can be meaningful.</b><br> 
+In this, we will see some situations where replication should fail. Properly fail. 
+<br>
+They always involve an extra influence on the DV, a variable that is probably not even measured. 
+When that extra variable interacts or covaries with the IV we did measure, interesting things can happen.
+They also always involve the different groups having different ranges of values for that extra variable.
+<br>
+<div style="height:120px;padding:0;">
+<div style="height:120px;margin:0;padding:0;float:left;width:50%;">
+<br>
+<b>Interactions (moderations)</b> are where the strength of an effect of an IV on a DV is affected by a second IV. 
+This means that the measured main effect of IV1 will depend on the range of values of IV2 in the sample. 
+<br>
+In this example, group A have only the higher values for IV2 whereas group B have the lower values.
+<br>
+</div>
+      s1,
+</svg>
+</div>
+      
+  <b>Actually, a failure to replicate can be meaningful.</b><br> 
+  <div style="height:120px;padding:0;">
+  <div style="height:120px;margin:0;padding:0;float:left;width:50%;">
+  <br>
+  <b>Covariation</b> between two IVs. In this situation there are two separate effects of the IV on the DV: a direct one and an indirect one via the other IV.
+  So the measured effect of IV on DV will depend on the range of values of IV2 in the sample. 
+  <br>
+  In this example, group A have a very restricted range of values for IV2 whereas group B have the full range.
+  <br>
+  </div>
+        s2,
+  </svg>
+  </div>

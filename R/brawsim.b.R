@@ -42,8 +42,10 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           title="Investigation:",
           plainTabs=TRUE,
           titleWidth=100,
-          tabs=c("Single","Multiple","Comments"),
-          tabContents=c(nullPlot(),nullPlot(),nullPlot()),
+          # tabs=c("Single","Multiple","Comments"),
+          # tabContents=c(nullPlot(),nullPlot(),nullPlot()),
+          tabs=c("Single","Multiple"),
+          tabContents=c(nullPlot(),nullPlot()),
           open=0
         )
         simResults<-generate_tab(
@@ -145,9 +147,13 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         if (is.element(doingInvestg,9:12)) hypothesis$effect$world$populationNullp<-self$options$meta1pNull
         
         if (is.element(doingInvestg,13:14))
-          hypothesis<-makeHypothesis(effect=makeEffect(rIV=0.3/2,rIV2=0,rIVIV2DV=0.3/2))
+          hypothesis<-makeHypothesis(
+            # IV2=makeVariable("IV2"),
+            effect=makeEffect(rIV=0.3/2,rIV2=0,rIVIV2DV=0.3/2))
         if (is.element(doingInvestg,15:16)) {
-          hypothesis<-makeHypothesis(effect=makeEffect(rIV=0.3/2,rIV2=-sqrt(0.3)/2,rIVIV2=sqrt(0.3)/2))
+          hypothesis<-makeHypothesis(
+            # IV2=makeVariable("IV2"),
+            effect=makeEffect(rIV=0.3/2,rIV2=-sqrt(0.3)/2,rIVIV2=sqrt(0.3)/2))
         }
         setBrawDef("hypothesis",hypothesis)
         
@@ -318,14 +324,20 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                  setBrawRes("investgMultiple",investgMultiple)
                }
         )
-        investgResults<-generate_tab(
-          title="Investigation:",
-          plainTabs=TRUE,
-          titleWidth=100,
-          tabs=c("Single","Multiple","Comments"),
-          tabContents=c(braw.res$investgSingle,braw.res$investgMultiple,investgComment(doingInvestg)),
-          open=open
-        )
+        comments<-c("Inv1a","Inv1b","Inv2a","Inv2b","Inv3a","Inv3b","Inv4a","Inv4b")
+        investgResults<-
+          generate_tab(
+            title="Investigation:",
+            plainTabs=TRUE,
+            titleWidth=100,
+            # tabs=c("Single","Multiple","Comments"),
+            # tabContents=c(braw.res$investgSingle,braw.res$investgMultiple,investgComment(doingInvestg)),
+            tabs=c("Single","Multiple"),
+            tabContents=c(braw.res$investgSingle,braw.res$investgMultiple),
+            tabLink=paste0('https://doingpsychstats.wordpress.com/investigations#',comments[ceiling(doingInvestg/2)]),
+            open=open
+          )
+        
         self$results$simGraphHTML$setContent(investgResults)
         
         statusStore$lastOutput<-"investg"
