@@ -2264,32 +2264,70 @@ options:
       default: none
 
     - name: meta1SampleSize
-      title: 'Sample size & method' 
+      title: 'Sample size' 
       type: Number
-      default: 50
-
-    - name: meta1SampleMethod
-      title: ' '
-      type: List
-      options:
-        - name: Random
-          title: Random
-        - name: Convenience
-          title: Convenience
-      default: Random
+      default: 250
 
     - name: meta1pNull
       title: '   p(rₚ=0)'
       type: Number
       default: 0.5
+      
+    - name: doMeta1ABtn
+      title: 'do'
+      type: Action
+
+    - name: doMeta1AmBtn
+      title: '*'
+      type: Action
+
+    - name: doMeta1BBtn
+      title: 'do'
+      type: Action
+
+    - name: doMeta1BmBtn
+      title: '*'
+      type: Action
+
+    - name: doMeta1CBtn
+      title: 'do'
+      type: Action
+
+    - name: doMeta1CmBtn
+      title: '*'
+      type: Action
+
+    - name: doMeta2ABtn
+      title: 'do'
+      type: Action
+    
+    - name: doMeta2AmBtn
+      title: '*'
+      type: Action
+    
+    - name: doMeta2BBtn
+      title: 'do'
+      type: Action
+
+    - name: doMeta2BmBtn
+      title: '*'
+      type: Action
+
+    - name: doMeta2CBtn
+      title: 'do'
+      type: Action
+
+    - name: doMeta2CmBtn
+      title: '*'
+      type: Action
 
     - name: meta2SampleSize
-      title: 'Sample size & method' 
+      title: 'Sample size' 
       type: Number
       default: 50
 
     - name: meta2SampleMethod
-      title: ' '
+      title: 'Sampling Method'
       type: List
       options:
         - name: Random
@@ -2303,20 +2341,53 @@ options:
       type: Number
       default: 0.5
 
-    - name: meta3SampleSize
-      title: 'Sample size & method' 
+    - name: meta2SampleSplits
+      title: sets
       type: Number
-      default: 50
+      default: 1
 
-    - name: meta3SampleMethod
-      title: ' '
+    - name: meta2SampleBudget
+      title: Budget
+      type: Number
+      default: 320
+
+    - name: meta2Cheating
+      title: Cheating
       type: List
       options:
-        - name: Random
-          title: Random
-        - name: Convenience
-          title: Convenience
-      default: Random
+       - name: None
+         title: None
+       - name: Grow
+         title: Grow
+       - name: Prune
+         title: Prune
+       - name: Replace
+         title: Replace
+      default: None
+
+
+
+    - name: doMeta3ABtn
+      title: 'do'
+      type: Action
+
+    - name: doMeta3AmBtn
+      title: '*'
+      type: Action
+
+    - name: doMeta3BBtn
+      title: 'do'
+      type: Action
+
+    - name: doMeta3BmBtn
+      title: '*'
+      type: Action
+
+
+    - name: meta3SampleSize
+      title: 'Sample size' 
+      type: Number
+      default: 50
 
     - name: meta3pNull
       title: '   p(rₚ=0)'
@@ -2337,79 +2408,6 @@ options:
       title: power
       type: Number
       default: 0.9
-      
-    - name: doMeta1ABtn
-      title: 'do'
-      type: Action
-
-    - name: doMeta1AmBtn
-      title: '*'
-      type: Action
-
-    - name: doMeta1BBtn
-      title: 'do'
-      type: Action
-
-    - name: doMeta1BmBtn
-      title: '*'
-      type: Action
-
-    - name: meta2SampleSplits
-      title: sets
-      type: Number
-      default: 1
-
-    - name: meta2SampleBudget
-      title: Budget
-      type: Number
-      default: 320
-
-    - name: metaCheating
-      title: Cheating
-      type: List
-      options:
-       - name: None
-         title: None
-       - name: Grow
-         title: Grow
-       - name: Prune
-         title: Prune
-       - name: Replace
-         title: Replace
-      default: None
-
-    - name: doMeta2ABtn
-      title: 'do'
-      type: Action
-
-    - name: doMeta2AmBtn
-      title: '*'
-      type: Action
-
-    - name: doMeta2BBtn
-      title: 'do'
-      type: Action
-
-    - name: doMeta2BmBtn
-      title: '*'
-      type: Action
-
-
-    - name: doMeta3ABtn
-      title: 'do'
-      type: Action
-
-    - name: doMeta3AmBtn
-      title: '*'
-      type: Action
-
-    - name: doMeta3BBtn
-      title: 'do'
-      type: Action
-
-    - name: doMeta3BmBtn
-      title: '*'
-      type: Action
 
     - name: doMeta4ABtn
       title: 'do'

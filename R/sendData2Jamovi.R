@@ -44,7 +44,7 @@ sendData2Jamovi<-function(outputNow,self) {
     }
     # then explore result
     if (self$options$sendExplore && !is.null(outputNow) && outputNow=="Explore") {
-      newExplore<-reportExplore(returnDataFrame=TRUE,showType=showExploreParam,reportStats=self$options$reportInferStats)
+      newExplore<-reportExplore(returnDataFrame=TRUE,showType=self$options$showExploreParam,reportStats=self$options$reportInferStats)
       nvars<-ncol(newExplore)
       
       keys<-1:nvars
