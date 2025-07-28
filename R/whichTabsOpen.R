@@ -15,6 +15,7 @@ if (self$options$meta1Help) statusStore$investgHelpWhich<-2
 if (self$options$meta2Help) statusStore$investgHelpWhich<-3
 if (self$options$meta3Help) statusStore$investgHelpWhich<-4
 if (self$options$meta4Help) statusStore$investgHelpWhich<-5
+if (self$options$meta5Help) statusStore$investgHelpWhich<-6
 if (statusStore$investgHelpWhich==old_investgHelpWhich) statusStore$investgHelpWhich<-0
 
 old_demoHelpWhich<-statusStore$demoHelpWhich

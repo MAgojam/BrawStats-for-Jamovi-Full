@@ -17,6 +17,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             meta2Help = NULL,
             meta3Help = NULL,
             meta4Help = NULL,
+            meta5Help = NULL,
             simHelp = NULL,
             simPlanHelp = NULL,
             simSingleHelp = NULL,
@@ -253,7 +254,6 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             doDemo4C2Btn = NULL,
             doDemo4C3Btn = NULL,
             lastDemo = "none",
-            meta1SampleSize = 250,
             meta1pNull = 0.5,
             doMeta1ABtn = NULL,
             doMeta1AmBtn = NULL,
@@ -265,29 +265,34 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             doMeta2AmBtn = NULL,
             doMeta2BBtn = NULL,
             doMeta2BmBtn = NULL,
-            doMeta2CBtn = NULL,
-            doMeta2CmBtn = NULL,
             meta2SampleSize = 50,
             meta2World = "Psych50",
-            meta2SampleMethod = "Random",
             meta2pNull = 0.5,
             meta2SampleSplits = 1,
             meta2SampleBudget = 320,
-            meta2Cheating = "None",
             doMeta3ABtn = NULL,
             doMeta3AmBtn = NULL,
             doMeta3BBtn = NULL,
             doMeta3BmBtn = NULL,
             meta3SampleSize = 50,
             meta3World = "Psych50",
+            meta3SampleMethod = "Random",
             meta3pNull = 0.5,
-            meta3SigOriginal = "no",
-            meta3RepPower = 0.9,
+            Meta3Cheating = "None",
             doMeta4ABtn = NULL,
             doMeta4AmBtn = NULL,
             doMeta4BBtn = NULL,
             doMeta4BmBtn = NULL,
-            meta4SampleGroup = "a", ...) {
+            Meta4SampleSize = 50,
+            Meta4World = "Psych50",
+            meta4pNull = 0.5,
+            Meta4SigOriginal = "no",
+            Meta4RepPower = 0.9,
+            doMeta5ABtn = NULL,
+            doMeta5AmBtn = NULL,
+            doMeta5BBtn = NULL,
+            doMeta5BmBtn = NULL,
+            Meta5SampleGroup = "a", ...) {
 
             super$initialize(
                 package="BrawStats",
@@ -334,6 +339,9 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             private$..meta4Help <- jmvcore::OptionAction$new(
                 "meta4Help",
                 meta4Help)
+            private$..meta5Help <- jmvcore::OptionAction$new(
+                "meta5Help",
+                meta5Help)
             private$..simHelp <- jmvcore::OptionAction$new(
                 "simHelp",
                 simHelp)
@@ -1786,10 +1794,6 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "4b",
                     "4c"),
                 default="none")
-            private$..meta1SampleSize <- jmvcore::OptionNumber$new(
-                "meta1SampleSize",
-                meta1SampleSize,
-                default=250)
             private$..meta1pNull <- jmvcore::OptionNumber$new(
                 "meta1pNull",
                 meta1pNull,
@@ -1824,12 +1828,6 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             private$..doMeta2BmBtn <- jmvcore::OptionAction$new(
                 "doMeta2BmBtn",
                 doMeta2BmBtn)
-            private$..doMeta2CBtn <- jmvcore::OptionAction$new(
-                "doMeta2CBtn",
-                doMeta2CBtn)
-            private$..doMeta2CmBtn <- jmvcore::OptionAction$new(
-                "doMeta2CmBtn",
-                doMeta2CmBtn)
             private$..meta2SampleSize <- jmvcore::OptionNumber$new(
                 "meta2SampleSize",
                 meta2SampleSize,
@@ -1838,17 +1836,10 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 "meta2World",
                 meta2World,
                 options=list(
-                    "Single",
+                    "Plain",
+                    "Binary",
                     "Psych50"),
                 default="Psych50")
-            private$..meta2SampleMethod <- jmvcore::OptionList$new(
-                "meta2SampleMethod",
-                meta2SampleMethod,
-                options=list(
-                    "Random",
-                    "Convenience",
-                    "Limited"),
-                default="Random")
             private$..meta2pNull <- jmvcore::OptionNumber$new(
                 "meta2pNull",
                 meta2pNull,
@@ -1861,15 +1852,6 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 "meta2SampleBudget",
                 meta2SampleBudget,
                 default=320)
-            private$..meta2Cheating <- jmvcore::OptionList$new(
-                "meta2Cheating",
-                meta2Cheating,
-                options=list(
-                    "None",
-                    "Grow",
-                    "Prune",
-                    "Replace"),
-                default="None")
             private$..doMeta3ABtn <- jmvcore::OptionAction$new(
                 "doMeta3ABtn",
                 doMeta3ABtn)
@@ -1890,24 +1872,31 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 "meta3World",
                 meta3World,
                 options=list(
-                    "Single",
+                    "Plain",
+                    "Binary",
                     "Psych50"),
                 default="Psych50")
+            private$..meta3SampleMethod <- jmvcore::OptionList$new(
+                "meta3SampleMethod",
+                meta3SampleMethod,
+                options=list(
+                    "Random",
+                    "Cluster",
+                    "Snowball"),
+                default="Random")
             private$..meta3pNull <- jmvcore::OptionNumber$new(
                 "meta3pNull",
                 meta3pNull,
                 default=0.5)
-            private$..meta3SigOriginal <- jmvcore::OptionList$new(
-                "meta3SigOriginal",
-                meta3SigOriginal,
+            private$..Meta3Cheating <- jmvcore::OptionList$new(
+                "Meta3Cheating",
+                Meta3Cheating,
                 options=list(
-                    "no",
-                    "yes"),
-                default="no")
-            private$..meta3RepPower <- jmvcore::OptionNumber$new(
-                "meta3RepPower",
-                meta3RepPower,
-                default=0.9)
+                    "None",
+                    "Grow",
+                    "Prune",
+                    "Replace"),
+                default="None")
             private$..doMeta4ABtn <- jmvcore::OptionAction$new(
                 "doMeta4ABtn",
                 doMeta4ABtn)
@@ -1920,9 +1909,48 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             private$..doMeta4BmBtn <- jmvcore::OptionAction$new(
                 "doMeta4BmBtn",
                 doMeta4BmBtn)
-            private$..meta4SampleGroup <- jmvcore::OptionList$new(
-                "meta4SampleGroup",
-                meta4SampleGroup,
+            private$..Meta4SampleSize <- jmvcore::OptionNumber$new(
+                "Meta4SampleSize",
+                Meta4SampleSize,
+                default=50)
+            private$..Meta4World <- jmvcore::OptionList$new(
+                "Meta4World",
+                Meta4World,
+                options=list(
+                    "Plain",
+                    "Binary",
+                    "Psych50"),
+                default="Psych50")
+            private$..meta4pNull <- jmvcore::OptionNumber$new(
+                "meta4pNull",
+                meta4pNull,
+                default=0.5)
+            private$..Meta4SigOriginal <- jmvcore::OptionList$new(
+                "Meta4SigOriginal",
+                Meta4SigOriginal,
+                options=list(
+                    "no",
+                    "yes"),
+                default="no")
+            private$..Meta4RepPower <- jmvcore::OptionNumber$new(
+                "Meta4RepPower",
+                Meta4RepPower,
+                default=0.9)
+            private$..doMeta5ABtn <- jmvcore::OptionAction$new(
+                "doMeta5ABtn",
+                doMeta5ABtn)
+            private$..doMeta5AmBtn <- jmvcore::OptionAction$new(
+                "doMeta5AmBtn",
+                doMeta5AmBtn)
+            private$..doMeta5BBtn <- jmvcore::OptionAction$new(
+                "doMeta5BBtn",
+                doMeta5BBtn)
+            private$..doMeta5BmBtn <- jmvcore::OptionAction$new(
+                "doMeta5BmBtn",
+                doMeta5BmBtn)
+            private$..Meta5SampleGroup <- jmvcore::OptionList$new(
+                "Meta5SampleGroup",
+                Meta5SampleGroup,
                 options=list(
                     "a",
                     "b"),
@@ -1939,6 +1967,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..meta2Help)
             self$.addOption(private$..meta3Help)
             self$.addOption(private$..meta4Help)
+            self$.addOption(private$..meta5Help)
             self$.addOption(private$..simHelp)
             self$.addOption(private$..simPlanHelp)
             self$.addOption(private$..simSingleHelp)
@@ -2178,7 +2207,6 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..doDemo4C2Btn)
             self$.addOption(private$..doDemo4C3Btn)
             self$.addOption(private$..lastDemo)
-            self$.addOption(private$..meta1SampleSize)
             self$.addOption(private$..meta1pNull)
             self$.addOption(private$..doMeta1ABtn)
             self$.addOption(private$..doMeta1AmBtn)
@@ -2190,29 +2218,34 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..doMeta2AmBtn)
             self$.addOption(private$..doMeta2BBtn)
             self$.addOption(private$..doMeta2BmBtn)
-            self$.addOption(private$..doMeta2CBtn)
-            self$.addOption(private$..doMeta2CmBtn)
             self$.addOption(private$..meta2SampleSize)
             self$.addOption(private$..meta2World)
-            self$.addOption(private$..meta2SampleMethod)
             self$.addOption(private$..meta2pNull)
             self$.addOption(private$..meta2SampleSplits)
             self$.addOption(private$..meta2SampleBudget)
-            self$.addOption(private$..meta2Cheating)
             self$.addOption(private$..doMeta3ABtn)
             self$.addOption(private$..doMeta3AmBtn)
             self$.addOption(private$..doMeta3BBtn)
             self$.addOption(private$..doMeta3BmBtn)
             self$.addOption(private$..meta3SampleSize)
             self$.addOption(private$..meta3World)
+            self$.addOption(private$..meta3SampleMethod)
             self$.addOption(private$..meta3pNull)
-            self$.addOption(private$..meta3SigOriginal)
-            self$.addOption(private$..meta3RepPower)
+            self$.addOption(private$..Meta3Cheating)
             self$.addOption(private$..doMeta4ABtn)
             self$.addOption(private$..doMeta4AmBtn)
             self$.addOption(private$..doMeta4BBtn)
             self$.addOption(private$..doMeta4BmBtn)
-            self$.addOption(private$..meta4SampleGroup)
+            self$.addOption(private$..Meta4SampleSize)
+            self$.addOption(private$..Meta4World)
+            self$.addOption(private$..meta4pNull)
+            self$.addOption(private$..Meta4SigOriginal)
+            self$.addOption(private$..Meta4RepPower)
+            self$.addOption(private$..doMeta5ABtn)
+            self$.addOption(private$..doMeta5AmBtn)
+            self$.addOption(private$..doMeta5BBtn)
+            self$.addOption(private$..doMeta5BmBtn)
+            self$.addOption(private$..Meta5SampleGroup)
         }),
     active = list(
         basicMode = function() private$..basicMode$value,
@@ -2226,6 +2259,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         meta2Help = function() private$..meta2Help$value,
         meta3Help = function() private$..meta3Help$value,
         meta4Help = function() private$..meta4Help$value,
+        meta5Help = function() private$..meta5Help$value,
         simHelp = function() private$..simHelp$value,
         simPlanHelp = function() private$..simPlanHelp$value,
         simSingleHelp = function() private$..simSingleHelp$value,
@@ -2465,7 +2499,6 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         doDemo4C2Btn = function() private$..doDemo4C2Btn$value,
         doDemo4C3Btn = function() private$..doDemo4C3Btn$value,
         lastDemo = function() private$..lastDemo$value,
-        meta1SampleSize = function() private$..meta1SampleSize$value,
         meta1pNull = function() private$..meta1pNull$value,
         doMeta1ABtn = function() private$..doMeta1ABtn$value,
         doMeta1AmBtn = function() private$..doMeta1AmBtn$value,
@@ -2477,29 +2510,34 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         doMeta2AmBtn = function() private$..doMeta2AmBtn$value,
         doMeta2BBtn = function() private$..doMeta2BBtn$value,
         doMeta2BmBtn = function() private$..doMeta2BmBtn$value,
-        doMeta2CBtn = function() private$..doMeta2CBtn$value,
-        doMeta2CmBtn = function() private$..doMeta2CmBtn$value,
         meta2SampleSize = function() private$..meta2SampleSize$value,
         meta2World = function() private$..meta2World$value,
-        meta2SampleMethod = function() private$..meta2SampleMethod$value,
         meta2pNull = function() private$..meta2pNull$value,
         meta2SampleSplits = function() private$..meta2SampleSplits$value,
         meta2SampleBudget = function() private$..meta2SampleBudget$value,
-        meta2Cheating = function() private$..meta2Cheating$value,
         doMeta3ABtn = function() private$..doMeta3ABtn$value,
         doMeta3AmBtn = function() private$..doMeta3AmBtn$value,
         doMeta3BBtn = function() private$..doMeta3BBtn$value,
         doMeta3BmBtn = function() private$..doMeta3BmBtn$value,
         meta3SampleSize = function() private$..meta3SampleSize$value,
         meta3World = function() private$..meta3World$value,
+        meta3SampleMethod = function() private$..meta3SampleMethod$value,
         meta3pNull = function() private$..meta3pNull$value,
-        meta3SigOriginal = function() private$..meta3SigOriginal$value,
-        meta3RepPower = function() private$..meta3RepPower$value,
+        Meta3Cheating = function() private$..Meta3Cheating$value,
         doMeta4ABtn = function() private$..doMeta4ABtn$value,
         doMeta4AmBtn = function() private$..doMeta4AmBtn$value,
         doMeta4BBtn = function() private$..doMeta4BBtn$value,
         doMeta4BmBtn = function() private$..doMeta4BmBtn$value,
-        meta4SampleGroup = function() private$..meta4SampleGroup$value),
+        Meta4SampleSize = function() private$..Meta4SampleSize$value,
+        Meta4World = function() private$..Meta4World$value,
+        meta4pNull = function() private$..meta4pNull$value,
+        Meta4SigOriginal = function() private$..Meta4SigOriginal$value,
+        Meta4RepPower = function() private$..Meta4RepPower$value,
+        doMeta5ABtn = function() private$..doMeta5ABtn$value,
+        doMeta5AmBtn = function() private$..doMeta5AmBtn$value,
+        doMeta5BBtn = function() private$..doMeta5BBtn$value,
+        doMeta5BmBtn = function() private$..doMeta5BmBtn$value,
+        Meta5SampleGroup = function() private$..Meta5SampleGroup$value),
     private = list(
         ..basicMode = NA,
         ..demosHelp = NA,
@@ -2512,6 +2550,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..meta2Help = NA,
         ..meta3Help = NA,
         ..meta4Help = NA,
+        ..meta5Help = NA,
         ..simHelp = NA,
         ..simPlanHelp = NA,
         ..simSingleHelp = NA,
@@ -2751,7 +2790,6 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..doDemo4C2Btn = NA,
         ..doDemo4C3Btn = NA,
         ..lastDemo = NA,
-        ..meta1SampleSize = NA,
         ..meta1pNull = NA,
         ..doMeta1ABtn = NA,
         ..doMeta1AmBtn = NA,
@@ -2763,29 +2801,34 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..doMeta2AmBtn = NA,
         ..doMeta2BBtn = NA,
         ..doMeta2BmBtn = NA,
-        ..doMeta2CBtn = NA,
-        ..doMeta2CmBtn = NA,
         ..meta2SampleSize = NA,
         ..meta2World = NA,
-        ..meta2SampleMethod = NA,
         ..meta2pNull = NA,
         ..meta2SampleSplits = NA,
         ..meta2SampleBudget = NA,
-        ..meta2Cheating = NA,
         ..doMeta3ABtn = NA,
         ..doMeta3AmBtn = NA,
         ..doMeta3BBtn = NA,
         ..doMeta3BmBtn = NA,
         ..meta3SampleSize = NA,
         ..meta3World = NA,
+        ..meta3SampleMethod = NA,
         ..meta3pNull = NA,
-        ..meta3SigOriginal = NA,
-        ..meta3RepPower = NA,
+        ..Meta3Cheating = NA,
         ..doMeta4ABtn = NA,
         ..doMeta4AmBtn = NA,
         ..doMeta4BBtn = NA,
         ..doMeta4BmBtn = NA,
-        ..meta4SampleGroup = NA)
+        ..Meta4SampleSize = NA,
+        ..Meta4World = NA,
+        ..meta4pNull = NA,
+        ..Meta4SigOriginal = NA,
+        ..Meta4RepPower = NA,
+        ..doMeta5ABtn = NA,
+        ..doMeta5AmBtn = NA,
+        ..doMeta5BBtn = NA,
+        ..doMeta5BmBtn = NA,
+        ..Meta5SampleGroup = NA)
 )
 
 BrawSimResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
@@ -2917,6 +2960,7 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param meta2Help .
 #' @param meta3Help .
 #' @param meta4Help .
+#' @param meta5Help .
 #' @param simHelp .
 #' @param simPlanHelp .
 #' @param simSingleHelp .
@@ -3153,7 +3197,6 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param doDemo4C2Btn .
 #' @param doDemo4C3Btn .
 #' @param lastDemo .
-#' @param meta1SampleSize .
 #' @param meta1pNull .
 #' @param doMeta1ABtn .
 #' @param doMeta1AmBtn .
@@ -3165,29 +3208,34 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param doMeta2AmBtn .
 #' @param doMeta2BBtn .
 #' @param doMeta2BmBtn .
-#' @param doMeta2CBtn .
-#' @param doMeta2CmBtn .
 #' @param meta2SampleSize .
 #' @param meta2World .
-#' @param meta2SampleMethod .
 #' @param meta2pNull .
 #' @param meta2SampleSplits .
 #' @param meta2SampleBudget .
-#' @param meta2Cheating .
 #' @param doMeta3ABtn .
 #' @param doMeta3AmBtn .
 #' @param doMeta3BBtn .
 #' @param doMeta3BmBtn .
 #' @param meta3SampleSize .
 #' @param meta3World .
+#' @param meta3SampleMethod .
 #' @param meta3pNull .
-#' @param meta3SigOriginal .
-#' @param meta3RepPower .
+#' @param Meta3Cheating .
 #' @param doMeta4ABtn .
 #' @param doMeta4AmBtn .
 #' @param doMeta4BBtn .
 #' @param doMeta4BmBtn .
-#' @param meta4SampleGroup .
+#' @param Meta4SampleSize .
+#' @param Meta4World .
+#' @param meta4pNull .
+#' @param Meta4SigOriginal .
+#' @param Meta4RepPower .
+#' @param doMeta5ABtn .
+#' @param doMeta5AmBtn .
+#' @param doMeta5BBtn .
+#' @param doMeta5BmBtn .
+#' @param Meta5SampleGroup .
 #' @return A results object containing:
 #' \tabular{llllll}{
 #'   \code{results$simSystemHTML} \tab \tab \tab \tab \tab a html \cr
@@ -3213,6 +3261,7 @@ BrawSim <- function(
     meta2Help,
     meta3Help,
     meta4Help,
+    meta5Help,
     simHelp,
     simPlanHelp,
     simSingleHelp,
@@ -3449,7 +3498,6 @@ BrawSim <- function(
     doDemo4C2Btn,
     doDemo4C3Btn,
     lastDemo = "none",
-    meta1SampleSize = 250,
     meta1pNull = 0.5,
     doMeta1ABtn,
     doMeta1AmBtn,
@@ -3461,29 +3509,34 @@ BrawSim <- function(
     doMeta2AmBtn,
     doMeta2BBtn,
     doMeta2BmBtn,
-    doMeta2CBtn,
-    doMeta2CmBtn,
     meta2SampleSize = 50,
     meta2World = "Psych50",
-    meta2SampleMethod = "Random",
     meta2pNull = 0.5,
     meta2SampleSplits = 1,
     meta2SampleBudget = 320,
-    meta2Cheating = "None",
     doMeta3ABtn,
     doMeta3AmBtn,
     doMeta3BBtn,
     doMeta3BmBtn,
     meta3SampleSize = 50,
     meta3World = "Psych50",
+    meta3SampleMethod = "Random",
     meta3pNull = 0.5,
-    meta3SigOriginal = "no",
-    meta3RepPower = 0.9,
+    Meta3Cheating = "None",
     doMeta4ABtn,
     doMeta4AmBtn,
     doMeta4BBtn,
     doMeta4BmBtn,
-    meta4SampleGroup = "a") {
+    Meta4SampleSize = 50,
+    Meta4World = "Psych50",
+    meta4pNull = 0.5,
+    Meta4SigOriginal = "no",
+    Meta4RepPower = 0.9,
+    doMeta5ABtn,
+    doMeta5AmBtn,
+    doMeta5BBtn,
+    doMeta5BmBtn,
+    Meta5SampleGroup = "a") {
 
     if ( ! requireNamespace("jmvcore", quietly=TRUE))
         stop("BrawSim requires jmvcore to be installed (restart may be required)")
@@ -3501,6 +3554,7 @@ BrawSim <- function(
         meta2Help = meta2Help,
         meta3Help = meta3Help,
         meta4Help = meta4Help,
+        meta5Help = meta5Help,
         simHelp = simHelp,
         simPlanHelp = simPlanHelp,
         simSingleHelp = simSingleHelp,
@@ -3737,7 +3791,6 @@ BrawSim <- function(
         doDemo4C2Btn = doDemo4C2Btn,
         doDemo4C3Btn = doDemo4C3Btn,
         lastDemo = lastDemo,
-        meta1SampleSize = meta1SampleSize,
         meta1pNull = meta1pNull,
         doMeta1ABtn = doMeta1ABtn,
         doMeta1AmBtn = doMeta1AmBtn,
@@ -3749,29 +3802,34 @@ BrawSim <- function(
         doMeta2AmBtn = doMeta2AmBtn,
         doMeta2BBtn = doMeta2BBtn,
         doMeta2BmBtn = doMeta2BmBtn,
-        doMeta2CBtn = doMeta2CBtn,
-        doMeta2CmBtn = doMeta2CmBtn,
         meta2SampleSize = meta2SampleSize,
         meta2World = meta2World,
-        meta2SampleMethod = meta2SampleMethod,
         meta2pNull = meta2pNull,
         meta2SampleSplits = meta2SampleSplits,
         meta2SampleBudget = meta2SampleBudget,
-        meta2Cheating = meta2Cheating,
         doMeta3ABtn = doMeta3ABtn,
         doMeta3AmBtn = doMeta3AmBtn,
         doMeta3BBtn = doMeta3BBtn,
         doMeta3BmBtn = doMeta3BmBtn,
         meta3SampleSize = meta3SampleSize,
         meta3World = meta3World,
+        meta3SampleMethod = meta3SampleMethod,
         meta3pNull = meta3pNull,
-        meta3SigOriginal = meta3SigOriginal,
-        meta3RepPower = meta3RepPower,
+        Meta3Cheating = Meta3Cheating,
         doMeta4ABtn = doMeta4ABtn,
         doMeta4AmBtn = doMeta4AmBtn,
         doMeta4BBtn = doMeta4BBtn,
         doMeta4BmBtn = doMeta4BmBtn,
-        meta4SampleGroup = meta4SampleGroup)
+        Meta4SampleSize = Meta4SampleSize,
+        Meta4World = Meta4World,
+        meta4pNull = meta4pNull,
+        Meta4SigOriginal = Meta4SigOriginal,
+        Meta4RepPower = Meta4RepPower,
+        doMeta5ABtn = doMeta5ABtn,
+        doMeta5AmBtn = doMeta5AmBtn,
+        doMeta5BBtn = doMeta5BBtn,
+        doMeta5BmBtn = doMeta5BmBtn,
+        Meta5SampleGroup = Meta5SampleGroup)
 
     analysis <- BrawSimClass$new(
         options = options,

@@ -61,6 +61,10 @@ options:
       type: Action
       title: '?'
       
+    - name: meta5Help
+      type: Action
+      title: '?'
+      
     - name: simHelp
       type: Action
       title: '?'
@@ -2263,11 +2267,6 @@ options:
         title: 4c
       default: none
 
-    - name: meta1SampleSize
-      title: 'Sample size' 
-      type: Number
-      default: 250
-
     - name: meta1pNull
       title: '   p(rₚ=0)'
       type: Number
@@ -2304,49 +2303,32 @@ options:
     - name: doMeta2AmBtn
       title: '*'
       type: Action
-    
+
     - name: doMeta2BBtn
       title: 'do'
       type: Action
-
+    
     - name: doMeta2BmBtn
       title: '*'
       type: Action
-
-    - name: doMeta2CBtn
-      title: 'do'
-      type: Action
-
-    - name: doMeta2CmBtn
-      title: '*'
-      type: Action
-
+    
+    
     - name: meta2SampleSize
       title: 'Sample size' 
       type: Number
-      default: 50
+      default: 250
 
     - name: meta2World
       title: 'world'
       type: List
       options:
-      - name: Single
-        title: simple
+      - name: Plain
+        title: single
+      - name: Binary
+        title: binary
       - name: Psych50
         title: psychology
       default: Psych50
-
-    - name: meta2SampleMethod
-      title: 'Sampling Method'
-      type: List
-      options:
-        - name: Random
-          title: Random
-        - name: Convenience
-          title: Convenience
-        - name: Limited
-          title: Limited
-      default: Random
 
     - name: meta2pNull
       title: '   p(rₚ=0)'
@@ -2362,22 +2344,6 @@ options:
       title: Budget
       type: Number
       default: 320
-
-    - name: meta2Cheating
-      title: Cheating
-      type: List
-      options:
-       - name: None
-         title: None
-       - name: Grow
-         title: Grow
-       - name: Prune
-         title: Prune
-       - name: Replace
-         title: Replace
-      default: None
-
-
 
     - name: doMeta3ABtn
       title: 'do'
@@ -2395,42 +2361,55 @@ options:
       title: '*'
       type: Action
 
-
     - name: meta3SampleSize
       title: 'Sample size' 
       type: Number
       default: 50
 
-
     - name: meta3World
       title: 'world'
       type: List
       options:
-      - name: Single
-        title: simple
+      - name: Plain
+        title: single
+      - name: Binary
+        title: binary
       - name: Psych50
         title: psychology
       default: Psych50
+
+    - name: meta3SampleMethod
+      title: 'Sampling Method'
+      type: List
+      options:
+        - name: Random
+          title: Random
+        - name: Cluster
+          title: Cluster
+        - name: Snowball
+          title: Snowball
+      default: Random
 
     - name: meta3pNull
       title: '   p(rₚ=0)'
       type: Number
       default: 0.5
 
-    - name: meta3SigOriginal
-      title: "only significant originals?"
+    - name: Meta3Cheating
+      title: Cheating
       type: List
       options:
-        - name: no
-          title: no
-        - name: yes
-          title: yes
-      default: no
+       - name: None
+         title: None
+       - name: Grow
+         title: Grow
+       - name: Prune
+         title: Prune
+       - name: Replace
+         title: Replace
+      default: None
 
-    - name: meta3RepPower
-      title: power
-      type: Number
-      default: 0.9
+
 
     - name: doMeta4ABtn
       title: 'do'
@@ -2448,7 +2427,62 @@ options:
       title: '*'
       type: Action
 
-    - name: meta4SampleGroup
+
+    - name: Meta4SampleSize
+      title: 'Sample size' 
+      type: Number
+      default: 50
+
+
+    - name: Meta4World
+      title: 'world'
+      type: List
+      options:
+      - name: Plain
+        title: single
+      - name: Binary
+        title: binary
+      - name: Psych50
+        title: psychology
+      default: Psych50
+
+    - name: meta4pNull
+      title: '   p(rₚ=0)'
+      type: Number
+      default: 0.5
+
+    - name: Meta4SigOriginal
+      title: "only significant originals?"
+      type: List
+      options:
+        - name: no
+          title: no
+        - name: yes
+          title: yes
+      default: no
+
+    - name: Meta4RepPower
+      title: power
+      type: Number
+      default: 0.9
+
+    - name: doMeta5ABtn
+      title: 'do'
+      type: Action
+
+    - name: doMeta5AmBtn
+      title: '*'
+      type: Action
+
+    - name: doMeta5BBtn
+      title: 'do'
+      type: Action
+
+    - name: doMeta5BmBtn
+      title: '*'
+      type: Action
+
+    - name: Meta5SampleGroup
       title: ' '
       type: List
       options:

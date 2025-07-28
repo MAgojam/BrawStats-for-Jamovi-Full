@@ -46,7 +46,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           titleWidth=100,
           # tabs=c("Single","Multiple","Comments"),
           # tabContents=c(nullPlot(),nullPlot(),nullPlot()),
-          tabs=c("Single","Multiple"),
+          tabs=c("Graph","Report"),
           tabContents=c(nullPlot(),nullPlot()),
           open=0
         )
@@ -93,8 +93,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           historyPlace=0
         )
         np<-nullPlot()
-        setBrawRes("investgSingle",np)
-        setBrawRes("investgMultiple",np)
+        setBrawRes("investgG",np)
+        setBrawRes("investgR",np)
         setBrawRes("simSingle",np)
         setBrawRes("simMultiple",np)
         setBrawRes("simExplore",np)
@@ -122,21 +122,24 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                          self$options$doMeta1CBtn,self$options$doMeta1CmBtn,
                          self$options$doMeta2ABtn,self$options$doMeta2AmBtn,
                          self$options$doMeta2BBtn,self$options$doMeta2BmBtn,
-                         self$options$doMeta2CBtn,self$options$doMeta2CmBtn,
                          self$options$doMeta3ABtn,self$options$doMeta3AmBtn,
                          self$options$doMeta3BBtn,self$options$doMeta3BmBtn,
                          self$options$doMeta4ABtn,self$options$doMeta4AmBtn,
-                         self$options$doMeta4BBtn,self$options$doMeta4BmBtn)
+                         self$options$doMeta4BBtn,self$options$doMeta4BmBtn,
+                         self$options$doMeta5ABtn,self$options$doMeta5AmBtn,
+                         self$options$doMeta5BBtn,self$options$doMeta5BmBtn)
       investgNames<-c("Inv1A","Inv1Am",
                       "Inv1B","Inv1Bm",
                       "Inv1C","Inv1Cm",
                       "Inv2A","Inv2Am",
                       "Inv2B","Inv2Bm",
-                      "Inv2C","Inv2Cm",
                       "Inv3A","Inv3Am",
                       "Inv3B","Inv3Bm",
                       "Inv4A","Inv4Am",
-                      "Inv4B","Inv4Bm")
+                      "Inv4B","Inv4Bm",
+                      "Inv5A","Inv5Am",
+                      "Inv5B","Inv5Bm"
+                      )
       if (any(investgControls)) {
         doingInvestg<-investgNames[investgControls]
         doingInvestg<-doingInvestg[1]
@@ -162,20 +165,30 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         invg<-substr(doingInvestg,1,4)
         switch(invg,
                "Inv1"={
-                 if (substr(doingInvestg,5,5)=="A") 
-                   hypothesis<-makeHypothesis(effect=makeEffect(world=makeWorld(TRUE,"Single","r",populationPDFk=0.3,populationNullp=0.5)))
-                 else 
-                   hypothesis<-makeHypothesis(effect=makeEffect(world=makeWorld(TRUE,"Exp","z",populationPDFk=0.3,populationNullp=self$options$meta1pNull)))
+                 switch(substr(doingInvestg,5,5),
+                        "A"=hypothesis<-makeHypothesis(effect=makeEffect(world=getWorld("Plain"))),
+                        "B"=hypothesis<-makeHypothesis(effect=makeEffect(world=getWorld("Binary"))),
+                        "C"=hypothesis<-makeHypothesis(effect=makeEffect(world=getWorld("Psych50")))
+                        )
+                 if (substr(doingInvestg,5,5)!="A")
+                   hypothesis$effect$world$populationNullp<-self$options$meta1pNull
                },
                "Inv2"={
                  hypothesis<-makeHypothesis(effect=makeEffect(world=getWorld(self$options$meta2World)))
-                 hypothesis$effect$world$populationNullp<-self$options$meta2pNull
+                 if (self$options$meta2World!="Plain")
+                   hypothesis$effect$world$populationNullp<-self$options$meta2pNull
                },
                "Inv3"={
-                 hypothesis<-makeHypothesis(effect=makeEffect(world=getWorld(self$options$meta3World)))
-                 hypothesis$effect$world$populationNullp<-self$options$meta3pNull
+                 hypothesis<-makeHypothesis(effect=makeEffect(world=getWorld(self$options$meta2World)))
+                 if (self$options$meta3World!="Plain")
+                   hypothesis$effect$world$populationNullp<-self$options$meta3pNull
                },
                "Inv4"={
+                 hypothesis<-makeHypothesis(effect=makeEffect(world=getWorld(self$options$Meta4World)))
+                 if (self$options$Meta4World!="Plain")
+                   hypothesis$effect$world$populationNullp<-self$options$meta4pNull
+               },
+               "Inv5"={
                  if (substr(doingInvestg,5,5)=="A")
                    hypothesis<-makeHypothesis(effect=makeEffect(rIV=0.3/2,rIV2=0,rIVIV2DV=0.3/2))
                  else
@@ -186,45 +199,50 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         
         switch(invg,
                "Inv1"={
-                 if (substr(doingInvestg,5,5)!="C") 
-                   design<-makeDesign(sN=50)
-                 else 
-                   design<-makeDesign(sN=self$options$meta1SampleSize)
+                 design<-makeDesign(sN=50)
                },
                "Inv2"={
-                 design<-makeDesign(sN=self$options$meta2SampleSize)
-                 if (substr(doingInvestg,5,5)=="B") {
-                   if (self$options$meta2SampleMethod=="Limited") {
-                     design$sIVRangeOn<-TRUE
-                     design$sIVRange<-c(-1,1)*0.5
-                   } 
-                   if (self$options$meta2SampleMethod=="Convenience") {
-                     design$sDependence<-0.5
-                   } 
-                 }
-                 if (substr(doingInvestg,5,5)=="C") {
-                   design$sCheating<-self$options$meta2Cheating
-                   design$sCheatingLimit="Budget"
-                   design$sCheatingBudget=0.25
-                 }
+                 switch(substr(doingInvestg,5,5),
+                        "A"=design<-makeDesign(sN=self$options$meta2SampleSize),
+                        "B"=design<-makeDesign(sN=self$options$meta2SampleBudget)
+                          )
+                 
                },
                "Inv3"={
                  design<-makeDesign(sN=self$options$meta3SampleSize)
-                 if (substr(doingInvestg,5,5)=="A") 
-                   design$Replication<-makeReplication(TRUE,Keep="Cautious",
-                                                       forceSigOriginal=self$options$meta3SigOriginal=="yes",Power=self$options$meta3RepPower)
-                 if (substr(doingInvestg,5,5)=="B") 
-                   design$Replication<-makeReplication(TRUE,Keep="MetaAnalysis",
-                                                       forceSigOriginal=self$options$meta3SigOriginal=="yes",Power=self$options$meta3RepPower)
+                 switch(substr(doingInvestg,5,5),
+                        "A"=design$sMethod<-makeSampling(self$options$meta3SampleMethod),
+                        "B"={
+                          design$sCheating<-self$options$Meta3Cheating
+                          design$sCheatingLimit<-"Budget"
+                          design$sCheatingBudget<-0.25
+                        }
+                 )
                },
                "Inv4"={
-                 if (substr(doingInvestg,5,5)=="A") {
-                   if (self$options$meta4SampleGroup=="a") range<-c(1,1) else range<-c(-1,-1)
-                   design<-makeDesign(sN=1000,sIV2RangeOn=TRUE,sIV2Range=range)
-                 } else {
-                   if (self$options$meta4SampleGroup=="a") range<-c(0,0) else range<-c(-4,4)
-                   design<-makeDesign(sN=1000,sIV2RangeOn=TRUE,sIV2Range=range)
-                 }
+                 design<-makeDesign(sN=self$options$Meta4SampleSize)
+                 switch(substr(doingInvestg,5,5),
+                        "A"= {
+                          design$Replication<-makeReplication(TRUE,Keep="Cautious",
+                                                              forceSigOriginal=self$options$Meta4SigOriginal=="yes",Power=self$options$Meta4RepPower)
+                        },
+                        "B"={
+                          design$Replication<-makeReplication(TRUE,Keep="MetaAnalysis",
+                                                              forceSigOriginal=self$options$Meta4SigOriginal=="yes",Power=self$options$Meta4RepPower)
+                        }
+                 )
+               },
+               "Inv5"={
+                 switch(substr(doingInvestg,5,5),
+                        "A"={
+                          if (self$options$Meta5SampleGroup=="a") range<-c(1,1) else range<-c(-1,-1)
+                          design<-makeDesign(sN=1000,sIV2RangeOn=TRUE,sIV2Range=range)
+                        },
+                        "B"={
+                          if (self$options$Meta5SampleGroup=="a") range<-c(0,0) else range<-c(-4,4)
+                          design<-makeDesign(sN=1000,sIV2RangeOn=TRUE,sIV2Range=range)
+                        }
+                 )
                  evidence<-makeEvidence(AnalysisTerms=1)
                  setBrawDef("evidence",evidence)
                }
@@ -282,11 +300,11 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       if (any(investgControls)) {
         reportCounts=FALSE
 
-        if (substr(doingInvestg,1,4)=="Inv4")
+        if (substr(doingInvestg,1,4)=="Inv5")
           setHypothesis(IV2=makeVariable("IV2","Interval"))
 
         if (substr(doingInvestg,6,6)!="m") {
-          if (substr(doingInvestg,1,5)=="Inv2A") {
+          if (substr(doingInvestg,1,5)=="Inv2B") {
             setDesign(sN=floor(self$options$meta2SampleBudget/self$options$meta2SampleSplits))
             nreps<-floor(self$options$meta2SampleSplits)
             doMultiple(nreps,NULL)
@@ -298,15 +316,15 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           }
           open<-1
           # we display replications as multiple results
-          if (substr(doingInvestg,1,4)=="Inv3")  setBrawRes("multiple",braw.res$result)
+          if (substr(doingInvestg,1,4)=="Inv4")  setBrawRes("multiple",braw.res$result)
         } else {
-          if (doingInvestg=="Inv2Am") {
+          if (doingInvestg=="Inv2Bm") {
             setDesign(sN=self$options$meta2SampleBudget)
             doExplore(50,explore=makeExplore("nSplits",vals=2^c(0,1,2,3,4,5),xlog=TRUE))
             outputNow<-"Explore"
             reportCounts<-TRUE
           } else {
-            if (doingInvestg=="Inv2Cm") nreps<-50
+            if (doingInvestg=="Inv3Bm") nreps<-50
             else                 nreps<-200
             doMultiple(nreps)
             outputNow<-"Multiple"
@@ -315,16 +333,16 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         }
         
 
-        if (is.element(doingInvestg,c("Inv4A","Inv4B"))) {
+        if (is.element(doingInvestg,c("Inv5A","Inv5B"))) {
           result<-braw.res$result
           result$hypothesis$IV2<-NULL
           setBrawRes("result",result)
         } 
-        if (is.element(doingInvestg,c("Inv4Am","Inv4Bm"))) {
+        if (is.element(doingInvestg,c("Inv5Am","Inv5Bm"))) {
           multiple<-braw.res$multiple
           multiple$hypothesis$IV2<-NULL
           multiple$result$hypothesis$IV2<-NULL
-          switch(self$options$meta4SampleGroup,
+          switch(self$options$Meta5SampleGroup,
                  "a"={multiple$result$hypothesis$effect$rIV<-0.3},
                  "b"={multiple$result$hypothesis$effect$rIV<-0}
                  )
@@ -339,33 +357,39 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         setBrawEnv("fullOutput",1)
         switch(open,
                { 
-                 if (is.element(doingInvestg,c("Inv2A","Inv3A","Inv3B"))) {
-                   if (doingInvestg=="Inv2A")
-                     investgSingle<-paste0(showMultiple(showType="rse",dimension="1D",orientation="horz"),
-                                         reportMultiple(showType="NHST",reportStats=self$options$reportInferStats)
-                     )
-                 else investgSingle<-paste0(showMultiple(),reportInference())
-                 } else 
-                   investgSingle<-paste0(showDescription(),reportInference())
-                 investgMultiple<-braw.res$investgMultiple
-                 setBrawRes("investgSingle",investgSingle)
+                 if (is.element(doingInvestg,c("Inv2B","Inv4A","Inv4B"))) {
+                   if (doingInvestg=="Inv2B") {
+                     investgG<-showMultiple(showType="rse",dimension="1D",orientation="horz")
+                     investgR<-reportMultiple(showType="NHST",reportStats=self$options$reportInferStats)
+                   }
+                   else {
+                     investgG<-showMultiple()
+                     investgR<-reportInference()
+                   }
+                 } else  {
+                   investgG<-showDescription()
+                   investgR<-reportInference()
+                 }
                },
                {
-                 if (doingInvestg=="Inv2Am")
-                      investgMultiple<-paste0(showExplore(showType="n(sig)"),reportExplore(showType="n(sig)"))
-                 else {
-                   if (is.element(doingInvestg,c("Inv4Am","Inv4Bm"))) 
-                     investgMultiple<-paste0(showMultiple(showType="rs",dimension="1D",orientation="horz"),
-                                             reportMultiple(showType="rs"))
-                   else   
-                    investgMultiple<-paste0(showMultiple(showType="rse",dimension="1D",orientation="horz"),
-                                              reportMultiple(showType="NHST"))
+                 if (doingInvestg=="Inv2Bm") {
+                   investgG<-showExplore(showType="n(sig)")
+                   investgR<-reportExplore(showType="n(sig)")
                  }
-                 investgSingle<-braw.res$investgSingle
-                 setBrawRes("investgMultiple",investgMultiple)
+                 else {
+                   if (is.element(doingInvestg,c("Inv5Am","Inv5Bm"))) {
+                     investgG<-showMultiple(showType="rs",dimension="1D",orientation="horz")
+                     investgR<-reportMultiple(showType="rs")
+                   }
+                   else   {
+                     investgG<-showMultiple(showType="rse",dimension="1D",orientation="horz")
+                     investgR<-reportMultiple(showType="NHST")
+                   }
+                 }
                }
         )
-        # comments<-c("Inv1a","Inv1b","Inv2a","Inv2b","Inv3a","Inv3b","Inv4a","Inv4b")
+        setBrawRes("investgG",investgG)
+        setBrawRes("investgR",investgR)
         investgResults<-
           generate_tab(
             title="Investigation:",
@@ -373,10 +397,10 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
             titleWidth=100,
             # tabs=c("Single","Multiple","Comments"),
             # tabContents=c(braw.res$investgSingle,braw.res$investgMultiple,investgComment(doingInvestg)),
-            tabs=c("Single","Multiple"),
-            tabContents=c(braw.res$investgSingle,braw.res$investgMultiple),
+            tabs=c("Graph","Report"),
+            tabContents=c(braw.res$investgG,braw.res$investgR),
             tabLink=paste0('https://doingpsychstats.wordpress.com/investigations#',substr(doingInvestg,1,5)),
-            open=open
+            open=1
           )
         
         self$results$simGraphHTML$setContent(investgResults)

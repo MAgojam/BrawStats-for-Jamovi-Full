@@ -2421,7 +2421,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: '1. Inferences: how safe are they?'
+                        label: '1. Inferences: what can we infer about a result?'
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -2431,10 +2431,20 @@ children:
                             children:
                               - type: Label
                                 label: ' '
+                                minWidth: 15
+                              - type: TextBox
+                                name: meta1pNull
+                                format: number
+                                margin: none
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
                                 minWidth: 30
                               - type: CollapseBox
                                 collapsed: true
-                                label: a. did the result come from rₚ=0 or rₚ=0.3?
+                                label: 'a. is the result significant?'
                                 margin: none
                                 minWidth: 380
                                 children:
@@ -2475,51 +2485,42 @@ children:
                                 minWidth: 30
                               - type: CollapseBox
                                 collapsed: true
-                                label: b. a more realistic situation
+                                label: 'b. is it from rₚ=0 or rₚ=0.3?'
                                 margin: none
                                 minWidth: 380
                                 children:
-                                - type: LayoutBox
-                                  style: inline
-                                  children:
-                                  - type: Label
-                                    label: ' '
-                                  - type: TextBox
-                                    name: meta1pNull
-                                    format: number
-                                    margin: none
-                                - type: LayoutBox
-                                  style: inline
-                                  children:
-                                  - type: Label
-                                    label: ' '
-                                    cell:
-                                      row: 0
-                                      column: 0
-                                  - type: Label
-                                    label: Press here for a single sample
-                                    cell:
-                                      row: 0
-                                      column: 1
-                                  - type: ActionButton
-                                    name: doMeta1BBtn
-                                    maxHeight: 24
-                                    margin: none
-                                    cell:
-                                      row: 0
-                                      column: 2
-                                  - type: Label
-                                    label: Press here to see multiple samples
-                                    cell:
-                                      row: 1
-                                      column: 1
-                                  - type: ActionButton
-                                    name: doMeta1BmBtn
-                                    maxHeight: 24
-                                    margin: none
-                                    cell:
-                                      row: 1
-                                      column: 2
+                                  - type: LayoutBox
+                                    style: inline
+                                    children:
+                                      - type: Label
+                                        label: ' '
+                                        cell:
+                                          row: 0
+                                          column: 0
+                                      - type: Label
+                                        label: Press here for a single sample
+                                        cell:
+                                          row: 0
+                                          column: 1
+                                      - type: ActionButton
+                                        name: doMeta1BBtn
+                                        maxHeight: 24
+                                        margin: none
+                                        cell:
+                                          row: 0
+                                          column: 2
+                                      - type: Label
+                                        label: Press here to see multiple samples
+                                        cell:
+                                          row: 1
+                                          column: 1
+                                      - type: ActionButton
+                                        name: doMeta1BmBtn
+                                        maxHeight: 24
+                                        margin: none
+                                        cell:
+                                          row: 1
+                                          column: 2
                           - type: LayoutBox
                             style: inline
                             children:
@@ -2528,51 +2529,42 @@ children:
                                 minWidth: 30
                               - type: CollapseBox
                                 collapsed: true
-                                label: c. sample size
+                                label: 'c. a more realistic situation - is it from rₚ=0 or rₚ≠0'
                                 margin: none
                                 minWidth: 380
                                 children:
-                                - type: LayoutBox
-                                  style: inline
-                                  children:
-                                  - type: Label
-                                    label: ' '
-                                  - type: TextBox
-                                    name: meta1SampleSize
-                                    format: number
-                                    margin: none
-                                - type: LayoutBox
-                                  style: inline
-                                  children:
-                                  - type: Label
-                                    label: ' '
-                                    cell:
-                                      row: 0
-                                      column: 0
-                                  - type: Label
-                                    label: Press here for a single sample
-                                    cell:
-                                      row: 0
-                                      column: 1
-                                  - type: ActionButton
-                                    name: doMeta1CBtn
-                                    maxHeight: 24
-                                    margin: none
-                                    cell:
-                                      row: 0
-                                      column: 2
-                                  - type: Label
-                                    label: Press here to see multiple samples
-                                    cell:
-                                      row: 1
-                                      column: 1
-                                  - type: ActionButton
-                                    name: doMeta1CmBtn
-                                    maxHeight: 24
-                                    margin: none
-                                    cell:
-                                      row: 1
-                                      column: 2
+                                  - type: LayoutBox
+                                    style: inline
+                                    children:
+                                      - type: Label
+                                        label: ' '
+                                        cell:
+                                          row: 0
+                                          column: 0
+                                      - type: Label
+                                        label: Press here for a single sample
+                                        cell:
+                                          row: 0
+                                          column: 1
+                                      - type: ActionButton
+                                        name: doMeta1CBtn
+                                        maxHeight: 24
+                                        margin: none
+                                        cell:
+                                          row: 0
+                                          column: 2
+                                      - type: Label
+                                        label: Press here to see multiple samples
+                                        cell:
+                                          row: 1
+                                          column: 1
+                                      - type: ActionButton
+                                        name: doMeta1CmBtn
+                                        maxHeight: 24
+                                        margin: none
+                                        cell:
+                                          row: 1
+                                          column: 2
                       - type: ActionButton
                         name: meta1Help
                         margin: none
@@ -2584,7 +2576,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: '2. Strategies: what are the optimal approaches?'
+                        label: '2. Sample Size - what is best?'
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -2595,10 +2587,6 @@ children:
                               - type: Label
                                 label: ' '
                                 minWidth: 15
-                              - type: TextBox
-                                name: meta2SampleSize
-                                format: number
-                                margin: none
                               - type: ComboBox
                                 name: meta2World
                                 margin: none
@@ -2617,7 +2605,60 @@ children:
                                 minWidth: 30
                               - type: CollapseBox
                                 collapsed: true
-                                label: a. one big sample or many small samples?
+                                label: a. sample size
+                                margin: none
+                                minWidth: 380
+                                children:
+                                  - type: LayoutBox
+                                    style: inline
+                                    children:
+                                      - type: Label
+                                        label: ' '
+                                      - type: TextBox
+                                        name: meta2SampleSize
+                                        format: number
+                                        margin: none
+                                  - type: LayoutBox
+                                    style: inline
+                                    children:
+                                      - type: Label
+                                        label: ' '
+                                        cell:
+                                          row: 0
+                                          column: 0
+                                      - type: Label
+                                        label: Press here for a single sample
+                                        cell:
+                                          row: 0
+                                          column: 1
+                                      - type: ActionButton
+                                        name: doMeta2ABtn
+                                        maxHeight: 24
+                                        margin: none
+                                        cell:
+                                          row: 0
+                                          column: 2
+                                      - type: Label
+                                        label: Press here to see multiple samples
+                                        cell:
+                                          row: 1
+                                          column: 1
+                                      - type: ActionButton
+                                        name: doMeta2AmBtn
+                                        maxHeight: 24
+                                        margin: none
+                                        cell:
+                                          row: 1
+                                          column: 2
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
+                                minWidth: 30
+                              - type: CollapseBox
+                                collapsed: true
+                                label: b. one big sample or many small samples?
                                 margin: none
                                 minWidth: 380
                                 children:
@@ -2647,57 +2688,6 @@ children:
                                               row: 0
                                               column: 1
                                           - type: ActionButton
-                                            name: doMeta2ABtn
-                                            maxHeight: 24
-                                            margin: none
-                                            cell:
-                                              row: 0
-                                              column: 2
-                                      - type: LayoutBox
-                                        style: inline
-                                        children:
-                                          - type: Label
-                                            label: Press here to see multiple sets (v slow!)
-                                            cell:
-                                              row: 0
-                                              column: 1
-                                          - type: ActionButton
-                                            name: doMeta2AmBtn
-                                            maxHeight: 24
-                                            margin: none
-                                            cell:
-                                              row: 0
-                                              column: 2
-                          - type: LayoutBox
-                            style: inline
-                            children:
-                              - type: Label
-                                label: ' '
-                                minWidth: 30
-                              - type: CollapseBox
-                                collapsed: true
-                                label: b. random sampling?
-                                margin: none
-                                minWidth: 380
-                                children:
-                                  - type: LayoutBox
-                                    style: list
-                                    children:
-                                      - type: LayoutBox
-                                        style: inline
-                                        children:
-                                          - type: ComboBox
-                                            name: meta2SampleMethod
-                                            margin: none
-                                      - type: LayoutBox
-                                        style: inline
-                                        children:
-                                          - type: Label
-                                            label: Press here for a single sample
-                                            cell:
-                                              row: 0
-                                              column: 1
-                                          - type: ActionButton
                                             name: doMeta2BBtn
                                             maxHeight: 24
                                             margin: none
@@ -2708,7 +2698,9 @@ children:
                                         style: inline
                                         children:
                                           - type: Label
-                                            label: Press here to see multiple samples (slow)
+                                            label: >-
+                                              Press here to see multiple sets (v
+                                              slow!)
                                             cell:
                                               row: 0
                                               column: 1
@@ -2718,58 +2710,6 @@ children:
                                             margin: none
                                             cell:
                                               row: 0
-                                              column: 2
-                          - type: LayoutBox
-                            style: inline
-                            children:
-                              - type: Label
-                                label: ' '
-                                minWidth: 30
-                              - type: CollapseBox
-                                collapsed: true
-                                label: c. cheating?
-                                margin: none
-                                minWidth: 380
-                                children:
-                                  - type: LayoutBox
-                                    style: list
-                                    children:
-                                      - type: LayoutBox
-                                        style: inline
-                                        margin: none
-                                        children:
-                                          - type: ComboBox
-                                            name: meta2Cheating
-                                            margin: none
-                                      - type: LayoutBox
-                                        style: inline
-                                        margin: none
-                                        children:
-                                          - type: Label
-                                            label: Press here for a single sample
-                                            cell:
-                                              row: 0
-                                              column: 1
-                                          - type: ActionButton
-                                            name: doMeta2CBtn
-                                            maxHeight: 24
-                                            margin: none
-                                            cell:
-                                              row: 0
-                                              column: 2
-                                          - type: Label
-                                            label: >-
-                                              Press here to see multiple samples
-                                              (slow)
-                                            cell:
-                                              row: 1
-                                              column: 1
-                                          - type: ActionButton
-                                            name: doMeta2CmBtn
-                                            maxHeight: 24
-                                            margin: none
-                                            cell:
-                                              row: 1
                                               column: 2
                       - type: ActionButton
                         name: meta2Help
@@ -2782,9 +2722,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: >-
-                          3. Double Checking: how good are replication and
-                          meta-analysis?
+                        label: '3. Sampling Methods: how to recruit a sample?'
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -2806,17 +2744,9 @@ children:
                                 name: meta3pNull
                                 format: number
                                 margin: none
-                          - type: LayoutBox
-                            style: inline
-                            children:
                               - type: Label
                                 label: ' '
-                                minWidth: 15
-                              - type: ComboBox
-                                name: meta3SigOriginal
-                              - type: TextBox
-                                name: meta3RepPower
-                                format: number
+                                minWidth: 30
                           - type: LayoutBox
                             style: inline
                             children:
@@ -2825,7 +2755,7 @@ children:
                                 minWidth: 30
                               - type: CollapseBox
                                 collapsed: true
-                                label: a. does replication help?
+                                label: 'a. non-random sampling?'
                                 margin: none
                                 minWidth: 380
                                 children:
@@ -2835,8 +2765,14 @@ children:
                                       - type: LayoutBox
                                         style: inline
                                         children:
+                                          - type: ComboBox
+                                            name: meta3SampleMethod
+                                            margin: none
+                                      - type: LayoutBox
+                                        style: inline
+                                        children:
                                           - type: Label
-                                            label: Press here for a sample and replication
+                                            label: Press here for a single sample
                                             cell:
                                               row: 0
                                               column: 1
@@ -2847,19 +2783,22 @@ children:
                                             cell:
                                               row: 0
                                               column: 2
+                                      - type: LayoutBox
+                                        style: inline
+                                        children:
                                           - type: Label
                                             label: >-
                                               Press here to see multiple samples
                                               (slow)
                                             cell:
-                                              row: 1
+                                              row: 0
                                               column: 1
                                           - type: ActionButton
                                             name: doMeta3AmBtn
                                             maxHeight: 24
                                             margin: none
                                             cell:
-                                              row: 1
+                                              row: 0
                                               column: 2
                           - type: LayoutBox
                             style: inline
@@ -2869,7 +2808,7 @@ children:
                                 minWidth: 30
                               - type: CollapseBox
                                 collapsed: true
-                                label: b. meta-analysis?
+                                label: b. cheating?
                                 margin: none
                                 minWidth: 380
                                 children:
@@ -2880,10 +2819,15 @@ children:
                                         style: inline
                                         margin: none
                                         children:
+                                          - type: ComboBox
+                                            name: Meta3Cheating
+                                            margin: none
+                                      - type: LayoutBox
+                                        style: inline
+                                        margin: none
+                                        children:
                                           - type: Label
-                                            label: >-
-                                              Press here for meta-analysis of two new
-                                              samples
+                                            label: Press here for a single sample
                                             cell:
                                               row: 0
                                               column: 1
@@ -2920,7 +2864,144 @@ children:
                       - type: CollapseBox
                         collapsed: true
                         label: >-
-                          4. Real Differences: sometimes replication should fail
+                          4. Double Checking: how good are replication and
+                          meta-analysis?
+                        margin: none
+                        minWidth: 470
+                        maxWidth: 470
+                        children:
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
+                                minWidth: 15
+                              - type: TextBox
+                                name: Meta4SampleSize
+                                format: number
+                                margin: none
+                              - type: ComboBox
+                                name: Meta4World
+                                margin: none
+                              - type: TextBox
+                                name: meta4pNull
+                                format: number
+                                margin: none
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
+                                minWidth: 15
+                              - type: ComboBox
+                                name: Meta4SigOriginal
+                              - type: TextBox
+                                name: Meta4RepPower
+                                format: number
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
+                                minWidth: 30
+                              - type: CollapseBox
+                                collapsed: true
+                                label: a. does replication help?
+                                margin: none
+                                minWidth: 380
+                                children:
+                                  - type: LayoutBox
+                                    style: list
+                                    children:
+                                      - type: LayoutBox
+                                        style: inline
+                                        children:
+                                          - type: Label
+                                            label: Press here for a sample and replication
+                                            cell:
+                                              row: 0
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doMeta4ABtn
+                                            maxHeight: 24
+                                            margin: none
+                                            cell:
+                                              row: 0
+                                              column: 2
+                                          - type: Label
+                                            label: >-
+                                              Press here to see multiple samples
+                                              (slow)
+                                            cell:
+                                              row: 1
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doMeta4AmBtn
+                                            maxHeight: 24
+                                            margin: none
+                                            cell:
+                                              row: 1
+                                              column: 2
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
+                                minWidth: 30
+                              - type: CollapseBox
+                                collapsed: true
+                                label: b. meta-analysis?
+                                margin: none
+                                minWidth: 380
+                                children:
+                                  - type: LayoutBox
+                                    style: list
+                                    children:
+                                      - type: LayoutBox
+                                        style: inline
+                                        margin: none
+                                        children:
+                                          - type: Label
+                                            label: >-
+                                              Press here for meta-analysis of two new
+                                              samples
+                                            cell:
+                                              row: 0
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doMeta4BBtn
+                                            maxHeight: 24
+                                            margin: none
+                                            cell:
+                                              row: 0
+                                              column: 2
+                                          - type: Label
+                                            label: >-
+                                              Press here to see multiple samples
+                                              (slow)
+                                            cell:
+                                              row: 1
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doMeta4BmBtn
+                                            maxHeight: 24
+                                            margin: none
+                                            cell:
+                                              row: 1
+                                              column: 2
+                      - type: ActionButton
+                        name: meta4Help
+                        margin: none
+                        minWidth: 10
+                        maxWidth: 10
+                        maxHeight: 24
+                  - type: LayoutBox
+                    style: inline
+                    children:
+                      - type: CollapseBox
+                        collapsed: true
+                        label: >-
+                          5. Real Differences: sometimes replication should fail
                           - why?
                         margin: none
                         minWidth: 470
@@ -2935,7 +3016,7 @@ children:
                               - type: Label
                                 label: 'Group:'
                               - type: ComboBox
-                                name: meta4SampleGroup
+                                name: Meta5SampleGroup
                                 margin: none
                           - type: LayoutBox
                             style: inline
@@ -2961,7 +3042,7 @@ children:
                                               row: 0
                                               column: 1
                                           - type: ActionButton
-                                            name: doMeta4ABtn
+                                            name: doMeta5ABtn
                                             maxHeight: 24
                                             margin: none
                                             cell:
@@ -2973,7 +3054,7 @@ children:
                                               row: 1
                                               column: 1
                                           - type: ActionButton
-                                            name: doMeta4AmBtn
+                                            name: doMeta5AmBtn
                                             maxHeight: 24
                                             margin: none
                                             cell:
@@ -3004,7 +3085,7 @@ children:
                                               row: 0
                                               column: 1
                                           - type: ActionButton
-                                            name: doMeta4BBtn
+                                            name: doMeta5BBtn
                                             maxHeight: 24
                                             margin: none
                                             cell:
@@ -3016,14 +3097,14 @@ children:
                                               row: 1
                                               column: 1
                                           - type: ActionButton
-                                            name: doMeta4BmBtn
+                                            name: doMeta5BmBtn
                                             maxHeight: 24
                                             margin: none
                                             cell:
                                               row: 1
                                               column: 2
                       - type: ActionButton
-                        name: meta4Help
+                        name: meta5Help
                         margin: none
                         minWidth: 10
                         maxWidth: 10
