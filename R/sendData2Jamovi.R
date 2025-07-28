@@ -19,7 +19,7 @@ sendData2Jamovi<-function(outputNow,self) {
       )
       self$results$sendSample$setValues(newVariables)
     }
-    # then multiple result
+    # then the multiple result
     if (self$options$sendMultiple) {
       q<-NULL
       if (!is.null(outputNow) && outputNow=="MetaSingle") {
@@ -42,9 +42,16 @@ sendData2Jamovi<-function(outputNow,self) {
         self$results$sendMultiple$setValues(newMultiple)
       }
     }
-    # then explore result
+    # then the explore result
     if (self$options$sendExplore && !is.null(outputNow) && outputNow=="Explore") {
-      newExplore<-reportExplore(returnDataFrame=TRUE,showType=self$options$showExploreParam,reportStats=self$options$reportInferStats)
+      showExploreParam<-self$options$showExploreParam
+      if (is.element(showExploreParam,c("Single"))) {
+        showExploreParam<-self$options$inferVar1
+      } 
+      if (is.element(showExploreParam,c("Basic","Custom"))) {
+        showExploreParam<-paste0(self$options$inferVar1,";",self$options$inferVar2)
+      } 
+      newExplore<-reportExplore(returnDataFrame=TRUE,showType=showExploreParam,reportStats=self$options$reportInferStats)
       nvars<-ncol(newExplore)
       
       keys<-1:nvars

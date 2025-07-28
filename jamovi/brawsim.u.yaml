@@ -2599,6 +2599,9 @@ children:
                                 name: meta2SampleSize
                                 format: number
                                 margin: none
+                              - type: ComboBox
+                                name: meta2World
+                                margin: none
                               - type: TextBox
                                 name: meta2pNull
                                 format: number
@@ -2795,6 +2798,9 @@ children:
                               - type: TextBox
                                 name: meta3SampleSize
                                 format: number
+                                margin: none
+                              - type: ComboBox
+                                name: meta3World
                                 margin: none
                               - type: TextBox
                                 name: meta3pNull

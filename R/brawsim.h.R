@@ -82,7 +82,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             SampleSpreadOn = FALSE,
             SampleSD = 33.3,
             SampleMethod = "Random",
-            PoorSamplingAmount = 0.65,
+            PoorSamplingAmount = 0.1,
             SampleUsage1 = "Between",
             SampleUsage2 = "Between",
             Dependence = 0,
@@ -268,6 +268,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             doMeta2CBtn = NULL,
             doMeta2CmBtn = NULL,
             meta2SampleSize = 50,
+            meta2World = "Psych50",
             meta2SampleMethod = "Random",
             meta2pNull = 0.5,
             meta2SampleSplits = 1,
@@ -278,6 +279,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             doMeta3BBtn = NULL,
             doMeta3BmBtn = NULL,
             meta3SampleSize = 50,
+            meta3World = "Psych50",
             meta3pNull = 0.5,
             meta3SigOriginal = "no",
             meta3RepPower = 0.9,
@@ -703,7 +705,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             private$..PoorSamplingAmount <- jmvcore::OptionNumber$new(
                 "PoorSamplingAmount",
                 PoorSamplingAmount,
-                default=0.65)
+                default=0.1)
             private$..SampleUsage1 <- jmvcore::OptionList$new(
                 "SampleUsage1",
                 SampleUsage1,
@@ -1832,12 +1834,20 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 "meta2SampleSize",
                 meta2SampleSize,
                 default=50)
+            private$..meta2World <- jmvcore::OptionList$new(
+                "meta2World",
+                meta2World,
+                options=list(
+                    "Single",
+                    "Psych50"),
+                default="Psych50")
             private$..meta2SampleMethod <- jmvcore::OptionList$new(
                 "meta2SampleMethod",
                 meta2SampleMethod,
                 options=list(
                     "Random",
-                    "Convenience"),
+                    "Convenience",
+                    "Limited"),
                 default="Random")
             private$..meta2pNull <- jmvcore::OptionNumber$new(
                 "meta2pNull",
@@ -1876,6 +1886,13 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 "meta3SampleSize",
                 meta3SampleSize,
                 default=50)
+            private$..meta3World <- jmvcore::OptionList$new(
+                "meta3World",
+                meta3World,
+                options=list(
+                    "Single",
+                    "Psych50"),
+                default="Psych50")
             private$..meta3pNull <- jmvcore::OptionNumber$new(
                 "meta3pNull",
                 meta3pNull,
@@ -2176,6 +2193,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..doMeta2CBtn)
             self$.addOption(private$..doMeta2CmBtn)
             self$.addOption(private$..meta2SampleSize)
+            self$.addOption(private$..meta2World)
             self$.addOption(private$..meta2SampleMethod)
             self$.addOption(private$..meta2pNull)
             self$.addOption(private$..meta2SampleSplits)
@@ -2186,6 +2204,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..doMeta3BBtn)
             self$.addOption(private$..doMeta3BmBtn)
             self$.addOption(private$..meta3SampleSize)
+            self$.addOption(private$..meta3World)
             self$.addOption(private$..meta3pNull)
             self$.addOption(private$..meta3SigOriginal)
             self$.addOption(private$..meta3RepPower)
@@ -2461,6 +2480,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         doMeta2CBtn = function() private$..doMeta2CBtn$value,
         doMeta2CmBtn = function() private$..doMeta2CmBtn$value,
         meta2SampleSize = function() private$..meta2SampleSize$value,
+        meta2World = function() private$..meta2World$value,
         meta2SampleMethod = function() private$..meta2SampleMethod$value,
         meta2pNull = function() private$..meta2pNull$value,
         meta2SampleSplits = function() private$..meta2SampleSplits$value,
@@ -2471,6 +2491,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         doMeta3BBtn = function() private$..doMeta3BBtn$value,
         doMeta3BmBtn = function() private$..doMeta3BmBtn$value,
         meta3SampleSize = function() private$..meta3SampleSize$value,
+        meta3World = function() private$..meta3World$value,
         meta3pNull = function() private$..meta3pNull$value,
         meta3SigOriginal = function() private$..meta3SigOriginal$value,
         meta3RepPower = function() private$..meta3RepPower$value,
@@ -2745,6 +2766,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..doMeta2CBtn = NA,
         ..doMeta2CmBtn = NA,
         ..meta2SampleSize = NA,
+        ..meta2World = NA,
         ..meta2SampleMethod = NA,
         ..meta2pNull = NA,
         ..meta2SampleSplits = NA,
@@ -2755,6 +2777,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..doMeta3BBtn = NA,
         ..doMeta3BmBtn = NA,
         ..meta3SampleSize = NA,
+        ..meta3World = NA,
         ..meta3pNull = NA,
         ..meta3SigOriginal = NA,
         ..meta3RepPower = NA,
@@ -3145,6 +3168,7 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param doMeta2CBtn .
 #' @param doMeta2CmBtn .
 #' @param meta2SampleSize .
+#' @param meta2World .
 #' @param meta2SampleMethod .
 #' @param meta2pNull .
 #' @param meta2SampleSplits .
@@ -3155,6 +3179,7 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param doMeta3BBtn .
 #' @param doMeta3BmBtn .
 #' @param meta3SampleSize .
+#' @param meta3World .
 #' @param meta3pNull .
 #' @param meta3SigOriginal .
 #' @param meta3RepPower .
@@ -3253,7 +3278,7 @@ BrawSim <- function(
     SampleSpreadOn = FALSE,
     SampleSD = 33.3,
     SampleMethod = "Random",
-    PoorSamplingAmount = 0.65,
+    PoorSamplingAmount = 0.1,
     SampleUsage1 = "Between",
     SampleUsage2 = "Between",
     Dependence = 0,
@@ -3439,6 +3464,7 @@ BrawSim <- function(
     doMeta2CBtn,
     doMeta2CmBtn,
     meta2SampleSize = 50,
+    meta2World = "Psych50",
     meta2SampleMethod = "Random",
     meta2pNull = 0.5,
     meta2SampleSplits = 1,
@@ -3449,6 +3475,7 @@ BrawSim <- function(
     doMeta3BBtn,
     doMeta3BmBtn,
     meta3SampleSize = 50,
+    meta3World = "Psych50",
     meta3pNull = 0.5,
     meta3SigOriginal = "no",
     meta3RepPower = 0.9,
@@ -3725,6 +3752,7 @@ BrawSim <- function(
         doMeta2CBtn = doMeta2CBtn,
         doMeta2CmBtn = doMeta2CmBtn,
         meta2SampleSize = meta2SampleSize,
+        meta2World = meta2World,
         meta2SampleMethod = meta2SampleMethod,
         meta2pNull = meta2pNull,
         meta2SampleSplits = meta2SampleSplits,
@@ -3735,6 +3763,7 @@ BrawSim <- function(
         doMeta3BBtn = doMeta3BBtn,
         doMeta3BmBtn = doMeta3BmBtn,
         meta3SampleSize = meta3SampleSize,
+        meta3World = meta3World,
         meta3pNull = meta3pNull,
         meta3SigOriginal = meta3SigOriginal,
         meta3RepPower = meta3RepPower,

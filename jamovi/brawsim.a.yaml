@@ -607,7 +607,7 @@ options:
     - name: PoorSamplingAmount
       title: PoorSamplingAmount
       type: Number
-      default: 0.65
+      default: 0.1
       
     - name: SampleUsage1
       title: 'Usage(IV)'
@@ -2326,6 +2326,16 @@ options:
       type: Number
       default: 50
 
+    - name: meta2World
+      title: 'world'
+      type: List
+      options:
+      - name: Single
+        title: simple
+      - name: Psych50
+        title: psychology
+      default: Psych50
+
     - name: meta2SampleMethod
       title: 'Sampling Method'
       type: List
@@ -2334,6 +2344,8 @@ options:
           title: Random
         - name: Convenience
           title: Convenience
+        - name: Limited
+          title: Limited
       default: Random
 
     - name: meta2pNull
@@ -2388,6 +2400,17 @@ options:
       title: 'Sample size' 
       type: Number
       default: 50
+
+
+    - name: meta3World
+      title: 'world'
+      type: List
+      options:
+      - name: Single
+        title: simple
+      - name: Psych50
+        title: psychology
+      default: Psych50
 
     - name: meta3pNull
       title: '   p(rₚ=0)'

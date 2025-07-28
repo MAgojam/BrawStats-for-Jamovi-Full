@@ -11,8 +11,10 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
     
     .run = function() {
       # debug information
-      
-      # self$results$debug$setContent(self$options$basicMode)
+      a<-R.Version()$version.string
+      rVersion<-as.numeric(regmatches(a,gregexpr("[0-9]*\\.[0-9]*",a))[[1]][1])
+      if (rVersion>=4.5) Jamovi<-2.7 else Jamovi<-2.6
+      # self$results$debug$setContent(Jamovi)
       # self$results$debug$setVisible(TRUE)
       # return()
 
@@ -165,8 +167,14 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                  else 
                    hypothesis<-makeHypothesis(effect=makeEffect(world=makeWorld(TRUE,"Exp","z",populationPDFk=0.3,populationNullp=self$options$meta1pNull)))
                },
-               "Inv2"=hypothesis<-makeHypothesis(effect=makeEffect(world=makeWorld(TRUE,"Exp","z",populationPDFk=0.3,populationNullp=self$options$meta2pNull))),
-               "Inv3"=hypothesis<-makeHypothesis(effect=makeEffect(world=makeWorld(TRUE,"Exp","z",populationPDFk=0.3,populationNullp=self$options$meta3pNull))),
+               "Inv2"={
+                 hypothesis<-makeHypothesis(effect=makeEffect(world=getWorld(self$options$meta2World)))
+                 hypothesis$effect$world$populationNullp<-self$options$meta2pNull
+               },
+               "Inv3"={
+                 hypothesis<-makeHypothesis(effect=makeEffect(world=getWorld(self$options$meta3World)))
+                 hypothesis$effect$world$populationNullp<-self$options$meta3pNull
+               },
                "Inv4"={
                  if (substr(doingInvestg,5,5)=="A")
                    hypothesis<-makeHypothesis(effect=makeEffect(rIV=0.3/2,rIV2=0,rIVIV2DV=0.3/2))
@@ -186,7 +194,13 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                "Inv2"={
                  design<-makeDesign(sN=self$options$meta2SampleSize)
                  if (substr(doingInvestg,5,5)=="B") {
-                   design$sMethod<-makeSampling(self$options$meta2SampleMethod)
+                   if (self$options$meta2SampleMethod=="Limited") {
+                     design$sIVRangeOn<-TRUE
+                     design$sIVRange<-c(-1,1)*0.5
+                   } 
+                   if (self$options$meta2SampleMethod=="Convenience") {
+                     design$sDependence<-0.5
+                   } 
                  }
                  if (substr(doingInvestg,5,5)=="C") {
                    design$sCheating<-self$options$meta2Cheating
