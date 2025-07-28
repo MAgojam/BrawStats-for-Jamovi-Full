@@ -5,7 +5,7 @@
 # 
                                  generate_tab = function(title="Tab",tabs=c("1","2","3"),tabContents=c("a","b","c"),
                                                          titleTab="",titleWidth=135,
-                                                         tabLink=NULL,
+                                                         tabLink=NULL,tabLinkLabel='here',
                                                          plainTabs=FALSE,indent=0,topMargin=5,
                                                          colours=c("#3498db","#888","#888"),fontSize="12px",
                                                          plain=FALSE,width=550,height=NULL,open=0) {
@@ -163,11 +163,11 @@
                                    
                                    if (!is.null(tabLink))
                                      link<-paste0(
-                                       '<div style="text-align:right;">',
+                                       '<div style="text-align:right;padding-right:100px;">',
                                        '<a href=','"',tabLink,'"',
                                        ' target="_blank">',
                                        '\U24D8 ',
-                                       'here',
+                                       tabLinkLabel,
                                        '</a>',
                                        '</div>'
                                      )

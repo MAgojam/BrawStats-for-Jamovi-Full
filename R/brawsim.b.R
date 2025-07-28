@@ -392,7 +392,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         setBrawRes("investgR",investgR)
         investgResults<-
           generate_tab(
-            title="Investigation:",
+            title=paste0("Investigation",":"),
             plainTabs=TRUE,
             titleWidth=100,
             # tabs=c("Single","Multiple","Comments"),
@@ -400,6 +400,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
             tabs=c("Graph","Report"),
             tabContents=c(braw.res$investgG,braw.res$investgR),
             tabLink=paste0('https://doingpsychstats.wordpress.com/investigations#',substr(doingInvestg,1,5)),
+            tabLinkLabel=paste0(" Inv",substr(doingInvestg,4,6)),
             open=1
           )
         

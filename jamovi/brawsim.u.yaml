@@ -2576,7 +2576,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: '2. Sample Size - what is best?'
+                        label: '2. Sample Size: what is best?'
                         margin: none
                         minWidth: 470
                         maxWidth: 470
