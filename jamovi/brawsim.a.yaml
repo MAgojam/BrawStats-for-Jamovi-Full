@@ -241,7 +241,7 @@ options:
         title: binary
       - name: Psych50
         title: psychology
-      default: binary
+      default: Binary
       
     - name: DVname
       title: Name

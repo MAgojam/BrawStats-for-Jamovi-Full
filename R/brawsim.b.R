@@ -27,12 +27,12 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         firstRun<-TRUE
 
         setBrawOpts(fullOutput=0,reportHTML=TRUE,
-                    fontScale=1.5,fullGraphSize=0.5,
+                    fullGraphSize=0.5,
                     npointsMax=1000,
                     autoPrint=FALSE
         )
         setBrawEnv("graphicsType","HTML")
-        svgBox(height=350,aspect=1.5)
+        svgBox(height=350,aspect=1.5,fontScale=1.2)
         
         demoResults<-generate_tab(
           title="Demonstration:",
@@ -364,7 +364,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         if (substr(doingInvestg,1,5)=="Inv2B") reportCounts<-TRUE else reportCounts<-FALSE
         
       # display the results
-        svgBox(height=350,aspect=1.5)
+        svgBox(height=350,aspect=1.5,fontScale=1.2)
         setBrawEnv("graphicsType","HTML")
         setBrawEnv("reportCounts",reportCounts)
         setBrawEnv("fullOutput",1)
@@ -622,7 +622,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       # main results graphs/reports
       if (!is.null(outputNow))  {
         
-          svgBox(height=350,aspect=1.5)
+          svgBox(height=350,aspect=1.5,fontScale=1.2)
           setBrawEnv("graphicsType","HTML")
           if (is.element(outputNow,c("Basic","Variables","Sample","Describe","Infer","Likelihood","MetaSingle"))) {
             switch(outputNow,

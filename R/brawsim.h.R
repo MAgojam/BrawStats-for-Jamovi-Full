@@ -27,7 +27,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             presetDV = "DV",
             presetIV = "IV",
             presetIV2 = "none",
-            presetWorld = "binary",
+            presetWorld = "Binary",
             DVname = "DV",
             DVtype = "Interval",
             DVmu = 0,
@@ -446,7 +446,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "Plain",
                     "Binary",
                     "Psych50"),
-                default="binary")
+                default="Binary")
             private$..DVname <- jmvcore::OptionString$new(
                 "DVname",
                 DVname,
@@ -3287,7 +3287,7 @@ BrawSim <- function(
     presetDV = "DV",
     presetIV = "IV",
     presetIV2 = "none",
-    presetWorld = "binary",
+    presetWorld = "Binary",
     DVname = "DV",
     DVtype = "Interval",
     DVmu = 0,
