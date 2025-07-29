@@ -156,18 +156,18 @@ const events =  {
     onChange_presetWorld: function(ui) {
       let presetH = ui.presetWorld.value();
       switch(presetH) {
-        case "psych":
+        case "Psych50":
           ui.WorldOn.setValue(true);
           ui.WorldPDF.setValue("Exp");
           ui.WorldRZ.setValue("z");
           ui.WorldLambda.setValue(0.3);
-          ui.WorldNullP.setValue(0.75);
+          ui.WorldNullP.setValue(0.5);
           ui.WorldSample.setValue("none");
           ui.SampleSpreadOn.setValue(true);
           ui.SampleSizeM.setValue(52);
           ui.SampleSD.setValue(33.3);
           break;
-        case "uniform":
+        case "Uniform":
           ui.WorldOn.setValue(true);
           ui.WorldPDF.setValue("Uniform");
           ui.WorldRZ.setValue("r");
@@ -175,12 +175,21 @@ const events =  {
           ui.WorldNullP.setValue(0.0);
           ui.WorldSample.setValue("none");
           break;
-        case "simple":
+        case "Binary":
           ui.WorldOn.setValue(true);
           ui.WorldPDF.setValue("Single");
           ui.WorldRZ.setValue("r");
           ui.WorldLambda.setValue(0.3);
           ui.WorldNullP.setValue(0.5);
+          ui.WorldSample.setValue("none");
+          ui.SampleSpreadOn.setValue(false);
+          break;
+        case "Plain":
+          ui.WorldOn.setValue(true);
+          ui.WorldPDF.setValue("Single");
+          ui.WorldRZ.setValue("r");
+          ui.WorldLambda.setValue(0.3);
+          ui.WorldNullP.setValue(0);
           ui.WorldSample.setValue("none");
           ui.SampleSpreadOn.setValue(false);
           break;
@@ -993,7 +1002,7 @@ let makeRange = function(min,max,xlog,np) {
   let  updateRange = function(value) {
       switch (value) {
         case "n":
-           var range={min:10,max:250,xlog:false,np:13};
+           var range={min:10,max:1000,xlog:true,np:13};
           break;
         case "rIV":
            var range={min:0,max:0.75,xlog:false,np:13};
@@ -1053,7 +1062,7 @@ let makeRange = function(min,max,xlog,np) {
              var range={min:0.1,max:1,xlog:false,np:13};
           break;
         case "PoorSamplingAmount":
-             var range={min:0,max:0.8,xlog:false,np:13};
+             var range={min:0,max:0.2,xlog:false,np:13};
           break;
         case "CheatingAmount":
              var range={min:0,max:0.8,xlog:false,np:13};

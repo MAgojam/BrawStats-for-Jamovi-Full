@@ -235,13 +235,13 @@ options:
       title: 'Presets:'
       type: List
       options:
-      - name: simple
-        title: simple
-      - name: uniform
-        title: uniform
-      - name: psych
+      - name: Plain
+        title: single
+      - name: Binary
+        title: binary
+      - name: Psych50
         title: psychology
-      default: simple
+      default: binary
       
     - name: DVname
       title: Name

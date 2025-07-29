@@ -19,7 +19,9 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       # return()
 
       firstRun<-FALSE
-      updateHistory<-FALSE
+      # at this stage, we assume nothing new for the history
+      updateHistoryNow<-FALSE
+      addHistory<-FALSE
       # initialization code here
       if (is.null(braw.res$statusStore)) {
         firstRun<-TRUE
@@ -445,7 +447,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         showExploreStyle<-historyOptions$showExploreStyle
         whichShowExploreOut<-historyOptions$whichShowExploreOut
         
-        updateHistory<-FALSE
+        updateHistoryNow<-FALSE
       }
       
       # we are doing something new
@@ -489,8 +491,6 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         
         # unless we have done something, we will make the same output as last time
         outputNow<-NULL
-        # at this stage, we assume nothing new for the history
-        addHistory<-FALSE 
         # are we just asking for a different display of the current explore?
         if (!is.null(braw.res$explore) && statusStore$lastOutput=="Explore") {
           if (showExploreParam != statusStore$showExploreParam ||
@@ -516,6 +516,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           if (changedE) {
             setBrawRes("result",doAnalysis(sample=braw.res$result))
             addHistory<-TRUE
+            updateHistoryNow<-TRUE
           }
           # or metaAnalysis?
           if (!is.null(braw.res$metaSingle) && statusStore$lastOutput=="MetaSingle") {
@@ -523,6 +524,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
             if (!changedMsource) {
             braw.res$metaSingle<-doMetaAnalysis(braw.res$metaSingle,keepStudies=TRUE)
             addHistory<-TRUE
+            updateHistoryNow<-TRUE
             outputNow<-"MetaSingle"
             }
           }
@@ -564,17 +566,20 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
             # if (is.null(braw.res$metaSingle) || is.element(statusStore$lastOutput,c("MetaSingle","investg"))) {
               doMetaAnalysis(NULL)
               addHistory<-TRUE
-            # }
+              updateHistoryNow<-TRUE
+              # }
             outputNow<-"MetaSingle"
           } else {
             # # do we need to do this, or are we just returning to the existing one?
             # if (is.null(braw.res$result) || is.element(statusStore$lastOutput,c(showSampleType,"investg"))) {
               doSingle()
               addHistory<-TRUE
-            # }
+              updateHistoryNow<-TRUE
+              # }
             if (showSampleType=="Likelihood")
               doPossible(possible)
             outputNow<-showSampleType
+            updateHistoryNow<-TRUE
           }
         }
         
@@ -585,14 +590,16 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
             # if (is.null(braw.res$metaMultiple) || is.element(statusStore$lastOutput,c("MetaMultiple","investg"))) {
               doMetaMultiple(numberSamples,braw.res$metaMultiple)
               addHistory<-TRUE
-            # }
+              updateHistoryNow<-TRUE
+              # }
             outputNow<-"MetaMultiple"
           } else {
             # # do we need to do this, or are we just returning to the existing one?
             # if (is.null(braw.res$multiple) || is.element(statusStore$lastOutput,c("Multiple","investg"))) {
               doMultiple(nsims=numberSamples,multipleResult=braw.res$multiple)
               if (statusStore$lastOutput!="Multiple" || changedH || changedD || changedE) addHistory<-TRUE
-            # } 
+              updateHistoryNow<-TRUE
+              # } 
             outputNow<-"Multiple"
           }
         }
@@ -605,10 +612,11 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
             exploreResult<-doExplore(nsims=numberExplores,exploreResult=braw.res$explore,
                                      doingMetaAnalysis=self$options$MetaAnalysisOn)
             if (statusStore$lastOutput!="Explore" || changedH || changedD || changedE || changedX) addHistory<-TRUE
-          # }
+            updateHistoryNow<-TRUE
+            # }
           outputNow<-"Explore"
         }
-      } 
+      }
       
       # what are we showing?
       # main results graphs/reports
@@ -669,8 +677,6 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
             self$results$simGraphHTML$setContent(simResults)
             statusStore$simResults<-simResults
           }
-          
-          updateHistory<-TRUE
       }
       
       # update statusStore
@@ -689,7 +695,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       }
       
       # update history
-      if (updateHistory) {
+      if (updateHistoryNow) {
         historyOptions<-list(showSampleType=showSampleType,
                              showInferParam=showInferParam,
                              showInferDimension=showInferDimension,
@@ -702,8 +708,10 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                              whichShowExploreOut=whichShowExploreOut
         )
         simHistory<-updateHistory(simHistory,historyOptions,outputNow,addHistory)
-        setBrawRes("simHistoryStore",simHistory)
       }
+      setBrawRes("simHistoryStore",simHistory)
+      self$results$debug$setContent(c(updateHistoryNow,simHistory$historyPlace))
+      self$results$debug$setVisible(TRUE)
       
       # now we save any results to the Jamovi spreadsheet
       sendData2Jamovi(outputNow,self)
