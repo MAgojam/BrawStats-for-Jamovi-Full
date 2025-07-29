@@ -1560,11 +1560,11 @@ options:
       type: Number
       default: 1
       
-    - name: goBack
+    - name: simGoBack
       title: '<<'
       type: Action
       
-    - name: goForwards
+    - name: simGoForwards
       title: '>>'
       type: Action
 
@@ -2311,8 +2311,7 @@ options:
     - name: doMeta2BmBtn
       title: '*'
       type: Action
-    
-    
+
     - name: meta2SampleSize
       title: 'Sample size' 
       type: Number
@@ -2409,8 +2408,6 @@ options:
          title: Replace
       default: None
 
-
-
     - name: doMeta4ABtn
       title: 'do'
       type: Action
@@ -2492,4 +2489,11 @@ options:
           title: B
       default: a
 
+    - name: invGoBack
+      title: '<<'
+      type: Action
+
+    - name: invGoForwards
+      title: '>>'
+      type: Action
 ...

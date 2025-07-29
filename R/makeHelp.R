@@ -2,7 +2,7 @@ makeHelpOut<-function(brawHelp,statusStore) {
   indent<-0
   titleWidth<-135
   if (statusStore$nestedHelp) {
-    indent<-50
+    indent<-20
     titleWidth<-0
   }
   if (brawHelp) {

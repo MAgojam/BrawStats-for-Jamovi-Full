@@ -177,8 +177,8 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             showHypothesisLst = "Default",
             dispRZ = "r",
             systemMag = 1,
-            goBack = NULL,
-            goForwards = NULL,
+            simGoBack = NULL,
+            simGoForwards = NULL,
             doDemo1AhBtn = NULL,
             doDemo1A1Btn = NULL,
             doDemo1A2Btn = NULL,
@@ -292,7 +292,9 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             doMeta5AmBtn = NULL,
             doMeta5BBtn = NULL,
             doMeta5BmBtn = NULL,
-            Meta5SampleGroup = "a", ...) {
+            Meta5SampleGroup = "a",
+            invGoBack = NULL,
+            invGoForwards = NULL, ...) {
 
             super$initialize(
                 package="BrawStats",
@@ -1340,12 +1342,12 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 "systemMag",
                 systemMag,
                 default=1)
-            private$..goBack <- jmvcore::OptionAction$new(
-                "goBack",
-                goBack)
-            private$..goForwards <- jmvcore::OptionAction$new(
-                "goForwards",
-                goForwards)
+            private$..simGoBack <- jmvcore::OptionAction$new(
+                "simGoBack",
+                simGoBack)
+            private$..simGoForwards <- jmvcore::OptionAction$new(
+                "simGoForwards",
+                simGoForwards)
             private$..doDemo1AhBtn <- jmvcore::OptionAction$new(
                 "doDemo1AhBtn",
                 doDemo1AhBtn)
@@ -1955,6 +1957,12 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "a",
                     "b"),
                 default="a")
+            private$..invGoBack <- jmvcore::OptionAction$new(
+                "invGoBack",
+                invGoBack)
+            private$..invGoForwards <- jmvcore::OptionAction$new(
+                "invGoForwards",
+                invGoForwards)
 
             self$.addOption(private$..basicMode)
             self$.addOption(private$..demosHelp)
@@ -2130,8 +2138,8 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..showHypothesisLst)
             self$.addOption(private$..dispRZ)
             self$.addOption(private$..systemMag)
-            self$.addOption(private$..goBack)
-            self$.addOption(private$..goForwards)
+            self$.addOption(private$..simGoBack)
+            self$.addOption(private$..simGoForwards)
             self$.addOption(private$..doDemo1AhBtn)
             self$.addOption(private$..doDemo1A1Btn)
             self$.addOption(private$..doDemo1A2Btn)
@@ -2246,6 +2254,8 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..doMeta5BBtn)
             self$.addOption(private$..doMeta5BmBtn)
             self$.addOption(private$..Meta5SampleGroup)
+            self$.addOption(private$..invGoBack)
+            self$.addOption(private$..invGoForwards)
         }),
     active = list(
         basicMode = function() private$..basicMode$value,
@@ -2422,8 +2432,8 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         showHypothesisLst = function() private$..showHypothesisLst$value,
         dispRZ = function() private$..dispRZ$value,
         systemMag = function() private$..systemMag$value,
-        goBack = function() private$..goBack$value,
-        goForwards = function() private$..goForwards$value,
+        simGoBack = function() private$..simGoBack$value,
+        simGoForwards = function() private$..simGoForwards$value,
         doDemo1AhBtn = function() private$..doDemo1AhBtn$value,
         doDemo1A1Btn = function() private$..doDemo1A1Btn$value,
         doDemo1A2Btn = function() private$..doDemo1A2Btn$value,
@@ -2537,7 +2547,9 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         doMeta5AmBtn = function() private$..doMeta5AmBtn$value,
         doMeta5BBtn = function() private$..doMeta5BBtn$value,
         doMeta5BmBtn = function() private$..doMeta5BmBtn$value,
-        Meta5SampleGroup = function() private$..Meta5SampleGroup$value),
+        Meta5SampleGroup = function() private$..Meta5SampleGroup$value,
+        invGoBack = function() private$..invGoBack$value,
+        invGoForwards = function() private$..invGoForwards$value),
     private = list(
         ..basicMode = NA,
         ..demosHelp = NA,
@@ -2713,8 +2725,8 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..showHypothesisLst = NA,
         ..dispRZ = NA,
         ..systemMag = NA,
-        ..goBack = NA,
-        ..goForwards = NA,
+        ..simGoBack = NA,
+        ..simGoForwards = NA,
         ..doDemo1AhBtn = NA,
         ..doDemo1A1Btn = NA,
         ..doDemo1A2Btn = NA,
@@ -2828,7 +2840,9 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..doMeta5AmBtn = NA,
         ..doMeta5BBtn = NA,
         ..doMeta5BmBtn = NA,
-        ..Meta5SampleGroup = NA)
+        ..Meta5SampleGroup = NA,
+        ..invGoBack = NA,
+        ..invGoForwards = NA)
 )
 
 BrawSimResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
@@ -2890,8 +2904,8 @@ BrawSimResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "MetaAnalysisPrior",
                     "MetaAnalysisBias",
                     "MetaAnalysisNulls",
-                    "goBack",
-                    "goForwards")))
+                    "simGoBack",
+                    "simGoForwards")))
             self$add(jmvcore::Html$new(
                 options=options,
                 name="simReport",
@@ -3120,8 +3134,8 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param showHypothesisLst .
 #' @param dispRZ .
 #' @param systemMag .
-#' @param goBack .
-#' @param goForwards .
+#' @param simGoBack .
+#' @param simGoForwards .
 #' @param doDemo1AhBtn .
 #' @param doDemo1A1Btn .
 #' @param doDemo1A2Btn .
@@ -3236,6 +3250,8 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param doMeta5BBtn .
 #' @param doMeta5BmBtn .
 #' @param Meta5SampleGroup .
+#' @param invGoBack .
+#' @param invGoForwards .
 #' @return A results object containing:
 #' \tabular{llllll}{
 #'   \code{results$simSystemHTML} \tab \tab \tab \tab \tab a html \cr
@@ -3421,8 +3437,8 @@ BrawSim <- function(
     showHypothesisLst = "Default",
     dispRZ = "r",
     systemMag = 1,
-    goBack,
-    goForwards,
+    simGoBack,
+    simGoForwards,
     doDemo1AhBtn,
     doDemo1A1Btn,
     doDemo1A2Btn,
@@ -3536,7 +3552,9 @@ BrawSim <- function(
     doMeta5AmBtn,
     doMeta5BBtn,
     doMeta5BmBtn,
-    Meta5SampleGroup = "a") {
+    Meta5SampleGroup = "a",
+    invGoBack,
+    invGoForwards) {
 
     if ( ! requireNamespace("jmvcore", quietly=TRUE))
         stop("BrawSim requires jmvcore to be installed (restart may be required)")
@@ -3714,8 +3732,8 @@ BrawSim <- function(
         showHypothesisLst = showHypothesisLst,
         dispRZ = dispRZ,
         systemMag = systemMag,
-        goBack = goBack,
-        goForwards = goForwards,
+        simGoBack = simGoBack,
+        simGoForwards = simGoForwards,
         doDemo1AhBtn = doDemo1AhBtn,
         doDemo1A1Btn = doDemo1A1Btn,
         doDemo1A2Btn = doDemo1A2Btn,
@@ -3829,7 +3847,9 @@ BrawSim <- function(
         doMeta5AmBtn = doMeta5AmBtn,
         doMeta5BBtn = doMeta5BBtn,
         doMeta5BmBtn = doMeta5BmBtn,
-        Meta5SampleGroup = Meta5SampleGroup)
+        Meta5SampleGroup = Meta5SampleGroup,
+        invGoBack = invGoBack,
+        invGoForwards = invGoForwards)
 
     analysis <- BrawSimClass$new(
         options = options,

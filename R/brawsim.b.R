@@ -46,8 +46,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           titleWidth=100,
           # tabs=c("Single","Multiple","Comments"),
           # tabContents=c(nullPlot(),nullPlot(),nullPlot()),
-          tabs=c("Graph","Report"),
-          tabContents=c(nullPlot(),nullPlot()),
+          tabs=c("Data","Report"),
+          tabContents=c(nullPlot(),nullPlot(),nullPlot()),
           open=0
         )
         simResults<-generate_tab(
@@ -86,14 +86,20 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                           nrowTableLM=1,
                           nrowTableSEM=1
         )
-        history<-list(
+        simHistory<-list(
+          history=NULL,
+          historyData=NULL,
+          historyOptions=NULL,
+          historyPlace=0
+        )
+        invHistory<-list(
           history=NULL,
           historyData=NULL,
           historyOptions=NULL,
           historyPlace=0
         )
         np<-nullPlot()
-        setBrawRes("investgG",np)
+        setBrawRes("investgD",np)
         setBrawRes("investgR",np)
         setBrawRes("simSingle",np)
         setBrawRes("simMultiple",np)
@@ -101,7 +107,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         
       } else {
         statusStore<-braw.res$statusStore
-        history<-braw.res$historyStore
+        simHistory<-braw.res$simHistoryStore
+        invHistory<-braw.res$invHistoryStore
       }
       
 ## some interface stuff
@@ -143,7 +150,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       if (any(investgControls)) {
         doingInvestg<-investgNames[investgControls]
         doingInvestg<-doingInvestg[1]
-      }
+      } else       doingInvestg<-NULL
       }
       
 ## basic definitions      
@@ -159,7 +166,14 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       # store the option variables inside the braw package
       setBraw(self)
       
-      # are we doing meta investigations?
+      # investigations history?
+      if ((self$options$invGoBack || self$options$invGoForwards)) {
+        h<-readHistory(invHistory,self$options$invGoBack)
+        doingInvestg<-h$historyOptions
+        outputNow<-h$outputNow
+        invHistory<-h$history
+      }
+      # are we doing investigations?
       # set the design and hypothesis accordingly
       if (any(investgControls)) {
         invg<-substr(doingInvestg,1,4)
@@ -288,8 +302,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         statusStore$planMode<-self$options$planMode
         statusStore$exploreMode<-self$options$exploreMode
         setBrawRes("statusStore",statusStore)
-        setBrawRes("historyStore",history)
-        
+
         sendData2Jamovi(statusStore$lastOutput,self)
         return()
       }
@@ -309,12 +322,10 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
             nreps<-floor(self$options$meta2SampleSplits)
             doMultiple(nreps,NULL)
             outputNow<-"Multiple"
-            reportCounts<-TRUE
           } else {
             doSingle()
             outputNow<-"Description"
           }
-          open<-1
           # we display replications as multiple results
           if (substr(doingInvestg,1,4)=="Inv4")  setBrawRes("multiple",braw.res$result)
         } else {
@@ -322,17 +333,17 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
             setDesign(sN=self$options$meta2SampleBudget)
             doExplore(50,explore=makeExplore("nSplits",vals=2^c(0,1,2,3,4,5),xlog=TRUE))
             outputNow<-"Explore"
-            reportCounts<-TRUE
           } else {
             if (doingInvestg=="Inv3Bm") nreps<-50
             else                 nreps<-200
             doMultiple(nreps)
             outputNow<-"Multiple"
           }
-          open<-2
         }
-        
-
+        invHistory<-updateHistory(invHistory,doingInvestg,outputNow,TRUE)
+      }
+      
+      if (!is.null(doingInvestg)) {
         if (is.element(doingInvestg,c("Inv5A","Inv5B"))) {
           result<-braw.res$result
           result$hypothesis$IV2<-NULL
@@ -348,57 +359,58 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                  )
           setBrawRes("multiple",multiple)
         } 
-        
+        if (substr(doingInvestg,1,5)=="Inv2B") reportCounts<-TRUE else reportCounts<-FALSE
         
       # display the results
         svgBox(height=350,aspect=1.5)
         setBrawEnv("graphicsType","HTML")
         setBrawEnv("reportCounts",reportCounts)
         setBrawEnv("fullOutput",1)
+        if (substr(doingInvestg,6,6)!="m") open<-1 else open<-2
         switch(open,
                { 
                  if (is.element(doingInvestg,c("Inv2B","Inv4A","Inv4B"))) {
                    if (doingInvestg=="Inv2B") {
-                     investgG<-showMultiple(showType="rse",dimension="1D",orientation="horz")
+                     investgD<-showMultiple(showType="rse",dimension="1D",orientation="horz")
                      investgR<-reportMultiple(showType="NHST",reportStats=self$options$reportInferStats)
                    }
                    else {
-                     investgG<-showMultiple()
+                     investgD<-showMultiple()
                      investgR<-reportInference()
                    }
                  } else  {
-                   investgG<-showDescription()
+                   investgD<-showDescription()
                    investgR<-reportInference()
                  }
                },
                {
                  if (doingInvestg=="Inv2Bm") {
-                   investgG<-showExplore(showType="n(sig)")
+                   investgD<-showExplore(showType="n(sig)")
                    investgR<-reportExplore(showType="n(sig)")
                  }
                  else {
                    if (is.element(doingInvestg,c("Inv5Am","Inv5Bm"))) {
-                     investgG<-showMultiple(showType="rs",dimension="1D",orientation="horz")
+                     investgD<-showMultiple(showType="rs",dimension="1D",orientation="horz")
                      investgR<-reportMultiple(showType="rs")
                    }
                    else   {
-                     investgG<-showMultiple(showType="rse",dimension="1D",orientation="horz")
+                     investgD<-showMultiple(showType="rse",dimension="1D",orientation="horz")
                      investgR<-reportMultiple(showType="NHST")
                    }
                  }
                }
         )
-        setBrawRes("investgG",investgG)
+        setBrawRes("investgD",investgD)
         setBrawRes("investgR",investgR)
         investgResults<-
           generate_tab(
             title=paste0("Investigation",":"),
-            plainTabs=TRUE,
+            plainTabs=FALSE,
             titleWidth=100,
             # tabs=c("Single","Multiple","Comments"),
             # tabContents=c(braw.res$investgSingle,braw.res$investgMultiple,investgComment(doingInvestg)),
-            tabs=c("Graph","Report"),
-            tabContents=c(braw.res$investgG,braw.res$investgR),
+            tabs=c("Data","Report"),
+            tabContents=c(braw.res$investgD,braw.res$investgR),
             tabLink=paste0('https://doingpsychstats.wordpress.com/investigations#',substr(doingInvestg,1,5)),
             tabLinkLabel=paste0(" Inv",substr(doingInvestg,4,6)),
             open=1
@@ -409,20 +421,19 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         statusStore$lastOutput<-"investg"
         statusStore$investgResults<-investgResults
         setBrawRes("statusStore",statusStore)
+        setBrawRes("invHistoryStore",invHistory)
         
         sendData2Jamovi(outputNow,self)
         return()
       }
 
       # we are going back or forwards in the history
-      if (self$options$goBack || self$options$goForwards) {
-        nhist<-length(history$history)
-        if (self$options$goBack) history$historyPlace<-max(history$historyPlace-1,1)
-        if (self$options$goForwards) history$historyPlace<-min(history$historyPlace+1,nhist)
-
-        outputNow<-history$history[history$historyPlace]
+      if (self$options$simGoBack || self$options$simGoForwards) {
+        h<-readHistory(simHistory,self$options$simGoBack)
+        outputNow<-h$outputNow
+        historyOptions<-h$historyOptions
+        simHistory<-h$history
         
-        historyOptions<-history$historyOptions[[history$historyPlace]]
         showSampleType<-historyOptions$showSampleType
         showInferParam<-historyOptions$showInferParam
         showInferDimension<-historyOptions$showInferDimension
@@ -434,17 +445,11 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         showExploreStyle<-historyOptions$showExploreStyle
         whichShowExploreOut<-historyOptions$whichShowExploreOut
         
-        setBrawRes("result",history$historyData[[history$historyPlace]]$result)
-        setBrawRes("multiple",history$historyData[[history$historyPlace]]$multiple)
-        setBrawRes("explore",history$historyData[[history$historyPlace]]$explore)
-        setBrawRes("metaSingle",history$historyData[[history$historyPlace]]$metaSingle)
-        setBrawRes("metaMultiple",history$historyData[[history$historyPlace]]$metaMultiple)
-        
         updateHistory<-FALSE
       }
       
       # we are doing something new
-      if (!self$options$goBack && !self$options$goForwards) {
+      if (!self$options$simGoBack && !self$options$simGoForwards) {
         # get some display parameters for later
         # single sample
         makeSampleNow<-self$options$makeSampleBtn
@@ -696,8 +701,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                              showExploreStyle=showExploreStyle,
                              whichShowExploreOut=whichShowExploreOut
         )
-        history<-updateHistory(history,historyOptions,outputNow,addHistory)
-        setBrawRes("historyStore",history)
+        simHistory<-updateHistory(simHistory,historyOptions,outputNow,addHistory)
+        setBrawRes("simHistoryStore",simHistory)
       }
       
       # now we save any results to the Jamovi spreadsheet

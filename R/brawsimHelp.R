@@ -40,13 +40,13 @@ brawInvestgHelp<-function(open=0,indent,titleWidth) {
       indent=indent,
       titleWidth=titleWidth,
       # titleTab="Click on the tabs for specific help.",
-      tabs=c("Start","Inferences?","Sample Size?","Sampling Method?","Double Checking?","Real Differences"),
+      tabs=c("Start","Inferences","Sample Size","Sampling Method","Double Checking","Real Differences"),
       tabContents = c(
         investgInstructions("Overview"),
-        investgInstructions("Inferences?"),
-        investgInstructions("Sample Size?"),
-        investgInstructions("Sampling Method?"),
-        investgInstructions("Double Checking?"),
+        investgInstructions("Inferences"),
+        investgInstructions("Sample Size"),
+        investgInstructions("Sampling Method"),
+        investgInstructions("Double Checking"),
         investgInstructions("Real Differences")
       ),
       open=open

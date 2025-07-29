@@ -3109,6 +3109,17 @@ children:
                         minWidth: 10
                         maxWidth: 10
                         maxHeight: 24
+                  - type: LayoutBox
+                    style: inline
+                    children:
+                    - type: Label
+                      label: 'History:'
+                    - type: ActionButton
+                      name: invGoBack
+                      maxHeight: 24
+                    - type: ActionButton
+                      name: invGoForwards
+                      maxHeight: 24
           - type: Content
             name: Simulations
             margin: none
@@ -4689,37 +4700,24 @@ children:
                     minWidth: 10
                     maxWidth: 10
                     maxHeight: 24
+              - type: LayoutBox
+                style: inline
+                margin: none
+                children:
+                  - type: Label
+                    label: 'History:'
+                  - type: ActionButton
+                    name: simGoBack
+                    margin: none
+                    maxHeight: 24
+                  - type: ActionButton
+                    name: simGoForwards
+                    margin: none
+                    maxHeight: 24
           - type: Content
             name: Settings
             margin: none
             children:
-              - type: CollapseBox
-                collapsed: true
-                label: History
-                margin: none
-                maxWidth: 356
-                children:
-                  - type: LayoutBox
-                    style: inline
-                    margin: none
-                    children:
-                      - type: Label
-                        label: ' '
-                        minWidth: 100
-                      - type: ActionButton
-                        name: goBack
-                        margin: none
-                        maxHeight: 24
-                      - type: ActionButton
-                        name: goForwards
-                        margin: none
-                        maxHeight: 24
-              - type: CollapseBox
-                collapsed: true
-                label: Settings
-                margin: none
-                maxWidth: 356
-                children:
                   - type: LayoutBox
                     style: inline
                     margin: none

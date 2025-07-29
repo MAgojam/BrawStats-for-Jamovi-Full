@@ -40,8 +40,8 @@ items:
       - MetaAnalysisPrior
       - MetaAnalysisBias
       - MetaAnalysisNulls
-      - goBack
-      - goForwards
+      - simGoBack
+      - simGoForwards
 
     - name: simReport
       type: Html

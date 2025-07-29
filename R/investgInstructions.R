@@ -33,7 +33,7 @@ investgInstructions <- function(HelpType="Plan") {
              '<br>'
            )
          },
-         "Inferences?"={
+         "Inferences"={
            output<-c(
              '<b>In the first part of this investigation</b> we use a simple test situation.',
              '<ul style=margin:0px;>',
@@ -57,7 +57,7 @@ investgInstructions <- function(HelpType="Plan") {
            )
          },
          
-         "Sample Size?"={output<-c(
+         "Sample Size"={output<-c(
            'Larger sample sizes cost more time, effort and often money. It is therefore worth asking whether two smaller studies are more productive than one large one.',
            'The question is important not least because increasing sample size offers diminishing returns.',
            'The benefit of going from 20 to 40 data points is much, much greater than the benefit of going from 120 to 140.',
@@ -83,7 +83,7 @@ investgInstructions <- function(HelpType="Plan") {
            '<br>')
          },
          
-         "Sampling Method?"={output<-c(
+         "Sampling Method"={output<-c(
            'Larger sample sizes cost more time, effort and often money. It is therefore worth asking whether two smaller studies are more productive than one large one.',
            'The question is important not least because increasing sample size offers diminishing returns.',
            'The benefit of going from 20 to 40 data points is much, much greater than the benefit of going from 120 to 140.',
@@ -109,7 +109,7 @@ investgInstructions <- function(HelpType="Plan") {
            '<br>')
          },
          
-         "Double Checking?"={output<-c(
+         "Double Checking"={output<-c(
            'False discoveries are inevitable. For the most part their frequency is driven by the number of false hypotheses.',
            'It is hard to know whether a hypothesis is true or false and so there are no really good ways of preventing false discoveries.',
            'Instead, we must check up on a promising looking result.',

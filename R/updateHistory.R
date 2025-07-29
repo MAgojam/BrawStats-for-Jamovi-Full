@@ -9,7 +9,10 @@ updateHistory<-function(history,historyOptions,outputNow,addHistory) {
   }
   history$history[nD]<-outputNow
   
-  history$historyData[[nD]]<-list(result=braw.res$result,
+  history$historyData[[nD]]<-list(hypothesis=braw.def$hypothesis,
+                                  design=braw.def$design,
+                                  evidence=braw.def$evidence,
+                                  result=braw.res$result,
                                   multiple=braw.res$multiple,
                                   explore=braw.res$explore,
                                   metaSingle=braw.res$metaSingle,
@@ -25,4 +28,26 @@ updateHistory<-function(history,historyOptions,outputNow,addHistory) {
   }
   history$historyPlace<-nD
   return(history)
+}
+
+readHistory<-function(history,backwards) {
+  nhist<-length(history$history)
+  if (backwards) history$historyPlace<-max(history$historyPlace-1,1)
+  else           history$historyPlace<-min(history$historyPlace+1,nhist)
+  
+  outputNow<-history$history[history$historyPlace]
+  
+  historyOptions<-history$historyOptions[[history$historyPlace]]
+  
+  setBrawDef("hypothesis",history$historyData[[history$historyPlace]]$hypothesis)
+  setBrawDef("design",history$historyData[[history$historyPlace]]$design)
+  setBrawDef("evidence",history$historyData[[history$historyPlace]]$evidence)
+  
+  setBrawRes("result",history$historyData[[history$historyPlace]]$result)
+  setBrawRes("multiple",history$historyData[[history$historyPlace]]$multiple)
+  setBrawRes("explore",history$historyData[[history$historyPlace]]$explore)
+  setBrawRes("metaSingle",history$historyData[[history$historyPlace]]$metaSingle)
+  setBrawRes("metaMultiple",history$historyData[[history$historyPlace]]$metaMultiple)
+  
+  return(list(historyOptions=historyOptions,outputNow=outputNow,history=history))
 }

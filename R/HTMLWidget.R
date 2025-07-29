@@ -74,7 +74,7 @@
                                      'border: none;',
                                      'outline: none;',
                                      'cursor: pointer;',
-                                     'padding: 2px 10px;',
+                                     'padding: 2px 4px;',
                                      'margin: 0px 1px;',
                                      'transition: 0.3s;',
                                      'font-size: ',fontSize,';',
