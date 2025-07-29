@@ -710,9 +710,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         simHistory<-updateHistory(simHistory,historyOptions,outputNow,addHistory)
       }
       setBrawRes("simHistoryStore",simHistory)
-      self$results$debug$setContent(c(updateHistoryNow,simHistory$historyPlace))
-      self$results$debug$setVisible(TRUE)
-      
+
       # now we save any results to the Jamovi spreadsheet
       sendData2Jamovi(outputNow,self)
 
