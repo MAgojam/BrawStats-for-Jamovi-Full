@@ -2416,6 +2416,10 @@ children:
               - type: LayoutBox
                 style: list
                 children:
+                  - type: Label
+                    label: 'Look at both the Graph and the Report.'
+                  - type: Label
+                    label: 'For more information and an explanation, click on the ⓘlink.'
                   - type: LayoutBox
                     style: inline
                     children:

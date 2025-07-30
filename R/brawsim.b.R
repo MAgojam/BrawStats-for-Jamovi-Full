@@ -48,8 +48,10 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           titleWidth=100,
           # tabs=c("Single","Multiple","Comments"),
           # tabContents=c(nullPlot(),nullPlot(),nullPlot()),
-          tabs=c("Data","Report"),
+          tabs=c("Data","Schematic","Report"),
           tabContents=c(nullPlot(),nullPlot(),nullPlot()),
+          tabLink='https://doingpsychstats.wordpress.com/investigations/',
+          tabLinkLabel=" here",
           open=0
         )
         simResults<-generate_tab(
@@ -102,6 +104,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         )
         np<-nullPlot()
         setBrawRes("investgD",np)
+        setBrawRes("investgS",np)
         setBrawRes("investgR",np)
         setBrawRes("simSingle",np)
         setBrawRes("simMultiple",np)
@@ -220,9 +223,14 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                "Inv2"={
                  switch(substr(doingInvestg,5,5),
                         "A"=design<-makeDesign(sN=self$options$meta2SampleSize),
-                        "B"=design<-makeDesign(sN=self$options$meta2SampleBudget)
-                          )
-                 
+                        "B"={
+                          n<-round(self$options$meta2SampleBudget/self$options$meta2SampleSplits)
+                          ns<-self$options$meta2SampleSplits
+                          design<-makeDesign(sN=n,
+                                               Replication=makeReplication(TRUE,Repeats=ns-1,PowerOn=FALSE,replicateAll=TRUE,Keep = "SmallP",forceSigOriginal = TRUE))
+                                               
+                        }
+                 )
                },
                "Inv3"={
                  design<-makeDesign(sN=self$options$meta3SampleSize)
@@ -319,17 +327,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           setHypothesis(IV2=makeVariable("IV2","Interval"))
 
         if (substr(doingInvestg,6,6)!="m") {
-          if (substr(doingInvestg,1,5)=="Inv2B") {
-            setDesign(sN=floor(self$options$meta2SampleBudget/self$options$meta2SampleSplits))
-            nreps<-floor(self$options$meta2SampleSplits)
-            doMultiple(nreps,NULL)
-            outputNow<-"Multiple"
-          } else {
             doSingle()
             outputNow<-"Description"
-          }
-          # we display replications as multiple results
-          if (substr(doingInvestg,1,4)=="Inv4")  setBrawRes("multiple",braw.res$result)
         } else {
           if (doingInvestg=="Inv2Bm") {
             setDesign(sN=self$options$meta2SampleBudget)
@@ -368,41 +367,39 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         setBrawEnv("graphicsType","HTML")
         setBrawEnv("reportCounts",reportCounts)
         setBrawEnv("fullOutput",1)
+        investgD<-braw.res$investgD
+        investgS<-braw.res$investgS
+        investgR<-braw.res$investgR
         if (substr(doingInvestg,6,6)!="m") open<-1 else open<-2
         switch(open,
                { 
-                 if (is.element(doingInvestg,c("Inv2B","Inv4A","Inv4B"))) {
-                   if (doingInvestg=="Inv2B") {
-                     investgD<-showMultiple(showType="rse",dimension="1D",orientation="horz")
-                     investgR<-reportMultiple(showType="NHST",reportStats=self$options$reportInferStats)
-                   }
-                   else {
-                     investgD<-showMultiple()
-                     investgR<-reportInference()
-                   }
-                 } else  {
-                   investgD<-showDescription()
-                   investgR<-reportInference()
-                 }
+                 investgD<-showDescription()
+                 if (substr(doingInvestg,1,4)=="Inv4")
+                          investgS<-showInference(dimension="2D")
+                 else     investgS<-showInference(showType="rse",dimension="1D",orientation="horz")
+                 if (is.element(doingInvestg,c("Inv2B")))  
+                          investgR<-reportMultiple(showType="NHST",reportStats=self$options$reportInferStats)
+                 else     investgR<-reportInference()
                },
-               {
+               { 
                  if (doingInvestg=="Inv2Bm") {
-                   investgD<-showExplore(showType="n(sig)")
+                   investgS<-showExplore(showType="n(sig)")
                    investgR<-reportExplore(showType="n(sig)")
                  }
                  else {
                    if (is.element(doingInvestg,c("Inv5Am","Inv5Bm"))) {
-                     investgD<-showMultiple(showType="rs",dimension="1D",orientation="horz")
+                     investgS<-showMultiple(showType="rs",dimension="1D",orientation="horz")
                      investgR<-reportMultiple(showType="rs")
                    }
                    else   {
-                     investgD<-showMultiple(showType="rse",dimension="1D",orientation="horz")
+                     investgS<-showMultiple(showType="rse",dimension="1D",orientation="horz")
                      investgR<-reportMultiple(showType="NHST")
                    }
                  }
                }
         )
         setBrawRes("investgD",investgD)
+        setBrawRes("investgS",investgS)
         setBrawRes("investgR",investgR)
         investgResults<-
           generate_tab(
@@ -411,11 +408,11 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
             titleWidth=100,
             # tabs=c("Single","Multiple","Comments"),
             # tabContents=c(braw.res$investgSingle,braw.res$investgMultiple,investgComment(doingInvestg)),
-            tabs=c("Data","Report"),
-            tabContents=c(braw.res$investgD,braw.res$investgR),
+            tabs=c("Data","Schematic","Report"),
+            tabContents=c(braw.res$investgD,braw.res$investgS,braw.res$investgR),
             tabLink=paste0('https://doingpsychstats.wordpress.com/investigations#',substr(doingInvestg,1,5)),
             tabLinkLabel=paste0(" Inv",substr(doingInvestg,4,6)),
-            open=1
+            open=open
           )
         
         self$results$simGraphHTML$setContent(investgResults)
