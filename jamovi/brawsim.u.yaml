@@ -2698,22 +2698,19 @@ children:
                                             cell:
                                               row: 0
                                               column: 2
-                                      - type: LayoutBox
-                                        style: inline
-                                        children:
                                           - type: Label
                                             label: >-
                                               Press here to see multiple sets (v
                                               slow!)
                                             cell:
-                                              row: 0
+                                              row: 1
                                               column: 1
                                           - type: ActionButton
                                             name: doMeta2BmBtn
                                             maxHeight: 24
                                             margin: none
                                             cell:
-                                              row: 0
+                                              row: 1
                                               column: 2
                       - type: ActionButton
                         name: meta2Help
@@ -2787,22 +2784,19 @@ children:
                                             cell:
                                               row: 0
                                               column: 2
-                                      - type: LayoutBox
-                                        style: inline
-                                        children:
                                           - type: Label
                                             label: >-
                                               Press here to see multiple samples
                                               (slow)
                                             cell:
-                                              row: 0
+                                              row: 1
                                               column: 1
                                           - type: ActionButton
                                             name: doMeta3AmBtn
                                             maxHeight: 24
                                             margin: none
                                             cell:
-                                              row: 0
+                                              row: 1
                                               column: 2
                           - type: LayoutBox
                             style: inline
