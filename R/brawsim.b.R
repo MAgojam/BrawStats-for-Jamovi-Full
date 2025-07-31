@@ -239,7 +239,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                         "B"={
                           design$sCheating<-self$options$Meta3Cheating
                           design$sCheatingLimit<-"Budget"
-                          design$sCheatingBudget<-0.25
+                          design$sCheatingBudget<-design$sN*0.5
                         }
                  )
                },
@@ -374,7 +374,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         switch(open,
                { 
                  investgD<-showDescription()
-                 if (substr(doingInvestg,1,4)=="Inv4")
+                 if (substr(doingInvestg,1,4)=="Inv4" || doingInvestg=="Inv3B")
                           investgS<-showInference(dimension="2D")
                  else     investgS<-showInference(showType="rse",dimension="1D",orientation="horz")
                  if (is.element(doingInvestg,c("Inv2B")))  
