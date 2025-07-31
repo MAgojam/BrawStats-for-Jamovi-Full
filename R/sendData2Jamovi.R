@@ -54,8 +54,9 @@ sendData2Jamovi<-function(outputNow,self) {
       newExplore<-reportExplore(returnDataFrame=TRUE,showType=showExploreParam,reportStats=self$options$reportInferStats)
       nvars<-ncol(newExplore)
       
+      titles<-gsub("\\(([a-zA-Z0-9_]*)\\)","_\\1",names(newExplore))
       keys<-1:nvars
-      self$results$sendExplore$set(keys=keys,titles=names(newExplore),
+      self$results$sendExplore$set(keys=keys,titles=titles,
                                    descriptions=rep("simulated",nvars),
                                    measureTypes=rep("Continuous",nvars)
       )
