@@ -88,7 +88,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                           basicMode="LearnHelp",
                           exploreMode="Design",
                           nrowTableLM=1,
-                          nrowTableSEM=1
+                          nrowTableSEM=1,
+                          counter=0
         )
         simHistory<-list(
           history=NULL,
@@ -218,7 +219,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         
         switch(invg,
                "Inv1"={
-                 design<-makeDesign(sN=50)
+                 design<-makeDesign(sN=42)
                },
                "Inv2"={
                  switch(substr(doingInvestg,5,5),
@@ -374,9 +375,12 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         switch(open,
                { 
                  investgD<-showDescription()
-                 if (substr(doingInvestg,1,4)=="Inv4" || doingInvestg=="Inv3B")
-                          investgS<-showInference(dimension="2D")
+                 if (substr(doingInvestg,1,4)=="Inv4" || doingInvestg=="Inv3B") {
+                   investgS<-showInference(dimension="2D")
+                   open<-2                   
+                 }
                  else     investgS<-showInference(showType="rse",dimension="1D",orientation="horz")
+                 if (doingInvestg=="Inv2B") open<-2
                  if (is.element(doingInvestg,c("Inv2B")))  
                           investgR<-reportMultiple(showType="NHST",reportStats=self$options$reportInferStats)
                  else     investgR<-reportInference()

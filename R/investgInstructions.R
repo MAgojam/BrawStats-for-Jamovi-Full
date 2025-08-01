@@ -38,7 +38,7 @@ investgInstructions <- function(HelpType="Plan") {
              '<b>In the first part of this investigation</b> we use a simple test situation.',
              '<ul style=margin:0px;>',
              '<li> The population effect size is either r<sub>p</sub>=0.0 or r<sub>p</sub>=0.3 with equal probability.',
-             '<li> The sample size is 50.',
+             '<li> The sample size is 42',
              '</ul>',
              'Can you guess which population your result came from?',
              'Did you get a statistically significant result?',
@@ -50,7 +50,7 @@ investgInstructions <- function(HelpType="Plan") {
              '<b>In the second part of this investigation</b> we use a world that models Psychology.',
              '<ul style=margin:0px;>',
              '<li> The population effect size is either zero (50%) or drawn from an exponential distribution (50%).',
-             '<li> The sample size is 50.',
+             '<li> The sample size is 42',
              '</ul>',
              'What happens now? How likely is a significant result? And if you get a significant result, how likely is it false discovery?',
              '<br>'
