@@ -2387,7 +2387,7 @@ options:
           title: Cluster
         - name: Snowball
           title: Snowball
-      default: Random
+      default: Cluster
 
     - name: meta3pNull
       title: '   p(rₚ=0)'
@@ -2406,7 +2406,7 @@ options:
          title: Prune
        - name: Replace
          title: Replace
-      default: None
+      default: Grow
 
     - name: doMeta4ABtn
       title: 'do'
