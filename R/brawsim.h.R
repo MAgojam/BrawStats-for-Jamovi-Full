@@ -96,7 +96,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             RangeMinIV2 = -3,
             RangeMaxIV2 = 3,
             Cheating = "None",
-            CheatingBudget = 0.5,
+            CheatingBudget = 0.1,
             ReplicationOn = FALSE,
             ReplicationPower = 0.8,
             ReplicationPrior = "None",
@@ -786,7 +786,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             private$..CheatingBudget <- jmvcore::OptionNumber$new(
                 "CheatingBudget",
                 CheatingBudget,
-                default=0.5)
+                default=0.1)
             private$..ReplicationOn <- jmvcore::OptionBool$new(
                 "ReplicationOn",
                 ReplicationOn,
@@ -1278,6 +1278,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "Basic",
                     "blank1",
                     "p(sig)",
+                    "n(sig)",
                     "NHST",
                     "Inference",
                     "Source",
@@ -3369,7 +3370,7 @@ BrawSim <- function(
     RangeMinIV2 = -3,
     RangeMaxIV2 = 3,
     Cheating = "None",
-    CheatingBudget = 0.5,
+    CheatingBudget = 0.1,
     ReplicationOn = FALSE,
     ReplicationPower = 0.8,
     ReplicationPrior = "None",

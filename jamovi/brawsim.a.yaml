@@ -1460,6 +1460,8 @@ options:
           title: "-"
         - name: 'p(sig)'
           title: 'p(sig)'
+        - name: 'n(sig)'
+          title: 'n(sig)'
         - name: NHST
           title: NHST
         - name: Inference
