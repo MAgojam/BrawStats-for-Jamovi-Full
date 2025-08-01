@@ -154,6 +154,9 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                       "Inv5B","Inv5Bm"
                       )
       if (any(investgControls)) {
+        emptyPlot(self)
+        private$.checkpoint()
+
         doingInvestg<-investgNames[investgControls]
         doingInvestg<-doingInvestg[1]
       } else       doingInvestg<-NULL
@@ -227,9 +230,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                         "B"={
                           n<-round(self$options$meta2SampleBudget/self$options$meta2SampleSplits)
                           ns<-self$options$meta2SampleSplits
-                          design<-makeDesign(sN=n,
-                                               Replication=makeReplication(TRUE,Repeats=ns-1,PowerOn=FALSE,replicateAll=TRUE,Keep = "SmallP",forceSigOriginal = TRUE))
-                                               
+                          design<-makeDesign(sN=n,sCheating="Retry",sCheatingAttempts=ns-1)
                         }
                  )
                },
@@ -331,16 +332,16 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
             doSingle()
             outputNow<-"Description"
         } else {
-          if (doingInvestg=="Inv2Bm") {
-            setDesign(sN=self$options$meta2SampleBudget)
-            doExplore(50,explore=makeExplore("nSplits",vals=2^c(0,1,2,3,4,5),xlog=TRUE))
-            outputNow<-"Explore"
-          } else {
+          # if (doingInvestg=="Inv2Bm") {
+          #   setDesign(sN=self$options$meta2SampleBudget)
+          #   doExplore(50,explore=makeExplore("NoSplits"))
+          #   outputNow<-"Explore"
+          # } else {
             if (doingInvestg=="Inv3Bm") nreps<-50
             else                 nreps<-200
             doMultiple(nreps)
             outputNow<-"Multiple"
-          }
+          # }
         }
         invHistory<-updateHistory(invHistory,doingInvestg,outputNow,TRUE)
       }
@@ -361,7 +362,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                  )
           setBrawRes("multiple",multiple)
         } 
-        if (substr(doingInvestg,1,5)=="Inv2B") reportCounts<-TRUE else reportCounts<-FALSE
+        if (doingInvestg=="Inv2B") reportCounts<-TRUE 
         
       # display the results
         svgBox(height=350,aspect=1.5,fontScale=1.2)
@@ -386,11 +387,11 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                  else     investgR<-reportInference()
                },
                { 
-                 if (doingInvestg=="Inv2Bm") {
-                   investgS<-showExplore(showType="n(sig)")
-                   investgR<-reportExplore(showType="n(sig)")
-                 }
-                 else {
+                 # if (doingInvestg=="Inv2Bm") {
+                 #   investgS<-showExplore(showType="n(sig)")
+                 #   investgR<-reportExplore(showType="n(sig)")
+                 # }
+                 # else {
                    if (is.element(doingInvestg,c("Inv5Am","Inv5Bm"))) {
                      investgS<-showMultiple(showType="rs",dimension="1D",orientation="horz")
                      investgR<-reportMultiple(showType="rs")
@@ -399,7 +400,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                      investgS<-showMultiple(showType="rse",dimension="1D",orientation="horz")
                      investgR<-reportMultiple(showType="NHST")
                    }
-                 }
+                 # }
                }
         )
         setBrawRes("investgD",investgD)
@@ -558,6 +559,10 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           }
         }
         
+        if (any(c(makeSampleNow,makeMultipleNow,makeExploreNow))) {
+          emptyPlot(self)
+          private$.checkpoint()
+        }
         # now we start doing new things
         # did we ask for a new sample?
         if (makeSampleNow) {

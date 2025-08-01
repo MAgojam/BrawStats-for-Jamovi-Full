@@ -600,6 +600,8 @@ options:
           title: Random
         - name: Stratified
           title: Stratified
+        - name: Limited
+          title: Limited
         - name: Cluster
           title: Cluster
         - name: Snowball
@@ -1232,22 +1234,22 @@ options:
     - name: exploreNPointsH
       title: 'using'
       type: Number
-      default: 13
+      default: 11
 
     - name: exploreNPointsD
       title: 'using'
       type: Number
-      default: 13
+      default: 11
 
     - name: exploreNPointsA
       title: 'using'
       type: Number
-      default: 13
+      default: 11
 
     - name: exploreNPointsM
       title: 'using'
       type: Number
-      default: 13
+      default: 11
       
     - name: exploreMinValH
       title: from
@@ -1387,6 +1389,8 @@ options:
           title: Method
         - name: Usage
           title: Usage
+        - name: NoSplits
+          title: Splits
         - name: blank1d
           title: '-'
         - name: PoorSamplingAmount
@@ -1649,6 +1653,8 @@ options:
       options:
       - name: Random
         title: Random
+      - name: Limited
+        title: Limited
       - name: Convenience
         title: Convenience
       - name: Snowball
@@ -1832,6 +1838,8 @@ options:
       options:
       - name: Random
         title: Random
+      - name: Limited
+        title: Limited
       - name: Convenience
         title: Convenience
       - name: Snowball
@@ -1918,6 +1926,8 @@ options:
       options:
       - name: Random
         title: Random
+      - name: Limited
+        title: Limited
       - name: Convenience
         title: Convenience
       - name: Snowball
@@ -2321,6 +2331,8 @@ options:
       title: 'world'
       type: List
       options:
+      - name: NullH
+        title: 'null'
       - name: Plain
         title: single
       - name: Binary
@@ -2369,6 +2381,8 @@ options:
       title: 'world'
       type: List
       options:
+      - name: NullH
+        title: 'null'
       - name: Plain
         title: single
       - name: Binary
@@ -2383,11 +2397,15 @@ options:
       options:
         - name: Random
           title: Random
+        - name: Limited
+          title: Limited
+        - name: Convenience
+          title: Convenience
         - name: Cluster
           title: Cluster
         - name: Snowball
           title: Snowball
-      default: Cluster
+      default: Convenience
 
     - name: meta3pNull
       title: '   p(rₚ=0)'
@@ -2435,6 +2453,8 @@ options:
       title: 'world'
       type: List
       options:
+      - name: NullH
+        title: 'null'
       - name: Plain
         title: single
       - name: Binary

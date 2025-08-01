@@ -1002,18 +1002,18 @@ let makeRange = function(min,max,xlog,np) {
   let  updateRange = function(value) {
       switch (value) {
         case "n":
-           var range={min:10,max:1000,xlog:true,np:13};
+           var range={min:10,max:250,xlog:true,np:11};
           break;
         case "rIV":
-           var range={min:0,max:0.75,xlog:false,np:13};
+           var range={min:0,max:0.75,xlog:false,np:11};
           break;
         case "rIV2":
         case "rIVIV2":
         case "rIVIV2DV":
-           var range={min:-0.75,max:0.75,xlog:false,np:13};
+           var range={min:-0.75,max:0.75,xlog:false,np:11};
           break;
         case "rSD":
-           var range={min:0,max:0.4,xlog:false,np:13};
+           var range={min:0,max:0.4,xlog:false,np:11};
           break;
         case "IVskew":
         case "DVskew":
@@ -1022,15 +1022,15 @@ let makeRange = function(min,max,xlog,np) {
         case "Outliers":
         case "IVRange":
         case "DVRange":
-             var range={min:0,max:1,xlog:false,np:13};
+             var range={min:0,max:1,xlog:false,np:11};
           break;
         case "IVkurtosis":
         case "DVkurtosis":
-           var range={min:1.5,max:100000,xlog:true,np:13};
+           var range={min:1.5,max:100000,xlog:true,np:11};
           break;
         case "IVprop":
         case "DVprop":
-             var range={min:0.2,max:0.8,xlog:false,np:13};
+             var range={min:0.2,max:0.8,xlog:false,np:11};
           break;
         case "IVcats":
         case "DVcats":
@@ -1041,37 +1041,37 @@ let makeRange = function(min,max,xlog,np) {
              var range={min:3,max:10,xlog:false,np:8};
           break;
         case "WithinCorr":
-             var range={min:0,max:1,xlog:false,np:13};
+             var range={min:0,max:1,xlog:false,np:11};
           break;
         case "Alpha":
-             var range={min:0.001,max:0.5,xlog:true,np:13};
+             var range={min:0.001,max:0.5,xlog:true,np:11};
           break;
         case "minRp":
-             var range={min:0,max:0.5,xlog:false,np:13};
+             var range={min:0,max:0.5,xlog:false,np:11};
           break;
         case "Power":
-             var range={min:0.1,max:0.9,xlog:false,np:13};
+             var range={min:0.1,max:0.9,xlog:false,np:11};
           break;
         case "Repeats":
              var range={min:0,max:8,xlog:false,np:9};
           break;
         case "pNull":
-             var range={min:0,max:1,xlog:false,np:13};
+             var range={min:0,max:1,xlog:false,np:11};
           break;
         case "lambda":
-             var range={min:0.1,max:1,xlog:false,np:13};
+             var range={min:0.1,max:1,xlog:false,np:11};
           break;
         case "PoorSamplingAmount":
-             var range={min:0,max:0.2,xlog:false,np:13};
+             var range={min:0,max:0.2,xlog:false,np:11};
           break;
         case "CheatingAmount":
-             var range={min:0,max:0.8,xlog:false,np:13};
+             var range={min:0,max:0.8,xlog:false,np:11};
           break;
         case "ClusterRad":
-             var range={min:0,max:1,xlog:false,np:13};
+             var range={min:0,max:1,xlog:false,np:11};
           break;
         case "SampleSD":
-             var range={min:1,max:100,xlog:true,np:13};
+             var range={min:1,max:100,xlog:true,np:11};
           break;
         case "IVType":
              var range={min:"",max:"",xlog:false,np:5};
@@ -1088,11 +1088,14 @@ let makeRange = function(min,max,xlog,np) {
         case "Usage":
              var range={min:"",max:"",xlog:false,np:2};
           break;
+        case "NoSplits":
+             var range={min:1,max:32,xlog:true,np:6};
+          break;
         case "IVRangeC":
-             var range={min:0.1,max:3,xlog:false,np:13}
+             var range={min:0.1,max:3,xlog:false,np:11};
           break;
         case "IVRangeE":
-             var range={min:-3,max:3,xlog:false,np:13}
+             var range={min:-3,max:3,xlog:false,np:11};
           break;
         case "Cheating":
              var range={min:"",max:"",xlog:false,np:6};
@@ -1107,13 +1110,13 @@ let makeRange = function(min,max,xlog,np) {
              var range={min:"",max:"",xlog:false,np:5};
           break;
         case "NoStudies":
-             var range={min:2,max:100,xlog:true,np:13};
+             var range={min:2,max:100,xlog:true,np:11};
           break;
         case "MetaType":
              var range={min:"",max:"",xlog:false,np:4};
           break;
         default: 
-             var range={min:0,max:1,xlog:false,np:13};
+             var range={min:0,max:1,xlog:false,np:11};
           break;
       }
       return range;

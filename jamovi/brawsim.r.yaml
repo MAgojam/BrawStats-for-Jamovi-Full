@@ -11,6 +11,9 @@ items:
     - name: simGraphHTML
       type: Html
       visible: TRUE
+      clearWith:
+      - doMeta1ABtn
+      - doMeta1AmBtn
 
     - name: simGraph
       title: ' '

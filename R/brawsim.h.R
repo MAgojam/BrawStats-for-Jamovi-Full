@@ -144,10 +144,10 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             reportInferStats = "Medians",
             showMultipleParam = "Basic",
             showMultipleDimension = "1D",
-            exploreNPointsH = 13,
-            exploreNPointsD = 13,
-            exploreNPointsA = 13,
-            exploreNPointsM = 13,
+            exploreNPointsH = 11,
+            exploreNPointsD = 11,
+            exploreNPointsA = 11,
+            exploreNPointsM = 11,
             exploreMinValH = "-0.9",
             exploreMaxValH = "0.9",
             exploreMinValD = "10",
@@ -276,9 +276,9 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             doMeta3BmBtn = NULL,
             meta3SampleSize = 42,
             meta3World = "Psych50",
-            meta3SampleMethod = "Random",
+            meta3SampleMethod = "Convenience",
             meta3pNull = 0.5,
-            Meta3Cheating = "None",
+            Meta3Cheating = "Grow",
             doMeta4ABtn = NULL,
             doMeta4AmBtn = NULL,
             doMeta4BBtn = NULL,
@@ -708,6 +708,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 options=list(
                     "Random",
                     "Stratified",
+                    "Limited",
                     "Cluster",
                     "Snowball",
                     "Convenience"),
@@ -1129,19 +1130,19 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             private$..exploreNPointsH <- jmvcore::OptionNumber$new(
                 "exploreNPointsH",
                 exploreNPointsH,
-                default=13)
+                default=11)
             private$..exploreNPointsD <- jmvcore::OptionNumber$new(
                 "exploreNPointsD",
                 exploreNPointsD,
-                default=13)
+                default=11)
             private$..exploreNPointsA <- jmvcore::OptionNumber$new(
                 "exploreNPointsA",
                 exploreNPointsA,
-                default=13)
+                default=11)
             private$..exploreNPointsM <- jmvcore::OptionNumber$new(
                 "exploreNPointsM",
                 exploreNPointsM,
-                default=13)
+                default=11)
             private$..exploreMinValH <- jmvcore::OptionString$new(
                 "exploreMinValH",
                 exploreMinValH,
@@ -1237,6 +1238,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "n",
                     "Method",
                     "Usage",
+                    "NoSplits",
                     "blank1d",
                     "PoorSamplingAmount",
                     "Dependence",
@@ -1402,6 +1404,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 doDemo1sLstD,
                 options=list(
                     "Random",
+                    "Limited",
                     "Convenience",
                     "Snowball",
                     "Cluster"),
@@ -1497,6 +1500,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 doDemo2sLstD,
                 options=list(
                     "Random",
+                    "Limited",
                     "Convenience",
                     "Snowball",
                     "Cluster"),
@@ -1557,6 +1561,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 doDemo3sLstD,
                 options=list(
                     "Random",
+                    "Limited",
                     "Convenience",
                     "Snowball",
                     "Cluster"),
@@ -1838,6 +1843,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 "meta2World",
                 meta2World,
                 options=list(
+                    "NullH",
                     "Plain",
                     "Binary",
                     "Psych50"),
@@ -1874,6 +1880,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 "meta3World",
                 meta3World,
                 options=list(
+                    "NullH",
                     "Plain",
                     "Binary",
                     "Psych50"),
@@ -1883,9 +1890,11 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 meta3SampleMethod,
                 options=list(
                     "Random",
+                    "Limited",
+                    "Convenience",
                     "Cluster",
                     "Snowball"),
-                default="Random")
+                default="Convenience")
             private$..meta3pNull <- jmvcore::OptionNumber$new(
                 "meta3pNull",
                 meta3pNull,
@@ -1898,7 +1907,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "Grow",
                     "Prune",
                     "Replace"),
-                default="None")
+                default="Grow")
             private$..doMeta4ABtn <- jmvcore::OptionAction$new(
                 "doMeta4ABtn",
                 doMeta4ABtn)
@@ -1919,6 +1928,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 "Meta4World",
                 Meta4World,
                 options=list(
+                    "NullH",
                     "Plain",
                     "Binary",
                     "Psych50"),
@@ -2874,7 +2884,10 @@ BrawSimResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$add(jmvcore::Html$new(
                 options=options,
                 name="simGraphHTML",
-                visible=TRUE))
+                visible=TRUE,
+                clearWith=list(
+                    "doMeta1ABtn",
+                    "doMeta1AmBtn")))
             self$add(jmvcore::Image$new(
                 options=options,
                 name="simGraph",
@@ -3404,10 +3417,10 @@ BrawSim <- function(
     reportInferStats = "Medians",
     showMultipleParam = "Basic",
     showMultipleDimension = "1D",
-    exploreNPointsH = 13,
-    exploreNPointsD = 13,
-    exploreNPointsA = 13,
-    exploreNPointsM = 13,
+    exploreNPointsH = 11,
+    exploreNPointsD = 11,
+    exploreNPointsA = 11,
+    exploreNPointsM = 11,
     exploreMinValH = "-0.9",
     exploreMaxValH = "0.9",
     exploreMinValD = "10",
@@ -3536,9 +3549,9 @@ BrawSim <- function(
     doMeta3BmBtn,
     meta3SampleSize = 42,
     meta3World = "Psych50",
-    meta3SampleMethod = "Random",
+    meta3SampleMethod = "Convenience",
     meta3pNull = 0.5,
-    Meta3Cheating = "None",
+    Meta3Cheating = "Grow",
     doMeta4ABtn,
     doMeta4AmBtn,
     doMeta4BBtn,
