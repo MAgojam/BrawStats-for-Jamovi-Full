@@ -2700,8 +2700,7 @@ children:
                                               column: 2
                                           - type: Label
                                             label: >-
-                                              Press here to see multiple sets (v
-                                              slow!)
+                                              Press here to see multiple sets (slow)
                                             cell:
                                               row: 1
                                               column: 1
