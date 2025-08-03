@@ -33,25 +33,25 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         )
         setBrawEnv("graphicsType","HTML")
         svgBox(height=350,aspect=1.5,fontScale=1.2)
+        blankPlot<-nullPlot()
         
         demoResults<-generate_tab(
           title="Demonstration:",
           plainTabs=TRUE,
           titleWidth=100,
           tabs=c("Single","Multiple","Explore"),
-          tabContents=c(nullPlot(),nullPlot(),nullPlot()),
+          tabContents=rep(blankPlot,3),
           open=0
         )
         investgResults<-generate_tab(
           title="Investigation:",
           plainTabs=TRUE,
           titleWidth=100,
-          # tabs=c("Single","Multiple","Comments"),
-          # tabContents=c(nullPlot(),nullPlot(),nullPlot()),
           tabs=c("Data","Schematic","Report"),
-          tabContents=c(nullPlot(),nullPlot(),nullPlot()),
+          tabContents=rep(blankPlot,3),
           tabLink='https://doingpsychstats.wordpress.com/investigations/',
           tabLinkLabel=" here",
+          outerHeight=350,
           open=0
         )
         simResults<-generate_tab(
@@ -59,7 +59,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           plainTabs=TRUE,
           titleWidth=100,
           tabs=c("Single","Multiple","Explore"),
-          tabContents=c(nullPlot(),nullPlot(),nullPlot()),
+          tabContents=rep(blankPlot,3),
           open=0
         )
         
@@ -103,13 +103,12 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           historyOptions=NULL,
           historyPlace=0
         )
-        np<-nullPlot()
-        setBrawRes("investgD",np)
-        setBrawRes("investgS",np)
-        setBrawRes("investgR",np)
-        setBrawRes("simSingle",np)
-        setBrawRes("simMultiple",np)
-        setBrawRes("simExplore",np)
+        setBrawRes("investgD",blankPlot)
+        setBrawRes("investgS",blankPlot)
+        setBrawRes("investgR",blankPlot)
+        setBrawRes("simSingle",blankPlot)
+        setBrawRes("simMultiple",blankPlot)
+        setBrawRes("simExplore",blankPlot)
         
       } else {
         statusStore<-braw.res$statusStore
@@ -230,7 +229,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                         "B"={
                           n<-round(self$options$meta2SampleBudget/self$options$meta2SampleSplits)
                           ns<-self$options$meta2SampleSplits
-                          design<-makeDesign(sN=n,sCheating="Retry",sCheatingAttempts=ns-1)
+                          design<-makeDesign(sN=n,sCheating="Retry",sCheatingAttempts=ns-1,sCheatingFixedPop=FALSE)
                         }
                  )
                },
@@ -291,7 +290,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       {
       helpOutput<-makeHelpOut(self$options$brawHelp,statusStore)
       if (statusStore$showPlan)
-        helpOutput<-makeSystemOut(self,statusStore,changedH,changedD,changedE,helpOutput)
+        helpOutput<-makeSystemOut(self,statusStore,FALSE,FALSE,FALSE,helpOutput)
       
       # only change this if there has been a change in what it displays
       if (any(c(firstRun,changedH,changedD,changedE,changedL)))
@@ -331,12 +330,11 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         if (substr(doingInvestg,6,6)!="m") {
             doSingle()
             outputNow<-"Description"
+            if (doingInvestg=="Inv2B") {
+              reportCounts<-TRUE 
+              setBrawRes("multiple",braw.res$result)
+            }
         } else {
-          # if (doingInvestg=="Inv2Bm") {
-          #   setDesign(sN=self$options$meta2SampleBudget)
-          #   doExplore(50,explore=makeExplore("NoSplits"))
-          #   outputNow<-"Explore"
-          # } else {
             if (doingInvestg=="Inv3Bm") nreps<-50
             else                 nreps<-200
             doMultiple(nreps)
@@ -362,8 +360,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                  )
           setBrawRes("multiple",multiple)
         } 
-        if (doingInvestg=="Inv2B") reportCounts<-TRUE 
-        
+
       # display the results
         svgBox(height=350,aspect=1.5,fontScale=1.2)
         setBrawEnv("graphicsType","HTML")
@@ -376,28 +373,20 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         switch(open,
                { 
                  investgD<-showDescription()
-                 if (substr(doingInvestg,1,4)=="Inv4" || doingInvestg=="Inv3B") {
-                   investgS<-showInference(dimension="2D")
+                 investgS<-showInference(showType="rse",orientation="horz",dimension=1)
+                 is.element(doingInvestg,c("Inv2B","Inv3B","Inv3A","Inv4B"))
                    open<-2                   
-                 }
-                 else     investgS<-showInference(showType="rse",dimension="1D",orientation="horz")
-                 if (doingInvestg=="Inv2B") open<-2
-                 if (is.element(doingInvestg,c("Inv2B")))  
+                 if (is.element(doingInvestg,c("Inv2B")))
                           investgR<-reportMultiple(showType="NHST",reportStats=self$options$reportInferStats)
                  else     investgR<-reportInference()
                },
                { 
-                 # if (doingInvestg=="Inv2Bm") {
-                 #   investgS<-showExplore(showType="n(sig)")
-                 #   investgR<-reportExplore(showType="n(sig)")
-                 # }
-                 # else {
                    if (is.element(doingInvestg,c("Inv5Am","Inv5Bm"))) {
-                     investgS<-showMultiple(showType="rs",dimension="1D",orientation="horz")
+                     investgS<-showMultiple(showType="rs",dimension=1,orientation="horz")
                      investgR<-reportMultiple(showType="rs")
                    }
                    else   {
-                     investgS<-showMultiple(showType="rse",dimension="1D",orientation="horz")
+                     investgS<-showMultiple(showType="rse",dimension=1,orientation="horz")
                      investgR<-reportMultiple(showType="NHST")
                    }
                  # }
@@ -417,6 +406,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
             tabContents=c(braw.res$investgD,braw.res$investgS,braw.res$investgR),
             tabLink=paste0('https://doingpsychstats.wordpress.com/investigations#',substr(doingInvestg,1,5)),
             tabLinkLabel=paste0(" Inv",substr(doingInvestg,4,6)),
+            outerHeight=350,
             open=open
           )
         

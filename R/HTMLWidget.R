@@ -8,7 +8,7 @@
                                                          tabLink=NULL,tabLinkLabel='here',
                                                          plainTabs=FALSE,indent=0,topMargin=5,
                                                          colours=c("#3498db","#888","#888"),fontSize="12px",
-                                                         plain=FALSE,width=550,height=NULL,open=0) {
+                                                         plain=FALSE,width=550,height=NULL,outerHeight=NULL,open=0) {
                                    if (is.null(height)) ht<-'' else ht<-paste0('height: ',height,'px;')
                                    if (open==0) openCode<-''
                                    else openCode<-paste0(
@@ -190,6 +190,13 @@
                                        panels,
                                        script
                                      )
+                                   if (!is.null(outerHeight)) {
+                                     html_content<-paste0(
+                                       '<div style="height:',outerHeight,'px;">',
+                                       html_content,
+                                       '</div>'
+                                     )
+                                   }
                                    return(html_content)
                                  }
                                  

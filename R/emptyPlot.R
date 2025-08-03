@@ -16,6 +16,7 @@ emptyPlot<-function(self) {
       titleWidth=100,
       tabs=tabs,
       tabContents=c(nullPlot(),nullPlot(),nullPlot()),
+      outerHeight=350,
       open=0
     )
     self$results$simGraphHTML$setContent(nullResults)
