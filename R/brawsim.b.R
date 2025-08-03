@@ -47,11 +47,11 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           title="Investigation:",
           plainTabs=TRUE,
           titleWidth=100,
-          tabs=c("Data","Schematic","Report"),
-          tabContents=rep(blankPlot,3),
+          tabs=c("Data","Schematic"),
+          tabContents=rep(blankPlot,2),
           tabLink='https://doingpsychstats.wordpress.com/investigations/',
           tabLinkLabel=" here",
-          outerHeight=350,
+          outerHeight=380,
           open=0
         )
         simResults<-generate_tab(
@@ -377,17 +377,17 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                  is.element(doingInvestg,c("Inv2B","Inv3B","Inv3A","Inv4B"))
                    open<-2                   
                  if (is.element(doingInvestg,c("Inv2B")))
-                          investgR<-reportMultiple(showType="NHST",reportStats=self$options$reportInferStats)
-                 else     investgR<-reportInference()
+                          investgR<-reportMultiple(showType="NHST",reportStats=self$options$reportInferStats,compact=TRUE)
+                 else     investgR<-reportInference(compact=TRUE)
                },
                { 
                    if (is.element(doingInvestg,c("Inv5Am","Inv5Bm"))) {
                      investgS<-showMultiple(showType="rs",dimension=1,orientation="horz")
-                     investgR<-reportMultiple(showType="rs")
+                     investgR<-reportMultiple(showType="rs",compact=TRUE)
                    }
                    else   {
                      investgS<-showMultiple(showType="rse",dimension=1,orientation="horz")
-                     investgR<-reportMultiple(showType="NHST")
+                     investgR<-reportMultiple(showType="NHST",compact=TRUE)
                    }
                  # }
                }
@@ -395,18 +395,17 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         setBrawRes("investgD",investgD)
         setBrawRes("investgS",investgS)
         setBrawRes("investgR",investgR)
+        show1<-paste0('<div style="display:inline-block;margin-bottom:10px;">',braw.res$investgD,braw.res$investgR,'</div>')
+        show2<-paste0('<div style="display:inline-block;margin-bottom:10px;">',braw.res$investgS,braw.res$investgR,'</div>')
         investgResults<-
           generate_tab(
-            title=paste0("Investigation",":"),
+            title="Investigation:",
             plainTabs=FALSE,
             titleWidth=100,
-            # tabs=c("Single","Multiple","Comments"),
-            # tabContents=c(braw.res$investgSingle,braw.res$investgMultiple,investgComment(doingInvestg)),
-            tabs=c("Data","Schematic","Report"),
-            tabContents=c(braw.res$investgD,braw.res$investgS,braw.res$investgR),
+            tabs=c("Data","Schematic"),
+            tabContents=c(show1,show2),
             tabLink=paste0('https://doingpsychstats.wordpress.com/investigations#',substr(doingInvestg,1,5)),
             tabLinkLabel=paste0(" Inv",substr(doingInvestg,4,6)),
-            outerHeight=350,
             open=open
           )
         

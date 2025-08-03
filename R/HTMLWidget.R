@@ -145,7 +145,7 @@
                                                          '</button>')
                                        panels <- paste0(panels,
                                                         '  <div id="',panelID,'" class="tabcontent" style="',tabBorders,';',
-                                                        'width:',width-indent,'px;',';margin-left:',indent,'px;','display:block;">',
+                                                        'width:',width-indent,'px;',';height:100%;','margin-left:',indent,'px;','display:block;">',
                                                         tabContents[itab],
                                                         '</div>')
                                      } else {
