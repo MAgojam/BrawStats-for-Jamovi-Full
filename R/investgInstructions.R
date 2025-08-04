@@ -155,21 +155,29 @@ investgInstructions <- function(HelpType="Plan") {
          }
          )
   
-  if (HelpType!="Overview")
-  extras<-paste0('<br>',
-                 'More information ',
-                 '<a href=',
-                 '"https://doingpsychstats.wordpress.com/investigation-',HelpType,'/"',
-                 ' target="_blank">',
-                 'here',
-                 '</a>',
-                 ' and leave any comments ',
-                 '<a href=',
-                 '"https://doingpsychstats.wordpress.com/investigation-',HelpType,'/#respond"',
-                 ' target="_blank">',
-                 'here',
-                 '</a>'
-  )
+  if (HelpType!="Overview") {
+    switch(HelpType,
+           "Inferences"=HelpNo<-1,
+           "Sample Size"=HelpNo<-2,
+           "Sampling Method"=HelpNo<-3,
+           "Double Checking"=HelpNo<-4,
+           "Real Differences"=HelpNo<-5
+    )
+    extras<-paste0('<br>',
+                   'More information ',
+                   '<a href=',
+                   '"https://doingpsychstats.wordpress.com/investigation-',HelpNo,'/"',
+                   ' target="_blank">',
+                   'here',
+                   '</a>',
+                   ' and leave any comments ',
+                   '<a href=',
+                   '"https://doingpsychstats.wordpress.com/investigation-',HelpNo,'/#respond"',
+                   ' target="_blank">',
+                   'here',
+                   '</a>'
+    )
+  }
   else extras<-c()
   
   output<-c(output,extras)
