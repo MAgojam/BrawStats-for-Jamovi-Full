@@ -229,7 +229,10 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                         "B"={
                           n<-round(self$options$meta2SampleBudget/self$options$meta2SampleSplits)
                           ns<-self$options$meta2SampleSplits
-                          design<-makeDesign(sN=n,sCheating="Retry",sCheatingAttempts=ns-1,sCheatingFixedPop=FALSE)
+                          design<-makeDesign(sN=n,
+                                             sCheating="Retry",# sCheatingAttempts=ns-1,
+                                             sCheatingLimit="Budget",sCheatingBudget=self$options$meta2SampleBudget-n,
+                                             sCheatingFixedPop=FALSE)
                         }
                  )
                },
@@ -374,7 +377,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                { 
                  investgD<-showDescription()
                  investgS<-showInference(showType="rse",orientation="horz",dimension=1)
-                 is.element(doingInvestg,c("Inv2B","Inv3B","Inv3A","Inv4B"))
+                 if (is.element(doingInvestg,c("Inv2B","Inv3B","Inv3A","Inv4B")))
                    open<-2                   
                  if (is.element(doingInvestg,c("Inv2B")))
                           investgR<-reportMultiple(showType="NHST",reportStats=self$options$reportInferStats,compact=TRUE)
