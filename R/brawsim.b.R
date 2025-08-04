@@ -408,7 +408,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
             width=550,
             tabs=c("Data","Schematic"),
             tabContents=c(show1,show2),
-            tabLink=paste0('https://doingpsychstats.wordpress.com/investigations#',substr(doingInvestg,1,5)),
+            tabLink=paste0('https://doingpsychstats.wordpress.com/investigation-',substr(doingInvestg,4,4),'#',substr(doingInvestg,1,5)),
             tabLinkLabel=paste0(" Inv",substr(doingInvestg,4,6)),
             open=open
           )
