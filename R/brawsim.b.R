@@ -398,7 +398,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         setBrawRes("investgD",investgD)
         setBrawRes("investgS",investgS)
         setBrawRes("investgR",investgR)
-        show1<-paste0('<div style="display:inline-block;margin-bottom:10px;">',reportWorldDesign(),braw.res$investgD,braw.res$investgR,'</div>')
+        show1<-paste0('<div style="display:inline-block;margin-bottom:10px;background-color:yellow;">',reportWorldDesign(),braw.res$investgD,braw.res$investgR,'</div>')
         show2<-paste0('<div style="display:inline-block;margin-bottom:10px;">',reportWorldDesign(),braw.res$investgS,braw.res$investgR,'</div>')
         investgResults<-
           generate_tab(
