@@ -25,20 +25,20 @@ description: |-
     i.   data simulation
     ii.  analyse data with linear models & path models
 analyses:
-  - title: BrawStats:Simulate Data
+  - title: BrawStats:Simulate
     name: BrawSim
     ns: BrawStats
     menuGroup: BrawStats
     menuSubgroup: Simulate
-    menuTitle: BrawStats:Simulate Data
+    menuTitle: BrawStats:Simulate
     category: analyses
-  - title: BrawStats:Analyse Data
+  - title: BrawStats:Analyse
     name: BrawAN
     ns: BrawStats
     menuGroup: BrawStats
     menuSubgroup: Analyze
     category: analyses
-    menuTitle: BrawStats:Analyse Data
+    menuTitle: BrawStats:Analyse
 usesNative: true
 minApp: 1.0.8
 
