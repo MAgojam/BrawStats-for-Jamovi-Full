@@ -2448,7 +2448,7 @@ children:
                                 minWidth: 30
                               - type: CollapseBox
                                 collapsed: true
-                                label: 'Introduction: is the result significant?'
+                                label: 'Introduction: is it a real effect?'
                                 margin: none
                                 minWidth: 380
                                 children:
