@@ -39,7 +39,7 @@ investgInstructions <- function(HelpType="Plan") {
          },
          "Inferences"={
            output<-c(
-             '<b>Just as an introduction</b> we use a simple test situation.',
+             '<b>Just as an introduction</b> we use samples from this:',
              '<ul style=margin:0px;>',
              '<li> The population effect size is r<sub>p</sub>=0.3 with equal probability.',
              '<li> The sample size is 42',
@@ -48,7 +48,7 @@ investgInstructions <- function(HelpType="Plan") {
              'Try this a few times and see (i) how safe the p-value is as a guide to the population.',
              '<br>',
              '<br>',
-             '<b>In the first part of this investigation</b> we use a simple test situation.',
+             '<b>In the first part of this investigation</b> we use a more realistic situation.',
              '<ul style=margin:0px;>',
              '<li> The population effect size is either r<sub>p</sub>=0.0 or r<sub>p</sub>=0.3 with equal probability.',
              '<li> The sample size is 42',
