@@ -192,7 +192,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                         "A"=hypothesis<-makeHypothesis(effect=makeEffect(world=getWorld("Binary"))),
                         "B"=hypothesis<-makeHypothesis(effect=makeEffect(world=getWorld("Psych50")))
                         )
-                 if (substr(doingInvestg,5,5)!="A")
+                 if (substr(doingInvestg,5,5)!="I")
                    hypothesis$effect$world$populationNullp<-self$options$meta1pNull
                },
                "Inv2"={
@@ -218,6 +218,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                }
         )
         setBrawDef("hypothesis",hypothesis)
+        self$results$debug$setContent(hypothesis$effect$world$populationNullp)
+        self$results$debug$setVisible(TRUE)
         
         switch(invg,
                "Inv1"={

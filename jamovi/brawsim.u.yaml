@@ -2425,7 +2425,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: '1. Inferences: how safe are p-values?'
+                        label: '1. Inferences: how useful are p-values?'
                         margin: none
                         minWidth: 470
                         maxWidth: 470
