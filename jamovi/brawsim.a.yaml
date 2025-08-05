@@ -2510,6 +2510,16 @@ options:
         - name: b
           title: B
       default: a
+      
+    - name: metaShow
+      title: "show"
+      type: List
+      options:
+      - name: rs
+        title: rs
+      - name: p
+        title: p
+      default: rs
 
     - name: invGoBack
       title: '<<'

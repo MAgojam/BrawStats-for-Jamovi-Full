@@ -378,7 +378,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         switch(open,
                { 
                  investgD<-showDescription()
-                 investgS<-showInference(showType="rse",orientation="horz",dimension=1)
+                 investgS<-showInference(showType=self$options$metaShow,orientation="horz",dimension=1)
                  if (is.element(doingInvestg,c("Inv2B","Inv3B","Inv4A","Inv4B")))
                    open<-2                   
                  if (is.element(doingInvestg,c("Inv2B")))
@@ -387,11 +387,11 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                },
                { 
                    if (is.element(doingInvestg,c("Inv5Am","Inv5Bm"))) {
-                     investgS<-showMultiple(showType="rs",dimension=1,orientation="horz")
-                     investgR<-reportMultiple(showType="rs",compact=TRUE)
+                     investgS<-showMultiple(showType=self$options$metaShow,dimension=1,orientation="horz")
+                     investgR<-reportMultiple(showType=self$options$metaShow,compact=TRUE)
                    }
                    else   {
-                     investgS<-showMultiple(showType="rse",dimension=1,orientation="horz")
+                     investgS<-showMultiple(showType=self$options$metaShow,dimension=1,orientation="horz")
                      investgR<-reportMultiple(showType="NHST",compact=TRUE)
                    }
                  # }

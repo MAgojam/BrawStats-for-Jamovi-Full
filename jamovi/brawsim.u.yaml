@@ -2417,9 +2417,11 @@ children:
                 style: list
                 children:
                   - type: Label
-                    label: 'Look at both the Graph and the Report.'
+                    label: Look at both the Graph and the Report.
                   - type: Label
-                    label: 'For more information and an explanation, click on the ⓘlink.'
+                    label: >-
+                      For more information and an explanation, click on the
+                      ⓘlink.
                   - type: LayoutBox
                     style: inline
                     children:
@@ -2489,7 +2491,7 @@ children:
                                 minWidth: 30
                               - type: CollapseBox
                                 collapsed: true
-                                label: 'a. is it from rₚ=0 or rₚ=0.3?'
+                                label: a. is it from rₚ=0 or rₚ=0.3?
                                 margin: none
                                 minWidth: 380
                                 children:
@@ -2533,7 +2535,9 @@ children:
                                 minWidth: 30
                               - type: CollapseBox
                                 collapsed: true
-                                label: 'b. a more realistic situation - is it from rₚ=0 or rₚ≠0'
+                                label: >-
+                                  b. a more realistic situation - is it from
+                                  rₚ=0 or rₚ≠0
                                 margin: none
                                 minWidth: 380
                                 children:
@@ -2699,8 +2703,7 @@ children:
                                               row: 0
                                               column: 2
                                           - type: Label
-                                            label: >-
-                                              Press here to see multiple sets (slow)
+                                            label: Press here to see multiple sets (slow)
                                             cell:
                                               row: 1
                                               column: 1
@@ -2755,7 +2758,7 @@ children:
                                 minWidth: 30
                               - type: CollapseBox
                                 collapsed: true
-                                label: 'a. non-random sampling?'
+                                label: a. non-random sampling?
                                 margin: none
                                 minWidth: 380
                                 children:
@@ -2860,8 +2863,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: >-
-                          4. Double Checking: how good is replication?
+                        label: '4. Double Checking: how good is replication?'
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -2996,8 +2998,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: >-
-                          5. Real Differences: when should replication fail?
+                        label: '5. Real Differences: when should replication fail?'
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -3107,14 +3108,19 @@ children:
                   - type: LayoutBox
                     style: inline
                     children:
-                    - type: Label
-                      label: 'History:'
-                    - type: ActionButton
-                      name: invGoBack
-                      maxHeight: 24
-                    - type: ActionButton
-                      name: invGoForwards
-                      maxHeight: 24
+                      - type: Label
+                        label: 'History:'
+                      - type: ActionButton
+                        name: invGoBack
+                        maxHeight: 24
+                      - type: ActionButton
+                        name: invGoForwards
+                        maxHeight: 24
+                  - type: LayoutBox
+                    margin: none
+                    children:
+                      - type: ComboBox
+                        name: metaShow
           - type: Content
             name: Simulations
             margin: none
@@ -4713,136 +4719,136 @@ children:
             name: Settings
             margin: none
             children:
-                  - type: LayoutBox
-                    style: inline
+              - type: LayoutBox
+                style: inline
+                margin: none
+                children:
+                  - type: Label
+                    label: ' '
+                    minWidth: 13
+                  - type: CollapseBox
+                    name: Settings2
+                    collapsed: true
+                    label: 'Link to Jamovi:'
                     margin: none
+                    minWidth: 330
                     children:
-                      - type: Label
-                        label: ' '
-                        minWidth: 13
-                      - type: CollapseBox
-                        name: Settings2
-                        collapsed: true
-                        label: 'Link to Jamovi:'
+                      - type: LayoutBox
+                        style: inline
                         margin: none
-                        minWidth: 330
                         children:
-                          - type: LayoutBox
-                            style: inline
-                            margin: none
-                            children:
-                              - type: Label
-                                label: ' '
-                                minWidth: 13
-                              - type: Label
-                                label: ' '
-                                minWidth: 13
-                              - type: Output
-                                name: sendSample
-                                minWidth: 100
-                              - type: Output
-                                name: sendMultiple
-                                minWidth: 100
-                              - type: Output
-                                name: sendExplore
-                                minWidth: 100
-                  - type: LayoutBox
-                    style: inline
+                          - type: Label
+                            label: ' '
+                            minWidth: 13
+                          - type: Label
+                            label: ' '
+                            minWidth: 13
+                          - type: Output
+                            name: sendSample
+                            minWidth: 100
+                          - type: Output
+                            name: sendMultiple
+                            minWidth: 100
+                          - type: Output
+                            name: sendExplore
+                            minWidth: 100
+              - type: LayoutBox
+                style: inline
+                margin: none
+                children:
+                  - type: Label
+                    label: ' '
+                    minWidth: 13
+                  - type: CollapseBox
+                    name: Settings3
+                    collapsed: true
+                    label: 'Display:'
                     margin: none
+                    minWidth: 330
                     children:
-                      - type: Label
-                        label: ' '
-                        minWidth: 13
-                      - type: CollapseBox
-                        name: Settings3
-                        collapsed: true
-                        label: 'Display:'
+                      - type: LayoutBox
+                        style: inline
                         margin: none
-                        minWidth: 330
                         children:
-                          - type: LayoutBox
-                            style: inline
-                            margin: none
-                            children:
-                              - type: Label
-                                label: ' '
-                                minWidth: 13
-                              - type: Label
-                                label: ' '
-                                minWidth: 13
-                              - type: CheckBox
-                                name: fixedAxes
-                                minWidth: 100
-                              - type: CheckBox
-                                name: brawHelp
-                                minWidth: 100
-                              - name: systemMag
-                                type: TextBox
-                                format: number
-                  - type: LayoutBox
-                    style: inline
+                          - type: Label
+                            label: ' '
+                            minWidth: 13
+                          - type: Label
+                            label: ' '
+                            minWidth: 13
+                          - type: CheckBox
+                            name: fixedAxes
+                            minWidth: 100
+                          - type: CheckBox
+                            name: brawHelp
+                            minWidth: 100
+                          - name: systemMag
+                            type: TextBox
+                            format: number
+              - type: LayoutBox
+                style: inline
+                margin: none
+                children:
+                  - type: Label
+                    label: ' '
+                    minWidth: 13
+                  - type: CollapseBox
+                    name: Settings4
+                    collapsed: true
+                    label: 'Other:'
                     margin: none
+                    minWidth: 330
                     children:
-                      - type: Label
-                        label: ' '
-                        minWidth: 13
-                      - type: CollapseBox
-                        name: Settings4
-                        collapsed: true
-                        label: 'Other:'
+                      - type: LayoutBox
+                        style: inline
                         margin: none
-                        minWidth: 330
                         children:
-                          - type: LayoutBox
-                            style: inline
-                            margin: none
-                            children:
-                              - type: Label
-                                label: ' '
-                                minWidth: 13
-                              - type: Label
-                                label: ' '
-                                minWidth: 13
-                              - type: ComboBox
-                                name: dispRZ
-                                minWidth: 100
-                          - type: LayoutBox
-                            style: inline
-                            margin: none
-                            children:
-                              - type: Label
-                                label: ' '
-                                minWidth: 13
-                              - type: Label
-                                label: ' '
-                                minWidth: 13
-                              - type: CheckBox
-                                name: shorthandCalculations
-                                minWidth: 100
-                          - type: LayoutBox
-                            style: inline
-                            margin: none
-                            children:
-                              - type: Label
-                                label: ' '
-                                minWidth: 13
-                              - type: Label
-                                label: ' '
-                                minWidth: 13
-                              - type: CheckBox
-                                name: showHTML
-                                minWidth: 100
-                          - type: LayoutBox
-                            style: inline
-                            margin: none
-                            children:
-                              - type: Label
-                                label: ' '
-                                minWidth: 13
-                              - type: Label
-                                label: ' '
-                                minWidth: 13
-                              - type: ComboBox
-                                name: showHypothesisLst
-                              - type: ComboBox
-                                name: lastDemo
+                          - type: Label
+                            label: ' '
+                            minWidth: 13
+                          - type: Label
+                            label: ' '
+                            minWidth: 13
+                          - type: ComboBox
+                            name: dispRZ
+                            minWidth: 100
+                      - type: LayoutBox
+                        style: inline
+                        margin: none
+                        children:
+                          - type: Label
+                            label: ' '
+                            minWidth: 13
+                          - type: Label
+                            label: ' '
+                            minWidth: 13
+                          - type: CheckBox
+                            name: shorthandCalculations
+                            minWidth: 100
+                      - type: LayoutBox
+                        style: inline
+                        margin: none
+                        children:
+                          - type: Label
+                            label: ' '
+                            minWidth: 13
+                          - type: Label
+                            label: ' '
+                            minWidth: 13
+                          - type: CheckBox
+                            name: showHTML
+                            minWidth: 100
+                      - type: LayoutBox
+                        style: inline
+                        margin: none
+                        children:
+                          - type: Label
+                            label: ' '
+                            minWidth: 13
+                          - type: Label
+                            label: ' '
+                            minWidth: 13
+                          - type: ComboBox
+                            name: showHypothesisLst
+                          - type: ComboBox
+                            name: lastDemo
