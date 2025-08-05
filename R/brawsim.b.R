@@ -129,9 +129,9 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       
       # get the investigation controls
       {
-      investgControls<-c(self$options$doMeta1ABtn,self$options$doMeta1AmBtn,
+      investgControls<-c(self$options$doMeta1IBtn,self$options$doMeta1ImBtn,
+                         self$options$doMeta1ABtn,self$options$doMeta1AmBtn,
                          self$options$doMeta1BBtn,self$options$doMeta1BmBtn,
-                         self$options$doMeta1CBtn,self$options$doMeta1CmBtn,
                          self$options$doMeta2ABtn,self$options$doMeta2AmBtn,
                          self$options$doMeta2BBtn,self$options$doMeta2BmBtn,
                          self$options$doMeta3ABtn,self$options$doMeta3AmBtn,
@@ -140,9 +140,9 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                          self$options$doMeta4BBtn,self$options$doMeta4BmBtn,
                          self$options$doMeta5ABtn,self$options$doMeta5AmBtn,
                          self$options$doMeta5BBtn,self$options$doMeta5BmBtn)
-      investgNames<-c("Inv1A","Inv1Am",
+      investgNames<-c("Inv1I","Inv1Im",
+                      "Inv1A","Inv1Am",
                       "Inv1B","Inv1Bm",
-                      "Inv1C","Inv1Cm",
                       "Inv2A","Inv2Am",
                       "Inv2B","Inv2Bm",
                       "Inv3A","Inv3Am",
@@ -188,9 +188,9 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         switch(invg,
                "Inv1"={
                  switch(substr(doingInvestg,5,5),
-                        "A"=hypothesis<-makeHypothesis(effect=makeEffect(world=getWorld("Plain"))),
-                        "B"=hypothesis<-makeHypothesis(effect=makeEffect(world=getWorld("Binary"))),
-                        "C"=hypothesis<-makeHypothesis(effect=makeEffect(world=getWorld("Psych50")))
+                        "I"=hypothesis<-makeHypothesis(effect=makeEffect(world=getWorld("Plain"))),
+                        "A"=hypothesis<-makeHypothesis(effect=makeEffect(world=getWorld("Binary"))),
+                        "B"=hypothesis<-makeHypothesis(effect=makeEffect(world=getWorld("Psych50")))
                         )
                  if (substr(doingInvestg,5,5)!="A")
                    hypothesis$effect$world$populationNullp<-self$options$meta1pNull
@@ -331,17 +331,17 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           setHypothesis(IV2=makeVariable("IV2","Interval"))
 
         if (substr(doingInvestg,6,6)!="m") {
-            doSingle()
-            outputNow<-"Description"
-            if (doingInvestg=="Inv2B") {
-              reportCounts<-TRUE 
-              setBrawRes("multiple",braw.res$result)
-            }
+          doSingle()
+          outputNow<-"Description"
+          if (doingInvestg=="Inv2B") {
+            reportCounts<-TRUE 
+            setBrawRes("multiple",braw.res$result)
+          }
         } else {
-            if (doingInvestg=="Inv3Bm") nreps<-50
-            else                 nreps<-200
-            doMultiple(nreps)
-            outputNow<-"Multiple"
+          if (doingInvestg=="Inv3Bm") nreps<-50
+          else                 nreps<-200
+          doMultiple(nreps)
+          outputNow<-"Multiple"
           # }
         }
         invHistory<-updateHistory(invHistory,doingInvestg,outputNow,TRUE)
@@ -363,7 +363,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                  )
           setBrawRes("multiple",multiple)
         } 
-
+        
       # display the results
         svgBox(height=350,aspect=1.5,fontScale=1.2)
         setBrawEnv("graphicsType","HTML")
@@ -377,7 +377,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                { 
                  investgD<-showDescription()
                  investgS<-showInference(showType="rse",orientation="horz",dimension=1)
-                 if (is.element(doingInvestg,c("Inv2B","Inv3B","Inv3A","Inv4B")))
+                 if (is.element(doingInvestg,c("Inv2B","Inv3B","Inv4A","Inv4B")))
                    open<-2                   
                  if (is.element(doingInvestg,c("Inv2B")))
                           investgR<-reportMultiple(showType="NHST",reportStats=self$options$reportInferStats,compact=TRUE)
@@ -400,6 +400,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         setBrawRes("investgR",investgR)
         show1<-paste0('<div style="display:inline-block;margin-bottom:10px;background-color:#f8f8f8;">',reportWorldDesign(),braw.res$investgD,braw.res$investgR,'</div>')
         show2<-paste0('<div style="display:inline-block;margin-bottom:10px;background-color:#f8f8f8;">',reportWorldDesign(),braw.res$investgS,braw.res$investgR,'</div>')
+        linkLabel<-paste0(" ",substr(doingInvestg,1,6))
         investgResults<-
           generate_tab(
             title="Investigation:",
@@ -409,7 +410,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
             tabs=c("Data","Schematic"),
             tabContents=c(show1,show2),
             tabLink=paste0('https://doingpsychstats.wordpress.com/investigation-',substr(doingInvestg,4,4),'#',substr(doingInvestg,1,5)),
-            tabLinkLabel=paste0(" Inv",substr(doingInvestg,4,6)),
+            tabLinkLabel=linkLabel,
             open=open
           )
         

@@ -2300,11 +2300,11 @@ options:
       title: '*'
       type: Action
 
-    - name: doMeta1CBtn
+    - name: doMeta1IBtn
       title: 'do'
       type: Action
 
-    - name: doMeta1CmBtn
+    - name: doMeta1ImBtn
       title: '*'
       type: Action
 

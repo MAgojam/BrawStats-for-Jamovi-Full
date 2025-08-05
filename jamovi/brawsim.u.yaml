@@ -2425,7 +2425,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: '1. Inferences: what can we infer about a result?'
+                        label: '1. Inferences: how safe are p-values?'
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -2448,7 +2448,7 @@ children:
                                 minWidth: 30
                               - type: CollapseBox
                                 collapsed: true
-                                label: 'a. is the result significant?'
+                                label: 'Introduction: is the result significant?'
                                 margin: none
                                 minWidth: 380
                                 children:
@@ -2463,7 +2463,7 @@ children:
                                       row: 0
                                       column: 1
                                   - type: ActionButton
-                                    name: doMeta1ABtn
+                                    name: doMeta1IBtn
                                     maxHeight: 24
                                     margin: none
                                     cell:
@@ -2475,7 +2475,7 @@ children:
                                       row: 1
                                       column: 1
                                   - type: ActionButton
-                                    name: doMeta1AmBtn
+                                    name: doMeta1ImBtn
                                     maxHeight: 24
                                     margin: none
                                     cell:
@@ -2489,7 +2489,51 @@ children:
                                 minWidth: 30
                               - type: CollapseBox
                                 collapsed: true
-                                label: 'b. is it from rₚ=0 or rₚ=0.3?'
+                                label: 'a. is it from rₚ=0 or rₚ=0.3?'
+                                margin: none
+                                minWidth: 380
+                                children:
+                                  - type: LayoutBox
+                                    style: inline
+                                    children:
+                                      - type: Label
+                                        label: ' '
+                                        cell:
+                                          row: 0
+                                          column: 0
+                                      - type: Label
+                                        label: Press here for a single sample
+                                        cell:
+                                          row: 0
+                                          column: 1
+                                      - type: ActionButton
+                                        name: doMeta1ABtn
+                                        maxHeight: 24
+                                        margin: none
+                                        cell:
+                                          row: 0
+                                          column: 2
+                                      - type: Label
+                                        label: Press here to see multiple samples
+                                        cell:
+                                          row: 1
+                                          column: 1
+                                      - type: ActionButton
+                                        name: doMeta1AmBtn
+                                        maxHeight: 24
+                                        margin: none
+                                        cell:
+                                          row: 1
+                                          column: 2
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
+                                minWidth: 30
+                              - type: CollapseBox
+                                collapsed: true
+                                label: 'b. a more realistic situation - is it from rₚ=0 or rₚ≠0'
                                 margin: none
                                 minWidth: 380
                                 children:
@@ -2525,50 +2569,6 @@ children:
                                         cell:
                                           row: 1
                                           column: 2
-                          - type: LayoutBox
-                            style: inline
-                            children:
-                              - type: Label
-                                label: ' '
-                                minWidth: 30
-                              - type: CollapseBox
-                                collapsed: true
-                                label: 'c. a more realistic situation - is it from rₚ=0 or rₚ≠0'
-                                margin: none
-                                minWidth: 380
-                                children:
-                                  - type: LayoutBox
-                                    style: inline
-                                    children:
-                                      - type: Label
-                                        label: ' '
-                                        cell:
-                                          row: 0
-                                          column: 0
-                                      - type: Label
-                                        label: Press here for a single sample
-                                        cell:
-                                          row: 0
-                                          column: 1
-                                      - type: ActionButton
-                                        name: doMeta1CBtn
-                                        maxHeight: 24
-                                        margin: none
-                                        cell:
-                                          row: 0
-                                          column: 2
-                                      - type: Label
-                                        label: Press here to see multiple samples
-                                        cell:
-                                          row: 1
-                                          column: 1
-                                      - type: ActionButton
-                                        name: doMeta1CmBtn
-                                        maxHeight: 24
-                                        margin: none
-                                        cell:
-                                          row: 1
-                                          column: 2
                       - type: ActionButton
                         name: meta1Help
                         margin: none
@@ -2580,7 +2580,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: '2. Sample Size: what is best?'
+                        label: '2. Sample Size: who benefits?'
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -2722,7 +2722,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: '3. Sampling Methods: how to recruit a sample?'
+                        label: '3. Sampling Method: are we cheating?'
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -2861,8 +2861,7 @@ children:
                       - type: CollapseBox
                         collapsed: true
                         label: >-
-                          4. Double Checking: how good are replication and
-                          meta-analysis?
+                          4. Double Checking: how good is replication?
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -2998,8 +2997,7 @@ children:
                       - type: CollapseBox
                         collapsed: true
                         label: >-
-                          5. Real Differences: sometimes replication should fail
-                          - why?
+                          5. Real Differences: when should replication fail?
                         margin: none
                         minWidth: 470
                         maxWidth: 470
