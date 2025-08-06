@@ -414,38 +414,76 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         
         control<-paste0(
           '<script>',
-          'function showExtra(evt, extraID) {',
+          'function showExtra(evt, extraID, buttonID) {',
           '  var tabState;',
           '    tabState = document.getElementById(extraID).style.display;',
           '    if (tabState!="block") {',
           '      document.getElementById(extraID).style.display = "block";',
+          '      document.getElementById(buttonID).textContent = "⋀";',
           '    }',
           '    else {',
           '      document.getElementById(extraID).style.display = "none";',
+          '      document.getElementById(buttonID).textContent = "⋁";',
           '    }',
           '}',
-          '</script>'
+          '</script>',
+          '<style> button.here {font-size:12px;margin:0px;border:none;cursor:pointer;',
+          'border-top-left-radius: 4px;',
+          'border-top-right-radius: 4px;',
+          'border-bottom-left-radius: 4px;',
+          'border-bottom-right-radius: 4px;',
+                    'background-color:#3498db;color:white;} </style>'
         )
-        id<-'worldDesign1'
-        worldDesign<-paste0(
-          '<style> button.here {font-size:12px;margin:0px;border:none;cursor:pointer;background-color:#3498db;color:white;} </style>',
-          '<button class="here" onclick="showExtra(event,\'',id,'\')">','Plan:','</button>',
-          '<div ID="',id,'" style=display:none>', 
-          reportWorldDesign(),
-          '</div><br>'
+        show1<-paste0(control,
+                    '<div style="display:inline-block;margin-bottom:10px;margin-top:10px;background-color:#f8f8f8;">',
+                    '<table><tr><td>',
+                        braw.res$investgD,
+                    '</td></tr>',
+                    '<tr><td>',
+                    #     '<button class="here" ID="R1" onclick="showExtra(event,\'Report1\',\'R1\')">',
+                    #     '⋀','</button>',
+                    # 'Report ',
+                    # '<div ID="','Report1','" style="display:block;">',
+                    braw.res$investgR,
+                    # '</div>',
+                    '</td></tr>',
+                    '<tr style="height:10px;"></tr>',
+                    '<tr><td>',
+                        '<button class="here" ID="P1" onclick="showExtra(event,\'Plan1\',\'P1\')">',
+                        '⋁','</button>',
+                    'Plan ',
+                    '<div ID="','Plan1','" style="display:none;">', 
+                    reportWorldDesign(),
+                    '</div>',
+                    '</td></tr>',
+                    '</table>',
+                    '</div>'
+                    )
+        show2<-paste0(control,
+                      '<div style="display:inline-block;margin-bottom:10px;margin-top:10px;background-color:#f8f8f8;">',
+                      '<table><tr><td>',
+                      braw.res$investgS,
+                      '</td></tr>',
+                      '<tr><td>',
+                      # '<button class="here" ID="R2" onclick="showExtra(event,\'Report2\',\'R2\')">',
+                      # '⋀','</button>',
+                      # 'Report ',
+                      # '<div ID="','Report2','" style="display:block;padding-bottom:20px;">',
+                      braw.res$investgR,
+                      # '</div>',
+                      '</td></tr>',
+                      '<tr style="height:10px;"></tr>',
+                      '<tr><td>',
+                      '<button class="here" ID="P2" onclick="showExtra(event,\'Plan2\',\'P2\')">',
+                      '⋁','</button>',
+                      'Plan ',
+                      '<div ID="','Plan2','" style="display:none;padding-bottom:20px;">', 
+                      reportWorldDesign(),
+                      '</div>',
+                      '</td></tr>',
+                      '</table>',
+                      '</div>'
         )
-        show1<-paste0(control,'<div style="display:inline-block;margin-bottom:10px;background-color:#f8f8f8;">',
-                      braw.res$investgD,braw.res$investgR,worldDesign,'</div>')
-        id<-'worldDesign2'
-        worldDesign<-paste0(
-          '<style> button.here {font-size:12px;margin:0px;border:none;cursor:pointer;background-color:#3498db;color:white;} </style>',
-          '<button class="here" onclick="showExtra(event,\'',id,'\')">','Plan:','</button>',
-          '<div ID="',id,'" style=display:none>', 
-          reportWorldDesign(),
-          '</div><br>'
-        )
-        show2<-paste0(control,'<div style="display:inline-block;margin-bottom:10px;background-color:#f8f8f8;">',
-                      braw.res$investgS,braw.res$investgR,worldDesign,'</div>')
         linkLabel<-paste0(" ",substr(doingInvestg,1,6))
         investgResults<-
           generate_tab(
