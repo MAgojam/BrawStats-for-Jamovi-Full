@@ -4847,11 +4847,25 @@ children:
                             name: showHypothesisLst
                           - type: ComboBox
                             name: lastDemo
+                      - type: LayoutBox
+                        style: inline
+                        margin: none
+                        children:
                           - type: Label
-                            label: 'show Investg'
+                            label: ' '
                             minWidth: 13
-                          - type: LayoutBox
-                            margin: none
-                            children:
-                              - type: ComboBox
-                                name: metaShow
+                          - type: Label
+                            label: ' '
+                            minWidth: 13
+                          - type: Label
+                            label: 'Investg:'
+                          - type: TextBox
+                            name: metaMultiple
+                            format: number
+                          - type: Label
+                            label: ' '
+                            minWidth: 40
+                          - type: Label
+                            label: 'show samples as:'
+                          - type: ComboBox
+                            name: metaShow

@@ -340,8 +340,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
             setBrawRes("multiple",braw.res$result)
           }
         } else {
-          if (doingInvestg=="Inv3Bm") nreps<-50
-          else                 nreps<-200
+          nreps<-self$options$metaMultiple
+          if (doingInvestg=="Inv3Bm") nreps<-nreps/4
           doMultiple(nreps)
           outputNow<-"Multiple"
           # }

@@ -2512,7 +2512,7 @@ options:
       default: a
       
     - name: metaShow
-      title: "show"
+      title: ""
       type: List
       options:
       - name: rs
@@ -2520,6 +2520,11 @@ options:
       - name: p
         title: p
       default: rs
+      
+    - name: metaMultiple
+      title: ""
+      type: Number
+      default: 200
 
     - name: invGoBack
       title: '<<'
