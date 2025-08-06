@@ -2872,10 +2872,10 @@ BrawSimResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
     inherit = jmvcore::Group,
     active = list(
         simSystemHTML = function() private$.items[["simSystemHTML"]],
+        debug = function() private$.items[["debug"]],
         simGraphHTML = function() private$.items[["simGraphHTML"]],
         simGraph = function() private$.items[["simGraph"]],
         simReport = function() private$.items[["simReport"]],
-        debug = function() private$.items[["debug"]],
         sendSample = function() private$.items[["sendSample"]],
         sendMultiple = function() private$.items[["sendMultiple"]],
         sendExplore = function() private$.items[["sendExplore"]]),
@@ -2893,6 +2893,10 @@ BrawSimResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 options=options,
                 name="simSystemHTML",
                 visible=TRUE))
+            self$add(jmvcore::Preformatted$new(
+                options=options,
+                name="debug",
+                visible=FALSE))
             self$add(jmvcore::Html$new(
                 options=options,
                 name="simGraphHTML",
@@ -2934,10 +2938,6 @@ BrawSimResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$add(jmvcore::Html$new(
                 options=options,
                 name="simReport",
-                visible=FALSE))
-            self$add(jmvcore::Preformatted$new(
-                options=options,
-                name="debug",
                 visible=FALSE))
             self$add(jmvcore::Output$new(
                 options=options,
@@ -3281,10 +3281,10 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @return A results object containing:
 #' \tabular{llllll}{
 #'   \code{results$simSystemHTML} \tab \tab \tab \tab \tab a html \cr
+#'   \code{results$debug} \tab \tab \tab \tab \tab a preformatted \cr
 #'   \code{results$simGraphHTML} \tab \tab \tab \tab \tab a html \cr
 #'   \code{results$simGraph} \tab \tab \tab \tab \tab an image \cr
 #'   \code{results$simReport} \tab \tab \tab \tab \tab a html \cr
-#'   \code{results$debug} \tab \tab \tab \tab \tab a preformatted \cr
 #'   \code{results$sendSample} \tab \tab \tab \tab \tab an output \cr
 #'   \code{results$sendMultiple} \tab \tab \tab \tab \tab an output \cr
 #'   \code{results$sendExplore} \tab \tab \tab \tab \tab an output \cr

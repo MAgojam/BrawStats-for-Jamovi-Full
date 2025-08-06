@@ -2,7 +2,7 @@ emptyPlot<-function(self) {
 
     switch(self$options$basicMode,
            "Demonstrations"=tabs<-c("Single","Multiple","Explore"),
-           "Investigations"=tabs<-c("Data","Schematic","Report"),
+           "Investigations"=tabs<-c("Data","Schematic"),
            "Simulations"=tabs<-c("Single","Multiple","Explore")
     )
     switch(self$options$basicMode,
@@ -15,8 +15,8 @@ emptyPlot<-function(self) {
       plainTabs=TRUE,
       titleWidth=100,
       tabs=tabs,
-      tabContents=c(nullPlot(),nullPlot(),nullPlot()),
-      outerHeight=380,
+      tabContents=rep(nullPlot(),length(tabs)),
+      outerHeight=450,
       open=0
     )
     self$results$simGraphHTML$setContent(nullResults)

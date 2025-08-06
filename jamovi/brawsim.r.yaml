@@ -8,6 +8,10 @@ items:
       type: Html
       visible: TRUE
 
+    - name: debug
+      type: Preformatted
+      visible: FALSE
+
     - name: simGraphHTML
       type: Html
       visible: TRUE
@@ -48,10 +52,6 @@ items:
 
     - name: simReport
       type: Html
-      visible: FALSE
-
-    - name: debug
-      type: Preformatted
       visible: FALSE
 
     - name: sendSample

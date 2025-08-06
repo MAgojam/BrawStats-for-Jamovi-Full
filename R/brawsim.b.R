@@ -10,11 +10,12 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
     },
     
     .run = function() {
-      # debug information
       a<-R.Version()$version.string
       rVersion<-as.numeric(regmatches(a,gregexpr("[0-9]*\\.[0-9]*",a))[[1]][1])
       if (rVersion>=4.5) Jamovi<-2.7 else Jamovi<-2.6
-      # self$results$debug$setContent(Jamovi)
+      
+      # debug information
+      # self$results$debug$setContent(c("start",length(braw.res$multiple$result$rIV)))
       # self$results$debug$setVisible(TRUE)
       # return()
 
@@ -24,6 +25,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       addHistory<-FALSE
       # initialization code here
       if (is.null(braw.res$statusStore)) {
+        # self$results$debug$setContent("init")
         firstRun<-TRUE
 
         setBrawOpts(fullOutput=0,reportHTML=TRUE,
@@ -115,7 +117,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         simHistory<-braw.res$simHistoryStore
         invHistory<-braw.res$invHistoryStore
       }
-      
+
 ## some interface stuff
       # get which tabs are open in help structure
       {
@@ -126,7 +128,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       # get the demo status
       doingDemo<-(self$options$basicMode=="Demonstrations")
       }
-      
+
       # get the investigation controls
       {
       investgControls<-c(self$options$doMeta1IBtn,self$options$doMeta1ImBtn,
@@ -160,7 +162,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         doingInvestg<-doingInvestg[1]
       } else       doingInvestg<-NULL
       }
-      
+
 ## basic definitions      
       {
       # save the old ones
@@ -173,7 +175,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       # make all the standard things we need
       # store the option variables inside the braw package
       setBraw(self)
-      
+
       # investigations history?
       if ((self$options$invGoBack || self$options$invGoForwards)) {
         h<-readHistory(invHistory,self$options$invGoBack)
@@ -218,9 +220,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                }
         )
         setBrawDef("hypothesis",hypothesis)
-        self$results$debug$setContent(hypothesis$effect$world$populationNullp)
-        self$results$debug$setVisible(TRUE)
-        
+
         switch(invg,
                "Inv1"={
                  design<-makeDesign(sN=42)
@@ -279,7 +279,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         )
         setBrawDef("design",design)
       }
-      
+
       # anything important changed?
       changedH<- !identical(oldH,braw.def$hypothesis)
       changedD<- !identical(oldD,braw.def$design)
@@ -323,7 +323,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         return()
       }
       }
-      
+
       ## proceed to actions
       # investigation actions first
       if (any(investgControls)) {
@@ -348,7 +348,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         }
         invHistory<-updateHistory(invHistory,doingInvestg,outputNow,TRUE)
       }
-      
+
       if (!is.null(doingInvestg)) {
         if (is.element(doingInvestg,c("Inv5A","Inv5B"))) {
           result<-braw.res$result
@@ -365,7 +365,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                  )
           setBrawRes("multiple",multiple)
         } 
-        
+
       # display the results
         svgBox(height=350,aspect=1.5,fontScale=1.2)
         setBrawEnv("graphicsType","HTML")
@@ -424,6 +424,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         setBrawRes("invHistoryStore",invHistory)
         
         sendData2Jamovi(outputNow,self)
+        
         return()
       }
 

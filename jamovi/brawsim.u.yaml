@@ -3116,11 +3116,6 @@ children:
                       - type: ActionButton
                         name: invGoForwards
                         maxHeight: 24
-                  - type: LayoutBox
-                    margin: none
-                    children:
-                      - type: ComboBox
-                        name: metaShow
           - type: Content
             name: Simulations
             margin: none
@@ -4852,3 +4847,11 @@ children:
                             name: showHypothesisLst
                           - type: ComboBox
                             name: lastDemo
+                          - type: Label
+                            label: 'show Investg'
+                            minWidth: 13
+                          - type: LayoutBox
+                            margin: none
+                            children:
+                              - type: ComboBox
+                                name: metaShow

@@ -1512,12 +1512,12 @@ options:
     - name: sendMultiple
       title: multiple
       type: Output
-      default: TRUE
+      default: FALSE
       
     - name: sendExplore
       title: explore
       type: Output
-      default: TRUE
+      default: FALSE
 
     - name: brawHelp
       title: Main help
