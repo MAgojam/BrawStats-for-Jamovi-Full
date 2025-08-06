@@ -131,7 +131,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
 
       # get the investigation controls
       {
-      investgControls<-c(self$options$doMeta1IBtn,self$options$doMeta1ImBtn,
+      investgControls<-c(self$options$doMeta0Btn,self$options$doMeta0mBtn,
+                         self$options$doMeta1IBtn,self$options$doMeta1ImBtn,
                          self$options$doMeta1ABtn,self$options$doMeta1AmBtn,
                          self$options$doMeta1BBtn,self$options$doMeta1BmBtn,
                          self$options$doMeta2ABtn,self$options$doMeta2AmBtn,
@@ -143,6 +144,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                          self$options$doMeta5ABtn,self$options$doMeta5AmBtn,
                          self$options$doMeta5BBtn,self$options$doMeta5BmBtn)
       investgNames<-c("Inv1I","Inv1Im",
+                      "Inv1I","Inv1Im",
                       "Inv1A","Inv1Am",
                       "Inv1B","Inv1Bm",
                       "Inv2A","Inv2Am",

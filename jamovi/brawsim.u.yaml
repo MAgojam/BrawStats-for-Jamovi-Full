@@ -2445,13 +2445,23 @@ children:
                                 label: ' '
                                 minWidth: 15
                               - type: Label
-                                label: 'To get a single sample, press the "1" button'
+                                label: '⬦'
+                                minWidth: 5
+                                maxWidth: 7
+                              - type: Label
+                                label: 'To get a single sample, press the'
+                              - type: ActionButton
+                                name: doMeta0Btn
+                                maxHeight: 24
+                                margin: none
+                              - type: Label
+                                label: 'button'
                           - type: LayoutBox
                             style: inline
                             children:
                               - type: Label
                                 label: ' '
-                                minWidth: 30
+                                minWidth: 45
                               - type: Label
                                 label: '- you can see the data as a scatter plot "Data" or as an effect size "Schematic"'
                           - type: LayoutBox
@@ -2459,23 +2469,57 @@ children:
                             children:
                               - type: Label
                                 label: ' '
+                                minWidth: 45
+                              - type: Label
+                                label: '- schematic also shows the expected distribution of samples'
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
+                                minWidth: 45
+                              - type: Label
+                                label: '- each time you press the button, a new sample is made'
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
                                 minWidth: 15
                               - type: Label
-                                label: 'To get a many samples, press the "*" button'
+                                label: '⬦'
+                                minWidth: 5
+                                maxWidth: 7
+                              - type: Label
+                                label: 'To get many samples, press the'
+                              - type: ActionButton
+                                name: doMeta0mBtn
+                                maxHeight: 24
+                                margin: none
+                              - type: Label
+                                label: 'button'
                           - type: LayoutBox
                             style: inline
                             children:
                               - type: Label
                                 label: ' '
-                                minWidth: 30
+                                minWidth: 45
                               - type: Label
-                                label: '- you can see the data as effect sizes "Schematic"'
+                                label: '- you see the data as the distribution of sample effect sizes "Schematic"'
                           - type: LayoutBox
                             style: inline
                             children:
                               - type: Label
                                 label: ' '
-                                minWidth: 30
+                                minWidth: 45
+                              - type: Label
+                                label: '- colours show significant/not sample from real/null population'
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
+                                minWidth: 45
                               - type: Label
                                 label: '- each time you press the button, more samples are added'
                           - type: LayoutBox

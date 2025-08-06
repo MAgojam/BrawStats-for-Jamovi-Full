@@ -2284,6 +2284,14 @@ options:
       type: Number
       default: 0.5
       
+    - name: doMeta0Btn
+      title: '1'
+      type: Action
+      
+    - name: doMeta0mBtn
+      title: '*'
+      type: Action
+      
     - name: doMeta1ABtn
       title: '1'
       type: Action
