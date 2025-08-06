@@ -295,7 +295,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             doMeta5BBtn = NULL,
             doMeta5BmBtn = NULL,
             Meta5SampleGroup = "a",
-            metaShow = "rs",
+            metaShow = "rse",
             metaMultiple = 200,
             invGoBack = NULL,
             invGoForwards = NULL, ...) {
@@ -1984,7 +1984,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 options=list(
                     "rse",
                     "p"),
-                default="rs")
+                default="rse")
             private$..metaMultiple <- jmvcore::OptionNumber$new(
                 "metaMultiple",
                 metaMultiple,
@@ -3606,7 +3606,7 @@ BrawSim <- function(
     doMeta5BBtn,
     doMeta5BmBtn,
     Meta5SampleGroup = "a",
-    metaShow = "rs",
+    metaShow = "rse",
     metaMultiple = 200,
     invGoBack,
     invGoForwards) {
