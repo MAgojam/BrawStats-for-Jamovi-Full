@@ -1982,7 +1982,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 "metaShow",
                 metaShow,
                 options=list(
-                    "rs",
+                    "rse",
                     "p"),
                 default="rs")
             private$..metaMultiple <- jmvcore::OptionNumber$new(
