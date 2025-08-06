@@ -2417,8 +2417,6 @@ children:
                 style: list
                 children:
                   - type: Label
-                    label: Look at both the Graph and the Report.
-                  - type: Label
                     label: >-
                       For more information and an explanation, click on the
                       ⓘlink.
@@ -2427,10 +2425,10 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: '1. Inferences: how useful are p-values?'
+                        label: 'Instructions'
                         margin: none
-                        minWidth: 470
-                        maxWidth: 470
+                        minWidth: 250
+                        maxWidth: 250
                         children:
                           - type: LayoutBox
                             style: inline
@@ -2438,10 +2436,70 @@ children:
                               - type: Label
                                 label: ' '
                                 minWidth: 15
-                              - type: TextBox
-                                name: meta1pNull
-                                format: number
-                                margin: none
+                              - type: Label
+                                label: 'For each step in this, the procedure is the same.'
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
+                                minWidth: 15
+                              - type: Label
+                                label: 'To get a single sample, press the "1" button'
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
+                                minWidth: 30
+                              - type: Label
+                                label: '- you can see the data as a scatter plot "Data" or as an effect size "Schematic"'
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
+                                minWidth: 15
+                              - type: Label
+                                label: 'To get a many samples, press the "*" button'
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
+                                minWidth: 30
+                              - type: Label
+                                label: '- you can see the data as effect sizes "Schematic"'
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
+                                minWidth: 30
+                              - type: Label
+                                label: '- each time you press the button, more samples are added'
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
+                                minWidth: 15
+                              - type: Label
+                                label: 'For most steps, we are interested in how variable the samples are.'
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
+                                minWidth: 15
+                              - type: Label
+                                label: 'To get more information, press the ⓘlink above the graphs'
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
+                                minWidth: 15
                           - type: LayoutBox
                             style: inline
                             children:
@@ -2449,10 +2507,10 @@ children:
                                 label: ' '
                                 minWidth: 30
                               - type: CollapseBox
-                                collapsed: true
-                                label: 'Introduction: is it a real effect?'
+                                collapsed: false
+                                label: 'Example: is it a real effect?'
                                 margin: none
-                                minWidth: 380
+                                minWidth: 240
                                 children:
                                   - type: Label
                                     label: ' '
@@ -2483,6 +2541,26 @@ children:
                                     cell:
                                       row: 1
                                       column: 2
+                  - type: LayoutBox
+                    style: inline
+                    children:
+                      - type: CollapseBox
+                        collapsed: true
+                        label: '1. Inferences: how useful are p-values?'
+                        margin: none
+                        minWidth: 470
+                        maxWidth: 470
+                        children:
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
+                                minWidth: 15
+                              - type: TextBox
+                                name: meta1pNull
+                                format: number
+                                margin: none
                           - type: LayoutBox
                             style: inline
                             children:
