@@ -41,8 +41,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           title="Demonstration:",
           plainTabs=TRUE,
           titleWidth=100,
-          tabs=c("Single","Multiple","Explore"),
-          tabContents=rep(blankPlot,3),
+          tabs=c("Single","Multiple","Explore","Plan"),
+          tabContents=rep(blankPlot,4),
           open=0
         )
         investgResults<-generate_tab(
@@ -60,8 +60,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           title="Simulation:",
           plainTabs=TRUE,
           titleWidth=100,
-          tabs=c("Single","Multiple","Explore"),
-          tabContents=rep(blankPlot,3),
+          tabs=c("Single","Multiple","Explore","Plan"),
+          tabContents=rep(blankPlot,4),
           open=0
         )
         
@@ -157,12 +157,15 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                       "Inv5B","Inv5Bm"
                       )
       if (any(investgControls)) {
+        # statusStore$showPlan<-FALSE
         emptyPlot(self)
         private$.checkpoint()
 
         doingInvestg<-investgNames[investgControls]
         doingInvestg<-doingInvestg[1]
-      } else       doingInvestg<-NULL
+      } else       {
+        doingInvestg<-NULL
+      }
       }
 
 ## basic definitions      
@@ -296,8 +299,9 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       # this is done after we have set up the hypothesis
       {
       helpOutput<-makeHelpOut(self$options$brawHelp,statusStore)
-      if (statusStore$showPlan)
-        helpOutput<-makeSystemOut(self,statusStore,FALSE,FALSE,FALSE,helpOutput)
+      planOutput<-makeSystemOut(self,statusStore,FALSE,FALSE,FALSE)
+        # if (statusStore$showPlan)
+        # helpOutput<-makeSystemOut(self,statusStore,FALSE,FALSE,FALSE,helpOutput)
       
       # only change this if there has been a change in what it displays
       if (any(c(firstRun,changedH,changedD,changedE,changedL)))
@@ -316,6 +320,10 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                  "Investigations"=self$results$simGraphHTML$setContent(statusStore$investgResults),
                  "Simulations"=self$results$simGraphHTML$setContent(statusStore$simResults)
           )
+        # if (self$options$basicMode=="Investigations") statusStore$showPlan<-FALSE
+        # else statusStore$showPlan<-TRUE
+        private$.checkpoint()
+        
         statusStore$basicMode<-self$options$basicMode
         statusStore$planMode<-self$options$planMode
         statusStore$exploreMode<-self$options$exploreMode
@@ -664,8 +672,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
               title="Demonstration:",
               plainTabs=TRUE,
               titleWidth=100,
-              tabs=c("Single","Multiple","Explore"),
-              tabContents=c(braw.res$simSingle,braw.res$simMultiple,braw.res$simExplore),
+              tabs=c("Single","Multiple","Explore","Plan"),
+              tabContents=c(braw.res$simSingle,braw.res$simMultiple,braw.res$simExplore,planOutput),
               open=open
             )
             self$results$simGraphHTML$setContent(demoResults)
@@ -675,8 +683,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
               title="Simulation:",
               plainTabs=TRUE,
               titleWidth=100,
-              tabs=c("Single","Multiple","Explore"),
-              tabContents=c(braw.res$simSingle,braw.res$simMultiple,braw.res$simExplore),
+              tabs=c("Single","Multiple","Explore","Plan"),
+              tabContents=c(braw.res$simSingle,braw.res$simMultiple,braw.res$simExplore,planOutput),
               open=open
             )
             self$results$simGraphHTML$setContent(simResults)

@@ -2429,6 +2429,7 @@ children:
                         margin: none
                         minWidth: 250
                         maxWidth: 250
+                        horizontalAlignment: right
                         children:
                           - type: LayoutBox
                             style: inline
