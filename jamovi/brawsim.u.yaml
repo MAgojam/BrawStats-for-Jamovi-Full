@@ -2943,7 +2943,7 @@ children:
                                         margin: none
                                         children:
                                           - type: ComboBox
-                                            name: Meta3Cheating
+                                            name: meta3Cheating
                                             margin: none
                                       - type: LayoutBox
                                         style: inline
@@ -2998,11 +2998,11 @@ children:
                                 label: ' '
                                 minWidth: 15
                               - type: TextBox
-                                name: Meta4SampleSize
+                                name: meta4SampleSize
                                 format: number
                                 margin: none
                               - type: ComboBox
-                                name: Meta4World
+                                name: meta4World
                                 margin: none
                               - type: TextBox
                                 name: meta4pNull
@@ -3015,9 +3015,9 @@ children:
                                 label: ' '
                                 minWidth: 15
                               - type: ComboBox
-                                name: Meta4SigOriginal
+                                name: meta4SigOriginal
                               - type: TextBox
-                                name: Meta4RepPower
+                                name: meta4RepPower
                                 format: number
                           - type: LayoutBox
                             style: inline
@@ -3135,7 +3135,7 @@ children:
                               - type: Label
                                 label: 'Group:'
                               - type: ComboBox
-                                name: Meta5SampleGroup
+                                name: meta5SampleGroup
                                 margin: none
                           - type: LayoutBox
                             style: inline

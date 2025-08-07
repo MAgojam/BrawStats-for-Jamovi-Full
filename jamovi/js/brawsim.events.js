@@ -131,8 +131,6 @@ const events =  {
           ui.IVncats.setValue(variable.ncats);
           ui.IVcases.setValue(variable.cases)
           ui.IVprops.setValue(variable.props);
-          ui.RangeMin.setValue(variable.mu+variable.sd*(ui.RangeMin.value()-oldmu)/oldsd);
-          ui.RangeMax.setValue(variable.mu+variable.sd*(ui.RangeMax.value()-oldmu)/oldsd);
     },
 
     onChange_presetIV2: function(ui) {

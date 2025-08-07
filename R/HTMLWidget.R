@@ -109,6 +109,7 @@ generate_tab = function(title="Tab",tabs=c("1","2","3"),tabContents=c("a","b","c
     'display: none;',
     'padding: 0px 0px;',
     'margin: 0px;',
+    'background-color: ','#fafafa',';',
     'border: 1px solid ',colours[3],';','border-top: none;',
     'width: ',width,'px;',
     ht,
@@ -166,7 +167,6 @@ generate_tab = function(title="Tab",tabs=c("1","2","3"),tabContents=c("a","b","c
       '<div style="text-align:right;padding-right:100px;">',
       '<a href=','"',tabLink,'"',
       ' target="_blank">',
-      '\U24D8 ',
       tabLinkLabel,
       '</a>',
       '</div>'
@@ -203,7 +203,7 @@ generate_tab = function(title="Tab",tabs=c("1","2","3"),tabContents=c("a","b","c
 moreHTML<-function(content,title="more",ID="p") {
   control<-paste0(
     '<script>',
-    'function showExtra(evt, extraID, buttonID) {',
+    'function showMore(evt, extraID, buttonID) {',
     '  var tabState;',
     '    tabState = document.getElementById(extraID).style.display;',
     '    if (tabState!="block") {',
@@ -216,7 +216,7 @@ moreHTML<-function(content,title="more",ID="p") {
     '    }',
     '}',
     '</script>',
-    '<style> button.here {font-size:12px;margin:0px;border:none;cursor:pointer;',
+    '<style> button.more {font-size:12px;margin:0px;border:none;cursor:pointer;',
     'border-top-left-radius: 4px;',
     'border-top-right-radius: 4px;',
     'border-bottom-left-radius: 4px;',
@@ -226,12 +226,13 @@ moreHTML<-function(content,title="more",ID="p") {
   
   IDContent<-paste0(ID,'content')
   extra<-paste0(
-  '<button class="here" ID="',ID,'" onclick="showExtra(event,\'',IDContent,'\',\'',ID,'\')">',
-  '⋁','</button>',
-  title,
-  '<div ID="',IDContent,'" style="display:none;">', 
-  content,
-  '</div>'
+    control,
+    '<button class="more" ID="',ID,'" onclick="showMore(event,\'',IDContent,'\',\'',ID,'\')">',
+    '⋁','</button>',
+    ' ',title,
+    '<div ID="',IDContent,'" style="display:none;">', 
+    content,
+    '</div>'
   )
 }
 

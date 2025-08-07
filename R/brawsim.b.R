@@ -118,18 +118,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         invHistory<-braw.res$invHistoryStore
       }
 
-## some interface stuff
-      # get which tabs are open in help structure
-      {
-      opens<-c(statusStore$basicHelpWhich,statusStore$demoHelpWhich,statusStore$investgHelpWhich,statusStore$simHelpWhich)
-      statusStore<-whichTabsOpen(self,statusStore)
-      newopens<-c(statusStore$basicHelpWhich,statusStore$demoHelpWhich,statusStore$investgHelpWhich,statusStore$simHelpWhich)
-      changedL<-!all(opens==newopens)
-      # get the demo status
-      doingDemo<-(self$options$basicMode=="Demonstrations")
-      }
-
-      # get the investigation controls
+## are we doing an investigation
       {
       investgControls<-c(self$options$doMeta0Btn,self$options$doMeta0mBtn,
                          self$options$doMeta1IBtn,self$options$doMeta1ImBtn,
@@ -143,8 +132,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                          self$options$doMeta4BBtn,self$options$doMeta4BmBtn,
                          self$options$doMeta5ABtn,self$options$doMeta5AmBtn,
                          self$options$doMeta5BBtn,self$options$doMeta5BmBtn)
-      investgNames<-c("Inv1I","Inv1Im",
-                      "Inv1I","Inv1Im",
+      investgNames<-c("Inv0I","Inv0Im",
+                      "Inv0I","Inv0Im",
                       "Inv1A","Inv1Am",
                       "Inv1B","Inv1Bm",
                       "Inv2A","Inv2Am",
@@ -166,6 +155,69 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       } else       {
         doingInvestg<-NULL
       }
+      
+      # investigations history?
+      if ((self$options$invGoBack || self$options$invGoForwards)) {
+        h<-readHistory(invHistory,self$options$invGoBack)
+        doingInvestg<-h$historyOptions
+        outputNow<-h$outputNow
+        invHistory<-h$history
+      }
+      
+      # are we doing investigations?
+      if (!is.null(doingInvestg)) {
+        switch(substr(doingInvestg,1,4),
+               "Inv0"={
+                 world<-NULL
+                 pNull<-NULL
+                 sN<-NULL
+               },
+               "Inv1"={
+                 world<-NULL
+                 pNull<-self$options$meta1pNull
+                 sN<-NULL
+               },
+               "Inv2"={
+                 world<-self$options$meta2World
+                 pNull<-self$options$meta2pNull
+                 sN<-self$options$meta2SampleSize
+               },
+               "Inv3"={
+                 world<-self$options$meta3World
+                 pNull<-self$options$meta3pNull
+                 sN<-self$options$meta3SampleSize
+               },
+               "Inv4"={
+                 world<-self$options$meta4World
+                 pNull<-self$options$meta4pNull
+                 sN<-self$options$meta4SampleSize
+               },
+               "Inv5"={
+                 world<-NULL
+                 pNull<-NULL
+                 sN<-NULL
+               }
+        )
+        investgResults<-doInvestigation(doingInvestg,
+                                        world=world,pNull=pNull,
+                                        sN=sN,sBudget=self$options$meta2SampleBudget,sSplits=self$options$meta2SampleSplits,
+                                        sMethod=self$options$meta3SampleMethod,sCheating=self$options$meta3Cheating,
+                                        sReplicationPower=self$options$meta4RepPower,sReplicationSigOriginal=self$options$meta4SigOriginal=="yes",
+                                        group=self$options$meta5SampleGroup,
+                                        nreps=self$options$metaMultiple
+        )
+        self$results$simGraphHTML$setContent(investgResults)
+        
+        statusStore$lastOutput<-"investg"
+        statusStore$investgResults<-investgResults
+        setBrawRes("statusStore",statusStore)
+        setBrawRes("invHistoryStore",invHistory)
+        
+        sendData2Jamovi(outputNow,self)
+        
+        return()
+      }
+      
       }
 
 ## basic definitions      
@@ -181,110 +233,6 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       # store the option variables inside the braw package
       setBraw(self)
 
-      # investigations history?
-      if ((self$options$invGoBack || self$options$invGoForwards)) {
-        h<-readHistory(invHistory,self$options$invGoBack)
-        doingInvestg<-h$historyOptions
-        outputNow<-h$outputNow
-        invHistory<-h$history
-      }
-      # are we doing investigations?
-      # set the design and hypothesis accordingly
-      if (any(investgControls)) {
-        invg<-substr(doingInvestg,1,4)
-        switch(invg,
-               "Inv1"={
-                 switch(substr(doingInvestg,5,5),
-                        "I"=hypothesis<-makeHypothesis(effect=makeEffect(world=getWorld("Plain"))),
-                        "A"=hypothesis<-makeHypothesis(effect=makeEffect(world=getWorld("Binary"))),
-                        "B"=hypothesis<-makeHypothesis(effect=makeEffect(world=getWorld("Psych50")))
-                        )
-                 if (substr(doingInvestg,5,5)!="I")
-                   hypothesis$effect$world$populationNullp<-self$options$meta1pNull
-               },
-               "Inv2"={
-                 hypothesis<-makeHypothesis(effect=makeEffect(world=getWorld(self$options$meta2World)))
-                 if (self$options$meta2World!="Plain")
-                   hypothesis$effect$world$populationNullp<-self$options$meta2pNull
-               },
-               "Inv3"={
-                 hypothesis<-makeHypothesis(effect=makeEffect(world=getWorld(self$options$meta2World)))
-                 if (self$options$meta3World!="Plain")
-                   hypothesis$effect$world$populationNullp<-self$options$meta3pNull
-               },
-               "Inv4"={
-                 hypothesis<-makeHypothesis(effect=makeEffect(world=getWorld(self$options$Meta4World)))
-                 if (self$options$Meta4World!="Plain")
-                   hypothesis$effect$world$populationNullp<-self$options$meta4pNull
-               },
-               "Inv5"={
-                 if (substr(doingInvestg,5,5)=="A")
-                   hypothesis<-makeHypothesis(effect=makeEffect(rIV=0.3/2,rIV2=0,rIVIV2DV=0.3/2))
-                 else
-                   hypothesis<-makeHypothesis(effect=makeEffect(rIV=0.3,rIV2=-sqrt(0.3),rIVIV2=sqrt(0.3)))
-               }
-        )
-        setBrawDef("hypothesis",hypothesis)
-
-        switch(invg,
-               "Inv1"={
-                 design<-makeDesign(sN=42)
-               },
-               "Inv2"={
-                 switch(substr(doingInvestg,5,5),
-                        "A"=design<-makeDesign(sN=self$options$meta2SampleSize),
-                        "B"={
-                          n<-round(self$options$meta2SampleBudget/self$options$meta2SampleSplits)
-                          ns<-self$options$meta2SampleSplits
-                          design<-makeDesign(sN=n,
-                                             sCheating="Retry",# sCheatingAttempts=ns-1,
-                                             sCheatingLimit="Budget",sCheatingBudget=self$options$meta2SampleBudget-n,
-                                             sCheatingFixedPop=FALSE)
-                        }
-                 )
-               },
-               "Inv3"={
-                 design<-makeDesign(sN=self$options$meta3SampleSize)
-                 switch(substr(doingInvestg,5,5),
-                        "A"=design$sMethod<-makeSampling(self$options$meta3SampleMethod),
-                        "B"={
-                          design$sCheating<-self$options$Meta3Cheating
-                          design$sCheatingLimit<-"Budget"
-                          design$sCheatingBudget<-design$sN*0.5
-                        }
-                 )
-               },
-               "Inv4"={
-                 design<-makeDesign(sN=self$options$Meta4SampleSize)
-                 switch(substr(doingInvestg,5,5),
-                        "A"= {
-                          design$Replication<-makeReplication(TRUE,Keep="Cautious",
-                                                              forceSigOriginal=self$options$Meta4SigOriginal=="yes",Power=self$options$Meta4RepPower)
-                        },
-                        "B"={
-                          design$Replication<-makeReplication(TRUE,Keep="MetaAnalysis",
-                                                              forceSigOriginal=self$options$Meta4SigOriginal=="yes",Power=self$options$Meta4RepPower)
-                        }
-                 )
-               },
-               "Inv5"={
-                 switch(substr(doingInvestg,5,5),
-                        "A"={
-                          if (self$options$Meta5SampleGroup=="a") range<-c(1,1) else range<-c(-1,-1)
-                          design<-makeDesign(sN=1000,sIV2RangeOn=TRUE,sIV2Range=range)
-                        },
-                        "B"={
-                          if (self$options$Meta5SampleGroup=="a") range<-c(0,0) else range<-c(-4,4)
-                          design<-makeDesign(sN=1000,sIV2RangeOn=TRUE,sIV2Range=range)
-                        }
-                 )
-                 evidence<-makeEvidence(AnalysisTerms=1)
-                 setBrawDef("evidence",evidence)
-               }
-        )
-        setBrawDef("design",design)
-      }
-
       # anything important changed?
       changedH<- !identical(oldH,braw.def$hypothesis)
       changedD<- !identical(oldD,braw.def$design)
@@ -298,18 +246,22 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
 ## now set up help/instructions
       # this is done after we have set up the hypothesis
       {
-      helpOutput<-makeHelpOut(self$options$brawHelp,statusStore)
-      planOutput<-makeSystemOut(self,statusStore,FALSE,FALSE,FALSE)
+        opens<-c(statusStore$basicHelpWhich,statusStore$demoHelpWhich,statusStore$investgHelpWhich,statusStore$simHelpWhich)
+        statusStore<-whichTabsOpen(self,statusStore)
+        newopens<-c(statusStore$basicHelpWhich,statusStore$demoHelpWhich,statusStore$investgHelpWhich,statusStore$simHelpWhich)
+        changedL<-!all(opens==newopens)
+        
+        helpOutput<-makeHelpOut(self$options$brawHelp,statusStore)
+        planOutput<-makeSystemOut(self,statusStore,FALSE,FALSE,FALSE)
         # if (statusStore$showPlan)
         # helpOutput<-makeSystemOut(self,statusStore,FALSE,FALSE,FALSE,helpOutput)
       
       # only change this if there has been a change in what it displays
-      if (any(c(firstRun,changedH,changedD,changedE,changedL)))
-        self$results$simSystemHTML$setContent(helpOutput)
+        if (any(c(firstRun,changedH,changedD,changedE,changedL)))
+          self$results$simSystemHTML$setContent(helpOutput)
       }
       
 ## ignore changes in the ModeSelectors
-      # after help instructions are set up
       {
       if (self$options$basicMode!=statusStore$basicMode 
           || self$options$planMode!=statusStore$planMode
@@ -334,127 +286,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       }
       }
 
-      ## proceed to actions
-      # investigation actions first
-      if (any(investgControls)) {
-        reportCounts=FALSE
-
-        if (substr(doingInvestg,1,4)=="Inv5")
-          setHypothesis(IV2=makeVariable("IV2","Interval"))
-
-        if (substr(doingInvestg,6,6)!="m") {
-          doSingle()
-          outputNow<-"Description"
-          if (doingInvestg=="Inv2B") {
-            reportCounts<-TRUE 
-            setBrawRes("multiple",braw.res$result)
-          }
-        } else {
-          nreps<-self$options$metaMultiple
-          if (doingInvestg=="Inv3Bm") nreps<-nreps/4
-          doMultiple(nreps)
-          outputNow<-"Multiple"
-          # }
-        }
-        invHistory<-updateHistory(invHistory,doingInvestg,outputNow,TRUE)
-      }
-
-      if (!is.null(doingInvestg)) {
-        if (is.element(doingInvestg,c("Inv5A","Inv5B"))) {
-          result<-braw.res$result
-          result$hypothesis$IV2<-NULL
-          setBrawRes("result",result)
-        } 
-        if (is.element(doingInvestg,c("Inv5Am","Inv5Bm"))) {
-          multiple<-braw.res$multiple
-          multiple$hypothesis$IV2<-NULL
-          multiple$result$hypothesis$IV2<-NULL
-          switch(self$options$Meta5SampleGroup,
-                 "a"={multiple$result$hypothesis$effect$rIV<-0.3},
-                 "b"={multiple$result$hypothesis$effect$rIV<-0}
-                 )
-          setBrawRes("multiple",multiple)
-        } 
-
-      # display the results
-        svgBox(height=350,aspect=1.5,fontScale=1.2)
-        setBrawEnv("graphicsType","HTML")
-        setBrawEnv("reportCounts",reportCounts)
-        if (substr(doingInvestg,1,5)=="Inv1I") setBrawEnv("fullOutput",0)
-        else setBrawEnv("fullOutput",1)
-        investgD<-braw.res$investgD
-        investgS<-braw.res$investgS
-        investgR<-braw.res$investgR
-        if (substr(doingInvestg,6,6)!="m") open<-1 else open<-2
-        switch(open,
-               { 
-                 investgD<-showDescription()
-                 investgS<-showInference(showType=self$options$metaShow,orientation="horz",dimension=1)
-                 if (is.element(doingInvestg,c("Inv2B","Inv3B","Inv4A","Inv4B")))
-                   open<-2                   
-                 if (is.element(doingInvestg,c("Inv2B")))
-                          investgR<-reportMultiple(showType="NHST",reportStats=self$options$reportInferStats,compact=TRUE)
-                 else     investgR<-reportInference(compact=TRUE)
-               },
-               { 
-                   if (is.element(doingInvestg,c("Inv5Am","Inv5Bm"))) {
-                     investgS<-showMultiple(showType=self$options$metaShow,dimension=1,orientation="horz")
-                     investgR<-reportMultiple(showType=self$options$metaShow,compact=TRUE)
-                   }
-                   else   {
-                     investgS<-showMultiple(showType=self$options$metaShow,dimension=1,orientation="horz")
-                     investgR<-reportMultiple(showType="NHST",compact=TRUE)
-                   }
-                 # }
-               }
-        )
-        setBrawRes("investgD",investgD)
-        setBrawRes("investgS",investgS)
-        setBrawRes("investgR",investgR)
-        
-        show1<-paste0('<div style="display:inline-block;margin-bottom:10px;margin-top:10px;background-color:#f8f8f8;">',
-                      '<table>',
-                      '<tr><td>', braw.res$investgD, '</td></tr>',
-                      '<tr><td>', braw.res$investgR, '</td></tr>',
-                      '<tr style="height:10px;"></tr>',
-                      '<tr><td>', moreHTML(reportWorldDesign(),"see Plan","p1"), '</td></tr>',
-                      '</table>',
-                      '</div>'
-        )
-        show2<-paste0('<div style="display:inline-block;margin-bottom:10px;margin-top:10px;background-color:#f8f8f8;">',
-                      '<table>',
-                      '<tr><td>', braw.res$investgS, '</td></tr>',
-                      '<tr><td>', braw.res$investgR, '</td></tr>',
-                      '<tr style="height:10px;"></tr>',
-                      '<tr><td>', moreHTML(reportWorldDesign(),"see Plan","p2"), '</td></tr>',
-                      '</table>',
-                      '</div>'
-        )
-        linkLabel<-paste0(" ",substr(doingInvestg,1,6))
-        investgResults<-
-          generate_tab(
-            title="Investigation:",
-            plainTabs=FALSE,
-            titleWidth=100,
-            width=550,
-            tabs=c("Data","Schematic"),
-            tabContents=c(show1,show2),
-            tabLink=paste0('https://doingpsychstats.wordpress.com/investigation-',substr(doingInvestg,4,4),'#',substr(doingInvestg,1,5)),
-            tabLinkLabel=linkLabel,
-            open=open
-          )
-        
-        self$results$simGraphHTML$setContent(investgResults)
-        
-        statusStore$lastOutput<-"investg"
-        statusStore$investgResults<-investgResults
-        setBrawRes("statusStore",statusStore)
-        setBrawRes("invHistoryStore",invHistory)
-        
-        sendData2Jamovi(outputNow,self)
-        
-        return()
-      }
+## proceed to actions
 
       # we are going back or forwards in the history
       if (self$options$simGoBack || self$options$simGoForwards) {
@@ -685,7 +517,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
             setBrawRes("simExplore",simExplore)
             open<-3
           }
-          if (doingDemo) {
+          if (self$options$basicMode=="Demonstrations") {
             demoResults<-generate_tab(
               title="Demonstration:",
               plainTabs=TRUE,
