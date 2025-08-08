@@ -462,10 +462,31 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           } else {
             # # do we need to do this, or are we just returning to the existing one?
             # if (is.null(braw.res$multiple) || is.element(statusStore$lastOutput,c("Multiple","investg"))) {
-              doMultiple(nsims=numberSamples,multipleResult=braw.res$multiple)
-              if (statusStore$lastOutput!="Multiple" || changedH || changedD || changedE) addHistory<-TRUE
-              updateHistoryNow<-TRUE
-              # } 
+            ns<-max(10,numberSamples/10)
+            for (ij in 1:(numberSamples/ns)) {
+              doMultiple(nsims=ns,multipleResult=braw.res$multiple)
+              
+              setBrawEnv("graphicsType","HTML")
+              svgBox(height=350,aspect=1.5,fontScale=1.2)
+              simMultiple<-paste0(showMultiple(showType=showMultipleParam,dimension=showMultipleDimension,effectType=whichShowMultipleOut,orientation=showMultipleOrient),
+                                  reportMultiple(showType=showMultipleParam,effectType=whichShowMultipleOut,reportStats=self$options$reportInferStats)
+              )
+              setBrawRes("simMultiple",simMultiple)
+              open<-2
+              simResults<-generate_tab(
+                title="Simulation:",
+                plainTabs=TRUE,
+                titleWidth=100,
+                tabs=c("Single","Multiple","Explore","Plan"),
+                tabContents=c(braw.res$simSingle,braw.res$simMultiple,braw.res$simExplore,planOutput),
+                open=open
+              )
+              self$results$simGraphHTML$setContent(simResults)
+              private$.checkpoint()
+            }
+            if (statusStore$lastOutput!="Multiple" || changedH || changedD || changedE) addHistory<-TRUE
+            updateHistoryNow<-TRUE
+            # } 
             outputNow<-"Multiple"
           }
         }
@@ -475,8 +496,30 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           numberExplores<-self$options$numberExplores
           # # do we need to do this, or are we just returning to the existing one?
           # if (is.null(braw.res$explore) || is.element(statusStore$lastOutput,c("Explore","investg"))) {
-            exploreResult<-doExplore(nsims=numberExplores,exploreResult=braw.res$explore,
+          numberSamples          
+          ns<-max(10,numberExplores/10)
+          for (ij in 1:(numberExplores/ns)) {
+            exploreResult<-doExplore(nsims=ns,exploreResult=braw.res$explore,
                                      doingMetaAnalysis=self$options$MetaAnalysisOn)
+            
+            svgBox(height=350,aspect=1.5,fontScale=1.2)
+            setBrawEnv("graphicsType","HTML")
+              simExplore<-paste0(showExplore(showType=showExploreParam,showHist=(showExploreStyle=="hist"),effectType=whichShowExploreOut),
+                                 reportExplore(showType=showExploreParam,effectType=whichShowExploreOut,reportStats=self$options$reportInferStats)
+              )
+              setBrawRes('simExplore',simExplore)
+              open<-3
+              simResults<-generate_tab(
+                title="Simulation:",
+                plainTabs=TRUE,
+                titleWidth=100,
+                tabs=c("Single","Multiple","Explore","Plan"),
+                tabContents=c(braw.res$simSingle,braw.res$simMultiple,braw.res$simExplore,planOutput),
+                open=open
+              )
+              self$results$simGraphHTML$setContent(simResults)
+              private$.checkpoint()
+          }
             if (statusStore$lastOutput!="Explore" || changedH || changedD || changedE || changedX) addHistory<-TRUE
             updateHistoryNow<-TRUE
             # }
