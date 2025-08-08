@@ -2520,7 +2520,7 @@ options:
       default: rse
       
     - name: metaMultiple
-      title: "nreps"
+      title: "nreps:"
       type: Number
       default: 200
 

@@ -198,14 +198,18 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                  sN<-NULL
                }
         )
+        if (substr(doingInvestg,6,6)=='m') nl<-10 else nl<-1
+        for (i in 1:nl) {
         investgResults<-doInvestigation(doingInvestg,
                                         world=world,rp=self$options$metaDefaultRp,pNull=pNull,
                                         sN=sN,sBudget=self$options$meta2SampleBudget,sSplits=self$options$meta2SampleSplits,
                                         sMethod=self$options$meta3SampleMethod,sCheating=self$options$meta3Cheating,
                                         sReplicationPower=self$options$meta4RepPower,sReplicationSigOriginal=self$options$meta4SigOriginal=="yes",
-                                        nreps=self$options$metaMultiple
+                                        nreps=self$options$metaMultiple/10
         )
         self$results$simGraphHTML$setContent(investgResults)
+        private$.checkpoint()
+        }
         
         statusStore$lastOutput<-"investg"
         statusStore$investgResults<-investgResults

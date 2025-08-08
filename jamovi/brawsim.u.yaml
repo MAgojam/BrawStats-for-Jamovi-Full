@@ -4900,6 +4900,60 @@ children:
                     label: ' '
                     minWidth: 13
                   - type: CollapseBox
+                    name: Settings5
+                    collapsed: true
+                    label: 'Investigations:'
+                    margin: none
+                    minWidth: 330
+                    children:
+                      - type: LayoutBox
+                        style: inline
+                        margin: none
+                        children:
+                          - type: Label
+                            label: ' '
+                            minWidth: 13
+                          - type: Label
+                            label: ' '
+                            minWidth: 13
+                          - type: TextBox
+                            name: metaMultiple
+                            format: number
+                          - type: TextBox
+                            name: metaDefaultN
+                            format: number
+                            events:
+                              change: ./brawsim.events::onChange_metaDefaultN
+                          - type: TextBox
+                            name: metaDefaultRp
+                            format: number
+                          - type: TextBox
+                            name: metaDefaultNullp
+                            format: number
+                            events:
+                              change: ./brawsim.events::onChange_metaDefaultNullp
+                      - type: LayoutBox
+                        style: inline
+                        margin: none
+                        children:
+                          - type: Label
+                            label: ' '
+                            minWidth: 13
+                          - type: Label
+                            label: ' '
+                            minWidth: 13
+                          - type: Label
+                            label: 'show samples as:'
+                          - type: ComboBox
+                            name: metaShow
+              - type: LayoutBox
+                style: inline
+                margin: none
+                children:
+                  - type: Label
+                    label: ' '
+                    minWidth: 13
+                  - type: CollapseBox
                     name: Settings4
                     collapsed: true
                     label: 'Other:'
@@ -4959,53 +5013,3 @@ children:
                             name: showHypothesisLst
                           - type: ComboBox
                             name: lastDemo
-                      - type: LayoutBox
-                        style: inline
-                        margin: none
-                        children:
-                          - type: Label
-                            label: ' '
-                            minWidth: 13
-                          - type: Label
-                            label: 'Investigations:'
-                            minWidth: 13
-                      - type: LayoutBox
-                        style: inline
-                        margin: none
-                        children:
-                          - type: Label
-                            label: ' '
-                            minWidth: 13
-                          - type: Label
-                            label: ' '
-                            minWidth: 13
-                          - type: TextBox
-                            name: metaMultiple
-                            format: number
-                          - type: TextBox
-                            name: metaDefaultN
-                            format: number
-                            events:
-                              change: ./brawsim.events::onChange_metaDefaultN
-                          - type: TextBox
-                            name: metaDefaultRp
-                            format: number
-                          - type: TextBox
-                            name: metaDefaultNullp
-                            format: number
-                            events:
-                              change: ./brawsim.events::onChange_metaDefaultNullp
-                      - type: LayoutBox
-                        style: inline
-                        margin: none
-                        children:
-                          - type: Label
-                            label: ' '
-                            minWidth: 13
-                          - type: Label
-                            label: ' '
-                            minWidth: 13
-                          - type: Label
-                            label: 'show samples as:'
-                          - type: ComboBox
-                            name: metaShow
