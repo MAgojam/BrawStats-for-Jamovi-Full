@@ -198,6 +198,20 @@ const events =  {
       ui.whichGraph.setValue("Single")
     },
     
+    onChange_metaDefaultN: function(ui) {
+      let variable1 = ui.metaDefaultN.value()
+      ui.meta3SampleSize.setValue(variable1)
+      ui.meta4SampleSize.setValue(variable1)
+    },
+    
+    onChange_metaDefaultNullp: function(ui) {
+      let variable1 = ui.onChange_metaDefaultNullp.value()
+      ui.meta1pNull.setValue(variable1)
+      ui.meta2pNull.setValue(variable1)
+      ui.meta3pNull.setValue(variable1)
+      ui.meta4pNull.setValue(variable1)
+    },
+    
     onChange_Project1sH: function(ui) {
         demo1SetUp(ui,"h")
     },

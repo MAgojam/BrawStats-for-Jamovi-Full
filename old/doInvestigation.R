@@ -1,5 +1,5 @@
 
-doInvestigation<-function(doingInvestg,world="Binary",pNull=0.5,
+doInvestigation<-function(doingInvestg,world="Binary",rp=0.3,pNull=0.5,
                           sN=42,sMethod="random",sBudget=320,sSplits=16,sCheating="none",
                           sReplicationPower=0.9,sReplicationSigOriginal=TRUE,
                           group="a",
@@ -89,6 +89,7 @@ doInvestigation<-function(doingInvestg,world="Binary",pNull=0.5,
            
          }
   )
+  hypothesis$effect$world$populationPDFk<-rp
   setBrawDef("hypothesis",hypothesis)
   setBrawDef("design",design)
 

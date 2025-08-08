@@ -294,9 +294,11 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             doMeta5AmBtn = NULL,
             doMeta5BBtn = NULL,
             doMeta5BmBtn = NULL,
-            meta5SampleGroup = "a",
             metaShow = "rse",
             metaMultiple = 200,
+            metaDefaultN = 42,
+            metaDefaultRp = 0.3,
+            metaDefaultNullp = 0.5,
             invGoBack = NULL,
             invGoForwards = NULL, ...) {
 
@@ -1971,13 +1973,6 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             private$..doMeta5BmBtn <- jmvcore::OptionAction$new(
                 "doMeta5BmBtn",
                 doMeta5BmBtn)
-            private$..meta5SampleGroup <- jmvcore::OptionList$new(
-                "meta5SampleGroup",
-                meta5SampleGroup,
-                options=list(
-                    "a",
-                    "b"),
-                default="a")
             private$..metaShow <- jmvcore::OptionList$new(
                 "metaShow",
                 metaShow,
@@ -1989,6 +1984,18 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 "metaMultiple",
                 metaMultiple,
                 default=200)
+            private$..metaDefaultN <- jmvcore::OptionNumber$new(
+                "metaDefaultN",
+                metaDefaultN,
+                default=42)
+            private$..metaDefaultRp <- jmvcore::OptionNumber$new(
+                "metaDefaultRp",
+                metaDefaultRp,
+                default=0.3)
+            private$..metaDefaultNullp <- jmvcore::OptionNumber$new(
+                "metaDefaultNullp",
+                metaDefaultNullp,
+                default=0.5)
             private$..invGoBack <- jmvcore::OptionAction$new(
                 "invGoBack",
                 invGoBack)
@@ -2287,9 +2294,11 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..doMeta5AmBtn)
             self$.addOption(private$..doMeta5BBtn)
             self$.addOption(private$..doMeta5BmBtn)
-            self$.addOption(private$..meta5SampleGroup)
             self$.addOption(private$..metaShow)
             self$.addOption(private$..metaMultiple)
+            self$.addOption(private$..metaDefaultN)
+            self$.addOption(private$..metaDefaultRp)
+            self$.addOption(private$..metaDefaultNullp)
             self$.addOption(private$..invGoBack)
             self$.addOption(private$..invGoForwards)
         }),
@@ -2585,9 +2594,11 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         doMeta5AmBtn = function() private$..doMeta5AmBtn$value,
         doMeta5BBtn = function() private$..doMeta5BBtn$value,
         doMeta5BmBtn = function() private$..doMeta5BmBtn$value,
-        meta5SampleGroup = function() private$..meta5SampleGroup$value,
         metaShow = function() private$..metaShow$value,
         metaMultiple = function() private$..metaMultiple$value,
+        metaDefaultN = function() private$..metaDefaultN$value,
+        metaDefaultRp = function() private$..metaDefaultRp$value,
+        metaDefaultNullp = function() private$..metaDefaultNullp$value,
         invGoBack = function() private$..invGoBack$value,
         invGoForwards = function() private$..invGoForwards$value),
     private = list(
@@ -2882,9 +2893,11 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..doMeta5AmBtn = NA,
         ..doMeta5BBtn = NA,
         ..doMeta5BmBtn = NA,
-        ..meta5SampleGroup = NA,
         ..metaShow = NA,
         ..metaMultiple = NA,
+        ..metaDefaultN = NA,
+        ..metaDefaultRp = NA,
+        ..metaDefaultNullp = NA,
         ..invGoBack = NA,
         ..invGoForwards = NA)
 )
@@ -3298,9 +3311,11 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param doMeta5AmBtn .
 #' @param doMeta5BBtn .
 #' @param doMeta5BmBtn .
-#' @param meta5SampleGroup .
 #' @param metaShow .
 #' @param metaMultiple .
+#' @param metaDefaultN .
+#' @param metaDefaultRp .
+#' @param metaDefaultNullp .
 #' @param invGoBack .
 #' @param invGoForwards .
 #' @return A results object containing:
@@ -3605,9 +3620,11 @@ BrawSim <- function(
     doMeta5AmBtn,
     doMeta5BBtn,
     doMeta5BmBtn,
-    meta5SampleGroup = "a",
     metaShow = "rse",
     metaMultiple = 200,
+    metaDefaultN = 42,
+    metaDefaultRp = 0.3,
+    metaDefaultNullp = 0.5,
     invGoBack,
     invGoForwards) {
 
@@ -3904,9 +3921,11 @@ BrawSim <- function(
         doMeta5AmBtn = doMeta5AmBtn,
         doMeta5BBtn = doMeta5BBtn,
         doMeta5BmBtn = doMeta5BmBtn,
-        meta5SampleGroup = meta5SampleGroup,
         metaShow = metaShow,
         metaMultiple = metaMultiple,
+        metaDefaultN = metaDefaultN,
+        metaDefaultRp = metaDefaultRp,
+        metaDefaultNullp = metaDefaultNullp,
         invGoBack = invGoBack,
         invGoForwards = invGoForwards)
 

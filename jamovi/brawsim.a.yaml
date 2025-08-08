@@ -2509,16 +2509,6 @@ options:
       title: '*'
       type: Action
 
-    - name: meta5SampleGroup
-      title: ' '
-      type: List
-      options:
-        - name: a
-          title: A
-        - name: b
-          title: B
-      default: a
-      
     - name: metaShow
       title: ""
       type: List
@@ -2530,9 +2520,24 @@ options:
       default: rse
       
     - name: metaMultiple
-      title: ""
+      title: "nreps"
       type: Number
       default: 200
+
+    - name: metaDefaultN
+      title: "n:"
+      type: Number
+      default: 42
+
+    - name: metaDefaultRp
+      title: "rₚ:"
+      type: Number
+      default: 0.3
+
+    - name: metaDefaultNullp
+      title: "p(rₚ=0):"
+      type: Number
+      default: 0.5
 
     - name: invGoBack
       title: '<<'
