@@ -52,7 +52,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           tabs=c("Data","Schematic"),
           tabContents=rep(blankPlot,2),
           tabLink='https://doingpsychstats.wordpress.com/investigations/',
-          tabLinkLabel=" here",
+          tabLinkLabel=paste0('\U24D8',' here'),
           outerHeight=380,
           open=0
         )
@@ -213,8 +213,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         setBrawRes("statusStore",statusStore)
         setBrawRes("invHistoryStore",invHistory)
         
-        sendData2Jamovi(outputNow,self)
-        
+        if (substr(doingInvestg,6,6)=="m") sendData2Jamovi("Multiple",self)
+        else sendData2Jamovi("Single",self)
         return()
       }
       
