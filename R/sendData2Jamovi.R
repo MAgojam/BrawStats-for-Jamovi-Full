@@ -29,9 +29,9 @@ sendData2Jamovi<-function(outputNow,self) {
         q<-mergeMultiple(braw.res$multiple$result,braw.res$multiple$nullresult)
       }
       if (!is.null(q)) {
-        newMultiple<-data.frame(q$rIV,q$nval+0.0,q$pIV)
+        newMultiple<-data.frame(q$rpIV,q$rIV,q$nval+0.0,q$pIV)
         newMultiple<-newMultiple[!is.na(q$rIV),]
-        names(newMultiple)<-c("rs","n","p")
+        names(newMultiple)<-c("rp","rs","n","p")
         nvars<-ncol(newMultiple)
         
         keys<-1:nvars
