@@ -118,6 +118,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         invHistory<-braw.res$invHistoryStore
       }
 
+      if (any(self$options$stopBtn)) stopBtn<-TRUE else stopBtn<-FALSE 
 ## are we doing an investigation
       {
       investgControls<-c(self$options$doMeta0Btn,self$options$doMeta0mBtn,
@@ -208,7 +209,10 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                                         nreps=self$options$metaMultiple/10
         )
         self$results$simGraphHTML$setContent(investgResults)
+        statusStore$investgResults<-investgResults
+        setBrawRes("statusStore",statusStore)
         private$.checkpoint()
+        if (stopBtn) break
         }
         
         statusStore$lastOutput<-"investg"
@@ -269,15 +273,15 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       if (self$options$basicMode!=statusStore$basicMode 
           || self$options$planMode!=statusStore$planMode
           || self$options$exploreMode!=statusStore$exploreMode) {
-        if (self$options$basicMode!=statusStore$basicMode)
+        if (is.element(self$options$basicMode,c("Demonstrations","Investigations","Simulations"))) 
+        if (self$options$basicMode!=statusStore$basicMode) {
           switch(self$options$basicMode,
                  "Demonstrations"=self$results$simGraphHTML$setContent(statusStore$demoResults),
                  "Investigations"=self$results$simGraphHTML$setContent(statusStore$investgResults),
                  "Simulations"=self$results$simGraphHTML$setContent(statusStore$simResults)
           )
-        # if (self$options$basicMode=="Investigations") statusStore$showPlan<-FALSE
-        # else statusStore$showPlan<-TRUE
         private$.checkpoint()
+        }
         
         statusStore$basicMode<-self$options$basicMode
         statusStore$planMode<-self$options$planMode
@@ -419,14 +423,18 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           }
         }
         
-        if (any(c(makeSampleNow,makeMultipleNow,makeExploreNow))) {
+        if (!stopBtn)
+        if (any(c(makeSampleNow,
+                  makeMultipleNow && statusStore$lastOutput!="Multiple",
+                  makeExploreNow && statusStore$lastOutput!="Explore"
+                  ))) {
           emptyPlot(self)
           private$.checkpoint()
         }
         # now we start doing new things
         # did we ask for a new sample?
         if (makeSampleNow) {
-          # make a sample - either striaght sample or single metaAnalysis
+          # make a sample - either straight sample or single metaAnalysis
           if (self$options$MetaAnalysisOn) {
             # # do we need to do this, or are we just returning to the existing one?
             # if (is.null(braw.res$metaSingle) || is.element(statusStore$lastOutput,c("MetaSingle","investg"))) {
@@ -461,8 +469,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
             outputNow<-"MetaMultiple"
           } else {
             # # do we need to do this, or are we just returning to the existing one?
-            # if (is.null(braw.res$multiple) || is.element(statusStore$lastOutput,c("Multiple","investg"))) {
-            ns<-max(10,numberSamples/10)
+            # if (is.null(braw.res$multiple) || is.element(statusStore$lastOutput,c("Multiple"))) {
+            ns<-min(10,numberSamples/10)
             for (ij in 1:(numberSamples/ns)) {
               doMultiple(nsims=ns,multipleResult=braw.res$multiple)
               
@@ -482,7 +490,10 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                 open=open
               )
               self$results$simGraphHTML$setContent(simResults)
+              statusStore$simResults<-simResults
+              setBrawRes("statusStore",statusStore)
               private$.checkpoint()
+              if (stopBtn) break
             }
             if (statusStore$lastOutput!="Multiple" || changedH || changedD || changedE) addHistory<-TRUE
             updateHistoryNow<-TRUE
@@ -518,7 +529,10 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                 open=open
               )
               self$results$simGraphHTML$setContent(simResults)
+              statusStore$simResults<-simResults
+              setBrawRes("statusStore",statusStore)
               private$.checkpoint()
+              if (stopBtn) break
           }
             if (statusStore$lastOutput!="Explore" || changedH || changedD || changedE || changedX) addHistory<-TRUE
             updateHistoryNow<-TRUE

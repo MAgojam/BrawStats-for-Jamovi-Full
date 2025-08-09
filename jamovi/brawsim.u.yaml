@@ -5013,3 +5013,11 @@ children:
                             name: showHypothesisLst
                           - type: ComboBox
                             name: lastDemo
+              - type: LayoutBox
+                style: inline
+                margin: none
+                children:
+                          - name: stopBtn
+                            type: ActionButton
+                            maxWidth: 75
+                            maxHeight: 24

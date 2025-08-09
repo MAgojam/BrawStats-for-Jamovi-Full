@@ -1073,6 +1073,10 @@ options:
       title: 'multiple'
       type: Action
 
+    - name: stopBtn
+      title: 'stop'
+      type: Action
+
     - name: inferVar1
       title: ' show:'
       type: List

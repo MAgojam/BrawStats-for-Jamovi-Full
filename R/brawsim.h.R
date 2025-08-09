@@ -137,6 +137,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             makeSampleBtn = FALSE,
             numberSamples = 100,
             makeMultipleBtn = NULL,
+            stopBtn = NULL,
             inferVar1 = "rs",
             inferVar2 = "p",
             showSampleType = "Basic",
@@ -1040,6 +1041,9 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             private$..makeMultipleBtn <- jmvcore::OptionAction$new(
                 "makeMultipleBtn",
                 makeMultipleBtn)
+            private$..stopBtn <- jmvcore::OptionAction$new(
+                "stopBtn",
+                stopBtn)
             private$..inferVar1 <- jmvcore::OptionList$new(
                 "inferVar1",
                 inferVar1,
@@ -2134,6 +2138,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..makeSampleBtn)
             self$.addOption(private$..numberSamples)
             self$.addOption(private$..makeMultipleBtn)
+            self$.addOption(private$..stopBtn)
             self$.addOption(private$..inferVar1)
             self$.addOption(private$..inferVar2)
             self$.addOption(private$..showSampleType)
@@ -2434,6 +2439,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         makeSampleBtn = function() private$..makeSampleBtn$value,
         numberSamples = function() private$..numberSamples$value,
         makeMultipleBtn = function() private$..makeMultipleBtn$value,
+        stopBtn = function() private$..stopBtn$value,
         inferVar1 = function() private$..inferVar1$value,
         inferVar2 = function() private$..inferVar2$value,
         showSampleType = function() private$..showSampleType$value,
@@ -2733,6 +2739,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..makeSampleBtn = NA,
         ..numberSamples = NA,
         ..makeMultipleBtn = NA,
+        ..stopBtn = NA,
         ..inferVar1 = NA,
         ..inferVar2 = NA,
         ..showSampleType = NA,
@@ -3154,6 +3161,7 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param makeSampleBtn .
 #' @param numberSamples .
 #' @param makeMultipleBtn .
+#' @param stopBtn .
 #' @param inferVar1 .
 #' @param inferVar2 .
 #' @param showSampleType .
@@ -3463,6 +3471,7 @@ BrawSim <- function(
     makeSampleBtn = FALSE,
     numberSamples = 100,
     makeMultipleBtn,
+    stopBtn,
     inferVar1 = "rs",
     inferVar2 = "p",
     showSampleType = "Basic",
@@ -3764,6 +3773,7 @@ BrawSim <- function(
         makeSampleBtn = makeSampleBtn,
         numberSamples = numberSamples,
         makeMultipleBtn = makeMultipleBtn,
+        stopBtn = stopBtn,
         inferVar1 = inferVar1,
         inferVar2 = inferVar2,
         showSampleType = showSampleType,
