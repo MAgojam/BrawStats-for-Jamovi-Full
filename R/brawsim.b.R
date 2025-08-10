@@ -31,6 +31,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         setBrawOpts(fullOutput=0,reportHTML=TRUE,
                     fullGraphSize=0.5,
                     npointsMax=1000,
+                    timeLimit=2,
                     autoPrint=FALSE
         )
         setBrawEnv("graphicsType","HTML")
