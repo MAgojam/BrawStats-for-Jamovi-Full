@@ -471,7 +471,9 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
             # # do we need to do this, or are we just returning to the existing one?
             # if (is.null(braw.res$multiple) || is.element(statusStore$lastOutput,c("Multiple"))) {
             ns<-min(10,numberSamples/10)
-            for (ij in 1:(numberSamples/ns)) {
+            if (changedH || changedD || is.null(braw.res$multiple)) targetN<-numberSamples
+            else targetN<-braw.res$multiple$count+numberSamples
+            while ((is.null(braw.res$multiple)) || (braw.res$multiple$count<targetN)) {
               doMultiple(nsims=ns,multipleResult=braw.res$multiple)
               
               setBrawEnv("graphicsType","HTML")
