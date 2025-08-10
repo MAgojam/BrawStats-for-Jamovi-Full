@@ -118,6 +118,14 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         invHistory<-braw.res$invHistoryStore
       }
 
+      # save the old set up
+      oldH<-braw.def$hypothesis
+      oldD<-braw.def$design
+      oldE<-braw.def$evidence
+      oldX<-braw.def$explore
+      oldM<-braw.def$metaAnalysis
+      
+      
       if (any(self$options$stopBtn)) stopBtn<-TRUE else stopBtn<-FALSE 
 ## are we doing an investigation
       {
@@ -200,19 +208,24 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                }
         )
         if (substr(doingInvestg,6,6)=='m') nl<-10 else nl<-1
-        for (i in 1:nl) {
-        investgResults<-doInvestigation(doingInvestg,
-                                        world=world,rp=self$options$metaDefaultRp,pNull=pNull,
-                                        sN=sN,sBudget=self$options$meta2SampleBudget,sSplits=self$options$meta2SampleSplits,
-                                        sMethod=self$options$meta3SampleMethod,sCheating=self$options$meta3Cheating,
-                                        sReplicationPower=self$options$meta4RepPower,sReplicationSigOriginal=self$options$meta4SigOriginal=="yes",
-                                        nreps=self$options$metaMultiple/10
-        )
-        self$results$simGraphHTML$setContent(investgResults)
-        statusStore$investgResults<-investgResults
-        setBrawRes("statusStore",statusStore)
-        private$.checkpoint()
-        if (stopBtn) break
+        nreps<-10
+        numberSamples<-self$options$metaMultiple
+        if (!identical(oldH,braw.def$hypothesis) || !identical(oldD,braw.def$design) || is.null(braw.res$multiple)) 
+             targetN<-numberSamples
+        else targetN<-braw.res$multiple$count+numberSamples
+        while ((is.null(braw.res$multiple)) || (braw.res$multiple$count<targetN)) {
+          investgResults<-doInvestigation(doingInvestg,
+                                          world=world,rp=self$options$metaDefaultRp,pNull=pNull,
+                                          sN=sN,sBudget=self$options$meta2SampleBudget,sSplits=self$options$meta2SampleSplits,
+                                          sMethod=self$options$meta3SampleMethod,sCheating=self$options$meta3Cheating,
+                                          sReplicationPower=self$options$meta4RepPower,sReplicationSigOriginal=self$options$meta4SigOriginal=="yes",
+                                          nreps=nreps
+          )
+          self$results$simGraphHTML$setContent(investgResults)
+          statusStore$investgResults<-investgResults
+          setBrawRes("statusStore",statusStore)
+          private$.checkpoint()
+          if (stopBtn) break
         }
         
         statusStore$lastOutput<-"investg"
@@ -229,13 +242,6 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
 
 ## basic definitions      
       {
-      # save the old ones
-      oldH<-braw.def$hypothesis
-      oldD<-braw.def$design
-      oldE<-braw.def$evidence
-      oldX<-braw.def$explore
-      oldM<-braw.def$metaAnalysis
-      
       # make all the standard things we need
       # store the option variables inside the braw package
       setBraw(self)
