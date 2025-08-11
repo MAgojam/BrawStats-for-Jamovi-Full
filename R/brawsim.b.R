@@ -208,8 +208,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                  sN<-NULL
                }
         )
-        if (substr(doingInvestg,6,6)=='m') nl<-10 else nl<-1
-        nreps<-10
+        if (substr(doingInvestg,6,6)=='m') nreps<-10 else nreps<-1
         numberSamples<-self$options$metaMultiple
         if (!identical(oldH,braw.def$hypothesis) || !identical(oldD,braw.def$design) || is.null(braw.res$multiple)) 
              targetN<-numberSamples
