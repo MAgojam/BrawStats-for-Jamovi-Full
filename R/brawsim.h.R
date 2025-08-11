@@ -287,7 +287,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             doMeta4BmBtn = NULL,
             meta4SampleSize = 42,
             meta4World = "Psych50",
-            meta4pNull = 0.5,
+            meta4pNull = 0.75,
             meta4RepPower = 0.9,
             meta5Source = "Interaction",
             doMeta5ABtn = NULL,
@@ -1948,7 +1948,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             private$..meta4pNull <- jmvcore::OptionNumber$new(
                 "meta4pNull",
                 meta4pNull,
-                default=0.5)
+                default=0.75)
             private$..meta4RepPower <- jmvcore::OptionNumber$new(
                 "meta4RepPower",
                 meta4RepPower,
@@ -3612,7 +3612,7 @@ BrawSim <- function(
     doMeta4BmBtn,
     meta4SampleSize = 42,
     meta4World = "Psych50",
-    meta4pNull = 0.5,
+    meta4pNull = 0.75,
     meta4RepPower = 0.9,
     meta5Source = "Interaction",
     doMeta5ABtn,

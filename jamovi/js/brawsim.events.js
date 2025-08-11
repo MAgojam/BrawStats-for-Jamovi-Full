@@ -209,7 +209,6 @@ const events =  {
       ui.meta1pNull.setValue(variable1)
       ui.meta2pNull.setValue(variable1)
       ui.meta3pNull.setValue(variable1)
-      ui.meta4pNull.setValue(variable1)
     },
     
     onChange_Project1sH: function(ui) {
