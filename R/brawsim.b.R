@@ -188,14 +188,14 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                  sN<-NULL
                },
                "Inv2"={
+                 world<-self$options$meta3World
+                 pNull<-self$options$meta3pNull
+                 sN<-NULL
+               },
+               "Inv3"={
                  world<-self$options$meta2World
                  pNull<-self$options$meta2pNull
                  sN<-self$options$meta2SampleSize
-               },
-               "Inv3"={
-                 world<-self$options$meta3World
-                 pNull<-self$options$meta3pNull
-                 sN<-self$options$meta3SampleSize
                },
                "Inv4"={
                  world<-self$options$meta4World

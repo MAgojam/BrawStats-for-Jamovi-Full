@@ -2386,11 +2386,6 @@ options:
       title: '*'
       type: Action
 
-    - name: meta3SampleSize
-      title: 'Sample size' 
-      type: Number
-      default: 42
-
     - name: meta3World
       title: 'world'
       type: List

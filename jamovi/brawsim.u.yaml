@@ -2425,7 +2425,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: 'Instructions'
+                        label: Instructions
                         margin: none
                         minWidth: 250
                         maxWidth: 250
@@ -2438,7 +2438,9 @@ children:
                                 label: ' '
                                 minWidth: 15
                               - type: Label
-                                label: 'For each step in this, the procedure is the same.'
+                                label: >-
+                                  For each step in this, the procedure is the
+                                  same.
                           - type: LayoutBox
                             style: inline
                             children:
@@ -2446,17 +2448,17 @@ children:
                                 label: ' '
                                 minWidth: 15
                               - type: Label
-                                label: '⬦'
+                                label: ⬦
                                 minWidth: 5
                                 maxWidth: 7
                               - type: Label
-                                label: 'To get a single sample, press the'
+                                label: To get a single sample, press the
                               - type: ActionButton
                                 name: doMeta0Btn
                                 maxHeight: 24
                                 margin: none
                               - type: Label
-                                label: 'button'
+                                label: button
                           - type: LayoutBox
                             style: inline
                             children:
@@ -2464,7 +2466,9 @@ children:
                                 label: ' '
                                 minWidth: 45
                               - type: Label
-                                label: '- you can see the data as a scatter plot "Data" or as an effect size "Schematic"'
+                                label: >-
+                                  - you can see the data as a scatter plot
+                                  "Data" or as an effect size "Schematic"
                           - type: LayoutBox
                             style: inline
                             children:
@@ -2472,7 +2476,9 @@ children:
                                 label: ' '
                                 minWidth: 45
                               - type: Label
-                                label: '- schematic also shows the expected distribution of samples'
+                                label: >-
+                                  - schematic also shows the expected
+                                  distribution of samples
                           - type: LayoutBox
                             style: inline
                             children:
@@ -2480,7 +2486,9 @@ children:
                                 label: ' '
                                 minWidth: 45
                               - type: Label
-                                label: '- each time you press the button, a new sample is made'
+                                label: >-
+                                  - each time you press the button, a new sample
+                                  is made
                           - type: LayoutBox
                             style: inline
                             children:
@@ -2488,17 +2496,17 @@ children:
                                 label: ' '
                                 minWidth: 15
                               - type: Label
-                                label: '⬦'
+                                label: ⬦
                                 minWidth: 5
                                 maxWidth: 7
                               - type: Label
-                                label: 'To get many samples, press the'
+                                label: To get many samples, press the
                               - type: ActionButton
                                 name: doMeta0mBtn
                                 maxHeight: 24
                                 margin: none
                               - type: Label
-                                label: 'button'
+                                label: button
                           - type: LayoutBox
                             style: inline
                             children:
@@ -2506,7 +2514,9 @@ children:
                                 label: ' '
                                 minWidth: 45
                               - type: Label
-                                label: '- you see the data as the distribution of sample effect sizes "Schematic"'
+                                label: >-
+                                  - you see the data as the distribution of
+                                  sample effect sizes "Schematic"
                           - type: LayoutBox
                             style: inline
                             children:
@@ -2514,7 +2524,9 @@ children:
                                 label: ' '
                                 minWidth: 45
                               - type: Label
-                                label: '- colours show significant/not sample from real/null population'
+                                label: >-
+                                  - colours show significant/not sample from
+                                  real/null population
                           - type: LayoutBox
                             style: inline
                             children:
@@ -2522,7 +2534,9 @@ children:
                                 label: ' '
                                 minWidth: 45
                               - type: Label
-                                label: '- each time you press the button, more samples are added'
+                                label: >-
+                                  - each time you press the button, more samples
+                                  are added
                           - type: LayoutBox
                             style: inline
                             children:
@@ -2530,7 +2544,9 @@ children:
                                 label: ' '
                                 minWidth: 15
                               - type: Label
-                                label: 'For most steps, we are interested in how variable the samples are.'
+                                label: >-
+                                  For most steps, we are interested in how
+                                  variable the samples are.
                           - type: LayoutBox
                             style: inline
                             children:
@@ -2538,7 +2554,9 @@ children:
                                 label: ' '
                                 minWidth: 15
                               - type: Label
-                                label: 'To get more information, press the ⓘlink above the graphs'
+                                label: >-
+                                  To get more information, press the ⓘlink above
+                                  the graphs
                           - type: LayoutBox
                             style: inline
                             children:
@@ -2707,7 +2725,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: '2. Sample Size: who benefits?'
+                        label: '2. Sampling Method: are we cheating?'
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -2736,7 +2754,7 @@ children:
                                 minWidth: 30
                               - type: CollapseBox
                                 collapsed: true
-                                label: a. sample size
+                                label: a. non-random sampling?
                                 margin: none
                                 minWidth: 380
                                 children:
@@ -2745,9 +2763,8 @@ children:
                                     children:
                                       - type: Label
                                         label: ' '
-                                      - type: TextBox
-                                        name: meta2SampleSize
-                                        format: number
+                                      - type: ComboBox
+                                        name: meta3SampleMethod
                                         margin: none
                                   - type: LayoutBox
                                     style: inline
@@ -2789,7 +2806,7 @@ children:
                                 minWidth: 30
                               - type: CollapseBox
                                 collapsed: true
-                                label: b. one big sample or many small samples?
+                                label: b. cheating?
                                 margin: none
                                 minWidth: 380
                                 children:
@@ -2799,16 +2816,8 @@ children:
                                       - type: LayoutBox
                                         style: inline
                                         children:
-                                          - type: Label
-                                            label: 'Split into sets:'
-                                            margin: none
-                                          - type: TextBox
-                                            name: meta2SampleSplits
-                                            format: number
-                                            margin: none
-                                          - type: TextBox
-                                            name: meta2SampleBudget
-                                            format: number
+                                          - type: ComboBox
+                                            name: meta3Cheating
                                             margin: none
                                       - type: LayoutBox
                                         style: inline
@@ -2848,7 +2857,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: '3. Sampling Method: are we cheating?'
+                        label: '3. Sample Size: who benefits?'
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -2859,10 +2868,6 @@ children:
                               - type: Label
                                 label: ' '
                                 minWidth: 15
-                              - type: TextBox
-                                name: meta3SampleSize
-                                format: number
-                                margin: none
                               - type: ComboBox
                                 name: meta3World
                                 margin: none
@@ -2881,7 +2886,7 @@ children:
                                 minWidth: 30
                               - type: CollapseBox
                                 collapsed: true
-                                label: a. non-random sampling?
+                                label: a. sample size
                                 margin: none
                                 minWidth: 380
                                 children:
@@ -2891,8 +2896,9 @@ children:
                                       - type: LayoutBox
                                         style: inline
                                         children:
-                                          - type: ComboBox
-                                            name: meta3SampleMethod
+                                          - type: TextBox
+                                            name: meta2SampleSize
+                                            format: number
                                             margin: none
                                       - type: LayoutBox
                                         style: inline
@@ -2931,7 +2937,7 @@ children:
                                 minWidth: 30
                               - type: CollapseBox
                                 collapsed: true
-                                label: b. cheating?
+                                label: b. one big sample or many small samples?
                                 margin: none
                                 minWidth: 380
                                 children:
@@ -2942,8 +2948,16 @@ children:
                                         style: inline
                                         margin: none
                                         children:
-                                          - type: ComboBox
-                                            name: meta3Cheating
+                                          - type: Label
+                                            label: 'Split into sets:'
+                                            margin: none
+                                          - type: TextBox
+                                            name: meta2SampleSplits
+                                            format: number
+                                            margin: none
+                                          - type: TextBox
+                                            name: meta2SampleBudget
+                                            format: number
                                             margin: none
                                       - type: LayoutBox
                                         style: inline
@@ -5025,7 +5039,7 @@ children:
                 style: inline
                 margin: none
                 children:
-                          - name: stopBtn
-                            type: ActionButton
-                            maxWidth: 75
-                            maxHeight: 24
+                  - name: stopBtn
+                    type: ActionButton
+                    maxWidth: 75
+                    maxHeight: 24
