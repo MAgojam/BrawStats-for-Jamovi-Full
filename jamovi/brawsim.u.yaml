@@ -3131,10 +3131,18 @@ children:
                             children:
                               - type: Label
                                 label: ' '
+                                minWidth: 15
+                              - type: ComboBox
+                                name: meta5Source
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
                                 minWidth: 30
                               - type: CollapseBox
                                 collapsed: true
-                                label: a. because of interactions
+                                label: a. simple case
                                 margin: none
                                 minWidth: 380
                                 children:
@@ -3176,7 +3184,7 @@ children:
                                 minWidth: 30
                               - type: CollapseBox
                                 collapsed: true
-                                label: b. because of covariation
+                                label: b. typical case
                                 margin: none
                                 minWidth: 380
                                 children:

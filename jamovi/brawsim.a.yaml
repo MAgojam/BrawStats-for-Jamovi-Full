@@ -2497,6 +2497,16 @@ options:
       type: Number
       default: 0.9
 
+    - name: meta5Source
+      title: source
+      type: List
+      options:
+        - name: Interaction
+          title: Interaction
+        - name: Covariation
+          title: Covariation
+      default: Interaction
+    
     - name: doMeta5ABtn
       title: '1'
       type: Action
