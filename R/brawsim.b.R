@@ -1,5 +1,7 @@
 
 # This file is a generated template, your changes will not be overwritten
+# label: '5. <span style="color:#1276b9;"><b>Real Differences:</b></span> when should replication fail?'
+
 
 BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
   "BrawSimClass",

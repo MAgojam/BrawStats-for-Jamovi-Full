@@ -2425,7 +2425,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: Instructions
+                        label: '<span style="color:red;">Instructions</span>'
                         margin: none
                         minWidth: 250
                         maxWidth: 250
@@ -2609,7 +2609,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: '1. Inferences: how useful are p-values?'
+                        label: '1. <b>Inferences:</b> how useful are p-values?'
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -2725,7 +2725,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: '2. Sampling Method: are we cheating?'
+                        label: '2. <b>Sampling Method:</b> are we cheating?'
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -2857,7 +2857,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: '3. Sample Size: who benefits?'
+                        label: '3. <b>Sample Size:</b> who benefits?'
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -2868,12 +2868,12 @@ children:
                               - type: Label
                                 label: ' '
                                 minWidth: 15
-                              - type: ComboBox
-                                name: meta3World
-                                margin: none
                               - type: TextBox
                                 name: meta3pNull
                                 format: number
+                                margin: none
+                              - type: ComboBox
+                                name: meta3World
                                 margin: none
                               - type: Label
                                 label: ' '
@@ -3000,7 +3000,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: '4. Double Checking: how good is replication?'
+                        label: '4. <b>Double Checking:</b> how good is replication?'
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -3012,14 +3012,14 @@ children:
                                 label: ' '
                                 minWidth: 15
                               - type: TextBox
-                                name: meta4SampleSize
+                                name: meta4pNull
                                 format: number
                                 margin: none
                               - type: ComboBox
                                 name: meta4World
                                 margin: none
                               - type: TextBox
-                                name: meta4pNull
+                                name: meta4SampleSize
                                 format: number
                                 margin: none
                           - type: LayoutBox
@@ -3135,7 +3135,8 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: '5. Real Differences: when should replication fail?'
+                        # label: '5. <span style="color:#1276b9;"><b>Real Differences:</b></span> when should replication fail?'
+                        label: '5. <b>Real Differences:</b> when should replication fail?'
                         margin: none
                         minWidth: 470
                         maxWidth: 470
