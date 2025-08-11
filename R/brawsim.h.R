@@ -288,7 +288,6 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             meta4SampleSize = 42,
             meta4World = "Psych50",
             meta4pNull = 0.5,
-            meta4SigOriginal = "yes",
             meta4RepPower = 0.9,
             meta5Source = "Interaction",
             doMeta5ABtn = NULL,
@@ -1950,13 +1949,6 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 "meta4pNull",
                 meta4pNull,
                 default=0.5)
-            private$..meta4SigOriginal <- jmvcore::OptionList$new(
-                "meta4SigOriginal",
-                meta4SigOriginal,
-                options=list(
-                    "no",
-                    "yes"),
-                default="yes")
             private$..meta4RepPower <- jmvcore::OptionNumber$new(
                 "meta4RepPower",
                 meta4RepPower,
@@ -2295,7 +2287,6 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..meta4SampleSize)
             self$.addOption(private$..meta4World)
             self$.addOption(private$..meta4pNull)
-            self$.addOption(private$..meta4SigOriginal)
             self$.addOption(private$..meta4RepPower)
             self$.addOption(private$..meta5Source)
             self$.addOption(private$..doMeta5ABtn)
@@ -2596,7 +2587,6 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         meta4SampleSize = function() private$..meta4SampleSize$value,
         meta4World = function() private$..meta4World$value,
         meta4pNull = function() private$..meta4pNull$value,
-        meta4SigOriginal = function() private$..meta4SigOriginal$value,
         meta4RepPower = function() private$..meta4RepPower$value,
         meta5Source = function() private$..meta5Source$value,
         doMeta5ABtn = function() private$..doMeta5ABtn$value,
@@ -2896,7 +2886,6 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..meta4SampleSize = NA,
         ..meta4World = NA,
         ..meta4pNull = NA,
-        ..meta4SigOriginal = NA,
         ..meta4RepPower = NA,
         ..meta5Source = NA,
         ..doMeta5ABtn = NA,
@@ -3315,7 +3304,6 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param meta4SampleSize .
 #' @param meta4World .
 #' @param meta4pNull .
-#' @param meta4SigOriginal .
 #' @param meta4RepPower .
 #' @param meta5Source .
 #' @param doMeta5ABtn .
@@ -3625,7 +3613,6 @@ BrawSim <- function(
     meta4SampleSize = 42,
     meta4World = "Psych50",
     meta4pNull = 0.5,
-    meta4SigOriginal = "yes",
     meta4RepPower = 0.9,
     meta5Source = "Interaction",
     doMeta5ABtn,
@@ -3927,7 +3914,6 @@ BrawSim <- function(
         meta4SampleSize = meta4SampleSize,
         meta4World = meta4World,
         meta4pNull = meta4pNull,
-        meta4SigOriginal = meta4SigOriginal,
         meta4RepPower = meta4RepPower,
         meta5Source = meta5Source,
         doMeta5ABtn = doMeta5ABtn,

@@ -2477,18 +2477,8 @@ options:
       type: Number
       default: 0.5
 
-    - name: meta4SigOriginal
-      title: "only significant originals?"
-      type: List
-      options:
-        - name: no
-          title: no
-        - name: yes
-          title: yes
-      default: yes
-
     - name: meta4RepPower
-      title: power
+      title: 'replication power'
       type: Number
       default: 0.9
 
