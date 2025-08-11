@@ -144,18 +144,18 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                          self$options$doMeta4BBtn,self$options$doMeta4BmBtn,
                          self$options$doMeta5ABtn,self$options$doMeta5AmBtn,
                          self$options$doMeta5BBtn,self$options$doMeta5BmBtn)
-      investgNames<-c("Inv0I","Inv0Im",
-                      "Inv0I","Inv0Im",
-                      "Inv1A","Inv1Am",
-                      "Inv1B","Inv1Bm",
-                      "Inv2A","Inv2Am",
-                      "Inv2B","Inv2Bm",
-                      "Inv3A","Inv3Am",
-                      "Inv3B","Inv3Bm",
-                      "Inv4A","Inv4Am",
-                      "Inv4B","Inv4Bm",
-                      "Inv5A","Inv5Am",
-                      "Inv5B","Inv5Bm"
+      investgNames<-c("Step0I","Step0Im",
+                      "Step0I","Step0Im",
+                      "Step1A","Step1Am",
+                      "Step1B","Step1Bm",
+                      "Step2A","Step2Am",
+                      "Step2B","Step2Bm",
+                      "Step3A","Step3Am",
+                      "Step3B","Step3Bm",
+                      "Step4A","Step4Am",
+                      "Step4B","Step4Bm",
+                      "Step5A","Step5Am",
+                      "Step5B","Step5Bm"
                       )
       if (any(investgControls)) {
         # statusStore$showPlan<-FALSE
@@ -178,39 +178,39 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       
       # are we doing investigations?
       if (!is.null(doingInvestg)) {
-        switch(substr(doingInvestg,1,4),
-               "Inv0"={
+        switch(substr(doingInvestg,1,5),
+               "Step0"={
                  world<-NULL
                  pNull<-NULL
                  sN<-NULL
                },
-               "Inv1"={
+               "Step1"={
                  world<-NULL
                  pNull<-self$options$meta1pNull
                  sN<-NULL
                },
-               "Inv2"={
+               "Step2"={
                  world<-self$options$meta2World
                  pNull<-self$options$meta2pNull
                  sN<-NULL
                },
-               "Inv3"={
+               "Step3"={
                  world<-self$options$meta3World
                  pNull<-self$options$meta3pNull
                  sN<-self$options$meta3SampleSize
                },
-               "Inv4"={
+               "Step4"={
                  world<-self$options$meta4World
                  pNull<-self$options$meta4pNull
                  sN<-self$options$meta4SampleSize
                },
-               "Inv5"={
+               "Step5"={
                  world<-NULL
                  pNull<-NULL
                  sN<-NULL
                }
         )
-        if (substr(doingInvestg,6,6)=='m')  {
+        if (substr(doingInvestg,7,7)=='m')  {
           if (is.null(braw.res$multiple) || !identical(oldH,braw.def$hypothesis) || !identical(oldD,braw.def$design)) 
                   nDone<-0
           else    nDone<-braw.res$multiple$count
@@ -233,7 +233,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           self$results$simGraphHTML$setContent(investgResults)
           statusStore$investgResults<-investgResults
           setBrawRes("statusStore",statusStore)
-          if (substr(doingInvestg,6,6)=='m') nDone<-braw.res$multiple$count
+          if (substr(doingInvestg,7,7)=='m') nDone<-braw.res$multiple$count
           else nDone<-1
           
           private$.checkpoint()
@@ -245,7 +245,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         setBrawRes("statusStore",statusStore)
         setBrawRes("invHistoryStore",invHistory)
         
-        if (substr(doingInvestg,6,6)=="m") sendData2Jamovi("Multiple",self)
+        if (substr(doingInvestg,7,7)=="m") sendData2Jamovi("Multiple",self)
         else sendData2Jamovi("Single",self)
         return()
       }

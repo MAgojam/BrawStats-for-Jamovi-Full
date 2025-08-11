@@ -2416,10 +2416,6 @@ children:
               - type: LayoutBox
                 style: list
                 children:
-                  - type: Label
-                    label: >-
-                      For more information and an explanation, click on the
-                      '<span style="color:#0000ff;">ⓘlink.</span>'
                   - type: LayoutBox
                     style: inline
                     children:
@@ -2556,7 +2552,7 @@ children:
                               - type: Label
                                 label: >-
                                   To get more information, press the
-                                  '<span style="color:#0000ff;">ⓘlink</span>'
+                                  <span style="color:#0000ff;">ⓘlink</span>
                                   above the graphs
                           - type: LayoutBox
                             style: inline
