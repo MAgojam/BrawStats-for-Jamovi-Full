@@ -16,8 +16,8 @@ options:
         title: Basics
       - name: MetaScience
         title: MetaScience
-      - name: Simulations
-        title: Simulations
+      - name: Simulation
+        title: Simulation
       - name: Settings
         title: Settings
 

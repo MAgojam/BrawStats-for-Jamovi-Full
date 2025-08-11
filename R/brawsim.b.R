@@ -291,12 +291,12 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       if (self$options$basicMode!=statusStore$basicMode 
           || self$options$planMode!=statusStore$planMode
           || self$options$exploreMode!=statusStore$exploreMode) {
-        if (is.element(self$options$basicMode,c("Basics","MetaScience","Simulations"))) 
+        if (is.element(self$options$basicMode,c("Basics","MetaScience","Simulation"))) 
         if (self$options$basicMode!=statusStore$basicMode) {
           switch(self$options$basicMode,
                  "Basics"=self$results$simGraphHTML$setContent(statusStore$demoResults),
                  "MetaScience"=self$results$simGraphHTML$setContent(statusStore$investgResults),
-                 "Simulations"=self$results$simGraphHTML$setContent(statusStore$simResults)
+                 "Simulation"=self$results$simGraphHTML$setContent(statusStore$simResults)
           )
         private$.checkpoint()
         }

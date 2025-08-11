@@ -19,7 +19,7 @@ makeHelpOut<-function(brawHelp,statusStore) {
         title="Help:",
         plainTabs=TRUE,
         titleWidth=50,
-        tabs=c("Start","Basics","MetaScience","Simulations","Jamovi","Key"),
+        tabs=c("Start","Basics","MetaScience","Simulation","Jamovi","Key"),
         tabContents=c(basicHelp,demoHelp,investgHelp,simHelp,jamoviHelp,BrawInstructions("Key")),
         open=open0
       )

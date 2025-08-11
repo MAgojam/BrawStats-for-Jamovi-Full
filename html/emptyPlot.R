@@ -3,12 +3,12 @@ emptyPlot<-function(self) {
     switch(self$options$basicMode,
            "Basics"=tabs<-c("Single","Multiple","Explore"),
            "MetaScience"=tabs<-c("Data","Schematic","Report"),
-           "Simulations"=tabs<-c("Single","Multiple","Explore")
+           "Simulation"=tabs<-c("Single","Multiple","Explore")
     )
     switch(self$options$basicMode,
            "Basics"=tabTitle<-"Basics:",
            "MetaScience"=tabTitle<-"MetaScience:",
-           "Simulations"=tabTitle<-"Simulation:"
+           "Simulation"=tabTitle<-"Simulation:"
     )
     nullResults<-generate_tab(
       title=tabTitle,

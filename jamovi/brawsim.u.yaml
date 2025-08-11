@@ -79,7 +79,7 @@ children:
                 style: inline
                 children:
                   - type: Label
-                    label: 'Simulations:'
+                    label: 'Simulation:'
                     minWidth: 90
                     verticalAlignment: top
                     horizontalAlignment: right
@@ -3250,7 +3250,7 @@ children:
                         name: invGoForwards
                         maxHeight: 24
           - type: Content
-            name: Simulations
+            name: Simulation
             margin: none
             children:
               - type: LayoutBox

@@ -315,7 +315,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "LearnHelp",
                     "Basics",
                     "MetaScience",
-                    "Simulations",
+                    "Simulation",
                     "Settings"))
             private$..demosHelp <- jmvcore::OptionAction$new(
                 "demosHelp",
