@@ -2764,7 +2764,7 @@ children:
                                       - type: Label
                                         label: ' '
                                       - type: ComboBox
-                                        name: meta3SampleMethod
+                                        name: meta2SampleMethod
                                         margin: none
                                   - type: LayoutBox
                                     style: inline
@@ -2817,7 +2817,7 @@ children:
                                         style: inline
                                         children:
                                           - type: ComboBox
-                                            name: meta3Cheating
+                                            name: meta2Cheating
                                             margin: none
                                       - type: LayoutBox
                                         style: inline
@@ -2897,7 +2897,7 @@ children:
                                         style: inline
                                         children:
                                           - type: TextBox
-                                            name: meta2SampleSize
+                                            name: meta3SampleSize
                                             format: number
                                             margin: none
                                       - type: LayoutBox
@@ -2952,11 +2952,11 @@ children:
                                             label: 'Split into sets:'
                                             margin: none
                                           - type: TextBox
-                                            name: meta2SampleSplits
+                                            name: meta3SampleSplits
                                             format: number
                                             margin: none
                                           - type: TextBox
-                                            name: meta2SampleBudget
+                                            name: meta3SampleBudget
                                             format: number
                                             margin: none
                                       - type: LayoutBox

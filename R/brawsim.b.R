@@ -221,8 +221,9 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         while (nDone<targetN) {
           investgResults<-doInvestigation(doingInvestg,
                                           world=world,rp=self$options$metaDefaultRp,pNull=pNull,
-                                          sN=sN,sBudget=self$options$meta2SampleBudget,sSplits=self$options$meta2SampleSplits,
-                                          sMethod=self$options$meta3SampleMethod,sCheating=self$options$meta3Cheating,
+                                          sN=sN,
+                                          sMethod=self$options$meta2SampleMethod,sCheating=self$options$meta2Cheating,
+                                          sBudget=self$options$meta3SampleBudget,sSplits=self$options$meta3SampleSplits,
                                           sReplicationPower=self$options$meta4RepPower,sReplicationSigOriginal=self$options$meta4SigOriginal=="yes",
                                           differenceSource=self$options$meta5Source,
                                           nreps=10
