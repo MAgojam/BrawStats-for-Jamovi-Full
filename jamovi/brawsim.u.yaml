@@ -20,7 +20,7 @@ children:
                 margin: none
                 children:
                   - type: Label
-                    label: 'Demos:'
+                    label: 'Basics:'
                     minWidth: 90
                     horizontalAlignment: right
                     margin: none
@@ -49,7 +49,7 @@ children:
                 margin: none
                 children:
                   - type: Label
-                    label: 'Investigations:'
+                    label: 'MetaScience:'
                     minWidth: 90
                     horizontalAlignment: right
                     margin: none
@@ -59,7 +59,7 @@ children:
                     children:
                       - type: Label
                         label: >-
-                          Investigations to explore how statistical testing
+                          Demos to explore how statistical testing
                           behaves
                         minWidth: 380
                         maxWidth: 380
@@ -102,7 +102,7 @@ children:
                     maxHeight: 24
                     verticalAlignment: top
           - type: Content
-            name: Demonstrations
+            name: Basics
             margin: none
             children:
               - type: LayoutBox
@@ -2410,7 +2410,7 @@ children:
                         maxWidth: 10
                         maxHeight: 24
           - type: Content
-            name: Investigations
+            name: MetaScience
             margin: none
             children:
               - type: LayoutBox
@@ -2737,12 +2737,12 @@ children:
                               - type: Label
                                 label: ' '
                                 minWidth: 15
-                              - type: ComboBox
-                                name: meta2World
-                                margin: none
                               - type: TextBox
                                 name: meta2pNull
                                 format: number
+                                margin: none
+                              - type: ComboBox
+                                name: meta2World
                                 margin: none
                               - type: Label
                                 label: ' '
@@ -4923,7 +4923,7 @@ children:
                   - type: CollapseBox
                     name: Settings5
                     collapsed: true
-                    label: 'Investigations:'
+                    label: 'MetaScience:'
                     margin: none
                     minWidth: 330
                     children:

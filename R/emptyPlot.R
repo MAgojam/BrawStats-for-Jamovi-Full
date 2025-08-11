@@ -1,13 +1,13 @@
 emptyPlot<-function(self) {
 
     switch(self$options$basicMode,
-           "Demonstrations"=tabs<-c("Single","Multiple","Explore"),
-           "Investigations"=tabs<-c("Data","Schematic"),
+           "Basics"=tabs<-c("Single","Multiple","Explore"),
+           "MetaScience"=tabs<-c("Data","Schematic"),
            "Simulations"=tabs<-c("Single","Multiple","Explore")
     )
     switch(self$options$basicMode,
-           "Demonstrations"=tabTitle<-"Demonstration:",
-           "Investigations"=tabTitle<-"Investigation:",
+           "Basics"=tabTitle<-"Basics:",
+           "MetaScience"=tabTitle<-"MetaScience:",
            "Simulations"=tabTitle<-"Simulation:"
     )
     nullResults<-generate_tab(

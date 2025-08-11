@@ -11,11 +11,11 @@ options:
       type: List
       options:
       - name: LearnHelp
-        title: 'Learn with:'
-      - name: Demonstrations
-        title: Demos
-      - name: Investigations
-        title: Investigations
+        title: 'Learn:'
+      - name: Basics
+        title: Basics
+      - name: MetaScience
+        title: MetaScience
       - name: Simulations
         title: Simulations
       - name: Settings

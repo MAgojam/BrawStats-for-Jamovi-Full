@@ -41,7 +41,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         blankPlot<-nullPlot()
         
         demoResults<-generate_tab(
-          title="Demonstration:",
+          title="Basics:",
           plainTabs=TRUE,
           titleWidth=100,
           tabs=c("Single","Multiple","Explore","Plan"),
@@ -49,7 +49,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           open=0
         )
         investgResults<-generate_tab(
-          title="Investigation:",
+          title="MetaScience:",
           plainTabs=TRUE,
           titleWidth=100,
           tabs=c("Data","Schematic"),
@@ -221,7 +221,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           targetN<-1
         }
         while (nDone<targetN) {
-          investgResults<-doInvestigation(doingInvestg,
+          investgResults<-doMetaScience(doingInvestg,
                                           world=world,rp=self$options$metaDefaultRp,pNull=pNull,
                                           sN=sN,
                                           sMethod=self$options$meta2SampleMethod,sCheating=self$options$meta2Cheating,
@@ -291,11 +291,11 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       if (self$options$basicMode!=statusStore$basicMode 
           || self$options$planMode!=statusStore$planMode
           || self$options$exploreMode!=statusStore$exploreMode) {
-        if (is.element(self$options$basicMode,c("Demonstrations","Investigations","Simulations"))) 
+        if (is.element(self$options$basicMode,c("Basics","MetaScience","Simulations"))) 
         if (self$options$basicMode!=statusStore$basicMode) {
           switch(self$options$basicMode,
-                 "Demonstrations"=self$results$simGraphHTML$setContent(statusStore$demoResults),
-                 "Investigations"=self$results$simGraphHTML$setContent(statusStore$investgResults),
+                 "Basics"=self$results$simGraphHTML$setContent(statusStore$demoResults),
+                 "MetaScience"=self$results$simGraphHTML$setContent(statusStore$investgResults),
                  "Simulations"=self$results$simGraphHTML$setContent(statusStore$simResults)
           )
         private$.checkpoint()
@@ -597,9 +597,9 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
             setBrawRes("simExplore",simExplore)
             open<-3
           }
-          if (self$options$basicMode=="Demonstrations") {
+          if (self$options$basicMode=="Basics") {
             demoResults<-generate_tab(
-              title="Demonstration:",
+              title="Basics:",
               plainTabs=TRUE,
               titleWidth=100,
               tabs=c("Single","Multiple","Explore","Plan"),

@@ -36,7 +36,7 @@ brawSimHelp<-function(open=0,indent,titleWidth) {
 brawInvestgHelp<-function(open=0,indent,titleWidth) {
   return(
     generate_tab(
-      title="Investigations help:",
+      title="MetaScience help:",
       indent=indent,
       titleWidth=titleWidth,
       # titleTab="Click on the tabs for specific help.",
@@ -152,7 +152,7 @@ brawDemosHelp<-function(open,indent,titleWidth,demos) {
     demoTabs<-demoTabs[1:(demos+1)]
 
     return( generate_tab(
-      title="Demos:",
+      title="Basics:",
       indent=indent,
       titleWidth=titleWidth,
       plainTabs=TRUE,
