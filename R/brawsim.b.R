@@ -208,23 +208,31 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                  sN<-NULL
                }
         )
-        if (substr(doingInvestg,6,6)=='m') nreps<-10 else nreps<-1
-        numberSamples<-self$options$metaMultiple
-        if (!identical(oldH,braw.def$hypothesis) || !identical(oldD,braw.def$design) || is.null(braw.res$multiple)) 
-             targetN<-numberSamples
-        else targetN<-braw.res$multiple$count+numberSamples
-        while ((is.null(braw.res$multiple)) || (braw.res$multiple$count<targetN)) {
+        if (substr(doingInvestg,6,6)=='m')  {
+          if (is.null(braw.res$multiple) || !identical(oldH,braw.def$hypothesis) || !identical(oldD,braw.def$design)) 
+                  nDone<-0
+          else    nDone<-braw.res$multiple$count
+          targetN<-nDone+self$options$metaMultiple
+        }
+        else {
+          nDone<-0
+          targetN<-1
+        }
+        while (nDone<targetN) {
           investgResults<-doInvestigation(doingInvestg,
                                           world=world,rp=self$options$metaDefaultRp,pNull=pNull,
                                           sN=sN,sBudget=self$options$meta2SampleBudget,sSplits=self$options$meta2SampleSplits,
                                           sMethod=self$options$meta3SampleMethod,sCheating=self$options$meta3Cheating,
                                           sReplicationPower=self$options$meta4RepPower,sReplicationSigOriginal=self$options$meta4SigOriginal=="yes",
                                           differenceSource=self$options$meta5Source,
-                                          nreps=nreps
+                                          nreps=10
           )
           self$results$simGraphHTML$setContent(investgResults)
           statusStore$investgResults<-investgResults
           setBrawRes("statusStore",statusStore)
+          if (substr(doingInvestg,6,6)=='m') nDone<-braw.res$multiple$count
+          else nDone<-1
+          
           private$.checkpoint()
           if (stopBtn) break
         }
