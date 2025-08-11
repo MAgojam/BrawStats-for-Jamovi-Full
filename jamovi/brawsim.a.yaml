@@ -2475,7 +2475,7 @@ options:
     - name: meta4pNull
       title: '   p(rₚ=0)'
       type: Number
-      default: 0.5
+      default: 0.75
 
     - name: meta4RepPower
       title: 'replication power'
