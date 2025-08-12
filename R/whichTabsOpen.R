@@ -9,14 +9,14 @@ if (self$options$simExploreHelp) statusStore$simHelpWhich<-5
 if (statusStore$simHelpWhich==old_simHelpWhich) statusStore$simHelpWhich<-0
 
 
-old_investgHelpWhich<-statusStore$investgHelpWhich
-if (self$options$metaHelp) statusStore$investgHelpWhich<-1
-if (self$options$meta1Help) statusStore$investgHelpWhich<-2
-if (self$options$meta2Help) statusStore$investgHelpWhich<-3
-if (self$options$meta3Help) statusStore$investgHelpWhich<-4
-if (self$options$meta4Help) statusStore$investgHelpWhich<-5
-if (self$options$meta5Help) statusStore$investgHelpWhich<-6
-if (statusStore$investgHelpWhich==old_investgHelpWhich) statusStore$investgHelpWhich<-0
+old_metaSciHelpWhich<-statusStore$metaSciHelpWhich
+if (self$options$metaHelp) statusStore$metaSciHelpWhich<-1
+if (self$options$meta1Help) statusStore$metaSciHelpWhich<-2
+if (self$options$meta2Help) statusStore$metaSciHelpWhich<-3
+if (self$options$meta3Help) statusStore$metaSciHelpWhich<-4
+if (self$options$meta4Help) statusStore$metaSciHelpWhich<-5
+if (self$options$meta5Help) statusStore$metaSciHelpWhich<-6
+if (statusStore$metaSciHelpWhich==old_metaSciHelpWhich) statusStore$metaSciHelpWhich<-0
 
 old_demoHelpWhich<-statusStore$demoHelpWhich
 if (self$options$demosHelp) statusStore$demoHelpWhich<-c(1,0)

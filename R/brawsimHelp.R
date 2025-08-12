@@ -33,7 +33,7 @@ brawSimHelp<-function(open=0,indent,titleWidth) {
   )
 }
 
-brawInvestgHelp<-function(open=0,indent,titleWidth) {
+brawMetaSciHelp<-function(open=0,indent,titleWidth) {
   return(
     generate_tab(
       title="MetaScience help:",
@@ -42,12 +42,12 @@ brawInvestgHelp<-function(open=0,indent,titleWidth) {
       # titleTab="Click on the tabs for specific help.",
       tabs=c("Start","Inferences","Sampling Method","Sample Size","Double Checking","Real Differences"),
       tabContents = c(
-        investgInstructions("Overview"),
-        investgInstructions("Inferences"),
-        investgInstructions("Sampling Method"),
-        investgInstructions("Sample Size"),
-        investgInstructions("Double Checking"),
-        investgInstructions("Real Differences")
+        metaSciInstructions("Overview"),
+        metaSciInstructions("Inferences"),
+        metaSciInstructions("Sampling Method"),
+        metaSciInstructions("Sample Size"),
+        metaSciInstructions("Double Checking"),
+        metaSciInstructions("Real Differences")
       ),
       open=open
     )

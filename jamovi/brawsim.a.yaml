@@ -2538,11 +2538,11 @@ options:
       type: Number
       default: 0.5
 
-    - name: invGoBack
+    - name: metaGoBack
       title: '<<'
       type: Action
 
-    - name: invGoForwards
+    - name: metaGoForwards
       title: '>>'
       type: Action
 ...

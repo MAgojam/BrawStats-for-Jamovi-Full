@@ -3240,10 +3240,10 @@ children:
                       - type: Label
                         label: 'History:'
                       - type: ActionButton
-                        name: invGoBack
+                        name: metaGoBack
                         maxHeight: 24
                       - type: ActionButton
-                        name: invGoForwards
+                        name: metaGoForwards
                         maxHeight: 24
           - type: Content
             name: Simulation

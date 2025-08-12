@@ -1,4 +1,4 @@
-investgInstructions <- function(HelpType="Plan") {
+metaSciInstructions <- function(HelpType="Plan") {
 
   switch(HelpType,
          "Overview"={
@@ -48,7 +48,7 @@ investgInstructions <- function(HelpType="Plan") {
              'Try this a few times and see (i) how safe the p-value is as a guide to the population.',
              '<br>',
              '<br>',
-             '<b>In the first part of this investigation</b> we use a more realistic situation.',
+             '<b>In the first part of this step</b> we use a more realistic situation.',
              '<ul style=margin:0px;>',
              '<li> The population effect size is either r<sub>p</sub>=0.0 or r<sub>p</sub>=0.3 with equal probability.',
              '<li> The sample size is 42',
@@ -60,7 +60,7 @@ investgInstructions <- function(HelpType="Plan") {
              '(ii) how safe the p-value is as a guide to which population.',
              '<br>',
              '<br>',
-             '<b>In the second part of this investigation</b> we use a world that models Psychology.',
+             '<b>In the second part of this step</b> we use a world that models Psychology.',
              '<ul style=margin:0px;>',
              '<li> The population effect size is either zero (50%) or drawn from an exponential distribution (50%).',
              '<li> The sample size is 42',
@@ -74,14 +74,14 @@ investgInstructions <- function(HelpType="Plan") {
            'Larger sample sizes cost more time, effort and often money. It is therefore worth asking whether two smaller studies are more productive than one large one.',
            'The question is important not least because increasing sample size offers diminishing returns.',
            'The benefit of going from 20 to 40 data points is much, much greater than the benefit of going from 120 to 140.',
-           'In this investigation, we look at this.',
+           'In this step, we look at this.',
            '<br>',
            '<br>',
-           '<b>In the first part of this investigation</b> you simply choose how many participants to use. ',
+           '<b>In the first part of this step</b> you simply choose how many participants to use. ',
            'Whilst a larger sample always produces a more precise result, the question is how to justify the costs (not least to participants themselves).',
            '<br>',
            '<br>',
-           '<b>In the second part of this investigation</b> you have a budget of 320 participants and you are operating in the model Psychology world.',
+           '<b>In the second part of this step</b> you have a budget of 320 participants and you are operating in the model Psychology world.',
            '<ul style=margin:0px;>',
            '<li> Use all 320 participants in a single study.',
            '<li> Now split them into 4 studies.',
@@ -98,10 +98,10 @@ investgInstructions <- function(HelpType="Plan") {
            'Larger sample sizes cost more time, effort and often money. It is therefore worth asking whether two smaller studies are more productive than one large one.',
            'The question is important not least because increasing sample size offers diminishing returns.',
            'The benefit of going from 20 to 40 data points is much, much greater than the benefit of going from 120 to 140.',
-           'In this investigation, we look at this.',
+           'In this step, we look at this.',
            '<br>',
            '<br>',
-           '<b>In the first part of this investigation</b> you have a budget of 320 participants and you are operating in the model Psychology world.',
+           '<b>In the first part of this step</b> you have a budget of 320 participants and you are operating in the model Psychology world.',
            '<ul style=margin:0px;>',
            '<li> Use all 320 participants in a single study.',
            '<li> Now split them into 4 studies.',
@@ -132,7 +132,7 @@ investgInstructions <- function(HelpType="Plan") {
            '</ul>',
            'How do the two compare?',
            '<br><br>',
-           '<b>In the first part of this investigation</b>, we look at replication.',
+           '<b>In the first part of this step</b>, we look at replication.',
            'The process only looks at results that were significant in the first place. ',
            'There are 3 types of outcome: ns no follow-up; sig, then ns; sig then sig.',
            'If the population effect size is zero, then the first two outcomes are correct.',
@@ -141,7 +141,7 @@ investgInstructions <- function(HelpType="Plan") {
            '<br>',
            'Replication is widely used and accepted, but is that entirely safe?',
            '<br><br>',
-           '<b>In the second part of this investigation</b>, we look at meta-analysis.',
+           '<b>In the second part of this step</b>, we look at meta-analysis.',
            'Although normally used with many studies, the process can be applied to just two studies',
            'and we can think of it as a way of combining an original study and the replication.',
            'As before, there are three possible outcomes and as before, we ask how many correct results meta-analysis produces.',
@@ -156,13 +156,13 @@ investgInstructions <- function(HelpType="Plan") {
            'When a study fails to replicate, this is usually understood to be an indication that the original finding was a false discovery.',
            'And, <it>sometimes</it> it is thought that the original study was in some way faulty.',
            '<br><br>',
-           'In this investigation, we set up a situation where two different groups of researchers get completely conflicting results.',
+           'In this step, we set up a situation where two different groups of researchers get completely conflicting results.',
            'However, there is a good reason for this. ',
            '<br><br>',
            'In short, the two researchers are, without noticing it, studying different populations as might happen if they worked in different countries.',
            'This can be shown by including a third variable in the hypothesis, where the different countries favour different values for that variable.',
            '<br><br>',
-           'It is hoped that these investigations have given you some insight into how statistical analysis works when it is scaled up across a whole discipline.',
+           'It is hoped that these steps have given you some insight into how statistical analysis works when it is scaled up across a whole discipline.',
            '<br>'
            )
          }
@@ -179,13 +179,13 @@ investgInstructions <- function(HelpType="Plan") {
     extras<-paste0('<br>',
                    'More information ',
                    '<a href=',
-                   '"https://doingpsychstats.wordpress.com/investigation-',HelpNo,'/"',
+                   '"https://doingpsychstats.wordpress.com/metasci-',HelpNo,'/"',
                    ' target="_blank">',
                    'here',
                    '</a>',
                    ' and leave any comments ',
                    '<a href=',
-                   '"https://doingpsychstats.wordpress.com/investigation-',HelpNo,'/#respond"',
+                   '"https://doingpsychstats.wordpress.com/metasci-',HelpNo,'/#respond"',
                    ' target="_blank">',
                    'here',
                    '</a>'
@@ -200,7 +200,7 @@ investgInstructions <- function(HelpType="Plan") {
   return(wholePanel)
 }
 
-investgComment<-function(whichComment) {
+metaSciComment<-function(whichComment) {
   
   svgBox(height=120,aspect=1.5)
   setBrawEnv("graphicsType","HTML")

@@ -299,8 +299,8 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             metaDefaultN = 42,
             metaDefaultRp = 0.3,
             metaDefaultNullp = 0.5,
-            invGoBack = NULL,
-            invGoForwards = NULL, ...) {
+            metaGoBack = NULL,
+            metaGoForwards = NULL, ...) {
 
             super$initialize(
                 package="BrawStats",
@@ -1995,12 +1995,12 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 "metaDefaultNullp",
                 metaDefaultNullp,
                 default=0.5)
-            private$..invGoBack <- jmvcore::OptionAction$new(
-                "invGoBack",
-                invGoBack)
-            private$..invGoForwards <- jmvcore::OptionAction$new(
-                "invGoForwards",
-                invGoForwards)
+            private$..metaGoBack <- jmvcore::OptionAction$new(
+                "metaGoBack",
+                metaGoBack)
+            private$..metaGoForwards <- jmvcore::OptionAction$new(
+                "metaGoForwards",
+                metaGoForwards)
 
             self$.addOption(private$..basicMode)
             self$.addOption(private$..demosHelp)
@@ -2298,8 +2298,8 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..metaDefaultN)
             self$.addOption(private$..metaDefaultRp)
             self$.addOption(private$..metaDefaultNullp)
-            self$.addOption(private$..invGoBack)
-            self$.addOption(private$..invGoForwards)
+            self$.addOption(private$..metaGoBack)
+            self$.addOption(private$..metaGoForwards)
         }),
     active = list(
         basicMode = function() private$..basicMode$value,
@@ -2598,8 +2598,8 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         metaDefaultN = function() private$..metaDefaultN$value,
         metaDefaultRp = function() private$..metaDefaultRp$value,
         metaDefaultNullp = function() private$..metaDefaultNullp$value,
-        invGoBack = function() private$..invGoBack$value,
-        invGoForwards = function() private$..invGoForwards$value),
+        metaGoBack = function() private$..metaGoBack$value,
+        metaGoForwards = function() private$..metaGoForwards$value),
     private = list(
         ..basicMode = NA,
         ..demosHelp = NA,
@@ -2897,8 +2897,8 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..metaDefaultN = NA,
         ..metaDefaultRp = NA,
         ..metaDefaultNullp = NA,
-        ..invGoBack = NA,
-        ..invGoForwards = NA)
+        ..metaGoBack = NA,
+        ..metaGoForwards = NA)
 )
 
 BrawSimResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
@@ -3315,8 +3315,8 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param metaDefaultN .
 #' @param metaDefaultRp .
 #' @param metaDefaultNullp .
-#' @param invGoBack .
-#' @param invGoForwards .
+#' @param metaGoBack .
+#' @param metaGoForwards .
 #' @return A results object containing:
 #' \tabular{llllll}{
 #'   \code{results$simSystemHTML} \tab \tab \tab \tab \tab a html \cr
@@ -3624,8 +3624,8 @@ BrawSim <- function(
     metaDefaultN = 42,
     metaDefaultRp = 0.3,
     metaDefaultNullp = 0.5,
-    invGoBack,
-    invGoForwards) {
+    metaGoBack,
+    metaGoForwards) {
 
     if ( ! requireNamespace("jmvcore", quietly=TRUE))
         stop("BrawSim requires jmvcore to be installed (restart may be required)")
@@ -3925,8 +3925,8 @@ BrawSim <- function(
         metaDefaultN = metaDefaultN,
         metaDefaultRp = metaDefaultRp,
         metaDefaultNullp = metaDefaultNullp,
-        invGoBack = invGoBack,
-        invGoForwards = invGoForwards)
+        metaGoBack = metaGoBack,
+        metaGoForwards = metaGoForwards)
 
     analysis <- BrawSimClass$new(
         options = options,
