@@ -37,15 +37,13 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                     autoPrint=FALSE
         )
         setBrawEnv("graphicsType","HTML")
-        svgBox(height=350,aspect=1.5,fontScale=1.2)
-        blankPlot<-nullPlot()
-        
+
         demoResults<-generate_tab(
           title="Basics:",
           plainTabs=TRUE,
           titleWidth=100,
           tabs=c("Single","Multiple","Explore","Plan"),
-          tabContents=rep(blankPlot,4),
+          tabContents=rep(emptyPlot(),4),
           open=0
         )
         investgResults<-generate_tab(
@@ -53,7 +51,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           plainTabs=TRUE,
           titleWidth=100,
           tabs=c("Data","Schematic"),
-          tabContents=rep(blankPlot,2),
+          tabContents=rep(emptyPlot(),2),
           tabLink='https://doingpsychstats.wordpress.com/investigations/',
           tabLinkLabel=paste0('\U24D8',' here'),
           outerHeight=380,
@@ -64,7 +62,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           plainTabs=TRUE,
           titleWidth=100,
           tabs=c("Single","Multiple","Explore","Plan"),
-          tabContents=rep(blankPlot,4),
+          tabContents=rep(emptyPlot(),4),
           open=0
         )
         
@@ -108,12 +106,12 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           historyOptions=NULL,
           historyPlace=0
         )
-        setBrawRes("investgD",blankPlot)
-        setBrawRes("investgS",blankPlot)
-        setBrawRes("investgR",blankPlot)
-        setBrawRes("simSingle",blankPlot)
-        setBrawRes("simMultiple",blankPlot)
-        setBrawRes("simExplore",blankPlot)
+        setBrawRes("investgD",emptyPlot())
+        setBrawRes("investgS",emptyPlot())
+        setBrawRes("investgR",emptyPlot())
+        setBrawRes("simSingle",emptyPlot())
+        setBrawRes("simMultiple",emptyPlot())
+        setBrawRes("simExplore",emptyPlot())
         
       } else {
         statusStore<-braw.res$statusStore
@@ -178,33 +176,33 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       
       # are we doing investigations?
       if (!is.null(doingInvestg)) {
-        switch(substr(doingInvestg,1,5),
-               "Step0"={
+        switch(substr(doingInvestg,5,5),
+               "0"={
                  world<-NULL
                  pNull<-NULL
                  sN<-NULL
                },
-               "Step1"={
+               "1"={
                  world<-NULL
                  pNull<-self$options$meta1pNull
                  sN<-NULL
                },
-               "Step2"={
+               "2"={
                  world<-self$options$meta2World
                  pNull<-self$options$meta2pNull
                  sN<-NULL
                },
-               "Step3"={
+               "3"={
                  world<-self$options$meta3World
                  pNull<-self$options$meta3pNull
                  sN<-self$options$meta3SampleSize
                },
-               "Step4"={
+               "4"={
                  world<-self$options$meta4World
                  pNull<-self$options$meta4pNull
                  sN<-self$options$meta4SampleSize
                },
-               "Step5"={
+               "5"={
                  world<-NULL
                  pNull<-NULL
                  sN<-NULL
