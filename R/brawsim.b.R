@@ -185,7 +185,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                  sN<-1000
                }
         )
-        prepareMetaScience(doingInvestg,
+        metaScience<-prepareMetaScience(doingInvestg,
                            world=world,rp=self$options$metaDefaultRp,pNull=pNull,
                            sN=sN,
                            sMethod=self$options$meta2SampleMethod,sCheating=self$options$meta2Cheating,
@@ -207,7 +207,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           targetN<-1
         }
         while (nDone<targetN) {
-          investgResults<-doMetaScience(doingInvestg,nreps=10)
+          investgResults<-doMetaScience(doingInvestg,metaScience,nreps=10)
           statusStore$investgResults<-investgResults
           setBrawRes("statusStore",statusStore)
           if (substr(doingInvestg,7,7)=='m') nDone<-braw.res$multiple$count
