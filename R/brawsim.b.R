@@ -38,34 +38,10 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         )
         setBrawEnv("graphicsType","HTML")
 
-        demoResults<-generate_tab(
-          title="Basics:",
-          plainTabs=TRUE,
-          titleWidth=100,
-          tabs=c("Single","Multiple","Explore","Plan"),
-          tabContents=rep(emptyPlot(),4),
-          open=0
-        )
-        investgResults<-generate_tab(
-          title="MetaScience:",
-          plainTabs=TRUE,
-          titleWidth=100,
-          tabs=c("Data","Schematic"),
-          tabContents=rep(emptyPlot(),2),
-          tabLink='https://doingpsychstats.wordpress.com/investigations/',
-          tabLinkLabel=paste0('\U24D8',' here'),
-          outerHeight=380,
-          open=0
-        )
-        simResults<-generate_tab(
-          title="Simulation:",
-          plainTabs=TRUE,
-          titleWidth=100,
-          tabs=c("Single","Multiple","Explore","Plan"),
-          tabContents=rep(emptyPlot(),4),
-          open=0
-        )
-        
+        demoResults<-emptyPlot("Basics")
+        investgResults<-emptyPlot("MetaScience")
+        simResults<-emptyPlot("Simulation")
+
         statusStore<-list(lastOutput="System",
                           demoResults=demoResults,
                           investgResults=investgResults,
@@ -106,12 +82,12 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           historyOptions=NULL,
           historyPlace=0
         )
-        setBrawRes("investgD",emptyPlot())
-        setBrawRes("investgS",emptyPlot())
-        setBrawRes("investgR",emptyPlot())
-        setBrawRes("simSingle",emptyPlot())
-        setBrawRes("simMultiple",emptyPlot())
-        setBrawRes("simExplore",emptyPlot())
+        setBrawRes("investgD",nullPlot())
+        setBrawRes("investgS",nullPlot())
+        setBrawRes("investgR",nullPlot())
+        setBrawRes("simSingle",nullPlot())
+        setBrawRes("simMultiple",nullPlot())
+        setBrawRes("simExplore",nullPlot())
         
       } else {
         statusStore<-braw.res$statusStore
@@ -157,7 +133,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                       )
       if (any(investgControls)) {
         # statusStore$showPlan<-FALSE
-        emptyPlot(self)
+        nullResults<-emptyPlot("MetaScience")
+        self$results$simGraphHTML$setContent(nullResults)
         private$.checkpoint()
 
         doingInvestg<-investgNames[investgControls]
@@ -444,7 +421,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                   makeMultipleNow && statusStore$lastOutput!="Multiple",
                   makeExploreNow && statusStore$lastOutput!="Explore"
                   ))) {
-          emptyPlot(self)
+          nullResults<-emptyPlot(self$options$basicMode)
+          self$results$simGraphHTML$setContent(nullResults)
           private$.checkpoint()
         }
         # now we start doing new things

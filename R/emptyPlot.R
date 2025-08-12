@@ -1,11 +1,11 @@
-emptyPlot<-function(self) {
+emptyPlot<-function(mode) {
 
-    switch(self$options$basicMode,
+    switch(mode,
            "Basics"=tabs<-c("Single","Multiple","Explore"),
            "MetaScience"=tabs<-c("Data","Schematic"),
            "Simulation"=tabs<-c("Single","Multiple","Explore")
     )
-    switch(self$options$basicMode,
+    switch(mode,
            "Basics"=tabTitle<-"Basics:",
            "MetaScience"=tabTitle<-"MetaScience:",
            "Simulation"=tabTitle<-"Simulation:"
@@ -19,6 +19,7 @@ emptyPlot<-function(self) {
       outerHeight=450,
       open=0
     )
-    self$results$simGraphHTML$setContent(nullResults)
+    return(nullResults)
+    # self$results$simGraphHTML$setContent(nullResults)
   
 }
