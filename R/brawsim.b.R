@@ -185,8 +185,19 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                  sN<-1000
                }
         )
+        prepareMetaScience(doingInvestg,
+                           world=world,rp=self$options$metaDefaultRp,pNull=pNull,
+                           sN=sN,
+                           sMethod=self$options$meta2SampleMethod,sCheating=self$options$meta2Cheating,
+                           sBudget=self$options$meta3SampleBudget,sSplits=self$options$meta3SampleSplits,
+                           sReplicationPower=self$options$meta4RepPower,sReplicationSigOriginal=TRUE,
+                           differenceSource=self$options$meta5Source
+        )
+        
         if (substr(doingInvestg,7,7)=='m')  {
-          if (is.null(braw.res$multiple) || !identical(oldH,braw.def$hypothesis) || !identical(oldD,braw.def$design)) 
+          if (is.null(braw.res$multiple) || 
+              !identical(braw.def$hypothesis,braw.res$multiple$hypothesis) || 
+              !identical(braw.def$design,braw.res$multiple$design)) 
                   nDone<-0
           else    nDone<-braw.res$multiple$count
           targetN<-nDone+self$options$metaMultiple
@@ -196,21 +207,13 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           targetN<-1
         }
         while (nDone<targetN) {
-          investgResults<-doMetaScience(doingInvestg,
-                                          world=world,rp=self$options$metaDefaultRp,pNull=pNull,
-                                          sN=sN,
-                                          sMethod=self$options$meta2SampleMethod,sCheating=self$options$meta2Cheating,
-                                          sBudget=self$options$meta3SampleBudget,sSplits=self$options$meta3SampleSplits,
-                                          sReplicationPower=self$options$meta4RepPower,sReplicationSigOriginal=TRUE,
-                                          differenceSource=self$options$meta5Source,
-                                          nreps=10
-          )
-          self$results$simGraphHTML$setContent(investgResults)
+          investgResults<-doMetaScience(doingInvestg,nreps=10)
           statusStore$investgResults<-investgResults
           setBrawRes("statusStore",statusStore)
           if (substr(doingInvestg,7,7)=='m') nDone<-braw.res$multiple$count
           else nDone<-1
           
+          self$results$simGraphHTML$setContent(investgResults)
           private$.checkpoint()
           if (stopBtn) break
         }
