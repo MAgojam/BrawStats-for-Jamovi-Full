@@ -193,11 +193,12 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                            sReplicationPower=self$options$meta4RepPower,sReplicationSigOriginal=TRUE,
                            differenceSource=self$options$meta5Source
         )
-        
+
         if (substr(doingMetaSci,7,7)=='m')  {
+          self$results$debug$setVisible(TRUE)
           if (is.null(braw.res$multiple) || 
-              !identical(braw.def$hypothesis,braw.res$multiple$hypothesis) || 
-              !identical(braw.def$design,braw.res$multiple$design)) 
+              !identical(metaScience$hypothesis,braw.res$multiple$hypothesis) || 
+              !identical(metaScience$design,braw.res$multiple$design)) 
                   nDone<-0
           else    nDone<-braw.res$multiple$count
           targetN<-nDone+self$options$metaMultiple
