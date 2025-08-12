@@ -155,19 +155,19 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       if (!is.null(doingInvestg)) {
         switch(substr(doingInvestg,5,5),
                "0"={
-                 world<-NULL
-                 pNull<-NULL
-                 sN<-NULL
+                 world<-"Psych50"
+                 pNull<-self$options$metaDefaultNullp
+                 sN<-self$options$metaDefaultN
                },
                "1"={
-                 world<-NULL
+                 world<-"Psych50"
                  pNull<-self$options$meta1pNull
-                 sN<-NULL
+                 sN<-self$options$metaDefaultN
                },
                "2"={
                  world<-self$options$meta2World
                  pNull<-self$options$meta2pNull
-                 sN<-NULL
+                 sN<-self$options$metaDefaultN
                },
                "3"={
                  world<-self$options$meta3World
@@ -180,9 +180,9 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                  sN<-self$options$meta4SampleSize
                },
                "5"={
-                 world<-NULL
-                 pNull<-NULL
-                 sN<-NULL
+                 world<-"Plain"
+                 pNull<-0
+                 sN<-1000
                }
         )
         if (substr(doingInvestg,7,7)=='m')  {
