@@ -2820,7 +2820,7 @@ children:
                                         style: inline
                                         children:
                                           - type: Label
-                                            label: Press here for a single set of samples
+                                            label: Press here for a single sample
                                             cell:
                                               row: 0
                                               column: 1
@@ -2832,7 +2832,9 @@ children:
                                               row: 0
                                               column: 2
                                           - type: Label
-                                            label: Press here to see multiple sets (slow)
+                                            label: >-
+                                              Press here to see multiple samples
+                                              (slow)
                                             cell:
                                               row: 1
                                               column: 1
@@ -2913,9 +2915,7 @@ children:
                                               row: 0
                                               column: 2
                                           - type: Label
-                                            label: >-
-                                              Press here to see multiple samples
-                                              (slow)
+                                            label: Press here to see multiple samples
                                             cell:
                                               row: 1
                                               column: 1
@@ -2961,7 +2961,7 @@ children:
                                         margin: none
                                         children:
                                           - type: Label
-                                            label: Press here for a single sample
+                                            label: Press here for a single set of samples
                                             cell:
                                               row: 0
                                               column: 1
@@ -2973,9 +2973,7 @@ children:
                                               row: 0
                                               column: 2
                                           - type: Label
-                                            label: >-
-                                              Press here to see multiple samples
-                                              (slow)
+                                            label: Press here to see multiple sets (slow)
                                             cell:
                                               row: 1
                                               column: 1
@@ -3061,7 +3059,6 @@ children:
                                           - type: Label
                                             label: >-
                                               Press here to see multiple samples
-                                              (slow)
                                             cell:
                                               row: 1
                                               column: 1
