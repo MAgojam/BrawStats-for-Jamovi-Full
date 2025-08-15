@@ -2486,6 +2486,8 @@ options:
       title: source
       type: List
       options:
+        - name: None
+          title: None
         - name: Interaction
           title: Interaction
         - name: Covariation
@@ -2496,7 +2498,15 @@ options:
       title: '1'
       type: Action
 
+    - name: doMeta5CBtn
+      title: '↻'
+      type: Action
+
     - name: doMeta5AmBtn
+      title: '*'
+      type: Action
+
+    - name: doMeta5CmBtn
       title: '*'
       type: Action
 
@@ -2505,6 +2515,14 @@ options:
       type: Action
 
     - name: doMeta5BmBtn
+      title: '*'
+      type: Action
+
+    - name: doMeta5DBtn
+      title: '↻'
+      type: Action
+
+    - name: doMeta5DmBtn
       title: '*'
       type: Action
 

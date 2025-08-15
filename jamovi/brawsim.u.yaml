@@ -3171,6 +3171,19 @@ children:
                                               row: 0
                                               column: 2
                                           - type: Label
+                                            label: Replicate
+                                            cell:
+                                              row: 0
+                                              column: 3
+                                          - type: ActionButton
+                                            name: doMeta5CBtn
+                                            maxHeight: 24
+                                            maxWidth: 10
+                                            margin: none
+                                            cell:
+                                              row: 0
+                                              column: 4
+                                          - type: Label
                                             label: Press here to see multiple samples
                                             cell:
                                               row: 1
@@ -3182,6 +3195,14 @@ children:
                                             cell:
                                               row: 1
                                               column: 2
+                                          - type: ActionButton
+                                            name: doMeta5CmBtn
+                                            maxHeight: 24
+                                            maxWidth: 10
+                                            margin: none
+                                            cell:
+                                              row: 1
+                                              column: 4
                           - type: LayoutBox
                             style: inline
                             children:
@@ -3214,6 +3235,19 @@ children:
                                               row: 0
                                               column: 2
                                           - type: Label
+                                            label: Replicate
+                                            cell:
+                                              row: 0
+                                              column: 3
+                                          - type: ActionButton
+                                            name: doMeta5DBtn
+                                            maxHeight: 24
+                                            maxWidth: 10
+                                            margin: none
+                                            cell:
+                                              row: 0
+                                              column: 4
+                                          - type: Label
                                             label: Press here to see multiple samples
                                             cell:
                                               row: 1
@@ -3225,6 +3259,14 @@ children:
                                             cell:
                                               row: 1
                                               column: 2
+                                          - type: ActionButton
+                                            name: doMeta5DmBtn
+                                            maxHeight: 24
+                                            maxWidth: 10
+                                            margin: none
+                                            cell:
+                                              row: 1
+                                              column: 4
                       - type: ActionButton
                         name: meta5Help
                         margin: none

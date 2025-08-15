@@ -117,9 +117,12 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                          self$options$doMeta4ABtn,self$options$doMeta4AmBtn,
                          self$options$doMeta4BBtn,self$options$doMeta4BmBtn,
                          self$options$doMeta5ABtn,self$options$doMeta5AmBtn,
-                         self$options$doMeta5BBtn,self$options$doMeta5BmBtn)
-      metaSciNames<-c("Step0I","Step0Im",
-                      "Step0I","Step0Im",
+                         self$options$doMeta5BBtn,self$options$doMeta5BmBtn,
+                         self$options$doMeta5CBtn,self$options$doMeta5CmBtn,
+                         self$options$doMeta5DBtn,self$options$doMeta5DmBtn
+      )
+      metaSciNames<-c("Step0A","Step0Am",
+                      "Step0A","Step0Am",
                       "Step1A","Step1Am",
                       "Step1B","Step1Bm",
                       "Step2A","Step2Am",
@@ -129,7 +132,9 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                       "Step4A","Step4Am",
                       "Step4B","Step4Bm",
                       "Step5A","Step5Am",
-                      "Step5B","Step5Bm"
+                      "Step5B","Step5Bm",
+                      "Step5C","Step5Cm",
+                      "Step5D","Step5Dm"
                       )
       if (any(metaSciControls)) {
         # statusStore$showPlan<-FALSE
