@@ -2621,6 +2621,10 @@ children:
                                 name: meta1pNull
                                 format: number
                                 margin: none
+                              - type: TextBox
+                                name: meta1rp
+                                format: number
+                                margin: none
                           - type: LayoutBox
                             style: inline
                             children:
@@ -2629,7 +2633,7 @@ children:
                                 minWidth: 30
                               - type: CollapseBox
                                 collapsed: true
-                                label: a. is it from rₚ=0 or rₚ=0.3?
+                                label: a. is it from rₚ=0 or rₚ≠0?
                                 margin: none
                                 minWidth: 380
                                 children:
@@ -2735,6 +2739,10 @@ children:
                                 minWidth: 15
                               - type: TextBox
                                 name: meta2pNull
+                                format: number
+                                margin: none
+                              - type: TextBox
+                                name: meta2rp
                                 format: number
                                 margin: none
                               - type: ComboBox
@@ -2869,6 +2877,10 @@ children:
                                 minWidth: 15
                               - type: TextBox
                                 name: meta3pNull
+                                format: number
+                                margin: none
+                              - type: TextBox
+                                name: meta3rp
                                 format: number
                                 margin: none
                               - type: ComboBox
@@ -3008,6 +3020,10 @@ children:
                                 minWidth: 15
                               - type: TextBox
                                 name: meta4pNull
+                                format: number
+                                margin: none
+                              - type: TextBox
+                                name: meta4rp
                                 format: number
                                 margin: none
                               - type: ComboBox

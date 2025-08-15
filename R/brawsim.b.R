@@ -163,26 +163,31 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                  world<-"Psych50"
                  pNull<-self$options$metaDefaultNullp
                  sN<-self$options$metaDefaultN
+                 rP<-self$options$metaDefaultRp
                },
                "1"={
                  world<-"Psych50"
                  pNull<-self$options$meta1pNull
                  sN<-self$options$metaDefaultN
-               },
+                 rP<-self$options$meta1rp
+                 },
                "2"={
                  world<-self$options$meta2World
                  pNull<-self$options$meta2pNull
                  sN<-self$options$metaDefaultN
+                 rP<-self$options$meta2rp
                },
                "3"={
                  world<-self$options$meta3World
                  pNull<-self$options$meta3pNull
                  sN<-self$options$meta3SampleSize
+                 rP<-self$options$meta3rp
                },
                "4"={
                  world<-self$options$meta4World
                  pNull<-self$options$meta4pNull
                  sN<-self$options$meta4SampleSize
+                 rP<-self$options$meta4rp
                },
                "5"={
                  world<-"Plain"
@@ -191,7 +196,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                }
         )
         metaScience<-prepareMetaScience(doingMetaSci,
-                           world=world,rp=self$options$metaDefaultRp,pNull=pNull,
+                           world=world,rp=rP,pNull=pNull,
                            sN=sN,
                            sMethod=self$options$meta2SampleMethod,sCheating=self$options$meta2Cheating,
                            sBudget=self$options$meta3SampleBudget,sSplits=self$options$meta3SampleSplits,
@@ -213,7 +218,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           targetN<-1
         }
         while (nDone<targetN) {
-          metaSciResults<-doMetaScience(doingMetaSci,metaScience,nreps=10)
+          metaSciResults<-doMetaScience(metaScience,nreps=10)
           statusStore$metaSciResults<-metaSciResults
           setBrawRes("statusStore",statusStore)
           if (substr(doingMetaSci,7,7)=='m') nDone<-braw.res$multiple$count

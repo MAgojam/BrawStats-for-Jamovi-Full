@@ -2287,6 +2287,11 @@ options:
       title: '   p(rₚ=0)'
       type: Number
       default: 0.5
+
+    - name: meta1rp
+      title: '   r₊'
+      type: Number
+      default: 0.3
       
     - name: doMeta0Btn
       title: '1'
@@ -2335,6 +2340,11 @@ options:
     - name: doMeta2BmBtn
       title: '*'
       type: Action
+
+    - name: meta2rp
+      title: '   r₊'
+      type: Number
+      default: 0.3
 
     - name: meta2World
       title: 'world'
@@ -2425,6 +2435,11 @@ options:
       type: Number
       default: 0.5
 
+    - name: meta3rp
+      title: '   r₊'
+      type: Number
+      default: 0.3
+
     - name: meta3SampleSplits
       title: sets
       type: Number
@@ -2477,6 +2492,11 @@ options:
       type: Number
       default: 0.75
 
+    - name: meta4rp
+      title: '   r₊'
+      type: Number
+      default: 0.3
+
     - name: meta4RepPower
       title: 'replication power'
       type: Number
@@ -2499,7 +2519,7 @@ options:
       type: Action
 
     - name: doMeta5CBtn
-      title: '↻'
+      title: '⤶'
       type: Action
 
     - name: doMeta5AmBtn
@@ -2519,7 +2539,7 @@ options:
       type: Action
 
     - name: doMeta5DBtn
-      title: '↻'
+      title: '⟳'
       type: Action
 
     - name: doMeta5DmBtn
