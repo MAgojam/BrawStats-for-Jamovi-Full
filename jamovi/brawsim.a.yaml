@@ -2419,7 +2419,7 @@ options:
     - name: meta3SampleSize
       title: 'Sample size' 
       type: Number
-      default: 250
+      default: 84
 
     - name: meta3World
       title: 'world'
@@ -2448,12 +2448,12 @@ options:
     - name: meta3SampleSplits
       title: sets
       type: Number
-      default: 16
+      default: 6
 
     - name: meta3SampleBudget
       title: Budget
       type: Number
-      default: 320
+      default: 84
 
     - name: doMeta4ABtn
       title: '1'

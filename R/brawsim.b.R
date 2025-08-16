@@ -205,7 +205,6 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         )
 
         if (substr(doingMetaSci,7,7)=='m')  {
-          self$results$debug$setVisible(TRUE)
           if (is.null(braw.res$multiple) || 
               !identical(metaScience$hypothesis,braw.res$multiple$hypothesis) || 
               !identical(metaScience$design,braw.res$multiple$design)) 

@@ -2985,7 +2985,7 @@ children:
                                               row: 0
                                               column: 2
                                           - type: Label
-                                            label: Press here to see multiple sets (slow)
+                                            label: Press here to see multiple sets
                                             cell:
                                               row: 1
                                               column: 1
