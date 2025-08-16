@@ -192,7 +192,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                "5"={
                  world<-"Plain"
                  pNull<-0
-                 sN<-1000
+                 sN<-250
                }
         )
         metaScience<-prepareMetaScience(doingMetaSci,

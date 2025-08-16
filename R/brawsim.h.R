@@ -273,7 +273,8 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             meta2World = "Psych50",
             meta2SampleMethod = "Convenience",
             meta2pNull = 0.5,
-            meta2Cheating = "Grow",
+            metaCheatingProportion = 0.05,
+            meta2Cheating = "Replace",
             doMeta3ABtn = NULL,
             doMeta3AmBtn = NULL,
             doMeta3BBtn = NULL,
@@ -1890,6 +1891,10 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 "meta2pNull",
                 meta2pNull,
                 default=0.5)
+            private$..metaCheatingProportion <- jmvcore::OptionNumber$new(
+                "metaCheatingProportion",
+                metaCheatingProportion,
+                default=0.05)
             private$..meta2Cheating <- jmvcore::OptionList$new(
                 "meta2Cheating",
                 meta2Cheating,
@@ -1898,7 +1903,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "Grow",
                     "Prune",
                     "Replace"),
-                default="Grow")
+                default="Replace")
             private$..doMeta3ABtn <- jmvcore::OptionAction$new(
                 "doMeta3ABtn",
                 doMeta3ABtn)
@@ -2309,6 +2314,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..meta2World)
             self$.addOption(private$..meta2SampleMethod)
             self$.addOption(private$..meta2pNull)
+            self$.addOption(private$..metaCheatingProportion)
             self$.addOption(private$..meta2Cheating)
             self$.addOption(private$..doMeta3ABtn)
             self$.addOption(private$..doMeta3AmBtn)
@@ -2617,6 +2623,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         meta2World = function() private$..meta2World$value,
         meta2SampleMethod = function() private$..meta2SampleMethod$value,
         meta2pNull = function() private$..meta2pNull$value,
+        metaCheatingProportion = function() private$..metaCheatingProportion$value,
         meta2Cheating = function() private$..meta2Cheating$value,
         doMeta3ABtn = function() private$..doMeta3ABtn$value,
         doMeta3AmBtn = function() private$..doMeta3AmBtn$value,
@@ -2924,6 +2931,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..meta2World = NA,
         ..meta2SampleMethod = NA,
         ..meta2pNull = NA,
+        ..metaCheatingProportion = NA,
         ..meta2Cheating = NA,
         ..doMeta3ABtn = NA,
         ..doMeta3AmBtn = NA,
@@ -3350,6 +3358,7 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param meta2World .
 #' @param meta2SampleMethod .
 #' @param meta2pNull .
+#' @param metaCheatingProportion .
 #' @param meta2Cheating .
 #' @param doMeta3ABtn .
 #' @param doMeta3AmBtn .
@@ -3667,7 +3676,8 @@ BrawSim <- function(
     meta2World = "Psych50",
     meta2SampleMethod = "Convenience",
     meta2pNull = 0.5,
-    meta2Cheating = "Grow",
+    metaCheatingProportion = 0.05,
+    meta2Cheating = "Replace",
     doMeta3ABtn,
     doMeta3AmBtn,
     doMeta3BBtn,
@@ -3976,6 +3986,7 @@ BrawSim <- function(
         meta2World = meta2World,
         meta2SampleMethod = meta2SampleMethod,
         meta2pNull = meta2pNull,
+        metaCheatingProportion = metaCheatingProportion,
         meta2Cheating = meta2Cheating,
         doMeta3ABtn = doMeta3ABtn,
         doMeta3AmBtn = doMeta3AmBtn,

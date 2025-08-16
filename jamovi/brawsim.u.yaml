@@ -3029,16 +3029,16 @@ children:
                               - type: ComboBox
                                 name: meta4World
                                 margin: none
-                              - type: TextBox
-                                name: meta4SampleSize
-                                format: number
-                                margin: none
                           - type: LayoutBox
                             style: inline
                             children:
                               - type: Label
                                 label: ' '
                                 minWidth: 15
+                              - type: TextBox
+                                name: meta4SampleSize
+                                format: number
+                                margin: none
                               - type: TextBox
                                 name: meta4RepPower
                                 format: number
@@ -5004,6 +5004,21 @@ children:
                             format: number
                             events:
                               change: ./brawsim.events::onChange_metaDefaultNullp
+                      - type: LayoutBox
+                        style: inline
+                        margin: none
+                        children:
+                          - type: Label
+                            label: ' '
+                            minWidth: 13
+                          - type: Label
+                            label: ' '
+                            minWidth: 13
+                          - type: Label
+                            label: 'extent of cheating'
+                          - type: TextBox
+                            name: metaCheatingProportion
+                            format: number
                       - type: LayoutBox
                         style: inline
                         margin: none
