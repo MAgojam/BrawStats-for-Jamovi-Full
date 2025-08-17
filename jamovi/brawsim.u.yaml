@@ -2540,6 +2540,40 @@ children:
                                 label: ' '
                                 minWidth: 15
                               - type: Label
+                                label: ⬦
+                                minWidth: 5
+                                maxWidth: 7
+                              - type: Label
+                                label: To do a replication of the sample, press the
+                              - type: ActionButton
+                                name: doMeta0RBtn
+                                maxHeight: 24
+                                margin: none
+                              - type: Label
+                                label: button
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
+                                minWidth: 45
+                              - type: Label
+                                label: '- each time you press the button, a new replication is made'
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
+                                minWidth: 45
+                              - type: Label
+                                label: '(Steps 4 & 5)'
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
+                                minWidth: 15
+                              - type: Label
                                 label: >-
                                   For most steps, we are interested in how
                                   variable the samples are.

@@ -106,7 +106,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       if (any(self$options$stopBtn)) stopBtn<-TRUE else stopBtn<-FALSE 
 ## are we doing metaSci
       {
-      metaSciControls<-c(self$options$doMeta0Btn,self$options$doMeta0mBtn,
+      metaSciControls<-c(self$options$doMeta0Btn,self$options$doMeta0mBtn,self$options$doMeta0RBtn,
                          self$options$doMeta1IBtn,self$options$doMeta1ImBtn,
                          self$options$doMeta1ABtn,self$options$doMeta1AmBtn,
                          self$options$doMeta1BBtn,self$options$doMeta1BmBtn,
@@ -123,7 +123,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                          self$options$doMeta5CBtn,self$options$doMeta5CmBtn,
                          self$options$doMeta5DBtn,self$options$doMeta5DmBtn
       )
-      metaSciNames<-c("Step0A","Step0Am",
+      metaSciNames<-c("Step0A","Step0Am","Step4C",
                       "Step0A","Step0Am",
                       "Step1A","Step1Am",
                       "Step1B","Step1Bm",
