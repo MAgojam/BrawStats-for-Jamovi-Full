@@ -3061,7 +3061,7 @@ children:
                                         style: inline
                                         children:
                                           - type: Label
-                                            label: Press here for a significant original sample
+                                            label: Press here for an original sample
                                             cell:
                                               row: 0
                                               column: 1
@@ -3072,6 +3072,19 @@ children:
                                             cell:
                                               row: 0
                                               column: 2
+                                          - type: Label
+                                            label: Replicate
+                                            cell:
+                                              row: 0
+                                              column: 3
+                                          - type: ActionButton
+                                            name: doMeta4CBtn
+                                            maxHeight: 24
+                                            maxWidth: 10
+                                            margin: none
+                                            cell:
+                                              row: 0
+                                              column: 4
                                           - type: Label
                                             label: >-
                                               Press here to see multiple samples
@@ -3085,6 +3098,14 @@ children:
                                             cell:
                                               row: 1
                                               column: 2
+                                          - type: ActionButton
+                                            name: doMeta4CmBtn
+                                            maxHeight: 24
+                                            maxWidth: 10
+                                            margin: none
+                                            cell:
+                                              row: 1
+                                              column: 4
                           - type: LayoutBox
                             style: inline
                             children:
@@ -3105,8 +3126,16 @@ children:
                                         margin: none
                                         children:
                                           - type: Label
-                                            label: >-
-                                              Press here for an original and a replication sample
+                                            label: 'sampling'
+                                          - type: ComboBox
+                                            name: meta4OriginalAnomaly
+                                            margin: none
+                                      - type: LayoutBox
+                                        style: inline
+                                        margin: none
+                                        children:
+                                          - type: Label
+                                            label: Press here for an original sample
                                             cell:
                                               row: 0
                                               column: 1
@@ -3117,6 +3146,19 @@ children:
                                             cell:
                                               row: 0
                                               column: 2
+                                          - type: Label
+                                            label: Replicate
+                                            cell:
+                                              row: 0
+                                              column: 3
+                                          - type: ActionButton
+                                            name: doMeta4DBtn
+                                            maxHeight: 24
+                                            maxWidth: 10
+                                            margin: none
+                                            cell:
+                                              row: 0
+                                              column: 4
                                           - type: Label
                                             label: >-
                                               Press here to see multiple samples
@@ -3131,6 +3173,13 @@ children:
                                             cell:
                                               row: 1
                                               column: 2
+                                          - type: ActionButton
+                                            name: doMeta4DmBtn
+                                            maxHeight: 24
+                                            margin: none
+                                            cell:
+                                              row: 1
+                                              column: 4
                       - type: ActionButton
                         name: meta4Help
                         margin: none

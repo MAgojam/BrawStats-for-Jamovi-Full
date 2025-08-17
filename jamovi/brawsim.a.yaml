@@ -2459,7 +2459,15 @@ options:
       title: '1'
       type: Action
 
+    - name: doMeta4CBtn
+      title: '⤶'
+      type: Action
+      
     - name: doMeta4AmBtn
+      title: '*'
+      type: Action
+      
+    - name: doMeta4CmBtn
       title: '*'
       type: Action
 
@@ -2467,10 +2475,32 @@ options:
       title: '1'
       type: Action
 
+    - name: doMeta4DBtn
+      title: '⤶'
+      type: Action
+
     - name: doMeta4BmBtn
       title: '*'
       type: Action
 
+    - name: doMeta4DmBtn
+      title: '*'
+      type: Action
+
+
+    - name: meta4OriginalAnomaly
+      title: ' ' 
+      type: List
+      options: 
+      - name: Clean
+        title: Clean
+      - name: Convenience
+        title: Convenience
+      - name: Cheating
+        title: Cheating
+      - name: Retry
+        title: Retry
+      default: Convenience
 
     - name: meta4SampleSize
       title: 'original n' 
@@ -2544,7 +2574,7 @@ options:
       type: Action
 
     - name: doMeta5DBtn
-      title: '⟳'
+      title: '⤶'
       type: Action
 
     - name: doMeta5DmBtn

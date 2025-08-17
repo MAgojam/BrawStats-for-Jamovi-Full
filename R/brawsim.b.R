@@ -115,7 +115,9 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                          self$options$doMeta3ABtn,self$options$doMeta3AmBtn,
                          self$options$doMeta3BBtn,self$options$doMeta3BmBtn,
                          self$options$doMeta4ABtn,self$options$doMeta4AmBtn,
+                         self$options$doMeta4CBtn,self$options$doMeta4CmBtn,
                          self$options$doMeta4BBtn,self$options$doMeta4BmBtn,
+                         self$options$doMeta4DBtn,self$options$doMeta4DmBtn,
                          self$options$doMeta5ABtn,self$options$doMeta5AmBtn,
                          self$options$doMeta5BBtn,self$options$doMeta5BmBtn,
                          self$options$doMeta5CBtn,self$options$doMeta5CmBtn,
@@ -130,7 +132,9 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                       "Step3A","Step3Am",
                       "Step3B","Step3Bm",
                       "Step4A","Step4Am",
+                      "Step4C","Step4Cm",
                       "Step4B","Step4Bm",
+                      "Step4D","Step4Dm",
                       "Step5A","Step5Am",
                       "Step5B","Step5Bm",
                       "Step5C","Step5Cm",
@@ -200,7 +204,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                            sN=sN,
                            sMethod=self$options$meta2SampleMethod,sCheating=self$options$meta2Cheating,
                            sBudget=self$options$meta3SampleBudget,sSplits=self$options$meta3SampleSplits,
-                           sReplicationPower=self$options$meta4RepPower,sReplicationSigOriginal=TRUE,
+                           sReplicationPower=self$options$meta4RepPower,sReplicationSigOriginal=TRUE,sReplicationOriginalAnomaly=self$options$meta4OriginalAnomaly,
                            differenceSource=self$options$meta5Source
         )
 
