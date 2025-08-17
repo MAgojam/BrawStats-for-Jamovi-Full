@@ -2321,6 +2321,14 @@ options:
       title: '*'
       type: Action
 
+    - name: doMeta1BrBtn
+      title: '⤶'
+      type: Action
+
+    - name: doMeta1BrmBtn
+      title: '*'
+      type: Action
+
     - name: doMeta0ABtn
       title: '1'
       type: Action

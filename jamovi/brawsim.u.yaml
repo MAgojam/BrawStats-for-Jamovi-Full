@@ -2801,6 +2801,18 @@ children:
                                           row: 0
                                           column: 2
                                       - type: Label
+                                        label: Replicate
+                                        cell:
+                                          row: 0
+                                          column: 3
+                                      - type: ActionButton
+                                        name: doMeta1BrBtn
+                                        maxHeight: 24
+                                        margin: none
+                                        cell:
+                                          row: 0
+                                          column: 4
+                                      - type: Label
                                         label: Press here to see multiple samples
                                         cell:
                                           row: 1
@@ -2812,6 +2824,13 @@ children:
                                         cell:
                                           row: 1
                                           column: 2
+                                      - type: ActionButton
+                                        name: doMeta1BrmBtn
+                                        maxHeight: 24
+                                        margin: none
+                                        cell:
+                                          row: 1
+                                          column: 4
                       - type: ActionButton
                         name: meta1Help
                         margin: none
