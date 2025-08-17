@@ -2345,11 +2345,27 @@ options:
       title: '*'
       type: Action
 
+    - name: doMeta2ArBtn
+      title: '⤶'
+      type: Action
+    
+    - name: doMeta2ArmBtn
+      title: '*'
+      type: Action
+
     - name: doMeta2BBtn
       title: '1'
       type: Action
     
     - name: doMeta2BmBtn
+      title: '*'
+      type: Action
+
+    - name: doMeta2BrBtn
+      title: '⤶'
+      type: Action
+    
+    - name: doMeta2BrmBtn
       title: '*'
       type: Action
 
@@ -2420,11 +2436,27 @@ options:
       title: '*'
       type: Action
 
+    - name: doMeta3ArBtn
+      title: '⤶'
+      type: Action
+    
+    - name: doMeta3ArmBtn
+      title: '*'
+      type: Action
+
     - name: doMeta3BBtn
       title: '1'
       type: Action
 
     - name: doMeta3BmBtn
+      title: '*'
+      type: Action
+
+    - name: doMeta3BrBtn
+      title: '⤶'
+      type: Action
+    
+    - name: doMeta3BrmBtn
       title: '*'
       type: Action
 
