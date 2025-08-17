@@ -3084,7 +3084,7 @@ children:
                                 minWidth: 30
                               - type: CollapseBox
                                 collapsed: true
-                                label: a. why do replication?
+                                label: a. with random sampling?
                                 margin: none
                                 minWidth: 380
                                 children:
@@ -3148,7 +3148,7 @@ children:
                                 minWidth: 30
                               - type: CollapseBox
                                 collapsed: true
-                                label: b. does replication help?
+                                label: b. with poor sampling?
                                 margin: none
                                 minWidth: 380
                                 children:

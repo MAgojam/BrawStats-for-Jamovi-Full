@@ -2496,8 +2496,8 @@ options:
       title: ' ' 
       type: List
       options: 
-      - name: Clean
-        title: Clean
+      - name: Random
+        title: Random
       - name: Convenience
         title: Convenience
       - name: Cheating
