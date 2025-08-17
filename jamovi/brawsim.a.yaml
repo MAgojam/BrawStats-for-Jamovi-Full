@@ -2321,11 +2321,19 @@ options:
       title: '*'
       type: Action
 
-    - name: doMeta1IBtn
+    - name: doMeta0ABtn
       title: '1'
       type: Action
 
-    - name: doMeta1ImBtn
+    - name: doMeta0AmBtn
+      title: '*'
+      type: Action
+
+    - name: doMeta0ArBtn
+      title: '⤶'
+      type: Action
+
+    - name: doMeta0ArmBtn
       title: '*'
       type: Action
 
@@ -2463,7 +2471,7 @@ options:
       title: '1'
       type: Action
 
-    - name: doMeta4CBtn
+    - name: doMeta4ArBtn
       title: '⤶'
       type: Action
       
@@ -2471,7 +2479,7 @@ options:
       title: '*'
       type: Action
       
-    - name: doMeta4CmBtn
+    - name: doMeta4ArmBtn
       title: '*'
       type: Action
 
@@ -2479,7 +2487,7 @@ options:
       title: '1'
       type: Action
 
-    - name: doMeta4DBtn
+    - name: doMeta4BrBtn
       title: '⤶'
       type: Action
 
@@ -2487,7 +2495,7 @@ options:
       title: '*'
       type: Action
 
-    - name: doMeta4DmBtn
+    - name: doMeta4BrmBtn
       title: '*'
       type: Action
 
@@ -2557,7 +2565,7 @@ options:
       title: '1'
       type: Action
 
-    - name: doMeta5CBtn
+    - name: doMeta5ArBtn
       title: '⤶'
       type: Action
 
@@ -2565,7 +2573,7 @@ options:
       title: '*'
       type: Action
 
-    - name: doMeta5CmBtn
+    - name: doMeta5ArmBtn
       title: '*'
       type: Action
 
@@ -2577,11 +2585,11 @@ options:
       title: '*'
       type: Action
 
-    - name: doMeta5DBtn
+    - name: doMeta5BrBtn
       title: '⤶'
       type: Action
 
-    - name: doMeta5DmBtn
+    - name: doMeta5BrmBtn
       title: '*'
       type: Action
 
