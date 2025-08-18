@@ -170,39 +170,45 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                  pNull<-self$options$metaDefaultNullp
                  sN<-self$options$metaDefaultN
                  rP<-self$options$metaDefaultRp
+                 metaPublicationBias<-"no"
                },
                "1"={
                  world<-"Psych50"
                  pNull<-self$options$meta1pNull
                  sN<-self$options$metaDefaultN
                  rP<-self$options$meta1rp
+                 metaPublicationBias<-self$options$metaPublicationBias
                  },
                "2"={
                  world<-self$options$meta2World
                  pNull<-self$options$meta2pNull
                  sN<-self$options$metaDefaultN
                  rP<-self$options$meta2rp
+                 metaPublicationBias<-self$options$metaPublicationBias
                },
                "3"={
                  world<-self$options$meta3World
                  pNull<-self$options$meta3pNull
                  sN<-self$options$meta3SampleSize
                  rP<-self$options$meta3rp
+                 metaPublicationBias<-self$options$metaPublicationBias
                },
                "4"={
                  world<-self$options$meta4World
                  pNull<-self$options$meta4pNull
                  sN<-self$options$meta4SampleSize
                  rP<-self$options$meta4rp
+                 metaPublicationBias<-"no"
                },
                "5"={
                  world<-"Plain"
                  pNull<-0
                  sN<-250
+                 metaPublicationBias<-"no"
                }
         )
         metaScience<-prepareMetaScience(doingMetaSci,
-                           world=world,rp=rP,pNull=pNull,
+                           world=world,rp=rP,pNull=pNull,metaPublicationBias=metaPublicationBias=="yes",
                            sN=sN,
                            sMethod=self$options$meta2SampleMethod,sCheating=self$options$meta2Cheating,
                            sBudget=self$options$meta3SampleBudget,sSplits=self$options$meta3SampleSplits,
