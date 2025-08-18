@@ -58,9 +58,7 @@ children:
                     margin: none
                     children:
                       - type: Label
-                        label: >-
-                          Demos to explore how statistical testing
-                          behaves
+                        label: Demos to explore how statistical testing behaves
                         minWidth: 380
                         maxWidth: 380
                         margin: none
@@ -2421,7 +2419,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: '<span style="color:#1276b9;">Instructions</span>'
+                        label: <span style="color:#1276b9;">Instructions</span>
                         margin: none
                         minWidth: 250
                         maxWidth: 250
@@ -2455,9 +2453,9 @@ children:
                                 minWidth: 15
                               - type: Label
                                 label: >-
-                                  To get more information, press the
-                                  <span style="color:#0000ff;">ⓘlink</span>
-                                  above the graphs
+                                  To get more information, press the <span
+                                  style="color:#0000ff;">ⓘlink</span> above the
+                                  graphs
                           - type: LayoutBox
                             style: inline
                             children:
@@ -2469,88 +2467,94 @@ children:
                                 collapsed: true
                                 minWidth: 240
                                 children:
-                                - type: LayoutBox
-                                  style: inline
-                                  children:
-                                  - type: Label
-                                    label: ' '
-                                    minWidth: 15
-                                  - type: Label
-                                    label: ⬦
-                                    minWidth: 5
-                                    maxWidth: 7
-                                  - type: Label
-                                    label: To get a single sample, press the
-                                  - type: ActionButton
-                                    name: doMeta0Btn
-                                    maxHeight: 24
-                                    maxWidth: 15
-                                    margin: none
-                                  - type: Label
-                                    label: button
-                                - type: LayoutBox
-                                  style: inline
-                                  children:
-                                  - type: Label
-                                    label: ' '
-                                    minWidth: 45
-                                  - type: Label
-                                    label: '- you can see the data as a scatter plot "Data"' 
-                                - type: LayoutBox
-                                  style: inline
-                                  children:
-                                  - type: Label
-                                    label: ' '
-                                    minWidth: 60
-                                  - type: Label
-                                    label: 'or as an effect size "Schematic"'
-                                - type: LayoutBox
-                                  style: inline
-                                  children:
-                                  - type: Label
-                                    label: ' '
-                                    minWidth: 45
-                                  - type: Label
-                                    label: >-
-                                      - schematic also shows the expected
-                                      distribution of samples
-                                - type: LayoutBox
-                                  style: inline
-                                  children:
-                                  - type: Label
-                                    label: ' '
-                                    minWidth: 45
-                                  - type: Label
-                                    label: >-
-                                      - each time you press the button, a new sample
-                                      is made
-                                - type: LayoutBox
-                                  style: inline
-                                  children:
-                                  - type: Label
-                                    label: ' '
-                                    minWidth: 15
-                                  - type: Label
-                                    label: ⬦
-                                    minWidth: 5
-                                    maxWidth: 7
-                                  - type: Label
-                                    label: To do a replication of the sample, press the
-                                  - type: ActionButton
-                                    name: doMeta0RBtn
-                                    maxHeight: 24
-                                    maxWidth: 15
-                                    margin: none
-                                  - type: Label
-                                    label: button
-                                - type: LayoutBox
-                                  style: inline
-                                  children:
-                                  - type: Label
-                                    label: ' '
-                                    minWidth: 45
-                                  - type: Label
-                                    label: '- each time you press the button, a new replication is made'
+                                  - type: LayoutBox
+                                    style: inline
+                                    children:
+                                      - type: Label
+                                        label: ' '
+                                        minWidth: 15
+                                      - type: Label
+                                        label: ⬦
+                                        minWidth: 5
+                                        maxWidth: 7
+                                      - type: Label
+                                        label: To get a single sample, press the
+                                      - type: ActionButton
+                                        name: doMeta0Btn
+                                        maxHeight: 24
+                                        maxWidth: 15
+                                        margin: none
+                                      - type: Label
+                                        label: button
+                                  - type: LayoutBox
+                                    style: inline
+                                    children:
+                                      - type: Label
+                                        label: ' '
+                                        minWidth: 45
+                                      - type: Label
+                                        label: >-
+                                          - you can see the data as a scatter plot
+                                          "Data"
+                                  - type: LayoutBox
+                                    style: inline
+                                    children:
+                                      - type: Label
+                                        label: ' '
+                                        minWidth: 60
+                                      - type: Label
+                                        label: or as an effect size "Schematic"
+                                  - type: LayoutBox
+                                    style: inline
+                                    children:
+                                      - type: Label
+                                        label: ' '
+                                        minWidth: 45
+                                      - type: Label
+                                        label: >-
+                                          - schematic also shows the expected
+                                          distribution of samples
+                                  - type: LayoutBox
+                                    style: inline
+                                    children:
+                                      - type: Label
+                                        label: ' '
+                                        minWidth: 45
+                                      - type: Label
+                                        label: >-
+                                          - each time you press the button, a new
+                                          sample is made
+                                  - type: LayoutBox
+                                    style: inline
+                                    children:
+                                      - type: Label
+                                        label: ' '
+                                        minWidth: 15
+                                      - type: Label
+                                        label: ⬦
+                                        minWidth: 5
+                                        maxWidth: 7
+                                      - type: Label
+                                        label: >-
+                                          To do a replication of the sample, press
+                                          the
+                                      - type: ActionButton
+                                        name: doMeta0RBtn
+                                        maxHeight: 24
+                                        maxWidth: 15
+                                        margin: none
+                                      - type: Label
+                                        label: button
+                                  - type: LayoutBox
+                                    style: inline
+                                    children:
+                                      - type: Label
+                                        label: ' '
+                                        minWidth: 45
+                                      - type: Label
+                                        label: >-
+                                          - each time you press the button, a new
+                                          replication is made
                           - type: LayoutBox
                             style: inline
                             children:
@@ -2562,55 +2566,55 @@ children:
                                 collapsed: true
                                 minWidth: 240
                                 children:
-                                - type: LayoutBox
-                                  style: inline
-                                  children:
-                                  - type: Label
-                                    label: ' '
-                                    minWidth: 15
-                                  - type: Label
-                                    label: ⬦
-                                    minWidth: 5
-                                    maxWidth: 7
-                                  - type: Label
-                                    label: To get many samples, press the
-                                  - type: ActionButton
-                                    name: doMeta0mBtn
-                                    maxHeight: 24
-                                    maxWidth: 15
-                                    margin: none
-                                  - type: Label
-                                    label: button
-                                - type: LayoutBox
-                                  style: inline
-                                  children:
-                                  - type: Label
-                                    label: ' '
-                                    minWidth: 45
-                                  - type: Label
-                                    label: >-
-                                      - you see the data as the distribution of
-                                      sample effect sizes "Schematic"
-                                - type: LayoutBox
-                                  style: inline
-                                  children:
-                                  - type: Label
-                                    label: ' '
-                                    minWidth: 45
-                                  - type: Label
-                                    label: >-
-                                      - colours show significant/not sample from
-                                      real/null population
-                                - type: LayoutBox
-                                  style: inline
-                                  children:
-                                  - type: Label
-                                    label: ' '
-                                    minWidth: 45
-                                  - type: Label
-                                    label: >-
-                                      - each time you press the button, more samples
-                                      are added
+                                  - type: LayoutBox
+                                    style: inline
+                                    children:
+                                      - type: Label
+                                        label: ' '
+                                        minWidth: 15
+                                      - type: Label
+                                        label: ⬦
+                                        minWidth: 5
+                                        maxWidth: 7
+                                      - type: Label
+                                        label: To get many samples, press the
+                                      - type: ActionButton
+                                        name: doMeta0mBtn
+                                        maxHeight: 24
+                                        maxWidth: 15
+                                        margin: none
+                                      - type: Label
+                                        label: button
+                                  - type: LayoutBox
+                                    style: inline
+                                    children:
+                                      - type: Label
+                                        label: ' '
+                                        minWidth: 45
+                                      - type: Label
+                                        label: >-
+                                          - you see the data as the distribution
+                                          of sample effect sizes "Schematic"
+                                  - type: LayoutBox
+                                    style: inline
+                                    children:
+                                      - type: Label
+                                        label: ' '
+                                        minWidth: 45
+                                      - type: Label
+                                        label: >-
+                                          - colours show significant/not sample
+                                          from real/null population
+                                  - type: LayoutBox
+                                    style: inline
+                                    children:
+                                      - type: Label
+                                        label: ' '
+                                        minWidth: 45
+                                      - type: Label
+                                        label: >-
+                                          - each time you press the button, more
+                                          samples are added
                           - type: LayoutBox
                             style: inline
                             children:
@@ -2691,7 +2695,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: '1. <b>Inferences:</b> how useful are p-values?'
+                        label: 1. <b>Inferences:</b> how useful are p-values?
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -2817,7 +2821,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: '2. <b>Sampling Method:</b> are we cheating?'
+                        label: 2. <b>Sampling Method:</b> are we cheating?
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -2959,7 +2963,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: '3. <b>Sample Size:</b> who benefits?'
+                        label: 3. <b>Sample Size:</b> who benefits?
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -3108,7 +3112,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: '4. <b>Double Checking:</b> how good is replication?'
+                        label: 4. <b>Double Checking:</b> how good is replication?
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -3189,8 +3193,7 @@ children:
                                               row: 0
                                               column: 4
                                           - type: Label
-                                            label: >-
-                                              Press here to see multiple samples
+                                            label: Press here to see multiple samples
                                             cell:
                                               row: 1
                                               column: 1
@@ -3231,7 +3234,7 @@ children:
                                         margin: none
                                         children:
                                           - type: Label
-                                            label: 'sampling'
+                                            label: sampling
                                           - type: ComboBox
                                             name: meta4OriginalAnomaly
                                             margin: none
@@ -3297,8 +3300,9 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        # label: '5. <span style="color:#1276b9;"><b>Real Differences:</b></span> when should replication fail?'
-                        label: '5. <b>Real Differences:</b> when should replication fail?'
+                        label: >-
+                          5. <b>Real Differences:</b> when should replication
+                          fail?
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -5175,7 +5179,7 @@ children:
                             label: ' '
                             minWidth: 13
                           - type: Label
-                            label: 'extent of cheating'
+                            label: extent of cheating
                           - type: TextBox
                             name: metaCheatingProportion
                             format: number
@@ -5189,6 +5193,8 @@ children:
                           - type: Label
                             label: ' '
                             minWidth: 13
+                          - type: ComboBox
+                            name: metaPublicationBias
                           - type: Label
                             label: 'show samples as:'
                           - type: ComboBox

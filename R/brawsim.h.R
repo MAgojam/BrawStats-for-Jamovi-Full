@@ -316,6 +316,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             metaDefaultN = 42,
             metaDefaultRp = 0.3,
             metaDefaultNullp = 0.5,
+            metaPublicationBias = "no",
             metaGoBack = NULL,
             metaGoForwards = NULL, ...) {
 
@@ -2075,6 +2076,13 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 "metaDefaultNullp",
                 metaDefaultNullp,
                 default=0.5)
+            private$..metaPublicationBias <- jmvcore::OptionList$new(
+                "metaPublicationBias",
+                metaPublicationBias,
+                options=list(
+                    "no",
+                    "yes"),
+                default="no")
             private$..metaGoBack <- jmvcore::OptionAction$new(
                 "metaGoBack",
                 metaGoBack)
@@ -2395,6 +2403,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..metaDefaultN)
             self$.addOption(private$..metaDefaultRp)
             self$.addOption(private$..metaDefaultNullp)
+            self$.addOption(private$..metaPublicationBias)
             self$.addOption(private$..metaGoBack)
             self$.addOption(private$..metaGoForwards)
         }),
@@ -2712,6 +2721,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         metaDefaultN = function() private$..metaDefaultN$value,
         metaDefaultRp = function() private$..metaDefaultRp$value,
         metaDefaultNullp = function() private$..metaDefaultNullp$value,
+        metaPublicationBias = function() private$..metaPublicationBias$value,
         metaGoBack = function() private$..metaGoBack$value,
         metaGoForwards = function() private$..metaGoForwards$value),
     private = list(
@@ -3028,6 +3038,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..metaDefaultN = NA,
         ..metaDefaultRp = NA,
         ..metaDefaultNullp = NA,
+        ..metaPublicationBias = NA,
         ..metaGoBack = NA,
         ..metaGoForwards = NA)
 )
@@ -3463,6 +3474,7 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param metaDefaultN .
 #' @param metaDefaultRp .
 #' @param metaDefaultNullp .
+#' @param metaPublicationBias .
 #' @param metaGoBack .
 #' @param metaGoForwards .
 #' @return A results object containing:
@@ -3789,6 +3801,7 @@ BrawSim <- function(
     metaDefaultN = 42,
     metaDefaultRp = 0.3,
     metaDefaultNullp = 0.5,
+    metaPublicationBias = "no",
     metaGoBack,
     metaGoForwards) {
 
@@ -4107,6 +4120,7 @@ BrawSim <- function(
         metaDefaultN = metaDefaultN,
         metaDefaultRp = metaDefaultRp,
         metaDefaultNullp = metaDefaultNullp,
+        metaPublicationBias = metaPublicationBias,
         metaGoBack = metaGoBack,
         metaGoForwards = metaGoForwards)
 
