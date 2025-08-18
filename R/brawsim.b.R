@@ -216,7 +216,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                            differenceSource=self$options$meta5Source
         )
 
-        if (substr(doingMetaSci,7,7)=='m')  {
+        doingMultiple<-!grepl('m',gsub('[A-Za-z]*[0-9]*[A-Da-d]*([rm]*)','\\1',doingMetaSci),fixed=TRUE)
+        if (doingMultiple)  {
           if (is.null(braw.res$multiple) || 
               !identical(metaScience$hypothesis,braw.res$multiple$hypothesis) || 
               !identical(metaScience$design,braw.res$multiple$design)) 
@@ -232,7 +233,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           metaSciResults<-doMetaScience(metaScience,nreps=10)
           statusStore$metaSciResults<-metaSciResults
           setBrawRes("statusStore",statusStore)
-          if (substr(doingMetaSci,7,7)=='m') nDone<-braw.res$multiple$count
+          if (doingMultiple) nDone<-braw.res$multiple$count
           else nDone<-1
           
           self$results$simGraphHTML$setContent(metaSciResults)
