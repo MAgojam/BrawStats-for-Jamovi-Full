@@ -198,7 +198,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                  pNull<-self$options$meta4pNull
                  sN<-self$options$meta4SampleSize
                  rP<-self$options$meta4rp
-                 metaPublicationBias<-"no"
+                 metaPublicationBias<-"yes"
                },
                "5"={
                  world<-"Plain"
@@ -247,7 +247,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         setBrawRes("statusStore",statusStore)
         setBrawRes("metaHistoryStore",metaHistory)
         
-        if (substr(doingMetaSci,7,7)=="m") sendData2Jamovi("Multiple",self)
+        if (doingMultiple) sendData2Jamovi("Multiple",self)
         else sendData2Jamovi("Single",self)
         return()
       }
