@@ -204,6 +204,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                  world<-"Plain"
                  pNull<-0
                  sN<-250
+                 rP<-0.3
                  metaPublicationBias<-"no"
                }
         )
