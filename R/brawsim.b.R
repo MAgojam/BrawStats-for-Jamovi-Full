@@ -212,7 +212,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                            sN=sN,
                            sMethod=self$options$meta2SampleMethod,sCheating=self$options$meta2Cheating,
                            sBudget=self$options$meta3SampleBudget,sSplits=self$options$meta3SampleSplits,
-                           sReplicationPower=self$options$meta4RepPower,sReplicationSigOriginal=TRUE,sReplicationOriginalAnomaly=self$options$meta4OriginalAnomaly,
+                           sReplicationPower=self$options$meta4RepPower,sReplicationOriginalAnomaly=self$options$meta4OriginalAnomaly,
                            differenceSource=self$options$meta5Source
         )
 
@@ -229,7 +229,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           nDone<-0
           targetN<-1
         }
-
+        
         while (nDone<targetN) {
           metaSciResults<-doMetaScience(metaScience,nreps=10)
           statusStore$metaSciResults<-metaSciResults
