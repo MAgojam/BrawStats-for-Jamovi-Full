@@ -17,7 +17,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       if (rVersion>=4.5) Jamovi<-2.7 else Jamovi<-2.6
       
       # debug information
-      # self$results$debug$setContent(c("start",length(braw.res$multiple$result$rIV)))
+      # self$results$debug$setContent(is.null(braw.res$result$ResultHistory$original))
       # self$results$debug$setVisible(TRUE)
       # return()
 
@@ -238,7 +238,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           else nDone<-1
           
           self$results$simGraphHTML$setContent(metaSciResults)
-          private$.checkpoint()
+          if (doingMultiple) private$.checkpoint()
           if (stopBtn) break
         }
         
