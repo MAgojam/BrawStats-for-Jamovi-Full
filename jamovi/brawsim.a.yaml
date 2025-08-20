@@ -2284,12 +2284,12 @@ options:
       default: none
 
     - name: meta1pNull
-      title: '   p(rₚ=0)'
+      title: ''
       type: Number
       default: 0.5
 
     - name: meta1rp
-      title: '   r̅₊'
+      title: ''
       type: Number
       default: 0.3
       
@@ -2354,12 +2354,12 @@ options:
       type: Action
 
     - name: meta2rp
-      title: '   r̅₊'
+      title: ''
       type: Number
       default: 0.3
 
     - name: meta2World
-      title: 'world'
+      title: ''
       type: List
       options:
       - name: NullH
@@ -2369,7 +2369,7 @@ options:
       - name: Binary
         title: binary
       - name: Psych50
-        title: psychology
+        title: exponential
       default: Psych50
 
     - name: meta2SampleMethod
@@ -2389,7 +2389,7 @@ options:
       default: Convenience
 
     - name: meta2pNull
-      title: '   p(rₚ=0)'
+      title: ''
       type: Number
       default: 0.5
 
@@ -2434,7 +2434,7 @@ options:
       default: 84
 
     - name: meta3World
-      title: 'world'
+      title: ''
       type: List
       options:
       - name: NullH
@@ -2444,16 +2444,16 @@ options:
       - name: Binary
         title: binary
       - name: Psych50
-        title: psychology
+        title: exponential
       default: Psych50
 
     - name: meta3pNull
-      title: '   p(rₚ=0)'
+      title: ''
       type: Number
       default: 0.5
 
     - name: meta3rp
-      title: '   r̅₊'
+      title: ''
       type: Number
       default: 0.3
 
@@ -2521,7 +2521,7 @@ options:
 
 
     - name: meta4World
-      title: 'world'
+      title: ''
       type: List
       options:
       - name: NullH
@@ -2531,23 +2531,18 @@ options:
       - name: Binary
         title: binary
       - name: Psych50
-        title: psychology
+        title: exponential
       default: Psych50
 
     - name: meta4pNull
-      title: '   p(rₚ=0)'
+      title: ''
       type: Number
-      default: 0.75
+      default: 0.5
 
     - name: meta4rp
-      title: '   r̅₊'
+      title: ''
       type: Number
       default: 0.3
-
-    - name: meta4RepPower
-      title: 'replication power wₛ'
-      type: Number
-      default: 0.9
 
     - name: meta5Source
       title: source
@@ -2604,27 +2599,32 @@ options:
       default: rse
       
     - name: metaMultiple
-      title: "nreps:"
+      title: ""
       type: Number
       default: 200
 
     - name: metaDefaultN
-      title: "n:"
+      title: ""
       type: Number
       default: 42
 
     - name: metaDefaultRp
-      title: "rₚ:"
+      title: ""
       type: Number
       default: 0.3
 
     - name: metaDefaultNullp
-      title: "p(rₚ=0):"
+      title: ""
       type: Number
       default: 0.5
       
+    - name: metaDefaultRepPower
+      title: ''
+      type: Number
+      default: 0.9
+
     - name: metaPublicationBias
-      title: "publication bias:"
+      title: ""
       type: List
       options: 
       - name: no

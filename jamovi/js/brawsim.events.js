@@ -200,15 +200,26 @@ const events =  {
     
     onChange_metaDefaultN: function(ui) {
       let variable1 = ui.metaDefaultN.value()
-      ui.meta3SampleSize.setValue(variable1)
+      variable1 = Number(variable1)
+      ui.meta3SampleSize.setValue(variable1*2)
+      ui.meta3SampleBudget.setValue(variable1*2)
       ui.meta4SampleSize.setValue(variable1)
     },
     
     onChange_metaDefaultNullp: function(ui) {
-      let variable1 = ui.onChange_metaDefaultNullp.value()
+      let variable1 = ui.metaDefaultNullp.value()
+      variable1 = Number(variable1)
       ui.meta1pNull.setValue(variable1)
       ui.meta2pNull.setValue(variable1)
       ui.meta3pNull.setValue(variable1)
+    },
+    
+    onChange_metaDefaultRp: function(ui) {
+      let variable1 = ui.metaDefaultRp.value()
+      variable1 = Number(variable1)
+      ui.meta1rp.setValue(variable1)
+      ui.meta2rp.setValue(variable1)
+      ui.meta3rp.setValue(variable1)
     },
     
     onChange_Project1sH: function(ui) {

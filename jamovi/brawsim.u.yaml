@@ -2706,14 +2706,33 @@ children:
                               - type: Label
                                 label: ' '
                                 minWidth: 15
+                                cell:
+                                  row: 0
+                                  column: 0
+                              - type: Label
+                                label: '<i>p</i><sub>ø</sub>'
+                                cell:
+                                  row: 0
+                                  column: 1
                               - type: TextBox
                                 name: meta1pNull
                                 format: number
                                 margin: none
+                                cell:
+                                  row: 0
+                                  column: 2
+                              - type: Label
+                                label: 'r̅<sub>+</sub>'
+                                cell:
+                                  row: 0
+                                  column: 3
                               - type: TextBox
                                 name: meta1rp
                                 format: number
                                 margin: none
+                                cell:
+                                  row: 0
+                                  column: 4
                           - type: LayoutBox
                             style: inline
                             children:
@@ -2832,20 +2851,44 @@ children:
                               - type: Label
                                 label: ' '
                                 minWidth: 15
+                                cell:
+                                  row: 0
+                                  column: 0
+                              - type: Label
+                                label: '<i>p</i><sub>ø</sub>'
+                                cell:
+                                  row: 0
+                                  column: 1
                               - type: TextBox
                                 name: meta2pNull
                                 format: number
                                 margin: none
+                                cell:
+                                  row: 0
+                                  column: 2
+                              - type: Label
+                                label: 'r̅<sub>+</sub>'
+                                cell:
+                                  row: 0
+                                  column: 3
                               - type: TextBox
                                 name: meta2rp
                                 format: number
                                 margin: none
+                                cell:
+                                  row: 0
+                                  column: 4
+                              - type: Label
+                                label: 'R<sub>+</sub>'
+                                cell:
+                                  row: 0
+                                  column: 5
                               - type: ComboBox
                                 name: meta2World
                                 margin: none
-                              - type: Label
-                                label: ' '
-                                minWidth: 30
+                                cell:
+                                  row: 0
+                                  column: 6
                           - type: LayoutBox
                             style: inline
                             children:
@@ -2974,20 +3017,44 @@ children:
                               - type: Label
                                 label: ' '
                                 minWidth: 15
+                                cell:
+                                  row: 0
+                                  column: 0
+                              - type: Label
+                                label: '<i>p</i><sub>ø</sub>'
+                                cell:
+                                  row: 0
+                                  column: 1
                               - type: TextBox
                                 name: meta3pNull
                                 format: number
                                 margin: none
+                                cell:
+                                  row: 0
+                                  column: 2
+                              - type: Label
+                                label: 'r̅<sub>+</sub>'
+                                cell:
+                                  row: 0
+                                  column: 3
                               - type: TextBox
                                 name: meta3rp
                                 format: number
                                 margin: none
+                                cell:
+                                  row: 0
+                                  column: 4
+                              - type: Label
+                                label: 'R<sub>+</sub>'
+                                cell:
+                                  row: 0
+                                  column: 5
                               - type: ComboBox
                                 name: meta3World
                                 margin: none
-                              - type: Label
-                                label: ' '
-                                minWidth: 30
+                                cell:
+                                  row: 0
+                                  column: 6
                           - type: LayoutBox
                             style: inline
                             children:
@@ -3123,17 +3190,44 @@ children:
                               - type: Label
                                 label: ' '
                                 minWidth: 15
+                                cell:
+                                  row: 0
+                                  column: 0
+                              - type: Label
+                                label: '<i>p</i><sub>ø</sub>'
+                                cell:
+                                  row: 0
+                                  column: 1
                               - type: TextBox
                                 name: meta4pNull
                                 format: number
                                 margin: none
+                                cell:
+                                  row: 0
+                                  column: 2
+                              - type: Label
+                                label: '  r̅<sub>+</sub>'
+                                cell:
+                                  row: 0
+                                  column: 3
                               - type: TextBox
                                 name: meta4rp
                                 format: number
                                 margin: none
+                                cell:
+                                  row: 0
+                                  column: 4
+                              - type: Label
+                                label: 'R<sub>+</sub>'
+                                cell:
+                                  row: 0
+                                  column: 5
                               - type: ComboBox
                                 name: meta4World
                                 margin: none
+                                cell:
+                                  row: 0
+                                  column: 6
                           - type: LayoutBox
                             style: inline
                             children:
@@ -3144,9 +3238,6 @@ children:
                                 name: meta4SampleSize
                                 format: number
                                 margin: none
-                              - type: TextBox
-                                name: meta4RepPower
-                                format: number
                           - type: LayoutBox
                             style: inline
                             children:
@@ -5148,57 +5239,112 @@ children:
                         children:
                           - type: Label
                             label: ' '
-                            minWidth: 13
+                            minWidth: 26
+                            cell:
+                              row: 0
+                              column: 0
                           - type: Label
-                            label: ' '
-                            minWidth: 13
-                          - type: TextBox
-                            name: metaMultiple
-                            format: number
-                          - type: TextBox
-                            name: metaDefaultN
-                            format: number
-                            events:
-                              change: ./brawsim.events::onChange_metaDefaultN
+                            label: 'r̅<sub>+</sub>'
+                            cell:
+                              row: 0
+                              column: 3
                           - type: TextBox
                             name: metaDefaultRp
                             format: number
+                            cell:
+                              row: 0
+                              column: 4
+                            events:
+                              change: ./brawsim.events::onChange_metaDefaultRp
+                          - type: Label
+                            label: '<i>p</i><sub>ø</sub>'
+                            cell:
+                              row: 0
+                              column: 1
                           - type: TextBox
                             name: metaDefaultNullp
                             format: number
                             events:
                               change: ./brawsim.events::onChange_metaDefaultNullp
+                            cell:
+                              row: 0
+                              column: 2
+                          - type: Label
+                            label: n
+                            cell:
+                              row: 1
+                              column: 1
+                          - type: TextBox
+                            name: metaDefaultN
+                            format: number
+                            cell:
+                              row: 1
+                              column: 2
+                            events:
+                              change: ./brawsim.events::onChange_metaDefaultN
+                          - type: Label
+                            label: wₛ
+                            cell:
+                              row: 1
+                              column: 3
+                          - type: TextBox
+                            name: metaDefaultRepPower
+                            format: number
+                            cell:
+                              row: 1
+                              column: 4
                       - type: LayoutBox
                         style: inline
                         margin: none
                         children:
                           - type: Label
                             label: ' '
-                            minWidth: 13
+                            minWidth: 26
+                            cell:
+                              row: 0
+                              column: 0
                           - type: Label
-                            label: ' '
-                            minWidth: 13
-                          - type: Label
-                            label: extent of cheating
+                            label: cheating
+                            cell:
+                              row: 0
+                              column: 1
                           - type: TextBox
                             name: metaCheatingProportion
                             format: number
-                      - type: LayoutBox
-                        style: inline
-                        margin: none
-                        children:
+                            cell:
+                              row: 0
+                              column: 2
                           - type: Label
-                            label: ' '
-                            minWidth: 13
+                            label: n repeats
+                            cell:
+                              row: 2
+                              column: 1
+                          - type: TextBox
+                            name: metaMultiple
+                            cell:
+                              row: 2
+                              column: 2
+                            format: number
                           - type: Label
-                            label: ' '
-                            minWidth: 13
+                            label: publication bias
+                            cell:
+                              row: 1
+                              column: 1
                           - type: ComboBox
                             name: metaPublicationBias
+                            cell:
+                              row: 1
+                              column: 2
                           - type: Label
-                            label: 'show samples as:'
+                            label: 'schematic:'
+                            cell:
+                              row: 1
+                              column: 3
                           - type: ComboBox
                             name: metaShow
+                            cell:
+                              row: 1
+                              column: 4
               - type: LayoutBox
                 style: inline
                 margin: none
