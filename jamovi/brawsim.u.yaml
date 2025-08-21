@@ -2621,12 +2621,6 @@ children:
                               - type: Label
                                 label: ' '
                                 minWidth: 15
-                          - type: LayoutBox
-                            style: inline
-                            children:
-                              - type: Label
-                                label: ' '
-                                minWidth: 15
                               - type: CollapseBox
                                 collapsed: true
                                 label: 'Example: is it a real effect?'
