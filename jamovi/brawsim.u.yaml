@@ -2710,7 +2710,7 @@ children:
                                   row: 0
                                   column: 0
                               - type: Label
-                                label: '<i>p</i><sub>ø</sub>'
+                                label: 'π<sub>ø</sub>'
                                 cell:
                                   row: 0
                                   column: 1
@@ -2855,7 +2855,7 @@ children:
                                   row: 0
                                   column: 0
                               - type: Label
-                                label: '<i>p</i><sub>ø</sub>'
+                                label: 'π<sub>ø</sub>'
                                 cell:
                                   row: 0
                                   column: 1
@@ -3021,7 +3021,7 @@ children:
                                   row: 0
                                   column: 0
                               - type: Label
-                                label: '<i>p</i><sub>ø</sub>'
+                                label: 'π<sub>ø</sub>'
                                 cell:
                                   row: 0
                                   column: 1
@@ -3194,7 +3194,7 @@ children:
                                   row: 0
                                   column: 0
                               - type: Label
-                                label: '<i>p</i><sub>ø</sub>'
+                                label: 'π<sub>ø</sub>'
                                 cell:
                                   row: 0
                                   column: 1
@@ -5255,7 +5255,7 @@ children:
                             events:
                               change: ./brawsim.events::onChange_metaDefaultRp
                           - type: Label
-                            label: '<i>p</i><sub>ø</sub>'
+                            label: 'π<sub>ø</sub>'
                             cell:
                               row: 0
                               column: 1
