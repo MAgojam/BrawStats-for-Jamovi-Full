@@ -93,7 +93,7 @@ setBraw<-function(self) {
                             populationPDFk=self$options$priorLambda,
                             populationNullp=self$options$priorNullP)
          })
-  evidence<-makeEvidence(AnalysisTerms=1+(self$options$main2=="yes")+(self$options$interaction=="yes"),
+  evidence<-makeEvidence(AnalysisTerms=c(TRUE,self$options$main2,self$options$interaction),
                          ssqType=self$options$ssq,sigOnly=FALSE,
                          Welch=self$options$equalVar=="no",
                          Transform=self$options$Transform,

@@ -1,5 +1,7 @@
 metaSciInstructions <- function(HelpType="Plan") {
 
+  oldEvidence<-braw.def$evidence
+  
   switch(HelpType,
          "Overview"={
            output<-c(
@@ -161,8 +163,6 @@ metaSciInstructions <- function(HelpType="Plan") {
            '<br><br>',
            'In short, the two researchers are, without noticing it, studying different populations as might happen if they worked in different countries.',
            'This can be shown by including a third variable in the hypothesis, where the different countries favour different values for that variable.',
-           '<br><br>',
-           'It is hoped that these steps have given you some insight into how statistical analysis works when it is scaled up across a whole discipline.',
            '<br>'
            )
          }
@@ -304,7 +304,7 @@ metaSciComment<-function(whichComment) {
       'This is meant as food for thought: replication is confrontational. Is that important or is it a hindrance? '
     )
   if (is.element(whichComment,c(13:14))){
-    setEvidence(AnalysisTerms=3)
+    # setEvidence(AnalysisTerms=c(TRUE,TRUE,TRUE))
     s1<-showHypothesis()
     p<-paste0(
       '<b>Actually, a failure to replicate can be meaningful.</b><br> ',
@@ -328,7 +328,7 @@ metaSciComment<-function(whichComment) {
     )
   }
     if (is.element(whichComment,c(15:16))){
-      setEvidence(AnalysisTerms=2)
+      # setEvidence(AnalysisTerms=c(TRUE,TRUE,TRUE))
       s2<-showHypothesis()
       p<-paste0(
         '<b>Actually, a failure to replicate can be meaningful.</b><br> ',
@@ -345,6 +345,8 @@ metaSciComment<-function(whichComment) {
         '</div>'
       )
     }
+
+  setBrawDef("evidence",oldEvidence)
   
   return(paste0('<div style="height:500px;">',p,'<br>','</div>'))
     

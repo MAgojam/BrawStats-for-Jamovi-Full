@@ -110,8 +110,8 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             alphaSig = 0.05,
             minRp = 0,
             ssq = "Type3",
-            main2 = "no",
-            interaction = "no",
+            main2 = TRUE,
+            interaction = FALSE,
             equalVar = "yes",
             Transform = "None",
             likelihoodType = "Populations",
@@ -301,7 +301,6 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             meta4World = "Psych50",
             meta4pNull = 0.5,
             meta4rp = 0.3,
-            meta5Source = "Interaction",
             doMeta5ABtn = NULL,
             doMeta5ArBtn = NULL,
             doMeta5AmBtn = NULL,
@@ -883,20 +882,14 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "Type2",
                     "Type3"),
                 default="Type3")
-            private$..main2 <- jmvcore::OptionList$new(
+            private$..main2 <- jmvcore::OptionBool$new(
                 "main2",
                 main2,
-                options=list(
-                    "no",
-                    "yes"),
-                default="no")
-            private$..interaction <- jmvcore::OptionList$new(
+                default=TRUE)
+            private$..interaction <- jmvcore::OptionBool$new(
                 "interaction",
                 interaction,
-                options=list(
-                    "no",
-                    "yes"),
-                default="no")
+                default=FALSE)
             private$..equalVar <- jmvcore::OptionList$new(
                 "equalVar",
                 equalVar,
@@ -2017,14 +2010,6 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 "meta4rp",
                 meta4rp,
                 default=0.3)
-            private$..meta5Source <- jmvcore::OptionList$new(
-                "meta5Source",
-                meta5Source,
-                options=list(
-                    "None",
-                    "Interaction",
-                    "Covariation"),
-                default="Interaction")
             private$..doMeta5ABtn <- jmvcore::OptionAction$new(
                 "doMeta5ABtn",
                 doMeta5ABtn)
@@ -2388,7 +2373,6 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..meta4World)
             self$.addOption(private$..meta4pNull)
             self$.addOption(private$..meta4rp)
-            self$.addOption(private$..meta5Source)
             self$.addOption(private$..doMeta5ABtn)
             self$.addOption(private$..doMeta5ArBtn)
             self$.addOption(private$..doMeta5AmBtn)
@@ -2706,7 +2690,6 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         meta4World = function() private$..meta4World$value,
         meta4pNull = function() private$..meta4pNull$value,
         meta4rp = function() private$..meta4rp$value,
-        meta5Source = function() private$..meta5Source$value,
         doMeta5ABtn = function() private$..doMeta5ABtn$value,
         doMeta5ArBtn = function() private$..doMeta5ArBtn$value,
         doMeta5AmBtn = function() private$..doMeta5AmBtn$value,
@@ -3023,7 +3006,6 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..meta4World = NA,
         ..meta4pNull = NA,
         ..meta4rp = NA,
-        ..meta5Source = NA,
         ..doMeta5ABtn = NA,
         ..doMeta5ArBtn = NA,
         ..doMeta5AmBtn = NA,
@@ -3459,7 +3441,6 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param meta4World .
 #' @param meta4pNull .
 #' @param meta4rp .
-#' @param meta5Source .
 #' @param doMeta5ABtn .
 #' @param doMeta5ArBtn .
 #' @param doMeta5AmBtn .
@@ -3595,8 +3576,8 @@ BrawSim <- function(
     alphaSig = 0.05,
     minRp = 0,
     ssq = "Type3",
-    main2 = "no",
-    interaction = "no",
+    main2 = TRUE,
+    interaction = FALSE,
     equalVar = "yes",
     Transform = "None",
     likelihoodType = "Populations",
@@ -3786,7 +3767,6 @@ BrawSim <- function(
     meta4World = "Psych50",
     meta4pNull = 0.5,
     meta4rp = 0.3,
-    meta5Source = "Interaction",
     doMeta5ABtn,
     doMeta5ArBtn,
     doMeta5AmBtn,
@@ -4105,7 +4085,6 @@ BrawSim <- function(
         meta4World = meta4World,
         meta4pNull = meta4pNull,
         meta4rp = meta4rp,
-        meta5Source = meta5Source,
         doMeta5ABtn = doMeta5ABtn,
         doMeta5ArBtn = doMeta5ArBtn,
         doMeta5AmBtn = doMeta5AmBtn,

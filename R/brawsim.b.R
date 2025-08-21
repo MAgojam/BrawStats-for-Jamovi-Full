@@ -213,8 +213,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                            sN=sN,
                            sMethod=self$options$meta2SampleMethod,sCheating=self$options$meta2Cheating,
                            sBudget=self$options$meta3SampleBudget,sSplits=self$options$meta3SampleSplits,
-                           sReplicationPower=self$options$metaDefaultRepPower,sReplicationOriginalAnomaly=self$options$meta4OriginalAnomaly,
-                           differenceSource=self$options$meta5Source
+                           sReplicationPower=self$options$metaDefaultRepPower,sReplicationOriginalAnomaly=self$options$meta4OriginalAnomaly
         )
 
         doingMultiple<-grepl('m',gsub('[A-Za-z]*[0-9]*[A-Da-d]*([rm]*)','\\1',doingMetaSci),fixed=TRUE)

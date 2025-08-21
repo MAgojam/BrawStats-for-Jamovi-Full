@@ -823,24 +823,14 @@ options:
       default: Type3
 
     - name: main2
-      title: 'Main 2?'
-      type: List
-      options:
-      - name: no
-        title: no
-      - name: yes
-        title: yes
-      default: no
+      title: 'Main 2'
+      type: Bool
+      default: true
 
     - name: interaction
-      title: 'Interaction?'
-      type: List
-      options:
-      - name: no
-        title: no
-      - name: yes
-        title: yes
-      default: no
+      title: 'Interaction'
+      type: Bool
+      default: false
 
     - name: equalVar
       title: 'Equal variance'
@@ -2544,18 +2534,6 @@ options:
       type: Number
       default: 0.3
 
-    - name: meta5Source
-      title: source
-      type: List
-      options:
-        - name: None
-          title: None
-        - name: Interaction
-          title: Interaction
-        - name: Covariation
-          title: Covariation
-      default: Interaction
-    
     - name: doMeta5ABtn
       title: '1'
       type: Action

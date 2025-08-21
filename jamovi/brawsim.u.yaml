@@ -3403,14 +3403,6 @@ children:
                             children:
                               - type: Label
                                 label: ' '
-                                minWidth: 15
-                              - type: ComboBox
-                                name: meta5Source
-                          - type: LayoutBox
-                            style: inline
-                            children:
-                              - type: Label
-                                label: ' '
                                 minWidth: 30
                               - type: CollapseBox
                                 collapsed: true
@@ -4193,12 +4185,17 @@ children:
                                             children:
                                               - type: ComboBox
                                                 name: Transform
-                                              - type: ComboBox
-                                                name: main2
-                                                enable: (!presetIV2:none)
-                                              - type: ComboBox
-                                                name: interaction
-                                                enable: (!presetIV2:none)
+                                              - type: LayoutBox
+                                                style: inline
+                                                children:
+                                                  - type: Label
+                                                    label: 'Terms:'
+                                                  - type: CheckBox
+                                                    name: main2
+                                                    enable: (!presetIV2:none)
+                                                  - type: CheckBox
+                                                    name: interaction
+                                                    enable: (!presetIV2:none && main2)
                                           - type: Label
                                             label: Display
                                             children:
