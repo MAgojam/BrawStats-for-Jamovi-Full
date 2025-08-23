@@ -2464,12 +2464,20 @@ options:
     - name: doMeta4ArBtn
       title: '⮐'
       type: Action
+
+    - name: doMeta4AcBtn
+      title: '⮑'
+      type: Action
       
     - name: doMeta4AmBtn
       title: '*'
       type: Action
       
     - name: doMeta4AmrBtn
+      title: '*'
+      type: Action
+      
+    - name: doMeta4AmcBtn
       title: '*'
       type: Action
 
@@ -2481,11 +2489,19 @@ options:
       title: '⮐'
       type: Action
 
+    - name: doMeta4BcBtn
+      title: '⮑'
+      type: Action
+
     - name: doMeta4BmBtn
       title: '*'
       type: Action
 
     - name: doMeta4BmrBtn
+      title: '*'
+      type: Action
+
+    - name: doMeta4BmcBtn
       title: '*'
       type: Action
 

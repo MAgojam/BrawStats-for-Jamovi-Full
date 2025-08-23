@@ -290,12 +290,16 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             meta3SampleBudget = 84,
             doMeta4ABtn = NULL,
             doMeta4ArBtn = NULL,
+            doMeta4AcBtn = NULL,
             doMeta4AmBtn = NULL,
             doMeta4AmrBtn = NULL,
+            doMeta4AmcBtn = NULL,
             doMeta4BBtn = NULL,
             doMeta4BrBtn = NULL,
+            doMeta4BcBtn = NULL,
             doMeta4BmBtn = NULL,
             doMeta4BmrBtn = NULL,
+            doMeta4BmcBtn = NULL,
             meta4OriginalAnomaly = "Convenience",
             meta4SampleSize = 42,
             meta4World = "Psych50",
@@ -1962,24 +1966,36 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             private$..doMeta4ArBtn <- jmvcore::OptionAction$new(
                 "doMeta4ArBtn",
                 doMeta4ArBtn)
+            private$..doMeta4AcBtn <- jmvcore::OptionAction$new(
+                "doMeta4AcBtn",
+                doMeta4AcBtn)
             private$..doMeta4AmBtn <- jmvcore::OptionAction$new(
                 "doMeta4AmBtn",
                 doMeta4AmBtn)
             private$..doMeta4AmrBtn <- jmvcore::OptionAction$new(
                 "doMeta4AmrBtn",
                 doMeta4AmrBtn)
+            private$..doMeta4AmcBtn <- jmvcore::OptionAction$new(
+                "doMeta4AmcBtn",
+                doMeta4AmcBtn)
             private$..doMeta4BBtn <- jmvcore::OptionAction$new(
                 "doMeta4BBtn",
                 doMeta4BBtn)
             private$..doMeta4BrBtn <- jmvcore::OptionAction$new(
                 "doMeta4BrBtn",
                 doMeta4BrBtn)
+            private$..doMeta4BcBtn <- jmvcore::OptionAction$new(
+                "doMeta4BcBtn",
+                doMeta4BcBtn)
             private$..doMeta4BmBtn <- jmvcore::OptionAction$new(
                 "doMeta4BmBtn",
                 doMeta4BmBtn)
             private$..doMeta4BmrBtn <- jmvcore::OptionAction$new(
                 "doMeta4BmrBtn",
                 doMeta4BmrBtn)
+            private$..doMeta4BmcBtn <- jmvcore::OptionAction$new(
+                "doMeta4BmcBtn",
+                doMeta4BmcBtn)
             private$..meta4OriginalAnomaly <- jmvcore::OptionList$new(
                 "meta4OriginalAnomaly",
                 meta4OriginalAnomaly,
@@ -2362,12 +2378,16 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..meta3SampleBudget)
             self$.addOption(private$..doMeta4ABtn)
             self$.addOption(private$..doMeta4ArBtn)
+            self$.addOption(private$..doMeta4AcBtn)
             self$.addOption(private$..doMeta4AmBtn)
             self$.addOption(private$..doMeta4AmrBtn)
+            self$.addOption(private$..doMeta4AmcBtn)
             self$.addOption(private$..doMeta4BBtn)
             self$.addOption(private$..doMeta4BrBtn)
+            self$.addOption(private$..doMeta4BcBtn)
             self$.addOption(private$..doMeta4BmBtn)
             self$.addOption(private$..doMeta4BmrBtn)
+            self$.addOption(private$..doMeta4BmcBtn)
             self$.addOption(private$..meta4OriginalAnomaly)
             self$.addOption(private$..meta4SampleSize)
             self$.addOption(private$..meta4World)
@@ -2679,12 +2699,16 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         meta3SampleBudget = function() private$..meta3SampleBudget$value,
         doMeta4ABtn = function() private$..doMeta4ABtn$value,
         doMeta4ArBtn = function() private$..doMeta4ArBtn$value,
+        doMeta4AcBtn = function() private$..doMeta4AcBtn$value,
         doMeta4AmBtn = function() private$..doMeta4AmBtn$value,
         doMeta4AmrBtn = function() private$..doMeta4AmrBtn$value,
+        doMeta4AmcBtn = function() private$..doMeta4AmcBtn$value,
         doMeta4BBtn = function() private$..doMeta4BBtn$value,
         doMeta4BrBtn = function() private$..doMeta4BrBtn$value,
+        doMeta4BcBtn = function() private$..doMeta4BcBtn$value,
         doMeta4BmBtn = function() private$..doMeta4BmBtn$value,
         doMeta4BmrBtn = function() private$..doMeta4BmrBtn$value,
+        doMeta4BmcBtn = function() private$..doMeta4BmcBtn$value,
         meta4OriginalAnomaly = function() private$..meta4OriginalAnomaly$value,
         meta4SampleSize = function() private$..meta4SampleSize$value,
         meta4World = function() private$..meta4World$value,
@@ -2995,12 +3019,16 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..meta3SampleBudget = NA,
         ..doMeta4ABtn = NA,
         ..doMeta4ArBtn = NA,
+        ..doMeta4AcBtn = NA,
         ..doMeta4AmBtn = NA,
         ..doMeta4AmrBtn = NA,
+        ..doMeta4AmcBtn = NA,
         ..doMeta4BBtn = NA,
         ..doMeta4BrBtn = NA,
+        ..doMeta4BcBtn = NA,
         ..doMeta4BmBtn = NA,
         ..doMeta4BmrBtn = NA,
+        ..doMeta4BmcBtn = NA,
         ..meta4OriginalAnomaly = NA,
         ..meta4SampleSize = NA,
         ..meta4World = NA,
@@ -3430,12 +3458,16 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param meta3SampleBudget .
 #' @param doMeta4ABtn .
 #' @param doMeta4ArBtn .
+#' @param doMeta4AcBtn .
 #' @param doMeta4AmBtn .
 #' @param doMeta4AmrBtn .
+#' @param doMeta4AmcBtn .
 #' @param doMeta4BBtn .
 #' @param doMeta4BrBtn .
+#' @param doMeta4BcBtn .
 #' @param doMeta4BmBtn .
 #' @param doMeta4BmrBtn .
+#' @param doMeta4BmcBtn .
 #' @param meta4OriginalAnomaly .
 #' @param meta4SampleSize .
 #' @param meta4World .
@@ -3756,12 +3788,16 @@ BrawSim <- function(
     meta3SampleBudget = 84,
     doMeta4ABtn,
     doMeta4ArBtn,
+    doMeta4AcBtn,
     doMeta4AmBtn,
     doMeta4AmrBtn,
+    doMeta4AmcBtn,
     doMeta4BBtn,
     doMeta4BrBtn,
+    doMeta4BcBtn,
     doMeta4BmBtn,
     doMeta4BmrBtn,
+    doMeta4BmcBtn,
     meta4OriginalAnomaly = "Convenience",
     meta4SampleSize = 42,
     meta4World = "Psych50",
@@ -4074,12 +4110,16 @@ BrawSim <- function(
         meta3SampleBudget = meta3SampleBudget,
         doMeta4ABtn = doMeta4ABtn,
         doMeta4ArBtn = doMeta4ArBtn,
+        doMeta4AcBtn = doMeta4AcBtn,
         doMeta4AmBtn = doMeta4AmBtn,
         doMeta4AmrBtn = doMeta4AmrBtn,
+        doMeta4AmcBtn = doMeta4AmcBtn,
         doMeta4BBtn = doMeta4BBtn,
         doMeta4BrBtn = doMeta4BrBtn,
+        doMeta4BcBtn = doMeta4BcBtn,
         doMeta4BmBtn = doMeta4BmBtn,
         doMeta4BmrBtn = doMeta4BmrBtn,
+        doMeta4BmcBtn = doMeta4BmcBtn,
         meta4OriginalAnomaly = meta4OriginalAnomaly,
         meta4SampleSize = meta4SampleSize,
         meta4World = meta4World,
