@@ -2291,6 +2291,10 @@ options:
       title: '⮐'
       type: Action
       
+    - name: doMeta0CBtn
+      title: '⮑'
+      type: Action
+      
     - name: doMeta0mBtn
       title: '*'
       type: Action

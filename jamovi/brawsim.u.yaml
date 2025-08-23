@@ -2555,6 +2555,35 @@ children:
                                         label: >-
                                           - each time you press the button, a new
                                           replication is made
+                                  - type: LayoutBox
+                                    style: inline
+                                    children:
+                                      - type: Label
+                                        label: ' '
+                                        minWidth: 15
+                                      - type: Label
+                                        label: ⬦
+                                        minWidth: 5
+                                        maxWidth: 7
+                                      - type: Label
+                                        label: >-
+                                          To combine original and replication samples, press
+                                          the
+                                      - type: ActionButton
+                                        name: doMeta0CBtn
+                                        maxHeight: 24
+                                        maxWidth: 15
+                                        margin: none
+                                      - type: Label
+                                        label: button
+                                  - type: LayoutBox
+                                    style: inline
+                                    children:
+                                      - type: Label
+                                        label: ' '
+                                        minWidth: 45
+                                      - type: Label
+                                        label: '- this uses meta-analysis'
                           - type: LayoutBox
                             style: inline
                             children:

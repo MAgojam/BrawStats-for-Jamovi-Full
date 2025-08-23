@@ -259,6 +259,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             meta1rp = 0.3,
             doMeta0Btn = NULL,
             doMeta0RBtn = NULL,
+            doMeta0CBtn = NULL,
             doMeta0mBtn = NULL,
             doMeta1ABtn = NULL,
             doMeta1AmBtn = NULL,
@@ -1840,6 +1841,9 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             private$..doMeta0RBtn <- jmvcore::OptionAction$new(
                 "doMeta0RBtn",
                 doMeta0RBtn)
+            private$..doMeta0CBtn <- jmvcore::OptionAction$new(
+                "doMeta0CBtn",
+                doMeta0CBtn)
             private$..doMeta0mBtn <- jmvcore::OptionAction$new(
                 "doMeta0mBtn",
                 doMeta0mBtn)
@@ -2347,6 +2351,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..meta1rp)
             self$.addOption(private$..doMeta0Btn)
             self$.addOption(private$..doMeta0RBtn)
+            self$.addOption(private$..doMeta0CBtn)
             self$.addOption(private$..doMeta0mBtn)
             self$.addOption(private$..doMeta1ABtn)
             self$.addOption(private$..doMeta1AmBtn)
@@ -2668,6 +2673,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         meta1rp = function() private$..meta1rp$value,
         doMeta0Btn = function() private$..doMeta0Btn$value,
         doMeta0RBtn = function() private$..doMeta0RBtn$value,
+        doMeta0CBtn = function() private$..doMeta0CBtn$value,
         doMeta0mBtn = function() private$..doMeta0mBtn$value,
         doMeta1ABtn = function() private$..doMeta1ABtn$value,
         doMeta1AmBtn = function() private$..doMeta1AmBtn$value,
@@ -2988,6 +2994,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..meta1rp = NA,
         ..doMeta0Btn = NA,
         ..doMeta0RBtn = NA,
+        ..doMeta0CBtn = NA,
         ..doMeta0mBtn = NA,
         ..doMeta1ABtn = NA,
         ..doMeta1AmBtn = NA,
@@ -3427,6 +3434,7 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param meta1rp .
 #' @param doMeta0Btn .
 #' @param doMeta0RBtn .
+#' @param doMeta0CBtn .
 #' @param doMeta0mBtn .
 #' @param doMeta1ABtn .
 #' @param doMeta1AmBtn .
@@ -3757,6 +3765,7 @@ BrawSim <- function(
     meta1rp = 0.3,
     doMeta0Btn,
     doMeta0RBtn,
+    doMeta0CBtn,
     doMeta0mBtn,
     doMeta1ABtn,
     doMeta1AmBtn,
@@ -4079,6 +4088,7 @@ BrawSim <- function(
         meta1rp = meta1rp,
         doMeta0Btn = doMeta0Btn,
         doMeta0RBtn = doMeta0RBtn,
+        doMeta0CBtn = doMeta0CBtn,
         doMeta0mBtn = doMeta0mBtn,
         doMeta1ABtn = doMeta1ABtn,
         doMeta1AmBtn = doMeta1AmBtn,
