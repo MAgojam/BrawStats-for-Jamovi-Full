@@ -2677,7 +2677,7 @@ children:
                                       row: 1
                                       column: 3
                                   - type: ActionButton
-                                    name: doMeta0ArmBtn
+                                    name: doMeta0AmrBtn
                                     maxHeight: 24
                                     maxWidth: 15
                                     margin: none
@@ -2704,7 +2704,7 @@ children:
                                   row: 0
                                   column: 0
                               - type: Label
-                                label: 'π<sub>ø</sub>'
+                                label: 'p(R<sub>0</sub>)'
                                 cell:
                                   row: 0
                                   column: 1
@@ -2716,7 +2716,7 @@ children:
                                   row: 0
                                   column: 2
                               - type: Label
-                                label: 'r̅<sub>+</sub>'
+                                label: 'mean(R<sub>+</sub>)'
                                 cell:
                                   row: 0
                                   column: 3
@@ -2849,7 +2849,7 @@ children:
                                   row: 0
                                   column: 0
                               - type: Label
-                                label: 'π<sub>ø</sub>'
+                                label: 'p(R<sub>0</sub>)'
                                 cell:
                                   row: 0
                                   column: 1
@@ -2861,7 +2861,7 @@ children:
                                   row: 0
                                   column: 2
                               - type: Label
-                                label: 'r̅<sub>+</sub>'
+                                label: 'mean(R<sub>+</sub>)'
                                 cell:
                                   row: 0
                                   column: 3
@@ -3015,7 +3015,7 @@ children:
                                   row: 0
                                   column: 0
                               - type: Label
-                                label: 'π<sub>ø</sub>'
+                                label: 'p(R<sub>0</sub>)'
                                 cell:
                                   row: 0
                                   column: 1
@@ -3027,7 +3027,7 @@ children:
                                   row: 0
                                   column: 2
                               - type: Label
-                                label: 'r̅<sub>+</sub>'
+                                label: 'mean(R<sub>+</sub>)'
                                 cell:
                                   row: 0
                                   column: 3
@@ -3188,7 +3188,7 @@ children:
                                   row: 0
                                   column: 0
                               - type: Label
-                                label: 'π<sub>ø</sub>'
+                                label: 'p(R<sub>0</sub>)'
                                 cell:
                                   row: 0
                                   column: 1
@@ -3200,7 +3200,7 @@ children:
                                   row: 0
                                   column: 2
                               - type: Label
-                                label: '  r̅<sub>+</sub>'
+                                label: 'mean(R<sub>+</sub>)'
                                 cell:
                                   row: 0
                                   column: 3
@@ -3252,7 +3252,7 @@ children:
                                         style: inline
                                         children:
                                           - type: Label
-                                            label: Press here for an original sample
+                                            label: Original sample
                                             cell:
                                               row: 0
                                               column: 1
@@ -3278,7 +3278,7 @@ children:
                                               row: 0
                                               column: 4
                                           - type: Label
-                                            label: Press here to see multiple samples
+                                            label: Multiple samples
                                             cell:
                                               row: 1
                                               column: 1
@@ -3291,7 +3291,7 @@ children:
                                               row: 1
                                               column: 2
                                           - type: ActionButton
-                                            name: doMeta4ArmBtn
+                                            name: doMeta4AmrBtn
                                             maxHeight: 24
                                             maxWidth: 15
                                             margin: none
@@ -3367,7 +3367,7 @@ children:
                                               row: 1
                                               column: 2
                                           - type: ActionButton
-                                            name: doMeta4BrmBtn
+                                            name: doMeta4BmrBtn
                                             maxHeight: 24
                                             maxWidth: 15
                                             margin: none
@@ -3451,7 +3451,7 @@ children:
                                               row: 1
                                               column: 2
                                           - type: ActionButton
-                                            name: doMeta5ArmBtn
+                                            name: doMeta5AmrBtn
                                             maxHeight: 24
                                             maxWidth: 15
                                             margin: none
@@ -3518,7 +3518,7 @@ children:
                                               row: 1
                                               column: 2
                                           - type: ActionButton
-                                            name: doMeta5BrmBtn
+                                            name: doMeta5BmrBtn
                                             maxHeight: 24
                                             maxWidth: 15
                                             margin: none
@@ -5236,7 +5236,7 @@ children:
                               row: 0
                               column: 0
                           - type: Label
-                            label: 'r̅<sub>+</sub>'
+                            label: 'mean(R<sub>+</sub>)'
                             cell:
                               row: 0
                               column: 3
@@ -5249,7 +5249,7 @@ children:
                             events:
                               change: ./brawsim.events::onChange_metaDefaultRp
                           - type: Label
-                            label: 'π<sub>ø</sub>'
+                            label: 'p(R<sub>0</sub>)'
                             cell:
                               row: 0
                               column: 1

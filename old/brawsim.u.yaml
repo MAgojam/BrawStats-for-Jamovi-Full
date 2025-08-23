@@ -2679,7 +2679,7 @@ children:
                                       row: 1
                                       column: 3
                                   - type: ActionButton
-                                    name: doMeta0ArmBtn
+                                    name: doMeta0AmrBtn
                                     maxHeight: 24
                                     maxWidth: 15
                                     margin: none
@@ -2820,7 +2820,7 @@ children:
                                           row: 1
                                           column: 2
                                       - type: ActionButton
-                                        name: doMeta1BrmBtn
+                                        name: doMeta1BmrBtn
                                         maxHeight: 24
                                         maxWidth: 15
                                         margin: none
@@ -2932,7 +2932,7 @@ children:
                                           row: 1
                                           column: 2
                                       - type: ActionButton
-                                        name: doMeta2ArmBtn
+                                        name: doMeta2AmrBtn
                                         maxHeight: 24
                                         maxWidth: 15
                                         margin: none
@@ -3004,7 +3004,7 @@ children:
                                               row: 1
                                               column: 2
                                           - type: ActionButton
-                                            name: doMeta2BrmBtn
+                                            name: doMeta2BmrBtn
                                             maxHeight: 24
                                             maxWidth: 15
                                             margin: none
@@ -3113,7 +3113,7 @@ children:
                                               row: 1
                                               column: 2
                                           - type: ActionButton
-                                            name: doMeta3ArmBtn
+                                            name: doMeta3AmrBtn
                                             maxHeight: 24
                                             maxWidth: 15
                                             margin: none
@@ -3195,7 +3195,7 @@ children:
                                               row: 1
                                               column: 2
                                           - type: ActionButton
-                                            name: doMeta3BrmBtn
+                                            name: doMeta3BmrBtn
                                             maxHeight: 24
                                             maxWidth: 15
                                             margin: none
@@ -3308,7 +3308,7 @@ children:
                                               row: 1
                                               column: 2
                                           - type: ActionButton
-                                            name: doMeta4ArmBtn
+                                            name: doMeta4AmrBtn
                                             maxHeight: 24
                                             maxWidth: 15
                                             margin: none
@@ -3384,7 +3384,7 @@ children:
                                               row: 1
                                               column: 2
                                           - type: ActionButton
-                                            name: doMeta4BrmBtn
+                                            name: doMeta4BmrBtn
                                             maxHeight: 24
                                             maxWidth: 15
                                             margin: none
@@ -3474,7 +3474,7 @@ children:
                                               row: 1
                                               column: 2
                                           - type: ActionButton
-                                            name: doMeta5ArmBtn
+                                            name: doMeta5AmrBtn
                                             maxHeight: 24
                                             maxWidth: 15
                                             margin: none
@@ -3541,7 +3541,7 @@ children:
                                               row: 1
                                               column: 2
                                           - type: ActionButton
-                                            name: doMeta5BrmBtn
+                                            name: doMeta5BmrBtn
                                             maxHeight: 24
                                             maxWidth: 15
                                             margin: none
