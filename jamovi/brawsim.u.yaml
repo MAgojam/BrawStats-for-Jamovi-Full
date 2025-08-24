@@ -2622,7 +2622,7 @@ children:
                                         minWidth: 45
                                       - type: Label
                                         label: >-
-                                          - you see the data as the distribution
+                                          - you see the distribution
                                           of sample effect sizes "Schematic"
                                   - type: LayoutBox
                                     style: inline
@@ -2632,7 +2632,7 @@ children:
                                         minWidth: 45
                                       - type: Label
                                         label: >-
-                                          - colours show significant/not sample
+                                          - colours show significant/not and
                                           from real/null population
                                   - type: LayoutBox
                                     style: inline
