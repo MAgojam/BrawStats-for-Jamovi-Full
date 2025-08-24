@@ -44,8 +44,8 @@ brawMetaSciHelp<-function(open=0,indent,titleWidth) {
       tabContents = c(
         metaSciInstructions("Overview"),
         metaSciInstructions("Inferences"),
-        metaSciInstructions("Sampling Method"),
         metaSciInstructions("Sample Size"),
+        metaSciInstructions("Sampling Method"),
         metaSciInstructions("Double Checking"),
         metaSciInstructions("Real Differences")
       ),

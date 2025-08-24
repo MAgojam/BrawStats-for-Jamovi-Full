@@ -2352,21 +2352,7 @@ options:
       type: Number
       default: 0.3
 
-    - name: meta2World
-      title: ''
-      type: List
-      options:
-      - name: NullH
-        title: 'null'
-      - name: Plain
-        title: single
-      - name: Binary
-        title: binary
-      - name: Psych50
-        title: exponential
-      default: Psych50
-
-    - name: meta2SampleMethod
+    - name: meta3SampleMethod
       title: 'Sampling Method'
       type: List
       options:
@@ -2392,7 +2378,7 @@ options:
       type: Number
       default: 0.05
       
-    - name: meta2Cheating
+    - name: meta3Cheating
       title: Cheating
       type: List
       options:
@@ -2422,24 +2408,10 @@ options:
       title: '*'
       type: Action
 
-    - name: meta3SampleSize
+    - name: meta2SampleSize
       title: 'Sample size' 
       type: Number
       default: 84
-
-    - name: meta3World
-      title: ''
-      type: List
-      options:
-      - name: NullH
-        title: 'null'
-      - name: Plain
-        title: single
-      - name: Binary
-        title: binary
-      - name: Psych50
-        title: exponential
-      default: Psych50
 
     - name: meta3pNull
       title: ''
@@ -2451,12 +2423,12 @@ options:
       type: Number
       default: 0.3
 
-    - name: meta3SampleSplits
+    - name: meta2SampleSplits
       title: sets
       type: Number
       default: 6
 
-    - name: meta3SampleBudget
+    - name: meta2SampleBudget
       title: Budget
       type: Number
       default: 84
@@ -2528,21 +2500,6 @@ options:
       title: 'original n' 
       type: Number
       default: 42
-
-
-    - name: meta4World
-      title: ''
-      type: List
-      options:
-      - name: NullH
-        title: 'null'
-      - name: Plain
-        title: single
-      - name: Binary
-        title: binary
-      - name: Psych50
-        title: exponential
-      default: Psych50
 
     - name: meta4pNull
       title: ''
@@ -2616,6 +2573,20 @@ options:
       type: Number
       default: 0.5
       
+    - name: metaDefaultWorld
+      title: ''
+      type: List
+      options:
+      - name: NullH
+        title: 'null'
+      - name: Plain
+        title: single
+      - name: Binary
+        title: binary
+      - name: Psych50
+        title: exponential
+      default: Psych50
+
     - name: metaDefaultRepPower
       title: ''
       type: Number
@@ -2630,12 +2601,4 @@ options:
       - name: yes
         title: yes
       default: no
-
-    - name: metaGoBack
-      title: '<<'
-      type: Action
-
-    - name: metaGoForwards
-      title: '>>'
-      type: Action
 ...

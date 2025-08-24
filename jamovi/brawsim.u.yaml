@@ -2863,7 +2863,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: 2. <b>Sampling Method:</b> are we cheating?
+                        label: 2. <b>Sample Size:</b> who benefits?
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -2901,17 +2901,6 @@ children:
                                 cell:
                                   row: 0
                                   column: 4
-                              - type: Label
-                                label: R<sub>+</sub>
-                                cell:
-                                  row: 0
-                                  column: 5
-                              - type: ComboBox
-                                name: meta2World
-                                margin: none
-                                cell:
-                                  row: 0
-                                  column: 6
                           - type: LayoutBox
                             style: inline
                             children:
@@ -2920,62 +2909,7 @@ children:
                                 minWidth: 30
                               - type: CollapseBox
                                 collapsed: true
-                                label: a. non-random sampling?
-                                margin: none
-                                minWidth: 420
-                                maxWidth: 420
-                                children:
-                                  - type: LayoutBox
-                                    style: inline
-                                    children:
-                                      - type: Label
-                                        label: ' '
-                                      - type: ComboBox
-                                        name: meta2SampleMethod
-                                        margin: none
-                                  - type: LayoutBox
-                                    style: inline
-                                    children:
-                                      - type: Label
-                                        label: ' '
-                                        cell:
-                                          row: 0
-                                          column: 0
-                                      - type: Label
-                                        label: Press here for a single sample
-                                        cell:
-                                          row: 0
-                                          column: 1
-                                      - type: ActionButton
-                                        name: doMeta2ABtn
-                                        maxHeight: 24
-                                        maxWidth: 15
-                                        margin: none
-                                        cell:
-                                          row: 0
-                                          column: 2
-                                      - type: Label
-                                        label: Press here to see multiple samples
-                                        cell:
-                                          row: 1
-                                          column: 1
-                                      - type: ActionButton
-                                        name: doMeta2AmBtn
-                                        maxHeight: 24
-                                        maxWidth: 15
-                                        margin: none
-                                        cell:
-                                          row: 1
-                                          column: 2
-                          - type: LayoutBox
-                            style: inline
-                            children:
-                              - type: Label
-                                label: ' '
-                                minWidth: 30
-                              - type: CollapseBox
-                                collapsed: true
-                                label: b. cheating?
+                                label: a. sample size
                                 margin: none
                                 minWidth: 420
                                 maxWidth: 420
@@ -2986,14 +2920,76 @@ children:
                                       - type: LayoutBox
                                         style: inline
                                         children:
-                                          - type: ComboBox
-                                            name: meta2Cheating
+                                          - type: TextBox
+                                            name: meta2SampleSize
+                                            format: number
                                             margin: none
                                       - type: LayoutBox
                                         style: inline
                                         children:
                                           - type: Label
                                             label: Press here for a single sample
+                                            cell:
+                                              row: 0
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doMeta2ABtn
+                                            maxHeight: 24
+                                            maxWidth: 15
+                                            margin: none
+                                            cell:
+                                              row: 0
+                                              column: 2
+                                          - type: Label
+                                            label: Press here to see multiple samples
+                                            cell:
+                                              row: 1
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doMeta2AmBtn
+                                            maxHeight: 24
+                                            maxWidth: 15
+                                            margin: none
+                                            cell:
+                                              row: 1
+                                              column: 2
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
+                                minWidth: 30
+                              - type: CollapseBox
+                                collapsed: true
+                                label: b. one big sample or many small samples?
+                                margin: none
+                                minWidth: 420
+                                maxWidth: 420
+                                children:
+                                  - type: LayoutBox
+                                    style: list
+                                    children:
+                                      - type: LayoutBox
+                                        style: inline
+                                        margin: none
+                                        children:
+                                          - type: Label
+                                            label: 'Split into sets:'
+                                            margin: none
+                                          - type: TextBox
+                                            name: meta2SampleSplits
+                                            format: number
+                                            margin: none
+                                          - type: TextBox
+                                            name: meta2SampleBudget
+                                            format: number
+                                            margin: none
+                                      - type: LayoutBox
+                                        style: inline
+                                        margin: none
+                                        children:
+                                          - type: Label
+                                            label: Press here for a single set of samples
                                             cell:
                                               row: 0
                                               column: 1
@@ -3006,7 +3002,7 @@ children:
                                               row: 0
                                               column: 2
                                           - type: Label
-                                            label: Press here to see multiple samples
+                                            label: Press here to see multiple sets
                                             cell:
                                               row: 1
                                               column: 1
@@ -3029,7 +3025,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: 3. <b>Sample Size:</b> who benefits?
+                        label: 3. <b>Sampling Method:</b> are we cheating?
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -3067,17 +3063,6 @@ children:
                                 cell:
                                   row: 0
                                   column: 4
-                              - type: Label
-                                label: R<sub>+</sub>
-                                cell:
-                                  row: 0
-                                  column: 5
-                              - type: ComboBox
-                                name: meta3World
-                                margin: none
-                                cell:
-                                  row: 0
-                                  column: 6
                           - type: LayoutBox
                             style: inline
                             children:
@@ -3086,7 +3071,62 @@ children:
                                 minWidth: 30
                               - type: CollapseBox
                                 collapsed: true
-                                label: a. sample size
+                                label: a. non-random sampling?
+                                margin: none
+                                minWidth: 420
+                                maxWidth: 420
+                                children:
+                                  - type: LayoutBox
+                                    style: inline
+                                    children:
+                                      - type: Label
+                                        label: ' '
+                                      - type: ComboBox
+                                        name: meta3SampleMethod
+                                        margin: none
+                                  - type: LayoutBox
+                                    style: inline
+                                    children:
+                                      - type: Label
+                                        label: ' '
+                                        cell:
+                                          row: 0
+                                          column: 0
+                                      - type: Label
+                                        label: Press here for a single sample
+                                        cell:
+                                          row: 0
+                                          column: 1
+                                      - type: ActionButton
+                                        name: doMeta3ABtn
+                                        maxHeight: 24
+                                        maxWidth: 15
+                                        margin: none
+                                        cell:
+                                          row: 0
+                                          column: 2
+                                      - type: Label
+                                        label: Press here to see multiple samples
+                                        cell:
+                                          row: 1
+                                          column: 1
+                                      - type: ActionButton
+                                        name: doMeta3AmBtn
+                                        maxHeight: 24
+                                        maxWidth: 15
+                                        margin: none
+                                        cell:
+                                          row: 1
+                                          column: 2
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
+                                minWidth: 30
+                              - type: CollapseBox
+                                collapsed: true
+                                label: b. cheating?
                                 margin: none
                                 minWidth: 420
                                 maxWidth: 420
@@ -3097,76 +3137,14 @@ children:
                                       - type: LayoutBox
                                         style: inline
                                         children:
-                                          - type: TextBox
-                                            name: meta3SampleSize
-                                            format: number
+                                          - type: ComboBox
+                                            name: meta3Cheating
                                             margin: none
                                       - type: LayoutBox
                                         style: inline
                                         children:
                                           - type: Label
                                             label: Press here for a single sample
-                                            cell:
-                                              row: 0
-                                              column: 1
-                                          - type: ActionButton
-                                            name: doMeta3ABtn
-                                            maxHeight: 24
-                                            maxWidth: 15
-                                            margin: none
-                                            cell:
-                                              row: 0
-                                              column: 2
-                                          - type: Label
-                                            label: Press here to see multiple samples
-                                            cell:
-                                              row: 1
-                                              column: 1
-                                          - type: ActionButton
-                                            name: doMeta3AmBtn
-                                            maxHeight: 24
-                                            maxWidth: 15
-                                            margin: none
-                                            cell:
-                                              row: 1
-                                              column: 2
-                          - type: LayoutBox
-                            style: inline
-                            children:
-                              - type: Label
-                                label: ' '
-                                minWidth: 30
-                              - type: CollapseBox
-                                collapsed: true
-                                label: b. one big sample or many small samples?
-                                margin: none
-                                minWidth: 420
-                                maxWidth: 420
-                                children:
-                                  - type: LayoutBox
-                                    style: list
-                                    children:
-                                      - type: LayoutBox
-                                        style: inline
-                                        margin: none
-                                        children:
-                                          - type: Label
-                                            label: 'Split into sets:'
-                                            margin: none
-                                          - type: TextBox
-                                            name: meta3SampleSplits
-                                            format: number
-                                            margin: none
-                                          - type: TextBox
-                                            name: meta3SampleBudget
-                                            format: number
-                                            margin: none
-                                      - type: LayoutBox
-                                        style: inline
-                                        margin: none
-                                        children:
-                                          - type: Label
-                                            label: Press here for a single set of samples
                                             cell:
                                               row: 0
                                               column: 1
@@ -3179,7 +3157,7 @@ children:
                                               row: 0
                                               column: 2
                                           - type: Label
-                                            label: Press here to see multiple sets
+                                            label: Press here to see multiple samples
                                             cell:
                                               row: 1
                                               column: 1
@@ -3240,27 +3218,6 @@ children:
                                 cell:
                                   row: 0
                                   column: 4
-                              - type: Label
-                                label: R<sub>+</sub>
-                                cell:
-                                  row: 0
-                                  column: 5
-                              - type: ComboBox
-                                name: meta4World
-                                margin: none
-                                cell:
-                                  row: 0
-                                  column: 6
-                          - type: LayoutBox
-                            style: inline
-                            children:
-                              - type: Label
-                                label: ' '
-                                minWidth: 15
-                              - type: TextBox
-                                name: meta4SampleSize
-                                format: number
-                                margin: none
                           - type: LayoutBox
                             style: inline
                             children:
@@ -3269,7 +3226,7 @@ children:
                                 minWidth: 30
                               - type: CollapseBox
                                 collapsed: true
-                                label: a. with random sampling?
+                                label: a. original sample size?
                                 margin: none
                                 minWidth: 420
                                 maxWidth: 420
@@ -3277,6 +3234,13 @@ children:
                                   - type: LayoutBox
                                     style: list
                                     children:
+                                      - type: LayoutBox
+                                        style: inline
+                                        children:
+                                          - type: TextBox
+                                            name: meta4SampleSize
+                                            format: number
+                                            margin: none
                                       - type: LayoutBox
                                         style: inline
                                         children:
@@ -3356,7 +3320,7 @@ children:
                                 minWidth: 30
                               - type: CollapseBox
                                 collapsed: true
-                                label: b. with poor sampling?
+                                label: b. original sampling method?
                                 margin: none
                                 minWidth: 420
                                 maxWidth: 420
@@ -3601,17 +3565,6 @@ children:
                         margin: none
                         minWidth: 10
                         maxWidth: 10
-                        maxHeight: 24
-                  - type: LayoutBox
-                    style: inline
-                    children:
-                      - type: Label
-                        label: 'History:'
-                      - type: ActionButton
-                        name: metaGoBack
-                        maxHeight: 24
-                      - type: ActionButton
-                        name: metaGoForwards
                         maxHeight: 24
           - type: Content
             name: Simulation
@@ -5307,19 +5260,6 @@ children:
                               row: 0
                               column: 0
                           - type: Label
-                            label: mean(R<sub>+</sub>)
-                            cell:
-                              row: 0
-                              column: 3
-                          - type: TextBox
-                            name: metaDefaultRp
-                            format: number
-                            cell:
-                              row: 0
-                              column: 4
-                            events:
-                              change: ./brawsim.events::onChange_metaDefaultRp
-                          - type: Label
                             label: p(R<sub>0</sub>)
                             cell:
                               row: 0
@@ -5332,6 +5272,24 @@ children:
                             cell:
                               row: 0
                               column: 2
+                          - type: Label
+                            label: mean(R<sub>+</sub>)
+                            cell:
+                              row: 0
+                              column: 3
+                          - type: TextBox
+                            name: metaDefaultRp
+                            format: number
+                            cell:
+                              row: 0
+                              column: 4
+                            events:
+                              change: ./brawsim.events::onChange_metaDefaultRp
+                          - type: ComboBox
+                            name: metaDefaultWorld
+                            cell:
+                              row: 0 
+                              column: 5
                           - type: Label
                             label: 'n'
                             cell:

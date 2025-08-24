@@ -159,50 +159,34 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         doingMetaSci<-NULL
       }
       
-      # metaSci history?
-      if ((self$options$metaGoBack || self$options$metaGoForwards)) {
-        h<-readHistory(metaHistory,self$options$metaGoBack)
-        doingMetaSci<-h$historyOptions
-        outputNow<-h$outputNow
-        metaHistory<-h$history
-      }
-      
+
       # are we doing metaSci?
       if (!is.null(doingMetaSci)) {
+        sN<-self$options$metaDefaultN
+        world<-self$options$metaDefaultWorld
+        metaPublicationBias<-self$options$metaPublicationBias
         switch(substr(doingMetaSci,5,5),
                "0"={
-                 world<-"Psych50"
-                 pNull<-self$options$metaDefaultNullp
-                 sN<-self$options$metaDefaultN
-                 rP<-self$options$metaDefaultRp
                  metaPublicationBias<-"no"
                },
                "1"={
-                 world<-"Psych50"
                  pNull<-self$options$meta1pNull
-                 sN<-self$options$metaDefaultN
                  rP<-self$options$meta1rp
-                 metaPublicationBias<-self$options$metaPublicationBias
                  },
                "2"={
-                 world<-self$options$meta2World
                  pNull<-self$options$meta2pNull
-                 sN<-self$options$metaDefaultN
                  rP<-self$options$meta2rp
-                 metaPublicationBias<-self$options$metaPublicationBias
+                 sN<-self$options$meta2SampleSize
                },
                "3"={
-                 world<-self$options$meta3World
                  pNull<-self$options$meta3pNull
-                 sN<-self$options$meta3SampleSize
                  rP<-self$options$meta3rp
-                 metaPublicationBias<-self$options$metaPublicationBias
                },
                "4"={
-                 world<-self$options$meta4World
                  pNull<-self$options$meta4pNull
-                 sN<-self$options$meta4SampleSize
                  rP<-self$options$meta4rp
+                 if (substr(doingMetaSci,6,6)=="A") 
+                   sN<-self$options$meta4SampleSize
                  metaPublicationBias<-"yes"
                },
                "5"={
@@ -216,8 +200,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         metaScience<-prepareMetaScience(doingMetaSci,
                            world=world,rp=rP,pNull=pNull,metaPublicationBias=metaPublicationBias=="yes",
                            sN=sN,
-                           sMethod=self$options$meta2SampleMethod,sCheating=self$options$meta2Cheating,
-                           sBudget=self$options$meta3SampleBudget,sSplits=self$options$meta3SampleSplits,
+                           sMethod=self$options$meta3SampleMethod,sCheating=self$options$meta3Cheating,
+                           sBudget=self$options$meta2SampleBudget,sSplits=self$options$meta2SampleSplits,
                            sReplicationPower=self$options$metaDefaultRepPower,sReplicationOriginalAnomaly=self$options$meta4OriginalAnomaly
         )
 
@@ -250,6 +234,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         statusStore$lastOutput<-"metaSci"
         statusStore$metaSciResults<-metaSciResults
         setBrawRes("statusStore",statusStore)
+        
+        metaHistory<-updateHistory(metaHistory,metaSciResults,"",TRUE)
         setBrawRes("metaHistoryStore",metaHistory)
         
         if (doingMultiple) sendData2Jamovi("Multiple",self)
