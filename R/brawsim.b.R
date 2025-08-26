@@ -16,6 +16,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       rVersion<-as.numeric(regmatches(a,gregexpr("[0-9]*\\.[0-9]*",a))[[1]][1])
       if (rVersion>=4.5) Jamovi<-2.7 else Jamovi<-2.6
       
+      doingHistory<-TRUE
       # debug information
       # self$results$debug$setContent(is.null(braw.res$result$ResultHistory$original))
       # self$results$debug$setVisible(TRUE)
@@ -76,12 +77,6 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           historyOptions=NULL,
           historyPlace=0
         )
-        metaHistory<-list(
-          history=NULL,
-          historyData=NULL,
-          historyOptions=NULL,
-          historyPlace=0
-        )
         setBrawRes("metaSciD",nullPlot())
         setBrawRes("metaSciS",nullPlot())
         setBrawRes("metaSciR",nullPlot())
@@ -92,7 +87,6 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       } else {
         statusStore<-braw.res$statusStore
         simHistory<-braw.res$simHistoryStore
-        metaHistory<-braw.res$metaHistoryStore
       }
 
       # save the old set up
@@ -165,7 +159,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         sN<-self$options$metaDefaultN
         world<-self$options$metaDefaultWorld
         metaPublicationBias<-self$options$metaPublicationBias
-        switch(substr(doingMetaSci,5,5),
+        switch(stepMS(doingMetaSci),
                "0"={
                  metaPublicationBias<-"no"
                },
@@ -185,7 +179,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                "4"={
                  pNull<-self$options$meta4pNull
                  rP<-self$options$meta4rp
-                 if (substr(doingMetaSci,6,6)=="A") 
+                 if (partMS(doingMetaSci)=="A") 
                    sN<-self$options$meta4SampleSize
                  metaPublicationBias<-"yes"
                },
@@ -205,7 +199,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                            sReplicationPower=self$options$metaDefaultRepPower,sReplicationOriginalAnomaly=self$options$meta4OriginalAnomaly
         )
 
-        doingMultiple<-grepl('m',gsub('[A-Za-z]*[0-9]*[A-Da-d]*([rm]*)','\\1',doingMetaSci),fixed=TRUE)
+        
+        doingMultiple<-!singleMS(doingMetaSci)
         if (doingMultiple)  {
           if (is.null(braw.res$multiple) || 
               !identical(metaScience$hypothesis,braw.res$multiple$hypothesis) || 
@@ -213,16 +208,17 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                   nDone<-0
           else    nDone<-braw.res$multiple$count
           targetN<-nDone+self$options$metaMultiple
+          nreps<-10
         }
         else {
           nDone<-0
           targetN<-1
+          nreps<-1
         }
         
-        while (nDone<targetN) {
-          metaSciResults<-doMetaScience(metaScience,nreps=10)
+        while (nDone<(targetN-nreps)) {
+          metaSciResults<-doMetaScience(metaScience,nreps=nreps,showOutput=FALSE,doHistory=FALSE)
           statusStore$metaSciResults<-metaSciResults
-          setBrawRes("statusStore",statusStore)
           if (doingMultiple) nDone<-braw.res$multiple$count
           else nDone<-1
           
@@ -230,14 +226,13 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           if (doingMultiple) private$.checkpoint()
           if (stopBtn) break
         }
-        
+        metaSciResults<-doMetaScience(metaScience,nreps=nreps,showOutput=FALSE,doHistory=doingHistory)
+        self$results$simGraphHTML$setContent(metaSciResults)
+
         statusStore$lastOutput<-"metaSci"
         statusStore$metaSciResults<-metaSciResults
         setBrawRes("statusStore",statusStore)
-        
-        metaHistory<-updateHistory(metaHistory,metaSciResults,"",TRUE)
-        setBrawRes("metaHistoryStore",metaHistory)
-        
+
         if (doingMultiple) sendData2Jamovi("Multiple",self)
         else sendData2Jamovi("Single",self)
         return()

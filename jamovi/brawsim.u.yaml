@@ -2453,9 +2453,18 @@ children:
                                 minWidth: 15
                               - type: Label
                                 label: >-
-                                  To get more information, press the <span
-                                  style="color:#0000ff;">ⓘlink</span> above the
-                                  graphs
+                                  Use the '<<' and '>>' buttons above the graphs to go backwards and forwards in the history 
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
+                                minWidth: 15
+                              - type: Label
+                                label: >-
+                                  To get more information, press the 
+                                  <a href="https://doingpsychstats.wordpress.com/metascience/" target="_blank">ⓘlink</a>
+                                  above the graphs
                           - type: LayoutBox
                             style: inline
                             children:
