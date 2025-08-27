@@ -208,7 +208,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                   nDone<-0
           else    nDone<-braw.res$multiple$count
           targetN<-nDone+self$options$metaMultiple
-          nreps<-10
+          nreps<-max(1,ceiling(nDone/10))
         }
         else {
           nDone<-0
@@ -216,7 +216,13 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           nreps<-1
         }
         
-        while (nDone<(targetN-nreps)) {
+        while (nDone<targetN) {
+          nreps<-10
+          if (nDone>=100) nreps<-50
+          if (nDone>=500) nreps<-100
+          # nreps<-max(1,10^(floor(log10(nDone))))
+          # nreps<-min(1000,nreps)
+          nreps<-min(nreps,targetN-nDone)
           metaSciResults<-doMetaScience(metaScience,nreps=nreps,showOutput=FALSE,doHistory=FALSE)
           statusStore$metaSciResults<-metaSciResults
           if (doingMultiple) nDone<-braw.res$multiple$count
@@ -226,7 +232,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           if (doingMultiple) private$.checkpoint()
           if (stopBtn) break
         }
-        metaSciResults<-doMetaScience(metaScience,nreps=nreps,showOutput=FALSE,doHistory=doingHistory)
+        metaSciResults<-doMetaScience(metaScience,nreps=0,showOutput=FALSE,doHistory=doingHistory)
         self$results$simGraphHTML$setContent(metaSciResults)
 
         statusStore$lastOutput<-"metaSci"

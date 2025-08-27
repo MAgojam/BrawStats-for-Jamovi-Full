@@ -201,8 +201,8 @@ const events =  {
     onChange_metaDefaultN: function(ui) {
       let variable1 = ui.metaDefaultN.value()
       variable1 = Number(variable1)
-      ui.meta3SampleSize.setValue(variable1*2)
-      ui.meta3SampleBudget.setValue(variable1*2)
+      ui.meta2SampleSize.setValue(variable1*2)
+      ui.meta2SampleBudget.setValue(variable1*2)
       ui.meta4SampleSize.setValue(variable1)
     },
     

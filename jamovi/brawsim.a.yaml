@@ -2411,7 +2411,7 @@ options:
     - name: meta2SampleSize
       title: 'Sample size' 
       type: Number
-      default: 84
+      default: 120
 
     - name: meta3pNull
       title: ''
@@ -2431,7 +2431,7 @@ options:
     - name: meta2SampleBudget
       title: Budget
       type: Number
-      default: 84
+      default: 120
 
     - name: doMeta4ABtn
       title: '1'
@@ -2499,7 +2499,7 @@ options:
     - name: meta4SampleSize
       title: 'original n' 
       type: Number
-      default: 42
+      default: 60
 
     - name: meta4pNull
       title: ''
@@ -2561,7 +2561,7 @@ options:
     - name: metaDefaultN
       title: ""
       type: Number
-      default: 42
+      default: 60
 
     - name: metaDefaultRp
       title: ""
