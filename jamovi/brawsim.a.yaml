@@ -2273,7 +2273,7 @@ options:
         title: 4c
       default: none
 
-    - name: meta1pNull
+    - name: meta1pRPlus
       title: ''
       type: Number
       default: 0.5
@@ -2368,7 +2368,7 @@ options:
           title: Snowball
       default: Convenience
 
-    - name: meta2pNull
+    - name: meta2pRPlus
       title: ''
       type: Number
       default: 0.5
@@ -2413,7 +2413,7 @@ options:
       type: Number
       default: 100
 
-    - name: meta3pNull
+    - name: meta3pRPlus
       title: ''
       type: Number
       default: 0.5
@@ -2501,7 +2501,7 @@ options:
       type: Number
       default: 50
 
-    - name: meta4pNull
+    - name: meta4pRPlus
       title: ''
       type: Number
       default: 0.5
@@ -2568,7 +2568,7 @@ options:
       type: Number
       default: 0.3
 
-    - name: metaDefaultNullp
+    - name: metaDefaultpRPlus
       title: ""
       type: Number
       default: 0.5

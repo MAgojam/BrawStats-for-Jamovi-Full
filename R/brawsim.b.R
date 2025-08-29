@@ -164,20 +164,20 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                  metaPublicationBias<-"no"
                },
                "1"={
-                 pNull<-self$options$meta1pNull
+                 pRPlus<-self$options$meta1pRPlus
                  rP<-self$options$meta1rp
                  },
                "2"={
-                 pNull<-self$options$meta2pNull
+                 pRPlus<-self$options$meta2pRPlus
                  rP<-self$options$meta2rp
                  sN<-self$options$meta2SampleSize
                },
                "3"={
-                 pNull<-self$options$meta3pNull
+                 pRPlus<-self$options$meta3pRPlus
                  rP<-self$options$meta3rp
                },
                "4"={
-                 pNull<-self$options$meta4pNull
+                 pRPlus<-self$options$meta4pRPlus
                  rP<-self$options$meta4rp
                  if (partMS(doingMetaSci)=="A") 
                    sN<-self$options$meta4SampleSize
@@ -185,20 +185,19 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                },
                "5"={
                  world<-"Plain"
-                 pNull<-0
+                 pRPlus<-0
                  sN<-250
                  rP<-0.3
                  metaPublicationBias<-"no"
                }
         )
         metaScience<-prepareMetaScience(doingMetaSci,
-                           world=world,rp=rP,pNull=pNull,metaPublicationBias=metaPublicationBias=="yes",
+                           world=world,rp=rP,pRPlus=pRPlus,metaPublicationBias=metaPublicationBias=="yes",
                            sN=sN,
                            sMethod=self$options$meta3SampleMethod,sCheating=self$options$meta3Cheating,
                            sBudget=self$options$meta2SampleBudget,sSplits=self$options$meta2SampleSplits,
                            sReplicationPower=self$options$metaDefaultRepPower,sReplicationOriginalAnomaly=self$options$meta4OriginalAnomaly
         )
-
         
         doingMultiple<-!singleMS(doingMetaSci)
         if (doingMultiple)  {

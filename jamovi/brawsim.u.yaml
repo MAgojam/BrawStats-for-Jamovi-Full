@@ -2765,16 +2765,16 @@ children:
                                       row: 0
                                       column: 0
                                   - type: Label
-                                    label: p(R<sub>0</sub>)
+                                    label: p(R<sub>+</sub>)
                                     horizontalAlignment: right
                                     cell:
                                       row: 1
                                       column: 1
                                   - type: TextBox
-                                    name: metaDefaultNullp
+                                    name: metaDefaultpRPlus
                                     format: number
                                     events:
-                                      change: ./brawsim.events::onChange_metaDefaultNullp
+                                      change: ./brawsim.events::onChange_metaDefaultpRPlus
                                     cell:
                                       row: 1
                                       column: 2
@@ -2943,12 +2943,12 @@ children:
                                   row: 0
                                   column: 0
                               - type: Label
-                                label: p(R<sub>0</sub>)
+                                label: p(R<sub>+</sub>)
                                 cell:
                                   row: 0
                                   column: 1
                               - type: TextBox
-                                name: meta1pNull
+                                name: meta1pRPlus
                                 format: number
                                 margin: none
                                 cell:
@@ -3088,12 +3088,12 @@ children:
                                   row: 0
                                   column: 0
                               - type: Label
-                                label: p(R<sub>0</sub>)
+                                label: p(R<sub>+</sub>)
                                 cell:
                                   row: 0
                                   column: 1
                               - type: TextBox
-                                name: meta2pNull
+                                name: meta2pRPlus
                                 format: number
                                 margin: none
                                 cell:
@@ -3250,12 +3250,12 @@ children:
                                   row: 0
                                   column: 0
                               - type: Label
-                                label: p(R<sub>0</sub>)
+                                label: p(R<sub>+</sub>)
                                 cell:
                                   row: 0
                                   column: 1
                               - type: TextBox
-                                name: meta3pNull
+                                name: meta3pRPlus
                                 format: number
                                 margin: none
                                 cell:
@@ -3405,12 +3405,12 @@ children:
                                   row: 0
                                   column: 0
                               - type: Label
-                                label: p(R<sub>0</sub>)
+                                label: p(R<sub>+</sub>)
                                 cell:
                                   row: 0
                                   column: 1
                               - type: TextBox
-                                name: meta4pNull
+                                name: meta4pRPlus
                                 format: number
                                 margin: none
                                 cell:

@@ -206,12 +206,13 @@ const events =  {
       ui.meta4SampleSize.setValue(variable1)
     },
     
-    onChange_metaDefaultNullp: function(ui) {
-      let variable1 = ui.metaDefaultNullp.value()
+    onChange_metaDefaultpRPlus: function(ui) {
+      let variable1 = ui.metaDefaultpRPlus.value()
       variable1 = Number(variable1)
-      ui.meta1pNull.setValue(variable1)
-      ui.meta2pNull.setValue(variable1)
-      ui.meta3pNull.setValue(variable1)
+      ui.meta1pRPlus.setValue(variable1)
+      ui.meta2pRPlus.setValue(variable1)
+      ui.meta3pRPlus.setValue(variable1)
+      ui.meta4pRPlus.setValue(variable1)
     },
     
     onChange_metaDefaultRp: function(ui) {
@@ -220,6 +221,7 @@ const events =  {
       ui.meta1rp.setValue(variable1)
       ui.meta2rp.setValue(variable1)
       ui.meta3rp.setValue(variable1)
+      ui.meta4rp.setValue(variable1)
     },
     
     onChange_Project1sH: function(ui) {
