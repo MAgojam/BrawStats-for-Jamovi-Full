@@ -221,16 +221,11 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           nreps<-10
           if (nDone>=100) nreps<-50
           if (nDone>=500) nreps<-100
-          # nreps<-max(1,10^(floor(log10(nDone))))
-          # nreps<-min(1000,nreps)
           nreps<-min(nreps,targetN-nDone)
           metaSciResults<-doMetaScience(metaScience,nreps=nreps,showOutput=FALSE,doHistory=FALSE)
           statusStore$metaSciResults<-metaSciResults
           if (doingMultiple) nDone<-braw.res$multiple$count
           else nDone<-1
-          
-          # self$results$debug$setContent(c(Sys.time()-startTime,nDone,targetN))
-          # self$results$debug$setVisible(TRUE)
           
           self$results$simGraphHTML$setContent(metaSciResults)
           if (doingMultiple) private$.checkpoint()
