@@ -2374,7 +2374,7 @@ options:
       default: 0.5
 
     - name: metaCheatingProportion
-      title: ' '
+      title: ''
       type: Number
       default: 0.05
       
@@ -2411,7 +2411,7 @@ options:
     - name: meta2SampleSize
       title: 'Sample size' 
       type: Number
-      default: 120
+      default: 100
 
     - name: meta3pNull
       title: ''
@@ -2426,12 +2426,12 @@ options:
     - name: meta2SampleSplits
       title: sets
       type: Number
-      default: 6
+      default: 5
 
     - name: meta2SampleBudget
       title: Budget
       type: Number
-      default: 120
+      default: 100
 
     - name: doMeta4ABtn
       title: '1'
@@ -2499,7 +2499,7 @@ options:
     - name: meta4SampleSize
       title: 'original n' 
       type: Number
-      default: 60
+      default: 50
 
     - name: meta4pNull
       title: ''
@@ -2561,7 +2561,7 @@ options:
     - name: metaDefaultN
       title: ""
       type: Number
-      default: 60
+      default: 50
 
     - name: metaDefaultRp
       title: ""
@@ -2583,6 +2583,8 @@ options:
         title: single
       - name: Binary
         title: binary
+      - name: Gaussian
+        title: gaussian
       - name: Psych50
         title: exponential
       default: Psych50

@@ -216,6 +216,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           nreps<-1
         }
         
+        # startTime<-Sys.time()
         while (nDone<targetN) {
           nreps<-10
           if (nDone>=100) nreps<-50
@@ -227,6 +228,9 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           statusStore$metaSciResults<-metaSciResults
           if (doingMultiple) nDone<-braw.res$multiple$count
           else nDone<-1
+          
+          # self$results$debug$setContent(c(Sys.time()-startTime,nDone,targetN))
+          # self$results$debug$setVisible(TRUE)
           
           self$results$simGraphHTML$setContent(metaSciResults)
           if (doingMultiple) private$.checkpoint()

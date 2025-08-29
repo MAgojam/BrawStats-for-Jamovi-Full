@@ -2453,7 +2453,16 @@ children:
                                 minWidth: 15
                               - type: Label
                                 label: >-
-                                  Use the '<<' and '>>' buttons above the graphs to go backwards and forwards in the history 
+                                  Use the '<<' and '>>' buttons above the graphs 
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
+                                minWidth: 30
+                              - type: Label
+                                label: >-
+                                  to go backwards and forwards in the history 
                           - type: LayoutBox
                             style: inline
                             children:
@@ -2722,6 +2731,198 @@ children:
                                     cell:
                                       row: 1
                                       column: 4
+                  - type: LayoutBox
+                    style: inline
+                    children:
+                      - type: CollapseBox
+                        collapsed: true
+                        label: <span style="color:#1276b9;">Default Settings</span>
+                        margin: none
+                        minWidth: 250
+                        maxWidth: 250
+                        horizontalAlignment: right
+                        children:
+                        - type: LayoutBox
+                          style: list
+                          margin: none
+                          children:
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
+                                minWidth: 15
+                              - type: CollapseBox
+                                collapsed: true
+                                label: 'Populations'
+                                margin: none
+                                minWidth: 240
+                                children:
+                                  - type: Label
+                                    label: ' '
+                                    minWidth: 15
+                                    cell: 
+                                      row: 0
+                                      column: 0
+                                  - type: Label
+                                    label: p(R<sub>0</sub>)
+                                    horizontalAlignment: right
+                                    cell:
+                                      row: 1
+                                      column: 1
+                                  - type: TextBox
+                                    name: metaDefaultNullp
+                                    format: number
+                                    events:
+                                      change: ./brawsim.events::onChange_metaDefaultNullp
+                                    cell:
+                                      row: 1
+                                      column: 2
+                                  - type: Label
+                                    label: mean(R<sub>+</sub>)
+                                    horizontalAlignment: right
+                                    cell:
+                                      row: 2
+                                      column: 1
+                                  - type: TextBox
+                                    name: metaDefaultRp
+                                    format: number
+                                    cell:
+                                      row: 2
+                                      column: 2
+                                    events:
+                                      change: ./brawsim.events::onChange_metaDefaultRp
+                                  - type: ComboBox
+                                    name: metaDefaultWorld
+                                    cell:
+                                      row: 1
+                                      column: 4
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
+                                minWidth: 15
+                              - type: CollapseBox
+                                collapsed: true
+                                label: 'Samples'
+                                margin: none
+                                minWidth: 240
+                                children:
+                                  - type: Label
+                                    label: ' '
+                                    minWidth: 15
+                                    cell: 
+                                      row: 0
+                                      column: 0
+                                  - type: Label
+                                    label: 'n'
+                                    horizontalAlignment: right
+                                    cell:
+                                      row: 4
+                                      column: 1
+                                  - type: TextBox
+                                    name: metaDefaultN
+                                    format: number
+                                    cell:
+                                      row: 4
+                                      column: 2
+                                    events:
+                                      change: ./brawsim.events::onChange_metaDefaultN
+                                  - type: Label
+                                    label: cheating
+                                    horizontalAlignment: right
+                                    cell:
+                                      row: 5
+                                      column: 3
+                                  - type: TextBox
+                                    name: metaCheatingProportion
+                                    format: number
+                                    cell:
+                                      row: 5
+                                      column: 4
+                                  - type: Label
+                                    label: publ bias
+                                    horizontalAlignment: right
+                                    cell:
+                                      row: 4
+                                      column: 3
+                                  - type: ComboBox
+                                    name: metaPublicationBias
+                                    cell:
+                                      row: 4
+                                      column: 4
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
+                                minWidth: 15
+                              - type: CollapseBox
+                                collapsed: true
+                                label: 'Replication'
+                                margin: none
+                                minWidth: 240
+                                children:
+                                  - type: Label
+                                    label: ' '
+                                    minWidth: 15
+                                    cell: 
+                                      row: 0
+                                      column: 0
+                                  - type: Label
+                                    label: w<sub>s</sub>
+                                    horizontalAlignment: right
+                                    cell:
+                                      row: 6
+                                      column: 1
+                                  - type: TextBox
+                                    name: metaDefaultRepPower
+                                    format: number
+                                    cell:
+                                      row: 6
+                                      column: 2
+                          - type: LayoutBox
+                            style: inline
+                            children:
+                              - type: Label
+                                label: ' '
+                                minWidth: 15
+                              - type: CollapseBox
+                                collapsed: true
+                                label: 'Display'
+                                margin: none
+                                minWidth: 240
+                                children:
+                                  - type: Label
+                                    label: ' '
+                                    minWidth: 15
+                                    cell: 
+                                      row: 0
+                                      column: 0
+                                  - type: Label
+                                    label: ''
+                                    horizontalAlignment: right
+                                    cell:
+                                      row: 8
+                                      column: 1
+                                  - type: ComboBox
+                                    name: metaShow
+                                    cell:
+                                      row: 8
+                                      column: 2
+                                  - type: Label
+                                    label: '* repeats'
+                                    horizontalAlignment: right
+                                    cell:
+                                      row: 8
+                                      column: 3
+                                  - type: TextBox
+                                    name: metaMultiple
+                                    cell:
+                                      row: 8
+                                      column: 4
+                                    format: number
                   - type: LayoutBox
                     style: inline
                     children:
@@ -5244,137 +5445,6 @@ children:
                           - name: systemMag
                             type: TextBox
                             format: number
-              - type: LayoutBox
-                style: inline
-                margin: none
-                children:
-                  - type: Label
-                    label: ' '
-                    minWidth: 13
-                  - type: CollapseBox
-                    name: Settings5
-                    collapsed: true
-                    label: 'MetaScience:'
-                    margin: none
-                    minWidth: 330
-                    children:
-                      - type: LayoutBox
-                        style: inline
-                        margin: none
-                        children:
-                          - type: Label
-                            label: ' '
-                            minWidth: 26
-                            cell:
-                              row: 0
-                              column: 0
-                          - type: Label
-                            label: p(R<sub>0</sub>)
-                            cell:
-                              row: 0
-                              column: 1
-                          - type: TextBox
-                            name: metaDefaultNullp
-                            format: number
-                            events:
-                              change: ./brawsim.events::onChange_metaDefaultNullp
-                            cell:
-                              row: 0
-                              column: 2
-                          - type: Label
-                            label: mean(R<sub>+</sub>)
-                            cell:
-                              row: 0
-                              column: 3
-                          - type: TextBox
-                            name: metaDefaultRp
-                            format: number
-                            cell:
-                              row: 0
-                              column: 4
-                            events:
-                              change: ./brawsim.events::onChange_metaDefaultRp
-                          - type: ComboBox
-                            name: metaDefaultWorld
-                            cell:
-                              row: 0 
-                              column: 5
-                          - type: Label
-                            label: 'n'
-                            cell:
-                              row: 1
-                              column: 1
-                          - type: TextBox
-                            name: metaDefaultN
-                            format: number
-                            cell:
-                              row: 1
-                              column: 2
-                            events:
-                              change: ./brawsim.events::onChange_metaDefaultN
-                          - type: Label
-                            label: wₛ
-                            cell:
-                              row: 1
-                              column: 3
-                          - type: TextBox
-                            name: metaDefaultRepPower
-                            format: number
-                            cell:
-                              row: 1
-                              column: 4
-                      - type: LayoutBox
-                        style: inline
-                        margin: none
-                        children:
-                          - type: Label
-                            label: ' '
-                            minWidth: 26
-                            cell:
-                              row: 0
-                              column: 0
-                          - type: Label
-                            label: cheating
-                            cell:
-                              row: 0
-                              column: 1
-                          - type: TextBox
-                            name: metaCheatingProportion
-                            format: number
-                            cell:
-                              row: 0
-                              column: 2
-                          - type: Label
-                            label: n repeats
-                            cell:
-                              row: 2
-                              column: 1
-                          - type: TextBox
-                            name: metaMultiple
-                            cell:
-                              row: 2
-                              column: 2
-                            format: number
-                          - type: Label
-                            label: publication bias
-                            cell:
-                              row: 1
-                              column: 1
-                          - type: ComboBox
-                            name: metaPublicationBias
-                            cell:
-                              row: 1
-                              column: 2
-                          - type: Label
-                            label: 'schematic:'
-                            cell:
-                              row: 1
-                              column: 3
-                          - type: ComboBox
-                            name: metaShow
-                            cell:
-                              row: 1
-                              column: 4
               - type: LayoutBox
                 style: inline
                 margin: none
