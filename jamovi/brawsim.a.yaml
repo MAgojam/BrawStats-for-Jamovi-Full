@@ -520,8 +520,8 @@ options:
       - name: z
         title: z
 
-    - name: WorldLambda
-      title: 'λ'
+    - name: worldMeanRplus
+      title: 'mean(R+)'
       type: Number
       default: 0.3
 # 
@@ -530,8 +530,8 @@ options:
 #       type: Number
 #       default: 0.0
 
-    - name: WorldNullP
-      title: 'φ'
+    - name: worldPRplus
+      title: 'p(R+)'
       type: Number
       default: 0.5
 
@@ -912,15 +912,15 @@ options:
         title: z
       default: z
 
-    - name: priorLambda
-      title: 'λ'
+    - name: priorMeanRplus
+      title: 'mean(R+)'
       type: Number
       default: 0.3
 
-    - name: priorNullP
-      title: 'φ'
+    - name: priorPRplus
+      title: 'p(R+)'
       type: Number
-      default: 0.0
+      default: 1
       
     - name: doSEM
       title: 'SEM analysis'
@@ -1368,10 +1368,10 @@ options:
           title: DVprops
         - name: blank1h
           title: '-'
-        - name: lambda
-          title: worldLambda
-        - name: pNull
-          title: worldPNull
+        - name: meanRPlus
+          title: 'mean(R+)'
+        - name: pRPlus
+          title: 'p(R+)'
 
     - name: designExploreList
       title: 'explore:'

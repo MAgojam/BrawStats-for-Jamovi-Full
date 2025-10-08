@@ -72,8 +72,8 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             WorldOn = FALSE,
             WorldPDF = "Uniform",
             WorldRZ = NULL,
-            WorldLambda = 0.3,
-            WorldNullP = 0.5,
+            worldMeanRplus = 0.3,
+            worldPRplus = 0.5,
             WorldMn = 0,
             WorldSd = 0,
             WorldSample = "none",
@@ -119,8 +119,8 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             likelihoodUsePrior = "none",
             priorPDF = "Exp",
             priorRZ = "z",
-            priorLambda = 0.3,
-            priorNullP = 0,
+            priorMeanRplus = 0.3,
+            priorPRplus = 1,
             doSEM = FALSE,
             useAIC = "AIC",
             MetaAnalysisOn = FALSE,
@@ -677,13 +677,13 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 options=list(
                     "r",
                     "z"))
-            private$..WorldLambda <- jmvcore::OptionNumber$new(
-                "WorldLambda",
-                WorldLambda,
+            private$..worldMeanRplus <- jmvcore::OptionNumber$new(
+                "worldMeanRplus",
+                worldMeanRplus,
                 default=0.3)
-            private$..WorldNullP <- jmvcore::OptionNumber$new(
-                "WorldNullP",
-                WorldNullP,
+            private$..worldPRplus <- jmvcore::OptionNumber$new(
+                "worldPRplus",
+                worldPRplus,
                 default=0.5)
             private$..WorldMn <- jmvcore::OptionNumber$new(
                 "WorldMn",
@@ -945,14 +945,14 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "r",
                     "z"),
                 default="z")
-            private$..priorLambda <- jmvcore::OptionNumber$new(
-                "priorLambda",
-                priorLambda,
+            private$..priorMeanRplus <- jmvcore::OptionNumber$new(
+                "priorMeanRplus",
+                priorMeanRplus,
                 default=0.3)
-            private$..priorNullP <- jmvcore::OptionNumber$new(
-                "priorNullP",
-                priorNullP,
-                default=0)
+            private$..priorPRplus <- jmvcore::OptionNumber$new(
+                "priorPRplus",
+                priorPRplus,
+                default=1)
             private$..doSEM <- jmvcore::OptionBool$new(
                 "doSEM",
                 doSEM,
@@ -1250,8 +1250,8 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "DVcats",
                     "DVprops",
                     "blank1h",
-                    "lambda",
-                    "pNull"))
+                    "meanRPlus",
+                    "pRPlus"))
             private$..designExploreList <- jmvcore::OptionList$new(
                 "designExploreList",
                 designExploreList,
@@ -2134,8 +2134,8 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..WorldOn)
             self$.addOption(private$..WorldPDF)
             self$.addOption(private$..WorldRZ)
-            self$.addOption(private$..WorldLambda)
-            self$.addOption(private$..WorldNullP)
+            self$.addOption(private$..worldMeanRplus)
+            self$.addOption(private$..worldPRplus)
             self$.addOption(private$..WorldMn)
             self$.addOption(private$..WorldSd)
             self$.addOption(private$..WorldSample)
@@ -2181,8 +2181,8 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..likelihoodUsePrior)
             self$.addOption(private$..priorPDF)
             self$.addOption(private$..priorRZ)
-            self$.addOption(private$..priorLambda)
-            self$.addOption(private$..priorNullP)
+            self$.addOption(private$..priorMeanRplus)
+            self$.addOption(private$..priorPRplus)
             self$.addOption(private$..doSEM)
             self$.addOption(private$..useAIC)
             self$.addOption(private$..MetaAnalysisOn)
@@ -2452,8 +2452,8 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         WorldOn = function() private$..WorldOn$value,
         WorldPDF = function() private$..WorldPDF$value,
         WorldRZ = function() private$..WorldRZ$value,
-        WorldLambda = function() private$..WorldLambda$value,
-        WorldNullP = function() private$..WorldNullP$value,
+        worldMeanRplus = function() private$..worldMeanRplus$value,
+        worldPRplus = function() private$..worldPRplus$value,
         WorldMn = function() private$..WorldMn$value,
         WorldSd = function() private$..WorldSd$value,
         WorldSample = function() private$..WorldSample$value,
@@ -2499,8 +2499,8 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         likelihoodUsePrior = function() private$..likelihoodUsePrior$value,
         priorPDF = function() private$..priorPDF$value,
         priorRZ = function() private$..priorRZ$value,
-        priorLambda = function() private$..priorLambda$value,
-        priorNullP = function() private$..priorNullP$value,
+        priorMeanRplus = function() private$..priorMeanRplus$value,
+        priorPRplus = function() private$..priorPRplus$value,
         doSEM = function() private$..doSEM$value,
         useAIC = function() private$..useAIC$value,
         MetaAnalysisOn = function() private$..MetaAnalysisOn$value,
@@ -2769,8 +2769,8 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..WorldOn = NA,
         ..WorldPDF = NA,
         ..WorldRZ = NA,
-        ..WorldLambda = NA,
-        ..WorldNullP = NA,
+        ..worldMeanRplus = NA,
+        ..worldPRplus = NA,
         ..WorldMn = NA,
         ..WorldSd = NA,
         ..WorldSample = NA,
@@ -2816,8 +2816,8 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..likelihoodUsePrior = NA,
         ..priorPDF = NA,
         ..priorRZ = NA,
-        ..priorLambda = NA,
-        ..priorNullP = NA,
+        ..priorMeanRplus = NA,
+        ..priorPRplus = NA,
         ..doSEM = NA,
         ..useAIC = NA,
         ..MetaAnalysisOn = NA,
@@ -3208,8 +3208,8 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param WorldOn .
 #' @param WorldPDF .
 #' @param WorldRZ .
-#' @param WorldLambda .
-#' @param WorldNullP .
+#' @param worldMeanRplus .
+#' @param worldPRplus .
 #' @param WorldMn .
 #' @param WorldSd .
 #' @param WorldSample .
@@ -3255,8 +3255,8 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param likelihoodUsePrior .
 #' @param priorPDF .
 #' @param priorRZ .
-#' @param priorLambda .
-#' @param priorNullP .
+#' @param priorMeanRplus .
+#' @param priorPRplus .
 #' @param doSEM .
 #' @param useAIC .
 #' @param MetaAnalysisOn .
@@ -3535,8 +3535,8 @@ BrawSim <- function(
     WorldOn = FALSE,
     WorldPDF = "Uniform",
     WorldRZ,
-    WorldLambda = 0.3,
-    WorldNullP = 0.5,
+    worldMeanRplus = 0.3,
+    worldPRplus = 0.5,
     WorldMn = 0,
     WorldSd = 0,
     WorldSample = "none",
@@ -3582,8 +3582,8 @@ BrawSim <- function(
     likelihoodUsePrior = "none",
     priorPDF = "Exp",
     priorRZ = "z",
-    priorLambda = 0.3,
-    priorNullP = 0,
+    priorMeanRplus = 0.3,
+    priorPRplus = 1,
     doSEM = FALSE,
     useAIC = "AIC",
     MetaAnalysisOn = FALSE,
@@ -3854,8 +3854,8 @@ BrawSim <- function(
         WorldOn = WorldOn,
         WorldPDF = WorldPDF,
         WorldRZ = WorldRZ,
-        WorldLambda = WorldLambda,
-        WorldNullP = WorldNullP,
+        worldMeanRplus = worldMeanRplus,
+        worldPRplus = worldPRplus,
         WorldMn = WorldMn,
         WorldSd = WorldSd,
         WorldSample = WorldSample,
@@ -3901,8 +3901,8 @@ BrawSim <- function(
         likelihoodUsePrior = likelihoodUsePrior,
         priorPDF = priorPDF,
         priorRZ = priorRZ,
-        priorLambda = priorLambda,
-        priorNullP = priorNullP,
+        priorMeanRplus = priorMeanRplus,
+        priorPRplus = priorPRplus,
         doSEM = doSEM,
         useAIC = useAIC,
         MetaAnalysisOn = MetaAnalysisOn,

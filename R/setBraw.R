@@ -27,15 +27,15 @@ setBraw<-function(self) {
                      rSD=self$options$rSD,
                      Heteroscedasticity=self$options$Heteroscedasticity,
                      ResidDistr=self$options$Residuals,
-                     world=makeWorld(worldOn=self$options$WorldOn,
-                                     populationPDF=self$options$WorldPDF,
-                                     populationRZ = self$options$WorldRZ,
-                                     populationPDFk = self$options$WorldLambda,
-                                     populationNullp = self$options$WorldNullP,
-                                     populationPDFsample = self$options$WorldSample!="none",
-                                     populationSamplemn = self$options$WorldMn,
-                                     populationSamplesd = self$options$WorldSd,
-                                     populationSamplebias = self$options$WorldSample=="bias"
+                     world=makeWorld(On=self$options$WorldOn,
+                                     PDF=self$options$WorldPDF,
+                                     RZ = self$options$WorldRZ,
+                                     PDFk = self$options$worldMeanRplus,
+                                     pRPlus = self$options$worldPRplus,
+                                     PDFsample = self$options$WorldSample!="none",
+                                     PDFsamplemn = self$options$WorldMn,
+                                     PDFsamplesd = self$options$WorldSd,
+                                     PDFsamplebias = self$options$WorldSample=="bias"
                      )
   )
   
@@ -77,21 +77,21 @@ setBraw<-function(self) {
   #
   switch(self$options$likelihoodUsePrior,
          "none"={
-           prior<-makeWorld(worldOn=TRUE,
-                            populationPDF="Uniform",
-                            populationRZ="r",
-                            populationNullp=0.5)
+           prior<-makeWorld(On=TRUE,
+                            PDF="Uniform",
+                            RZ="r",
+                            pRPlus=0.5)
          },
          "world"={
            prior<-braw.def$hypothesis$effect$world
-           prior$worldOn<-TRUE
+           prior$On<-TRUE
          },
          "prior"={
-           prior<-makeWorld(worldOn=TRUE,
-                            populationPDF=self$options$priorPDF,
-                            populationRZ=self$options$priorRZ,
-                            populationPDFk=self$options$priorLambda,
-                            populationNullp=self$options$priorNullP)
+           prior<-makeWorld(On=TRUE,
+                            PDF=self$options$priorPDF,
+                            RZ=self$options$priorRZ,
+                            PDFk=self$options$priorMeanRplus,
+                            pRPlus=self$options$priorPRplus)
          })
   evidence<-makeEvidence(AnalysisTerms=c(TRUE,self$options$main2,self$options$interaction),
                          ssqType=self$options$ssq,sigOnly=FALSE,
@@ -157,11 +157,11 @@ setBraw<-function(self) {
   setBrawDef("metaAnalysis",metaAnalysis)
   
   possible<-makePossible(UsePrior=self$options$likelihoodUsePrior,
-                         prior=makeWorld(worldOn=TRUE,
-                                         populationPDF=self$options$priorPDF,
-                                         populationRZ=self$options$priorRZ,
-                                         populationPDFk=self$options$priorLambda,
-                                         populationNullp=self$options$priorNullP)
+                         prior=makeWorld(On=TRUE,
+                                         PDF=self$options$priorPDF,
+                                         RZ=self$options$priorRZ,
+                                         PDFk=self$options$priorMeanRplus,
+                                         pRPlus=self$options$priorPRplus)
   )
   setBrawDef("possibleResult",possible)
              

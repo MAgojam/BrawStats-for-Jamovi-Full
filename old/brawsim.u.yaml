@@ -4327,7 +4327,7 @@ children:
                                                       (likelihoodType:Populations &&
                                                       likelihoodUsePrior:prior)
                                                   - type: TextBox
-                                                    name: priorLambda
+                                                    name: priorMeanRplus
                                                     format: number
                                                     enable: >-
                                                       (likelihoodType:Populations &&
@@ -4424,7 +4424,7 @@ children:
                                                   row: 0
                                                   column: 2
                                               - type: TextBox
-                                                name: WorldLambda
+                                                name: worldMeanRplus
                                                 horizontalAlignment: right
                                                 format: number
                                                 enable: (WorldOn)
@@ -4432,7 +4432,7 @@ children:
                                                   row: 1
                                                   column: 2
                                               - type: TextBox
-                                                name: WorldNullP
+                                                name: worldPRplus
                                                 format: number
                                                 enable: (WorldOn)
                                                 cell:

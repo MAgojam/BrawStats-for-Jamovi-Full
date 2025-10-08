@@ -520,7 +520,7 @@ options:
       - name: z
         title: z
 
-    - name: WorldLambda
+    - name: worldMeanRplus
       title: 'λ'
       type: Number
       default: 0.3
@@ -530,7 +530,7 @@ options:
 #       type: Number
 #       default: 0.0
 
-    - name: WorldNullP
+    - name: worldPRplus
       title: 'φ'
       type: Number
       default: 0.5
@@ -922,7 +922,7 @@ options:
         title: z
       default: z
 
-    - name: priorLambda
+    - name: priorMeanRplus
       title: 'λ'
       type: Number
       default: 0.3
@@ -1379,7 +1379,7 @@ options:
         - name: blank1h
           title: '-'
         - name: lambda
-          title: worldLambda
+          title: worldMeanRplus
         - name: pNull
           title: worldPNull
 

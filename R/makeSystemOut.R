@@ -24,7 +24,7 @@ makeSystemOut<-function(self,statusStore,changedH,changedD,changedE,helpOutput="
   ) 
   
   svgBox(200*self$options$systemMag)
-  if (braw.def$hypothesis$effect$world$worldOn) {
+  if (braw.def$hypothesis$effect$world$On) {
     h<-showSystem("world")
   } else {
     h<-showSystem("hypothesis")

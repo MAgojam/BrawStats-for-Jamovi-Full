@@ -158,8 +158,8 @@ const events =  {
           ui.WorldOn.setValue(true);
           ui.WorldPDF.setValue("Exp");
           ui.WorldRZ.setValue("z");
-          ui.WorldLambda.setValue(0.3);
-          ui.WorldNullP.setValue(0.5);
+          ui.worldMeanRplus.setValue(0.3);
+          ui.worldPRplus.setValue(0.5);
           ui.WorldSample.setValue("none");
           ui.SampleSpreadOn.setValue(true);
           ui.SampleSizeM.setValue(52);
@@ -169,16 +169,16 @@ const events =  {
           ui.WorldOn.setValue(true);
           ui.WorldPDF.setValue("Uniform");
           ui.WorldRZ.setValue("r");
-          ui.WorldLambda.setValue(0.3);
-          ui.WorldNullP.setValue(0.0);
+          ui.worldMeanRplus.setValue(0.3);
+          ui.worldPRplus.setValue(0.0);
           ui.WorldSample.setValue("none");
           break;
         case "Binary":
           ui.WorldOn.setValue(true);
           ui.WorldPDF.setValue("Single");
           ui.WorldRZ.setValue("r");
-          ui.WorldLambda.setValue(0.3);
-          ui.WorldNullP.setValue(0.5);
+          ui.worldMeanRplus.setValue(0.3);
+          ui.worldPRplus.setValue(0.5);
           ui.WorldSample.setValue("none");
           ui.SampleSpreadOn.setValue(false);
           break;
@@ -186,8 +186,8 @@ const events =  {
           ui.WorldOn.setValue(true);
           ui.WorldPDF.setValue("Single");
           ui.WorldRZ.setValue("r");
-          ui.WorldLambda.setValue(0.3);
-          ui.WorldNullP.setValue(0);
+          ui.worldMeanRplus.setValue(0.3);
+          ui.worldPRplus.setValue(0);
           ui.WorldSample.setValue("none");
           ui.SampleSpreadOn.setValue(false);
           break;
@@ -698,8 +698,8 @@ let demo2SetUp = function(ui,show) {
           ui.WorldOn.setValue(true);
           ui.WorldPDF.setValue("Single");
           ui.WorldRZ.setValue("r");
-          ui.WorldLambda.setValue(0.3);
-          ui.WorldNullP.setValue(0.5);
+          ui.worldMeanRplus.setValue(0.3);
+          ui.worldPRplus.setValue(0.5);
           ui.SampleSpreadOn.setValue(false);
           break;
       }
@@ -776,8 +776,8 @@ let demo3SetUp = function(ui,show) {
           ui.WorldOn.setValue(true);
           ui.WorldPDF.setValue("Single");
           ui.WorldRZ.setValue("r");
-          ui.WorldLambda.setValue(0.3);
-          ui.WorldNullP.setValue(0.5);
+          ui.worldMeanRplus.setValue(0.3);
+          ui.worldPRplus.setValue(0.5);
           ui.SampleSpreadOn.setValue(false);
           break;
       }
