@@ -2407,7 +2407,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: <b>9. Mediation:</b>&nbsp; paths of effects
+                            label: <b>10. Mediation:</b>&nbsp; paths of effects
                             margin: none
                             minWidth: 450
                             maxWidth: 450
