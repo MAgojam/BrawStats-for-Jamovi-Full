@@ -31,7 +31,8 @@ setBraw<-function(self) {
                                      PDF=self$options$WorldPDF,
                                      RZ = self$options$WorldRZ,
                                      PDFk = self$options$worldMeanRplus,
-                                     pRPlus = self$options$worldPRplus,
+                                     PDFshape = self$options$WorldShape,
+                                     pRplus = 1-self$options$worldPRnull,
                                      PDFsample = self$options$WorldSample!="none",
                                      PDFsamplemn = self$options$WorldMn,
                                      PDFsamplesd = self$options$WorldSd,
@@ -64,7 +65,8 @@ setBraw<-function(self) {
                                                  Power=self$options$ReplicationPower,
                                                  Repeats=self$options$ReplicationAttempts,
                                                  Keep=self$options$ReplicationDecision,
-                                                 forceSigOriginal=self$options$ReplicationSigOriginal=="yes",forceSign=(self$options$ReplicationSign=="yes"),
+                                                 forceSigOriginal=FALSE,
+                                                 forceSign=!is.element(self$options$ReplicationDecision,c("MetaAnalysis","LargeN")),
                                                  maxN=self$options$RepMaxN,
                                                  RepAlpha=self$options$ReplicationAlpha,
                                                  PowerPrior=self$options$ReplicationPrior
@@ -80,7 +82,7 @@ setBraw<-function(self) {
            prior<-makeWorld(On=TRUE,
                             PDF="Uniform",
                             RZ="r",
-                            pRPlus=0.5)
+                            pRplus=0.5)
          },
          "world"={
            prior<-braw.def$hypothesis$effect$world
@@ -91,16 +93,18 @@ setBraw<-function(self) {
                             PDF=self$options$priorPDF,
                             RZ=self$options$priorRZ,
                             PDFk=self$options$priorMeanRplus,
-                            pRPlus=self$options$priorPRplus)
+                            pRplus=self$options$priorPRplus)
          })
-  evidence<-makeEvidence(AnalysisTerms=c(TRUE,self$options$main2,self$options$interaction),
-                         ssqType=self$options$ssq,sigOnly=FALSE,
+  if (self$options$keepOnlySig=="yes") sigOnly<-self$options$biasAmount
+  else sigOnly<-0
+  evidence<-makeEvidence(AnalysisTerms=c(self$options$main1,self$options$main2,self$options$interaction,self$options$covariation),
+                         ssqType=self$options$ssq,sigOnly=sigOnly,
                          Welch=self$options$equalVar=="no",
                          Transform=self$options$Transform,
                          minRp=self$options$minRp,
                          shortHand=self$options$shorthandCalculations,
                          prior=prior,
-                         doSEM=self$options$doSEM,useAIC=self$options$useAIC
+                         doSEM=self$options$useAIC!="none",useAIC=self$options$useAIC
   )
   setBrawDef("evidence",evidence)
   
@@ -144,15 +148,16 @@ setBraw<-function(self) {
   
   # set up the metaAnalysis variable
   #
-  metaAnalysis<-makeMetaAnalysis(nstudies=self$options$MetaAnalysisNStudies,
+  metaAnalysis<-makeMetaAnalysis(On=self$options$MetaAnalysisOn,
+                                 nstudies=self$options$MetaAnalysisNStudies,
                                  method=self$options$MetaAnalysisMethod,
                                  analysisType=self$options$MetaAnalysisType,
-                                 analysisVar=self$options$MetaAnalysisRandVar,
+                                 analysisVar="sd",
                                  analysisPrior=self$options$MetaAnalysisPrior,
-                                 modelPDF="All",
-                                 sourceBias=self$options$MetaAnalysisStudiesSig,
-                                 modelNulls=self$options$MetaAnalysisNulls=="yes",
-                                 analyseBias=self$options$MetaAnalysisBias=="yes"
+                                 modelPDF=self$options$MetaAnalysisDist,
+                                 sourceBias=self$options$MetaAnalysisStudiesSig=="yes",
+                                 analyseNulls=self$options$MetaAnalysisNulls,
+                                 analyseBias=self$options$MetaAnalysisBias
   )
   setBrawDef("metaAnalysis",metaAnalysis)
   
@@ -161,12 +166,13 @@ setBraw<-function(self) {
                                          PDF=self$options$priorPDF,
                                          RZ=self$options$priorRZ,
                                          PDFk=self$options$priorMeanRplus,
-                                         pRPlus=self$options$priorPRplus)
+                                         pRplus=self$options$priorPRplus)
   )
   setBrawDef("possibleResult",possible)
              
   setBrawEnv("alphaSig",self$options$alphaSig)
   setBrawEnv("RZ",self$options$dispRZ)
   setBrawEnv("STMethod",self$options$STMethod)
+  setBrawEnv("fixedYlim",self$options$fixedAxes)
   
 }

@@ -7,11 +7,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
     public = list(
         initialize = function(
             basicMode = NULL,
-            demosHelp = NULL,
-            demo1Help = NULL,
-            demo2Help = NULL,
-            demo3Help = NULL,
-            demo4Help = NULL,
+            basicsHelp = NULL,
             metaHelp = NULL,
             meta1Help = NULL,
             meta2Help = NULL,
@@ -27,7 +23,6 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             presetDV = "DV",
             presetIV = "IV",
             presetIV2 = "none",
-            presetWorld = "Binary",
             DVname = "DV",
             DVtype = "Interval",
             DVmu = 0,
@@ -70,16 +65,17 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             Heteroscedasticity = 0,
             Residuals = "normal",
             WorldOn = FALSE,
-            WorldPDF = "Uniform",
-            WorldRZ = NULL,
+            WorldPDF = "Exp",
+            WorldRZ = "z",
             worldMeanRplus = 0.3,
-            worldPRplus = 0.5,
+            WorldShape = 1,
+            worldPRnull = 0.5,
             WorldMn = 0,
             WorldSd = 0,
             WorldSample = "none",
             SampleSize = 42,
             SampleSizeDist = "Gamma",
-            SampleSizeM = 42,
+            SampleSizeM = 52,
             SampleSpreadOn = FALSE,
             SampleSD = 33.3,
             SampleMethod = "Random",
@@ -104,14 +100,16 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             ReplicationDecision = "Cautious",
             RepMaxN = 100000,
             ReplicationAlpha = 0.05,
-            ReplicationSign = "yes",
-            ReplicationSigOriginal = "no",
             STMethod = NULL,
             alphaSig = 0.05,
             minRp = 0,
+            keepOnlySig = "no",
+            biasAmount = 1,
             ssq = "Type3",
+            main1 = TRUE,
             main2 = TRUE,
             interaction = FALSE,
+            covariation = FALSE,
             equalVar = "yes",
             Transform = "None",
             likelihoodType = "Populations",
@@ -121,17 +119,16 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             priorRZ = "z",
             priorMeanRplus = 0.3,
             priorPRplus = 1,
-            doSEM = FALSE,
-            useAIC = "AIC",
+            useAIC = "none",
             MetaAnalysisOn = FALSE,
             MetaAnalysisType = "random",
-            MetaAnalysisRandVar = "sd",
+            MetaAnalysisDist = "Simple",
             MetaAnalysisPrior = "none",
-            MetaAnalysisNulls = "no",
-            MetaAnalysisBias = "no",
+            MetaAnalysisNulls = FALSE,
+            MetaAnalysisBias = FALSE,
             MetaAnalysisNStudies = 20,
             MetaAnalysisMethod = "MLE",
-            MetaAnalysisStudiesSig = 0,
+            MetaAnalysisStudiesSig = "no",
             metaVar1 = "metaRiv",
             metaVar2 = "metaRsd",
             makeSampleBtn = FALSE,
@@ -175,87 +172,119 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             showHTML = TRUE,
             fixedAxes = FALSE,
             shorthandCalculations = FALSE,
-            showHypothesisLst = "Default",
             dispRZ = "r",
-            systemMag = 1,
             simGoBack = NULL,
             simGoForwards = NULL,
-            doDemo1AhBtn = NULL,
-            doDemo1A1Btn = NULL,
-            doDemo1A2Btn = NULL,
-            doDemo1sLst = "Perfectionism",
-            doDemo1sLstA = "ExamGrade",
-            doDemo1sLstB = 0.3,
-            doDemo1sLstC = "Basic",
-            doDemo1sLstD = "Random",
-            doDemo1sLstE = 42,
-            doDemo1BhBtn = NULL,
-            doDemo1B1Btn = NULL,
-            doDemo1B2Btn = NULL,
-            doDemo1ChBtn = NULL,
-            doDemo1C1Btn = NULL,
-            doDemo2AhBtn = NULL,
-            doDemo2A1Btn = NULL,
-            doDemo2A2Btn = NULL,
-            doDemo2BhBtn = NULL,
-            doDemo2B1Btn = NULL,
-            doDemo2B2Btn = NULL,
-            doDemo2ChBtn = NULL,
-            doDemo2C1Btn = NULL,
-            doDemo2sLst = "Perfectionism",
-            doDemo2sLstA = "ExamGrade",
-            doDemo2sLstB = 0.3,
-            doDemo2sLstC = "Infer",
-            doDemo2sLstD = "Random",
-            doDemo2sLstE = 42,
-            doDemo2sLstF = "Basic",
-            doDemo2sLstG = "off",
-            doDemo3sLst = "Interval",
-            doDemo3sLstA = "Interval",
-            doDemo3sLstB = 0.3,
-            doDemo3sLstC = "Infer",
-            doDemo3sLstD = "Random",
-            doDemo3sLstE = 42,
-            doDemo3sLstF = "Basic",
-            doDemo3sLstG = "off",
-            doDemo3sLstH = "n",
-            doDemo3sLstK = 20,
-            doDemo3sLstI = "Basic",
-            doDemo3sLstJ = "Between",
-            doDemo3AhBtn = NULL,
-            doDemo3A1Btn = NULL,
-            doDemo3A3Btn = NULL,
-            doDemo3BhBtn = NULL,
-            doDemo3B1Btn = NULL,
-            doDemo3ChBtn = NULL,
-            doDemo3C1Btn = NULL,
-            doDemo3C3Btn = NULL,
-            doDemo4sLstA1 = "RiskTaker",
-            doDemo4sLstA2 = "Musician",
-            doDemo4sLst = "ExamGrade",
-            doDemo4sLstB = 0.5,
-            doDemo4sLstC = -0.5,
-            doDemo4sLstD = 0,
-            doDemo4sLstE = "no",
-            doDemo4sLstF = 0,
-            doDemo4sLstG = "Basic",
-            doDemo4sLstI = "all",
-            doDemo4sLstJ = "Covariation",
-            doDemo4sLstL = 20,
-            doDemo4sLstK = 200,
-            doDemo4AhBtn = NULL,
-            doDemo4A1Btn = NULL,
-            doDemo4A2Btn = NULL,
-            doDemo4BhBtn = NULL,
-            doDemo4B1Btn = NULL,
-            doDemo4B2Btn = NULL,
-            doDemo4B3Btn = NULL,
-            doDemo4ChBtn = NULL,
-            doDemo4C1Btn = NULL,
-            doDemo4C2Btn = NULL,
-            doDemo4C3Btn = NULL,
-            lastDemo = "none",
-            meta1pRPlus = 0.5,
+            basics1Help = NULL,
+            doBasics1IV = "Perfectionism",
+            doBasics1DV = "ExamGrade",
+            doBasics1ABtn = NULL,
+            doBasics1AmBtn = NULL,
+            doBasics1BBtn = NULL,
+            doBasics1BmBtn = NULL,
+            doBasics1BSampling = "Convenience",
+            doBasics1BOutliers = FALSE,
+            doBasics1BDependence = FALSE,
+            doBasics1CBtn = NULL,
+            doBasics1CmBtn = NULL,
+            doBasics1CSampleSize = 500,
+            basics2Help = NULL,
+            doBasics2EffectSize = 0.3,
+            doBasics2SampleSize = 50,
+            doBasics2ABtn = NULL,
+            doBasics2BBtn = NULL,
+            doBasics2CBtn = NULL,
+            basics3Help = NULL,
+            doBasics3EffectSize = 0.5,
+            doBasics3SampleSize = 50,
+            doBasics3ABtn = NULL,
+            doBasics3BBtn = NULL,
+            doBasics3CBtn = NULL,
+            doBasics31ABtn = NULL,
+            doBasics31BBtn = NULL,
+            basics4Help = NULL,
+            doBasics4EffectSize1 = 0.3,
+            doBasics4EffectSize2 = -0.3,
+            doBasics4SampleSize = 150,
+            doBasics4Main1 = TRUE,
+            doBasics4Main2 = TRUE,
+            doBasics4Interaction = TRUE,
+            doBasics4ABtn = NULL,
+            doBasics4AmBtn = NULL,
+            doBasics4BBtn = NULL,
+            doBasics4BmBtn = NULL,
+            doBasics4CBtn = NULL,
+            doBasics4CmBtn = NULL,
+            basics5Help = NULL,
+            doBasics5EffectSize1 = 0.3,
+            doBasics5EffectSize2 = -0.3,
+            doBasics5EffectSize1x2 = -0.3,
+            doBasics5SampleSize = 150,
+            doBasics5Main1 = TRUE,
+            doBasics5Main2 = TRUE,
+            doBasics5Interaction = TRUE,
+            doBasics5ABtn = NULL,
+            doBasics5AmBtn = NULL,
+            doBasics5BBtn = NULL,
+            doBasics5BmBtn = NULL,
+            doBasics5CBtn = NULL,
+            doBasics5CmBtn = NULL,
+            basics6Help = NULL,
+            doBasics6EffectSize1 = 0.3,
+            doBasics6EffectSize2 = -0.3,
+            doBasics6EffectSize12 = -0.3,
+            doBasics6SampleSize = 500,
+            doBasics6Main1 = TRUE,
+            doBasics6Main2 = FALSE,
+            doBasics6ABtn = NULL,
+            doBasics6AmBtn = NULL,
+            doBasics6BBtn = NULL,
+            doBasics6BmBtn = NULL,
+            doBasics6CBtn = NULL,
+            doBasics6CmBtn = NULL,
+            basics7Help = NULL,
+            doBasics7ABtn = NULL,
+            doBasics7AmBtn = NULL,
+            doBasics7BBtn = NULL,
+            doBasics7BmBtn = NULL,
+            basics8Help = NULL,
+            doBasics8ABtn = NULL,
+            doBasics8AmBtn = NULL,
+            doBasics8BBtn = NULL,
+            doBasics8BmBtn = NULL,
+            doBasics8CBtn = NULL,
+            doBasics8CmBtn = NULL,
+            basics9Help = NULL,
+            doBasics9ABtn = NULL,
+            doBasics9AmBtn = NULL,
+            doBasics9AModerationEffect = 0.3,
+            doBasics9AMain1Effect = 0,
+            doBasics9AMain2Effect = 0,
+            doBasics9AInteractionEffect = 0.3,
+            doBasics9BBtn = NULL,
+            doBasics9BmBtn = NULL,
+            doBasics9BModerationEffect = 0.3,
+            doBasics9BMain1Effect = -0.3,
+            doBasics9BMain2Effect = 0,
+            doBasics9BInteractionEffect = 0.3,
+            doBasics9CBtn = NULL,
+            doBasics9CmBtn = NULL,
+            doBasics9CModerationEffect = 0.3,
+            doBasics9CMain1Effect = -0.3,
+            doBasics9CMain2Effect = -0.6,
+            doBasics9CInteractionEffect = 0.3,
+            basics10Help = NULL,
+            doBasics10ABtn = NULL,
+            doBasics10AmBtn = NULL,
+            doBasics10BBtn = NULL,
+            doBasics10BmBtn = NULL,
+            doBasics10CBtn = NULL,
+            doBasics10CmBtn = NULL,
+            doBasics10Cmediation = 0.5,
+            doBasics10CMain1Effect = 0.18,
+            doBasics10CMain2Effect = 0.6,
+            doBasics10CCovariationEffect = 0.3,
+            meta1pRplus = 0.5,
             meta1rp = 0.3,
             doMeta0Btn = NULL,
             doMeta0RBtn = NULL,
@@ -275,7 +304,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             doMeta2BmBtn = NULL,
             meta2rp = 0.3,
             meta3SampleMethod = "Convenience",
-            meta2pRPlus = 0.5,
+            meta2pRplus = 0.5,
             metaCheatingProportion = 0.05,
             meta3Cheating = "Replace",
             doMeta3ABtn = NULL,
@@ -283,7 +312,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             doMeta3BBtn = NULL,
             doMeta3BmBtn = NULL,
             meta2SampleSize = 100,
-            meta3pRPlus = 0.5,
+            meta3pRplus = 0.5,
             meta3rp = 0.3,
             meta2SampleSplits = 5,
             meta2SampleBudget = 100,
@@ -301,7 +330,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             doMeta4BmcBtn = NULL,
             meta4OriginalAnomaly = "Convenience",
             meta4SampleSize = 50,
-            meta4pRPlus = 0.5,
+            meta4pRplus = 0.5,
             meta4rp = 0.3,
             doMeta5ABtn = NULL,
             doMeta5ArBtn = NULL,
@@ -315,7 +344,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             metaMultiple = 200,
             metaDefaultN = 50,
             metaDefaultRp = 0.3,
-            metaDefaultpRPlus = 0.5,
+            metaDefaultpRplus = 0.5,
             metaDefaultWorld = "Psych50",
             metaDefaultRepPower = 0.9,
             metaPublicationBias = "no", ...) {
@@ -335,21 +364,9 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "MetaScience",
                     "Simulation",
                     "Settings"))
-            private$..demosHelp <- jmvcore::OptionAction$new(
-                "demosHelp",
-                demosHelp)
-            private$..demo1Help <- jmvcore::OptionAction$new(
-                "demo1Help",
-                demo1Help)
-            private$..demo2Help <- jmvcore::OptionAction$new(
-                "demo2Help",
-                demo2Help)
-            private$..demo3Help <- jmvcore::OptionAction$new(
-                "demo3Help",
-                demo3Help)
-            private$..demo4Help <- jmvcore::OptionAction$new(
-                "demo4Help",
-                demo4Help)
+            private$..basicsHelp <- jmvcore::OptionAction$new(
+                "basicsHelp",
+                basicsHelp)
             private$..metaHelp <- jmvcore::OptionAction$new(
                 "metaHelp",
                 metaHelp)
@@ -411,7 +428,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "Musician",
                     "Smoker",
                     "RiskTaker",
-                    "Treatment",
+                    "Outcome",
                     "Phase",
                     "StudySubject",
                     "BirthOrder"),
@@ -463,14 +480,6 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "StudySubject",
                     "BirthOrder"),
                 default="none")
-            private$..presetWorld <- jmvcore::OptionList$new(
-                "presetWorld",
-                presetWorld,
-                options=list(
-                    "Plain",
-                    "Binary",
-                    "Psych50"),
-                default="Binary")
             private$..DVname <- jmvcore::OptionString$new(
                 "DVname",
                 DVname,
@@ -637,6 +646,8 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 options=list(
                     "simple",
                     "normal",
+                    "moderation",
+                    "mediation",
                     "path",
                     "lpath"),
                 default="normal")
@@ -669,21 +680,28 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "Double",
                     "Uniform",
                     "Gauss",
-                    "Exp"),
-                default="Uniform")
+                    "Exp",
+                    "GenExp",
+                    "Gamma"),
+                default="Exp")
             private$..WorldRZ <- jmvcore::OptionList$new(
                 "WorldRZ",
                 WorldRZ,
                 options=list(
                     "r",
-                    "z"))
+                    "z"),
+                default="z")
             private$..worldMeanRplus <- jmvcore::OptionNumber$new(
                 "worldMeanRplus",
                 worldMeanRplus,
                 default=0.3)
-            private$..worldPRplus <- jmvcore::OptionNumber$new(
-                "worldPRplus",
-                worldPRplus,
+            private$..WorldShape <- jmvcore::OptionNumber$new(
+                "WorldShape",
+                WorldShape,
+                default=1)
+            private$..worldPRnull <- jmvcore::OptionNumber$new(
+                "worldPRnull",
+                worldPRnull,
                 default=0.5)
             private$..WorldMn <- jmvcore::OptionNumber$new(
                 "WorldMn",
@@ -717,7 +735,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             private$..SampleSizeM <- jmvcore::OptionNumber$new(
                 "SampleSizeM",
                 SampleSizeM,
-                default=42)
+                default=52)
             private$..SampleSpreadOn <- jmvcore::OptionBool$new(
                 "SampleSpreadOn",
                 SampleSpreadOn,
@@ -847,20 +865,6 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 "ReplicationAlpha",
                 ReplicationAlpha,
                 default=0.05)
-            private$..ReplicationSign <- jmvcore::OptionList$new(
-                "ReplicationSign",
-                ReplicationSign,
-                options=list(
-                    "yes",
-                    "no"),
-                default="yes")
-            private$..ReplicationSigOriginal <- jmvcore::OptionList$new(
-                "ReplicationSigOriginal",
-                ReplicationSigOriginal,
-                options=list(
-                    "yes",
-                    "no"),
-                default="no")
             private$..STMethod <- jmvcore::OptionList$new(
                 "STMethod",
                 STMethod,
@@ -875,6 +879,17 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 "minRp",
                 minRp,
                 default=0)
+            private$..keepOnlySig <- jmvcore::OptionList$new(
+                "keepOnlySig",
+                keepOnlySig,
+                options=list(
+                    "yes",
+                    "no"),
+                default="no")
+            private$..biasAmount <- jmvcore::OptionNumber$new(
+                "biasAmount",
+                biasAmount,
+                default=1)
             private$..ssq <- jmvcore::OptionList$new(
                 "ssq",
                 ssq,
@@ -883,6 +898,10 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "Type2",
                     "Type3"),
                 default="Type3")
+            private$..main1 <- jmvcore::OptionBool$new(
+                "main1",
+                main1,
+                default=TRUE)
             private$..main2 <- jmvcore::OptionBool$new(
                 "main2",
                 main2,
@@ -890,6 +909,10 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             private$..interaction <- jmvcore::OptionBool$new(
                 "interaction",
                 interaction,
+                default=FALSE)
+            private$..covariation <- jmvcore::OptionBool$new(
+                "covariation",
+                covariation,
                 default=FALSE)
             private$..equalVar <- jmvcore::OptionList$new(
                 "equalVar",
@@ -953,19 +976,16 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 "priorPRplus",
                 priorPRplus,
                 default=1)
-            private$..doSEM <- jmvcore::OptionBool$new(
-                "doSEM",
-                doSEM,
-                default=FALSE)
             private$..useAIC <- jmvcore::OptionList$new(
                 "useAIC",
                 useAIC,
                 options=list(
+                    "none",
                     "AIC",
                     "BIC",
                     "CAIC",
                     "AICc"),
-                default="AIC")
+                default="none")
             private$..MetaAnalysisOn <- jmvcore::OptionBool$new(
                 "MetaAnalysisOn",
                 MetaAnalysisOn,
@@ -978,13 +998,18 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "random",
                     "world"),
                 default="random")
-            private$..MetaAnalysisRandVar <- jmvcore::OptionList$new(
-                "MetaAnalysisRandVar",
-                MetaAnalysisRandVar,
+            private$..MetaAnalysisDist <- jmvcore::OptionList$new(
+                "MetaAnalysisDist",
+                MetaAnalysisDist,
                 options=list(
-                    "sd",
-                    "var"),
-                default="sd")
+                    "Single",
+                    "Gauss",
+                    "Exp",
+                    "GenExp",
+                    "Gamma",
+                    "Simple",
+                    "All"),
+                default="Simple")
             private$..MetaAnalysisPrior <- jmvcore::OptionList$new(
                 "MetaAnalysisPrior",
                 MetaAnalysisPrior,
@@ -993,20 +1018,14 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "uniform",
                     "world"),
                 default="none")
-            private$..MetaAnalysisNulls <- jmvcore::OptionList$new(
+            private$..MetaAnalysisNulls <- jmvcore::OptionBool$new(
                 "MetaAnalysisNulls",
                 MetaAnalysisNulls,
-                options=list(
-                    "yes",
-                    "no"),
-                default="no")
-            private$..MetaAnalysisBias <- jmvcore::OptionList$new(
+                default=FALSE)
+            private$..MetaAnalysisBias <- jmvcore::OptionBool$new(
                 "MetaAnalysisBias",
                 MetaAnalysisBias,
-                options=list(
-                    "yes",
-                    "no"),
-                default="no")
+                default=FALSE)
             private$..MetaAnalysisNStudies <- jmvcore::OptionNumber$new(
                 "MetaAnalysisNStudies",
                 MetaAnalysisNStudies,
@@ -1019,18 +1038,27 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "TF",
                     "Rep"),
                 default="MLE")
-            private$..MetaAnalysisStudiesSig <- jmvcore::OptionNumber$new(
+            private$..MetaAnalysisStudiesSig <- jmvcore::OptionList$new(
                 "MetaAnalysisStudiesSig",
                 MetaAnalysisStudiesSig,
-                default=0)
+                options=list(
+                    "no",
+                    "yes"),
+                default="no")
             private$..metaVar1 <- jmvcore::OptionList$new(
                 "metaVar1",
                 metaVar1,
                 options=list(
                     "metaRiv",
                     "metaRsd",
+                    "blank1",
+                    "metaK",
+                    "metaShape",
+                    "metaSpread",
+                    "blank2",
+                    "metaPRplus",
                     "metaBias",
-                    "metaS"),
+                    "metaSmax"),
                 default="metaRiv")
             private$..metaVar2 <- jmvcore::OptionList$new(
                 "metaVar2",
@@ -1038,8 +1066,14 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 options=list(
                     "metaRiv",
                     "metaRsd",
+                    "blank1",
+                    "metaK",
+                    "metaShape",
+                    "metaSpread",
+                    "blank2",
+                    "metaPRplus",
                     "metaBias",
-                    "metaS"),
+                    "metaSmax"),
                 default="metaRsd")
             private$..makeSampleBtn <- jmvcore::OptionAction$new(
                 "makeSampleBtn",
@@ -1250,8 +1284,12 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "DVcats",
                     "DVprops",
                     "blank1h",
-                    "meanRPlus",
-                    "pRPlus"))
+                    "PDF",
+                    "PDFk",
+                    "PDFshape",
+                    "blank2h",
+                    "meanRplus",
+                    "pRplus"))
             private$..designExploreList <- jmvcore::OptionList$new(
                 "designExploreList",
                 designExploreList,
@@ -1347,14 +1385,6 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 "shorthandCalculations",
                 shorthandCalculations,
                 default=FALSE)
-            private$..showHypothesisLst <- jmvcore::OptionList$new(
-                "showHypothesisLst",
-                showHypothesisLst,
-                options=list(
-                    "Default",
-                    "Hypothesis",
-                    "Design"),
-                default="Default")
             private$..dispRZ <- jmvcore::OptionList$new(
                 "dispRZ",
                 dispRZ,
@@ -1362,28 +1392,18 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "r",
                     "z"),
                 default="r")
-            private$..systemMag <- jmvcore::OptionNumber$new(
-                "systemMag",
-                systemMag,
-                default=1)
             private$..simGoBack <- jmvcore::OptionAction$new(
                 "simGoBack",
                 simGoBack)
             private$..simGoForwards <- jmvcore::OptionAction$new(
                 "simGoForwards",
                 simGoForwards)
-            private$..doDemo1AhBtn <- jmvcore::OptionAction$new(
-                "doDemo1AhBtn",
-                doDemo1AhBtn)
-            private$..doDemo1A1Btn <- jmvcore::OptionAction$new(
-                "doDemo1A1Btn",
-                doDemo1A1Btn)
-            private$..doDemo1A2Btn <- jmvcore::OptionAction$new(
-                "doDemo1A2Btn",
-                doDemo1A2Btn)
-            private$..doDemo1sLst <- jmvcore::OptionList$new(
-                "doDemo1sLst",
-                doDemo1sLst,
+            private$..basics1Help <- jmvcore::OptionAction$new(
+                "basics1Help",
+                basics1Help)
+            private$..doBasics1IV <- jmvcore::OptionList$new(
+                "doBasics1IV",
+                doBasics1IV,
                 options=list(
                     "IQ",
                     "Diligence",
@@ -1399,433 +1419,444 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "StudySubject",
                     "BirthOrder"),
                 default="Perfectionism")
-            private$..doDemo1sLstA <- jmvcore::OptionList$new(
-                "doDemo1sLstA",
-                doDemo1sLstA,
+            private$..doBasics1DV <- jmvcore::OptionList$new(
+                "doBasics1DV",
+                doBasics1DV,
                 options=list(
                     "ExamGrade",
                     "ExamPass"),
                 default="ExamGrade")
-            private$..doDemo1sLstB <- jmvcore::OptionNumber$new(
-                "doDemo1sLstB",
-                doDemo1sLstB,
+            private$..doBasics1ABtn <- jmvcore::OptionAction$new(
+                "doBasics1ABtn",
+                doBasics1ABtn)
+            private$..doBasics1AmBtn <- jmvcore::OptionAction$new(
+                "doBasics1AmBtn",
+                doBasics1AmBtn)
+            private$..doBasics1BBtn <- jmvcore::OptionAction$new(
+                "doBasics1BBtn",
+                doBasics1BBtn)
+            private$..doBasics1BmBtn <- jmvcore::OptionAction$new(
+                "doBasics1BmBtn",
+                doBasics1BmBtn)
+            private$..doBasics1BSampling <- jmvcore::OptionList$new(
+                "doBasics1BSampling",
+                doBasics1BSampling,
+                options=list(
+                    "Random",
+                    "Convenience"),
+                default="Convenience")
+            private$..doBasics1BOutliers <- jmvcore::OptionBool$new(
+                "doBasics1BOutliers",
+                doBasics1BOutliers,
+                default=FALSE)
+            private$..doBasics1BDependence <- jmvcore::OptionBool$new(
+                "doBasics1BDependence",
+                doBasics1BDependence,
+                default=FALSE)
+            private$..doBasics1CBtn <- jmvcore::OptionAction$new(
+                "doBasics1CBtn",
+                doBasics1CBtn)
+            private$..doBasics1CmBtn <- jmvcore::OptionAction$new(
+                "doBasics1CmBtn",
+                doBasics1CmBtn)
+            private$..doBasics1CSampleSize <- jmvcore::OptionNumber$new(
+                "doBasics1CSampleSize",
+                doBasics1CSampleSize,
+                default=500,
+                min=10,
+                max=50000)
+            private$..basics2Help <- jmvcore::OptionAction$new(
+                "basics2Help",
+                basics2Help)
+            private$..doBasics2EffectSize <- jmvcore::OptionNumber$new(
+                "doBasics2EffectSize",
+                doBasics2EffectSize,
                 default=0.3,
                 min=-0.95,
                 max=0.95)
-            private$..doDemo1sLstC <- jmvcore::OptionList$new(
-                "doDemo1sLstC",
-                doDemo1sLstC,
-                options=list(
-                    "Basic",
-                    "Variables",
-                    "Sample",
-                    "Describe"),
-                default="Basic")
-            private$..doDemo1sLstD <- jmvcore::OptionList$new(
-                "doDemo1sLstD",
-                doDemo1sLstD,
-                options=list(
-                    "Random",
-                    "Limited",
-                    "Convenience",
-                    "Snowball",
-                    "Cluster"),
-                default="Random")
-            private$..doDemo1sLstE <- jmvcore::OptionNumber$new(
-                "doDemo1sLstE",
-                doDemo1sLstE,
-                default=42,
+            private$..doBasics2SampleSize <- jmvcore::OptionNumber$new(
+                "doBasics2SampleSize",
+                doBasics2SampleSize,
+                default=50,
                 min=10,
                 max=50000)
-            private$..doDemo1BhBtn <- jmvcore::OptionAction$new(
-                "doDemo1BhBtn",
-                doDemo1BhBtn)
-            private$..doDemo1B1Btn <- jmvcore::OptionAction$new(
-                "doDemo1B1Btn",
-                doDemo1B1Btn)
-            private$..doDemo1B2Btn <- jmvcore::OptionAction$new(
-                "doDemo1B2Btn",
-                doDemo1B2Btn)
-            private$..doDemo1ChBtn <- jmvcore::OptionAction$new(
-                "doDemo1ChBtn",
-                doDemo1ChBtn)
-            private$..doDemo1C1Btn <- jmvcore::OptionAction$new(
-                "doDemo1C1Btn",
-                doDemo1C1Btn)
-            private$..doDemo2AhBtn <- jmvcore::OptionAction$new(
-                "doDemo2AhBtn",
-                doDemo2AhBtn)
-            private$..doDemo2A1Btn <- jmvcore::OptionAction$new(
-                "doDemo2A1Btn",
-                doDemo2A1Btn)
-            private$..doDemo2A2Btn <- jmvcore::OptionAction$new(
-                "doDemo2A2Btn",
-                doDemo2A2Btn)
-            private$..doDemo2BhBtn <- jmvcore::OptionAction$new(
-                "doDemo2BhBtn",
-                doDemo2BhBtn)
-            private$..doDemo2B1Btn <- jmvcore::OptionAction$new(
-                "doDemo2B1Btn",
-                doDemo2B1Btn)
-            private$..doDemo2B2Btn <- jmvcore::OptionAction$new(
-                "doDemo2B2Btn",
-                doDemo2B2Btn)
-            private$..doDemo2ChBtn <- jmvcore::OptionAction$new(
-                "doDemo2ChBtn",
-                doDemo2ChBtn)
-            private$..doDemo2C1Btn <- jmvcore::OptionAction$new(
-                "doDemo2C1Btn",
-                doDemo2C1Btn)
-            private$..doDemo2sLst <- jmvcore::OptionList$new(
-                "doDemo2sLst",
-                doDemo2sLst,
-                options=list(
-                    "IQ",
-                    "Diligence",
-                    "Perfectionism",
-                    "Anxiety",
-                    "Happiness",
-                    "SelfConfidence",
-                    "RiskTaking",
-                    "Interesting",
-                    "Musician",
-                    "Smoker",
-                    "RiskTaker",
-                    "StudySubject",
-                    "BirthOrder"),
-                default="Perfectionism")
-            private$..doDemo2sLstA <- jmvcore::OptionList$new(
-                "doDemo2sLstA",
-                doDemo2sLstA,
-                options=list(
-                    "ExamGrade",
-                    "ExamPass"),
-                default="ExamGrade")
-            private$..doDemo2sLstB <- jmvcore::OptionNumber$new(
-                "doDemo2sLstB",
-                doDemo2sLstB,
-                default=0.3,
-                min=-0.95,
-                max=0.95)
-            private$..doDemo2sLstC <- jmvcore::OptionList$new(
-                "doDemo2sLstC",
-                doDemo2sLstC,
-                options=list(
-                    "Basic",
-                    "Variables",
-                    "Sample",
-                    "Describe",
-                    "Infer"),
-                default="Infer")
-            private$..doDemo2sLstD <- jmvcore::OptionList$new(
-                "doDemo2sLstD",
-                doDemo2sLstD,
-                options=list(
-                    "Random",
-                    "Limited",
-                    "Convenience",
-                    "Snowball",
-                    "Cluster"),
-                default="Random")
-            private$..doDemo2sLstE <- jmvcore::OptionNumber$new(
-                "doDemo2sLstE",
-                doDemo2sLstE,
-                default=42,
-                min=10,
-                max=50000)
-            private$..doDemo2sLstF <- jmvcore::OptionList$new(
-                "doDemo2sLstF",
-                doDemo2sLstF,
-                options=list(
-                    "Basic",
-                    "NHST",
-                    "p(sig)"),
-                default="Basic")
-            private$..doDemo2sLstG <- jmvcore::OptionList$new(
-                "doDemo2sLstG",
-                doDemo2sLstG,
-                options=list(
-                    "off",
-                    "eq"),
-                default="off")
-            private$..doDemo3sLst <- jmvcore::OptionList$new(
-                "doDemo3sLst",
-                doDemo3sLst,
-                options=list(
-                    "Interval",
-                    "Categorical"),
-                default="Interval")
-            private$..doDemo3sLstA <- jmvcore::OptionList$new(
-                "doDemo3sLstA",
-                doDemo3sLstA,
-                options=list(
-                    "Interval",
-                    "Categorical"),
-                default="Interval")
-            private$..doDemo3sLstB <- jmvcore::OptionNumber$new(
-                "doDemo3sLstB",
-                doDemo3sLstB,
-                default=0.3,
-                min=-0.95,
-                max=0.95)
-            private$..doDemo3sLstC <- jmvcore::OptionList$new(
-                "doDemo3sLstC",
-                doDemo3sLstC,
-                options=list(
-                    "Basic",
-                    "Variables",
-                    "Sample",
-                    "Describe",
-                    "Infer"),
-                default="Infer")
-            private$..doDemo3sLstD <- jmvcore::OptionList$new(
-                "doDemo3sLstD",
-                doDemo3sLstD,
-                options=list(
-                    "Random",
-                    "Limited",
-                    "Convenience",
-                    "Snowball",
-                    "Cluster"),
-                default="Random")
-            private$..doDemo3sLstE <- jmvcore::OptionNumber$new(
-                "doDemo3sLstE",
-                doDemo3sLstE,
-                default=42,
-                min=10,
-                max=50000)
-            private$..doDemo3sLstF <- jmvcore::OptionList$new(
-                "doDemo3sLstF",
-                doDemo3sLstF,
-                options=list(
-                    "Basic",
-                    "NHST",
-                    "p(sig)"),
-                default="Basic")
-            private$..doDemo3sLstG <- jmvcore::OptionList$new(
-                "doDemo3sLstG",
-                doDemo3sLstG,
-                options=list(
-                    "off",
-                    "eq"),
-                default="off")
-            private$..doDemo3sLstH <- jmvcore::OptionList$new(
-                "doDemo3sLstH",
-                doDemo3sLstH,
-                options=list(
-                    "n",
-                    "rIV"),
-                default="n")
-            private$..doDemo3sLstK <- jmvcore::OptionNumber$new(
-                "doDemo3sLstK",
-                doDemo3sLstK,
-                default=20,
-                min=10,
-                max=50000)
-            private$..doDemo3sLstI <- jmvcore::OptionList$new(
-                "doDemo3sLstI",
-                doDemo3sLstI,
-                options=list(
-                    "Basic",
-                    "NHST",
-                    "p(sig)"),
-                default="Basic")
-            private$..doDemo3sLstJ <- jmvcore::OptionList$new(
-                "doDemo3sLstJ",
-                doDemo3sLstJ,
-                options=list(
-                    "Between",
-                    "Within"),
-                default="Between")
-            private$..doDemo3AhBtn <- jmvcore::OptionAction$new(
-                "doDemo3AhBtn",
-                doDemo3AhBtn)
-            private$..doDemo3A1Btn <- jmvcore::OptionAction$new(
-                "doDemo3A1Btn",
-                doDemo3A1Btn)
-            private$..doDemo3A3Btn <- jmvcore::OptionAction$new(
-                "doDemo3A3Btn",
-                doDemo3A3Btn)
-            private$..doDemo3BhBtn <- jmvcore::OptionAction$new(
-                "doDemo3BhBtn",
-                doDemo3BhBtn)
-            private$..doDemo3B1Btn <- jmvcore::OptionAction$new(
-                "doDemo3B1Btn",
-                doDemo3B1Btn)
-            private$..doDemo3ChBtn <- jmvcore::OptionAction$new(
-                "doDemo3ChBtn",
-                doDemo3ChBtn)
-            private$..doDemo3C1Btn <- jmvcore::OptionAction$new(
-                "doDemo3C1Btn",
-                doDemo3C1Btn)
-            private$..doDemo3C3Btn <- jmvcore::OptionAction$new(
-                "doDemo3C3Btn",
-                doDemo3C3Btn)
-            private$..doDemo4sLstA1 <- jmvcore::OptionList$new(
-                "doDemo4sLstA1",
-                doDemo4sLstA1,
-                options=list(
-                    "IQ",
-                    "Diligence",
-                    "Perfectionism",
-                    "Anxiety",
-                    "Happiness",
-                    "SelfConfidence",
-                    "RiskTaking",
-                    "Interesting",
-                    "Musician",
-                    "Smoker",
-                    "RiskTaker",
-                    "StudySubject",
-                    "BirthOrder"),
-                default="RiskTaker")
-            private$..doDemo4sLstA2 <- jmvcore::OptionList$new(
-                "doDemo4sLstA2",
-                doDemo4sLstA2,
-                options=list(
-                    "IQ",
-                    "Diligence",
-                    "Perfectionism",
-                    "Anxiety",
-                    "Happiness",
-                    "SelfConfidence",
-                    "RiskTaking",
-                    "Interesting",
-                    "Musician",
-                    "Smoker",
-                    "RiskTaker",
-                    "StudySubject",
-                    "BirthOrder"),
-                default="Musician")
-            private$..doDemo4sLst <- jmvcore::OptionList$new(
-                "doDemo4sLst",
-                doDemo4sLst,
-                options=list(
-                    "ExamGrade",
-                    "ExamPass"),
-                default="ExamGrade")
-            private$..doDemo4sLstB <- jmvcore::OptionNumber$new(
-                "doDemo4sLstB",
-                doDemo4sLstB,
+            private$..doBasics2ABtn <- jmvcore::OptionAction$new(
+                "doBasics2ABtn",
+                doBasics2ABtn)
+            private$..doBasics2BBtn <- jmvcore::OptionAction$new(
+                "doBasics2BBtn",
+                doBasics2BBtn)
+            private$..doBasics2CBtn <- jmvcore::OptionAction$new(
+                "doBasics2CBtn",
+                doBasics2CBtn)
+            private$..basics3Help <- jmvcore::OptionAction$new(
+                "basics3Help",
+                basics3Help)
+            private$..doBasics3EffectSize <- jmvcore::OptionNumber$new(
+                "doBasics3EffectSize",
+                doBasics3EffectSize,
                 default=0.5,
                 min=-0.95,
                 max=0.95)
-            private$..doDemo4sLstC <- jmvcore::OptionNumber$new(
-                "doDemo4sLstC",
-                doDemo4sLstC,
-                default=-0.5,
-                min=-0.95,
-                max=0.95)
-            private$..doDemo4sLstD <- jmvcore::OptionNumber$new(
-                "doDemo4sLstD",
-                doDemo4sLstD,
-                default=0,
-                min=-0.95,
-                max=0.95)
-            private$..doDemo4sLstE <- jmvcore::OptionList$new(
-                "doDemo4sLstE",
-                doDemo4sLstE,
-                options=list(
-                    "no",
-                    "yes"),
-                default="no")
-            private$..doDemo4sLstF <- jmvcore::OptionNumber$new(
-                "doDemo4sLstF",
-                doDemo4sLstF,
-                default=0,
-                min=-0.95,
-                max=0.95)
-            private$..doDemo4sLstG <- jmvcore::OptionList$new(
-                "doDemo4sLstG",
-                doDemo4sLstG,
-                options=list(
-                    "Basic",
-                    "Sample",
-                    "Describe"),
-                default="Basic")
-            private$..doDemo4sLstI <- jmvcore::OptionList$new(
-                "doDemo4sLstI",
-                doDemo4sLstI,
-                options=list(
-                    "direct",
-                    "unique",
-                    "total",
-                    "all"),
-                default="all")
-            private$..doDemo4sLstJ <- jmvcore::OptionList$new(
-                "doDemo4sLstJ",
-                doDemo4sLstJ,
-                options=list(
-                    "EffectSize",
-                    "Covariation",
-                    "Interaction"),
-                default="Covariation")
-            private$..doDemo4sLstL <- jmvcore::OptionNumber$new(
-                "doDemo4sLstL",
-                doDemo4sLstL,
-                default=20,
+            private$..doBasics3SampleSize <- jmvcore::OptionNumber$new(
+                "doBasics3SampleSize",
+                doBasics3SampleSize,
+                default=50,
                 min=10,
                 max=50000)
-            private$..doDemo4sLstK <- jmvcore::OptionNumber$new(
-                "doDemo4sLstK",
-                doDemo4sLstK,
-                default=200,
+            private$..doBasics3ABtn <- jmvcore::OptionAction$new(
+                "doBasics3ABtn",
+                doBasics3ABtn)
+            private$..doBasics3BBtn <- jmvcore::OptionAction$new(
+                "doBasics3BBtn",
+                doBasics3BBtn)
+            private$..doBasics3CBtn <- jmvcore::OptionAction$new(
+                "doBasics3CBtn",
+                doBasics3CBtn)
+            private$..doBasics31ABtn <- jmvcore::OptionAction$new(
+                "doBasics31ABtn",
+                doBasics31ABtn)
+            private$..doBasics31BBtn <- jmvcore::OptionAction$new(
+                "doBasics31BBtn",
+                doBasics31BBtn)
+            private$..basics4Help <- jmvcore::OptionAction$new(
+                "basics4Help",
+                basics4Help)
+            private$..doBasics4EffectSize1 <- jmvcore::OptionNumber$new(
+                "doBasics4EffectSize1",
+                doBasics4EffectSize1,
+                default=0.3,
+                min=-0.95,
+                max=0.95)
+            private$..doBasics4EffectSize2 <- jmvcore::OptionNumber$new(
+                "doBasics4EffectSize2",
+                doBasics4EffectSize2,
+                default=-0.3,
+                min=-0.95,
+                max=0.95)
+            private$..doBasics4SampleSize <- jmvcore::OptionNumber$new(
+                "doBasics4SampleSize",
+                doBasics4SampleSize,
+                default=150,
                 min=10,
                 max=50000)
-            private$..doDemo4AhBtn <- jmvcore::OptionAction$new(
-                "doDemo4AhBtn",
-                doDemo4AhBtn)
-            private$..doDemo4A1Btn <- jmvcore::OptionAction$new(
-                "doDemo4A1Btn",
-                doDemo4A1Btn)
-            private$..doDemo4A2Btn <- jmvcore::OptionAction$new(
-                "doDemo4A2Btn",
-                doDemo4A2Btn)
-            private$..doDemo4BhBtn <- jmvcore::OptionAction$new(
-                "doDemo4BhBtn",
-                doDemo4BhBtn)
-            private$..doDemo4B1Btn <- jmvcore::OptionAction$new(
-                "doDemo4B1Btn",
-                doDemo4B1Btn)
-            private$..doDemo4B2Btn <- jmvcore::OptionAction$new(
-                "doDemo4B2Btn",
-                doDemo4B2Btn)
-            private$..doDemo4B3Btn <- jmvcore::OptionAction$new(
-                "doDemo4B3Btn",
-                doDemo4B3Btn)
-            private$..doDemo4ChBtn <- jmvcore::OptionAction$new(
-                "doDemo4ChBtn",
-                doDemo4ChBtn)
-            private$..doDemo4C1Btn <- jmvcore::OptionAction$new(
-                "doDemo4C1Btn",
-                doDemo4C1Btn)
-            private$..doDemo4C2Btn <- jmvcore::OptionAction$new(
-                "doDemo4C2Btn",
-                doDemo4C2Btn)
-            private$..doDemo4C3Btn <- jmvcore::OptionAction$new(
-                "doDemo4C3Btn",
-                doDemo4C3Btn)
-            private$..lastDemo <- jmvcore::OptionList$new(
-                "lastDemo",
-                lastDemo,
-                options=list(
-                    "none",
-                    "1a",
-                    "1b",
-                    "1c",
-                    "2a",
-                    "2b",
-                    "2c",
-                    "3a",
-                    "3b",
-                    "3c",
-                    "4a",
-                    "4b",
-                    "4c"),
-                default="none")
-            private$..meta1pRPlus <- jmvcore::OptionNumber$new(
-                "meta1pRPlus",
-                meta1pRPlus,
+            private$..doBasics4Main1 <- jmvcore::OptionBool$new(
+                "doBasics4Main1",
+                doBasics4Main1,
+                default=TRUE)
+            private$..doBasics4Main2 <- jmvcore::OptionBool$new(
+                "doBasics4Main2",
+                doBasics4Main2,
+                default=TRUE)
+            private$..doBasics4Interaction <- jmvcore::OptionBool$new(
+                "doBasics4Interaction",
+                doBasics4Interaction,
+                default=TRUE)
+            private$..doBasics4ABtn <- jmvcore::OptionAction$new(
+                "doBasics4ABtn",
+                doBasics4ABtn)
+            private$..doBasics4AmBtn <- jmvcore::OptionAction$new(
+                "doBasics4AmBtn",
+                doBasics4AmBtn)
+            private$..doBasics4BBtn <- jmvcore::OptionAction$new(
+                "doBasics4BBtn",
+                doBasics4BBtn)
+            private$..doBasics4BmBtn <- jmvcore::OptionAction$new(
+                "doBasics4BmBtn",
+                doBasics4BmBtn)
+            private$..doBasics4CBtn <- jmvcore::OptionAction$new(
+                "doBasics4CBtn",
+                doBasics4CBtn)
+            private$..doBasics4CmBtn <- jmvcore::OptionAction$new(
+                "doBasics4CmBtn",
+                doBasics4CmBtn)
+            private$..basics5Help <- jmvcore::OptionAction$new(
+                "basics5Help",
+                basics5Help)
+            private$..doBasics5EffectSize1 <- jmvcore::OptionNumber$new(
+                "doBasics5EffectSize1",
+                doBasics5EffectSize1,
+                default=0.3,
+                min=-0.95,
+                max=0.95)
+            private$..doBasics5EffectSize2 <- jmvcore::OptionNumber$new(
+                "doBasics5EffectSize2",
+                doBasics5EffectSize2,
+                default=-0.3,
+                min=-0.95,
+                max=0.95)
+            private$..doBasics5EffectSize1x2 <- jmvcore::OptionNumber$new(
+                "doBasics5EffectSize1x2",
+                doBasics5EffectSize1x2,
+                default=-0.3,
+                min=-0.95,
+                max=0.95)
+            private$..doBasics5SampleSize <- jmvcore::OptionNumber$new(
+                "doBasics5SampleSize",
+                doBasics5SampleSize,
+                default=150,
+                min=10,
+                max=50000)
+            private$..doBasics5Main1 <- jmvcore::OptionBool$new(
+                "doBasics5Main1",
+                doBasics5Main1,
+                default=TRUE)
+            private$..doBasics5Main2 <- jmvcore::OptionBool$new(
+                "doBasics5Main2",
+                doBasics5Main2,
+                default=TRUE)
+            private$..doBasics5Interaction <- jmvcore::OptionBool$new(
+                "doBasics5Interaction",
+                doBasics5Interaction,
+                default=TRUE)
+            private$..doBasics5ABtn <- jmvcore::OptionAction$new(
+                "doBasics5ABtn",
+                doBasics5ABtn)
+            private$..doBasics5AmBtn <- jmvcore::OptionAction$new(
+                "doBasics5AmBtn",
+                doBasics5AmBtn)
+            private$..doBasics5BBtn <- jmvcore::OptionAction$new(
+                "doBasics5BBtn",
+                doBasics5BBtn)
+            private$..doBasics5BmBtn <- jmvcore::OptionAction$new(
+                "doBasics5BmBtn",
+                doBasics5BmBtn)
+            private$..doBasics5CBtn <- jmvcore::OptionAction$new(
+                "doBasics5CBtn",
+                doBasics5CBtn)
+            private$..doBasics5CmBtn <- jmvcore::OptionAction$new(
+                "doBasics5CmBtn",
+                doBasics5CmBtn)
+            private$..basics6Help <- jmvcore::OptionAction$new(
+                "basics6Help",
+                basics6Help)
+            private$..doBasics6EffectSize1 <- jmvcore::OptionNumber$new(
+                "doBasics6EffectSize1",
+                doBasics6EffectSize1,
+                default=0.3,
+                min=-0.95,
+                max=0.95)
+            private$..doBasics6EffectSize2 <- jmvcore::OptionNumber$new(
+                "doBasics6EffectSize2",
+                doBasics6EffectSize2,
+                default=-0.3,
+                min=-0.95,
+                max=0.95)
+            private$..doBasics6EffectSize12 <- jmvcore::OptionNumber$new(
+                "doBasics6EffectSize12",
+                doBasics6EffectSize12,
+                default=-0.3,
+                min=-0.95,
+                max=0.95)
+            private$..doBasics6SampleSize <- jmvcore::OptionNumber$new(
+                "doBasics6SampleSize",
+                doBasics6SampleSize,
+                default=500,
+                min=10,
+                max=50000)
+            private$..doBasics6Main1 <- jmvcore::OptionBool$new(
+                "doBasics6Main1",
+                doBasics6Main1,
+                default=TRUE)
+            private$..doBasics6Main2 <- jmvcore::OptionBool$new(
+                "doBasics6Main2",
+                doBasics6Main2,
+                default=FALSE)
+            private$..doBasics6ABtn <- jmvcore::OptionAction$new(
+                "doBasics6ABtn",
+                doBasics6ABtn)
+            private$..doBasics6AmBtn <- jmvcore::OptionAction$new(
+                "doBasics6AmBtn",
+                doBasics6AmBtn)
+            private$..doBasics6BBtn <- jmvcore::OptionAction$new(
+                "doBasics6BBtn",
+                doBasics6BBtn)
+            private$..doBasics6BmBtn <- jmvcore::OptionAction$new(
+                "doBasics6BmBtn",
+                doBasics6BmBtn)
+            private$..doBasics6CBtn <- jmvcore::OptionAction$new(
+                "doBasics6CBtn",
+                doBasics6CBtn)
+            private$..doBasics6CmBtn <- jmvcore::OptionAction$new(
+                "doBasics6CmBtn",
+                doBasics6CmBtn)
+            private$..basics7Help <- jmvcore::OptionAction$new(
+                "basics7Help",
+                basics7Help)
+            private$..doBasics7ABtn <- jmvcore::OptionAction$new(
+                "doBasics7ABtn",
+                doBasics7ABtn)
+            private$..doBasics7AmBtn <- jmvcore::OptionAction$new(
+                "doBasics7AmBtn",
+                doBasics7AmBtn)
+            private$..doBasics7BBtn <- jmvcore::OptionAction$new(
+                "doBasics7BBtn",
+                doBasics7BBtn)
+            private$..doBasics7BmBtn <- jmvcore::OptionAction$new(
+                "doBasics7BmBtn",
+                doBasics7BmBtn)
+            private$..basics8Help <- jmvcore::OptionAction$new(
+                "basics8Help",
+                basics8Help)
+            private$..doBasics8ABtn <- jmvcore::OptionAction$new(
+                "doBasics8ABtn",
+                doBasics8ABtn)
+            private$..doBasics8AmBtn <- jmvcore::OptionAction$new(
+                "doBasics8AmBtn",
+                doBasics8AmBtn)
+            private$..doBasics8BBtn <- jmvcore::OptionAction$new(
+                "doBasics8BBtn",
+                doBasics8BBtn)
+            private$..doBasics8BmBtn <- jmvcore::OptionAction$new(
+                "doBasics8BmBtn",
+                doBasics8BmBtn)
+            private$..doBasics8CBtn <- jmvcore::OptionAction$new(
+                "doBasics8CBtn",
+                doBasics8CBtn)
+            private$..doBasics8CmBtn <- jmvcore::OptionAction$new(
+                "doBasics8CmBtn",
+                doBasics8CmBtn)
+            private$..basics9Help <- jmvcore::OptionAction$new(
+                "basics9Help",
+                basics9Help)
+            private$..doBasics9ABtn <- jmvcore::OptionAction$new(
+                "doBasics9ABtn",
+                doBasics9ABtn)
+            private$..doBasics9AmBtn <- jmvcore::OptionAction$new(
+                "doBasics9AmBtn",
+                doBasics9AmBtn)
+            private$..doBasics9AModerationEffect <- jmvcore::OptionNumber$new(
+                "doBasics9AModerationEffect",
+                doBasics9AModerationEffect,
+                default=0.3,
+                min=-0.9,
+                max=0.9)
+            private$..doBasics9AMain1Effect <- jmvcore::OptionNumber$new(
+                "doBasics9AMain1Effect",
+                doBasics9AMain1Effect,
+                default=0,
+                min=-0.9,
+                max=0.9)
+            private$..doBasics9AMain2Effect <- jmvcore::OptionNumber$new(
+                "doBasics9AMain2Effect",
+                doBasics9AMain2Effect,
+                default=0,
+                min=-0.9,
+                max=0.9)
+            private$..doBasics9AInteractionEffect <- jmvcore::OptionNumber$new(
+                "doBasics9AInteractionEffect",
+                doBasics9AInteractionEffect,
+                default=0.3,
+                min=-0.9,
+                max=0.9)
+            private$..doBasics9BBtn <- jmvcore::OptionAction$new(
+                "doBasics9BBtn",
+                doBasics9BBtn)
+            private$..doBasics9BmBtn <- jmvcore::OptionAction$new(
+                "doBasics9BmBtn",
+                doBasics9BmBtn)
+            private$..doBasics9BModerationEffect <- jmvcore::OptionNumber$new(
+                "doBasics9BModerationEffect",
+                doBasics9BModerationEffect,
+                default=0.3,
+                min=-0.9,
+                max=0.9)
+            private$..doBasics9BMain1Effect <- jmvcore::OptionNumber$new(
+                "doBasics9BMain1Effect",
+                doBasics9BMain1Effect,
+                default=-0.3,
+                min=-0.9,
+                max=0.9)
+            private$..doBasics9BMain2Effect <- jmvcore::OptionNumber$new(
+                "doBasics9BMain2Effect",
+                doBasics9BMain2Effect,
+                default=0,
+                min=-0.9,
+                max=0.9)
+            private$..doBasics9BInteractionEffect <- jmvcore::OptionNumber$new(
+                "doBasics9BInteractionEffect",
+                doBasics9BInteractionEffect,
+                default=0.3,
+                min=-0.9,
+                max=0.9)
+            private$..doBasics9CBtn <- jmvcore::OptionAction$new(
+                "doBasics9CBtn",
+                doBasics9CBtn)
+            private$..doBasics9CmBtn <- jmvcore::OptionAction$new(
+                "doBasics9CmBtn",
+                doBasics9CmBtn)
+            private$..doBasics9CModerationEffect <- jmvcore::OptionNumber$new(
+                "doBasics9CModerationEffect",
+                doBasics9CModerationEffect,
+                default=0.3,
+                min=-0.9,
+                max=0.9)
+            private$..doBasics9CMain1Effect <- jmvcore::OptionNumber$new(
+                "doBasics9CMain1Effect",
+                doBasics9CMain1Effect,
+                default=-0.3,
+                min=-0.9,
+                max=0.9)
+            private$..doBasics9CMain2Effect <- jmvcore::OptionNumber$new(
+                "doBasics9CMain2Effect",
+                doBasics9CMain2Effect,
+                default=-0.6,
+                min=-0.9,
+                max=0.9)
+            private$..doBasics9CInteractionEffect <- jmvcore::OptionNumber$new(
+                "doBasics9CInteractionEffect",
+                doBasics9CInteractionEffect,
+                default=0.3,
+                min=-0.9,
+                max=0.9)
+            private$..basics10Help <- jmvcore::OptionAction$new(
+                "basics10Help",
+                basics10Help)
+            private$..doBasics10ABtn <- jmvcore::OptionAction$new(
+                "doBasics10ABtn",
+                doBasics10ABtn)
+            private$..doBasics10AmBtn <- jmvcore::OptionAction$new(
+                "doBasics10AmBtn",
+                doBasics10AmBtn)
+            private$..doBasics10BBtn <- jmvcore::OptionAction$new(
+                "doBasics10BBtn",
+                doBasics10BBtn)
+            private$..doBasics10BmBtn <- jmvcore::OptionAction$new(
+                "doBasics10BmBtn",
+                doBasics10BmBtn)
+            private$..doBasics10CBtn <- jmvcore::OptionAction$new(
+                "doBasics10CBtn",
+                doBasics10CBtn)
+            private$..doBasics10CmBtn <- jmvcore::OptionAction$new(
+                "doBasics10CmBtn",
+                doBasics10CmBtn)
+            private$..doBasics10Cmediation <- jmvcore::OptionNumber$new(
+                "doBasics10Cmediation",
+                doBasics10Cmediation,
+                default=0.5,
+                min=0,
+                max=1)
+            private$..doBasics10CMain1Effect <- jmvcore::OptionNumber$new(
+                "doBasics10CMain1Effect",
+                doBasics10CMain1Effect,
+                default=0.18,
+                min=-0.9,
+                max=0.9)
+            private$..doBasics10CMain2Effect <- jmvcore::OptionNumber$new(
+                "doBasics10CMain2Effect",
+                doBasics10CMain2Effect,
+                default=0.6,
+                min=-0.9,
+                max=0.9)
+            private$..doBasics10CCovariationEffect <- jmvcore::OptionNumber$new(
+                "doBasics10CCovariationEffect",
+                doBasics10CCovariationEffect,
+                default=0.3,
+                min=-0.9,
+                max=0.9)
+            private$..meta1pRplus <- jmvcore::OptionNumber$new(
+                "meta1pRplus",
+                meta1pRplus,
                 default=0.5)
             private$..meta1rp <- jmvcore::OptionNumber$new(
                 "meta1rp",
@@ -1893,9 +1924,9 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "Cluster",
                     "Snowball"),
                 default="Convenience")
-            private$..meta2pRPlus <- jmvcore::OptionNumber$new(
-                "meta2pRPlus",
-                meta2pRPlus,
+            private$..meta2pRplus <- jmvcore::OptionNumber$new(
+                "meta2pRplus",
+                meta2pRplus,
                 default=0.5)
             private$..metaCheatingProportion <- jmvcore::OptionNumber$new(
                 "metaCheatingProportion",
@@ -1926,9 +1957,9 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 "meta2SampleSize",
                 meta2SampleSize,
                 default=100)
-            private$..meta3pRPlus <- jmvcore::OptionNumber$new(
-                "meta3pRPlus",
-                meta3pRPlus,
+            private$..meta3pRplus <- jmvcore::OptionNumber$new(
+                "meta3pRplus",
+                meta3pRplus,
                 default=0.5)
             private$..meta3rp <- jmvcore::OptionNumber$new(
                 "meta3rp",
@@ -1991,9 +2022,9 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 "meta4SampleSize",
                 meta4SampleSize,
                 default=50)
-            private$..meta4pRPlus <- jmvcore::OptionNumber$new(
-                "meta4pRPlus",
-                meta4pRPlus,
+            private$..meta4pRplus <- jmvcore::OptionNumber$new(
+                "meta4pRplus",
+                meta4pRplus,
                 default=0.5)
             private$..meta4rp <- jmvcore::OptionNumber$new(
                 "meta4rp",
@@ -2042,9 +2073,9 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 "metaDefaultRp",
                 metaDefaultRp,
                 default=0.3)
-            private$..metaDefaultpRPlus <- jmvcore::OptionNumber$new(
-                "metaDefaultpRPlus",
-                metaDefaultpRPlus,
+            private$..metaDefaultpRplus <- jmvcore::OptionNumber$new(
+                "metaDefaultpRplus",
+                metaDefaultpRplus,
                 default=0.5)
             private$..metaDefaultWorld <- jmvcore::OptionList$new(
                 "metaDefaultWorld",
@@ -2069,11 +2100,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 default="no")
 
             self$.addOption(private$..basicMode)
-            self$.addOption(private$..demosHelp)
-            self$.addOption(private$..demo1Help)
-            self$.addOption(private$..demo2Help)
-            self$.addOption(private$..demo3Help)
-            self$.addOption(private$..demo4Help)
+            self$.addOption(private$..basicsHelp)
             self$.addOption(private$..metaHelp)
             self$.addOption(private$..meta1Help)
             self$.addOption(private$..meta2Help)
@@ -2089,7 +2116,6 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..presetDV)
             self$.addOption(private$..presetIV)
             self$.addOption(private$..presetIV2)
-            self$.addOption(private$..presetWorld)
             self$.addOption(private$..DVname)
             self$.addOption(private$..DVtype)
             self$.addOption(private$..DVmu)
@@ -2135,7 +2161,8 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..WorldPDF)
             self$.addOption(private$..WorldRZ)
             self$.addOption(private$..worldMeanRplus)
-            self$.addOption(private$..worldPRplus)
+            self$.addOption(private$..WorldShape)
+            self$.addOption(private$..worldPRnull)
             self$.addOption(private$..WorldMn)
             self$.addOption(private$..WorldSd)
             self$.addOption(private$..WorldSample)
@@ -2166,14 +2193,16 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..ReplicationDecision)
             self$.addOption(private$..RepMaxN)
             self$.addOption(private$..ReplicationAlpha)
-            self$.addOption(private$..ReplicationSign)
-            self$.addOption(private$..ReplicationSigOriginal)
             self$.addOption(private$..STMethod)
             self$.addOption(private$..alphaSig)
             self$.addOption(private$..minRp)
+            self$.addOption(private$..keepOnlySig)
+            self$.addOption(private$..biasAmount)
             self$.addOption(private$..ssq)
+            self$.addOption(private$..main1)
             self$.addOption(private$..main2)
             self$.addOption(private$..interaction)
+            self$.addOption(private$..covariation)
             self$.addOption(private$..equalVar)
             self$.addOption(private$..Transform)
             self$.addOption(private$..likelihoodType)
@@ -2183,11 +2212,10 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..priorRZ)
             self$.addOption(private$..priorMeanRplus)
             self$.addOption(private$..priorPRplus)
-            self$.addOption(private$..doSEM)
             self$.addOption(private$..useAIC)
             self$.addOption(private$..MetaAnalysisOn)
             self$.addOption(private$..MetaAnalysisType)
-            self$.addOption(private$..MetaAnalysisRandVar)
+            self$.addOption(private$..MetaAnalysisDist)
             self$.addOption(private$..MetaAnalysisPrior)
             self$.addOption(private$..MetaAnalysisNulls)
             self$.addOption(private$..MetaAnalysisBias)
@@ -2240,87 +2268,119 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..showHTML)
             self$.addOption(private$..fixedAxes)
             self$.addOption(private$..shorthandCalculations)
-            self$.addOption(private$..showHypothesisLst)
             self$.addOption(private$..dispRZ)
-            self$.addOption(private$..systemMag)
             self$.addOption(private$..simGoBack)
             self$.addOption(private$..simGoForwards)
-            self$.addOption(private$..doDemo1AhBtn)
-            self$.addOption(private$..doDemo1A1Btn)
-            self$.addOption(private$..doDemo1A2Btn)
-            self$.addOption(private$..doDemo1sLst)
-            self$.addOption(private$..doDemo1sLstA)
-            self$.addOption(private$..doDemo1sLstB)
-            self$.addOption(private$..doDemo1sLstC)
-            self$.addOption(private$..doDemo1sLstD)
-            self$.addOption(private$..doDemo1sLstE)
-            self$.addOption(private$..doDemo1BhBtn)
-            self$.addOption(private$..doDemo1B1Btn)
-            self$.addOption(private$..doDemo1B2Btn)
-            self$.addOption(private$..doDemo1ChBtn)
-            self$.addOption(private$..doDemo1C1Btn)
-            self$.addOption(private$..doDemo2AhBtn)
-            self$.addOption(private$..doDemo2A1Btn)
-            self$.addOption(private$..doDemo2A2Btn)
-            self$.addOption(private$..doDemo2BhBtn)
-            self$.addOption(private$..doDemo2B1Btn)
-            self$.addOption(private$..doDemo2B2Btn)
-            self$.addOption(private$..doDemo2ChBtn)
-            self$.addOption(private$..doDemo2C1Btn)
-            self$.addOption(private$..doDemo2sLst)
-            self$.addOption(private$..doDemo2sLstA)
-            self$.addOption(private$..doDemo2sLstB)
-            self$.addOption(private$..doDemo2sLstC)
-            self$.addOption(private$..doDemo2sLstD)
-            self$.addOption(private$..doDemo2sLstE)
-            self$.addOption(private$..doDemo2sLstF)
-            self$.addOption(private$..doDemo2sLstG)
-            self$.addOption(private$..doDemo3sLst)
-            self$.addOption(private$..doDemo3sLstA)
-            self$.addOption(private$..doDemo3sLstB)
-            self$.addOption(private$..doDemo3sLstC)
-            self$.addOption(private$..doDemo3sLstD)
-            self$.addOption(private$..doDemo3sLstE)
-            self$.addOption(private$..doDemo3sLstF)
-            self$.addOption(private$..doDemo3sLstG)
-            self$.addOption(private$..doDemo3sLstH)
-            self$.addOption(private$..doDemo3sLstK)
-            self$.addOption(private$..doDemo3sLstI)
-            self$.addOption(private$..doDemo3sLstJ)
-            self$.addOption(private$..doDemo3AhBtn)
-            self$.addOption(private$..doDemo3A1Btn)
-            self$.addOption(private$..doDemo3A3Btn)
-            self$.addOption(private$..doDemo3BhBtn)
-            self$.addOption(private$..doDemo3B1Btn)
-            self$.addOption(private$..doDemo3ChBtn)
-            self$.addOption(private$..doDemo3C1Btn)
-            self$.addOption(private$..doDemo3C3Btn)
-            self$.addOption(private$..doDemo4sLstA1)
-            self$.addOption(private$..doDemo4sLstA2)
-            self$.addOption(private$..doDemo4sLst)
-            self$.addOption(private$..doDemo4sLstB)
-            self$.addOption(private$..doDemo4sLstC)
-            self$.addOption(private$..doDemo4sLstD)
-            self$.addOption(private$..doDemo4sLstE)
-            self$.addOption(private$..doDemo4sLstF)
-            self$.addOption(private$..doDemo4sLstG)
-            self$.addOption(private$..doDemo4sLstI)
-            self$.addOption(private$..doDemo4sLstJ)
-            self$.addOption(private$..doDemo4sLstL)
-            self$.addOption(private$..doDemo4sLstK)
-            self$.addOption(private$..doDemo4AhBtn)
-            self$.addOption(private$..doDemo4A1Btn)
-            self$.addOption(private$..doDemo4A2Btn)
-            self$.addOption(private$..doDemo4BhBtn)
-            self$.addOption(private$..doDemo4B1Btn)
-            self$.addOption(private$..doDemo4B2Btn)
-            self$.addOption(private$..doDemo4B3Btn)
-            self$.addOption(private$..doDemo4ChBtn)
-            self$.addOption(private$..doDemo4C1Btn)
-            self$.addOption(private$..doDemo4C2Btn)
-            self$.addOption(private$..doDemo4C3Btn)
-            self$.addOption(private$..lastDemo)
-            self$.addOption(private$..meta1pRPlus)
+            self$.addOption(private$..basics1Help)
+            self$.addOption(private$..doBasics1IV)
+            self$.addOption(private$..doBasics1DV)
+            self$.addOption(private$..doBasics1ABtn)
+            self$.addOption(private$..doBasics1AmBtn)
+            self$.addOption(private$..doBasics1BBtn)
+            self$.addOption(private$..doBasics1BmBtn)
+            self$.addOption(private$..doBasics1BSampling)
+            self$.addOption(private$..doBasics1BOutliers)
+            self$.addOption(private$..doBasics1BDependence)
+            self$.addOption(private$..doBasics1CBtn)
+            self$.addOption(private$..doBasics1CmBtn)
+            self$.addOption(private$..doBasics1CSampleSize)
+            self$.addOption(private$..basics2Help)
+            self$.addOption(private$..doBasics2EffectSize)
+            self$.addOption(private$..doBasics2SampleSize)
+            self$.addOption(private$..doBasics2ABtn)
+            self$.addOption(private$..doBasics2BBtn)
+            self$.addOption(private$..doBasics2CBtn)
+            self$.addOption(private$..basics3Help)
+            self$.addOption(private$..doBasics3EffectSize)
+            self$.addOption(private$..doBasics3SampleSize)
+            self$.addOption(private$..doBasics3ABtn)
+            self$.addOption(private$..doBasics3BBtn)
+            self$.addOption(private$..doBasics3CBtn)
+            self$.addOption(private$..doBasics31ABtn)
+            self$.addOption(private$..doBasics31BBtn)
+            self$.addOption(private$..basics4Help)
+            self$.addOption(private$..doBasics4EffectSize1)
+            self$.addOption(private$..doBasics4EffectSize2)
+            self$.addOption(private$..doBasics4SampleSize)
+            self$.addOption(private$..doBasics4Main1)
+            self$.addOption(private$..doBasics4Main2)
+            self$.addOption(private$..doBasics4Interaction)
+            self$.addOption(private$..doBasics4ABtn)
+            self$.addOption(private$..doBasics4AmBtn)
+            self$.addOption(private$..doBasics4BBtn)
+            self$.addOption(private$..doBasics4BmBtn)
+            self$.addOption(private$..doBasics4CBtn)
+            self$.addOption(private$..doBasics4CmBtn)
+            self$.addOption(private$..basics5Help)
+            self$.addOption(private$..doBasics5EffectSize1)
+            self$.addOption(private$..doBasics5EffectSize2)
+            self$.addOption(private$..doBasics5EffectSize1x2)
+            self$.addOption(private$..doBasics5SampleSize)
+            self$.addOption(private$..doBasics5Main1)
+            self$.addOption(private$..doBasics5Main2)
+            self$.addOption(private$..doBasics5Interaction)
+            self$.addOption(private$..doBasics5ABtn)
+            self$.addOption(private$..doBasics5AmBtn)
+            self$.addOption(private$..doBasics5BBtn)
+            self$.addOption(private$..doBasics5BmBtn)
+            self$.addOption(private$..doBasics5CBtn)
+            self$.addOption(private$..doBasics5CmBtn)
+            self$.addOption(private$..basics6Help)
+            self$.addOption(private$..doBasics6EffectSize1)
+            self$.addOption(private$..doBasics6EffectSize2)
+            self$.addOption(private$..doBasics6EffectSize12)
+            self$.addOption(private$..doBasics6SampleSize)
+            self$.addOption(private$..doBasics6Main1)
+            self$.addOption(private$..doBasics6Main2)
+            self$.addOption(private$..doBasics6ABtn)
+            self$.addOption(private$..doBasics6AmBtn)
+            self$.addOption(private$..doBasics6BBtn)
+            self$.addOption(private$..doBasics6BmBtn)
+            self$.addOption(private$..doBasics6CBtn)
+            self$.addOption(private$..doBasics6CmBtn)
+            self$.addOption(private$..basics7Help)
+            self$.addOption(private$..doBasics7ABtn)
+            self$.addOption(private$..doBasics7AmBtn)
+            self$.addOption(private$..doBasics7BBtn)
+            self$.addOption(private$..doBasics7BmBtn)
+            self$.addOption(private$..basics8Help)
+            self$.addOption(private$..doBasics8ABtn)
+            self$.addOption(private$..doBasics8AmBtn)
+            self$.addOption(private$..doBasics8BBtn)
+            self$.addOption(private$..doBasics8BmBtn)
+            self$.addOption(private$..doBasics8CBtn)
+            self$.addOption(private$..doBasics8CmBtn)
+            self$.addOption(private$..basics9Help)
+            self$.addOption(private$..doBasics9ABtn)
+            self$.addOption(private$..doBasics9AmBtn)
+            self$.addOption(private$..doBasics9AModerationEffect)
+            self$.addOption(private$..doBasics9AMain1Effect)
+            self$.addOption(private$..doBasics9AMain2Effect)
+            self$.addOption(private$..doBasics9AInteractionEffect)
+            self$.addOption(private$..doBasics9BBtn)
+            self$.addOption(private$..doBasics9BmBtn)
+            self$.addOption(private$..doBasics9BModerationEffect)
+            self$.addOption(private$..doBasics9BMain1Effect)
+            self$.addOption(private$..doBasics9BMain2Effect)
+            self$.addOption(private$..doBasics9BInteractionEffect)
+            self$.addOption(private$..doBasics9CBtn)
+            self$.addOption(private$..doBasics9CmBtn)
+            self$.addOption(private$..doBasics9CModerationEffect)
+            self$.addOption(private$..doBasics9CMain1Effect)
+            self$.addOption(private$..doBasics9CMain2Effect)
+            self$.addOption(private$..doBasics9CInteractionEffect)
+            self$.addOption(private$..basics10Help)
+            self$.addOption(private$..doBasics10ABtn)
+            self$.addOption(private$..doBasics10AmBtn)
+            self$.addOption(private$..doBasics10BBtn)
+            self$.addOption(private$..doBasics10BmBtn)
+            self$.addOption(private$..doBasics10CBtn)
+            self$.addOption(private$..doBasics10CmBtn)
+            self$.addOption(private$..doBasics10Cmediation)
+            self$.addOption(private$..doBasics10CMain1Effect)
+            self$.addOption(private$..doBasics10CMain2Effect)
+            self$.addOption(private$..doBasics10CCovariationEffect)
+            self$.addOption(private$..meta1pRplus)
             self$.addOption(private$..meta1rp)
             self$.addOption(private$..doMeta0Btn)
             self$.addOption(private$..doMeta0RBtn)
@@ -2340,7 +2400,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..doMeta2BmBtn)
             self$.addOption(private$..meta2rp)
             self$.addOption(private$..meta3SampleMethod)
-            self$.addOption(private$..meta2pRPlus)
+            self$.addOption(private$..meta2pRplus)
             self$.addOption(private$..metaCheatingProportion)
             self$.addOption(private$..meta3Cheating)
             self$.addOption(private$..doMeta3ABtn)
@@ -2348,7 +2408,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..doMeta3BBtn)
             self$.addOption(private$..doMeta3BmBtn)
             self$.addOption(private$..meta2SampleSize)
-            self$.addOption(private$..meta3pRPlus)
+            self$.addOption(private$..meta3pRplus)
             self$.addOption(private$..meta3rp)
             self$.addOption(private$..meta2SampleSplits)
             self$.addOption(private$..meta2SampleBudget)
@@ -2366,7 +2426,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..doMeta4BmcBtn)
             self$.addOption(private$..meta4OriginalAnomaly)
             self$.addOption(private$..meta4SampleSize)
-            self$.addOption(private$..meta4pRPlus)
+            self$.addOption(private$..meta4pRplus)
             self$.addOption(private$..meta4rp)
             self$.addOption(private$..doMeta5ABtn)
             self$.addOption(private$..doMeta5ArBtn)
@@ -2380,18 +2440,14 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..metaMultiple)
             self$.addOption(private$..metaDefaultN)
             self$.addOption(private$..metaDefaultRp)
-            self$.addOption(private$..metaDefaultpRPlus)
+            self$.addOption(private$..metaDefaultpRplus)
             self$.addOption(private$..metaDefaultWorld)
             self$.addOption(private$..metaDefaultRepPower)
             self$.addOption(private$..metaPublicationBias)
         }),
     active = list(
         basicMode = function() private$..basicMode$value,
-        demosHelp = function() private$..demosHelp$value,
-        demo1Help = function() private$..demo1Help$value,
-        demo2Help = function() private$..demo2Help$value,
-        demo3Help = function() private$..demo3Help$value,
-        demo4Help = function() private$..demo4Help$value,
+        basicsHelp = function() private$..basicsHelp$value,
         metaHelp = function() private$..metaHelp$value,
         meta1Help = function() private$..meta1Help$value,
         meta2Help = function() private$..meta2Help$value,
@@ -2407,7 +2463,6 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         presetDV = function() private$..presetDV$value,
         presetIV = function() private$..presetIV$value,
         presetIV2 = function() private$..presetIV2$value,
-        presetWorld = function() private$..presetWorld$value,
         DVname = function() private$..DVname$value,
         DVtype = function() private$..DVtype$value,
         DVmu = function() private$..DVmu$value,
@@ -2453,7 +2508,8 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         WorldPDF = function() private$..WorldPDF$value,
         WorldRZ = function() private$..WorldRZ$value,
         worldMeanRplus = function() private$..worldMeanRplus$value,
-        worldPRplus = function() private$..worldPRplus$value,
+        WorldShape = function() private$..WorldShape$value,
+        worldPRnull = function() private$..worldPRnull$value,
         WorldMn = function() private$..WorldMn$value,
         WorldSd = function() private$..WorldSd$value,
         WorldSample = function() private$..WorldSample$value,
@@ -2484,14 +2540,16 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ReplicationDecision = function() private$..ReplicationDecision$value,
         RepMaxN = function() private$..RepMaxN$value,
         ReplicationAlpha = function() private$..ReplicationAlpha$value,
-        ReplicationSign = function() private$..ReplicationSign$value,
-        ReplicationSigOriginal = function() private$..ReplicationSigOriginal$value,
         STMethod = function() private$..STMethod$value,
         alphaSig = function() private$..alphaSig$value,
         minRp = function() private$..minRp$value,
+        keepOnlySig = function() private$..keepOnlySig$value,
+        biasAmount = function() private$..biasAmount$value,
         ssq = function() private$..ssq$value,
+        main1 = function() private$..main1$value,
         main2 = function() private$..main2$value,
         interaction = function() private$..interaction$value,
+        covariation = function() private$..covariation$value,
         equalVar = function() private$..equalVar$value,
         Transform = function() private$..Transform$value,
         likelihoodType = function() private$..likelihoodType$value,
@@ -2501,11 +2559,10 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         priorRZ = function() private$..priorRZ$value,
         priorMeanRplus = function() private$..priorMeanRplus$value,
         priorPRplus = function() private$..priorPRplus$value,
-        doSEM = function() private$..doSEM$value,
         useAIC = function() private$..useAIC$value,
         MetaAnalysisOn = function() private$..MetaAnalysisOn$value,
         MetaAnalysisType = function() private$..MetaAnalysisType$value,
-        MetaAnalysisRandVar = function() private$..MetaAnalysisRandVar$value,
+        MetaAnalysisDist = function() private$..MetaAnalysisDist$value,
         MetaAnalysisPrior = function() private$..MetaAnalysisPrior$value,
         MetaAnalysisNulls = function() private$..MetaAnalysisNulls$value,
         MetaAnalysisBias = function() private$..MetaAnalysisBias$value,
@@ -2558,87 +2615,119 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         showHTML = function() private$..showHTML$value,
         fixedAxes = function() private$..fixedAxes$value,
         shorthandCalculations = function() private$..shorthandCalculations$value,
-        showHypothesisLst = function() private$..showHypothesisLst$value,
         dispRZ = function() private$..dispRZ$value,
-        systemMag = function() private$..systemMag$value,
         simGoBack = function() private$..simGoBack$value,
         simGoForwards = function() private$..simGoForwards$value,
-        doDemo1AhBtn = function() private$..doDemo1AhBtn$value,
-        doDemo1A1Btn = function() private$..doDemo1A1Btn$value,
-        doDemo1A2Btn = function() private$..doDemo1A2Btn$value,
-        doDemo1sLst = function() private$..doDemo1sLst$value,
-        doDemo1sLstA = function() private$..doDemo1sLstA$value,
-        doDemo1sLstB = function() private$..doDemo1sLstB$value,
-        doDemo1sLstC = function() private$..doDemo1sLstC$value,
-        doDemo1sLstD = function() private$..doDemo1sLstD$value,
-        doDemo1sLstE = function() private$..doDemo1sLstE$value,
-        doDemo1BhBtn = function() private$..doDemo1BhBtn$value,
-        doDemo1B1Btn = function() private$..doDemo1B1Btn$value,
-        doDemo1B2Btn = function() private$..doDemo1B2Btn$value,
-        doDemo1ChBtn = function() private$..doDemo1ChBtn$value,
-        doDemo1C1Btn = function() private$..doDemo1C1Btn$value,
-        doDemo2AhBtn = function() private$..doDemo2AhBtn$value,
-        doDemo2A1Btn = function() private$..doDemo2A1Btn$value,
-        doDemo2A2Btn = function() private$..doDemo2A2Btn$value,
-        doDemo2BhBtn = function() private$..doDemo2BhBtn$value,
-        doDemo2B1Btn = function() private$..doDemo2B1Btn$value,
-        doDemo2B2Btn = function() private$..doDemo2B2Btn$value,
-        doDemo2ChBtn = function() private$..doDemo2ChBtn$value,
-        doDemo2C1Btn = function() private$..doDemo2C1Btn$value,
-        doDemo2sLst = function() private$..doDemo2sLst$value,
-        doDemo2sLstA = function() private$..doDemo2sLstA$value,
-        doDemo2sLstB = function() private$..doDemo2sLstB$value,
-        doDemo2sLstC = function() private$..doDemo2sLstC$value,
-        doDemo2sLstD = function() private$..doDemo2sLstD$value,
-        doDemo2sLstE = function() private$..doDemo2sLstE$value,
-        doDemo2sLstF = function() private$..doDemo2sLstF$value,
-        doDemo2sLstG = function() private$..doDemo2sLstG$value,
-        doDemo3sLst = function() private$..doDemo3sLst$value,
-        doDemo3sLstA = function() private$..doDemo3sLstA$value,
-        doDemo3sLstB = function() private$..doDemo3sLstB$value,
-        doDemo3sLstC = function() private$..doDemo3sLstC$value,
-        doDemo3sLstD = function() private$..doDemo3sLstD$value,
-        doDemo3sLstE = function() private$..doDemo3sLstE$value,
-        doDemo3sLstF = function() private$..doDemo3sLstF$value,
-        doDemo3sLstG = function() private$..doDemo3sLstG$value,
-        doDemo3sLstH = function() private$..doDemo3sLstH$value,
-        doDemo3sLstK = function() private$..doDemo3sLstK$value,
-        doDemo3sLstI = function() private$..doDemo3sLstI$value,
-        doDemo3sLstJ = function() private$..doDemo3sLstJ$value,
-        doDemo3AhBtn = function() private$..doDemo3AhBtn$value,
-        doDemo3A1Btn = function() private$..doDemo3A1Btn$value,
-        doDemo3A3Btn = function() private$..doDemo3A3Btn$value,
-        doDemo3BhBtn = function() private$..doDemo3BhBtn$value,
-        doDemo3B1Btn = function() private$..doDemo3B1Btn$value,
-        doDemo3ChBtn = function() private$..doDemo3ChBtn$value,
-        doDemo3C1Btn = function() private$..doDemo3C1Btn$value,
-        doDemo3C3Btn = function() private$..doDemo3C3Btn$value,
-        doDemo4sLstA1 = function() private$..doDemo4sLstA1$value,
-        doDemo4sLstA2 = function() private$..doDemo4sLstA2$value,
-        doDemo4sLst = function() private$..doDemo4sLst$value,
-        doDemo4sLstB = function() private$..doDemo4sLstB$value,
-        doDemo4sLstC = function() private$..doDemo4sLstC$value,
-        doDemo4sLstD = function() private$..doDemo4sLstD$value,
-        doDemo4sLstE = function() private$..doDemo4sLstE$value,
-        doDemo4sLstF = function() private$..doDemo4sLstF$value,
-        doDemo4sLstG = function() private$..doDemo4sLstG$value,
-        doDemo4sLstI = function() private$..doDemo4sLstI$value,
-        doDemo4sLstJ = function() private$..doDemo4sLstJ$value,
-        doDemo4sLstL = function() private$..doDemo4sLstL$value,
-        doDemo4sLstK = function() private$..doDemo4sLstK$value,
-        doDemo4AhBtn = function() private$..doDemo4AhBtn$value,
-        doDemo4A1Btn = function() private$..doDemo4A1Btn$value,
-        doDemo4A2Btn = function() private$..doDemo4A2Btn$value,
-        doDemo4BhBtn = function() private$..doDemo4BhBtn$value,
-        doDemo4B1Btn = function() private$..doDemo4B1Btn$value,
-        doDemo4B2Btn = function() private$..doDemo4B2Btn$value,
-        doDemo4B3Btn = function() private$..doDemo4B3Btn$value,
-        doDemo4ChBtn = function() private$..doDemo4ChBtn$value,
-        doDemo4C1Btn = function() private$..doDemo4C1Btn$value,
-        doDemo4C2Btn = function() private$..doDemo4C2Btn$value,
-        doDemo4C3Btn = function() private$..doDemo4C3Btn$value,
-        lastDemo = function() private$..lastDemo$value,
-        meta1pRPlus = function() private$..meta1pRPlus$value,
+        basics1Help = function() private$..basics1Help$value,
+        doBasics1IV = function() private$..doBasics1IV$value,
+        doBasics1DV = function() private$..doBasics1DV$value,
+        doBasics1ABtn = function() private$..doBasics1ABtn$value,
+        doBasics1AmBtn = function() private$..doBasics1AmBtn$value,
+        doBasics1BBtn = function() private$..doBasics1BBtn$value,
+        doBasics1BmBtn = function() private$..doBasics1BmBtn$value,
+        doBasics1BSampling = function() private$..doBasics1BSampling$value,
+        doBasics1BOutliers = function() private$..doBasics1BOutliers$value,
+        doBasics1BDependence = function() private$..doBasics1BDependence$value,
+        doBasics1CBtn = function() private$..doBasics1CBtn$value,
+        doBasics1CmBtn = function() private$..doBasics1CmBtn$value,
+        doBasics1CSampleSize = function() private$..doBasics1CSampleSize$value,
+        basics2Help = function() private$..basics2Help$value,
+        doBasics2EffectSize = function() private$..doBasics2EffectSize$value,
+        doBasics2SampleSize = function() private$..doBasics2SampleSize$value,
+        doBasics2ABtn = function() private$..doBasics2ABtn$value,
+        doBasics2BBtn = function() private$..doBasics2BBtn$value,
+        doBasics2CBtn = function() private$..doBasics2CBtn$value,
+        basics3Help = function() private$..basics3Help$value,
+        doBasics3EffectSize = function() private$..doBasics3EffectSize$value,
+        doBasics3SampleSize = function() private$..doBasics3SampleSize$value,
+        doBasics3ABtn = function() private$..doBasics3ABtn$value,
+        doBasics3BBtn = function() private$..doBasics3BBtn$value,
+        doBasics3CBtn = function() private$..doBasics3CBtn$value,
+        doBasics31ABtn = function() private$..doBasics31ABtn$value,
+        doBasics31BBtn = function() private$..doBasics31BBtn$value,
+        basics4Help = function() private$..basics4Help$value,
+        doBasics4EffectSize1 = function() private$..doBasics4EffectSize1$value,
+        doBasics4EffectSize2 = function() private$..doBasics4EffectSize2$value,
+        doBasics4SampleSize = function() private$..doBasics4SampleSize$value,
+        doBasics4Main1 = function() private$..doBasics4Main1$value,
+        doBasics4Main2 = function() private$..doBasics4Main2$value,
+        doBasics4Interaction = function() private$..doBasics4Interaction$value,
+        doBasics4ABtn = function() private$..doBasics4ABtn$value,
+        doBasics4AmBtn = function() private$..doBasics4AmBtn$value,
+        doBasics4BBtn = function() private$..doBasics4BBtn$value,
+        doBasics4BmBtn = function() private$..doBasics4BmBtn$value,
+        doBasics4CBtn = function() private$..doBasics4CBtn$value,
+        doBasics4CmBtn = function() private$..doBasics4CmBtn$value,
+        basics5Help = function() private$..basics5Help$value,
+        doBasics5EffectSize1 = function() private$..doBasics5EffectSize1$value,
+        doBasics5EffectSize2 = function() private$..doBasics5EffectSize2$value,
+        doBasics5EffectSize1x2 = function() private$..doBasics5EffectSize1x2$value,
+        doBasics5SampleSize = function() private$..doBasics5SampleSize$value,
+        doBasics5Main1 = function() private$..doBasics5Main1$value,
+        doBasics5Main2 = function() private$..doBasics5Main2$value,
+        doBasics5Interaction = function() private$..doBasics5Interaction$value,
+        doBasics5ABtn = function() private$..doBasics5ABtn$value,
+        doBasics5AmBtn = function() private$..doBasics5AmBtn$value,
+        doBasics5BBtn = function() private$..doBasics5BBtn$value,
+        doBasics5BmBtn = function() private$..doBasics5BmBtn$value,
+        doBasics5CBtn = function() private$..doBasics5CBtn$value,
+        doBasics5CmBtn = function() private$..doBasics5CmBtn$value,
+        basics6Help = function() private$..basics6Help$value,
+        doBasics6EffectSize1 = function() private$..doBasics6EffectSize1$value,
+        doBasics6EffectSize2 = function() private$..doBasics6EffectSize2$value,
+        doBasics6EffectSize12 = function() private$..doBasics6EffectSize12$value,
+        doBasics6SampleSize = function() private$..doBasics6SampleSize$value,
+        doBasics6Main1 = function() private$..doBasics6Main1$value,
+        doBasics6Main2 = function() private$..doBasics6Main2$value,
+        doBasics6ABtn = function() private$..doBasics6ABtn$value,
+        doBasics6AmBtn = function() private$..doBasics6AmBtn$value,
+        doBasics6BBtn = function() private$..doBasics6BBtn$value,
+        doBasics6BmBtn = function() private$..doBasics6BmBtn$value,
+        doBasics6CBtn = function() private$..doBasics6CBtn$value,
+        doBasics6CmBtn = function() private$..doBasics6CmBtn$value,
+        basics7Help = function() private$..basics7Help$value,
+        doBasics7ABtn = function() private$..doBasics7ABtn$value,
+        doBasics7AmBtn = function() private$..doBasics7AmBtn$value,
+        doBasics7BBtn = function() private$..doBasics7BBtn$value,
+        doBasics7BmBtn = function() private$..doBasics7BmBtn$value,
+        basics8Help = function() private$..basics8Help$value,
+        doBasics8ABtn = function() private$..doBasics8ABtn$value,
+        doBasics8AmBtn = function() private$..doBasics8AmBtn$value,
+        doBasics8BBtn = function() private$..doBasics8BBtn$value,
+        doBasics8BmBtn = function() private$..doBasics8BmBtn$value,
+        doBasics8CBtn = function() private$..doBasics8CBtn$value,
+        doBasics8CmBtn = function() private$..doBasics8CmBtn$value,
+        basics9Help = function() private$..basics9Help$value,
+        doBasics9ABtn = function() private$..doBasics9ABtn$value,
+        doBasics9AmBtn = function() private$..doBasics9AmBtn$value,
+        doBasics9AModerationEffect = function() private$..doBasics9AModerationEffect$value,
+        doBasics9AMain1Effect = function() private$..doBasics9AMain1Effect$value,
+        doBasics9AMain2Effect = function() private$..doBasics9AMain2Effect$value,
+        doBasics9AInteractionEffect = function() private$..doBasics9AInteractionEffect$value,
+        doBasics9BBtn = function() private$..doBasics9BBtn$value,
+        doBasics9BmBtn = function() private$..doBasics9BmBtn$value,
+        doBasics9BModerationEffect = function() private$..doBasics9BModerationEffect$value,
+        doBasics9BMain1Effect = function() private$..doBasics9BMain1Effect$value,
+        doBasics9BMain2Effect = function() private$..doBasics9BMain2Effect$value,
+        doBasics9BInteractionEffect = function() private$..doBasics9BInteractionEffect$value,
+        doBasics9CBtn = function() private$..doBasics9CBtn$value,
+        doBasics9CmBtn = function() private$..doBasics9CmBtn$value,
+        doBasics9CModerationEffect = function() private$..doBasics9CModerationEffect$value,
+        doBasics9CMain1Effect = function() private$..doBasics9CMain1Effect$value,
+        doBasics9CMain2Effect = function() private$..doBasics9CMain2Effect$value,
+        doBasics9CInteractionEffect = function() private$..doBasics9CInteractionEffect$value,
+        basics10Help = function() private$..basics10Help$value,
+        doBasics10ABtn = function() private$..doBasics10ABtn$value,
+        doBasics10AmBtn = function() private$..doBasics10AmBtn$value,
+        doBasics10BBtn = function() private$..doBasics10BBtn$value,
+        doBasics10BmBtn = function() private$..doBasics10BmBtn$value,
+        doBasics10CBtn = function() private$..doBasics10CBtn$value,
+        doBasics10CmBtn = function() private$..doBasics10CmBtn$value,
+        doBasics10Cmediation = function() private$..doBasics10Cmediation$value,
+        doBasics10CMain1Effect = function() private$..doBasics10CMain1Effect$value,
+        doBasics10CMain2Effect = function() private$..doBasics10CMain2Effect$value,
+        doBasics10CCovariationEffect = function() private$..doBasics10CCovariationEffect$value,
+        meta1pRplus = function() private$..meta1pRplus$value,
         meta1rp = function() private$..meta1rp$value,
         doMeta0Btn = function() private$..doMeta0Btn$value,
         doMeta0RBtn = function() private$..doMeta0RBtn$value,
@@ -2658,7 +2747,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         doMeta2BmBtn = function() private$..doMeta2BmBtn$value,
         meta2rp = function() private$..meta2rp$value,
         meta3SampleMethod = function() private$..meta3SampleMethod$value,
-        meta2pRPlus = function() private$..meta2pRPlus$value,
+        meta2pRplus = function() private$..meta2pRplus$value,
         metaCheatingProportion = function() private$..metaCheatingProportion$value,
         meta3Cheating = function() private$..meta3Cheating$value,
         doMeta3ABtn = function() private$..doMeta3ABtn$value,
@@ -2666,7 +2755,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         doMeta3BBtn = function() private$..doMeta3BBtn$value,
         doMeta3BmBtn = function() private$..doMeta3BmBtn$value,
         meta2SampleSize = function() private$..meta2SampleSize$value,
-        meta3pRPlus = function() private$..meta3pRPlus$value,
+        meta3pRplus = function() private$..meta3pRplus$value,
         meta3rp = function() private$..meta3rp$value,
         meta2SampleSplits = function() private$..meta2SampleSplits$value,
         meta2SampleBudget = function() private$..meta2SampleBudget$value,
@@ -2684,7 +2773,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         doMeta4BmcBtn = function() private$..doMeta4BmcBtn$value,
         meta4OriginalAnomaly = function() private$..meta4OriginalAnomaly$value,
         meta4SampleSize = function() private$..meta4SampleSize$value,
-        meta4pRPlus = function() private$..meta4pRPlus$value,
+        meta4pRplus = function() private$..meta4pRplus$value,
         meta4rp = function() private$..meta4rp$value,
         doMeta5ABtn = function() private$..doMeta5ABtn$value,
         doMeta5ArBtn = function() private$..doMeta5ArBtn$value,
@@ -2698,17 +2787,13 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         metaMultiple = function() private$..metaMultiple$value,
         metaDefaultN = function() private$..metaDefaultN$value,
         metaDefaultRp = function() private$..metaDefaultRp$value,
-        metaDefaultpRPlus = function() private$..metaDefaultpRPlus$value,
+        metaDefaultpRplus = function() private$..metaDefaultpRplus$value,
         metaDefaultWorld = function() private$..metaDefaultWorld$value,
         metaDefaultRepPower = function() private$..metaDefaultRepPower$value,
         metaPublicationBias = function() private$..metaPublicationBias$value),
     private = list(
         ..basicMode = NA,
-        ..demosHelp = NA,
-        ..demo1Help = NA,
-        ..demo2Help = NA,
-        ..demo3Help = NA,
-        ..demo4Help = NA,
+        ..basicsHelp = NA,
         ..metaHelp = NA,
         ..meta1Help = NA,
         ..meta2Help = NA,
@@ -2724,7 +2809,6 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..presetDV = NA,
         ..presetIV = NA,
         ..presetIV2 = NA,
-        ..presetWorld = NA,
         ..DVname = NA,
         ..DVtype = NA,
         ..DVmu = NA,
@@ -2770,7 +2854,8 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..WorldPDF = NA,
         ..WorldRZ = NA,
         ..worldMeanRplus = NA,
-        ..worldPRplus = NA,
+        ..WorldShape = NA,
+        ..worldPRnull = NA,
         ..WorldMn = NA,
         ..WorldSd = NA,
         ..WorldSample = NA,
@@ -2801,14 +2886,16 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..ReplicationDecision = NA,
         ..RepMaxN = NA,
         ..ReplicationAlpha = NA,
-        ..ReplicationSign = NA,
-        ..ReplicationSigOriginal = NA,
         ..STMethod = NA,
         ..alphaSig = NA,
         ..minRp = NA,
+        ..keepOnlySig = NA,
+        ..biasAmount = NA,
         ..ssq = NA,
+        ..main1 = NA,
         ..main2 = NA,
         ..interaction = NA,
+        ..covariation = NA,
         ..equalVar = NA,
         ..Transform = NA,
         ..likelihoodType = NA,
@@ -2818,11 +2905,10 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..priorRZ = NA,
         ..priorMeanRplus = NA,
         ..priorPRplus = NA,
-        ..doSEM = NA,
         ..useAIC = NA,
         ..MetaAnalysisOn = NA,
         ..MetaAnalysisType = NA,
-        ..MetaAnalysisRandVar = NA,
+        ..MetaAnalysisDist = NA,
         ..MetaAnalysisPrior = NA,
         ..MetaAnalysisNulls = NA,
         ..MetaAnalysisBias = NA,
@@ -2875,87 +2961,119 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..showHTML = NA,
         ..fixedAxes = NA,
         ..shorthandCalculations = NA,
-        ..showHypothesisLst = NA,
         ..dispRZ = NA,
-        ..systemMag = NA,
         ..simGoBack = NA,
         ..simGoForwards = NA,
-        ..doDemo1AhBtn = NA,
-        ..doDemo1A1Btn = NA,
-        ..doDemo1A2Btn = NA,
-        ..doDemo1sLst = NA,
-        ..doDemo1sLstA = NA,
-        ..doDemo1sLstB = NA,
-        ..doDemo1sLstC = NA,
-        ..doDemo1sLstD = NA,
-        ..doDemo1sLstE = NA,
-        ..doDemo1BhBtn = NA,
-        ..doDemo1B1Btn = NA,
-        ..doDemo1B2Btn = NA,
-        ..doDemo1ChBtn = NA,
-        ..doDemo1C1Btn = NA,
-        ..doDemo2AhBtn = NA,
-        ..doDemo2A1Btn = NA,
-        ..doDemo2A2Btn = NA,
-        ..doDemo2BhBtn = NA,
-        ..doDemo2B1Btn = NA,
-        ..doDemo2B2Btn = NA,
-        ..doDemo2ChBtn = NA,
-        ..doDemo2C1Btn = NA,
-        ..doDemo2sLst = NA,
-        ..doDemo2sLstA = NA,
-        ..doDemo2sLstB = NA,
-        ..doDemo2sLstC = NA,
-        ..doDemo2sLstD = NA,
-        ..doDemo2sLstE = NA,
-        ..doDemo2sLstF = NA,
-        ..doDemo2sLstG = NA,
-        ..doDemo3sLst = NA,
-        ..doDemo3sLstA = NA,
-        ..doDemo3sLstB = NA,
-        ..doDemo3sLstC = NA,
-        ..doDemo3sLstD = NA,
-        ..doDemo3sLstE = NA,
-        ..doDemo3sLstF = NA,
-        ..doDemo3sLstG = NA,
-        ..doDemo3sLstH = NA,
-        ..doDemo3sLstK = NA,
-        ..doDemo3sLstI = NA,
-        ..doDemo3sLstJ = NA,
-        ..doDemo3AhBtn = NA,
-        ..doDemo3A1Btn = NA,
-        ..doDemo3A3Btn = NA,
-        ..doDemo3BhBtn = NA,
-        ..doDemo3B1Btn = NA,
-        ..doDemo3ChBtn = NA,
-        ..doDemo3C1Btn = NA,
-        ..doDemo3C3Btn = NA,
-        ..doDemo4sLstA1 = NA,
-        ..doDemo4sLstA2 = NA,
-        ..doDemo4sLst = NA,
-        ..doDemo4sLstB = NA,
-        ..doDemo4sLstC = NA,
-        ..doDemo4sLstD = NA,
-        ..doDemo4sLstE = NA,
-        ..doDemo4sLstF = NA,
-        ..doDemo4sLstG = NA,
-        ..doDemo4sLstI = NA,
-        ..doDemo4sLstJ = NA,
-        ..doDemo4sLstL = NA,
-        ..doDemo4sLstK = NA,
-        ..doDemo4AhBtn = NA,
-        ..doDemo4A1Btn = NA,
-        ..doDemo4A2Btn = NA,
-        ..doDemo4BhBtn = NA,
-        ..doDemo4B1Btn = NA,
-        ..doDemo4B2Btn = NA,
-        ..doDemo4B3Btn = NA,
-        ..doDemo4ChBtn = NA,
-        ..doDemo4C1Btn = NA,
-        ..doDemo4C2Btn = NA,
-        ..doDemo4C3Btn = NA,
-        ..lastDemo = NA,
-        ..meta1pRPlus = NA,
+        ..basics1Help = NA,
+        ..doBasics1IV = NA,
+        ..doBasics1DV = NA,
+        ..doBasics1ABtn = NA,
+        ..doBasics1AmBtn = NA,
+        ..doBasics1BBtn = NA,
+        ..doBasics1BmBtn = NA,
+        ..doBasics1BSampling = NA,
+        ..doBasics1BOutliers = NA,
+        ..doBasics1BDependence = NA,
+        ..doBasics1CBtn = NA,
+        ..doBasics1CmBtn = NA,
+        ..doBasics1CSampleSize = NA,
+        ..basics2Help = NA,
+        ..doBasics2EffectSize = NA,
+        ..doBasics2SampleSize = NA,
+        ..doBasics2ABtn = NA,
+        ..doBasics2BBtn = NA,
+        ..doBasics2CBtn = NA,
+        ..basics3Help = NA,
+        ..doBasics3EffectSize = NA,
+        ..doBasics3SampleSize = NA,
+        ..doBasics3ABtn = NA,
+        ..doBasics3BBtn = NA,
+        ..doBasics3CBtn = NA,
+        ..doBasics31ABtn = NA,
+        ..doBasics31BBtn = NA,
+        ..basics4Help = NA,
+        ..doBasics4EffectSize1 = NA,
+        ..doBasics4EffectSize2 = NA,
+        ..doBasics4SampleSize = NA,
+        ..doBasics4Main1 = NA,
+        ..doBasics4Main2 = NA,
+        ..doBasics4Interaction = NA,
+        ..doBasics4ABtn = NA,
+        ..doBasics4AmBtn = NA,
+        ..doBasics4BBtn = NA,
+        ..doBasics4BmBtn = NA,
+        ..doBasics4CBtn = NA,
+        ..doBasics4CmBtn = NA,
+        ..basics5Help = NA,
+        ..doBasics5EffectSize1 = NA,
+        ..doBasics5EffectSize2 = NA,
+        ..doBasics5EffectSize1x2 = NA,
+        ..doBasics5SampleSize = NA,
+        ..doBasics5Main1 = NA,
+        ..doBasics5Main2 = NA,
+        ..doBasics5Interaction = NA,
+        ..doBasics5ABtn = NA,
+        ..doBasics5AmBtn = NA,
+        ..doBasics5BBtn = NA,
+        ..doBasics5BmBtn = NA,
+        ..doBasics5CBtn = NA,
+        ..doBasics5CmBtn = NA,
+        ..basics6Help = NA,
+        ..doBasics6EffectSize1 = NA,
+        ..doBasics6EffectSize2 = NA,
+        ..doBasics6EffectSize12 = NA,
+        ..doBasics6SampleSize = NA,
+        ..doBasics6Main1 = NA,
+        ..doBasics6Main2 = NA,
+        ..doBasics6ABtn = NA,
+        ..doBasics6AmBtn = NA,
+        ..doBasics6BBtn = NA,
+        ..doBasics6BmBtn = NA,
+        ..doBasics6CBtn = NA,
+        ..doBasics6CmBtn = NA,
+        ..basics7Help = NA,
+        ..doBasics7ABtn = NA,
+        ..doBasics7AmBtn = NA,
+        ..doBasics7BBtn = NA,
+        ..doBasics7BmBtn = NA,
+        ..basics8Help = NA,
+        ..doBasics8ABtn = NA,
+        ..doBasics8AmBtn = NA,
+        ..doBasics8BBtn = NA,
+        ..doBasics8BmBtn = NA,
+        ..doBasics8CBtn = NA,
+        ..doBasics8CmBtn = NA,
+        ..basics9Help = NA,
+        ..doBasics9ABtn = NA,
+        ..doBasics9AmBtn = NA,
+        ..doBasics9AModerationEffect = NA,
+        ..doBasics9AMain1Effect = NA,
+        ..doBasics9AMain2Effect = NA,
+        ..doBasics9AInteractionEffect = NA,
+        ..doBasics9BBtn = NA,
+        ..doBasics9BmBtn = NA,
+        ..doBasics9BModerationEffect = NA,
+        ..doBasics9BMain1Effect = NA,
+        ..doBasics9BMain2Effect = NA,
+        ..doBasics9BInteractionEffect = NA,
+        ..doBasics9CBtn = NA,
+        ..doBasics9CmBtn = NA,
+        ..doBasics9CModerationEffect = NA,
+        ..doBasics9CMain1Effect = NA,
+        ..doBasics9CMain2Effect = NA,
+        ..doBasics9CInteractionEffect = NA,
+        ..basics10Help = NA,
+        ..doBasics10ABtn = NA,
+        ..doBasics10AmBtn = NA,
+        ..doBasics10BBtn = NA,
+        ..doBasics10BmBtn = NA,
+        ..doBasics10CBtn = NA,
+        ..doBasics10CmBtn = NA,
+        ..doBasics10Cmediation = NA,
+        ..doBasics10CMain1Effect = NA,
+        ..doBasics10CMain2Effect = NA,
+        ..doBasics10CCovariationEffect = NA,
+        ..meta1pRplus = NA,
         ..meta1rp = NA,
         ..doMeta0Btn = NA,
         ..doMeta0RBtn = NA,
@@ -2975,7 +3093,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..doMeta2BmBtn = NA,
         ..meta2rp = NA,
         ..meta3SampleMethod = NA,
-        ..meta2pRPlus = NA,
+        ..meta2pRplus = NA,
         ..metaCheatingProportion = NA,
         ..meta3Cheating = NA,
         ..doMeta3ABtn = NA,
@@ -2983,7 +3101,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..doMeta3BBtn = NA,
         ..doMeta3BmBtn = NA,
         ..meta2SampleSize = NA,
-        ..meta3pRPlus = NA,
+        ..meta3pRplus = NA,
         ..meta3rp = NA,
         ..meta2SampleSplits = NA,
         ..meta2SampleBudget = NA,
@@ -3001,7 +3119,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..doMeta4BmcBtn = NA,
         ..meta4OriginalAnomaly = NA,
         ..meta4SampleSize = NA,
-        ..meta4pRPlus = NA,
+        ..meta4pRplus = NA,
         ..meta4rp = NA,
         ..doMeta5ABtn = NA,
         ..doMeta5ArBtn = NA,
@@ -3015,7 +3133,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..metaMultiple = NA,
         ..metaDefaultN = NA,
         ..metaDefaultRp = NA,
-        ..metaDefaultpRPlus = NA,
+        ..metaDefaultpRplus = NA,
         ..metaDefaultWorld = NA,
         ..metaDefaultRepPower = NA,
         ..metaPublicationBias = NA)
@@ -3055,9 +3173,7 @@ BrawSimResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 options=options,
                 name="simGraphHTML",
                 visible=TRUE,
-                clearWith=list(
-                    "doMeta1ABtn",
-                    "doMeta1AmBtn")))
+                clearWith=NULL))
             self$add(jmvcore::Image$new(
                 options=options,
                 name="simGraph",
@@ -3143,11 +3259,7 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #'
 #' 
 #' @param basicMode .
-#' @param demosHelp .
-#' @param demo1Help .
-#' @param demo2Help .
-#' @param demo3Help .
-#' @param demo4Help .
+#' @param basicsHelp .
 #' @param metaHelp .
 #' @param meta1Help .
 #' @param meta2Help .
@@ -3163,7 +3275,6 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param presetDV .
 #' @param presetIV .
 #' @param presetIV2 .
-#' @param presetWorld .
 #' @param DVname .
 #' @param DVtype .
 #' @param DVmu .
@@ -3209,7 +3320,8 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param WorldPDF .
 #' @param WorldRZ .
 #' @param worldMeanRplus .
-#' @param worldPRplus .
+#' @param WorldShape .
+#' @param worldPRnull .
 #' @param WorldMn .
 #' @param WorldSd .
 #' @param WorldSample .
@@ -3240,14 +3352,16 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param ReplicationDecision .
 #' @param RepMaxN .
 #' @param ReplicationAlpha .
-#' @param ReplicationSign .
-#' @param ReplicationSigOriginal .
 #' @param STMethod .
 #' @param alphaSig .
 #' @param minRp .
+#' @param keepOnlySig .
+#' @param biasAmount .
 #' @param ssq .
+#' @param main1 .
 #' @param main2 .
 #' @param interaction .
+#' @param covariation .
 #' @param equalVar .
 #' @param Transform .
 #' @param likelihoodType .
@@ -3257,11 +3371,10 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param priorRZ .
 #' @param priorMeanRplus .
 #' @param priorPRplus .
-#' @param doSEM .
 #' @param useAIC .
 #' @param MetaAnalysisOn .
 #' @param MetaAnalysisType .
-#' @param MetaAnalysisRandVar .
+#' @param MetaAnalysisDist .
 #' @param MetaAnalysisPrior .
 #' @param MetaAnalysisNulls .
 #' @param MetaAnalysisBias .
@@ -3311,87 +3424,119 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param showHTML .
 #' @param fixedAxes .
 #' @param shorthandCalculations .
-#' @param showHypothesisLst .
 #' @param dispRZ .
-#' @param systemMag .
 #' @param simGoBack .
 #' @param simGoForwards .
-#' @param doDemo1AhBtn .
-#' @param doDemo1A1Btn .
-#' @param doDemo1A2Btn .
-#' @param doDemo1sLst .
-#' @param doDemo1sLstA .
-#' @param doDemo1sLstB .
-#' @param doDemo1sLstC .
-#' @param doDemo1sLstD .
-#' @param doDemo1sLstE .
-#' @param doDemo1BhBtn .
-#' @param doDemo1B1Btn .
-#' @param doDemo1B2Btn .
-#' @param doDemo1ChBtn .
-#' @param doDemo1C1Btn .
-#' @param doDemo2AhBtn .
-#' @param doDemo2A1Btn .
-#' @param doDemo2A2Btn .
-#' @param doDemo2BhBtn .
-#' @param doDemo2B1Btn .
-#' @param doDemo2B2Btn .
-#' @param doDemo2ChBtn .
-#' @param doDemo2C1Btn .
-#' @param doDemo2sLst .
-#' @param doDemo2sLstA .
-#' @param doDemo2sLstB .
-#' @param doDemo2sLstC .
-#' @param doDemo2sLstD .
-#' @param doDemo2sLstE .
-#' @param doDemo2sLstF .
-#' @param doDemo2sLstG .
-#' @param doDemo3sLst .
-#' @param doDemo3sLstA .
-#' @param doDemo3sLstB .
-#' @param doDemo3sLstC .
-#' @param doDemo3sLstD .
-#' @param doDemo3sLstE .
-#' @param doDemo3sLstF .
-#' @param doDemo3sLstG .
-#' @param doDemo3sLstH .
-#' @param doDemo3sLstK .
-#' @param doDemo3sLstI .
-#' @param doDemo3sLstJ .
-#' @param doDemo3AhBtn .
-#' @param doDemo3A1Btn .
-#' @param doDemo3A3Btn .
-#' @param doDemo3BhBtn .
-#' @param doDemo3B1Btn .
-#' @param doDemo3ChBtn .
-#' @param doDemo3C1Btn .
-#' @param doDemo3C3Btn .
-#' @param doDemo4sLstA1 .
-#' @param doDemo4sLstA2 .
-#' @param doDemo4sLst .
-#' @param doDemo4sLstB .
-#' @param doDemo4sLstC .
-#' @param doDemo4sLstD .
-#' @param doDemo4sLstE .
-#' @param doDemo4sLstF .
-#' @param doDemo4sLstG .
-#' @param doDemo4sLstI .
-#' @param doDemo4sLstJ .
-#' @param doDemo4sLstL .
-#' @param doDemo4sLstK .
-#' @param doDemo4AhBtn .
-#' @param doDemo4A1Btn .
-#' @param doDemo4A2Btn .
-#' @param doDemo4BhBtn .
-#' @param doDemo4B1Btn .
-#' @param doDemo4B2Btn .
-#' @param doDemo4B3Btn .
-#' @param doDemo4ChBtn .
-#' @param doDemo4C1Btn .
-#' @param doDemo4C2Btn .
-#' @param doDemo4C3Btn .
-#' @param lastDemo .
-#' @param meta1pRPlus .
+#' @param basics1Help .
+#' @param doBasics1IV .
+#' @param doBasics1DV .
+#' @param doBasics1ABtn .
+#' @param doBasics1AmBtn .
+#' @param doBasics1BBtn .
+#' @param doBasics1BmBtn .
+#' @param doBasics1BSampling .
+#' @param doBasics1BOutliers .
+#' @param doBasics1BDependence .
+#' @param doBasics1CBtn .
+#' @param doBasics1CmBtn .
+#' @param doBasics1CSampleSize .
+#' @param basics2Help .
+#' @param doBasics2EffectSize .
+#' @param doBasics2SampleSize .
+#' @param doBasics2ABtn .
+#' @param doBasics2BBtn .
+#' @param doBasics2CBtn .
+#' @param basics3Help .
+#' @param doBasics3EffectSize .
+#' @param doBasics3SampleSize .
+#' @param doBasics3ABtn .
+#' @param doBasics3BBtn .
+#' @param doBasics3CBtn .
+#' @param doBasics31ABtn .
+#' @param doBasics31BBtn .
+#' @param basics4Help .
+#' @param doBasics4EffectSize1 .
+#' @param doBasics4EffectSize2 .
+#' @param doBasics4SampleSize .
+#' @param doBasics4Main1 .
+#' @param doBasics4Main2 .
+#' @param doBasics4Interaction .
+#' @param doBasics4ABtn .
+#' @param doBasics4AmBtn .
+#' @param doBasics4BBtn .
+#' @param doBasics4BmBtn .
+#' @param doBasics4CBtn .
+#' @param doBasics4CmBtn .
+#' @param basics5Help .
+#' @param doBasics5EffectSize1 .
+#' @param doBasics5EffectSize2 .
+#' @param doBasics5EffectSize1x2 .
+#' @param doBasics5SampleSize .
+#' @param doBasics5Main1 .
+#' @param doBasics5Main2 .
+#' @param doBasics5Interaction .
+#' @param doBasics5ABtn .
+#' @param doBasics5AmBtn .
+#' @param doBasics5BBtn .
+#' @param doBasics5BmBtn .
+#' @param doBasics5CBtn .
+#' @param doBasics5CmBtn .
+#' @param basics6Help .
+#' @param doBasics6EffectSize1 .
+#' @param doBasics6EffectSize2 .
+#' @param doBasics6EffectSize12 .
+#' @param doBasics6SampleSize .
+#' @param doBasics6Main1 .
+#' @param doBasics6Main2 .
+#' @param doBasics6ABtn .
+#' @param doBasics6AmBtn .
+#' @param doBasics6BBtn .
+#' @param doBasics6BmBtn .
+#' @param doBasics6CBtn .
+#' @param doBasics6CmBtn .
+#' @param basics7Help .
+#' @param doBasics7ABtn .
+#' @param doBasics7AmBtn .
+#' @param doBasics7BBtn .
+#' @param doBasics7BmBtn .
+#' @param basics8Help .
+#' @param doBasics8ABtn .
+#' @param doBasics8AmBtn .
+#' @param doBasics8BBtn .
+#' @param doBasics8BmBtn .
+#' @param doBasics8CBtn .
+#' @param doBasics8CmBtn .
+#' @param basics9Help .
+#' @param doBasics9ABtn .
+#' @param doBasics9AmBtn .
+#' @param doBasics9AModerationEffect .
+#' @param doBasics9AMain1Effect .
+#' @param doBasics9AMain2Effect .
+#' @param doBasics9AInteractionEffect .
+#' @param doBasics9BBtn .
+#' @param doBasics9BmBtn .
+#' @param doBasics9BModerationEffect .
+#' @param doBasics9BMain1Effect .
+#' @param doBasics9BMain2Effect .
+#' @param doBasics9BInteractionEffect .
+#' @param doBasics9CBtn .
+#' @param doBasics9CmBtn .
+#' @param doBasics9CModerationEffect .
+#' @param doBasics9CMain1Effect .
+#' @param doBasics9CMain2Effect .
+#' @param doBasics9CInteractionEffect .
+#' @param basics10Help .
+#' @param doBasics10ABtn .
+#' @param doBasics10AmBtn .
+#' @param doBasics10BBtn .
+#' @param doBasics10BmBtn .
+#' @param doBasics10CBtn .
+#' @param doBasics10CmBtn .
+#' @param doBasics10Cmediation .
+#' @param doBasics10CMain1Effect .
+#' @param doBasics10CMain2Effect .
+#' @param doBasics10CCovariationEffect .
+#' @param meta1pRplus .
 #' @param meta1rp .
 #' @param doMeta0Btn .
 #' @param doMeta0RBtn .
@@ -3411,7 +3556,7 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param doMeta2BmBtn .
 #' @param meta2rp .
 #' @param meta3SampleMethod .
-#' @param meta2pRPlus .
+#' @param meta2pRplus .
 #' @param metaCheatingProportion .
 #' @param meta3Cheating .
 #' @param doMeta3ABtn .
@@ -3419,7 +3564,7 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param doMeta3BBtn .
 #' @param doMeta3BmBtn .
 #' @param meta2SampleSize .
-#' @param meta3pRPlus .
+#' @param meta3pRplus .
 #' @param meta3rp .
 #' @param meta2SampleSplits .
 #' @param meta2SampleBudget .
@@ -3437,7 +3582,7 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param doMeta4BmcBtn .
 #' @param meta4OriginalAnomaly .
 #' @param meta4SampleSize .
-#' @param meta4pRPlus .
+#' @param meta4pRplus .
 #' @param meta4rp .
 #' @param doMeta5ABtn .
 #' @param doMeta5ArBtn .
@@ -3451,7 +3596,7 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param metaMultiple .
 #' @param metaDefaultN .
 #' @param metaDefaultRp .
-#' @param metaDefaultpRPlus .
+#' @param metaDefaultpRplus .
 #' @param metaDefaultWorld .
 #' @param metaDefaultRepPower .
 #' @param metaPublicationBias .
@@ -3470,11 +3615,7 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @export
 BrawSim <- function(
     basicMode,
-    demosHelp,
-    demo1Help,
-    demo2Help,
-    demo3Help,
-    demo4Help,
+    basicsHelp,
     metaHelp,
     meta1Help,
     meta2Help,
@@ -3490,7 +3631,6 @@ BrawSim <- function(
     presetDV = "DV",
     presetIV = "IV",
     presetIV2 = "none",
-    presetWorld = "Binary",
     DVname = "DV",
     DVtype = "Interval",
     DVmu = 0,
@@ -3533,16 +3673,17 @@ BrawSim <- function(
     Heteroscedasticity = 0,
     Residuals = "normal",
     WorldOn = FALSE,
-    WorldPDF = "Uniform",
-    WorldRZ,
+    WorldPDF = "Exp",
+    WorldRZ = "z",
     worldMeanRplus = 0.3,
-    worldPRplus = 0.5,
+    WorldShape = 1,
+    worldPRnull = 0.5,
     WorldMn = 0,
     WorldSd = 0,
     WorldSample = "none",
     SampleSize = 42,
     SampleSizeDist = "Gamma",
-    SampleSizeM = 42,
+    SampleSizeM = 52,
     SampleSpreadOn = FALSE,
     SampleSD = 33.3,
     SampleMethod = "Random",
@@ -3567,14 +3708,16 @@ BrawSim <- function(
     ReplicationDecision = "Cautious",
     RepMaxN = 100000,
     ReplicationAlpha = 0.05,
-    ReplicationSign = "yes",
-    ReplicationSigOriginal = "no",
     STMethod,
     alphaSig = 0.05,
     minRp = 0,
+    keepOnlySig = "no",
+    biasAmount = 1,
     ssq = "Type3",
+    main1 = TRUE,
     main2 = TRUE,
     interaction = FALSE,
+    covariation = FALSE,
     equalVar = "yes",
     Transform = "None",
     likelihoodType = "Populations",
@@ -3584,17 +3727,16 @@ BrawSim <- function(
     priorRZ = "z",
     priorMeanRplus = 0.3,
     priorPRplus = 1,
-    doSEM = FALSE,
-    useAIC = "AIC",
+    useAIC = "none",
     MetaAnalysisOn = FALSE,
     MetaAnalysisType = "random",
-    MetaAnalysisRandVar = "sd",
+    MetaAnalysisDist = "Simple",
     MetaAnalysisPrior = "none",
-    MetaAnalysisNulls = "no",
-    MetaAnalysisBias = "no",
+    MetaAnalysisNulls = FALSE,
+    MetaAnalysisBias = FALSE,
     MetaAnalysisNStudies = 20,
     MetaAnalysisMethod = "MLE",
-    MetaAnalysisStudiesSig = 0,
+    MetaAnalysisStudiesSig = "no",
     metaVar1 = "metaRiv",
     metaVar2 = "metaRsd",
     makeSampleBtn = FALSE,
@@ -3638,87 +3780,119 @@ BrawSim <- function(
     showHTML = TRUE,
     fixedAxes = FALSE,
     shorthandCalculations = FALSE,
-    showHypothesisLst = "Default",
     dispRZ = "r",
-    systemMag = 1,
     simGoBack,
     simGoForwards,
-    doDemo1AhBtn,
-    doDemo1A1Btn,
-    doDemo1A2Btn,
-    doDemo1sLst = "Perfectionism",
-    doDemo1sLstA = "ExamGrade",
-    doDemo1sLstB = 0.3,
-    doDemo1sLstC = "Basic",
-    doDemo1sLstD = "Random",
-    doDemo1sLstE = 42,
-    doDemo1BhBtn,
-    doDemo1B1Btn,
-    doDemo1B2Btn,
-    doDemo1ChBtn,
-    doDemo1C1Btn,
-    doDemo2AhBtn,
-    doDemo2A1Btn,
-    doDemo2A2Btn,
-    doDemo2BhBtn,
-    doDemo2B1Btn,
-    doDemo2B2Btn,
-    doDemo2ChBtn,
-    doDemo2C1Btn,
-    doDemo2sLst = "Perfectionism",
-    doDemo2sLstA = "ExamGrade",
-    doDemo2sLstB = 0.3,
-    doDemo2sLstC = "Infer",
-    doDemo2sLstD = "Random",
-    doDemo2sLstE = 42,
-    doDemo2sLstF = "Basic",
-    doDemo2sLstG = "off",
-    doDemo3sLst = "Interval",
-    doDemo3sLstA = "Interval",
-    doDemo3sLstB = 0.3,
-    doDemo3sLstC = "Infer",
-    doDemo3sLstD = "Random",
-    doDemo3sLstE = 42,
-    doDemo3sLstF = "Basic",
-    doDemo3sLstG = "off",
-    doDemo3sLstH = "n",
-    doDemo3sLstK = 20,
-    doDemo3sLstI = "Basic",
-    doDemo3sLstJ = "Between",
-    doDemo3AhBtn,
-    doDemo3A1Btn,
-    doDemo3A3Btn,
-    doDemo3BhBtn,
-    doDemo3B1Btn,
-    doDemo3ChBtn,
-    doDemo3C1Btn,
-    doDemo3C3Btn,
-    doDemo4sLstA1 = "RiskTaker",
-    doDemo4sLstA2 = "Musician",
-    doDemo4sLst = "ExamGrade",
-    doDemo4sLstB = 0.5,
-    doDemo4sLstC = -0.5,
-    doDemo4sLstD = 0,
-    doDemo4sLstE = "no",
-    doDemo4sLstF = 0,
-    doDemo4sLstG = "Basic",
-    doDemo4sLstI = "all",
-    doDemo4sLstJ = "Covariation",
-    doDemo4sLstL = 20,
-    doDemo4sLstK = 200,
-    doDemo4AhBtn,
-    doDemo4A1Btn,
-    doDemo4A2Btn,
-    doDemo4BhBtn,
-    doDemo4B1Btn,
-    doDemo4B2Btn,
-    doDemo4B3Btn,
-    doDemo4ChBtn,
-    doDemo4C1Btn,
-    doDemo4C2Btn,
-    doDemo4C3Btn,
-    lastDemo = "none",
-    meta1pRPlus = 0.5,
+    basics1Help,
+    doBasics1IV = "Perfectionism",
+    doBasics1DV = "ExamGrade",
+    doBasics1ABtn,
+    doBasics1AmBtn,
+    doBasics1BBtn,
+    doBasics1BmBtn,
+    doBasics1BSampling = "Convenience",
+    doBasics1BOutliers = FALSE,
+    doBasics1BDependence = FALSE,
+    doBasics1CBtn,
+    doBasics1CmBtn,
+    doBasics1CSampleSize = 500,
+    basics2Help,
+    doBasics2EffectSize = 0.3,
+    doBasics2SampleSize = 50,
+    doBasics2ABtn,
+    doBasics2BBtn,
+    doBasics2CBtn,
+    basics3Help,
+    doBasics3EffectSize = 0.5,
+    doBasics3SampleSize = 50,
+    doBasics3ABtn,
+    doBasics3BBtn,
+    doBasics3CBtn,
+    doBasics31ABtn,
+    doBasics31BBtn,
+    basics4Help,
+    doBasics4EffectSize1 = 0.3,
+    doBasics4EffectSize2 = -0.3,
+    doBasics4SampleSize = 150,
+    doBasics4Main1 = TRUE,
+    doBasics4Main2 = TRUE,
+    doBasics4Interaction = TRUE,
+    doBasics4ABtn,
+    doBasics4AmBtn,
+    doBasics4BBtn,
+    doBasics4BmBtn,
+    doBasics4CBtn,
+    doBasics4CmBtn,
+    basics5Help,
+    doBasics5EffectSize1 = 0.3,
+    doBasics5EffectSize2 = -0.3,
+    doBasics5EffectSize1x2 = -0.3,
+    doBasics5SampleSize = 150,
+    doBasics5Main1 = TRUE,
+    doBasics5Main2 = TRUE,
+    doBasics5Interaction = TRUE,
+    doBasics5ABtn,
+    doBasics5AmBtn,
+    doBasics5BBtn,
+    doBasics5BmBtn,
+    doBasics5CBtn,
+    doBasics5CmBtn,
+    basics6Help,
+    doBasics6EffectSize1 = 0.3,
+    doBasics6EffectSize2 = -0.3,
+    doBasics6EffectSize12 = -0.3,
+    doBasics6SampleSize = 500,
+    doBasics6Main1 = TRUE,
+    doBasics6Main2 = FALSE,
+    doBasics6ABtn,
+    doBasics6AmBtn,
+    doBasics6BBtn,
+    doBasics6BmBtn,
+    doBasics6CBtn,
+    doBasics6CmBtn,
+    basics7Help,
+    doBasics7ABtn,
+    doBasics7AmBtn,
+    doBasics7BBtn,
+    doBasics7BmBtn,
+    basics8Help,
+    doBasics8ABtn,
+    doBasics8AmBtn,
+    doBasics8BBtn,
+    doBasics8BmBtn,
+    doBasics8CBtn,
+    doBasics8CmBtn,
+    basics9Help,
+    doBasics9ABtn,
+    doBasics9AmBtn,
+    doBasics9AModerationEffect = 0.3,
+    doBasics9AMain1Effect = 0,
+    doBasics9AMain2Effect = 0,
+    doBasics9AInteractionEffect = 0.3,
+    doBasics9BBtn,
+    doBasics9BmBtn,
+    doBasics9BModerationEffect = 0.3,
+    doBasics9BMain1Effect = -0.3,
+    doBasics9BMain2Effect = 0,
+    doBasics9BInteractionEffect = 0.3,
+    doBasics9CBtn,
+    doBasics9CmBtn,
+    doBasics9CModerationEffect = 0.3,
+    doBasics9CMain1Effect = -0.3,
+    doBasics9CMain2Effect = -0.6,
+    doBasics9CInteractionEffect = 0.3,
+    basics10Help,
+    doBasics10ABtn,
+    doBasics10AmBtn,
+    doBasics10BBtn,
+    doBasics10BmBtn,
+    doBasics10CBtn,
+    doBasics10CmBtn,
+    doBasics10Cmediation = 0.5,
+    doBasics10CMain1Effect = 0.18,
+    doBasics10CMain2Effect = 0.6,
+    doBasics10CCovariationEffect = 0.3,
+    meta1pRplus = 0.5,
     meta1rp = 0.3,
     doMeta0Btn,
     doMeta0RBtn,
@@ -3738,7 +3912,7 @@ BrawSim <- function(
     doMeta2BmBtn,
     meta2rp = 0.3,
     meta3SampleMethod = "Convenience",
-    meta2pRPlus = 0.5,
+    meta2pRplus = 0.5,
     metaCheatingProportion = 0.05,
     meta3Cheating = "Replace",
     doMeta3ABtn,
@@ -3746,7 +3920,7 @@ BrawSim <- function(
     doMeta3BBtn,
     doMeta3BmBtn,
     meta2SampleSize = 100,
-    meta3pRPlus = 0.5,
+    meta3pRplus = 0.5,
     meta3rp = 0.3,
     meta2SampleSplits = 5,
     meta2SampleBudget = 100,
@@ -3764,7 +3938,7 @@ BrawSim <- function(
     doMeta4BmcBtn,
     meta4OriginalAnomaly = "Convenience",
     meta4SampleSize = 50,
-    meta4pRPlus = 0.5,
+    meta4pRplus = 0.5,
     meta4rp = 0.3,
     doMeta5ABtn,
     doMeta5ArBtn,
@@ -3778,7 +3952,7 @@ BrawSim <- function(
     metaMultiple = 200,
     metaDefaultN = 50,
     metaDefaultRp = 0.3,
-    metaDefaultpRPlus = 0.5,
+    metaDefaultpRplus = 0.5,
     metaDefaultWorld = "Psych50",
     metaDefaultRepPower = 0.9,
     metaPublicationBias = "no") {
@@ -3789,11 +3963,7 @@ BrawSim <- function(
 
     options <- BrawSimOptions$new(
         basicMode = basicMode,
-        demosHelp = demosHelp,
-        demo1Help = demo1Help,
-        demo2Help = demo2Help,
-        demo3Help = demo3Help,
-        demo4Help = demo4Help,
+        basicsHelp = basicsHelp,
         metaHelp = metaHelp,
         meta1Help = meta1Help,
         meta2Help = meta2Help,
@@ -3809,7 +3979,6 @@ BrawSim <- function(
         presetDV = presetDV,
         presetIV = presetIV,
         presetIV2 = presetIV2,
-        presetWorld = presetWorld,
         DVname = DVname,
         DVtype = DVtype,
         DVmu = DVmu,
@@ -3855,7 +4024,8 @@ BrawSim <- function(
         WorldPDF = WorldPDF,
         WorldRZ = WorldRZ,
         worldMeanRplus = worldMeanRplus,
-        worldPRplus = worldPRplus,
+        WorldShape = WorldShape,
+        worldPRnull = worldPRnull,
         WorldMn = WorldMn,
         WorldSd = WorldSd,
         WorldSample = WorldSample,
@@ -3886,14 +4056,16 @@ BrawSim <- function(
         ReplicationDecision = ReplicationDecision,
         RepMaxN = RepMaxN,
         ReplicationAlpha = ReplicationAlpha,
-        ReplicationSign = ReplicationSign,
-        ReplicationSigOriginal = ReplicationSigOriginal,
         STMethod = STMethod,
         alphaSig = alphaSig,
         minRp = minRp,
+        keepOnlySig = keepOnlySig,
+        biasAmount = biasAmount,
         ssq = ssq,
+        main1 = main1,
         main2 = main2,
         interaction = interaction,
+        covariation = covariation,
         equalVar = equalVar,
         Transform = Transform,
         likelihoodType = likelihoodType,
@@ -3903,11 +4075,10 @@ BrawSim <- function(
         priorRZ = priorRZ,
         priorMeanRplus = priorMeanRplus,
         priorPRplus = priorPRplus,
-        doSEM = doSEM,
         useAIC = useAIC,
         MetaAnalysisOn = MetaAnalysisOn,
         MetaAnalysisType = MetaAnalysisType,
-        MetaAnalysisRandVar = MetaAnalysisRandVar,
+        MetaAnalysisDist = MetaAnalysisDist,
         MetaAnalysisPrior = MetaAnalysisPrior,
         MetaAnalysisNulls = MetaAnalysisNulls,
         MetaAnalysisBias = MetaAnalysisBias,
@@ -3957,87 +4128,119 @@ BrawSim <- function(
         showHTML = showHTML,
         fixedAxes = fixedAxes,
         shorthandCalculations = shorthandCalculations,
-        showHypothesisLst = showHypothesisLst,
         dispRZ = dispRZ,
-        systemMag = systemMag,
         simGoBack = simGoBack,
         simGoForwards = simGoForwards,
-        doDemo1AhBtn = doDemo1AhBtn,
-        doDemo1A1Btn = doDemo1A1Btn,
-        doDemo1A2Btn = doDemo1A2Btn,
-        doDemo1sLst = doDemo1sLst,
-        doDemo1sLstA = doDemo1sLstA,
-        doDemo1sLstB = doDemo1sLstB,
-        doDemo1sLstC = doDemo1sLstC,
-        doDemo1sLstD = doDemo1sLstD,
-        doDemo1sLstE = doDemo1sLstE,
-        doDemo1BhBtn = doDemo1BhBtn,
-        doDemo1B1Btn = doDemo1B1Btn,
-        doDemo1B2Btn = doDemo1B2Btn,
-        doDemo1ChBtn = doDemo1ChBtn,
-        doDemo1C1Btn = doDemo1C1Btn,
-        doDemo2AhBtn = doDemo2AhBtn,
-        doDemo2A1Btn = doDemo2A1Btn,
-        doDemo2A2Btn = doDemo2A2Btn,
-        doDemo2BhBtn = doDemo2BhBtn,
-        doDemo2B1Btn = doDemo2B1Btn,
-        doDemo2B2Btn = doDemo2B2Btn,
-        doDemo2ChBtn = doDemo2ChBtn,
-        doDemo2C1Btn = doDemo2C1Btn,
-        doDemo2sLst = doDemo2sLst,
-        doDemo2sLstA = doDemo2sLstA,
-        doDemo2sLstB = doDemo2sLstB,
-        doDemo2sLstC = doDemo2sLstC,
-        doDemo2sLstD = doDemo2sLstD,
-        doDemo2sLstE = doDemo2sLstE,
-        doDemo2sLstF = doDemo2sLstF,
-        doDemo2sLstG = doDemo2sLstG,
-        doDemo3sLst = doDemo3sLst,
-        doDemo3sLstA = doDemo3sLstA,
-        doDemo3sLstB = doDemo3sLstB,
-        doDemo3sLstC = doDemo3sLstC,
-        doDemo3sLstD = doDemo3sLstD,
-        doDemo3sLstE = doDemo3sLstE,
-        doDemo3sLstF = doDemo3sLstF,
-        doDemo3sLstG = doDemo3sLstG,
-        doDemo3sLstH = doDemo3sLstH,
-        doDemo3sLstK = doDemo3sLstK,
-        doDemo3sLstI = doDemo3sLstI,
-        doDemo3sLstJ = doDemo3sLstJ,
-        doDemo3AhBtn = doDemo3AhBtn,
-        doDemo3A1Btn = doDemo3A1Btn,
-        doDemo3A3Btn = doDemo3A3Btn,
-        doDemo3BhBtn = doDemo3BhBtn,
-        doDemo3B1Btn = doDemo3B1Btn,
-        doDemo3ChBtn = doDemo3ChBtn,
-        doDemo3C1Btn = doDemo3C1Btn,
-        doDemo3C3Btn = doDemo3C3Btn,
-        doDemo4sLstA1 = doDemo4sLstA1,
-        doDemo4sLstA2 = doDemo4sLstA2,
-        doDemo4sLst = doDemo4sLst,
-        doDemo4sLstB = doDemo4sLstB,
-        doDemo4sLstC = doDemo4sLstC,
-        doDemo4sLstD = doDemo4sLstD,
-        doDemo4sLstE = doDemo4sLstE,
-        doDemo4sLstF = doDemo4sLstF,
-        doDemo4sLstG = doDemo4sLstG,
-        doDemo4sLstI = doDemo4sLstI,
-        doDemo4sLstJ = doDemo4sLstJ,
-        doDemo4sLstL = doDemo4sLstL,
-        doDemo4sLstK = doDemo4sLstK,
-        doDemo4AhBtn = doDemo4AhBtn,
-        doDemo4A1Btn = doDemo4A1Btn,
-        doDemo4A2Btn = doDemo4A2Btn,
-        doDemo4BhBtn = doDemo4BhBtn,
-        doDemo4B1Btn = doDemo4B1Btn,
-        doDemo4B2Btn = doDemo4B2Btn,
-        doDemo4B3Btn = doDemo4B3Btn,
-        doDemo4ChBtn = doDemo4ChBtn,
-        doDemo4C1Btn = doDemo4C1Btn,
-        doDemo4C2Btn = doDemo4C2Btn,
-        doDemo4C3Btn = doDemo4C3Btn,
-        lastDemo = lastDemo,
-        meta1pRPlus = meta1pRPlus,
+        basics1Help = basics1Help,
+        doBasics1IV = doBasics1IV,
+        doBasics1DV = doBasics1DV,
+        doBasics1ABtn = doBasics1ABtn,
+        doBasics1AmBtn = doBasics1AmBtn,
+        doBasics1BBtn = doBasics1BBtn,
+        doBasics1BmBtn = doBasics1BmBtn,
+        doBasics1BSampling = doBasics1BSampling,
+        doBasics1BOutliers = doBasics1BOutliers,
+        doBasics1BDependence = doBasics1BDependence,
+        doBasics1CBtn = doBasics1CBtn,
+        doBasics1CmBtn = doBasics1CmBtn,
+        doBasics1CSampleSize = doBasics1CSampleSize,
+        basics2Help = basics2Help,
+        doBasics2EffectSize = doBasics2EffectSize,
+        doBasics2SampleSize = doBasics2SampleSize,
+        doBasics2ABtn = doBasics2ABtn,
+        doBasics2BBtn = doBasics2BBtn,
+        doBasics2CBtn = doBasics2CBtn,
+        basics3Help = basics3Help,
+        doBasics3EffectSize = doBasics3EffectSize,
+        doBasics3SampleSize = doBasics3SampleSize,
+        doBasics3ABtn = doBasics3ABtn,
+        doBasics3BBtn = doBasics3BBtn,
+        doBasics3CBtn = doBasics3CBtn,
+        doBasics31ABtn = doBasics31ABtn,
+        doBasics31BBtn = doBasics31BBtn,
+        basics4Help = basics4Help,
+        doBasics4EffectSize1 = doBasics4EffectSize1,
+        doBasics4EffectSize2 = doBasics4EffectSize2,
+        doBasics4SampleSize = doBasics4SampleSize,
+        doBasics4Main1 = doBasics4Main1,
+        doBasics4Main2 = doBasics4Main2,
+        doBasics4Interaction = doBasics4Interaction,
+        doBasics4ABtn = doBasics4ABtn,
+        doBasics4AmBtn = doBasics4AmBtn,
+        doBasics4BBtn = doBasics4BBtn,
+        doBasics4BmBtn = doBasics4BmBtn,
+        doBasics4CBtn = doBasics4CBtn,
+        doBasics4CmBtn = doBasics4CmBtn,
+        basics5Help = basics5Help,
+        doBasics5EffectSize1 = doBasics5EffectSize1,
+        doBasics5EffectSize2 = doBasics5EffectSize2,
+        doBasics5EffectSize1x2 = doBasics5EffectSize1x2,
+        doBasics5SampleSize = doBasics5SampleSize,
+        doBasics5Main1 = doBasics5Main1,
+        doBasics5Main2 = doBasics5Main2,
+        doBasics5Interaction = doBasics5Interaction,
+        doBasics5ABtn = doBasics5ABtn,
+        doBasics5AmBtn = doBasics5AmBtn,
+        doBasics5BBtn = doBasics5BBtn,
+        doBasics5BmBtn = doBasics5BmBtn,
+        doBasics5CBtn = doBasics5CBtn,
+        doBasics5CmBtn = doBasics5CmBtn,
+        basics6Help = basics6Help,
+        doBasics6EffectSize1 = doBasics6EffectSize1,
+        doBasics6EffectSize2 = doBasics6EffectSize2,
+        doBasics6EffectSize12 = doBasics6EffectSize12,
+        doBasics6SampleSize = doBasics6SampleSize,
+        doBasics6Main1 = doBasics6Main1,
+        doBasics6Main2 = doBasics6Main2,
+        doBasics6ABtn = doBasics6ABtn,
+        doBasics6AmBtn = doBasics6AmBtn,
+        doBasics6BBtn = doBasics6BBtn,
+        doBasics6BmBtn = doBasics6BmBtn,
+        doBasics6CBtn = doBasics6CBtn,
+        doBasics6CmBtn = doBasics6CmBtn,
+        basics7Help = basics7Help,
+        doBasics7ABtn = doBasics7ABtn,
+        doBasics7AmBtn = doBasics7AmBtn,
+        doBasics7BBtn = doBasics7BBtn,
+        doBasics7BmBtn = doBasics7BmBtn,
+        basics8Help = basics8Help,
+        doBasics8ABtn = doBasics8ABtn,
+        doBasics8AmBtn = doBasics8AmBtn,
+        doBasics8BBtn = doBasics8BBtn,
+        doBasics8BmBtn = doBasics8BmBtn,
+        doBasics8CBtn = doBasics8CBtn,
+        doBasics8CmBtn = doBasics8CmBtn,
+        basics9Help = basics9Help,
+        doBasics9ABtn = doBasics9ABtn,
+        doBasics9AmBtn = doBasics9AmBtn,
+        doBasics9AModerationEffect = doBasics9AModerationEffect,
+        doBasics9AMain1Effect = doBasics9AMain1Effect,
+        doBasics9AMain2Effect = doBasics9AMain2Effect,
+        doBasics9AInteractionEffect = doBasics9AInteractionEffect,
+        doBasics9BBtn = doBasics9BBtn,
+        doBasics9BmBtn = doBasics9BmBtn,
+        doBasics9BModerationEffect = doBasics9BModerationEffect,
+        doBasics9BMain1Effect = doBasics9BMain1Effect,
+        doBasics9BMain2Effect = doBasics9BMain2Effect,
+        doBasics9BInteractionEffect = doBasics9BInteractionEffect,
+        doBasics9CBtn = doBasics9CBtn,
+        doBasics9CmBtn = doBasics9CmBtn,
+        doBasics9CModerationEffect = doBasics9CModerationEffect,
+        doBasics9CMain1Effect = doBasics9CMain1Effect,
+        doBasics9CMain2Effect = doBasics9CMain2Effect,
+        doBasics9CInteractionEffect = doBasics9CInteractionEffect,
+        basics10Help = basics10Help,
+        doBasics10ABtn = doBasics10ABtn,
+        doBasics10AmBtn = doBasics10AmBtn,
+        doBasics10BBtn = doBasics10BBtn,
+        doBasics10BmBtn = doBasics10BmBtn,
+        doBasics10CBtn = doBasics10CBtn,
+        doBasics10CmBtn = doBasics10CmBtn,
+        doBasics10Cmediation = doBasics10Cmediation,
+        doBasics10CMain1Effect = doBasics10CMain1Effect,
+        doBasics10CMain2Effect = doBasics10CMain2Effect,
+        doBasics10CCovariationEffect = doBasics10CCovariationEffect,
+        meta1pRplus = meta1pRplus,
         meta1rp = meta1rp,
         doMeta0Btn = doMeta0Btn,
         doMeta0RBtn = doMeta0RBtn,
@@ -4057,7 +4260,7 @@ BrawSim <- function(
         doMeta2BmBtn = doMeta2BmBtn,
         meta2rp = meta2rp,
         meta3SampleMethod = meta3SampleMethod,
-        meta2pRPlus = meta2pRPlus,
+        meta2pRplus = meta2pRplus,
         metaCheatingProportion = metaCheatingProportion,
         meta3Cheating = meta3Cheating,
         doMeta3ABtn = doMeta3ABtn,
@@ -4065,7 +4268,7 @@ BrawSim <- function(
         doMeta3BBtn = doMeta3BBtn,
         doMeta3BmBtn = doMeta3BmBtn,
         meta2SampleSize = meta2SampleSize,
-        meta3pRPlus = meta3pRPlus,
+        meta3pRplus = meta3pRplus,
         meta3rp = meta3rp,
         meta2SampleSplits = meta2SampleSplits,
         meta2SampleBudget = meta2SampleBudget,
@@ -4083,7 +4286,7 @@ BrawSim <- function(
         doMeta4BmcBtn = doMeta4BmcBtn,
         meta4OriginalAnomaly = meta4OriginalAnomaly,
         meta4SampleSize = meta4SampleSize,
-        meta4pRPlus = meta4pRPlus,
+        meta4pRplus = meta4pRplus,
         meta4rp = meta4rp,
         doMeta5ABtn = doMeta5ABtn,
         doMeta5ArBtn = doMeta5ArBtn,
@@ -4097,7 +4300,7 @@ BrawSim <- function(
         metaMultiple = metaMultiple,
         metaDefaultN = metaDefaultN,
         metaDefaultRp = metaDefaultRp,
-        metaDefaultpRPlus = metaDefaultpRPlus,
+        metaDefaultpRplus = metaDefaultpRplus,
         metaDefaultWorld = metaDefaultWorld,
         metaDefaultRepPower = metaDefaultRepPower,
         metaPublicationBias = metaPublicationBias)
