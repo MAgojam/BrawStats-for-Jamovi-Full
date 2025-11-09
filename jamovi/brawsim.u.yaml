@@ -770,7 +770,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: Test yourself
+                            label: '<span style="color:hsl(10, 50%, 50%);">Test yourself</span>'
                             margin: none
                             minWidth: 420
                             maxWidth: 420
@@ -1691,7 +1691,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: Test yourself
+                            label: '<span style="color:hsl(10, 50%, 50%);">Test yourself</span>'
                             margin: none
                             minWidth: 420
                             maxWidth: 420
@@ -2007,6 +2007,25 @@ children:
                             minWidth: 10
                             maxWidth: 10
                             maxHeight: 24
+                      - type: LayoutBox
+                        style: inline
+                        children:
+                          - type: Label
+                            label: ' '
+                            minWidth: 20
+                          - type: CollapseBox
+                            collapsed: true
+                            label: '<span style="color:hsl(10, 50%, 50%);">Test yourself</span>'
+                            margin: none
+                            minWidth: 420
+                            maxWidth: 420
+                            children:
+                              - type: Label
+                                label: ' '
+                                style: inline
+                                margin: large
+                                minWidth: 38
+                                verticalAlignment: top
                   - type: CollapseBox
                     label: <b>Advanced models</b>
                     collapsed: true
