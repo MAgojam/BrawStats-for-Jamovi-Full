@@ -1,0 +1,45 @@
+---
+title: Learn by Simulation
+name: BrawStats
+version: 2.2.3
+jms: '1.0'
+authors:
+  - Roger Watt
+maintainer: Roger Watt <rjw1@stir.ac.uk>
+date: '2025-11-15'
+type: R
+description: |-
+  BrawStats is designed to teach the basic principles of statistics.
+
+  It operates by simulation of the quantitative research process:
+    i.   hypothesis
+    ii.  design
+    iii. data collection & analysis
+  It has a graded set of demonstrations that take the user through basic
+  processes.
+
+  It also has a simulation control interface that allows the user to explore
+  many different aspects of data and statistical analysis.
+
+  BrawStats functions:
+    i.   data simulation
+    ii.  analyse data with linear models & path models
+analyses:
+  - title: BrawStats:Simulate Data
+    name: BrawSim
+    ns: BrawStats
+    menuGroup: BrawStats
+    menuSubgroup: Simulate
+    menuTitle: BrawStats:Simulate Data
+    category: analyses
+  - title: BrawStats:Analyse Data
+    name: BrawAN
+    ns: BrawStats
+    menuGroup: BrawStats
+    menuSubgroup: Analyze
+    category: analyses
+    menuTitle: BrawStats:Analyse Data
+usesNative: true
+minApp: 1.0.8
+
+...

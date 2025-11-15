@@ -1,0 +1,90 @@
+---
+name:  BrawSim
+title: BrawStats:Simulate Data
+jrs:   '1.1'
+
+items:
+    - name: simSystemHTML
+      type: Html
+      visible: FALSE
+
+    - name: debug
+      type: Preformatted
+      visible: FALSE
+
+    - name: simGraphHTML
+      type: Html
+      visible: TRUE
+      clearWith:
+
+    - name: simGraph
+      title: ' '
+      type: Image
+      width:  550
+      height: 400
+      visible: FALSE
+      renderFun: .plotSimGraph
+      clearWith:
+      - makeSampleBtn
+      - showSampleType
+      - showInferParam
+      - inferVar1
+      - inferVar2
+      - reportInferStats
+      - showInferDimension
+      - makeMultipleBtn
+      - showMultipleParam
+      - showMultipleDimension
+      - makeExploreBtn
+      - showExploreParam
+      - showExploreDimension
+      - showExploreStyle
+      - whichShowMultiple
+      - MetaAnalysisType
+      - MetaAnalysisMethod
+      - MetaAnalysisPrior
+      - MetaAnalysisBias
+      - MetaAnalysisNulls
+      - simGoBack
+      - simGoForwards
+
+    - name: simReport
+      type: Html
+      visible: FALSE
+
+    - name: sendSample
+      type: Output
+      measureType: nominal
+      varTitle: Sample
+      items: 4
+      clearWith:
+       - makeSampleBtn
+
+    - name: sendSamplewide
+      type: Output
+      measureType: nominal
+      varTitle: Sample
+      items: 4
+      clearWith:
+       - makeSampleBtn
+
+    - name: sendMultiple
+      type: Output
+      measureType: continuous
+      varTitle: "Mult"
+      items: 4
+      clearWith:
+       - makeMultipleBtn
+
+    - name: sendExplore
+      type: Output
+      measureType: continuous
+      varTitle: "Explore"
+      items: 5
+      clearWith:
+       - makeExploreBtn
+
+refs: 
+  - brawstats
+  - book
+...
