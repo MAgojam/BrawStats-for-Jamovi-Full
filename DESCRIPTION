@@ -28,4 +28,4 @@ Imports: jmvcore (>= 2.3.4), R6,
     abind,
     meta,
     lavaan
-Remotes: rjwatt42/BrawPackDevelopment
+Remotes: rjwatt42/BrawPackage

@@ -6,7 +6,7 @@ jrs:   '1.1'
 items:
     - name: simSystemHTML
       type: Html
-      visible: TRUE
+      visible: FALSE
 
     - name: debug
       type: Preformatted
@@ -53,6 +53,14 @@ items:
       visible: FALSE
 
     - name: sendSample
+      type: Output
+      measureType: nominal
+      varTitle: Sample
+      items: 4
+      clearWith:
+       - makeSampleBtn
+
+    - name: sendSamplewide
       type: Output
       measureType: nominal
       varTitle: Sample

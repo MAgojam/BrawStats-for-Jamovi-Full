@@ -1524,6 +1524,11 @@ options:
       type: Output
       default: TRUE
       
+    - name: sendSamplewide
+      title: single-wide
+      type: Output
+      default: TRUE
+      
     - name: sendMultiple
       title: multiple
       type: Output
@@ -1537,7 +1542,7 @@ options:
     - name: brawHelp
       title: Main help
       type: Bool
-      default: true
+      default: false
 
     - name: showHTML
       title: HTML graphics
@@ -1565,11 +1570,11 @@ options:
       default: r
 
     - name: simGoBack
-      title: '<<'
+      title: '←'
       type: Action
       
     - name: simGoForwards
-      title: '>>'
+      title: '→'
       type: Action
 
     - name: basics1Help
@@ -1619,7 +1624,7 @@ options:
     #   title: '?'
     #   type: Action
     - name: doBasics1ABtn
-      title: 'do'
+      title: 'single'
       type: Action
     - name: doBasics1AmBtn
       title: 'multiple'
@@ -1628,7 +1633,7 @@ options:
     #   title: '?'
     #   type: Action
     - name: doBasics1BBtn
-      title: 'do'
+      title: 'single'
       type: Action
     - name: doBasics1BmBtn
       title: 'multiple'
@@ -1655,7 +1660,7 @@ options:
     #   title: '?'
     #   type: Action
     - name: doBasics1CBtn
-      title: 'do'
+      title: 'single'
       type: Action
     - name: doBasics1CmBtn
       title: 'multiple'
@@ -1686,25 +1691,25 @@ options:
     #   title: '?'
     #   type: Action
     - name: doBasics2ABtn
-      title: 'do'
+      title: 'single'
       type: Action
     # - name: doBasics2AmBtn
-    #   title: 'do'
+    #   title: 'single'
     #   type: Action
     # - name: doBasics2BhBtn
     #   title: '?'
     #   type: Action
     - name: doBasics2BBtn
-      title: 'do'
+      title: 'single'
       type: Action
     # - name: doBasics2BmBtn
-    #   title: 'do'
+    #   title: 'single'
     #   type: Action
     # - name: doBasics2ChBtn
     #   title: '?'
     #   type: Action
     - name: doBasics2CBtn
-      title: 'do'
+      title: 'single'
       type: Action
     # - name: doBasics2CmBtn
     #   title: 'set'
@@ -1729,22 +1734,22 @@ options:
     #   title: '?'
       # type: Action
     - name: doBasics3ABtn
-      title: 'do'
+      title: 'single'
       type: Action
     # - name: doBasics3AmBtn
-    #   title: 'do'
+    #   title: 'single'
     #   type: Action
     # - name: doBasics3BhBtn
     #   title: '?'
     #   type: Action
     - name: doBasics3BBtn
-      title: 'do'
+      title: 'single'
       type: Action
     # - name: doBasics3BmBtn
-    #   title: 'do'
+    #   title: 'single'
     #   type: Action
     - name: doBasics3CBtn
-      title: 'do'
+      title: 'single'
       type: Action
 
     # - name: doBasics41AhBtn
@@ -1779,23 +1784,11 @@ options:
       default: 150
       min: 10
       max: 50000
-    - name: doBasics4Main1
-      title: ''
-      type: Bool
-      default: true
-    - name: doBasics4Main2
-      title: ''
-      type: Bool
-      default: true
-    - name: doBasics4Interaction
-      title: ''
-      type: Bool
-      default: true
     # - name: doBasics4AhBtn
     #   title: '?'
     #   type: Action
     - name: doBasics4ABtn
-      title: 'do'
+      title: 'single'
       type: Action
     - name: doBasics4AmBtn
       title: 'multiple'
@@ -1804,7 +1797,7 @@ options:
     #   title: '?'
     #   type: Action
     - name: doBasics4BBtn
-      title: 'do'
+      title: 'single'
       type: Action
     - name: doBasics4BmBtn
       title: 'multiple'
@@ -1813,7 +1806,7 @@ options:
     #   title: '?'
     #   type: Action
     - name: doBasics4CBtn
-      title: 'do'
+      title: 'single'
       type: Action
     - name: doBasics4CmBtn
       title: 'multiple'
@@ -1822,18 +1815,18 @@ options:
     - name: basics5Help
       type: Action
       title: '?'
-    - name: doBasics5EffectSize1
-      title: ''
-      type: Number
-      default: 0.3
-      min: -0.95
-      max: 0.95
-    - name: doBasics5EffectSize2
-      title: ''
-      type: Number
-      default: -0.3
-      min: -0.95
-      max: 0.95
+    # - name: doBasics5EffectSize1
+    #   title: ''
+    #   type: Number
+    #   default: 0.3
+    #   min: -0.95
+    #   max: 0.95
+    # - name: doBasics5EffectSize2
+    #   title: ''
+    #   type: Number
+    #   default: -0.3
+    #   min: -0.95
+    #   max: 0.95
     - name: doBasics5EffectSize1x2
       title: ''
       type: Number
@@ -1858,11 +1851,14 @@ options:
       title: ''
       type: Bool
       default: true
+    - name: doBasics5RBtn
+      title: 're-analyse'
+      type: Action
     # - name: doBasics5AhBtn
     #   title: '?'
     #   type: Action
     - name: doBasics5ABtn
-      title: 'do'
+      title: 'single'
       type: Action
     - name: doBasics5AmBtn
       title: 'multiple'
@@ -1871,7 +1867,7 @@ options:
     #   title: '?'
     #   type: Action
     - name: doBasics5BBtn
-      title: 'do'
+      title: 'single'
       type: Action
     - name: doBasics5BmBtn
       title: 'multiple'
@@ -1880,7 +1876,7 @@ options:
     #   title: '?'
     #   type: Action
     - name: doBasics5CBtn
-      title: 'do'
+      title: 'single'
       type: Action
     - name: doBasics5CmBtn
       title: 'multiple'
@@ -1889,22 +1885,22 @@ options:
     - name: basics6Help
       type: Action
       title: '?'
-    - name: doBasics6EffectSize1
-      title: ''
-      type: Number
-      default: 0.3
-      min: -0.95
-      max: 0.95
-    - name: doBasics6EffectSize2
-      title: ''
-      type: Number
-      default: -0.3
-      min: -0.95
-      max: 0.95
+    # - name: doBasics6EffectSize1
+    #   title: ''
+    #   type: Number
+    #   default: 0.3
+    #   min: -0.95
+    #   max: 0.95
+    # - name: doBasics6EffectSize2
+    #   title: ''
+    #   type: Number
+    #   default: -0.3
+    #   min: -0.95
+    #   max: 0.95
     - name: doBasics6EffectSize12
       title: ''
       type: Number
-      default: -0.3
+      default: 0.7
       min: -0.95
       max: 0.95
     - name: doBasics6SampleSize
@@ -1921,11 +1917,14 @@ options:
       title: ''
       type: Bool
       default: false
+    - name: doBasics6RBtn
+      title: 're-analyse'
+      type: Action
     # - name: doBasics6AhBtn
     #   title: '?'
     #   type: Action
     - name: doBasics6ABtn
-      title: 'do'
+      title: 'single'
       type: Action
     - name: doBasics6AmBtn
       title: 'multiple'
@@ -1934,7 +1933,7 @@ options:
     #   title: '?'
     #   type: Action
     - name: doBasics6BBtn
-      title: 'do'
+      title: 'single'
       type: Action
     - name: doBasics6BmBtn
       title: 'multiple'
@@ -1943,7 +1942,7 @@ options:
     #   title: '?'
     #   type: Action
     - name: doBasics6CBtn
-      title: 'do'
+      title: 'single'
       type: Action
     - name: doBasics6CmBtn
       title: 'multiple'
@@ -1956,7 +1955,7 @@ options:
     #   title: '?'
     #   type: Action
     - name: doBasics7ABtn
-      title: 'do'
+      title: 'single'
       type: Action
     - name: doBasics7AmBtn
       title: 'multiple'
@@ -1965,7 +1964,7 @@ options:
     #   title: '?'
     #   type: Action
     - name: doBasics7BBtn
-      title: 'do'
+      title: 'single'
       type: Action
     - name: doBasics7BmBtn
       title: 'multiple'
@@ -1978,7 +1977,7 @@ options:
     #   title: '?'
     #   type: Action
     - name: doBasics8ABtn
-      title: 'do'
+      title: 'single'
       type: Action
     - name: doBasics8AmBtn
       title: 'multiple'
@@ -1987,7 +1986,7 @@ options:
     #   title: '?'
     #   type: Action
     - name: doBasics8BBtn
-      title: 'do'
+      title: 'single'
       type: Action
     - name: doBasics8BmBtn
       title: 'multiple'
@@ -1996,7 +1995,7 @@ options:
     #   title: '?'
     #   type: Action
     - name: doBasics8CBtn
-      title: 'do'
+      title: 'single'
       type: Action
     - name: doBasics8CmBtn
       title: 'multiple'
@@ -2009,7 +2008,7 @@ options:
     #   title: '?'
     #   type: Action
     - name: doBasics9ABtn
-      title: 'do'
+      title: 'single'
       type: Action
     - name: doBasics9AmBtn
       title: 'multiple'
@@ -2042,7 +2041,7 @@ options:
     #   title: '?'
     #   type: Action
     - name: doBasics9BBtn
-      title: 'do'
+      title: 'single'
       type: Action
     - name: doBasics9BmBtn
       title: 'multiple'
@@ -2072,7 +2071,7 @@ options:
       min: -0.9
       max: 0.9
     - name: doBasics9CBtn
-      title: 'do'
+      title: 'single'
       type: Action
     - name: doBasics9CmBtn
       title: 'multiple'
@@ -2109,7 +2108,7 @@ options:
     #   title: '?'
     #   type: Action
     - name: doBasics10ABtn
-      title: 'do'
+      title: 'single'
       type: Action
     - name: doBasics10AmBtn
       title: 'multiple'
@@ -2118,13 +2117,13 @@ options:
     #   title: '?'
     #   type: Action
     - name: doBasics10BBtn
-      title: 'do'
+      title: 'single'
       type: Action
     - name: doBasics10BmBtn
       title: 'multiple'
       type: Action
     - name: doBasics10CBtn
-      title: 'do'
+      title: 'single'
       type: Action
     - name: doBasics10CmBtn
       title: 'multiple'
@@ -2165,7 +2164,7 @@ options:
       default: 0.3
       
     - name: doMeta0Btn
-      title: '1'
+      title: 'single'
       type: Action
       
     - name: doMeta0RBtn
@@ -2177,31 +2176,31 @@ options:
       type: Action
       
     - name: doMeta0mBtn
-      title: '*'
+      title: 'multiple'
       type: Action
       
     - name: doMeta1ABtn
-      title: '1'
+      title: 'single'
       type: Action
 
     - name: doMeta1AmBtn
-      title: '*'
+      title: 'multiple'
       type: Action
 
     - name: doMeta1BBtn
-      title: '1'
+      title: 'single'
       type: Action
 
     - name: doMeta1BmBtn
-      title: '*'
+      title: 'multiple'
       type: Action
 
     - name: doMeta0ABtn
-      title: '1'
+      title: 'single'
       type: Action
 
     - name: doMeta0AmBtn
-      title: '*'
+      title: 'multiple'
       type: Action
 
     - name: doMeta0ArBtn
@@ -2209,23 +2208,23 @@ options:
       type: Action
 
     - name: doMeta0AmrBtn
-      title: '*'
+      title: 'multiple'
       type: Action
 
     - name: doMeta2ABtn
-      title: '1'
+      title: 'single'
       type: Action
     
     - name: doMeta2AmBtn
-      title: '*'
+      title: 'multiple'
       type: Action
 
     - name: doMeta2BBtn
-      title: '1'
+      title: 'single'
       type: Action
     
     - name: doMeta2BmBtn
-      title: '*'
+      title: 'multiple'
       type: Action
 
     - name: meta2rp
@@ -2274,19 +2273,19 @@ options:
       default: Replace
 
     - name: doMeta3ABtn
-      title: '1'
+      title: 'single'
       type: Action
 
     - name: doMeta3AmBtn
-      title: '*'
+      title: 'multiple'
       type: Action
 
     - name: doMeta3BBtn
-      title: '1'
+      title: 'single'
       type: Action
 
     - name: doMeta3BmBtn
-      title: '*'
+      title: 'multiple'
       type: Action
 
     - name: meta2SampleSize
@@ -2315,7 +2314,7 @@ options:
       default: 100
 
     - name: doMeta4ABtn
-      title: '1'
+      title: 'single'
       type: Action
 
     - name: doMeta4ArBtn
@@ -2327,19 +2326,19 @@ options:
       type: Action
       
     - name: doMeta4AmBtn
-      title: '*'
+      title: 'multiple'
       type: Action
       
     - name: doMeta4AmrBtn
-      title: '*'
+      title: 'multiple'
       type: Action
       
     - name: doMeta4AmcBtn
-      title: '*'
+      title: 'multiple'
       type: Action
 
     - name: doMeta4BBtn
-      title: '1'
+      title: 'single'
       type: Action
 
     - name: doMeta4BrBtn
@@ -2351,15 +2350,15 @@ options:
       type: Action
 
     - name: doMeta4BmBtn
-      title: '*'
+      title: 'multiple'
       type: Action
 
     - name: doMeta4BmrBtn
-      title: '*'
+      title: 'multiple'
       type: Action
 
     - name: doMeta4BmcBtn
-      title: '*'
+      title: 'multiple'
       type: Action
 
 
@@ -2393,7 +2392,7 @@ options:
       default: 0.3
 
     - name: doMeta5ABtn
-      title: '1'
+      title: 'single'
       type: Action
 
     - name: doMeta5ArBtn
@@ -2401,19 +2400,19 @@ options:
       type: Action
 
     - name: doMeta5AmBtn
-      title: '*'
+      title: 'multiple'
       type: Action
 
     - name: doMeta5AmrBtn
-      title: '*'
+      title: 'multiple'
       type: Action
 
     - name: doMeta5BBtn
-      title: '1'
+      title: 'single'
       type: Action
 
     - name: doMeta5BmBtn
-      title: '*'
+      title: 'multiple'
       type: Action
 
     - name: doMeta5BrBtn
@@ -2421,7 +2420,7 @@ options:
       type: Action
 
     - name: doMeta5BmrBtn
-      title: '*'
+      title: 'multiple'
       type: Action
 
     - name: metaShow

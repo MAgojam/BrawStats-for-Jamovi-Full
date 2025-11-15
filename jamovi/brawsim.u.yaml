@@ -34,7 +34,7 @@ children:
                         maxWidth: 380
                         margin: none
                       - type: Label
-                        label: the main principles of statistics
+                        label: the main analyses of data
                         minWidth: 380
                         maxWidth: 380
                         margin: none
@@ -107,7 +107,7 @@ children:
                 style: list
                 children:
                   - type: CollapseBox
-                    label: <b>Simple Tests</b>
+                    label: '**Simple Tests**'
                     collapsed: true
                     minWidth: 540
                     children:
@@ -119,7 +119,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: <b>1. Data:</b>&nbsp; basic working
+                            label: '**1. Data:**&nbsp; basic working'
                             margin: none
                             minWidth: 450
                             maxWidth: 450
@@ -133,9 +133,7 @@ children:
                                     margin: none
                                   - type: CollapseBox
                                     collapsed: true
-                                    label: >-
-                                      <span style="color:hsl(205, 100%,
-                                      41%);">Options</span>
+                                    label: Options
                                     children:
                                       - type: Label
                                         label: ' '
@@ -233,7 +231,7 @@ children:
                                             margin: none
                                             children:
                                               - type: Label
-                                                label: <b>Options:</b>
+                                                label: '**Options:**'
                                                 minWidth: 10
                                                 cell:
                                                   row: 0
@@ -331,7 +329,7 @@ children:
                                             margin: none
                                             children:
                                               - type: Label
-                                                label: <b>Options:</b>
+                                                label: '**Options:**'
                                                 minWidth: 10
                                                 cell:
                                                   row: 0
@@ -406,9 +404,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: >-
-                              <b>2. Interval DV:</b>&nbsp; correlation; t-test;
-                              1-way ANOVA
+                            label: '**2. Interval DV:**&nbsp; correlation; t-test; 1-way ANOVA'
                             margin: none
                             minWidth: 450
                             maxWidth: 450
@@ -422,9 +418,7 @@ children:
                                     margin: none
                                   - type: CollapseBox
                                     collapsed: true
-                                    label: >-
-                                      <span style="color:hsl(205, 100%,
-                                      41%);">Options</span>
+                                    label: Options
                                     children:
                                       - type: Label
                                         label: ' '
@@ -433,7 +427,7 @@ children:
                                           row: 0
                                           column: 0
                                       - type: Label
-                                        label: r<sub>p</sub>
+                                        label: rₚ
                                         margin: none
                                         cell:
                                           row: 0
@@ -588,9 +582,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: >-
-                              <b>3. Categorical DV:</b>&nbsp; chi-square;
-                              logistic regression
+                            label: '**3. Categorical DV:**&nbsp; chi-square; logistic regression'
                             margin: none
                             minWidth: 450
                             maxWidth: 450
@@ -604,9 +596,7 @@ children:
                                     margin: none
                                   - type: CollapseBox
                                     collapsed: true
-                                    label: >-
-                                      <span style="color:hsl(205, 100%,
-                                      41%);">Options</span>
+                                    label: Options
                                     children:
                                       - type: Label
                                         label: ' '
@@ -615,7 +605,7 @@ children:
                                           row: 0
                                           column: 0
                                       - type: Label
-                                        label: r<sub>p</sub>
+                                        label: rₚ
                                         margin: none
                                         cell:
                                           row: 0
@@ -770,7 +760,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: '<span style="color:hsl(10, 50%, 50%);">Test yourself</span>'
+                            label: '*Test yourself*'
                             margin: none
                             minWidth: 420
                             maxWidth: 420
@@ -797,7 +787,7 @@ children:
                                               row: 0
                                               column: 0
                                           - type: Label
-                                            label: 1. <b>make</b> a sample
+                                            label: 1. '**make**' a sample
                                             cell:
                                               row: 0
                                               column: 1
@@ -810,12 +800,12 @@ children:
                                               row: 0
                                               column: 2
                                           - type: Label
-                                            label: 2. <b>analyse</b> the data in Jamovi
+                                            label: 2. '**analyse**' the data in Jamovi
                                             cell:
                                               row: 1
                                               column: 1
                                           - type: Label
-                                            label: 3. <b>check</b> the analysis
+                                            label: 3. '**check**' the analysis
                                             cell:
                                               row: 2
                                               column: 1
@@ -828,7 +818,7 @@ children:
                                               row: 0
                                               column: 3
                   - type: CollapseBox
-                    label: <b>Multiple IVs</b>
+                    label: '**Multiple IVs**'
                     collapsed: true
                     children:
                       - type: LayoutBox
@@ -839,65 +829,11 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: >-
-                              <b>4. Main Tests:</b>&nbsp; 2-way ANOVA, ANCOVA,
-                              multiple regression
+                            label: '**4. Main Tests:**&nbsp; 2-way ANOVA, ANCOVA, multiple regression'
                             margin: none
                             minWidth: 450
                             maxWidth: 450
                             children:
-                              - type: Label
-                                label: <b>Analyse:</b>
-                                margin: none
-                                horizontalAlignment: right
-                                cell:
-                                  row: 2
-                                  column: 0
-                              - type: LayoutBox
-                                style: inline
-                                cell:
-                                  row: 2
-                                  column: 1
-                                children:
-                                  - type: Label
-                                    label: Main 1
-                                    margin: none
-                                    cell:
-                                      row: 3
-                                      column: 3
-                                  - type: Label
-                                    label: Main 2
-                                    margin: none
-                                    cell:
-                                      row: 3
-                                      column: 5
-                                  - type: Label
-                                    label: Interaction
-                                    margin: none
-                                    cell:
-                                      row: 3
-                                      column: 7
-                                  - type: CheckBox
-                                    name: doBasics4Main1
-                                    horizontalAlignment: center
-                                    margin: none
-                                    cell:
-                                      row: 3
-                                      column: 4
-                                  - type: CheckBox
-                                    name: doBasics4Main2
-                                    horizontalAlignment: center
-                                    margin: none
-                                    cell:
-                                      row: 3
-                                      column: 6
-                                  - type: CheckBox
-                                    name: doBasics4Interaction
-                                    horizontalAlignment: center
-                                    margin: none
-                                    cell:
-                                      row: 3
-                                      column: 8
                               - type: Label
                                 label: ' '
                                 margin: none
@@ -913,9 +849,7 @@ children:
                                 children:
                                   - type: CollapseBox
                                     collapsed: true
-                                    label: >-
-                                      <span style="color:hsl(205, 100%,
-                                      41%);">Options</span>
+                                    label: Options
                                     children:
                                       - type: Label
                                         label: ' '
@@ -924,7 +858,7 @@ children:
                                           row: 0
                                           column: 0
                                       - type: Label
-                                        label: r<sub>p</sub>(Main 1)
+                                        label: rₚ(Main 1)
                                         margin: none
                                         cell:
                                           row: 0
@@ -937,7 +871,7 @@ children:
                                           row: 0
                                           column: 2
                                       - type: Label
-                                        label: r<sub>p</sub>(Main 2)
+                                        label: rₚ(Main 2)
                                         margin: none
                                         cell:
                                           row: 0
@@ -963,7 +897,7 @@ children:
                                           row: 1
                                           column: 2
                               - type: Label
-                                label: <b>Steps:</b>
+                                label: '**Steps:**'
                                 margin: none
                                 horizontalAlignment: right
                                 verticalAlignment: top
@@ -1120,13 +1054,62 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: <b>5. Interactions:</b>&nbsp; joint effects
+                            label: '**5. Interactions:**&nbsp; joint effects'
                             margin: none
                             minWidth: 450
                             maxWidth: 450
                             children:
                               - type: Label
-                                label: <b>Analyse:</b>
+                                label: ' '
+                                margin: none
+                                horizontalAlignment: right
+                                cell:
+                                  row: 1
+                                  column: 0
+                              - type: LayoutBox
+                                style: inline
+                                cell:
+                                  row: 1
+                                  column: 1
+                                children:
+                                  - type: CollapseBox
+                                    collapsed: true
+                                    label: Options
+                                    children:
+                                      - type: Label
+                                        label: ' '
+                                        minWidth: 10
+                                        cell:
+                                          row: 0
+                                          column: 0
+                                      - type: Label
+                                        label: rₚ(interaction)
+                                        margin: none
+                                        cell:
+                                          row: 0
+                                          column: 1
+                                      - type: TextBox
+                                        format: number
+                                        name: doBasics5EffectSize1x2
+                                        margin: none
+                                        cell:
+                                          row: 0
+                                          column: 2
+                                      - type: Label
+                                        label: 'n'
+                                        margin: none
+                                        cell:
+                                          row: 1
+                                          column: 1
+                                      - type: TextBox
+                                        format: number
+                                        name: doBasics5SampleSize
+                                        margin: none
+                                        cell:
+                                          row: 1
+                                          column: 2
+                              - type: Label
+                                label: '**Analyse:**'
                                 margin: none
                                 horizontalAlignment: right
                                 cell:
@@ -1177,85 +1160,16 @@ children:
                                     cell:
                                       row: 3
                                       column: 8
+                                  - type: ActionButton
+                                    name: doBasics5RBtn
+                                    margin: none
+                                    maxWidth: 109
+                                    maxHeight: 24
+                                    cell:
+                                      row: 3
+                                      column: 9
                               - type: Label
-                                label: ' '
-                                margin: none
-                                horizontalAlignment: right
-                                cell:
-                                  row: 1
-                                  column: 0
-                              - type: LayoutBox
-                                style: inline
-                                cell:
-                                  row: 1
-                                  column: 1
-                                children:
-                                  - type: CollapseBox
-                                    collapsed: true
-                                    label: >-
-                                      <span style="color:hsl(205, 100%,
-                                      41%);">Options</span>
-                                    children:
-                                      - type: Label
-                                        label: ' '
-                                        minWidth: 10
-                                        cell:
-                                          row: 0
-                                          column: 0
-                                      - type: Label
-                                        label: r<sub>p</sub>(Main 1)
-                                        margin: none
-                                        cell:
-                                          row: 0
-                                          column: 1
-                                      - type: TextBox
-                                        format: number
-                                        name: doBasics5EffectSize1
-                                        margin: none
-                                        cell:
-                                          row: 0
-                                          column: 2
-                                      - type: Label
-                                        label: r<sub>p</sub>(Main 2)
-                                        margin: none
-                                        cell:
-                                          row: 0
-                                          column: 3
-                                      - type: TextBox
-                                        format: number
-                                        name: doBasics5EffectSize2
-                                        margin: none
-                                        cell:
-                                          row: 0
-                                          column: 4
-                                      - type: Label
-                                        label: r<sub>p</sub>(interaction)
-                                        margin: none
-                                        cell:
-                                          row: 0
-                                          column: 5
-                                      - type: TextBox
-                                        format: number
-                                        name: doBasics5EffectSize1x2
-                                        margin: none
-                                        cell:
-                                          row: 0
-                                          column: 6
-                                      - type: Label
-                                        label: 'n'
-                                        margin: none
-                                        cell:
-                                          row: 1
-                                          column: 1
-                                      - type: TextBox
-                                        format: number
-                                        name: doBasics5SampleSize
-                                        margin: none
-                                        cell:
-                                          row: 1
-                                          column: 2
-                              - type: Label
-                                label: <b>Steps:</b>
+                                label: '**Steps:**'
                                 margin: none
                                 horizontalAlignment: right
                                 verticalAlignment: top
@@ -1412,13 +1326,13 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: <b>6. Covariation:</b>&nbsp; overlapping effects
+                            label: '**6. Covariation:**&nbsp; overlapping effects'
                             margin: none
                             minWidth: 450
                             maxWidth: 450
                             children:
                               - type: Label
-                                label: <b>Analyse:</b>
+                                label: '**Analyse:**'
                                 margin: none
                                 horizontalAlignment: right
                                 cell:
@@ -1456,6 +1370,14 @@ children:
                                     cell:
                                       row: 3
                                       column: 6
+                                  - type: ActionButton
+                                    name: doBasics6RBtn
+                                    margin: none
+                                    maxWidth: 109
+                                    maxHeight: 24
+                                    cell:
+                                      row: 3
+                                      column: 7
                               - type: Label
                                 label: ' '
                                 margin: none
@@ -1471,9 +1393,7 @@ children:
                                 children:
                                   - type: CollapseBox
                                     collapsed: true
-                                    label: >-
-                                      <span style="color:hsl(205, 100%,
-                                      41%);">Options</span>
+                                    label: Options
                                     children:
                                       - type: Label
                                         label: ' '
@@ -1482,44 +1402,18 @@ children:
                                           row: 0
                                           column: 0
                                       - type: Label
-                                        label: r<sub>p</sub>(Main 1)
+                                        label: rₚ(covariation)
                                         margin: none
                                         cell:
                                           row: 0
                                           column: 1
                                       - type: TextBox
                                         format: number
-                                        name: doBasics6EffectSize1
-                                        margin: none
-                                        cell:
-                                          row: 0
-                                          column: 2
-                                      - type: Label
-                                        label: r<sub>p</sub>(Main 2)
-                                        margin: none
-                                        cell:
-                                          row: 0
-                                          column: 3
-                                      - type: TextBox
-                                        format: number
-                                        name: doBasics6EffectSize2
-                                        margin: none
-                                        cell:
-                                          row: 0
-                                          column: 4
-                                      - type: Label
-                                        label: r<sub>p</sub>(covariation)
-                                        margin: none
-                                        cell:
-                                          row: 0
-                                          column: 5
-                                      - type: TextBox
-                                        format: number
                                         name: doBasics6EffectSize12
                                         margin: none
                                         cell:
                                           row: 0
-                                          column: 6
+                                          column: 2
                                       - type: Label
                                         label: 'n'
                                         margin: none
@@ -1534,7 +1428,7 @@ children:
                                           row: 1
                                           column: 2
                               - type: Label
-                                label: <b>Steps:</b>
+                                label: '**Steps:**'
                                 margin: none
                                 horizontalAlignment: right
                                 verticalAlignment: top
@@ -1691,7 +1585,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: '<span style="color:hsl(10, 50%, 50%);">Test yourself</span>'
+                            label: '*Test yourself*'
                             margin: none
                             minWidth: 420
                             maxWidth: 420
@@ -1703,7 +1597,7 @@ children:
                                 minWidth: 38
                                 verticalAlignment: top
                   - type: CollapseBox
-                    label: <b>Tests for Experiments</b>
+                    label: '**Tests for Experiments**'
                     collapsed: true
                     children:
                       - type: LayoutBox
@@ -1714,7 +1608,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: <b>7. One IV:</b>&nbsp; is there a difference?
+                            label: '**7. One IV:**&nbsp; is there a difference?'
                             margin: none
                             minWidth: 450
                             maxWidth: 450
@@ -1853,7 +1747,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: <b>8. 2x2 IVs:</b>&nbsp; effects and interactions
+                            label: '**8. 2x2 IVs:**&nbsp; effects and interactions'
                             margin: none
                             minWidth: 450
                             maxWidth: 450
@@ -2015,7 +1909,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: '<span style="color:hsl(10, 50%, 50%);">Test yourself</span>'
+                            label: '*Test yourself*'
                             margin: none
                             minWidth: 420
                             maxWidth: 420
@@ -2027,7 +1921,7 @@ children:
                                 minWidth: 38
                                 verticalAlignment: top
                   - type: CollapseBox
-                    label: <b>Advanced models</b>
+                    label: '**Advanced models**'
                     collapsed: true
                     children:
                       - type: LayoutBox
@@ -2038,7 +1932,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: <b>9. Moderation:</b>&nbsp; altering effects
+                            label: '**9. Moderation:**&nbsp; altering effects'
                             margin: none
                             minWidth: 450
                             maxWidth: 450
@@ -2075,9 +1969,7 @@ children:
                                                       row: 0
                                                       column: 0
                                                   - type: Label
-                                                    label: >-
-                                                      <span style="color:hsl(205, 0%,
-                                                      70%);">main 1</span>
+                                                    label: '**main 1**'
                                                     horizontalAlignment: right
                                                     cell:
                                                       row: 1
@@ -2090,9 +1982,7 @@ children:
                                                       column: 2
                                                     enable: (1:2)
                                                   - type: Label
-                                                    label: >-
-                                                      <span style="color:hsl(205, 0%,
-                                                      70%);">main 2</span>
+                                                    label: '**main 2**'
                                                     horizontalAlignment: right
                                                     cell:
                                                       row: 1
@@ -2119,9 +2009,7 @@ children:
                                                     events:
                                                       change: ./brawsim.events::onChange_basics9A
                                                   - type: Label
-                                                    label: >-
-                                                      <span style="color:hsl(205, 0%,
-                                                      70%);">interaction</span>
+                                                    label: '**interaction**'
                                                     horizontalAlignment: right
                                                     cell:
                                                       row: 1
@@ -2187,9 +2075,7 @@ children:
                                                       row: 0
                                                       column: 0
                                                   - type: Label
-                                                    label: >-
-                                                      <span style="color:hsl(205, 0%,
-                                                      70%);">main 1</span>
+                                                    label: '**main 1**'
                                                     horizontalAlignment: right
                                                     cell:
                                                       row: 1
@@ -2202,9 +2088,7 @@ children:
                                                       column: 2
                                                     enable: (1:2)
                                                   - type: Label
-                                                    label: >-
-                                                      <span style="color:hsl(205, 0%,
-                                                      70%);">main 2</span>
+                                                    label: '**main 2**'
                                                     horizontalAlignment: right
                                                     cell:
                                                       row: 1
@@ -2231,9 +2115,7 @@ children:
                                                     events:
                                                       change: ./brawsim.events::onChange_doBasics9B
                                                   - type: Label
-                                                    label: >-
-                                                      <span style="color:hsl(205, 0%,
-                                                      70%);">interaction</span>
+                                                    label: '**interaction**'
                                                     horizontalAlignment: right
                                                     cell:
                                                       row: 1
@@ -2299,9 +2181,7 @@ children:
                                                       row: 0
                                                       column: 0
                                                   - type: Label
-                                                    label: >-
-                                                      <span style="color:hsl(205, 0%,
-                                                      70%);">main 1</span>
+                                                    label: '**main 1**'
                                                     horizontalAlignment: right
                                                     cell:
                                                       row: 1
@@ -2314,9 +2194,7 @@ children:
                                                       column: 2
                                                     enable: (1:2)
                                                   - type: Label
-                                                    label: >-
-                                                      <span style="color:hsl(205, 0%,
-                                                      70%);">main 2</span>
+                                                    label: '**main 2**'
                                                     horizontalAlignment: right
                                                     cell:
                                                       row: 1
@@ -2343,9 +2221,7 @@ children:
                                                     events:
                                                       change: ./brawsim.events::onChange_doBasics9B
                                                   - type: Label
-                                                    label: >-
-                                                      <span style="color:hsl(205, 0%,
-                                                      70%);">interaction</span>
+                                                    label: '**interaction**'
                                                     horizontalAlignment: right
                                                     cell:
                                                       row: 1
@@ -2407,7 +2283,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: <b>10. Mediation:</b>&nbsp; paths of effects
+                            label: '**10. Mediation:**&nbsp; paths of effects'
                             margin: none
                             minWidth: 450
                             maxWidth: 450
@@ -2530,9 +2406,7 @@ children:
                                                       row: 0
                                                       column: 0
                                                   - type: Label
-                                                    label: >-
-                                                      <span style="color:hsl(205, 0%,
-                                                      70%);">main 1</span>
+                                                    label: '**main 1**'
                                                     horizontalAlignment: right
                                                     cell:
                                                       row: 1
@@ -2545,9 +2419,7 @@ children:
                                                       column: 2
                                                     enable: (1:2)
                                                   - type: Label
-                                                    label: >-
-                                                      <span style="color:hsl(205, 0%,
-                                                      70%);">main 2</span>
+                                                    label: '**main 2**'
                                                     horizontalAlignment: right
                                                     cell:
                                                       row: 1
@@ -2574,9 +2446,7 @@ children:
                                                     events:
                                                       change: ./brawsim.events::onChange_doBasics10C
                                                   - type: Label
-                                                    label: >-
-                                                      <span style="color:hsl(205, 0%,
-                                                      70%);">covariation</span>
+                                                    label: '**covariation**'
                                                     horizontalAlignment: right
                                                     cell:
                                                       row: 1
@@ -2642,9 +2512,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: >-
-                          <span style="color:hsl(205, 100%,
-                          41%);">Instructions</span>
+                        label: '*Instructions*'
                         margin: none
                         minWidth: 250
                         maxWidth: 250
@@ -2695,10 +2563,7 @@ children:
                                 label: ' '
                                 minWidth: 15
                               - type: Label
-                                label: >-
-                                  To get more information, press the  <a
-                                  href="https://doingpsychstats.wordpress.com/metascience/"
-                                  target="_blank">ⓘlink</a> above the graphs
+                                label: 'To get more information, press the ⓘlink above the graphs'
                           - type: LayoutBox
                             style: inline
                             children:
@@ -2725,7 +2590,7 @@ children:
                                       - type: ActionButton
                                         name: doMeta0Btn
                                         maxHeight: 24
-                                        maxWidth: 15
+                                        maxWidth: 79
                                         margin: none
                                       - type: Label
                                         label: button
@@ -2784,7 +2649,7 @@ children:
                                       - type: ActionButton
                                         name: doMeta0RBtn
                                         maxHeight: 24
-                                        maxWidth: 15
+                                        maxWidth: 79
                                         margin: none
                                       - type: Label
                                         label: button
@@ -2815,7 +2680,7 @@ children:
                                       - type: ActionButton
                                         name: doMeta0CBtn
                                         maxHeight: 24
-                                        maxWidth: 15
+                                        maxWidth: 79
                                         margin: none
                                       - type: Label
                                         label: button
@@ -2853,7 +2718,7 @@ children:
                                       - type: ActionButton
                                         name: doMeta0mBtn
                                         maxHeight: 24
-                                        maxWidth: 15
+                                        maxWidth: 79
                                         margin: none
                                       - type: Label
                                         label: button
@@ -2912,7 +2777,7 @@ children:
                                   - type: ActionButton
                                     name: doMeta0ABtn
                                     maxHeight: 24
-                                    maxWidth: 15
+                                    maxWidth: 79
                                     margin: none
                                     cell:
                                       row: 0
@@ -2925,7 +2790,7 @@ children:
                                   - type: ActionButton
                                     name: doMeta0ArBtn
                                     maxHeight: 24
-                                    maxWidth: 15
+                                    maxWidth: 79
                                     margin: none
                                     cell:
                                       row: 0
@@ -2938,7 +2803,7 @@ children:
                                   - type: ActionButton
                                     name: doMeta0AmBtn
                                     maxHeight: 24
-                                    maxWidth: 15
+                                    maxWidth: 79
                                     margin: none
                                     cell:
                                       row: 1
@@ -2951,7 +2816,7 @@ children:
                                   - type: ActionButton
                                     name: doMeta0AmrBtn
                                     maxHeight: 24
-                                    maxWidth: 15
+                                    maxWidth: 79
                                     margin: none
                                     cell:
                                       row: 1
@@ -2961,9 +2826,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: >-
-                          <span style="color:hsl(205, 100%, 41%);">Default
-                          Settings</span>
+                        label: '*Default Settings*'
                         margin: none
                         minWidth: 250
                         maxWidth: 250
@@ -2992,7 +2855,7 @@ children:
                                           row: 0
                                           column: 0
                                       - type: Label
-                                        label: p(R<sub>+</sub>)
+                                        label: p(R₊)
                                         horizontalAlignment: right
                                         cell:
                                           row: 1
@@ -3007,7 +2870,7 @@ children:
                                           row: 1
                                           column: 2
                                       - type: Label
-                                        label: mean(R<sub>+</sub>)
+                                        label: mean(R₊)
                                         horizontalAlignment: right
                                         cell:
                                           row: 2
@@ -3099,7 +2962,7 @@ children:
                                           row: 0
                                           column: 0
                                       - type: Label
-                                        label: w<sub>s</sub>
+                                        label: wₛ
                                         horizontalAlignment: right
                                         cell:
                                           row: 6
@@ -3156,9 +3019,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: >-
-                          1.&nbsp;<b>Inferences:</b>&nbsp;  how useful are
-                          p-values?
+                        label: '1.&nbsp;**Inferences:**&nbsp;  how useful are p-values?'
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -3173,7 +3034,7 @@ children:
                                   row: 0
                                   column: 0
                               - type: Label
-                                label: p(R<sub>+</sub>)
+                                label: p(R₊)
                                 cell:
                                   row: 0
                                   column: 1
@@ -3185,7 +3046,7 @@ children:
                                   row: 0
                                   column: 2
                               - type: Label
-                                label: mean(R<sub>+</sub>)
+                                label: mean(R₊)
                                 cell:
                                   row: 0
                                   column: 3
@@ -3225,24 +3086,19 @@ children:
                                       - type: ActionButton
                                         name: doMeta1ABtn
                                         maxHeight: 24
-                                        maxWidth: 15
+                                        maxWidth: 79
                                         margin: none
                                         cell:
                                           row: 0
                                           column: 2
-                                      - type: Label
-                                        label: Press here to see multiple samples
-                                        cell:
-                                          row: 1
-                                          column: 1
                                       - type: ActionButton
                                         name: doMeta1AmBtn
                                         maxHeight: 24
-                                        maxWidth: 15
+                                        maxWidth: 79
                                         margin: none
                                         cell:
-                                          row: 1
-                                          column: 2
+                                          row: 0
+                                          column: 3
                           - type: LayoutBox
                             style: inline
                             children:
@@ -3274,24 +3130,19 @@ children:
                                       - type: ActionButton
                                         name: doMeta1BBtn
                                         maxHeight: 24
-                                        maxWidth: 15
+                                        maxWidth: 79
                                         margin: none
                                         cell:
                                           row: 0
                                           column: 2
-                                      - type: Label
-                                        label: Press here to see multiple samples
-                                        cell:
-                                          row: 1
-                                          column: 1
                                       - type: ActionButton
                                         name: doMeta1BmBtn
                                         maxHeight: 24
-                                        maxWidth: 15
+                                        maxWidth: 79
                                         margin: none
                                         cell:
-                                          row: 1
-                                          column: 2
+                                          row: 0
+                                          column: 3
                       - type: ActionButton
                         name: meta1Help
                         margin: none
@@ -3303,7 +3154,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: 2.&nbsp;<b>Sample Size:</b>&nbsp;  who benefits?
+                        label: '2.&nbsp;**Sample Size:**&nbsp;  who benefits?'
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -3318,7 +3169,7 @@ children:
                                   row: 0
                                   column: 0
                               - type: Label
-                                label: p(R<sub>+</sub>)
+                                label: p(R₊)
                                 cell:
                                   row: 0
                                   column: 1
@@ -3330,7 +3181,7 @@ children:
                                   row: 0
                                   column: 2
                               - type: Label
-                                label: mean(R<sub>+</sub>)
+                                label: mean(R₊)
                                 cell:
                                   row: 0
                                   column: 3
@@ -3375,24 +3226,19 @@ children:
                                           - type: ActionButton
                                             name: doMeta2ABtn
                                             maxHeight: 24
-                                            maxWidth: 15
+                                            maxWidth: 79
                                             margin: none
                                             cell:
                                               row: 0
                                               column: 2
-                                          - type: Label
-                                            label: Press here to see multiple samples
-                                            cell:
-                                              row: 1
-                                              column: 1
                                           - type: ActionButton
                                             name: doMeta2AmBtn
                                             maxHeight: 24
-                                            maxWidth: 15
+                                            maxWidth: 79
                                             margin: none
                                             cell:
-                                              row: 1
-                                              column: 2
+                                              row: 0
+                                              column: 3
                           - type: LayoutBox
                             style: inline
                             children:
@@ -3436,7 +3282,7 @@ children:
                                           - type: ActionButton
                                             name: doMeta2BBtn
                                             maxHeight: 24
-                                            maxWidth: 15
+                                            maxWidth: 79
                                             margin: none
                                             cell:
                                               row: 0
@@ -3449,7 +3295,7 @@ children:
                                           - type: ActionButton
                                             name: doMeta2BmBtn
                                             maxHeight: 24
-                                            maxWidth: 15
+                                            maxWidth: 79
                                             margin: none
                                             cell:
                                               row: 1
@@ -3465,9 +3311,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: >-
-                          3.&nbsp;<b>Sampling Method:</b>&nbsp;  are we
-                          cheating?
+                        label: '3.&nbsp;**Sampling Method:**&nbsp;  are we cheating?'
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -3482,7 +3326,7 @@ children:
                                   row: 0
                                   column: 0
                               - type: Label
-                                label: p(R<sub>+</sub>)
+                                label: p(R₊)
                                 cell:
                                   row: 0
                                   column: 1
@@ -3494,7 +3338,7 @@ children:
                                   row: 0
                                   column: 2
                               - type: Label
-                                label: mean(R<sub>+</sub>)
+                                label: mean(R₊)
                                 cell:
                                   row: 0
                                   column: 3
@@ -3542,24 +3386,19 @@ children:
                                       - type: ActionButton
                                         name: doMeta3ABtn
                                         maxHeight: 24
-                                        maxWidth: 15
+                                        maxWidth: 79
                                         margin: none
                                         cell:
                                           row: 0
                                           column: 2
-                                      - type: Label
-                                        label: Press here to see multiple samples
-                                        cell:
-                                          row: 1
-                                          column: 1
                                       - type: ActionButton
                                         name: doMeta3AmBtn
                                         maxHeight: 24
-                                        maxWidth: 15
+                                        maxWidth: 79
                                         margin: none
                                         cell:
-                                          row: 1
-                                          column: 2
+                                          row: 0
+                                          column: 3
                           - type: LayoutBox
                             style: inline
                             children:
@@ -3593,24 +3432,19 @@ children:
                                           - type: ActionButton
                                             name: doMeta3BBtn
                                             maxHeight: 24
-                                            maxWidth: 15
+                                            maxWidth: 79
                                             margin: none
                                             cell:
                                               row: 0
                                               column: 2
-                                          - type: Label
-                                            label: Press here to see multiple samples
-                                            cell:
-                                              row: 1
-                                              column: 1
                                           - type: ActionButton
                                             name: doMeta3BmBtn
                                             maxHeight: 24
-                                            maxWidth: 15
+                                            maxWidth: 79
                                             margin: none
                                             cell:
-                                              row: 1
-                                              column: 2
+                                              row: 0
+                                              column: 3
                       - type: ActionButton
                         name: meta3Help
                         margin: none
@@ -3622,9 +3456,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: >-
-                          4.&nbsp;<b>Double Checking:</b>&nbsp;  how good is
-                          replication?
+                        label: '4.&nbsp;**Double Checking:**&nbsp;  how good is replication?'
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -3639,7 +3471,7 @@ children:
                                   row: 0
                                   column: 0
                               - type: Label
-                                label: p(R<sub>+</sub>)
+                                label: p(R₊)
                                 cell:
                                   row: 0
                                   column: 1
@@ -3651,7 +3483,7 @@ children:
                                   row: 0
                                   column: 2
                               - type: Label
-                                label: mean(R<sub>+</sub>)
+                                label: mean(R₊)
                                 cell:
                                   row: 0
                                   column: 3
@@ -3689,73 +3521,74 @@ children:
                                         style: inline
                                         children:
                                           - type: Label
-                                            label: Original sample
+                                            label: ' '
+                                            minWidth: 35
                                             cell:
                                               row: 0
                                               column: 1
-                                          - type: ActionButton
-                                            name: doMeta4ABtn
-                                            maxHeight: 24
-                                            maxWidth: 15
-                                            margin: none
+                                          - type: Label
+                                            label: 'Original'
                                             cell:
                                               row: 0
                                               column: 2
                                           - type: Label
-                                            label: Replicate
+                                            label: 'Replicate'
                                             cell:
                                               row: 0
                                               column: 3
-                                          - type: ActionButton
-                                            name: doMeta4ArBtn
-                                            maxHeight: 24
-                                            maxWidth: 15
-                                            margin: none
+                                          - type: Label
+                                            label: 'Combine'
                                             cell:
                                               row: 0
                                               column: 4
-                                          - type: Label
-                                            label: Combine
+                                          - type: ActionButton
+                                            name: doMeta4ABtn
+                                            maxHeight: 24
+                                            maxWidth: 79
+                                            margin: none
                                             cell:
-                                              row: 0
-                                              column: 5
+                                              row: 1
+                                              column: 2
+                                          - type: ActionButton
+                                            name: doMeta4ArBtn
+                                            maxHeight: 24
+                                            maxWidth: 79
+                                            margin: none
+                                            cell:
+                                              row: 1
+                                              column: 3
                                           - type: ActionButton
                                             name: doMeta4AcBtn
                                             maxHeight: 24
-                                            maxWidth: 15
+                                            maxWidth: 79
                                             margin: none
                                             cell:
-                                              row: 0
-                                              column: 6
-                                          - type: Label
-                                            label: Multiple samples
-                                            cell:
                                               row: 1
-                                              column: 1
+                                              column: 4
                                           - type: ActionButton
                                             name: doMeta4AmBtn
                                             maxHeight: 24
-                                            maxWidth: 15
+                                            maxWidth: 79
                                             margin: none
                                             cell:
-                                              row: 1
+                                              row: 2
                                               column: 2
                                           - type: ActionButton
                                             name: doMeta4AmrBtn
                                             maxHeight: 24
-                                            maxWidth: 15
+                                            maxWidth: 79
                                             margin: none
                                             cell:
-                                              row: 1
-                                              column: 4
+                                              row: 2
+                                              column: 3
                                           - type: ActionButton
                                             name: doMeta4AmcBtn
                                             maxHeight: 24
-                                            maxWidth: 15
+                                            maxWidth: 79
                                             margin: none
                                             cell:
-                                              row: 1
-                                              column: 6
+                                              row: 2
+                                              column: 4
                           - type: LayoutBox
                             style: inline
                             children:
@@ -3783,76 +3616,76 @@ children:
                                             margin: none
                                       - type: LayoutBox
                                         style: inline
-                                        margin: none
                                         children:
                                           - type: Label
-                                            label: Original sample
+                                            label: ' '
+                                            minWidth: 35
                                             cell:
                                               row: 0
                                               column: 1
-                                          - type: ActionButton
-                                            name: doMeta4BBtn
-                                            maxHeight: 24
-                                            maxWidth: 15
-                                            margin: none
+                                          - type: Label
+                                            label: 'Original'
                                             cell:
                                               row: 0
                                               column: 2
                                           - type: Label
-                                            label: Replicate
+                                            label: 'Replicate'
                                             cell:
                                               row: 0
                                               column: 3
-                                          - type: ActionButton
-                                            name: doMeta4BrBtn
-                                            maxHeight: 24
-                                            maxWidth: 15
-                                            margin: none
+                                          - type: Label
+                                            label: 'Combine'
                                             cell:
                                               row: 0
                                               column: 4
-                                          - type: Label
-                                            label: Combine
+                                          - type: ActionButton
+                                            name: doMeta4BBtn
+                                            maxHeight: 24
+                                            maxWidth: 79
+                                            margin: none
                                             cell:
-                                              row: 0
-                                              column: 5
+                                              row: 1
+                                              column: 2
+                                          - type: ActionButton
+                                            name: doMeta4BrBtn
+                                            maxHeight: 24
+                                            maxWidth: 79
+                                            margin: none
+                                            cell:
+                                              row: 1
+                                              column: 3
                                           - type: ActionButton
                                             name: doMeta4BcBtn
                                             maxHeight: 24
-                                            maxWidth: 15
+                                            maxWidth: 79
                                             margin: none
                                             cell:
-                                              row: 0
-                                              column: 6
-                                          - type: Label
-                                            label: Multiple samples
-                                            cell:
                                               row: 1
-                                              column: 1
+                                              column: 4
                                           - type: ActionButton
                                             name: doMeta4BmBtn
                                             maxHeight: 24
-                                            maxWidth: 15
+                                            maxWidth: 79
                                             margin: none
                                             cell:
-                                              row: 1
+                                              row: 2
                                               column: 2
                                           - type: ActionButton
                                             name: doMeta4BmrBtn
                                             maxHeight: 24
-                                            maxWidth: 15
+                                            maxWidth: 79
                                             margin: none
                                             cell:
-                                              row: 1
-                                              column: 4
+                                              row: 2
+                                              column: 3
                                           - type: ActionButton
                                             name: doMeta4BmcBtn
                                             maxHeight: 24
-                                            maxWidth: 15
+                                            maxWidth: 79
                                             margin: none
                                             cell:
-                                              row: 1
-                                              column: 6
+                                              row: 2
+                                              column: 4
                       - type: ActionButton
                         name: meta4Help
                         margin: none
@@ -3864,9 +3697,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: >-
-                          5.&nbsp;<b>Real Differences:</b>&nbsp;  when should
-                          replication fail?
+                        label: '5.&nbsp;**Real Differences:**&nbsp;  when should replication fail?'
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -3898,7 +3729,7 @@ children:
                                           - type: ActionButton
                                             name: doMeta5ABtn
                                             maxHeight: 24
-                                            maxWidth: 15
+                                            maxWidth: 79
                                             margin: none
                                             cell:
                                               row: 0
@@ -3911,7 +3742,7 @@ children:
                                           - type: ActionButton
                                             name: doMeta5ArBtn
                                             maxHeight: 24
-                                            maxWidth: 15
+                                            maxWidth: 79
                                             margin: none
                                             cell:
                                               row: 0
@@ -3924,7 +3755,7 @@ children:
                                           - type: ActionButton
                                             name: doMeta5AmBtn
                                             maxHeight: 24
-                                            maxWidth: 15
+                                            maxWidth: 79
                                             margin: none
                                             cell:
                                               row: 1
@@ -3932,7 +3763,7 @@ children:
                                           - type: ActionButton
                                             name: doMeta5AmrBtn
                                             maxHeight: 24
-                                            maxWidth: 15
+                                            maxWidth: 79
                                             margin: none
                                             cell:
                                               row: 1
@@ -3965,7 +3796,7 @@ children:
                                           - type: ActionButton
                                             name: doMeta5BBtn
                                             maxHeight: 24
-                                            maxWidth: 15
+                                            maxWidth: 79
                                             margin: none
                                             cell:
                                               row: 0
@@ -3978,7 +3809,7 @@ children:
                                           - type: ActionButton
                                             name: doMeta5BrBtn
                                             maxHeight: 24
-                                            maxWidth: 15
+                                            maxWidth: 79
                                             margin: none
                                             cell:
                                               row: 0
@@ -3991,7 +3822,7 @@ children:
                                           - type: ActionButton
                                             name: doMeta5BmBtn
                                             maxHeight: 24
-                                            maxWidth: 15
+                                            maxWidth: 79
                                             margin: none
                                             cell:
                                               row: 1
@@ -3999,7 +3830,7 @@ children:
                                           - type: ActionButton
                                             name: doMeta5BmrBtn
                                             maxHeight: 24
-                                            maxWidth: 15
+                                            maxWidth: 79
                                             margin: none
                                             cell:
                                               row: 1
@@ -4019,7 +3850,7 @@ children:
                 children:
                   - type: CollapseBox
                     collapsed: true
-                    label: '1. <b> Make a Plan</b>: hypothesis, design & analysis'
+                    label: '1.&nbsp;**Make a Plan**: hypothesis, design & analysis'
                     margin: none
                     minWidth: 470
                     maxWidth: 470
@@ -4044,10 +3875,7 @@ children:
                                     margin: none
                                     children:
                                       - type: Label
-                                        label: >-
-                                          <span style="color:hsl(205, 100%,
-                                          31%);"><i>Decisions about variables and
-                                          their effects (relationships)
+                                        label: '*Decisions about variables and their effects (relationships)*'
                                       - type: CollapseBox
                                         collapsed: true
                                         label: Variables
@@ -4059,10 +3887,7 @@ children:
                                             style: list
                                             children:
                                               - type: Label
-                                                label: >-
-                                                  <span style="color:hsl(205, 100%,
-                                                  31%);"><i>Define the DV and 1 or 2 IVs:
-                                                  choose a preset or edit.
+                                                label: '*Define the DV and 1 or 2 IVs: choose a preset or edit.*'
                                               - type: LayoutBox
                                                 style: list
                                                 children:
@@ -4404,10 +4229,7 @@ children:
                                             style: list
                                             children:
                                               - type: Label
-                                                label: >-
-                                                  <span style="color:hsl(205, 100%,
-                                                  31%);"><i>Set the effect each variable
-                                                  has on the others
+                                                label: '*Set the effect each variable has on the others*'
                                               - type: LayoutBox
                                                 style: inline
                                                 margin: none
@@ -4416,10 +4238,7 @@ children:
                                                     label: ' '
                                                     minWidth: 2
                                                   - type: Label
-                                                    label: >-
-                                                      <span style="color:hsl(205, 100%,
-                                                      31%);"><i>- these are r and range
-                                                      between -1 and +1
+                                                    label: '*- these are r and range between -1 and +1*'
                                               - type: LayoutBox
                                                 style: list
                                                 children:
@@ -4530,10 +4349,7 @@ children:
                                     margin: none
                                     children:
                                       - type: Label
-                                        label: >-
-                                          <span style="color:hsl(205, 100%,
-                                          31%);"><i>Decisions about how to sample
-                                          from the population
+                                        label: '*Decisions about how to sample from the population*'
                                       - type: CollapseBox
                                         label: Sampling
                                         collapsed: true
@@ -4696,11 +4512,7 @@ children:
                                     margin: none
                                     children:
                                       - type: Label
-                                        label: >-
-                                          <span style="color:hsl(205, 100%,
-                                          31%);"><i>Decisions about: Descriptive
-                                          Stats, Inference and Likelihood
-                                          (optional)
+                                        label: '*Decisions about: Descriptive Stats, Inference and Likelihood  (optional)*'
                                       - type: CollapseBox
                                         label: Describe
                                         collapsed: true
@@ -4711,7 +4523,7 @@ children:
                                             style: inline
                                             children:
                                               - type: Label
-                                                label: '<i>Transform:'
+                                                label: '*Transform:*'
                                                 horizontalAlignment: right
                                                 cell:
                                                   row: 0
@@ -4722,7 +4534,7 @@ children:
                                                   row: 0
                                                   column: 1
                                               - type: Label
-                                                label: '<i>Model Terms:'
+                                                label: '*Model Terms:*'
                                                 horizontalAlignment: right
                                                 cell:
                                                   row: 1
@@ -4749,7 +4561,7 @@ children:
                                                       (!presetIV2:none &&
                                                       !EffectConfig:moderation)
                                               - type: Label
-                                                label: '<i>Details:'
+                                                label: '*Details:*'
                                                 horizontalAlignment: right
                                                 cell:
                                                   row: 2
@@ -4768,7 +4580,7 @@ children:
                                                     format: number
                                                     enable: (!presetIV2:none)
                                               - type: Label
-                                                label: '<i>Effect Types:'
+                                                label: '*Effect Types:*'
                                                 cell:
                                                   row: 3
                                                   column: 0
@@ -4790,7 +4602,7 @@ children:
                                             style: inline
                                             children:
                                               - type: Label
-                                                label: '<i>Method:'
+                                                label: '*Method:*'
                                                 horizontalAlignment: right
                                                 cell:
                                                   row: 0
@@ -4825,7 +4637,7 @@ children:
                                                   row: 0
                                                   column: 5
                                               - type: Label
-                                                label: '<i>Publication Bias:'
+                                                label: '*Publication Bias:*'
                                                 horizontalAlignment: right
                                                 cell:
                                                   row: 1
@@ -4849,7 +4661,7 @@ children:
                                                   row: 1
                                                   column: 3
                                               - type: Label
-                                                label: '<i>SEM analysis:'
+                                                label: '*SEM analysis:*'
                                                 horizontalAlignment: right
                                                 cell:
                                                   row: 2
@@ -4860,7 +4672,7 @@ children:
                                                   row: 2
                                                   column: 1
                                               - type: Label
-                                                label: '<i>Show:'
+                                                label: '*Show:*'
                                                 horizontalAlignment: right
                                                 cell:
                                                   row: 3
@@ -4889,7 +4701,7 @@ children:
                                             style: list
                                             children:
                                               - type: Label
-                                                label: '<i>Prior:'
+                                                label: '*Prior:*'
                                                 horizontalAlignment: right
                                                 cell:
                                                   row: 0
@@ -4935,7 +4747,7 @@ children:
                                                   likelihoodUsePrior:prior)
                                                 format: number
                                               - type: Label
-                                                label: '<i>Show:'
+                                                label: '*Show:*'
                                                 horizontalAlignment: right
                                                 cell:
                                                   row: 3
@@ -4971,10 +4783,7 @@ children:
                                         margin: none
                                         children:
                                           - type: Label
-                                            label: >-
-                                              <span style="color:hsl(205, 100%,
-                                              31%);"><i>Varying effect sizes and
-                                              sample sizes
+                                            label: '*Varying effect sizes and sample sizes*'
                                       - type: CollapseBox
                                         label: Varying Effect Sizes
                                         collapsed: true
@@ -5000,7 +4809,7 @@ children:
                                                   - type: CheckBox
                                                     name: WorldOn
                                               - type: Label
-                                                label: '<i>distribution H<sub>+</sub> :'
+                                                label: '*distribution H₊ :*'
                                                 horizontalAlignment: right
                                                 cell:
                                                   row: 2
@@ -5050,13 +4859,13 @@ children:
                                                   (WorldOn && (WorldPDF:GenExp ||
                                                   WorldPDF:Gamma))
                                               - type: Label
-                                                label: '+ <i>nulls H<sub>ø</sub> :'
+                                                label: '+ *nulls H₀ :*'
                                                 horizontalAlignment: right
                                                 cell:
                                                   row: 3
                                                   column: 0
                                               - type: Label
-                                                label: p(H<sub>ø</sub>)
+                                                label: p(H₀)
                                                 horizontalAlignment: right
                                                 cell:
                                                   row: 3
@@ -5069,7 +4878,7 @@ children:
                                                   row: 3
                                                   column: 4
                                               - type: Label
-                                                label: '& <i>prior sample H<sub>s</sub> :'
+                                                label: '& *prior sample Hₛ :*'
                                                 horizontalAlignment: right
                                                 cell:
                                                   row: 4
@@ -5081,7 +4890,7 @@ children:
                                                   row: 4
                                                   column: 1
                                               - type: Label
-                                                label: r<sub>s</sub>
+                                                label: rₛ
                                                 horizontalAlignment: right
                                                 cell:
                                                   row: 4
@@ -5128,7 +4937,7 @@ children:
                                                   - type: CheckBox
                                                     name: SampleSpreadOn
                                               - type: Label
-                                                label: '<i>distribution:'
+                                                label: '*distribution:*'
                                                 margin: none
                                                 cell:
                                                   row: 1
@@ -5171,9 +4980,7 @@ children:
                                     margin: none
                                     children:
                                       - type: Label
-                                        label: >-
-                                          <span style="color:hsl(205, 100%,
-                                          31%);"><i>Combining multiple samples
+                                        label: '*Combining multiple samples*'
                                       - type: CollapseBox
                                         label: Replication
                                         collapsed: true
@@ -5201,7 +5008,7 @@ children:
                                                 margin: none
                                                 children:
                                                   - type: Label
-                                                    label: '<i>Attempts:'
+                                                    label: '*Attempts:*'
                                                     horizontalAlignment: right
                                                     cell:
                                                       row: 0
@@ -5227,7 +5034,7 @@ children:
                                                       column: 3
                                                     enable: (ReplicationOn)
                                                   - type: Label
-                                                    label: '<i>Power:'
+                                                    label: '*Power:*'
                                                     horizontalAlignment: right
                                                     cell:
                                                       row: 1
@@ -5263,7 +5070,7 @@ children:
                                                     enable: (ReplicationOn)
                                                     format: number
                                                   - type: Label
-                                                    label: '<i>Decision:'
+                                                    label: '*Decision:*'
                                                     horizontalAlignment: right
                                                     cell:
                                                       row: 2
@@ -5297,7 +5104,7 @@ children:
                                                 margin: none
                                                 children:
                                                   - type: Label
-                                                    label: '<i>Estimate:'
+                                                    label: '*Estimate:*'
                                                     margin: none
                                                     horizontalAlignment: right
                                                     cell:
@@ -5335,7 +5142,7 @@ children:
                                                     enable: (MetaAnalysisOn)
                                                     margin: none
                                                   - type: Label
-                                                    label: '<i>Method:'
+                                                    label: '*Method:*'
                                                     horizontalAlignment: right
                                                     margin: none
                                                     cell:
@@ -5358,7 +5165,7 @@ children:
                                                       (MetaAnalysisOn &&
                                                       MetaAnalysisMethod:MLE)
                                                   - type: Label
-                                                    label: '<i>Studies:'
+                                                    label: '*Studies:*'
                                                     horizontalAlignment: right
                                                     margin: none
                                                     cell:
@@ -5380,7 +5187,7 @@ children:
                                                       column: 4
                                                     enable: (MetaAnalysisOn)
                                                   - type: Label
-                                                    label: '<i>Display:'
+                                                    label: '*Display:*'
                                                     horizontalAlignment: right
                                                     margin: none
                                                     cell:
@@ -5410,17 +5217,14 @@ children:
                 style: inline
                 children:
                   - type: CollapseBox
-                    label: '2. <b> Single Sample</b>: use the plan'
+                    label: '2.&nbsp;**Single Sample**: use the plan'
                     collapsed: true
                     minWidth: 470
                     maxWidth: 470
                     margin: none
                     children:
                       - type: Label
-                        label: >-
-                          <span style="color:hsl(205, 100%, 31%);"><i>Inspect
-                          the data (Sample, Describe) and then the analysis
-                          (Infer, Likelihood)
+                        label: '*Inspect the data (Sample, Describe) and then the analysis (Infer, Likelihood)*'
                       - type: LayoutBox
                         style: inline
                         margin: none
@@ -5429,9 +5233,7 @@ children:
                             label: ' '
                             minWidth: 2
                           - type: Label
-                            label: >-
-                              <span style="color:hsl(205, 100%, 31%);"><i>-
-                              there are various display options to try
+                            label: '*there are various display options to try*'
                       - type: LayoutBox
                         style: inline
                         margin: none
@@ -5457,17 +5259,14 @@ children:
                 style: inline
                 children:
                   - type: CollapseBox
-                    label: '3. <b> Multiple Samples</b>: test the plan'
+                    label: '3.&nbsp;**Multiple Samples**: test the plan'
                     collapsed: true
                     margin: none
                     minWidth: 470
                     maxWidth: 470
                     children:
                       - type: Label
-                        label: >-
-                          <span style="color:hsl(205, 100%, 31%);"><i>By running
-                          many samples, we can see the range of outcomes to
-                          expect
+                        label: '*By running many samples, we can see the range of outcomes to expect*'
                       - type: LayoutBox
                         style: inline
                         margin: none
@@ -5476,9 +5275,7 @@ children:
                             label: ' '
                             minWidth: 2
                           - type: Label
-                            label: >-
-                              <span style="color:hsl(205, 100%, 31%);"><i>-
-                              choose how many samples: more is better but slower
+                            label: '*- choose how many samples: more is better but slower*'
                       - type: LayoutBox
                         style: inline
                         margin: none
@@ -5516,16 +5313,14 @@ children:
                 style: inline
                 children:
                   - type: CollapseBox
-                    label: '4. <b> Explore</b>: vary the plan'
+                    label: '4.&nbsp;**Explore**: vary the plan'
                     collapsed: true
                     margin: none
                     minWidth: 470
                     maxWidth: 470
                     children:
                       - type: Label
-                        label: >-
-                          <span style="color:hsl(205, 100%, 31%);"><i>Explore
-                          will automatically vary decisions in the plan
+                        label: '*Explore will automatically vary decisions in the plan*'
                       - type: LayoutBox
                         style: inline
                         margin: none
@@ -5535,9 +5330,7 @@ children:
                             minWidth: 2
                           - type: Label
                             label: >-
-                              <span style="color:hsl(205, 100%, 31%);"><i>- you
-                              can change the range and the number of values to
-                              explore
+                              '*- you can change the range and the number of values to explore*'
                       - type: LayoutBox
                         style: inline
                         margin: none
@@ -5863,7 +5656,7 @@ children:
                 style: inline
                 children:
                   - type: CollapseBox
-                    label: <span style="color:hsl(205, 100%, 41%);">Settings</span>
+                    label: '*Settings*'
                     collapsed: true
                     margin: none
                     minWidth: 200
@@ -5913,7 +5706,7 @@ children:
                           - type: Label
                             label: ongoing calculations
                   - type: CollapseBox
-                    label: <span style="color:hsl(205, 100%, 41%);">History</span>
+                    label: '*History*'
                     collapsed: true
                     margin: none
                     minWidth: 200
@@ -5963,6 +5756,9 @@ children:
                             minWidth: 13
                           - type: Output
                             name: sendSample
+                            minWidth: 100
+                          - type: Output
+                            name: sendSamplewide
                             minWidth: 100
                           - type: Output
                             name: sendMultiple

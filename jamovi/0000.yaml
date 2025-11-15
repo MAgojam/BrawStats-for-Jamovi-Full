@@ -1,12 +1,12 @@
 ---
 title: Learn by Simulation
 name: BrawStats
-version: 2.2.1
+version: 2.2.3
 jms: '1.0'
 authors:
   - Roger Watt
 maintainer: Roger Watt <rjw1@stir.ac.uk>
-date: '2025-11-09'
+date: '2025-11-15'
 type: R
 description: |-
   BrawStats is designed to teach the basic principles of statistics.
