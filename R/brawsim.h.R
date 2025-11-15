@@ -168,7 +168,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             showExploreParam = "Basic",
             showExploreStyle = "stats",
             whichShowMultiple = "all",
-            brawHelp = TRUE,
+            brawHelp = FALSE,
             showHTML = TRUE,
             fixedAxes = FALSE,
             shorthandCalculations = FALSE,
@@ -206,9 +206,6 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             doBasics4EffectSize1 = 0.3,
             doBasics4EffectSize2 = -0.3,
             doBasics4SampleSize = 150,
-            doBasics4Main1 = TRUE,
-            doBasics4Main2 = TRUE,
-            doBasics4Interaction = TRUE,
             doBasics4ABtn = NULL,
             doBasics4AmBtn = NULL,
             doBasics4BBtn = NULL,
@@ -216,13 +213,12 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             doBasics4CBtn = NULL,
             doBasics4CmBtn = NULL,
             basics5Help = NULL,
-            doBasics5EffectSize1 = 0.3,
-            doBasics5EffectSize2 = -0.3,
             doBasics5EffectSize1x2 = -0.3,
             doBasics5SampleSize = 150,
             doBasics5Main1 = TRUE,
             doBasics5Main2 = TRUE,
             doBasics5Interaction = TRUE,
+            doBasics5RBtn = NULL,
             doBasics5ABtn = NULL,
             doBasics5AmBtn = NULL,
             doBasics5BBtn = NULL,
@@ -230,12 +226,11 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             doBasics5CBtn = NULL,
             doBasics5CmBtn = NULL,
             basics6Help = NULL,
-            doBasics6EffectSize1 = 0.3,
-            doBasics6EffectSize2 = -0.3,
-            doBasics6EffectSize12 = -0.3,
+            doBasics6EffectSize12 = 0.7,
             doBasics6SampleSize = 500,
             doBasics6Main1 = TRUE,
             doBasics6Main2 = FALSE,
+            doBasics6RBtn = NULL,
             doBasics6ABtn = NULL,
             doBasics6AmBtn = NULL,
             doBasics6BBtn = NULL,
@@ -1365,6 +1360,8 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 default="all")
             private$..sendSample <- jmvcore::OptionOutput$new(
                 "sendSample")
+            private$..sendSamplewide <- jmvcore::OptionOutput$new(
+                "sendSamplewide")
             private$..sendMultiple <- jmvcore::OptionOutput$new(
                 "sendMultiple")
             private$..sendExplore <- jmvcore::OptionOutput$new(
@@ -1372,7 +1369,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             private$..brawHelp <- jmvcore::OptionBool$new(
                 "brawHelp",
                 brawHelp,
-                default=TRUE)
+                default=FALSE)
             private$..showHTML <- jmvcore::OptionBool$new(
                 "showHTML",
                 showHTML,
@@ -1540,18 +1537,6 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 default=150,
                 min=10,
                 max=50000)
-            private$..doBasics4Main1 <- jmvcore::OptionBool$new(
-                "doBasics4Main1",
-                doBasics4Main1,
-                default=TRUE)
-            private$..doBasics4Main2 <- jmvcore::OptionBool$new(
-                "doBasics4Main2",
-                doBasics4Main2,
-                default=TRUE)
-            private$..doBasics4Interaction <- jmvcore::OptionBool$new(
-                "doBasics4Interaction",
-                doBasics4Interaction,
-                default=TRUE)
             private$..doBasics4ABtn <- jmvcore::OptionAction$new(
                 "doBasics4ABtn",
                 doBasics4ABtn)
@@ -1573,18 +1558,6 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             private$..basics5Help <- jmvcore::OptionAction$new(
                 "basics5Help",
                 basics5Help)
-            private$..doBasics5EffectSize1 <- jmvcore::OptionNumber$new(
-                "doBasics5EffectSize1",
-                doBasics5EffectSize1,
-                default=0.3,
-                min=-0.95,
-                max=0.95)
-            private$..doBasics5EffectSize2 <- jmvcore::OptionNumber$new(
-                "doBasics5EffectSize2",
-                doBasics5EffectSize2,
-                default=-0.3,
-                min=-0.95,
-                max=0.95)
             private$..doBasics5EffectSize1x2 <- jmvcore::OptionNumber$new(
                 "doBasics5EffectSize1x2",
                 doBasics5EffectSize1x2,
@@ -1609,6 +1582,9 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 "doBasics5Interaction",
                 doBasics5Interaction,
                 default=TRUE)
+            private$..doBasics5RBtn <- jmvcore::OptionAction$new(
+                "doBasics5RBtn",
+                doBasics5RBtn)
             private$..doBasics5ABtn <- jmvcore::OptionAction$new(
                 "doBasics5ABtn",
                 doBasics5ABtn)
@@ -1630,22 +1606,10 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             private$..basics6Help <- jmvcore::OptionAction$new(
                 "basics6Help",
                 basics6Help)
-            private$..doBasics6EffectSize1 <- jmvcore::OptionNumber$new(
-                "doBasics6EffectSize1",
-                doBasics6EffectSize1,
-                default=0.3,
-                min=-0.95,
-                max=0.95)
-            private$..doBasics6EffectSize2 <- jmvcore::OptionNumber$new(
-                "doBasics6EffectSize2",
-                doBasics6EffectSize2,
-                default=-0.3,
-                min=-0.95,
-                max=0.95)
             private$..doBasics6EffectSize12 <- jmvcore::OptionNumber$new(
                 "doBasics6EffectSize12",
                 doBasics6EffectSize12,
-                default=-0.3,
+                default=0.7,
                 min=-0.95,
                 max=0.95)
             private$..doBasics6SampleSize <- jmvcore::OptionNumber$new(
@@ -1662,6 +1626,9 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 "doBasics6Main2",
                 doBasics6Main2,
                 default=FALSE)
+            private$..doBasics6RBtn <- jmvcore::OptionAction$new(
+                "doBasics6RBtn",
+                doBasics6RBtn)
             private$..doBasics6ABtn <- jmvcore::OptionAction$new(
                 "doBasics6ABtn",
                 doBasics6ABtn)
@@ -2262,6 +2229,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..showExploreStyle)
             self$.addOption(private$..whichShowMultiple)
             self$.addOption(private$..sendSample)
+            self$.addOption(private$..sendSamplewide)
             self$.addOption(private$..sendMultiple)
             self$.addOption(private$..sendExplore)
             self$.addOption(private$..brawHelp)
@@ -2302,9 +2270,6 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..doBasics4EffectSize1)
             self$.addOption(private$..doBasics4EffectSize2)
             self$.addOption(private$..doBasics4SampleSize)
-            self$.addOption(private$..doBasics4Main1)
-            self$.addOption(private$..doBasics4Main2)
-            self$.addOption(private$..doBasics4Interaction)
             self$.addOption(private$..doBasics4ABtn)
             self$.addOption(private$..doBasics4AmBtn)
             self$.addOption(private$..doBasics4BBtn)
@@ -2312,13 +2277,12 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..doBasics4CBtn)
             self$.addOption(private$..doBasics4CmBtn)
             self$.addOption(private$..basics5Help)
-            self$.addOption(private$..doBasics5EffectSize1)
-            self$.addOption(private$..doBasics5EffectSize2)
             self$.addOption(private$..doBasics5EffectSize1x2)
             self$.addOption(private$..doBasics5SampleSize)
             self$.addOption(private$..doBasics5Main1)
             self$.addOption(private$..doBasics5Main2)
             self$.addOption(private$..doBasics5Interaction)
+            self$.addOption(private$..doBasics5RBtn)
             self$.addOption(private$..doBasics5ABtn)
             self$.addOption(private$..doBasics5AmBtn)
             self$.addOption(private$..doBasics5BBtn)
@@ -2326,12 +2290,11 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..doBasics5CBtn)
             self$.addOption(private$..doBasics5CmBtn)
             self$.addOption(private$..basics6Help)
-            self$.addOption(private$..doBasics6EffectSize1)
-            self$.addOption(private$..doBasics6EffectSize2)
             self$.addOption(private$..doBasics6EffectSize12)
             self$.addOption(private$..doBasics6SampleSize)
             self$.addOption(private$..doBasics6Main1)
             self$.addOption(private$..doBasics6Main2)
+            self$.addOption(private$..doBasics6RBtn)
             self$.addOption(private$..doBasics6ABtn)
             self$.addOption(private$..doBasics6AmBtn)
             self$.addOption(private$..doBasics6BBtn)
@@ -2609,6 +2572,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         showExploreStyle = function() private$..showExploreStyle$value,
         whichShowMultiple = function() private$..whichShowMultiple$value,
         sendSample = function() private$..sendSample$value,
+        sendSamplewide = function() private$..sendSamplewide$value,
         sendMultiple = function() private$..sendMultiple$value,
         sendExplore = function() private$..sendExplore$value,
         brawHelp = function() private$..brawHelp$value,
@@ -2649,9 +2613,6 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         doBasics4EffectSize1 = function() private$..doBasics4EffectSize1$value,
         doBasics4EffectSize2 = function() private$..doBasics4EffectSize2$value,
         doBasics4SampleSize = function() private$..doBasics4SampleSize$value,
-        doBasics4Main1 = function() private$..doBasics4Main1$value,
-        doBasics4Main2 = function() private$..doBasics4Main2$value,
-        doBasics4Interaction = function() private$..doBasics4Interaction$value,
         doBasics4ABtn = function() private$..doBasics4ABtn$value,
         doBasics4AmBtn = function() private$..doBasics4AmBtn$value,
         doBasics4BBtn = function() private$..doBasics4BBtn$value,
@@ -2659,13 +2620,12 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         doBasics4CBtn = function() private$..doBasics4CBtn$value,
         doBasics4CmBtn = function() private$..doBasics4CmBtn$value,
         basics5Help = function() private$..basics5Help$value,
-        doBasics5EffectSize1 = function() private$..doBasics5EffectSize1$value,
-        doBasics5EffectSize2 = function() private$..doBasics5EffectSize2$value,
         doBasics5EffectSize1x2 = function() private$..doBasics5EffectSize1x2$value,
         doBasics5SampleSize = function() private$..doBasics5SampleSize$value,
         doBasics5Main1 = function() private$..doBasics5Main1$value,
         doBasics5Main2 = function() private$..doBasics5Main2$value,
         doBasics5Interaction = function() private$..doBasics5Interaction$value,
+        doBasics5RBtn = function() private$..doBasics5RBtn$value,
         doBasics5ABtn = function() private$..doBasics5ABtn$value,
         doBasics5AmBtn = function() private$..doBasics5AmBtn$value,
         doBasics5BBtn = function() private$..doBasics5BBtn$value,
@@ -2673,12 +2633,11 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         doBasics5CBtn = function() private$..doBasics5CBtn$value,
         doBasics5CmBtn = function() private$..doBasics5CmBtn$value,
         basics6Help = function() private$..basics6Help$value,
-        doBasics6EffectSize1 = function() private$..doBasics6EffectSize1$value,
-        doBasics6EffectSize2 = function() private$..doBasics6EffectSize2$value,
         doBasics6EffectSize12 = function() private$..doBasics6EffectSize12$value,
         doBasics6SampleSize = function() private$..doBasics6SampleSize$value,
         doBasics6Main1 = function() private$..doBasics6Main1$value,
         doBasics6Main2 = function() private$..doBasics6Main2$value,
+        doBasics6RBtn = function() private$..doBasics6RBtn$value,
         doBasics6ABtn = function() private$..doBasics6ABtn$value,
         doBasics6AmBtn = function() private$..doBasics6AmBtn$value,
         doBasics6BBtn = function() private$..doBasics6BBtn$value,
@@ -2955,6 +2914,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..showExploreStyle = NA,
         ..whichShowMultiple = NA,
         ..sendSample = NA,
+        ..sendSamplewide = NA,
         ..sendMultiple = NA,
         ..sendExplore = NA,
         ..brawHelp = NA,
@@ -2995,9 +2955,6 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..doBasics4EffectSize1 = NA,
         ..doBasics4EffectSize2 = NA,
         ..doBasics4SampleSize = NA,
-        ..doBasics4Main1 = NA,
-        ..doBasics4Main2 = NA,
-        ..doBasics4Interaction = NA,
         ..doBasics4ABtn = NA,
         ..doBasics4AmBtn = NA,
         ..doBasics4BBtn = NA,
@@ -3005,13 +2962,12 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..doBasics4CBtn = NA,
         ..doBasics4CmBtn = NA,
         ..basics5Help = NA,
-        ..doBasics5EffectSize1 = NA,
-        ..doBasics5EffectSize2 = NA,
         ..doBasics5EffectSize1x2 = NA,
         ..doBasics5SampleSize = NA,
         ..doBasics5Main1 = NA,
         ..doBasics5Main2 = NA,
         ..doBasics5Interaction = NA,
+        ..doBasics5RBtn = NA,
         ..doBasics5ABtn = NA,
         ..doBasics5AmBtn = NA,
         ..doBasics5BBtn = NA,
@@ -3019,12 +2975,11 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..doBasics5CBtn = NA,
         ..doBasics5CmBtn = NA,
         ..basics6Help = NA,
-        ..doBasics6EffectSize1 = NA,
-        ..doBasics6EffectSize2 = NA,
         ..doBasics6EffectSize12 = NA,
         ..doBasics6SampleSize = NA,
         ..doBasics6Main1 = NA,
         ..doBasics6Main2 = NA,
+        ..doBasics6RBtn = NA,
         ..doBasics6ABtn = NA,
         ..doBasics6AmBtn = NA,
         ..doBasics6BBtn = NA,
@@ -3149,6 +3104,7 @@ BrawSimResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         simGraph = function() private$.items[["simGraph"]],
         simReport = function() private$.items[["simReport"]],
         sendSample = function() private$.items[["sendSample"]],
+        sendSamplewide = function() private$.items[["sendSamplewide"]],
         sendMultiple = function() private$.items[["sendMultiple"]],
         sendExplore = function() private$.items[["sendExplore"]]),
     private = list(),
@@ -3164,7 +3120,7 @@ BrawSimResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$add(jmvcore::Html$new(
                 options=options,
                 name="simSystemHTML",
-                visible=TRUE))
+                visible=FALSE))
             self$add(jmvcore::Preformatted$new(
                 options=options,
                 name="debug",
@@ -3212,6 +3168,14 @@ BrawSimResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$add(jmvcore::Output$new(
                 options=options,
                 name="sendSample",
+                measureType="nominal",
+                varTitle="Sample",
+                items=4,
+                clearWith=list(
+                    "makeSampleBtn")))
+            self$add(jmvcore::Output$new(
+                options=options,
+                name="sendSamplewide",
                 measureType="nominal",
                 varTitle="Sample",
                 items=4,
@@ -3458,9 +3422,6 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param doBasics4EffectSize1 .
 #' @param doBasics4EffectSize2 .
 #' @param doBasics4SampleSize .
-#' @param doBasics4Main1 .
-#' @param doBasics4Main2 .
-#' @param doBasics4Interaction .
 #' @param doBasics4ABtn .
 #' @param doBasics4AmBtn .
 #' @param doBasics4BBtn .
@@ -3468,13 +3429,12 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param doBasics4CBtn .
 #' @param doBasics4CmBtn .
 #' @param basics5Help .
-#' @param doBasics5EffectSize1 .
-#' @param doBasics5EffectSize2 .
 #' @param doBasics5EffectSize1x2 .
 #' @param doBasics5SampleSize .
 #' @param doBasics5Main1 .
 #' @param doBasics5Main2 .
 #' @param doBasics5Interaction .
+#' @param doBasics5RBtn .
 #' @param doBasics5ABtn .
 #' @param doBasics5AmBtn .
 #' @param doBasics5BBtn .
@@ -3482,12 +3442,11 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param doBasics5CBtn .
 #' @param doBasics5CmBtn .
 #' @param basics6Help .
-#' @param doBasics6EffectSize1 .
-#' @param doBasics6EffectSize2 .
 #' @param doBasics6EffectSize12 .
 #' @param doBasics6SampleSize .
 #' @param doBasics6Main1 .
 #' @param doBasics6Main2 .
+#' @param doBasics6RBtn .
 #' @param doBasics6ABtn .
 #' @param doBasics6AmBtn .
 #' @param doBasics6BBtn .
@@ -3608,6 +3567,7 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #'   \code{results$simGraph} \tab \tab \tab \tab \tab an image \cr
 #'   \code{results$simReport} \tab \tab \tab \tab \tab a html \cr
 #'   \code{results$sendSample} \tab \tab \tab \tab \tab an output \cr
+#'   \code{results$sendSamplewide} \tab \tab \tab \tab \tab an output \cr
 #'   \code{results$sendMultiple} \tab \tab \tab \tab \tab an output \cr
 #'   \code{results$sendExplore} \tab \tab \tab \tab \tab an output \cr
 #' }
@@ -3776,7 +3736,7 @@ BrawSim <- function(
     showExploreParam = "Basic",
     showExploreStyle = "stats",
     whichShowMultiple = "all",
-    brawHelp = TRUE,
+    brawHelp = FALSE,
     showHTML = TRUE,
     fixedAxes = FALSE,
     shorthandCalculations = FALSE,
@@ -3814,9 +3774,6 @@ BrawSim <- function(
     doBasics4EffectSize1 = 0.3,
     doBasics4EffectSize2 = -0.3,
     doBasics4SampleSize = 150,
-    doBasics4Main1 = TRUE,
-    doBasics4Main2 = TRUE,
-    doBasics4Interaction = TRUE,
     doBasics4ABtn,
     doBasics4AmBtn,
     doBasics4BBtn,
@@ -3824,13 +3781,12 @@ BrawSim <- function(
     doBasics4CBtn,
     doBasics4CmBtn,
     basics5Help,
-    doBasics5EffectSize1 = 0.3,
-    doBasics5EffectSize2 = -0.3,
     doBasics5EffectSize1x2 = -0.3,
     doBasics5SampleSize = 150,
     doBasics5Main1 = TRUE,
     doBasics5Main2 = TRUE,
     doBasics5Interaction = TRUE,
+    doBasics5RBtn,
     doBasics5ABtn,
     doBasics5AmBtn,
     doBasics5BBtn,
@@ -3838,12 +3794,11 @@ BrawSim <- function(
     doBasics5CBtn,
     doBasics5CmBtn,
     basics6Help,
-    doBasics6EffectSize1 = 0.3,
-    doBasics6EffectSize2 = -0.3,
-    doBasics6EffectSize12 = -0.3,
+    doBasics6EffectSize12 = 0.7,
     doBasics6SampleSize = 500,
     doBasics6Main1 = TRUE,
     doBasics6Main2 = FALSE,
+    doBasics6RBtn,
     doBasics6ABtn,
     doBasics6AmBtn,
     doBasics6BBtn,
@@ -4162,9 +4117,6 @@ BrawSim <- function(
         doBasics4EffectSize1 = doBasics4EffectSize1,
         doBasics4EffectSize2 = doBasics4EffectSize2,
         doBasics4SampleSize = doBasics4SampleSize,
-        doBasics4Main1 = doBasics4Main1,
-        doBasics4Main2 = doBasics4Main2,
-        doBasics4Interaction = doBasics4Interaction,
         doBasics4ABtn = doBasics4ABtn,
         doBasics4AmBtn = doBasics4AmBtn,
         doBasics4BBtn = doBasics4BBtn,
@@ -4172,13 +4124,12 @@ BrawSim <- function(
         doBasics4CBtn = doBasics4CBtn,
         doBasics4CmBtn = doBasics4CmBtn,
         basics5Help = basics5Help,
-        doBasics5EffectSize1 = doBasics5EffectSize1,
-        doBasics5EffectSize2 = doBasics5EffectSize2,
         doBasics5EffectSize1x2 = doBasics5EffectSize1x2,
         doBasics5SampleSize = doBasics5SampleSize,
         doBasics5Main1 = doBasics5Main1,
         doBasics5Main2 = doBasics5Main2,
         doBasics5Interaction = doBasics5Interaction,
+        doBasics5RBtn = doBasics5RBtn,
         doBasics5ABtn = doBasics5ABtn,
         doBasics5AmBtn = doBasics5AmBtn,
         doBasics5BBtn = doBasics5BBtn,
@@ -4186,12 +4137,11 @@ BrawSim <- function(
         doBasics5CBtn = doBasics5CBtn,
         doBasics5CmBtn = doBasics5CmBtn,
         basics6Help = basics6Help,
-        doBasics6EffectSize1 = doBasics6EffectSize1,
-        doBasics6EffectSize2 = doBasics6EffectSize2,
         doBasics6EffectSize12 = doBasics6EffectSize12,
         doBasics6SampleSize = doBasics6SampleSize,
         doBasics6Main1 = doBasics6Main1,
         doBasics6Main2 = doBasics6Main2,
+        doBasics6RBtn = doBasics6RBtn,
         doBasics6ABtn = doBasics6ABtn,
         doBasics6AmBtn = doBasics6AmBtn,
         doBasics6BBtn = doBasics6BBtn,
