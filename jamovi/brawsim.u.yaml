@@ -133,7 +133,7 @@ children:
                                     margin: none
                                   - type: CollapseBox
                                     collapsed: true
-                                    label: Options
+                                    label: '*Options*'
                                     children:
                                       - type: Label
                                         label: ' '
@@ -231,12 +231,6 @@ children:
                                             margin: none
                                             children:
                                               - type: Label
-                                                label: '**Options:**'
-                                                minWidth: 10
-                                                cell:
-                                                  row: 0
-                                                  column: 0
-                                              - type: Label
                                                 label: ' '
                                                 minWidth: 10
                                                 minHeight: 10
@@ -329,12 +323,6 @@ children:
                                             margin: none
                                             children:
                                               - type: Label
-                                                label: '**Options:**'
-                                                minWidth: 10
-                                                cell:
-                                                  row: 0
-                                                  column: 0
-                                              - type: Label
                                                 label: ''
                                                 minWidth: 10
                                                 minHeight: 10
@@ -418,7 +406,7 @@ children:
                                     margin: none
                                   - type: CollapseBox
                                     collapsed: true
-                                    label: Options
+                                    label: '*Options*'
                                     children:
                                       - type: Label
                                         label: ' '
@@ -596,7 +584,7 @@ children:
                                     margin: none
                                   - type: CollapseBox
                                     collapsed: true
-                                    label: Options
+                                    label: '*Options*'
                                     children:
                                       - type: Label
                                         label: ' '
@@ -849,7 +837,7 @@ children:
                                 children:
                                   - type: CollapseBox
                                     collapsed: true
-                                    label: Options
+                                    label: '*Options*'
                                     children:
                                       - type: Label
                                         label: ' '
@@ -1074,7 +1062,7 @@ children:
                                 children:
                                   - type: CollapseBox
                                     collapsed: true
-                                    label: Options
+                                    label: '*Options*'
                                     children:
                                       - type: Label
                                         label: ' '
@@ -1393,7 +1381,7 @@ children:
                                 children:
                                   - type: CollapseBox
                                     collapsed: true
-                                    label: Options
+                                    label: '*Options*'
                                     children:
                                       - type: Label
                                         label: ' '
