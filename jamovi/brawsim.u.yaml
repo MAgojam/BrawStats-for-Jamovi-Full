@@ -1461,9 +1461,14 @@ children:
                                               row: 0
                                               column: 2
                                           - type: Label
-                                            label: 2. re-analyse with and without the Main 2 term. See how that term changes the measured effect of Main 1.
+                                            label: '2. re-analyse with and without Main 2.'
                                             cell:
                                               row: 1
+                                              column: 1
+                                          - type: Label
+                                            label: '-   watch the measured effect of Main 1.'
+                                            cell:
+                                              row: 2
                                               column: 1
                                           - type: ActionButton
                                             name: doBasics6AmBtn
@@ -1504,9 +1509,14 @@ children:
                                               row: 0
                                               column: 2
                                           - type: Label
-                                            label: 2. re-analyse with and without the Main 2 term. See how that term changes the measured effect of Main 1.
+                                            label: '2. re-analyse with and without Main 2.'
                                             cell:
                                               row: 1
+                                              column: 1
+                                          - type: Label
+                                            label: '-   watch the measured effect of Main 1.'
+                                            cell:
+                                              row: 2
                                               column: 1
                                           - type: ActionButton
                                             name: doBasics6BmBtn
@@ -1547,9 +1557,14 @@ children:
                                               row: 0
                                               column: 2
                                           - type: Label
-                                            label: 2. re-analyse with and without the Main 2 term. See how that term changes the measured effect of Main 1.
+                                            label: '2. re-analyse with and without Main 2.'
                                             cell:
                                               row: 1
+                                              column: 1
+                                          - type: Label
+                                            label: '-   watch the measured effect of Main 1.'
+                                            cell:
+                                              row: 2
                                               column: 1
                                           - type: ActionButton
                                             name: doBasics6CmBtn
@@ -1661,9 +1676,14 @@ children:
                                                       row: 1
                                                       column: 1
                                                   - type: Label
-                                                    label: 3. run multiple samples to see how frequently the result is significant
+                                                    label: 3. run multiple samples 
                                                     cell:
                                                       row: 2
+                                                      column: 1
+                                                  - type: Label
+                                                    label: '- how frequently is the result significant?'
+                                                    cell:
+                                                      row: 3
                                                       column: 1
                                                   - type: ActionButton
                                                     name: doBasics7AmBtn
@@ -1719,9 +1739,14 @@ children:
                                                       row: 1
                                                       column: 1
                                                   - type: Label
-                                                    label: 3. run multiple samples to see how frequently the result is significant
+                                                    label: 3. run multiple samples 
                                                     cell:
                                                       row: 2
+                                                      column: 1
+                                                  - type: Label
+                                                    label: '- how frequently is the result significant?'
+                                                    cell:
+                                                      row: 3
                                                       column: 1
                                                   - type: ActionButton
                                                     name: doBasics7BmBtn
