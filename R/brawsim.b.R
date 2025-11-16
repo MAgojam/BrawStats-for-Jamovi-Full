@@ -352,7 +352,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           } else {
             # # do we need to do this, or are we just returning to the existing one?
             # if (is.null(braw.res$multiple) || is.element(statusStore$lastOutput,c("Multiple"))) {
-            ns<-min(10,numberSamples/10)
+            ns<-ceiling(min(10,numberSamples/10))
             if (changedH || changedD || is.null(braw.res$multiple)) targetN<-numberSamples
             else targetN<-braw.res$multiple$count+numberSamples
             while ((is.null(braw.res$multiple)) || (braw.res$multiple$count<targetN)) {
@@ -397,7 +397,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           numberExplores<-self$options$numberExplores
           # # do we need to do this, or are we just returning to the existing one?
           # if (is.null(braw.res$explore) || is.element(statusStore$lastOutput,c("Explore","metaSci"))) {
-          ns<-max(2,numberExplores/10)
+          ns<-ceiling(max(2,numberExplores/10))
           if (is.null(braw.res$explore$count)) targetN<-numberExplores
           else targetN<-braw.res$explore$count+numberExplores
           while (is.null(braw.res$explore$count) || (braw.res$explore$count<targetN)) {
