@@ -358,7 +358,7 @@ children:
                                                   row: 0
                                                   column: 1
                                               - type: Label
-                                                label: 2. and inspect the data
+                                                label: 2. try various sample sizes
                                                 cell:
                                                   row: 1
                                                   column: 1
@@ -775,7 +775,7 @@ children:
                                               row: 0
                                               column: 0
                                           - type: Label
-                                            label: 1. '**make**' a sample
+                                            label: 1. '**make** a sample'
                                             cell:
                                               row: 0
                                               column: 1
@@ -788,12 +788,12 @@ children:
                                               row: 0
                                               column: 2
                                           - type: Label
-                                            label: 2. '**analyse**' the data in Jamovi
+                                            label: 2. and analyse the data in Jamovi
                                             cell:
                                               row: 1
                                               column: 1
                                           - type: Label
-                                            label: 3. '**check**' the analysis
+                                            label: 3. '**check** the analysis'
                                             cell:
                                               row: 2
                                               column: 1
@@ -1461,7 +1461,7 @@ children:
                                               row: 0
                                               column: 2
                                           - type: Label
-                                            label: 2. and follow the Jamovi instructions
+                                            label: 2. re-analyse with and without the Main 2 term. See how that term changes the measured effect of Main 1.
                                             cell:
                                               row: 1
                                               column: 1
@@ -1504,7 +1504,7 @@ children:
                                               row: 0
                                               column: 2
                                           - type: Label
-                                            label: 2. and follow the Jamovi instructions
+                                            label: 2. re-analyse with and without the Main 2 term. See how that term changes the measured effect of Main 1.
                                             cell:
                                               row: 1
                                               column: 1
@@ -1547,7 +1547,7 @@ children:
                                               row: 0
                                               column: 2
                                           - type: Label
-                                            label: 2. and follow the Jamovi instructions
+                                            label: 2. re-analyse with and without the Main 2 term. See how that term changes the measured effect of Main 1.
                                             cell:
                                               row: 1
                                               column: 1
@@ -1660,6 +1660,11 @@ children:
                                                     cell:
                                                       row: 1
                                                       column: 1
+                                                  - type: Label
+                                                    label: 3. run multiple samples to see how frequently the result is significant
+                                                    cell:
+                                                      row: 2
+                                                      column: 1
                                                   - type: ActionButton
                                                     name: doBasics7AmBtn
                                                     margin: none
@@ -1712,6 +1717,11 @@ children:
                                                     label: 2. and follow the Jamovi instructions
                                                     cell:
                                                       row: 1
+                                                      column: 1
+                                                  - type: Label
+                                                    label: 3. run multiple samples to see how frequently the result is significant
+                                                    cell:
+                                                      row: 2
                                                       column: 1
                                                   - type: ActionButton
                                                     name: doBasics7BmBtn
@@ -2033,7 +2043,7 @@ children:
                                                       row: 0
                                                       column: 2
                                                   - type: Label
-                                                    label: 2. and follow the Jamovi instructions
+                                                    label: 2. try varying the moderation effect
                                                     cell:
                                                       row: 1
                                                       column: 1
@@ -2139,7 +2149,7 @@ children:
                                                       row: 0
                                                       column: 2
                                                   - type: Label
-                                                    label: 2. and follow the Jamovi instructions
+                                                    label: 2. try varying the moderation effect
                                                     cell:
                                                       row: 1
                                                       column: 1
@@ -2245,7 +2255,7 @@ children:
                                                       row: 0
                                                       column: 2
                                                   - type: Label
-                                                    label: 2. and follow the Jamovi instructions
+                                                    label: 2. try varying the moderation effect
                                                     cell:
                                                       row: 1
                                                       column: 1
@@ -2321,7 +2331,7 @@ children:
                                                       row: 0
                                                       column: 2
                                                   - type: Label
-                                                    label: 2. and follow the Jamovi instructions
+                                                    label: 2. try varying the mediation effect
                                                     cell:
                                                       row: 1
                                                       column: 1
@@ -2364,7 +2374,7 @@ children:
                                                       row: 0
                                                       column: 2
                                                   - type: Label
-                                                    label: 2. and follow the Jamovi instructions
+                                                    label: 2. try varying the mediation effect
                                                     cell:
                                                       row: 1
                                                       column: 1
@@ -2470,7 +2480,7 @@ children:
                                                       row: 0
                                                       column: 2
                                                   - type: Label
-                                                    label: 2. and follow the Jamovi instructions
+                                                    label: 2. try varying the mediation effect
                                                     cell:
                                                       row: 1
                                                       column: 1
@@ -5317,8 +5327,7 @@ children:
                             label: ' '
                             minWidth: 2
                           - type: Label
-                            label: >-
-                              '*- you can change the range and the number of values to explore*'
+                            label: '*- you can change the range and the number of values to explore*'
                       - type: LayoutBox
                         style: inline
                         margin: none
