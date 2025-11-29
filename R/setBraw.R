@@ -34,8 +34,8 @@ setBraw<-function(self) {
                                      PDFshape = self$options$WorldShape,
                                      pRplus = 1-self$options$worldPRnull,
                                      PDFsample = self$options$WorldSample!="none",
-                                     PDFsamplemn = self$options$WorldMn,
-                                     PDFsamplesd = self$options$WorldSd,
+                                     PDFsampleRs = self$options$WorldSampleRs,
+                                     PDFsampleN = self$options$WorldSampleN,
                                      PDFsamplebias = self$options$WorldSample=="bias"
                      )
   )

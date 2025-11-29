@@ -107,7 +107,7 @@ children:
                 style: list
                 children:
                   - type: CollapseBox
-                    label: '**Simple Tests**'
+                    label: <b>Simple Tests</b>
                     collapsed: true
                     minWidth: 540
                     children:
@@ -119,7 +119,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: '**1. Data:**&nbsp; basic working'
+                            label: <b>1. Data:</b>&nbsp; basic working'
                             margin: none
                             minWidth: 450
                             maxWidth: 450
@@ -133,7 +133,7 @@ children:
                                     margin: none
                                   - type: CollapseBox
                                     collapsed: true
-                                    label: '*Options*'
+                                    label: '<i>Options</i>'
                                     children:
                                       - type: Label
                                         label: ' '
@@ -392,7 +392,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: '**2. Interval DV:**&nbsp; correlation; t-test; 1-way ANOVA'
+                            label: <b>2. Interval DV:</b>&nbsp; correlation; t-test; 1-way ANOVA'
                             margin: none
                             minWidth: 450
                             maxWidth: 450
@@ -406,7 +406,7 @@ children:
                                     margin: none
                                   - type: CollapseBox
                                     collapsed: true
-                                    label: '*Options*'
+                                    label: '<i>Options</i>'
                                     children:
                                       - type: Label
                                         label: ' '
@@ -415,7 +415,7 @@ children:
                                           row: 0
                                           column: 0
                                       - type: Label
-                                        label: rₚ
+                                        label: r<sub>p</sub>
                                         margin: none
                                         cell:
                                           row: 0
@@ -570,7 +570,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: '**3. Categorical DV:**&nbsp; chi-square; logistic regression'
+                            label: <b>3. Categorical DV:</b>&nbsp; chi-square; logistic regression'
                             margin: none
                             minWidth: 450
                             maxWidth: 450
@@ -584,7 +584,7 @@ children:
                                     margin: none
                                   - type: CollapseBox
                                     collapsed: true
-                                    label: '*Options*'
+                                    label: '<i>Options</i>'
                                     children:
                                       - type: Label
                                         label: ' '
@@ -593,7 +593,7 @@ children:
                                           row: 0
                                           column: 0
                                       - type: Label
-                                        label: rₚ
+                                        label: r<sub>p</sub>
                                         margin: none
                                         cell:
                                           row: 0
@@ -748,7 +748,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: '*Test yourself*'
+                            label: '<i>Test yourself</i>'
                             margin: none
                             minWidth: 420
                             maxWidth: 420
@@ -775,7 +775,7 @@ children:
                                               row: 0
                                               column: 0
                                           - type: Label
-                                            label: 1. '**make** a sample'
+                                            label: 1. <b>make</b> a sample'
                                             cell:
                                               row: 0
                                               column: 1
@@ -793,7 +793,7 @@ children:
                                               row: 1
                                               column: 1
                                           - type: Label
-                                            label: 3. '**check** the analysis'
+                                            label: 3. <b>check</b> the analysis'
                                             cell:
                                               row: 2
                                               column: 1
@@ -806,7 +806,7 @@ children:
                                               row: 0
                                               column: 3
                   - type: CollapseBox
-                    label: '**Multiple IVs**'
+                    label: <b>Multiple IVs</b>
                     collapsed: true
                     children:
                       - type: LayoutBox
@@ -817,7 +817,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: '**4. Main Tests:**&nbsp; 2-way ANOVA, ANCOVA, multiple regression'
+                            label: <b>4. Main Tests:</b>&nbsp; 2-way ANOVA, ANCOVA, multiple regression'
                             margin: none
                             minWidth: 450
                             maxWidth: 450
@@ -837,7 +837,7 @@ children:
                                 children:
                                   - type: CollapseBox
                                     collapsed: true
-                                    label: '*Options*'
+                                    label: '<i>Options</i>'
                                     children:
                                       - type: Label
                                         label: ' '
@@ -846,7 +846,7 @@ children:
                                           row: 0
                                           column: 0
                                       - type: Label
-                                        label: rₚ(Main 1)
+                                        label: r<sub>p</sub>(Main 1)
                                         margin: none
                                         cell:
                                           row: 0
@@ -859,7 +859,7 @@ children:
                                           row: 0
                                           column: 2
                                       - type: Label
-                                        label: rₚ(Main 2)
+                                        label: r<sub>p</sub>(Main 2)
                                         margin: none
                                         cell:
                                           row: 0
@@ -885,7 +885,7 @@ children:
                                           row: 1
                                           column: 2
                               - type: Label
-                                label: '**Steps:**'
+                                label: <b>Steps:</b>
                                 margin: none
                                 horizontalAlignment: right
                                 verticalAlignment: top
@@ -1042,7 +1042,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: '**5. Interactions:**&nbsp; joint effects'
+                            label: <b>5. Interactions:</b>&nbsp; joint effects'
                             margin: none
                             minWidth: 450
                             maxWidth: 450
@@ -1062,7 +1062,7 @@ children:
                                 children:
                                   - type: CollapseBox
                                     collapsed: true
-                                    label: '*Options*'
+                                    label: '<i>Options</i>'
                                     children:
                                       - type: Label
                                         label: ' '
@@ -1071,7 +1071,7 @@ children:
                                           row: 0
                                           column: 0
                                       - type: Label
-                                        label: rₚ(interaction)
+                                        label: r<sub>p</sub>(interaction)
                                         margin: none
                                         cell:
                                           row: 0
@@ -1097,7 +1097,7 @@ children:
                                           row: 1
                                           column: 2
                               - type: Label
-                                label: '**Analyse:**'
+                                label: <b>Analyse:</b>
                                 margin: none
                                 horizontalAlignment: right
                                 cell:
@@ -1157,7 +1157,7 @@ children:
                                       row: 3
                                       column: 9
                               - type: Label
-                                label: '**Steps:**'
+                                label: <b>Steps:</b>
                                 margin: none
                                 horizontalAlignment: right
                                 verticalAlignment: top
@@ -1314,13 +1314,13 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: '**6. Covariation:**&nbsp; overlapping effects'
+                            label: <b>6. Covariation:</b>&nbsp; overlapping effects'
                             margin: none
                             minWidth: 450
                             maxWidth: 450
                             children:
                               - type: Label
-                                label: '**Analyse:**'
+                                label: <b>Analyse:</b>
                                 margin: none
                                 horizontalAlignment: right
                                 cell:
@@ -1381,7 +1381,7 @@ children:
                                 children:
                                   - type: CollapseBox
                                     collapsed: true
-                                    label: '*Options*'
+                                    label: '<i>Options</i>'
                                     children:
                                       - type: Label
                                         label: ' '
@@ -1390,7 +1390,7 @@ children:
                                           row: 0
                                           column: 0
                                       - type: Label
-                                        label: rₚ(covariation)
+                                        label: r<sub>p</sub>(covariation)
                                         margin: none
                                         cell:
                                           row: 0
@@ -1416,7 +1416,7 @@ children:
                                           row: 1
                                           column: 2
                               - type: Label
-                                label: '**Steps:**'
+                                label: <b>Steps:</b>
                                 margin: none
                                 horizontalAlignment: right
                                 verticalAlignment: top
@@ -1588,7 +1588,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: '*Test yourself*'
+                            label: '<i>Test yourself</i>'
                             margin: none
                             minWidth: 420
                             maxWidth: 420
@@ -1600,7 +1600,7 @@ children:
                                 minWidth: 38
                                 verticalAlignment: top
                   - type: CollapseBox
-                    label: '**Tests for Experiments**'
+                    label: <b>Tests for Experiments</b>
                     collapsed: true
                     children:
                       - type: LayoutBox
@@ -1611,7 +1611,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: '**7. One IV:**&nbsp; is there a difference?'
+                            label: <b>7. One IV:</b>&nbsp; is there a difference?'
                             margin: none
                             minWidth: 450
                             maxWidth: 450
@@ -1770,7 +1770,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: '**8. 2x2 IVs:**&nbsp; effects and interactions'
+                            label: <b>8. 2x2 IVs:</b>&nbsp; effects and interactions'
                             margin: none
                             minWidth: 450
                             maxWidth: 450
@@ -1932,7 +1932,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: '*Test yourself*'
+                            label: '<i>Test yourself</i>'
                             margin: none
                             minWidth: 420
                             maxWidth: 420
@@ -1944,7 +1944,7 @@ children:
                                 minWidth: 38
                                 verticalAlignment: top
                   - type: CollapseBox
-                    label: '**Advanced models**'
+                    label: <b>Advanced models</b>
                     collapsed: true
                     children:
                       - type: LayoutBox
@@ -1955,7 +1955,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: '**9. Moderation:**&nbsp; altering effects'
+                            label: <b>9. Moderation:</b>&nbsp; altering effects'
                             margin: none
                             minWidth: 450
                             maxWidth: 450
@@ -1992,7 +1992,7 @@ children:
                                                       row: 0
                                                       column: 0
                                                   - type: Label
-                                                    label: '**main 1**'
+                                                    label: <b>main 1</b>
                                                     horizontalAlignment: right
                                                     cell:
                                                       row: 1
@@ -2005,7 +2005,7 @@ children:
                                                       column: 2
                                                     enable: (1:2)
                                                   - type: Label
-                                                    label: '**main 2**'
+                                                    label: <b>main 2</b>
                                                     horizontalAlignment: right
                                                     cell:
                                                       row: 1
@@ -2032,7 +2032,7 @@ children:
                                                     events:
                                                       change: ./brawsim.events::onChange_basics9A
                                                   - type: Label
-                                                    label: '**interaction**'
+                                                    label: <b>interaction</b>
                                                     horizontalAlignment: right
                                                     cell:
                                                       row: 1
@@ -2098,7 +2098,7 @@ children:
                                                       row: 0
                                                       column: 0
                                                   - type: Label
-                                                    label: '**main 1**'
+                                                    label: <b>main 1</b>
                                                     horizontalAlignment: right
                                                     cell:
                                                       row: 1
@@ -2111,7 +2111,7 @@ children:
                                                       column: 2
                                                     enable: (1:2)
                                                   - type: Label
-                                                    label: '**main 2**'
+                                                    label: <b>main 2</b>
                                                     horizontalAlignment: right
                                                     cell:
                                                       row: 1
@@ -2138,7 +2138,7 @@ children:
                                                     events:
                                                       change: ./brawsim.events::onChange_doBasics9B
                                                   - type: Label
-                                                    label: '**interaction**'
+                                                    label: <b>interaction</b>
                                                     horizontalAlignment: right
                                                     cell:
                                                       row: 1
@@ -2204,7 +2204,7 @@ children:
                                                       row: 0
                                                       column: 0
                                                   - type: Label
-                                                    label: '**main 1**'
+                                                    label: <b>main 1</b>
                                                     horizontalAlignment: right
                                                     cell:
                                                       row: 1
@@ -2217,7 +2217,7 @@ children:
                                                       column: 2
                                                     enable: (1:2)
                                                   - type: Label
-                                                    label: '**main 2**'
+                                                    label: <b>main 2</b>
                                                     horizontalAlignment: right
                                                     cell:
                                                       row: 1
@@ -2244,7 +2244,7 @@ children:
                                                     events:
                                                       change: ./brawsim.events::onChange_doBasics9B
                                                   - type: Label
-                                                    label: '**interaction**'
+                                                    label: <b>interaction</b>
                                                     horizontalAlignment: right
                                                     cell:
                                                       row: 1
@@ -2306,7 +2306,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: '**10. Mediation:**&nbsp; paths of effects'
+                            label: <b>10. Mediation:</b>&nbsp; paths of effects'
                             margin: none
                             minWidth: 450
                             maxWidth: 450
@@ -2429,7 +2429,7 @@ children:
                                                       row: 0
                                                       column: 0
                                                   - type: Label
-                                                    label: '**main 1**'
+                                                    label: <b>main 1</b>
                                                     horizontalAlignment: right
                                                     cell:
                                                       row: 1
@@ -2442,7 +2442,7 @@ children:
                                                       column: 2
                                                     enable: (1:2)
                                                   - type: Label
-                                                    label: '**main 2**'
+                                                    label: <b>main 2</b>
                                                     horizontalAlignment: right
                                                     cell:
                                                       row: 1
@@ -2469,7 +2469,7 @@ children:
                                                     events:
                                                       change: ./brawsim.events::onChange_doBasics10C
                                                   - type: Label
-                                                    label: '**covariation**'
+                                                    label: <b>covariation</b>
                                                     horizontalAlignment: right
                                                     cell:
                                                       row: 1
@@ -2535,7 +2535,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: '*Instructions*'
+                        label: '<i>Instructions</i>'
                         margin: none
                         minWidth: 250
                         maxWidth: 250
@@ -2849,7 +2849,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: '*Default Settings*'
+                        label: '<i>Default Settings</i>'
                         margin: none
                         minWidth: 250
                         maxWidth: 250
@@ -2878,7 +2878,7 @@ children:
                                           row: 0
                                           column: 0
                                       - type: Label
-                                        label: p(R₊)
+                                        label: p(R<sub>+</sub>)
                                         horizontalAlignment: right
                                         cell:
                                           row: 1
@@ -2893,7 +2893,7 @@ children:
                                           row: 1
                                           column: 2
                                       - type: Label
-                                        label: mean(R₊)
+                                        label: mean(R<sub>+</sub>)
                                         horizontalAlignment: right
                                         cell:
                                           row: 2
@@ -2985,7 +2985,7 @@ children:
                                           row: 0
                                           column: 0
                                       - type: Label
-                                        label: wₛ
+                                        label: w<sub>s</sub>
                                         horizontalAlignment: right
                                         cell:
                                           row: 6
@@ -3026,7 +3026,7 @@ children:
                                           row: 8
                                           column: 2
                                       - type: Label
-                                        label: '* repeats'
+                                        label: '<i> repeats</i>'
                                         horizontalAlignment: right
                                         cell:
                                           row: 8
@@ -3042,7 +3042,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: '1.&nbsp;**Inferences:**&nbsp;  how useful are p-values?'
+                        label: '1.&nbsp;<b>Inferences:</b>&nbsp;  how useful are p-values?'
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -3057,7 +3057,7 @@ children:
                                   row: 0
                                   column: 0
                               - type: Label
-                                label: p(R₊)
+                                label: p(R<sub>+</sub>)
                                 cell:
                                   row: 0
                                   column: 1
@@ -3069,7 +3069,7 @@ children:
                                   row: 0
                                   column: 2
                               - type: Label
-                                label: mean(R₊)
+                                label: mean(R<sub>+</sub>)
                                 cell:
                                   row: 0
                                   column: 3
@@ -3088,7 +3088,7 @@ children:
                                 minWidth: 30
                               - type: CollapseBox
                                 collapsed: true
-                                label: a. is it from rₚ=0 or rₚ≠0?
+                                label: a. is it from r<sub>p</sub>=0 or r<sub>p</sub>≠0?
                                 margin: none
                                 minWidth: 420
                                 maxWidth: 420
@@ -3132,7 +3132,7 @@ children:
                                 collapsed: true
                                 label: >-
                                   b. a more realistic situation - is it from
-                                  rₚ=0 or rₚ≠0
+                                  r<sub>p</sub>=0 or r<sub>p</sub>≠0
                                 margin: none
                                 minWidth: 420
                                 maxWidth: 420
@@ -3177,7 +3177,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: '2.&nbsp;**Sample Size:**&nbsp;  who benefits?'
+                        label: '2.&nbsp;<b>Sample Size:</b>&nbsp;  who benefits?'
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -3192,7 +3192,7 @@ children:
                                   row: 0
                                   column: 0
                               - type: Label
-                                label: p(R₊)
+                                label: p(R<sub>+</sub>)
                                 cell:
                                   row: 0
                                   column: 1
@@ -3204,7 +3204,7 @@ children:
                                   row: 0
                                   column: 2
                               - type: Label
-                                label: mean(R₊)
+                                label: mean(R<sub>+</sub>)
                                 cell:
                                   row: 0
                                   column: 3
@@ -3334,7 +3334,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: '3.&nbsp;**Sampling Method:**&nbsp;  are we cheating?'
+                        label: '3.&nbsp;<b>Sampling Method:</b>&nbsp;  are we cheating?'
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -3349,7 +3349,7 @@ children:
                                   row: 0
                                   column: 0
                               - type: Label
-                                label: p(R₊)
+                                label: p(R<sub>+</sub>)
                                 cell:
                                   row: 0
                                   column: 1
@@ -3361,7 +3361,7 @@ children:
                                   row: 0
                                   column: 2
                               - type: Label
-                                label: mean(R₊)
+                                label: mean(R<sub>+</sub>)
                                 cell:
                                   row: 0
                                   column: 3
@@ -3479,7 +3479,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: '4.&nbsp;**Double Checking:**&nbsp;  how good is replication?'
+                        label: '4.&nbsp;<b>Double Checking:</b>&nbsp;  how good is replication?'
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -3494,7 +3494,7 @@ children:
                                   row: 0
                                   column: 0
                               - type: Label
-                                label: p(R₊)
+                                label: p(R<sub>+</sub>)
                                 cell:
                                   row: 0
                                   column: 1
@@ -3506,7 +3506,7 @@ children:
                                   row: 0
                                   column: 2
                               - type: Label
-                                label: mean(R₊)
+                                label: mean(R<sub>+</sub>)
                                 cell:
                                   row: 0
                                   column: 3
@@ -3720,7 +3720,7 @@ children:
                     children:
                       - type: CollapseBox
                         collapsed: true
-                        label: '5.&nbsp;**Real Differences:**&nbsp;  when should replication fail?'
+                        label: '5.&nbsp;<b>Real Differences:</b>&nbsp;  when should replication fail?'
                         margin: none
                         minWidth: 470
                         maxWidth: 470
@@ -3873,7 +3873,7 @@ children:
                 children:
                   - type: CollapseBox
                     collapsed: true
-                    label: '1.&nbsp;**Make a Plan**: hypothesis, design & analysis'
+                    label: '1.&nbsp;<b>Make a Plan</b>: hypothesis, design & analysis'
                     margin: none
                     minWidth: 470
                     maxWidth: 470
@@ -3898,7 +3898,7 @@ children:
                                     margin: none
                                     children:
                                       - type: Label
-                                        label: '*Decisions about variables and their effects (relationships)*'
+                                        label: '<i>Decisions about variables and their effects (relationships)</i>'
                                       - type: CollapseBox
                                         collapsed: true
                                         label: Variables
@@ -3910,7 +3910,7 @@ children:
                                             style: list
                                             children:
                                               - type: Label
-                                                label: '*Define the DV and 1 or 2 IVs: choose a preset or edit.*'
+                                                label: '<i>Define the DV and 1 or 2 IVs: choose a preset or edit.</i>'
                                               - type: LayoutBox
                                                 style: list
                                                 children:
@@ -4252,7 +4252,7 @@ children:
                                             style: list
                                             children:
                                               - type: Label
-                                                label: '*Set the effect each variable has on the others*'
+                                                label: '<i>Set the effect each variable has on the others</i>'
                                               - type: LayoutBox
                                                 style: inline
                                                 margin: none
@@ -4261,7 +4261,7 @@ children:
                                                     label: ' '
                                                     minWidth: 2
                                                   - type: Label
-                                                    label: '*- these are r and range between -1 and +1*'
+                                                    label: '<i>- these are r and range between -1 and +1</i>'
                                               - type: LayoutBox
                                                 style: list
                                                 children:
@@ -4372,7 +4372,7 @@ children:
                                     margin: none
                                     children:
                                       - type: Label
-                                        label: '*Decisions about how to sample from the population*'
+                                        label: '<i>Decisions about how to sample from the population</i>'
                                       - type: CollapseBox
                                         label: Sampling
                                         collapsed: true
@@ -4535,7 +4535,7 @@ children:
                                     margin: none
                                     children:
                                       - type: Label
-                                        label: '*Decisions about: Descriptive Stats, Inference and Likelihood  (optional)*'
+                                        label: '<i>Decisions about: Descriptive Stats, Inference and Likelihood  (optional)</i>'
                                       - type: CollapseBox
                                         label: Describe
                                         collapsed: true
@@ -4546,7 +4546,7 @@ children:
                                             style: inline
                                             children:
                                               - type: Label
-                                                label: '*Transform:*'
+                                                label: '<i>Transform:</i>'
                                                 horizontalAlignment: right
                                                 cell:
                                                   row: 0
@@ -4557,7 +4557,7 @@ children:
                                                   row: 0
                                                   column: 1
                                               - type: Label
-                                                label: '*Model Terms:*'
+                                                label: '<i>Model Terms:</i>'
                                                 horizontalAlignment: right
                                                 cell:
                                                   row: 1
@@ -4584,7 +4584,7 @@ children:
                                                       (!presetIV2:none &&
                                                       !EffectConfig:moderation)
                                               - type: Label
-                                                label: '*Details:*'
+                                                label: '<i>Details:</i>'
                                                 horizontalAlignment: right
                                                 cell:
                                                   row: 2
@@ -4603,7 +4603,7 @@ children:
                                                     format: number
                                                     enable: (!presetIV2:none)
                                               - type: Label
-                                                label: '*Effect Types:*'
+                                                label: '<i>Effect Types:</i>'
                                                 cell:
                                                   row: 3
                                                   column: 0
@@ -4625,7 +4625,7 @@ children:
                                             style: inline
                                             children:
                                               - type: Label
-                                                label: '*Method:*'
+                                                label: '<i>Method:</i>'
                                                 horizontalAlignment: right
                                                 cell:
                                                   row: 0
@@ -4648,7 +4648,7 @@ children:
                                                   row: 0
                                                   column: 3
                                               - type: Label
-                                                label: min(rₚ)
+                                                label: min(r<sub>p</sub>)
                                                 horizontalAlignment: right
                                                 cell:
                                                   row: 0
@@ -4660,7 +4660,7 @@ children:
                                                   row: 0
                                                   column: 5
                                               - type: Label
-                                                label: '*Publication Bias:*'
+                                                label: '<i>Publication Bias:</i>'
                                                 horizontalAlignment: right
                                                 cell:
                                                   row: 1
@@ -4684,7 +4684,7 @@ children:
                                                   row: 1
                                                   column: 3
                                               - type: Label
-                                                label: '*SEM analysis:*'
+                                                label: '<i>SEM analysis:</i>'
                                                 horizontalAlignment: right
                                                 cell:
                                                   row: 2
@@ -4695,7 +4695,7 @@ children:
                                                   row: 2
                                                   column: 1
                                               - type: Label
-                                                label: '*Show:*'
+                                                label: '<i>Show:</i>'
                                                 horizontalAlignment: right
                                                 cell:
                                                   row: 3
@@ -4724,7 +4724,7 @@ children:
                                             style: list
                                             children:
                                               - type: Label
-                                                label: '*Prior:*'
+                                                label: '<i>Prior:</i>'
                                                 horizontalAlignment: right
                                                 cell:
                                                   row: 0
@@ -4770,7 +4770,7 @@ children:
                                                   likelihoodUsePrior:prior)
                                                 format: number
                                               - type: Label
-                                                label: '*Show:*'
+                                                label: '<i>Show:</i>'
                                                 horizontalAlignment: right
                                                 cell:
                                                   row: 3
@@ -4806,7 +4806,7 @@ children:
                                         margin: none
                                         children:
                                           - type: Label
-                                            label: '*Varying effect sizes and sample sizes*'
+                                            label: '<i>Varying effect sizes and sample sizes</i>'
                                       - type: CollapseBox
                                         label: Varying Effect Sizes
                                         collapsed: true
@@ -4832,7 +4832,7 @@ children:
                                                   - type: CheckBox
                                                     name: WorldOn
                                               - type: Label
-                                                label: '*distribution H₊ :*'
+                                                label: '<i>distribution H<sub>+</sub> :</i>'
                                                 horizontalAlignment: right
                                                 cell:
                                                   row: 2
@@ -4882,13 +4882,13 @@ children:
                                                   (WorldOn && (WorldPDF:GenExp ||
                                                   WorldPDF:Gamma))
                                               - type: Label
-                                                label: '+ *nulls H₀ :*'
+                                                label: '+ <i>nulls H<sub>0</sub> :</i>'
                                                 horizontalAlignment: right
                                                 cell:
                                                   row: 3
                                                   column: 0
                                               - type: Label
-                                                label: p(H₀)
+                                                label: p(H<sub>0</sub>)
                                                 horizontalAlignment: right
                                                 cell:
                                                   row: 3
@@ -4901,7 +4901,7 @@ children:
                                                   row: 3
                                                   column: 4
                                               - type: Label
-                                                label: '& *prior sample Hₛ :*'
+                                                label: '& <i>prior sample H<sub>s</sub> :</i>'
                                                 horizontalAlignment: right
                                                 cell:
                                                   row: 4
@@ -4913,13 +4913,13 @@ children:
                                                   row: 4
                                                   column: 1
                                               - type: Label
-                                                label: rₛ
+                                                label: r<sub>s</sub>
                                                 horizontalAlignment: right
                                                 cell:
                                                   row: 4
                                                   column: 3
                                               - type: TextBox
-                                                name: WorldMn
+                                                name: WorldSampleRs
                                                 format: number
                                                 enable: (WorldOn && !(WorldSample:none))
                                                 cell:
@@ -4932,7 +4932,7 @@ children:
                                                   row: 4
                                                   column: 5
                                               - type: TextBox
-                                                name: WorldSd
+                                                name: WorldSampleN
                                                 format: number
                                                 enable: (WorldOn && !(WorldSample:none))
                                                 cell:
@@ -4960,7 +4960,7 @@ children:
                                                   - type: CheckBox
                                                     name: SampleSpreadOn
                                               - type: Label
-                                                label: '*distribution:*'
+                                                label: '<i>distribution:</i>'
                                                 margin: none
                                                 cell:
                                                   row: 1
@@ -5003,7 +5003,7 @@ children:
                                     margin: none
                                     children:
                                       - type: Label
-                                        label: '*Combining multiple samples*'
+                                        label: '<i>Combining multiple samples</i>'
                                       - type: CollapseBox
                                         label: Replication
                                         collapsed: true
@@ -5031,7 +5031,7 @@ children:
                                                 margin: none
                                                 children:
                                                   - type: Label
-                                                    label: '*Attempts:*'
+                                                    label: '<i>Attempts:</i>'
                                                     horizontalAlignment: right
                                                     cell:
                                                       row: 0
@@ -5057,7 +5057,7 @@ children:
                                                       column: 3
                                                     enable: (ReplicationOn)
                                                   - type: Label
-                                                    label: '*Power:*'
+                                                    label: '<i>Power:</i>'
                                                     horizontalAlignment: right
                                                     cell:
                                                       row: 1
@@ -5093,7 +5093,7 @@ children:
                                                     enable: (ReplicationOn)
                                                     format: number
                                                   - type: Label
-                                                    label: '*Decision:*'
+                                                    label: '<i>Decision:</i>'
                                                     horizontalAlignment: right
                                                     cell:
                                                       row: 2
@@ -5127,7 +5127,7 @@ children:
                                                 margin: none
                                                 children:
                                                   - type: Label
-                                                    label: '*Estimate:*'
+                                                    label: '<i>Estimate:</i>'
                                                     margin: none
                                                     horizontalAlignment: right
                                                     cell:
@@ -5165,7 +5165,7 @@ children:
                                                     enable: (MetaAnalysisOn)
                                                     margin: none
                                                   - type: Label
-                                                    label: '*Method:*'
+                                                    label: '<i>Method:</i>'
                                                     horizontalAlignment: right
                                                     margin: none
                                                     cell:
@@ -5188,7 +5188,7 @@ children:
                                                       (MetaAnalysisOn &&
                                                       MetaAnalysisMethod:MLE)
                                                   - type: Label
-                                                    label: '*Studies:*'
+                                                    label: '<i>Studies:</i>'
                                                     horizontalAlignment: right
                                                     margin: none
                                                     cell:
@@ -5210,7 +5210,7 @@ children:
                                                       column: 4
                                                     enable: (MetaAnalysisOn)
                                                   - type: Label
-                                                    label: '*Display:*'
+                                                    label: '<i>Display:</i>'
                                                     horizontalAlignment: right
                                                     margin: none
                                                     cell:
@@ -5240,14 +5240,14 @@ children:
                 style: inline
                 children:
                   - type: CollapseBox
-                    label: '2.&nbsp;**Single Sample**: use the plan'
+                    label: '2.&nbsp;<b>Single Sample</b>: use the plan'
                     collapsed: true
                     minWidth: 470
                     maxWidth: 470
                     margin: none
                     children:
                       - type: Label
-                        label: '*Inspect the data (Sample, Describe) and then the analysis (Infer, Likelihood)*'
+                        label: '<i>Inspect the data (Sample, Describe) and then the analysis (Infer, Likelihood)</i>'
                       - type: LayoutBox
                         style: inline
                         margin: none
@@ -5256,7 +5256,7 @@ children:
                             label: ' '
                             minWidth: 2
                           - type: Label
-                            label: '*there are various display options to try*'
+                            label: '<i>there are various display options to try</i>'
                       - type: LayoutBox
                         style: inline
                         margin: none
@@ -5282,14 +5282,14 @@ children:
                 style: inline
                 children:
                   - type: CollapseBox
-                    label: '3.&nbsp;**Multiple Samples**: test the plan'
+                    label: '3.&nbsp;<b>Multiple Samples</b>: test the plan'
                     collapsed: true
                     margin: none
                     minWidth: 470
                     maxWidth: 470
                     children:
                       - type: Label
-                        label: '*By running many samples, we can see the range of outcomes to expect*'
+                        label: '<i>By running many samples, we can see the range of outcomes to expect</i>'
                       - type: LayoutBox
                         style: inline
                         margin: none
@@ -5298,7 +5298,7 @@ children:
                             label: ' '
                             minWidth: 2
                           - type: Label
-                            label: '*- choose how many samples: more is better but slower*'
+                            label: '<i>- choose how many samples: more is better but slower</i>'
                       - type: LayoutBox
                         style: inline
                         margin: none
@@ -5336,14 +5336,14 @@ children:
                 style: inline
                 children:
                   - type: CollapseBox
-                    label: '4.&nbsp;**Explore**: vary the plan'
+                    label: '4.&nbsp;<b>Explore</b>: vary the plan'
                     collapsed: true
                     margin: none
                     minWidth: 470
                     maxWidth: 470
                     children:
                       - type: Label
-                        label: '*Explore will automatically vary decisions in the plan*'
+                        label: '<i>Explore will automatically vary decisions in the plan</i>'
                       - type: LayoutBox
                         style: inline
                         margin: none
@@ -5352,7 +5352,7 @@ children:
                             label: ' '
                             minWidth: 2
                           - type: Label
-                            label: '*- you can change the range and the number of values to explore*'
+                            label: '<i>- you can change the range and the number of values to explore</i>'
                       - type: LayoutBox
                         style: inline
                         margin: none
@@ -5678,7 +5678,7 @@ children:
                 style: inline
                 children:
                   - type: CollapseBox
-                    label: '*Settings*'
+                    label: '<i>Settings</i>'
                     collapsed: true
                     margin: none
                     minWidth: 200
@@ -5728,7 +5728,7 @@ children:
                           - type: Label
                             label: ongoing calculations
                   - type: CollapseBox
-                    label: '*History*'
+                    label: '<i>History</i>'
                     collapsed: true
                     margin: none
                     minWidth: 200

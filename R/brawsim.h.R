@@ -70,8 +70,8 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             worldMeanRplus = 0.3,
             WorldShape = 1,
             worldPRnull = 0.5,
-            WorldMn = 0,
-            WorldSd = 0,
+            WorldSampleRs = 0,
+            WorldSampleN = 42,
             WorldSample = "none",
             SampleSize = 42,
             SampleSizeDist = "Gamma",
@@ -698,14 +698,14 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 "worldPRnull",
                 worldPRnull,
                 default=0.5)
-            private$..WorldMn <- jmvcore::OptionNumber$new(
-                "WorldMn",
-                WorldMn,
+            private$..WorldSampleRs <- jmvcore::OptionNumber$new(
+                "WorldSampleRs",
+                WorldSampleRs,
                 default=0)
-            private$..WorldSd <- jmvcore::OptionNumber$new(
-                "WorldSd",
-                WorldSd,
-                default=0)
+            private$..WorldSampleN <- jmvcore::OptionNumber$new(
+                "WorldSampleN",
+                WorldSampleN,
+                default=42)
             private$..WorldSample <- jmvcore::OptionList$new(
                 "WorldSample",
                 WorldSample,
@@ -849,6 +849,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 ReplicationDecision,
                 options=list(
                     "Cautious",
+                    "Last",
                     "LargeN",
                     "MetaAnalysis"),
                 default="Cautious")
@@ -2130,8 +2131,8 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..worldMeanRplus)
             self$.addOption(private$..WorldShape)
             self$.addOption(private$..worldPRnull)
-            self$.addOption(private$..WorldMn)
-            self$.addOption(private$..WorldSd)
+            self$.addOption(private$..WorldSampleRs)
+            self$.addOption(private$..WorldSampleN)
             self$.addOption(private$..WorldSample)
             self$.addOption(private$..SampleSize)
             self$.addOption(private$..SampleSizeDist)
@@ -2473,8 +2474,8 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         worldMeanRplus = function() private$..worldMeanRplus$value,
         WorldShape = function() private$..WorldShape$value,
         worldPRnull = function() private$..worldPRnull$value,
-        WorldMn = function() private$..WorldMn$value,
-        WorldSd = function() private$..WorldSd$value,
+        WorldSampleRs = function() private$..WorldSampleRs$value,
+        WorldSampleN = function() private$..WorldSampleN$value,
         WorldSample = function() private$..WorldSample$value,
         SampleSize = function() private$..SampleSize$value,
         SampleSizeDist = function() private$..SampleSizeDist$value,
@@ -2815,8 +2816,8 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..worldMeanRplus = NA,
         ..WorldShape = NA,
         ..worldPRnull = NA,
-        ..WorldMn = NA,
-        ..WorldSd = NA,
+        ..WorldSampleRs = NA,
+        ..WorldSampleN = NA,
         ..WorldSample = NA,
         ..SampleSize = NA,
         ..SampleSizeDist = NA,
@@ -3286,8 +3287,8 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param worldMeanRplus .
 #' @param WorldShape .
 #' @param worldPRnull .
-#' @param WorldMn .
-#' @param WorldSd .
+#' @param WorldSampleRs .
+#' @param WorldSampleN .
 #' @param WorldSample .
 #' @param SampleSize .
 #' @param SampleSizeDist .
@@ -3638,8 +3639,8 @@ BrawSim <- function(
     worldMeanRplus = 0.3,
     WorldShape = 1,
     worldPRnull = 0.5,
-    WorldMn = 0,
-    WorldSd = 0,
+    WorldSampleRs = 0,
+    WorldSampleN = 42,
     WorldSample = "none",
     SampleSize = 42,
     SampleSizeDist = "Gamma",
@@ -3981,8 +3982,8 @@ BrawSim <- function(
         worldMeanRplus = worldMeanRplus,
         WorldShape = WorldShape,
         worldPRnull = worldPRnull,
-        WorldMn = WorldMn,
-        WorldSd = WorldSd,
+        WorldSampleRs = WorldSampleRs,
+        WorldSampleN = WorldSampleN,
         WorldSample = WorldSample,
         SampleSize = SampleSize,
         SampleSizeDist = SampleSizeDist,

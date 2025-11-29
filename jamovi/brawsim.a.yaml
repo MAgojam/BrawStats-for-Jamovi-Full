@@ -516,15 +516,15 @@ options:
       type: Number
       default: 0.5
 
-    - name: WorldMn
+    - name: WorldSampleRs
       title: ''
       type: Number
       default: 0.0
 
-    - name: WorldSd
+    - name: WorldSampleN
       title: ''
       type: Number
-      default: 0.0
+      default: 42
 
     - name: WorldSample
       title: ''
@@ -727,8 +727,8 @@ options:
       options:
       - name: Cautious
         title: Cautious
-      # - name: Last
-      #   title: Last
+      - name: Last
+        title: Last
       # - name: FirstSuccess
       #   title: FirstSuccess
       # - name: Median
@@ -1438,7 +1438,7 @@ options:
         - name: Alpha
           title: '&alpha;'
         - name: minRp
-          title: 'min(rₚ)'
+          title: 'min(r<sub>p</sub>)'
         - name: Transform
           title: Transform
         - name: Welch
@@ -2428,7 +2428,7 @@ options:
       type: List
       options:
       - name: rse
-        title: rₛ
+        title: r<sub>s</sub>
       - name: p
         title: p
       default: rse

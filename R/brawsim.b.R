@@ -17,6 +17,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       if (rVersion>=4.5) Jamovi<-2.7 else Jamovi<-2.6
       
       # debug information
+      on.exit(if (!is.null(braw.res$debug)) {self$results$debug$setContent(braw.res$debug);self$results$debug$setVisible(TRUE)}
+      )
 
       # initialization code here
       if (is.null(braw.res$statusStore)) {
@@ -301,15 +303,18 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           }
         }
         
-        if (!self$options$stopBtn)
-        if (any(c(makeSampleNow,
-                  makeMultipleNow && statusStore$lastOutput!="Multiple",
-                  makeExploreNow && statusStore$lastOutput!="Explore"
-                  ))) {
-          nullResults<-emptyPlot(self$options$basicMode)
-          self$results$simGraphHTML$setContent(nullResults)
-          private$.checkpoint()
-        }
+        # in theory this blanks the screen while the new display is being calculated
+        # in practice it is all too fast
+        # if (!self$options$stopBtn)
+        # if (any(c(makeSampleNow,
+        #           makeMultipleNow && statusStore$lastOutput!="Multiple",
+        #           makeExploreNow && statusStore$lastOutput!="Explore"
+        #           ))) {
+        #   nullResults<-emptyPlot(self$options$basicMode)
+        #   self$results$simGraphHTML$setContent(nullResults)
+        #   private$.checkpoint()
+        # }
+        
         # now we start doing new things
         # did we ask for a new sample?
         if (makeSampleNow) {
@@ -350,18 +355,20 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
               # }
             outputNow<-"MetaMultiple"
           } else {
+            setBrawRes("debug",c())
             # # do we need to do this, or are we just returning to the existing one?
             # if (is.null(braw.res$multiple) || is.element(statusStore$lastOutput,c("Multiple"))) {
-            ns<-ceiling(min(10,numberSamples/10))
+            ns<-ceiling(max(0,numberSamples/10))
             if (changedH || changedD || is.null(braw.res$multiple)) targetN<-numberSamples
             else targetN<-braw.res$multiple$count+numberSamples
-            while ((is.null(braw.res$multiple)) || (braw.res$multiple$count<targetN)) {
+            while (is.null(braw.res$multiple) || braw.res$multiple$count<targetN) {
               doMultiple(nsims=ns,multipleResult=braw.res$multiple)
               
               setBrawEnv("graphicsType","HTML")
               svgBox(height=350,aspect=1.5,fontScale=1.2)
               simMultiple<-paste0(showMultiple(showType=showMultipleParam,dimension=showMultipleDimension,effectType=whichShowMultipleOut,orientation=showMultipleOrient),
-                                  reportMultiple(showType=showMultipleParam,effectType=whichShowMultipleOut,reportStats=self$options$reportInferStats)
+                                  reportMultiple(showType=showMultipleParam,effectType=whichShowMultipleOut,reportStats=self$options$reportInferStats),
+                                  ''
               )
               setBrawRes("simMultiple",simMultiple)
               open<-2
@@ -375,6 +382,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                 title="Simulation:",
                 plainTabs=TRUE,
                 titleWidth=100,
+                width=600,
                 tabs=tabs,
                 tabContents=tabContents,
                 open=open+1
@@ -422,6 +430,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                 title="Simulation:",
                 plainTabs=TRUE,
                 titleWidth=100,
+                width=600,
                 tabs=tabs,
                 tabContents=tabContents,
                 open=open+1
@@ -486,6 +495,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
             title="Simulation:",
             plainTabs=TRUE,
             titleWidth=100,
+            width=600,
             tabs=tabs,
             tabContents=tabContents,
             open=open+1
