@@ -119,7 +119,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: <b>1. Data:</b>&nbsp; basic working'
+                            label: <b>1. Data:</b>&nbsp; basic working
                             margin: none
                             minWidth: 450
                             maxWidth: 450
@@ -392,7 +392,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: <b>2. Interval DV:</b>&nbsp; correlation; t-test; 1-way ANOVA'
+                            label: <b>2. Interval DV:</b>&nbsp; correlation; t-test; 1-way ANOVA
                             margin: none
                             minWidth: 450
                             maxWidth: 450
@@ -570,7 +570,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: <b>3. Categorical DV:</b>&nbsp; chi-square; logistic regression'
+                            label: <b>3. Categorical DV:</b>&nbsp; chi-square; logistic regression
                             margin: none
                             minWidth: 450
                             maxWidth: 450
@@ -775,7 +775,7 @@ children:
                                               row: 0
                                               column: 0
                                           - type: Label
-                                            label: 1. <b>make</b> a sample'
+                                            label: 1. <b>make</b> a sample
                                             cell:
                                               row: 0
                                               column: 1
@@ -793,7 +793,7 @@ children:
                                               row: 1
                                               column: 1
                                           - type: Label
-                                            label: 3. <b>check</b> the analysis'
+                                            label: 3. <b>check</b> the analysis
                                             cell:
                                               row: 2
                                               column: 1
@@ -817,7 +817,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: <b>4. Main Tests:</b>&nbsp; 2-way ANOVA, ANCOVA, multiple regression'
+                            label: <b>4. Main Tests:</b>&nbsp; 2-way ANOVA, ANCOVA, multiple regression
                             margin: none
                             minWidth: 450
                             maxWidth: 450
@@ -1042,7 +1042,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: <b>5. Interactions:</b>&nbsp; joint effects'
+                            label: <b>5. Interactions:</b>&nbsp; joint effects
                             margin: none
                             minWidth: 450
                             maxWidth: 450
@@ -1314,7 +1314,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: <b>6. Covariation:</b>&nbsp; overlapping effects'
+                            label: <b>6. Covariation:</b>&nbsp; overlapping effects
                             margin: none
                             minWidth: 450
                             maxWidth: 450
@@ -1611,7 +1611,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: <b>7. One IV:</b>&nbsp; is there a difference?'
+                            label: <b>7. One IV:</b>&nbsp; is there a difference?
                             margin: none
                             minWidth: 450
                             maxWidth: 450
@@ -1770,7 +1770,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: <b>8. 2x2 IVs:</b>&nbsp; effects and interactions'
+                            label: <b>8. 2x2 IVs:</b>&nbsp; effects and interactions
                             margin: none
                             minWidth: 450
                             maxWidth: 450
@@ -1955,7 +1955,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: <b>9. Moderation:</b>&nbsp; altering effects'
+                            label: <b>9. Moderation:</b>&nbsp; altering effects
                             margin: none
                             minWidth: 450
                             maxWidth: 450
@@ -2306,7 +2306,7 @@ children:
                             minWidth: 20
                           - type: CollapseBox
                             collapsed: true
-                            label: <b>10. Mediation:</b>&nbsp; paths of effects'
+                            label: <b>10. Mediation:</b>&nbsp; paths of effects
                             margin: none
                             minWidth: 450
                             maxWidth: 450
