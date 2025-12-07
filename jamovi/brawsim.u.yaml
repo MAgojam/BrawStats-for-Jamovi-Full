@@ -453,7 +453,7 @@ children:
                                     children:
                                       - type: CollapseBox
                                         collapsed: true
-                                        label: a. t-test
+                                        label: a. correlation
                                         margin: none
                                         minWidth: 400
                                         maxWidth: 400
@@ -488,7 +488,7 @@ children:
                                                   column: 2
                                       - type: CollapseBox
                                         collapsed: true
-                                        label: b. correlation
+                                        label: b. t-test
                                         margin: none
                                         minWidth: 400
                                         maxWidth: 400

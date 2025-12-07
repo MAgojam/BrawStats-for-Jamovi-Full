@@ -98,6 +98,8 @@ check4basics<-function(self,private) {
     if (doingBasics=="Step6R") doingBasics<-paste0("Step",braw.res$basicsDone[1],braw.res$basicsDone[2],"r")
   } else {
     return(FALSE)
+    # code below doesn't work and so is never run
+    # it is supposed to do an automatic update when the analysis terms are changed
     doingBasics<-NULL
     if (braw.res$basicsDone[1]=="5") {
       basicsStep5Analysis<-c(self$options$doBasics5Main1,self$options$doBasics5Main2,self$options$doBasics5Interaction,FALSE)
