@@ -6,7 +6,7 @@ sendData2Jamovi<-function(outputNow,self) {
       newVariables2<-newVariables<-c()
       if (is.null(braw.res$result$hypothesis$IV2)) {
           newVariables<-data.frame(braw.res$result$participant,braw.res$result$dv,braw.res$result$iv,braw.res$result$dv+NA)
-            names(newVariables)<-c("ID",braw.def$hypothesis$DV$name,braw.def$hypothesis$IV$name,"-")
+            names(newVariables)<-c("ID",braw.res$result$hypothesis$DV$name,braw.res$result$hypothesis$IV$name,"-")
           if (braw.res$result$design$sIV1Use=="Within") {
             newVariables2<-c()
             m<-levels(braw.res$result$iv)
@@ -80,7 +80,6 @@ sendData2Jamovi<-function(outputNow,self) {
       if (!is.null(newVariables)) {
         keys<-1:length(newVariables)
         measureTypes<-sapply(newVariables,function(x) { if (is.character(x) || is.factor(x)) "Nominal" else "Continuous"})
-        
         self$results$sendSample$set(keys=keys,titles=names(newVariables),
                                     descriptions=rep("simulated",length(newVariables)),
                                     measureTypes=measureTypes
