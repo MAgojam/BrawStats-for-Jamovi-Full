@@ -95,8 +95,8 @@ check4basics<-function(self,private) {
   basicsStep6Analysis<-NULL
   if (any(basicsControls)) {
     # hit a button before the previous one was completed
-    if (length(basicsControls)>1) return(FALSE)
-    doingBasics<-basicsNames[which(basicsControls)[1]]
+    if (length(which(basicsControls))>1) return(FALSE)
+    doingBasics<-basicsNames[which(basicsControls)
     if (is.null(doingBasics)) return(FALSE)
     if (doingBasics=="Step6R") doingBasics<-paste0("Step",braw.res$basicsDone[1],braw.res$basicsDone[2],"r")
   } else {
