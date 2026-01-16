@@ -1,0 +1,1994 @@
+title: Learn Basics
+name: BrawBasics
+jus: '3.0'
+stage: 0
+compilerMode: tame
+children:
+      - name: topMode
+        type: ModeSelector
+        margin: none
+        children:
+          - type: Content
+            name: Basics
+            margin: none
+            children:
+              - type: LayoutBox
+                style: list
+                children:
+                  - type: CollapseBox
+                    label: <b>1. Getting Started</b>
+                    collapsed: true
+                    minWidth: 540
+                    children:
+                      - type: LayoutBox
+                        style: inline
+                        children:
+                          - type: Label
+                            label: ' '
+                            minWidth: 20
+                          - type: CollapseBox
+                            collapsed: true
+                            label: <b>An Example:</b>&nbsp; make a sample an analyse it
+                            margin: none
+                            minWidth: 450
+                            maxWidth: 450
+                            children:
+                              - type: Label
+                                label: ''
+                                style: inline
+                                margin: large
+                                minWidth: 18
+                                verticalAlignment: top
+                                children:
+                                      - type: Label
+                                        label: ' '
+                                        minWidth: 10
+                                        cell:
+                                          row: 0
+                                          column: 0
+                                      - type: Label
+                                        label: 'IV:'
+                                        margin: none
+                                        cell:
+                                          row: 0
+                                          column: 1
+                                      - type: ComboBox
+                                        name: doBasics1IV
+                                        margin: none
+                                        cell:
+                                          row: 0
+                                          column: 2
+                                      - type: Label
+                                        label: 'DV:'
+                                        margin: none
+                                        cell:
+                                          row: 0
+                                          column: 3
+                                      - type: ComboBox
+                                        name: doBasics1DV
+                                        margin: none
+                                        cell:
+                                          row: 0
+                                          column: 4
+                              - type: Label
+                                label: ''
+                                style: inline
+                                margin: large
+                                minWidth: 18
+                                verticalAlignment: top
+                                children:
+                                  - type: LayoutBox
+                                    style: list
+                                    margin: none
+                                    children:
+                                          - type: LayoutBox
+                                            style: inline
+                                            margin: none
+                                            children:
+                                              - type: Label
+                                                label: ' '
+                                                minWidth: 10
+                                                cell:
+                                                  row: 0
+                                                  column: 0
+                                              - type: Label
+                                                label: 1. we make a sample
+                                                cell:
+                                                  row: 0
+                                                  column: 1
+                                              - type: Label
+                                                label: 2. and follow the Jamovi instructions
+                                                cell:
+                                                  row: 1
+                                                  column: 1
+                                              - type: ActionButton
+                                                name: doBasics1ABtn
+                                                margin: none
+                                                maxWidth: 79
+                                                maxHeight: 24
+                                                cell:
+                                                  row: 0
+                                                  column: 2
+                  - type: CollapseBox
+                    label: <b>2. Describing Data</b>
+                    collapsed: true
+                    minWidth: 540
+                    children:
+                      - type: LayoutBox
+                        style: inline
+                        children:
+                          - type: Label
+                            label: ' '
+                            minWidth: 20
+                          - type: CollapseBox
+                            collapsed: true
+                            label: <b>Data:</b>&nbsp; basics
+                            margin: none
+                            minWidth: 450
+                            maxWidth: 450
+                            children:
+                              - type: Label
+                                label: ''
+                                style: inline
+                                margin: large
+                                minWidth: 8
+                                verticalAlignment: top
+                                children:
+                                  - type: LayoutBox
+                                    style: inline
+                                    margin: none
+                                    children:
+                                      - type: Label
+                                        label: ' '
+                                        minWidth: 10
+                                        minHeight: 10
+                                        cell:
+                                          row: 0
+                                          column: 0
+                                      - type: Label
+                                        label: n
+                                        margin: none
+                                        cell:
+                                          row: 0
+                                          column: 1
+                                      - type: TextBox
+                                        name: doBasics1CSampleSize
+                                        format: number
+                                        margin: none
+                                        cell:
+                                          row: 0
+                                          column: 2
+                              - type: Label
+                                label: ''
+                                style: inline
+                                margin: large
+                                minWidth: 1
+                                maxWidth: 1
+                                verticalAlignment: top
+                                children:
+                                  - type: LayoutBox
+                                    style: list
+                                    margin: none
+                                    children:
+                                      - type: CollapseBox
+                                        collapsed: true
+                                        label: a. Look at the raw data
+                                        margin: none
+                                        minWidth: 400
+                                        maxWidth: 400
+                                        children:
+                                          - type: LayoutBox
+                                            style: inline
+                                            margin: none
+                                            children:
+                                              - type: Label
+                                                label: ' '
+                                                minWidth: 30
+                                                cell:
+                                                  row: 0
+                                                  column: 0
+                                              - type: Label
+                                                label: skew
+                                                margin: none
+                                                cell:
+                                                  row: 0
+                                                  column: 1
+                                              - type: TextBox
+                                                name: doBasics1BSkew
+                                                format: number
+                                                margin: none
+                                                verticalAlignment: center
+                                                cell:
+                                                  row: 0
+                                                  column: 2
+                                              - type: Label
+                                                label: kurtosis
+                                                margin: none
+                                                cell:
+                                                  row: 0
+                                                  column: 3
+                                              - type: TextBox
+                                                name: doBasics1BKurt
+                                                format: number
+                                                margin: none
+                                                verticalAlignment: center
+                                                cell:
+                                                  row: 0
+                                                  column: 4
+                                          - type: LayoutBox
+                                            style: inline
+                                            margin: none
+                                            children:
+                                              - type: Label
+                                                label: ' '
+                                                minWidth: 10
+                                                cell:
+                                                  row: 0
+                                                  column: 0
+                                              - type: Label
+                                                label: 1. we make a sample
+                                                cell:
+                                                  row: 0
+                                                  column: 1
+                                              - type: Label
+                                                label: 2. and inspect the data
+                                                cell:
+                                                  row: 1
+                                                  column: 1
+                                              - type: ActionButton
+                                                name: doBasics1BBtn
+                                                margin: none
+                                                maxWidth: 79
+                                                maxHeight: 24
+                                                cell:
+                                                  row: 0
+                                                  column: 2
+                                      - type: CollapseBox
+                                        collapsed: true
+                                        label: b. Look at sampling
+                                        margin: none
+                                        minWidth: 400
+                                        maxWidth: 400
+                                        children:
+                                          - type: LayoutBox
+                                            style: inline
+                                            margin: none
+                                            children:
+                                              - type: Label
+                                                label: ' '
+                                                minWidth: 30
+                                                cell:
+                                                  row: 0
+                                                  column: 0
+                                              - type: Label
+                                                label: sampling
+                                                margin: none
+                                                cell:
+                                                  row: 0
+                                                  column: 1
+                                              - type: ComboBox
+                                                name: doBasics1CSampling
+                                                margin: none
+                                                cell:
+                                                  row: 0
+                                                  column: 2
+                                              - type: Label
+                                                label: outliers
+                                                margin: none
+                                                cell:
+                                                  row: 0
+                                                  column: 5
+                                              - type: CheckBox
+                                                name: doBasics1COutliers
+                                                margin: none
+                                                verticalAlignment: center
+                                                cell:
+                                                  row: 0
+                                                  column: 6
+                                          - type: LayoutBox
+                                            style: inline
+                                            margin: none
+                                            children:
+                                              - type: Label
+                                                label: ' '
+                                                minWidth: 10
+                                                cell:
+                                                  row: 0
+                                                  column: 0
+                                              - type: Label
+                                                label: 1. we make a sample
+                                                cell:
+                                                  row: 0
+                                                  column: 1
+                                              - type: Label
+                                                label: 2. and inspect the data
+                                                cell:
+                                                  row: 1
+                                                  column: 1
+                                              - type: ActionButton
+                                                name: doBasics1CBtn
+                                                margin: none
+                                                maxWidth: 79
+                                                maxHeight: 24
+                                                cell:
+                                                  row: 0
+                                                  column: 2
+                          - type: ActionButton
+                            name: basics1Help
+                            margin: none
+                            minWidth: 10
+                            maxWidth: 10
+                            maxHeight: 24
+                  - type: CollapseBox
+                    label: <b>3. Tests for Single IV</b>
+                    collapsed: true
+                    minWidth: 540
+                    children:
+                      - type: LayoutBox
+                        style: inline
+                        children:
+                          - type: Label
+                            label: ' '
+                            minWidth: 20
+                          - type: CollapseBox
+                            collapsed: true
+                            label: >-
+                              <b>Interval DV:</b>&nbsp; correlation; t-test;
+                              1-way ANOVA
+                            margin: none
+                            minWidth: 450
+                            maxWidth: 450
+                            children:
+                              - type: LayoutBox
+                                style: inline
+                                children:
+                                  - type: Label
+                                    label: ' '
+                                    minWidth: 1
+                                    maxWidth: 1
+                                    margin: none
+                                  - type: CollapseBox
+                                    collapsed: true
+                                    label: <i>Options</i>
+                                    children:
+                                      - type: Label
+                                        label: ' '
+                                        minWidth: 10
+                                        cell:
+                                          row: 0
+                                          column: 0
+                                      - type: Label
+                                        label: r<sub>p</sub>
+                                        margin: none
+                                        cell:
+                                          row: 0
+                                          column: 1
+                                      - type: TextBox
+                                        format: number
+                                        name: doBasics2EffectSize
+                                        margin: none
+                                        cell:
+                                          row: 0
+                                          column: 2
+                                      - type: Label
+                                        label: 'n'
+                                        margin: none
+                                        cell:
+                                          row: 1
+                                          column: 1
+                                      - type: TextBox
+                                        format: number
+                                        name: doBasics2SampleSize
+                                        margin: none
+                                        cell:
+                                          row: 1
+                                          column: 2
+                              - type: LayoutBox
+                                style: inline
+                                children:
+                                  - type: Label
+                                    label: ' '
+                                    minWidth: 1
+                                    maxWidth: 1
+                                    margin: none
+                                  - type: LayoutBox
+                                    style: list
+                                    margin: none
+                                    children:
+                                      - type: CollapseBox
+                                        collapsed: true
+                                        label: a. correlation
+                                        margin: none
+                                        minWidth: 400
+                                        maxWidth: 400
+                                        children:
+                                          - type: LayoutBox
+                                            style: inline
+                                            margin: none
+                                            children:
+                                              - type: Label
+                                                label: ' '
+                                                minWidth: 10
+                                                cell:
+                                                  row: 0
+                                                  column: 0
+                                              - type: Label
+                                                label: 1. we make a sample
+                                                cell:
+                                                  row: 0
+                                                  column: 1
+                                              - type: Label
+                                                label: 2. and follow the Jamovi instructions
+                                                cell:
+                                                  row: 1
+                                                  column: 1
+                                              - type: ActionButton
+                                                name: doBasics2ABtn
+                                                margin: none
+                                                maxWidth: 79
+                                                maxHeight: 24
+                                                cell:
+                                                  row: 0
+                                                  column: 2
+                                      - type: CollapseBox
+                                        collapsed: true
+                                        label: b. t-test
+                                        margin: none
+                                        minWidth: 400
+                                        maxWidth: 400
+                                        children:
+                                          - type: LayoutBox
+                                            style: inline
+                                            margin: none
+                                            children:
+                                              - type: Label
+                                                label: ' '
+                                                minWidth: 10
+                                                cell:
+                                                  row: 0
+                                                  column: 0
+                                              - type: Label
+                                                label: 1. we make a sample
+                                                cell:
+                                                  row: 0
+                                                  column: 1
+                                              - type: Label
+                                                label: 2. and follow the Jamovi instructions
+                                                cell:
+                                                  row: 1
+                                                  column: 1
+                                              - type: ActionButton
+                                                name: doBasics2BBtn
+                                                margin: none
+                                                maxWidth: 79
+                                                maxHeight: 24
+                                                cell:
+                                                  row: 0
+                                                  column: 2
+                                      - type: CollapseBox
+                                        collapsed: true
+                                        label: c. 1-way ANOVA
+                                        margin: none
+                                        minWidth: 400
+                                        maxWidth: 400
+                                        children:
+                                          - type: LayoutBox
+                                            style: inline
+                                            margin: none
+                                            children:
+                                              - type: Label
+                                                label: ' '
+                                                minWidth: 10
+                                                cell:
+                                                  row: 0
+                                                  column: 0
+                                              - type: Label
+                                                label: 1. we make a sample
+                                                cell:
+                                                  row: 0
+                                                  column: 1
+                                              - type: Label
+                                                label: 2. and follow the Jamovi instructions
+                                                cell:
+                                                  row: 1
+                                                  column: 1
+                                              - type: ActionButton
+                                                name: doBasics2CBtn
+                                                margin: none
+                                                maxWidth: 79
+                                                maxHeight: 24
+                                                cell:
+                                                  row: 0
+                                                  column: 2
+                          - type: ActionButton
+                            name: basics2Help
+                            margin: none
+                            minWidth: 10
+                            maxWidth: 10
+                            maxHeight: 24
+                      - type: LayoutBox
+                        style: inline
+                        children:
+                          - type: Label
+                            label: ' '
+                            minWidth: 20
+                          - type: CollapseBox
+                            collapsed: true
+                            label: >-
+                              <b>Categorical DV:</b>&nbsp; chi-square;
+                              logistic regression
+                            margin: none
+                            minWidth: 450
+                            maxWidth: 450
+                            children:
+                              - type: LayoutBox
+                                style: inline
+                                children:
+                                  - type: Label
+                                    label: ' '
+                                    minWidth: 1
+                                    maxWidth: 1
+                                    margin: none
+                                  - type: CollapseBox
+                                    collapsed: true
+                                    label: <i>Options</i>
+                                    children:
+                                      - type: Label
+                                        label: ' '
+                                        minWidth: 10
+                                        cell:
+                                          row: 0
+                                          column: 0
+                                      - type: Label
+                                        label: r<sub>p</sub>
+                                        margin: none
+                                        cell:
+                                          row: 0
+                                          column: 1
+                                      - type: TextBox
+                                        format: number
+                                        name: doBasics3EffectSize
+                                        margin: none
+                                        cell:
+                                          row: 0
+                                          column: 2
+                                      - type: Label
+                                        label: 'n'
+                                        margin: none
+                                        cell:
+                                          row: 1
+                                          column: 1
+                                      - type: TextBox
+                                        format: number
+                                        name: doBasics3SampleSize
+                                        margin: none
+                                        cell:
+                                          row: 1
+                                          column: 2
+                              - type: LayoutBox
+                                style: inline
+                                children:
+                                  - type: Label
+                                    label: ' '
+                                    minWidth: 1
+                                    maxWidth: 1
+                                    margin: none
+                                  - type: LayoutBox
+                                    style: list
+                                    margin: none
+                                    children:
+                                      - type: CollapseBox
+                                        collapsed: true
+                                        label: a. chi-square
+                                        margin: none
+                                        minWidth: 400
+                                        maxWidth: 400
+                                        children:
+                                          - type: LayoutBox
+                                            style: inline
+                                            margin: none
+                                            children:
+                                              - type: Label
+                                                label: ' '
+                                                minWidth: 10
+                                                cell:
+                                                  row: 0
+                                                  column: 0
+                                              - type: Label
+                                                label: 1. we make a sample
+                                                cell:
+                                                  row: 0
+                                                  column: 1
+                                              - type: Label
+                                                label: 2. and follow the Jamovi instructions
+                                                cell:
+                                                  row: 1
+                                                  column: 1
+                                              - type: ActionButton
+                                                name: doBasics3ABtn
+                                                margin: none
+                                                maxWidth: 79
+                                                maxHeight: 24
+                                                cell:
+                                                  row: 0
+                                                  column: 2
+                                      - type: CollapseBox
+                                        collapsed: true
+                                        label: b. logistic/ordinal regression
+                                        margin: none
+                                        minWidth: 400
+                                        maxWidth: 400
+                                        children:
+                                          - type: LayoutBox
+                                            style: inline
+                                            margin: none
+                                            children:
+                                              - type: Label
+                                                label: ' '
+                                                minWidth: 10
+                                                cell:
+                                                  row: 0
+                                                  column: 0
+                                              - type: Label
+                                                label: 1. we make a sample
+                                                cell:
+                                                  row: 0
+                                                  column: 1
+                                              - type: Label
+                                                label: 2. and follow the Jamovi instructions
+                                                cell:
+                                                  row: 1
+                                                  column: 1
+                                              - type: ActionButton
+                                                name: doBasics3BBtn
+                                                margin: none
+                                                maxWidth: 79
+                                                maxHeight: 24
+                                                cell:
+                                                  row: 0
+                                                  column: 2
+                                      - type: CollapseBox
+                                        collapsed: true
+                                        label: c. logistic/interval regression
+                                        margin: none
+                                        minWidth: 400
+                                        maxWidth: 400
+                                        children:
+                                          - type: LayoutBox
+                                            style: inline
+                                            margin: none
+                                            children:
+                                              - type: Label
+                                                label: ' '
+                                                minWidth: 10
+                                                cell:
+                                                  row: 0
+                                                  column: 0
+                                              - type: Label
+                                                label: 1. we make a sample
+                                                cell:
+                                                  row: 0
+                                                  column: 1
+                                              - type: Label
+                                                label: 2. and follow the Jamovi instructions
+                                                cell:
+                                                  row: 1
+                                                  column: 1
+                                              - type: ActionButton
+                                                name: doBasics3CBtn
+                                                margin: none
+                                                maxWidth: 79
+                                                maxHeight: 24
+                                                cell:
+                                                  row: 0
+                                                  column: 2
+                          - type: ActionButton
+                            name: basics3Help
+                            margin: none
+                            minWidth: 10
+                            maxWidth: 10
+                            maxHeight: 24
+                      - type: LayoutBox
+                        style: inline
+                        children:
+                          - type: Label
+                            label: ' '
+                            minWidth: 20
+                          - type: CollapseBox
+                            collapsed: true
+                            label: <i>Test yourself</i>
+                            margin: none
+                            minWidth: 420
+                            maxWidth: 420
+                            children:
+                              - type: Label
+                                label: ' '
+                                style: inline
+                                margin: large
+                                minWidth: 18
+                                verticalAlignment: top
+                                children:
+                                  - type: LayoutBox
+                                    style: list
+                                    margin: none
+                                    children:
+                                      - type: LayoutBox
+                                        style: inline
+                                        margin: none
+                                        children:
+                                          - type: Label
+                                            label: ' '
+                                            minWidth: 10
+                                            cell:
+                                              row: 0
+                                              column: 0
+                                          - type: Label
+                                            label: 1. <b>make</b> a sample
+                                            cell:
+                                              row: 0
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doBasics31ABtn
+                                            margin: none
+                                            maxWidth: 79
+                                            maxHeight: 24
+                                            cell:
+                                              row: 0
+                                              column: 2
+                                          - type: Label
+                                            label: 2. and analyse the data in Jamovi
+                                            cell:
+                                              row: 1
+                                              column: 1
+                                          - type: Label
+                                            label: 3. <b>check</b> the analysis
+                                            cell:
+                                              row: 2
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doBasics31BBtn
+                                            margin: none
+                                            maxWidth: 79
+                                            maxHeight: 24
+                                            cell:
+                                              row: 0
+                                              column: 3
+                  - type: CollapseBox
+                    label: <b>4. Tests for Multiple IVs</b>
+                    collapsed: true
+                    children:
+                      - type: LayoutBox
+                        style: inline
+                        children:
+                          - type: Label
+                            label: ' '
+                            minWidth: 20
+                          - type: CollapseBox
+                            collapsed: true
+                            label: >-
+                              <b>Main Tests:</b>&nbsp; 2-way ANOVA, ANCOVA,
+                              multiple regression
+                            margin: none
+                            minWidth: 450
+                            maxWidth: 450
+                            children:
+                              - type: Label
+                                label: ' '
+                                margin: none
+                                horizontalAlignment: right
+                                cell:
+                                  row: 1
+                                  column: 0
+                              - type: LayoutBox
+                                style: inline
+                                cell:
+                                  row: 1
+                                  column: 1
+                                children:
+                                  - type: CollapseBox
+                                    collapsed: true
+                                    label: <i>Options</i>
+                                    children:
+                                      - type: Label
+                                        label: ' '
+                                        minWidth: 10
+                                        cell:
+                                          row: 0
+                                          column: 0
+                                      - type: Label
+                                        label: r<sub>p</sub>(Main 1)
+                                        margin: none
+                                        cell:
+                                          row: 0
+                                          column: 1
+                                      - type: TextBox
+                                        format: number
+                                        name: doBasics4EffectSize1
+                                        margin: none
+                                        cell:
+                                          row: 0
+                                          column: 2
+                                      - type: Label
+                                        label: r<sub>p</sub>(Main 2)
+                                        margin: none
+                                        cell:
+                                          row: 0
+                                          column: 3
+                                      - type: TextBox
+                                        format: number
+                                        name: doBasics4EffectSize2
+                                        margin: none
+                                        cell:
+                                          row: 0
+                                          column: 4
+                                      - type: Label
+                                        label: 'n'
+                                        margin: none
+                                        cell:
+                                          row: 1
+                                          column: 1
+                                      - type: TextBox
+                                        format: number
+                                        name: doBasics4SampleSize
+                                        margin: none
+                                        cell:
+                                          row: 1
+                                          column: 2
+                              - type: LayoutBox
+                                style: list
+                                margin: none
+                                cell:
+                                  row: 3
+                                  column: 1
+                                children:
+                                  - type: CollapseBox
+                                    collapsed: true
+                                    label: a. 2-way ANOVA
+                                    margin: none
+                                    minWidth: 400
+                                    maxWidth: 400
+                                    children:
+                                      - type: LayoutBox
+                                        style: inline
+                                        margin: none
+                                        children:
+                                          - type: Label
+                                            label: ' '
+                                            minWidth: 10
+                                            cell:
+                                              row: 0
+                                              column: 0
+                                          - type: Label
+                                            label: 1. we make a sample
+                                            cell:
+                                              row: 0
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doBasics4ABtn
+                                            margin: none
+                                            maxWidth: 79
+                                            maxHeight: 24
+                                            cell:
+                                              row: 0
+                                              column: 2
+                                          - type: Label
+                                            label: 2. and follow the Jamovi instructions
+                                            cell:
+                                              row: 1
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doBasics4AmBtn
+                                            margin: none
+                                            maxWidth: 79
+                                            maxHeight: 24
+                                            cell:
+                                              row: 0
+                                              column: 3
+                                  - type: CollapseBox
+                                    collapsed: true
+                                    label: b. ANCOVA
+                                    margin: none
+                                    minWidth: 400
+                                    maxWidth: 400
+                                    children:
+                                      - type: LayoutBox
+                                        style: inline
+                                        margin: none
+                                        children:
+                                          - type: Label
+                                            label: ' '
+                                            minWidth: 10
+                                            cell:
+                                              row: 0
+                                              column: 0
+                                          - type: Label
+                                            label: 1. we make a sample
+                                            cell:
+                                              row: 0
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doBasics4BBtn
+                                            margin: none
+                                            maxWidth: 79
+                                            maxHeight: 24
+                                            cell:
+                                              row: 0
+                                              column: 2
+                                          - type: Label
+                                            label: 2. and follow the Jamovi instructions
+                                            cell:
+                                              row: 1
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doBasics4BmBtn
+                                            margin: none
+                                            maxWidth: 79
+                                            maxHeight: 24
+                                            cell:
+                                              row: 0
+                                              column: 3
+                                  - type: CollapseBox
+                                    collapsed: true
+                                    label: c. Multiple Regression
+                                    margin: none
+                                    minWidth: 400
+                                    maxWidth: 400
+                                    children:
+                                      - type: LayoutBox
+                                        style: inline
+                                        margin: none
+                                        children:
+                                          - type: Label
+                                            label: ' '
+                                            minWidth: 10
+                                            cell:
+                                              row: 0
+                                              column: 0
+                                          - type: Label
+                                            label: 1. we make a sample
+                                            cell:
+                                              row: 0
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doBasics4CBtn
+                                            margin: none
+                                            maxWidth: 79
+                                            maxHeight: 24
+                                            cell:
+                                              row: 0
+                                              column: 2
+                                          - type: Label
+                                            label: 2. and follow the Jamovi instructions
+                                            cell:
+                                              row: 1
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doBasics4CmBtn
+                                            margin: none
+                                            maxWidth: 79
+                                            maxHeight: 24
+                                            cell:
+                                              row: 0
+                                              column: 3
+                          - type: ActionButton
+                            name: basics4Help
+                            margin: none
+                            minWidth: 10
+                            maxWidth: 10
+                            maxHeight: 24
+                      - type: LayoutBox
+                        style: inline
+                        children:
+                          - type: Label
+                            label: ' '
+                            minWidth: 20
+                          - type: CollapseBox
+                            collapsed: true
+                            label: <b>Interactions:</b>&nbsp; effects that vary
+                            margin: none
+                            minWidth: 450
+                            maxWidth: 450
+                            children:
+                              - type: Label
+                                label: ' '
+                                margin: none
+                                horizontalAlignment: right
+                                cell:
+                                  row: 1
+                                  column: 0
+                              - type: LayoutBox
+                                style: inline
+                                cell:
+                                  row: 1
+                                  column: 1
+                                children:
+                                  - type: CollapseBox
+                                    collapsed: true
+                                    label: <i>Options</i>
+                                    children:
+                                      - type: Label
+                                        label: ' '
+                                        minWidth: 10
+                                        cell:
+                                          row: 0
+                                          column: 0
+                                      - type: Label
+                                        label: r<sub>p</sub>(interaction)
+                                        margin: none
+                                        cell:
+                                          row: 0
+                                          column: 1
+                                      - type: TextBox
+                                        format: number
+                                        name: doBasics5EffectSize1x2
+                                        margin: none
+                                        cell:
+                                          row: 0
+                                          column: 2
+                                      - type: Label
+                                        label: 'n'
+                                        margin: none
+                                        cell:
+                                          row: 1
+                                          column: 1
+                                      - type: TextBox
+                                        format: number
+                                        name: doBasics5SampleSize
+                                        margin: none
+                                        cell:
+                                          row: 1
+                                          column: 2
+                              - type: LayoutBox
+                                style: inline
+                                cell:
+                                  row: 2
+                                  column: 1
+                                children:
+                                  - type: Label
+                                    label: <b>Analyse:</b>
+                                    margin: none
+                                    horizontalAlignment: right
+                                    cell:
+                                      row: 3
+                                      column: 0
+                                  - type: Label
+                                    label: Main 1
+                                    margin: none
+                                    cell:
+                                      row: 3
+                                      column: 3
+                                  - type: Label
+                                    label: Main 2
+                                    margin: none
+                                    cell:
+                                      row: 3
+                                      column: 5
+                                  - type: Label
+                                    label: Interaction
+                                    margin: none
+                                    cell:
+                                      row: 3
+                                      column: 7
+                                  - type: CheckBox
+                                    name: doBasics5Main1
+                                    horizontalAlignment: center
+                                    margin: none
+                                    cell:
+                                      row: 3
+                                      column: 4
+                                  - type: CheckBox
+                                    name: doBasics5Main2
+                                    horizontalAlignment: center
+                                    margin: none
+                                    cell:
+                                      row: 3
+                                      column: 6
+                                  - type: CheckBox
+                                    name: doBasics5Interaction
+                                    horizontalAlignment: center
+                                    margin: none
+                                    cell:
+                                      row: 3
+                                      column: 8
+                              - type: LayoutBox
+                                style: list
+                                margin: none
+                                cell:
+                                  row: 3
+                                  column: 1
+                                children:
+                                  - type: CollapseBox
+                                    collapsed: true
+                                    label: a. simple interaction
+                                    margin: none
+                                    minWidth: 400
+                                    maxWidth: 400
+                                    children:
+                                      - type: LayoutBox
+                                        style: inline
+                                        margin: none
+                                        children:
+                                          - type: Label
+                                            label: ' '
+                                            minWidth: 10
+                                            cell:
+                                              row: 0
+                                              column: 0
+                                          - type: Label
+                                            label: 1. we make a sample
+                                            cell:
+                                              row: 0
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doBasics5ABtn
+                                            margin: none
+                                            maxWidth: 79
+                                            maxHeight: 24
+                                            cell:
+                                              row: 0
+                                              column: 2
+                                          - type: Label
+                                            label: 2. and follow the Jamovi instructions
+                                            cell:
+                                              row: 1
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doBasics5AmBtn
+                                            margin: none
+                                            maxWidth: 79
+                                            maxHeight: 24
+                                            cell:
+                                              row: 0
+                                              column: 3
+                                  - type: CollapseBox
+                                    collapsed: true
+                                    label: b. on/off interaction
+                                    margin: none
+                                    minWidth: 400
+                                    maxWidth: 400
+                                    children:
+                                      - type: LayoutBox
+                                        style: inline
+                                        margin: none
+                                        children:
+                                          - type: Label
+                                            label: ' '
+                                            minWidth: 10
+                                            cell:
+                                              row: 0
+                                              column: 0
+                                          - type: Label
+                                            label: 1. we make a sample
+                                            cell:
+                                              row: 0
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doBasics5BBtn
+                                            margin: none
+                                            maxWidth: 79
+                                            maxHeight: 24
+                                            cell:
+                                              row: 0
+                                              column: 2
+                                          - type: Label
+                                            label: 2. and follow the Jamovi instructions
+                                            cell:
+                                              row: 1
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doBasics5BmBtn
+                                            margin: none
+                                            maxWidth: 79
+                                            maxHeight: 24
+                                            cell:
+                                              row: 0
+                                              column: 3
+                                  - type: CollapseBox
+                                    collapsed: true
+                                    label: c. diverge interaction
+                                    margin: none
+                                    minWidth: 400
+                                    maxWidth: 400
+                                    children:
+                                      - type: LayoutBox
+                                        style: inline
+                                        margin: none
+                                        children:
+                                          - type: Label
+                                            label: ' '
+                                            minWidth: 10
+                                            cell:
+                                              row: 0
+                                              column: 0
+                                          - type: Label
+                                            label: 1. we make a sample
+                                            cell:
+                                              row: 0
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doBasics5CBtn
+                                            margin: none
+                                            maxWidth: 79
+                                            maxHeight: 24
+                                            cell:
+                                              row: 0
+                                              column: 2
+                                          - type: Label
+                                            label: 2. and follow the Jamovi instructions
+                                            cell:
+                                              row: 1
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doBasics5CmBtn
+                                            margin: none
+                                            maxWidth: 79
+                                            maxHeight: 24
+                                            cell:
+                                              row: 0
+                                              column: 3
+                          - type: ActionButton
+                            name: basics5Help
+                            margin: none
+                            minWidth: 10
+                            maxWidth: 10
+                            maxHeight: 24
+                      - type: LayoutBox
+                        style: inline
+                        children:
+                          - type: Label
+                            label: ' '
+                            minWidth: 20
+                          - type: CollapseBox
+                            collapsed: true
+                            label: <b>Covariation:</b>&nbsp; effects that overlap
+                            margin: none
+                            minWidth: 450
+                            maxWidth: 450
+                            children:
+                              - type: LayoutBox
+                                style: inline
+                                cell:
+                                  row: 2
+                                  column: 1
+                                children:
+                                  - type: Label
+                                    label: <b>Analyse:</b>
+                                    margin: none
+                                    horizontalAlignment: right
+                                    cell:
+                                      row: 3
+                                      column: 0
+                                  - type: Label
+                                    label: Main 1
+                                    margin: none
+                                    cell:
+                                      row: 3
+                                      column: 3
+                                  - type: Label
+                                    label: Main 2
+                                    margin: none
+                                    cell:
+                                      row: 3
+                                      column: 5
+                                  - type: CheckBox
+                                    name: doBasics6Main1
+                                    horizontalAlignment: center
+                                    margin: none
+                                    cell:
+                                      row: 3
+                                      column: 4
+                                  - type: CheckBox
+                                    name: doBasics6Main2
+                                    horizontalAlignment: center
+                                    margin: none
+                                    cell:
+                                      row: 3
+                                      column: 6
+                              - type: Label
+                                label: ' '
+                                margin: none
+                                horizontalAlignment: right
+                                cell:
+                                  row: 1
+                                  column: 0
+                              - type: LayoutBox
+                                style: inline
+                                cell:
+                                  row: 1
+                                  column: 1
+                                children:
+                                  - type: CollapseBox
+                                    collapsed: true
+                                    label: <i>Options</i>
+                                    children:
+                                      - type: Label
+                                        label: ' '
+                                        minWidth: 10
+                                        cell:
+                                          row: 0
+                                          column: 0
+                                      - type: Label
+                                        label: r<sub>p</sub>(covariation)
+                                        margin: none
+                                        cell:
+                                          row: 0
+                                          column: 1
+                                      - type: TextBox
+                                        format: number
+                                        name: doBasics6Covariation
+                                        margin: none
+                                        cell:
+                                          row: 0
+                                          column: 2
+                                      - type: Label
+                                        label: 'n'
+                                        margin: none
+                                        cell:
+                                          row: 1
+                                          column: 1
+                                      - type: TextBox
+                                        format: number
+                                        name: doBasics6SampleSize
+                                        margin: none
+                                        cell:
+                                          row: 1
+                                          column: 2
+                              - type: LayoutBox
+                                style: list
+                                margin: none
+                                cell:
+                                  row: 3
+                                  column: 1
+                                children:
+                                  - type: CollapseBox
+                                    collapsed: true
+                                    label: a. effect disappears
+                                    margin: none
+                                    minWidth: 400
+                                    maxWidth: 400
+                                    children:
+                                      - type: LayoutBox
+                                        style: inline
+                                        margin: none
+                                        children:
+                                          - type: Label
+                                            label: ' '
+                                            minWidth: 10
+                                            cell:
+                                              row: 0
+                                              column: 0
+                                          - type: Label
+                                            label: 1. we make a sample
+                                            cell:
+                                              row: 0
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doBasics6ABtn
+                                            margin: none
+                                            maxWidth: 79
+                                            maxHeight: 24
+                                            cell:
+                                              row: 0
+                                              column: 2
+                                          - type: Label
+                                            label: 2. re-analyse with and without Main 2.
+                                            cell:
+                                              row: 1
+                                              column: 1
+                                          - type: Label
+                                            label: '-   watch the measured effect of Main 1.'
+                                            cell:
+                                              row: 2
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doBasics6AmBtn
+                                            margin: none
+                                            maxWidth: 79
+                                            maxHeight: 24
+                                            cell:
+                                              row: 0
+                                              column: 3
+                                  - type: CollapseBox
+                                    collapsed: true
+                                    label: b. effect appears
+                                    margin: none
+                                    minWidth: 400
+                                    maxWidth: 400
+                                    children:
+                                      - type: LayoutBox
+                                        style: inline
+                                        margin: none
+                                        children:
+                                          - type: Label
+                                            label: ' '
+                                            minWidth: 10
+                                            cell:
+                                              row: 0
+                                              column: 0
+                                          - type: Label
+                                            label: 1. we make a sample
+                                            cell:
+                                              row: 0
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doBasics6BBtn
+                                            margin: none
+                                            maxWidth: 79
+                                            maxHeight: 24
+                                            cell:
+                                              row: 0
+                                              column: 2
+                                          - type: Label
+                                            label: 2. re-analyse with and without Main 2.
+                                            cell:
+                                              row: 1
+                                              column: 1
+                                          - type: Label
+                                            label: '-   watch the measured effect of Main 1.'
+                                            cell:
+                                              row: 2
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doBasics6BmBtn
+                                            margin: none
+                                            maxWidth: 79
+                                            maxHeight: 24
+                                            cell:
+                                              row: 0
+                                              column: 3
+                                  - type: CollapseBox
+                                    collapsed: true
+                                    label: c. effect changes sign
+                                    margin: none
+                                    minWidth: 400
+                                    maxWidth: 400
+                                    children:
+                                      - type: LayoutBox
+                                        style: inline
+                                        margin: none
+                                        children:
+                                          - type: Label
+                                            label: ' '
+                                            minWidth: 10
+                                            cell:
+                                              row: 0
+                                              column: 0
+                                          - type: Label
+                                            label: 1. we make a sample
+                                            cell:
+                                              row: 0
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doBasics6CBtn
+                                            margin: none
+                                            maxWidth: 79
+                                            maxHeight: 24
+                                            cell:
+                                              row: 0
+                                              column: 2
+                                          - type: Label
+                                            label: 2. re-analyse with and without Main 2.
+                                            cell:
+                                              row: 1
+                                              column: 1
+                                          - type: Label
+                                            label: '-   watch the measured effect of Main 1.'
+                                            cell:
+                                              row: 2
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doBasics6CmBtn
+                                            margin: none
+                                            maxWidth: 79
+                                            maxHeight: 24
+                                            cell:
+                                              row: 0
+                                              column: 3
+                          - type: ActionButton
+                            name: basics6Help
+                            margin: none
+                            minWidth: 10
+                            maxWidth: 10
+                            maxHeight: 24
+                      - type: LayoutBox
+                        style: inline
+                        children:
+                          - type: Label
+                            label: ' '
+                            minWidth: 20
+                          - type: CollapseBox
+                            collapsed: true
+                            label: <i>Test yourself</i>
+                            margin: none
+                            minWidth: 420
+                            maxWidth: 420
+                            children:
+                              - type: Label
+                                label: ' '
+                                style: inline
+                                margin: large
+                                minWidth: 18
+                                verticalAlignment: top
+                                children:
+                                  - type: LayoutBox
+                                    style: list
+                                    margin: none
+                                    children:
+                                      - type: LayoutBox
+                                        style: inline
+                                        margin: none
+                                        children:
+                                          - type: Label
+                                            label: ' '
+                                            minWidth: 10
+                                            cell:
+                                              row: 0
+                                              column: 0
+                                          - type: Label
+                                            label: 1. <b>make</b> a sample
+                                            cell:
+                                              row: 0
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doBasics41ABtn
+                                            margin: none
+                                            maxWidth: 79
+                                            maxHeight: 24
+                                            cell:
+                                              row: 0
+                                              column: 2
+                                          - type: Label
+                                            label: 2. and analyse the data in Jamovi
+                                            cell:
+                                              row: 1
+                                              column: 1
+                                          - type: Label
+                                            label: 3. <b>check</b> the analysis
+                                            cell:
+                                              row: 2
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doBasics41BBtn
+                                            margin: none
+                                            maxWidth: 79
+                                            maxHeight: 24
+                                            cell:
+                                              row: 0
+                                              column: 3
+                  - type: CollapseBox
+                    label: <b>5. Tests for Experiments</b>
+                    collapsed: true
+                    children:
+                      - type: LayoutBox
+                        style: inline
+                        children:
+                          - type: Label
+                            label: ' '
+                            minWidth: 20
+                          - type: CollapseBox
+                            collapsed: true
+                            label: <b>One IV:</b>&nbsp; is there a difference?
+                            margin: none
+                            minWidth: 450
+                            maxWidth: 450
+                            children:
+                              - type: LayoutBox
+                                style: inline
+                                children:
+                                  - type: Label
+                                    label: ' '
+                                    style: inline
+                                    margin: large
+                                    minWidth: 20
+                                    verticalAlignment: top
+                                    children:
+                                      - type: LayoutBox
+                                        style: list
+                                        margin: none
+                                        children:
+                                          - type: CollapseBox
+                                            collapsed: true
+                                            label: a. between participants
+                                            margin: none
+                                            minWidth: 400
+                                            maxWidth: 400
+                                            children:
+                                              - type: LayoutBox
+                                                style: inline
+                                                margin: none
+                                                children:
+                                                  - type: Label
+                                                    label: ' '
+                                                    minWidth: 10
+                                                    cell:
+                                                      row: 0
+                                                      column: 0
+                                              - type: LayoutBox
+                                                style: inline
+                                                margin: none
+                                                children:
+                                                  - type: Label
+                                                    label: ' '
+                                                    minWidth: 10
+                                                    cell:
+                                                      row: 0
+                                                      column: 0
+                                                  - type: Label
+                                                    label: 1. we make a sample
+                                                    cell:
+                                                      row: 0
+                                                      column: 1
+                                                  - type: ActionButton
+                                                    name: doBasics7ABtn
+                                                    margin: none
+                                                    maxWidth: 79
+                                                    maxHeight: 24
+                                                    cell:
+                                                      row: 0
+                                                      column: 2
+                                                  - type: Label
+                                                    label: 2. and follow the Jamovi instructions
+                                                    cell:
+                                                      row: 1
+                                                      column: 1
+                                                  - type: Label
+                                                    label: 3. run multiple samples
+                                                    cell:
+                                                      row: 2
+                                                      column: 1
+                                                  - type: Label
+                                                    label: >-
+                                                      - how frequently is the result
+                                                      significant?
+                                                    cell:
+                                                      row: 3
+                                                      column: 1
+                                                  - type: ActionButton
+                                                    name: doBasics7AmBtn
+                                                    margin: none
+                                                    maxWidth: 79
+                                                    maxHeight: 24
+                                                    cell:
+                                                      row: 0
+                                                      column: 3
+                                          - type: CollapseBox
+                                            collapsed: true
+                                            label: b. within participants
+                                            margin: none
+                                            minWidth: 400
+                                            maxWidth: 400
+                                            children:
+                                              - type: LayoutBox
+                                                style: inline
+                                                margin: none
+                                                children:
+                                                  - type: Label
+                                                    label: ' '
+                                                    minWidth: 10
+                                                    cell:
+                                                      row: 0
+                                                      column: 0
+                                              - type: LayoutBox
+                                                style: inline
+                                                margin: none
+                                                children:
+                                                  - type: Label
+                                                    label: ' '
+                                                    minWidth: 10
+                                                    cell:
+                                                      row: 0
+                                                      column: 0
+                                                  - type: Label
+                                                    label: 1. we make a sample
+                                                    cell:
+                                                      row: 0
+                                                      column: 1
+                                                  - type: ActionButton
+                                                    name: doBasics7BBtn
+                                                    margin: none
+                                                    maxWidth: 79
+                                                    maxHeight: 24
+                                                    cell:
+                                                      row: 0
+                                                      column: 2
+                                                  - type: Label
+                                                    label: 2. and follow the Jamovi instructions
+                                                    cell:
+                                                      row: 1
+                                                      column: 1
+                                                  - type: Label
+                                                    label: 3. run multiple samples
+                                                    cell:
+                                                      row: 2
+                                                      column: 1
+                                                  - type: Label
+                                                    label: >-
+                                                      - how frequently is the result
+                                                      significant?
+                                                    cell:
+                                                      row: 3
+                                                      column: 1
+                                                  - type: ActionButton
+                                                    name: doBasics7BmBtn
+                                                    margin: none
+                                                    maxWidth: 79
+                                                    maxHeight: 24
+                                                    cell:
+                                                      row: 0
+                                                      column: 3
+                          - type: ActionButton
+                            name: basics7Help
+                            margin: none
+                            minWidth: 10
+                            maxWidth: 10
+                            maxHeight: 24
+                      - type: LayoutBox
+                        style: inline
+                        children:
+                          - type: Label
+                            label: ' '
+                            minWidth: 20
+                          - type: CollapseBox
+                            collapsed: true
+                            label: <b>2x2 IVs:</b>&nbsp; effects and interactions
+                            margin: none
+                            minWidth: 450
+                            maxWidth: 450
+                            children:
+                              - type: LayoutBox
+                                style: inline
+                                children:
+                                  - type: Label
+                                    label: ' '
+                                    style: inline
+                                    margin: large
+                                    minWidth: 20
+                                    verticalAlignment: top
+                                    children:
+                                      - type: LayoutBox
+                                        style: list
+                                        margin: none
+                                        children:
+                                          - type: CollapseBox
+                                            collapsed: true
+                                            label: a. between participants
+                                            margin: none
+                                            minWidth: 400
+                                            maxWidth: 400
+                                            children:
+                                              - type: LayoutBox
+                                                style: inline
+                                                margin: none
+                                                children:
+                                                  - type: Label
+                                                    label: ' '
+                                                    minWidth: 10
+                                                    cell:
+                                                      row: 0
+                                                      column: 0
+                                                  - type: Label
+                                                    label: 1. we make a sample
+                                                    cell:
+                                                      row: 0
+                                                      column: 1
+                                                  - type: ActionButton
+                                                    name: doBasics8ABtn
+                                                    margin: none
+                                                    maxWidth: 79
+                                                    maxHeight: 24
+                                                    cell:
+                                                      row: 0
+                                                      column: 2
+                                                  - type: Label
+                                                    label: 2. and follow the Jamovi instructions
+                                                    cell:
+                                                      row: 1
+                                                      column: 1
+                                                  - type: ActionButton
+                                                    name: doBasics8AmBtn
+                                                    margin: none
+                                                    maxWidth: 79
+                                                    maxHeight: 24
+                                                    cell:
+                                                      row: 0
+                                                      column: 3
+                                          - type: CollapseBox
+                                            collapsed: true
+                                            label: b. IV1 within participants
+                                            margin: none
+                                            minWidth: 400
+                                            maxWidth: 400
+                                            children:
+                                              - type: LayoutBox
+                                                style: inline
+                                                margin: none
+                                                children:
+                                                  - type: Label
+                                                    label: ' '
+                                                    minWidth: 10
+                                                    cell:
+                                                      row: 0
+                                                      column: 0
+                                                  - type: Label
+                                                    label: 1. we make a sample
+                                                    cell:
+                                                      row: 0
+                                                      column: 1
+                                                  - type: ActionButton
+                                                    name: doBasics8BBtn
+                                                    margin: none
+                                                    maxWidth: 79
+                                                    maxHeight: 24
+                                                    cell:
+                                                      row: 0
+                                                      column: 2
+                                                  - type: Label
+                                                    label: 2. and follow the Jamovi instructions
+                                                    cell:
+                                                      row: 1
+                                                      column: 1
+                                                  - type: ActionButton
+                                                    name: doBasics8BmBtn
+                                                    margin: none
+                                                    maxWidth: 79
+                                                    maxHeight: 24
+                                                    cell:
+                                                      row: 0
+                                                      column: 3
+                                          - type: CollapseBox
+                                            collapsed: true
+                                            label: c. fully within participants
+                                            margin: none
+                                            minWidth: 400
+                                            maxWidth: 400
+                                            children:
+                                              - type: LayoutBox
+                                                style: inline
+                                                margin: none
+                                                children:
+                                                  - type: Label
+                                                    label: ' '
+                                                    minWidth: 10
+                                                    cell:
+                                                      row: 0
+                                                      column: 0
+                                                  - type: Label
+                                                    label: 1. we make a sample
+                                                    cell:
+                                                      row: 0
+                                                      column: 1
+                                                  - type: ActionButton
+                                                    name: doBasics8CBtn
+                                                    margin: none
+                                                    maxWidth: 79
+                                                    maxHeight: 24
+                                                    cell:
+                                                      row: 0
+                                                      column: 2
+                                                  - type: Label
+                                                    label: 2. and follow the Jamovi instructions
+                                                    cell:
+                                                      row: 1
+                                                      column: 1
+                                                  - type: ActionButton
+                                                    name: doBasics8CmBtn
+                                                    margin: none
+                                                    maxWidth: 79
+                                                    maxHeight: 24
+                                                    cell:
+                                                      row: 0
+                                                      column: 3
+                          - type: ActionButton
+                            name: basics8Help
+                            margin: none
+                            minWidth: 10
+                            maxWidth: 10
+                            maxHeight: 24
+                      - type: LayoutBox
+                        style: inline
+                        children:
+                          - type: Label
+                            label: ' '
+                            minWidth: 20
+                          - type: CollapseBox
+                            collapsed: true
+                            label: <i>Test yourself</i>
+                            margin: none
+                            minWidth: 420
+                            maxWidth: 420
+                            children:
+                              - type: Label
+                                label: ' '
+                                style: inline
+                                margin: large
+                                minWidth: 18
+                                verticalAlignment: top
+          - type: Content
+            name: Settings
+            margin: none
+            children:
+              - type: LayoutBox
+                style: inline
+                margin: none
+                children:
+                  - type: Label
+                    label: ' '
+                    minWidth: 13
+                  - type: CollapseBox
+                    name: Settings2
+                    collapsed: true
+                    label: 'Link to Jamovi:'
+                    margin: none
+                    minWidth: 330
+                    children:
+                      - type: LayoutBox
+                        style: inline
+                        margin: none
+                        children:
+                          - type: Label
+                            label: ' '
+                            minWidth: 13
+                          - type: Label
+                            label: ' '
+                            minWidth: 13
+                          - type: Output
+                            name: sendSample
+                            minWidth: 100
+                          - type: Output
+                            name: sendSamplewide
+                            minWidth: 100
+                          - type: Output
+                            name: sendMultiple
+                            minWidth: 100
+                          - type: CheckBox
+                            name: alwaysDoLong
+                            minWidth: 100
+              - type: LayoutBox
+                style: inline
+                margin: none
+                children:
+                  - type: Label
+                    label: ' '
+                    minWidth: 13
+                  - type: CollapseBox
+                    name: Settings3
+                    collapsed: true
+                    label: 'System Display:'
+                    margin: none
+                    minWidth: 330
+                    children:
+                      - type: LayoutBox
+                        style: inline
+                        margin: none
+                        children:
+                          - type: Label
+                            label: ' '
+                            minWidth: 13
+                          - type: Label
+                            label: ' '
+                            minWidth: 13
+                          - type: CheckBox
+                            name: showHistory
+                            minWidth: 100
+                      - type: LayoutBox
+                        style: inline
+                        margin: none
+                        children:
+                          - type: Label
+                            label: ' '
+                            minWidth: 13
+                          - type: Label
+                            label: ' '
+                            minWidth: 13
+                          - type: ComboBox
+                            name: showGraphs
+                            minWidth: 100
+                          - type: CheckBox
+                            name: fixedAxes
+              - type: LayoutBox
+                style: inline
+                margin: none
+                children:
+                  - type: Label
+                    label: ' '
+                    minWidth: 13

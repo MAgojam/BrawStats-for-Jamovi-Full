@@ -19,6 +19,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       # debug information
       on.exit(if (!is.null(braw.res$debug)) {self$results$debug$setContent(braw.res$debug);self$results$debug$setVisible(TRUE)}
       )
+      
+      showHelp<-"Key" # or "Help"
 
       # initialization code here
       if (is.null(braw.res$statusStore)) {
@@ -32,14 +34,14 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         )
         setBrawEnv("graphicsType","HTML")
         
-        basicsResults<-emptyPlot("Basics",useHelp=!self$options$brawHelp)
-        metaSciResults<-emptyPlot("MetaScience",useHelp=!self$options$brawHelp)
-        simResults<-emptyPlot("Simulation",useHelp=!self$options$brawHelp)
+        basicsResults<-emptyPlot("Basics",useHelp=FALSE)
+        metaSciResults<-emptyPlot("MetaScience",useHelp=FALSE)
+        simResults<-emptyPlot("Simulation",useHelp=FALSE)
 
         statusStore<-list(lastOutput="System",
-                          basicsResults=basicsResults,
-                          metaSciResults=metaSciResults,
                           simResults=simResults,
+                          metaSciResults=metaSciResults,
+                          basicsResults=basicsResults,
                           showSampleType="Blank",
                           showInferParam="Basic",
                           showInferDimension="1D",
@@ -57,8 +59,8 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                           metaSciHelpWhich=0,
                           simHelpWhich=0,
                           openJamovi=0,
+                          topMode=self$options$topMode,
                           planMode=self$options$planMode,
-                          basicMode=self$options$basicMode,
                           exploreMode=self$options$exploreMode,
                           nrowTableLM=1,
                           nrowTableSEM=1,
@@ -70,9 +72,6 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           historyOptions=NULL,
           historyPlace=0
         )
-        setBrawRes("metaSciD",nullPlot())
-        setBrawRes("metaSciS",nullPlot())
-        setBrawRes("metaSciR",nullPlot())
         setBrawRes("simSingle",nullPlot())
         setBrawRes("simMultiple",nullPlot())
         setBrawRes("simExplore",nullPlot())
@@ -83,38 +82,15 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       }
 
       # nothing to do?
-      if (is.element(self$options$basicMode,c("LearnHelp","Settings"))) {
+      if (is.element(self$options$topMode,c("LearnHelp","Settings"))) {
         return()
       }
 
       statusStore<-braw.res$statusStore
       
-      ## are we doing a basics?
-      if (self$options$basicMode=="Basics") {
-        # did we just switch to this?
-        if (statusStore$basicMode!="Basics") 
-          self$results$simGraphHTML$setContent(statusStore$basicsResults)
-        statusStore$basicMode<-self$options$basicMode
-        check4basics(self,private)
-        return()
-      }
-      
-      ## are we doing metaSci?
-      if (self$options$basicMode=="MetaScience") {
-        # did we just switch to this?
-        if (statusStore$basicMode!="MetaScience")
-          self$results$simGraphHTML$setContent(statusStore$metaSciResults)
-        statusStore$basicMode<-self$options$basicMode
-        check4metaScience(self,private)
-        setBrawRes("statusStore",statusStore)
-        return()
-      }
-      
-## basic definitions      
-      # from here on we are doing a Simulations
+
+## make all the standard things we need
       {
-      # make all the standard things we need
-      # store the option variables inside the braw package
         # save the previous set up
         oldH<-braw.def$hypothesis
         oldD<-braw.def$design
@@ -136,27 +112,18 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       
 ## now set up help/instructions
       # this is done after we have set up the hypothesis
+      self$results$simSystemHTML$setContent('')
       if (self$options$brawHelp) {
-        statusStore<-whichTabsOpen(self,statusStore)
-        
-      # only change this if there has been a change in what it displays
-        if (any(c(changedH,changedD,changedE,statusStore$helpOpens))) {
-          helpOutput<-brawMainHelp(statusStore$helpOpens)
-          self$results$simSystemHTML$setContent(helpOutput)
-          simHelp<-NULL
+        if (showHelp=="Key") {
+          simHelp<-BrawInstructions("Key")
+        } else {
+          simHelp<-brawSimHelp(indent=100)
         }
       } else {
-        self$results$simSystemHTML$setContent('')
-        simHelp<-brawSimHelp(indent=100)
+        simHelp<-NULL
       }
-      
+
 ## ignore changes in the ModeSelectors
-      if (self$options$basicMode!=statusStore$basicMode) {
-          self$results$simGraphHTML$setContent(statusStore$simResults)
-          statusStore$basicMode<-self$options$basicMode
-          setBrawRes("statusStore",statusStore)
-          return()
-        }
       if(self$options$planMode!=statusStore$planMode
            || self$options$exploreMode!=statusStore$exploreMode) {
           statusStore$planMode<-self$options$planMode
@@ -310,7 +277,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         #           makeMultipleNow && statusStore$lastOutput!="Multiple",
         #           makeExploreNow && statusStore$lastOutput!="Explore"
         #           ))) {
-        #   nullResults<-emptyPlot(self$options$basicMode)
+        #   nullResults<-emptyPlot(self$options$topMode)
         #   self$results$simGraphHTML$setContent(nullResults)
         #   private$.checkpoint()
         # }
@@ -375,7 +342,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
               tabs<-c("Plan","Single","Multiple","Explore")
               tabContents<-c(showPlan(),braw.res$simSingle,braw.res$simMultiple,braw.res$simExplore)
               if (!is.null(simHelp)) {
-                tabs<-c(tabs,"Help")
+                tabs<-c(tabs,showHelp)
                 tabContents<-c(tabContents,simHelp)
               }
               simResults<-generate_tab(
@@ -423,7 +390,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
               tabs<-c("Plan","Single","Multiple","Explore")
               tabContents<-c(showPlan(),braw.res$simSingle,braw.res$simMultiple,braw.res$simExplore)
               if (!is.null(simHelp)) {
-                tabs<-c(tabs,"Help")
+                tabs<-c(tabs,showHelp)
                 tabContents<-c(tabContents,simHelp)
               }
               simResults<-generate_tab(
@@ -488,7 +455,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
           tabs<-c("Plan","Single","Multiple","Explore")
           tabContents<-c(showPlan(),braw.res$simSingle,braw.res$simMultiple,braw.res$simExplore)
           if (!is.null(simHelp)) {
-            tabs<-c(tabs,"Help")
+            tabs<-c(tabs,showHelp)
             tabContents<-c(tabContents,simHelp)
           }
           simResults<-generate_tab(
@@ -542,7 +509,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       setBrawRes("simHistoryStore",simHistory)
 
       # now we save any results to the Jamovi spreadsheet
-      sendData2Jamovi(outputNow,self)
+      sendData2Jamovi(outputNow,"Simulation",self)
 
       # end of .run()
     },

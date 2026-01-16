@@ -5,10 +5,14 @@ singleBS<-function(doing) !grepl('m',tolower(gsub('[A-Za-z]*[0-9]*[A-Da-d]*([rm]
 
 check4basics<-function(self,private) {
   
-  doingHistory<-TRUE
+  doHistory<-self$options$showHistory
+  
   statusStore<-braw.res$statusStore
   
+  setBrawEnv("fullOutput",0)
+  
   args<-list(IV="Perfectionism",IV2=NULL,DV="ExamGrade",
+             skew=0, kurtosis=0,
              rIV=NULL,rIV2=NULL,rIVIV2=NULL,rIVIV2DV=NULL,
              sN=NULL,sMethod=NULL,sDataFormat=NULL,
              sOutliers=0, sDependence=0,
@@ -16,9 +20,9 @@ check4basics<-function(self,private) {
              allScatter=NULL
   )
   
-  basicsControls<-c( self$options$doBasics1ABtn,self$options$doBasics1AmBtn,
-                     self$options$doBasics1BBtn,self$options$doBasics1BmBtn,
-                     self$options$doBasics1CBtn,self$options$doBasics1CmBtn,
+  basicsControls<-c( self$options$doBasics1ABtn,
+                     self$options$doBasics1BBtn,
+                     self$options$doBasics1CBtn,
                      self$options$doBasics2ABtn,
                      self$options$doBasics2BBtn,
                      self$options$doBasics2CBtn,
@@ -33,12 +37,13 @@ check4basics<-function(self,private) {
                      self$options$doBasics4BBtn,self$options$doBasics4BmBtn,
                      self$options$doBasics4CBtn,self$options$doBasics4CmBtn,
                      
-                     self$options$doBasics5RBtn,
+                     self$options$doBasics41ABtn,
+                     self$options$doBasics41BBtn,
+                     
                      self$options$doBasics5ABtn,self$options$doBasics5AmBtn,
                      self$options$doBasics5BBtn,self$options$doBasics5BmBtn,
                      self$options$doBasics5CBtn,self$options$doBasics5CmBtn,
                      
-                     self$options$doBasics6RBtn,
                      self$options$doBasics6ABtn,self$options$doBasics6AmBtn,
                      self$options$doBasics6BBtn,self$options$doBasics6BmBtn,
                      self$options$doBasics6CBtn,self$options$doBasics6CmBtn,
@@ -49,33 +54,32 @@ check4basics<-function(self,private) {
                      self$options$doBasics8BBtn,self$options$doBasics8BmBtn,
                      self$options$doBasics8CBtn,self$options$doBasics8CmBtn,
                      
-                     self$options$doBasics9ABtn,self$options$doBasics9AmBtn,
-                     self$options$doBasics9BBtn,self$options$doBasics9BmBtn,
-                     self$options$doBasics9CBtn,self$options$doBasics9CmBtn,
-                     self$options$doBasics10ABtn,self$options$doBasics10AmBtn,
-                     self$options$doBasics10BBtn,self$options$doBasics10BmBtn,
-                     self$options$doBasics10CBtn,self$options$doBasics10CmBtn,
                      FALSE
   )
-  basicsNames<-c("Step1A","Step1Am",
-               "Step1B","Step1Bm",
-               "Step1C","Step1Cm",
+  basicsNames<-c("Step1A",
+               "Step1B",
+               "Step1C",
                "Step2A",
                "Step2B",
                "Step2C",
                "Step3A",
                "Step3B",
                "Step3C",
+               
                "Step31A",
                "Step31B",
+               
                "Step4A","Step4Am",
                "Step4B","Step4Bm",
                "Step4C","Step4Cm",
-               "Step5R",
+               
+               "Step41A",
+               "Step41B",
+               
                "Step5A","Step5Am",
                "Step5B","Step5Bm",
                "Step5C","Step5Cm",
-               "Step6R",
+               
                "Step6A","Step6Am",
                "Step6B","Step6Bm",
                "Step6C","Step6Cm",
@@ -84,54 +88,63 @@ check4basics<-function(self,private) {
                "Step8A","Step8Am",
                "Step8B","Step8Bm",
                "Step8C","Step8Cm",
-               "Step9A","Step9Am",
-               "Step9B","Step9Bm",
-               "Step9C","Step9Cm",
-               "Step10A","Step10Am",
-               "Step10B","Step10Bm",
-               "Step10C","Step10Cm",
                ""
   )
+  basicsStep5Analysis<-NULL
   basicsStep6Analysis<-NULL
   if (any(basicsControls)) {
     # hit a button before the previous one was completed
-    if (length(which(basicsControls))>1) return(FALSE)
-    doingBasics<-basicsNames[which(basicsControls)]
+    if (length(which(basicsControls))>1) {
+      selectedNames<-basicsNames[which(basicsControls)]
+      previousName<-paste0("Step",paste0(braw.res$basicsDone,collapse=""))
+      use<-which(selectedNames!=previousName)
+      doingBasics<-selectedNames[use[1]]
+      # self$results$debug$setContent(c(
+      #   basicsNames[which(basicsControls)],
+      #    "becomes",
+      #   doingBasics
+      #   )
+      # )
+      # self$results$debug$setVisible(TRUE)
+    } else {
+      doingBasics<-basicsNames[which(basicsControls)]
+    }
     if (is.null(doingBasics)) return(FALSE)
     if (doingBasics=="Step6R") doingBasics<-paste0("Step",braw.res$basicsDone[1],braw.res$basicsDone[2],"r")
   } else {
-    return(FALSE)
-    # code below doesn't work and so is never run
-    # it is supposed to do an automatic update when the analysis terms are changed
+    basicsStep5Analysis<-c(self$options$doBasics5Main1,self$options$doBasics5Main2,self$options$doBasics5Interaction,FALSE)
+    changed5Analysis<-any(statusStore$basicsStep5Analysis!=basicsStep5Analysis)
+    
+    basicsStep6Analysis<-c(self$options$doBasics6Main1,self$options$doBasics6Main2,FALSE,FALSE)
+    changed6Analysis<-any(statusStore$basicsStep6Analysis!=basicsStep6Analysis)
+    
+    # this does an automatic update when the analysis terms are changed
     doingBasics<-NULL
-    if (braw.res$basicsDone[1]=="5") {
-      basicsStep5Analysis<-c(self$options$doBasics5Main1,self$options$doBasics5Main2,self$options$doBasics5Interaction,FALSE)
-      changedAnalysis<-any(statusStore$basicsStep5Analysis!=basicsStep5Analysis)
-      if (changedAnalysis)
-        doingBasics<-paste0("Step",braw.res$basicsDone[1],braw.res$basicsDone[2],"r")
-    }   
-    if (braw.res$basicsDone[1]=="6") {
-      basicsStep6Analysis<-c(self$options$doBasics6Main1,self$options$doBasics6Main2,FALSE,FALSE)
-      changedAnalysis<-any(statusStore$basicsStep6Analysis!=basicsStep6Analysis)
-      if (changedAnalysis)
-        doingBasics<-paste0("Step",braw.res$basicsDone[1],braw.res$basicsDone[2],"r")
-    }   
+    if (braw.res$basicsDone[1]=="5" && changed5Analysis) 
+        doingBasics<-paste0("Step",braw.res$basicsDone[1],braw.res$basicsDone[2],"R")
+    
+    if (braw.res$basicsDone[1]=="6" && changed6Analysis) 
+        doingBasics<-paste0("Step",braw.res$basicsDone[1],braw.res$basicsDone[2],"R")
+    
     if (is.null(doingBasics)) return(FALSE)
   }
 
   doingMultiple<-!singleMS(doingBasics)
   
-  if (stepBS(doingBasics)=="1") {
+  if (doingBasics=="Step1A") {
     args$IV=self$options$doBasics1IV
     args$DV<-self$options$doBasics1DV
   } 
   if (doingBasics=="Step1B") {
-    args$sMethod=self$options$doBasics1BSampling 
-    args$sOutliers<-self$options$doBasics1BOutliers 
-    args$sDependence<-self$options$doBasics1BDependence
+    args$skew=self$options$doBasics1BSkew
+    args$kurtosis<-self$options$doBasics1BKurt
+    args$sN<-self$options$doBasics1CSampleSize
   } 
-  if (doingBasics=="Step1C") 
-    args$sN=self$options$doBasics1CSampleSize 
+  if (doingBasics=="Step1C") {
+    args$sMethod=self$options$doBasics1CSampling 
+    args$sOutliers<-self$options$doBasics1COutliers 
+    args$sN<-self$options$doBasics1CSampleSize
+  } 
   
   if (stepBS(doingBasics)=="2") {
     args$rIV=self$options$doBasics2EffectSize 
@@ -144,7 +157,7 @@ check4basics<-function(self,private) {
   }
   
   if (stepBS(doingBasics)=="4") {
-    args$rIV=self$options$doBasic45EffectSize1
+    args$rIV=self$options$doBasics4EffectSize1
     args$rIV2=self$options$doBasics4EffectSize2
     args$sN=self$options$doBasics4SampleSize
   }
@@ -154,8 +167,6 @@ check4basics<-function(self,private) {
     else args$analyse<-c(self$options$doBasics5Main1,self$options$doBasics5Main2,self$options$doBasics5Interaction,FALSE)
     statusStore$basicsStep5Analysis<-args$analyse
     
-    args$rIV=self$options$doBasics5EffectSize1
-    args$rIV2=self$options$doBasics5EffectSize2
     args$rIVIV2DV=self$options$doBasics5EffectSize1x2
     args$sN=self$options$doBasics5SampleSize 
   }
@@ -165,9 +176,8 @@ check4basics<-function(self,private) {
     else args$analyse<-c(self$options$doBasics6Main1,self$options$doBasics6Main2,FALSE,FALSE)
     statusStore$basicsStep6Analysis<-args$analyse
     
-    # args$rIV=self$options$doBasics6EffectSize1
-    # args$rIV2=self$options$doBasics6EffectSize2
-    args$rIVIV2=self$options$doBasics6EffectSize12
+    args$rIVIV2=self$options$doBasics6Covariation
+    if (partBS(doingBasics)=="A") args$rIVIV2= -args$rIVIV2
     args$sN=self$options$doBasics6SampleSize 
   }
   
@@ -182,8 +192,9 @@ check4basics<-function(self,private) {
     args$rIVIV2DV=self$options$doBasics10AInteractionEffect
   }
   
-  basicsResults<-doBasics(doingBasics,showOutput=FALSE,
+  basicsResults<-doBasics(doingBasics,showOutput=FALSE,doHistory = doHistory,
                                IV=args$IV,IV2=args$IV2,DV=args$DV,
+                               skew=args$skew,kurtosis=args$kurtosis,
                                rIV=args$rIV,rIV2=args$rIV2,rIVIV2=args$rIVIV2,rIVIV2DV=args$rIVIV2DV,
                                sN=args$sN,sMethod=args$sMethod,
                                sDataFormat=args$sDataFormat,
@@ -191,13 +202,17 @@ check4basics<-function(self,private) {
                                analyse=args$analyse,
                                allScatter=args$allScatter
   )
+  
+  # self$results$debug$setContent(nchar(basicsResults))
+  # self$results$debug$setVisible(TRUE)
+  
+  if (self$options$showGraphs=="HTML")
   self$results$simGraphHTML$setContent(basicsResults)
   
   statusStore$lastOutput<-"basics"
-  statusStore$basicsResults<-basicsResults
   setBrawRes("statusStore",statusStore)
   
-  if (doingMultiple) sendData2Jamovi("Multiple",self)
-  else sendData2Jamovi("Single",self)
+  if (doingMultiple) sendData2Jamovi("Multiple","Basics",self,private)
+  else sendData2Jamovi("Single","Basics",self,private)
   return(TRUE)
 }

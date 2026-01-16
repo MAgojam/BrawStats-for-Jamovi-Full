@@ -1,7 +1,7 @@
 ---
 title: Learn by Simulation
 name: BrawStats
-version: 2.2.5
+version: 2.4.0
 jms: '1.0'
 authors:
   - Roger Watt
@@ -25,20 +25,27 @@ description: |-
     i.   data simulation
     ii.  analyse data with linear models & path models
 analyses:
-  - title: BrawStats:Simulate Data
+  - title: Learn Basics
+    name: BrawBasics
+    ns: BrawStats
+    menuGroup: BrawStats
+    menuSubgroup: Learn
+    menuTitle: Learn Basics
+    category: analyses
+  - title: Run Simulations
     name: BrawSim
     ns: BrawStats
     menuGroup: BrawStats
     menuSubgroup: Simulate
-    menuTitle: BrawStats:Simulate Data
+    menuTitle: Run Simulations
     category: analyses
-  - title: BrawStats:Analyse Data
+  - title: Analyse Data
     name: BrawAN
     ns: BrawStats
     menuGroup: BrawStats
     menuSubgroup: Analyze
     category: analyses
-    menuTitle: BrawStats:Analyse Data
+    menuTitle: Analyse Data
 usesNative: true
 minApp: 1.0.8
 

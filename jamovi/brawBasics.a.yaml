@@ -1,0 +1,483 @@
+---
+name:  BrawBasics
+title: Learn Basics
+menuGroup: BrawStats
+version: '1.0.0'
+jas: '1.2'
+
+options:
+    - name: topMode
+      title: ' '
+      type: List
+      options:
+      - name: Basics
+        title: Basics
+      - name: Settings
+        title: Settings
+
+# Analysis
+
+    - name: sendSample
+      title: single
+      type: Output
+      default: TRUE
+      
+    - name: sendSamplewide
+      title: single-wide
+      type: Output
+      default: TRUE
+      
+    - name: sendMultiple
+      title: multiple
+      type: Output
+      default: FALSE
+
+    - name: showHistory
+      title: show History
+      type: Bool
+      default: true
+
+    - name: alwaysDoLong
+      title: show long data
+      type: Bool
+      default: false
+
+    - name: showGraphs
+      title: graphics
+      type: List
+      options:
+      - name: HTML
+        title: HTML
+      - name: ggplot
+        title: ggplot
+      - name: none
+        title: none
+      default: HTML
+
+    - name: fixedAxes
+      title: Fixed axes
+      type: Bool
+      default: false
+
+    - name: basics1Help
+      type: Action
+      title: '?'
+    - name: doBasics1IV
+      title: ''
+      type: List
+      options:
+      - name: IQ
+        title: IQ
+      - name: Diligence
+        title: Diligence
+      - name: Perfectionism
+        title: Perfectionism
+      - name: Anxiety
+        title: Anxiety
+      - name: Happiness
+        title: Happiness
+      - name: SelfConfidence
+        title: SelfConfidence
+      - name: RiskTaking
+        title: RiskTaking
+      - name: Interesting
+        title: Interesting
+      - name: Musician
+        title: Musician?
+      - name: Smoker
+        title: Smoker?
+      - name: RiskTaker
+        title: RiskTaker?
+      - name: StudySubject
+        title: StudySubject
+      - name: BirthOrder
+        title: BirthOrder
+      default: Perfectionism
+    - name: doBasics1DV
+      title: ''
+      type: List
+      options:
+      - name: ExamGrade
+        title: ExamGrade
+      - name: ExamPass
+        title: ExamPass?
+      default: ExamGrade
+    # - name: doBasics1AhBtn
+    #   title: '?'
+    #   type: Action
+    - name: doBasics1ABtn
+      title: 'single'
+      type: Action
+    # - name: doBasics1BhBtn
+    #   title: '?'
+    #   type: Action
+    - name: doBasics1BBtn
+      title: 'single'
+      type: Action
+    - name: doBasics1CSampling
+      title: ''
+      type: List
+      options:
+      - name: Random
+        title: Random
+      - name: Convenience
+        title: Convenience
+      default: Convenience
+    - name: doBasics1COutliers
+      title: ''
+      type: Bool
+      default: false
+    - name: doBasics1BSkew
+      title: ''
+      type: Number
+      default: 0
+      min: -1
+      max: 1
+    - name: doBasics1BKurt
+      title: ''
+      type: Number
+      default: 0
+      min: -1
+      max: 1
+
+    # - name: doBasics1ChBtn
+    #   title: '?'
+    #   type: Action
+    - name: doBasics1CBtn
+      title: 'single'
+      type: Action
+    - name: doBasics1CSampleSize
+      title: ''
+      type: Number
+      default: 100
+      min: 10
+      max: 50000
+      
+    - name: basics2Help
+      type: Action
+      title: '?'
+    - name: doBasics2EffectSize
+      title: ''
+      type: Number
+      default: 0.3
+      min: -0.95
+      max: 0.95
+    - name: doBasics2SampleSize
+      title: ''
+      type: Number
+      default: 50
+      min: 10
+      max: 50000
+    # - name: doBasics2AhBtn
+    #   title: '?'
+    #   type: Action
+    - name: doBasics2ABtn
+      title: 'single'
+      type: Action
+    # - name: doBasics2AmBtn
+    #   title: 'single'
+    #   type: Action
+    # - name: doBasics2BhBtn
+    #   title: '?'
+    #   type: Action
+    - name: doBasics2BBtn
+      title: 'single'
+      type: Action
+    # - name: doBasics2BmBtn
+    #   title: 'single'
+    #   type: Action
+    # - name: doBasics2ChBtn
+    #   title: '?'
+    #   type: Action
+    - name: doBasics2CBtn
+      title: 'single'
+      type: Action
+    # - name: doBasics2CmBtn
+    #   title: 'set'
+    #   type: Action
+    # 
+    - name: basics3Help
+      type: Action
+      title: '?'
+    - name: doBasics3EffectSize
+      title: ''
+      type: Number
+      default: 0.5
+      min: -0.95
+      max: 0.95
+    - name: doBasics3SampleSize
+      title: ''
+      type: Number
+      default: 50
+      min: 10
+      max: 50000
+    # - name: doBasics3AhBtn
+    #   title: '?'
+      # type: Action
+    - name: doBasics3ABtn
+      title: 'single'
+      type: Action
+    # - name: doBasics3AmBtn
+    #   title: 'single'
+    #   type: Action
+    # - name: doBasics3BhBtn
+    #   title: '?'
+    #   type: Action
+    - name: doBasics3BBtn
+      title: 'single'
+      type: Action
+    # - name: doBasics3BmBtn
+    #   title: 'single'
+    #   type: Action
+    - name: doBasics3CBtn
+      title: 'single'
+      type: Action
+
+    - name: doBasics31ABtn
+      title: 'make'
+      type: Action
+    - name: doBasics31BBtn
+      title: 'check'
+      type: Action
+
+    - name: basics4Help
+      type: Action
+      title: '?'
+
+    - name: doBasics4EffectSize1
+      title: ''
+      type: Number
+      default: 0.3
+      min: -0.95
+      max: 0.95
+    - name: doBasics4EffectSize2
+      title: ''
+      type: Number
+      default: -0.3
+      min: -0.95
+      max: 0.95
+    - name: doBasics4SampleSize
+      title: ''
+      type: Number
+      default: 150
+      min: 10
+      max: 50000
+    # - name: doBasics4AhBtn
+    #   title: '?'
+    #   type: Action
+    - name: doBasics4ABtn
+      title: 'single'
+      type: Action
+    - name: doBasics4AmBtn
+      title: 'multiple'
+      type: Action
+    # - name: doBasics4BhBtn
+    #   title: '?'
+    #   type: Action
+    - name: doBasics4BBtn
+      title: 'single'
+      type: Action
+    - name: doBasics4BmBtn
+      title: 'multiple'
+      type: Action
+    # - name: doBasics4ChBtn
+    #   title: '?'
+    #   type: Action
+    - name: doBasics4CBtn
+      title: 'single'
+      type: Action
+    - name: doBasics4CmBtn
+      title: 'multiple'
+      type: Action
+
+    - name: doBasics41ABtn
+      title: 'make'
+      type: Action
+    - name: doBasics41BBtn
+      title: 'check'
+      type: Action
+
+    - name: basics5Help
+      type: Action
+      title: '?'
+    # - name: doBasics5EffectSize1
+    #   title: ''
+    #   type: Number
+    #   default: 0.3
+    #   min: -0.95
+    #   max: 0.95
+    # - name: doBasics5EffectSize2
+    #   title: ''
+    #   type: Number
+    #   default: -0.3
+    #   min: -0.95
+    #   max: 0.95
+    - name: doBasics5EffectSize1x2
+      title: ''
+      type: Number
+      default: 0.5
+      min: -0.95
+      max: 0.95
+    - name: doBasics5SampleSize
+      title: ''
+      type: Number
+      default: 450
+      min: 10
+      max: 50000
+    - name: doBasics5Main1
+      title: ''
+      type: Bool
+      default: true
+    - name: doBasics5Main2
+      title: ''
+      type: Bool
+      default: true
+    - name: doBasics5Interaction
+      title: ''
+      type: Bool
+      default: false
+    # - name: doBasics5AhBtn
+    #   title: '?'
+    #   type: Action
+    - name: doBasics5ABtn
+      title: 'single'
+      type: Action
+    - name: doBasics5AmBtn
+      title: 'multiple'
+      type: Action
+    # - name: doBasics5BhBtn
+    #   title: '?'
+    #   type: Action
+    - name: doBasics5BBtn
+      title: 'single'
+      type: Action
+    - name: doBasics5BmBtn
+      title: 'multiple'
+      type: Action
+    # - name: doBasics5ChBtn
+    #   title: '?'
+    #   type: Action
+    - name: doBasics5CBtn
+      title: 'single'
+      type: Action
+    - name: doBasics5CmBtn
+      title: 'multiple'
+      type: Action
+
+    - name: basics6Help
+      type: Action
+      title: '?'
+    # - name: doBasics6EffectSize1
+    #   title: ''
+    #   type: Number
+    #   default: 0.3
+    #   min: -0.95
+    #   max: 0.95
+    # - name: doBasics6EffectSize2
+    #   title: ''
+    #   type: Number
+    #   default: -0.3
+    #   min: -0.95
+    #   max: 0.95
+    - name: doBasics6Covariation
+      title: ''
+      type: Number
+      default: 0.7
+      min: -0.95
+      max: 0.95
+    - name: doBasics6SampleSize
+      title: ''
+      type: Number
+      default: 500
+      min: 10
+      max: 50000
+    - name: doBasics6Main1
+      title: ''
+      type: Bool
+      default: true
+    - name: doBasics6Main2
+      title: ''
+      type: Bool
+      default: false
+    # - name: doBasics6AhBtn
+    #   title: '?'
+    #   type: Action
+    - name: doBasics6ABtn
+      title: 'single'
+      type: Action
+    - name: doBasics6AmBtn
+      title: 'multiple'
+      type: Action
+    # - name: doBasics6BhBtn
+    #   title: '?'
+    #   type: Action
+    - name: doBasics6BBtn
+      title: 'single'
+      type: Action
+    - name: doBasics6BmBtn
+      title: 'multiple'
+      type: Action
+    # - name: doBasics6ChBtn
+    #   title: '?'
+    #   type: Action
+    - name: doBasics6CBtn
+      title: 'single'
+      type: Action
+    - name: doBasics6CmBtn
+      title: 'multiple'
+      type: Action
+
+    - name: basics7Help
+      type: Action
+      title: '?'
+    # - name: doBasics7AhBtn
+    #   title: '?'
+    #   type: Action
+    - name: doBasics7ABtn
+      title: 'single'
+      type: Action
+    - name: doBasics7AmBtn
+      title: 'multiple'
+      type: Action
+    # - name: doBasics7BhBtn
+    #   title: '?'
+    #   type: Action
+    - name: doBasics7BBtn
+      title: 'single'
+      type: Action
+    - name: doBasics7BmBtn
+      title: 'multiple'
+      type: Action
+
+    - name: basics8Help
+      type: Action
+      title: '?'
+    # - name: doBasics8AhBtn
+    #   title: '?'
+    #   type: Action
+    - name: doBasics8ABtn
+      title: 'single'
+      type: Action
+    - name: doBasics8AmBtn
+      title: 'multiple'
+      type: Action
+    # - name: doBasics8BhBtn
+    #   title: '?'
+    #   type: Action
+    - name: doBasics8BBtn
+      title: 'single'
+      type: Action
+    - name: doBasics8BmBtn
+      title: 'multiple'
+      type: Action
+    # - name: doBasics8ChBtn
+    #   title: '?'
+    #   type: Action
+    - name: doBasics8CBtn
+      title: 'single'
+      type: Action
+    - name: doBasics8CmBtn
+      title: 'multiple'
+      type: Action
+
+...
