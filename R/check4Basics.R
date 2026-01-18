@@ -54,6 +54,9 @@ check4basics<-function(self,private) {
                      self$options$doBasics8BBtn,self$options$doBasics8BmBtn,
                      self$options$doBasics8CBtn,self$options$doBasics8CmBtn,
                      
+                     self$options$doBasics81ABtn,
+                     self$options$doBasics81BBtn,
+                     
                      FALSE
   )
   basicsNames<-c("Step1A",
@@ -88,6 +91,9 @@ check4basics<-function(self,private) {
                "Step8A","Step8Am",
                "Step8B","Step8Bm",
                "Step8C","Step8Cm",
+               
+               "Step81A",
+               "Step81B",
                ""
   )
   basicsStep5Analysis<-NULL

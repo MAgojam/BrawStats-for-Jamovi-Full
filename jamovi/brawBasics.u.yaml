@@ -1903,6 +1903,52 @@ children:
                                 margin: large
                                 minWidth: 18
                                 verticalAlignment: top
+                                children:
+                                  - type: LayoutBox
+                                    style: list
+                                    margin: none
+                                    children:
+                                      - type: LayoutBox
+                                        style: inline
+                                        margin: none
+                                        children:
+                                          - type: Label
+                                            label: ' '
+                                            minWidth: 10
+                                            cell:
+                                              row: 0
+                                              column: 0
+                                          - type: Label
+                                            label: 1. <b>make</b> a sample
+                                            cell:
+                                              row: 0
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doBasics81ABtn
+                                            margin: none
+                                            maxWidth: 79
+                                            maxHeight: 24
+                                            cell:
+                                              row: 0
+                                              column: 2
+                                          - type: Label
+                                            label: 2. and analyse the data in Jamovi
+                                            cell:
+                                              row: 1
+                                              column: 1
+                                          - type: Label
+                                            label: 3. <b>check</b> the analysis
+                                            cell:
+                                              row: 2
+                                              column: 1
+                                          - type: ActionButton
+                                            name: doBasics81BBtn
+                                            margin: none
+                                            maxWidth: 79
+                                            maxHeight: 24
+                                            cell:
+                                              row: 0
+                                              column: 3
           - type: Content
             name: Settings
             margin: none

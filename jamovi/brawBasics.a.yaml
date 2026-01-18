@@ -480,4 +480,12 @@ options:
       title: 'multiple'
       type: Action
 
+
+    - name: doBasics81ABtn
+      title: 'make'
+      type: Action
+    - name: doBasics81BBtn
+      title: 'check'
+      type: Action
+
 ...
