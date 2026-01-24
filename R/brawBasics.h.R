@@ -82,7 +82,9 @@ BrawBasicsOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             doBasics8BBtn = NULL,
             doBasics8BmBtn = NULL,
             doBasics8CBtn = NULL,
-            doBasics8CmBtn = NULL, ...) {
+            doBasics8CmBtn = NULL,
+            doBasics81ABtn = NULL,
+            doBasics81BBtn = NULL, ...) {
 
             super$initialize(
                 package="BrawStats",
@@ -409,6 +411,12 @@ BrawBasicsOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             private$..doBasics8CmBtn <- jmvcore::OptionAction$new(
                 "doBasics8CmBtn",
                 doBasics8CmBtn)
+            private$..doBasics81ABtn <- jmvcore::OptionAction$new(
+                "doBasics81ABtn",
+                doBasics81ABtn)
+            private$..doBasics81BBtn <- jmvcore::OptionAction$new(
+                "doBasics81BBtn",
+                doBasics81BBtn)
 
             self$.addOption(private$..topMode)
             self$.addOption(private$..sendSample)
@@ -490,6 +498,8 @@ BrawBasicsOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..doBasics8BmBtn)
             self$.addOption(private$..doBasics8CBtn)
             self$.addOption(private$..doBasics8CmBtn)
+            self$.addOption(private$..doBasics81ABtn)
+            self$.addOption(private$..doBasics81BBtn)
         }),
     active = list(
         topMode = function() private$..topMode$value,
@@ -571,7 +581,9 @@ BrawBasicsOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         doBasics8BBtn = function() private$..doBasics8BBtn$value,
         doBasics8BmBtn = function() private$..doBasics8BmBtn$value,
         doBasics8CBtn = function() private$..doBasics8CBtn$value,
-        doBasics8CmBtn = function() private$..doBasics8CmBtn$value),
+        doBasics8CmBtn = function() private$..doBasics8CmBtn$value,
+        doBasics81ABtn = function() private$..doBasics81ABtn$value,
+        doBasics81BBtn = function() private$..doBasics81BBtn$value),
     private = list(
         ..topMode = NA,
         ..sendSample = NA,
@@ -652,7 +664,9 @@ BrawBasicsOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..doBasics8BBtn = NA,
         ..doBasics8BmBtn = NA,
         ..doBasics8CBtn = NA,
-        ..doBasics8CmBtn = NA)
+        ..doBasics8CmBtn = NA,
+        ..doBasics81ABtn = NA,
+        ..doBasics81BBtn = NA)
 )
 
 BrawBasicsResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
@@ -852,6 +866,8 @@ BrawBasicsBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param doBasics8BmBtn .
 #' @param doBasics8CBtn .
 #' @param doBasics8CmBtn .
+#' @param doBasics81ABtn .
+#' @param doBasics81BBtn .
 #' @return A results object containing:
 #' \tabular{llllll}{
 #'   \code{results$simSystemHTML} \tab \tab \tab \tab \tab a html \cr
@@ -943,7 +959,9 @@ BrawBasics <- function(
     doBasics8BBtn,
     doBasics8BmBtn,
     doBasics8CBtn,
-    doBasics8CmBtn) {
+    doBasics8CmBtn,
+    doBasics81ABtn,
+    doBasics81BBtn) {
 
     if ( ! requireNamespace("jmvcore", quietly=TRUE))
         stop("BrawBasics requires jmvcore to be installed (restart may be required)")
@@ -1026,7 +1044,9 @@ BrawBasics <- function(
         doBasics8BBtn = doBasics8BBtn,
         doBasics8BmBtn = doBasics8BmBtn,
         doBasics8CBtn = doBasics8CBtn,
-        doBasics8CmBtn = doBasics8CmBtn)
+        doBasics8CmBtn = doBasics8CmBtn,
+        doBasics81ABtn = doBasics81ABtn,
+        doBasics81BBtn = doBasics81BBtn)
 
     analysis <- BrawBasicsClass$new(
         options = options,

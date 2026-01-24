@@ -1959,6 +1959,11 @@ children:
                           - type: Output
                             name: sendExplore
                             minWidth: 100
+                          - type: Label
+                            label: long format
+                          - type: CheckBox
+                            name: alwaysDoLong
+                            minWidth: 100
               - type: LayoutBox
                 style: inline
                 margin: none

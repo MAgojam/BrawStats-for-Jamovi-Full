@@ -160,6 +160,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             showExploreParam = "Basic",
             showExploreStyle = "stats",
             whichShowMultiple = "all",
+            alwaysDoLong = TRUE,
             brawHelp = FALSE,
             showHistory = TRUE,
             showGraphs = "HTML",
@@ -1157,6 +1158,10 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "total",
                     "all"),
                 default="all")
+            private$..alwaysDoLong <- jmvcore::OptionBool$new(
+                "alwaysDoLong",
+                alwaysDoLong,
+                default=TRUE)
             private$..sendSample <- jmvcore::OptionOutput$new(
                 "sendSample")
             private$..sendSamplewide <- jmvcore::OptionOutput$new(
@@ -1357,6 +1362,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             self$.addOption(private$..showExploreParam)
             self$.addOption(private$..showExploreStyle)
             self$.addOption(private$..whichShowMultiple)
+            self$.addOption(private$..alwaysDoLong)
             self$.addOption(private$..sendSample)
             self$.addOption(private$..sendSamplewide)
             self$.addOption(private$..sendMultiple)
@@ -1525,6 +1531,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         showExploreParam = function() private$..showExploreParam$value,
         showExploreStyle = function() private$..showExploreStyle$value,
         whichShowMultiple = function() private$..whichShowMultiple$value,
+        alwaysDoLong = function() private$..alwaysDoLong$value,
         sendSample = function() private$..sendSample$value,
         sendSamplewide = function() private$..sendSamplewide$value,
         sendMultiple = function() private$..sendMultiple$value,
@@ -1692,6 +1699,7 @@ BrawSimOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         ..showExploreParam = NA,
         ..showExploreStyle = NA,
         ..whichShowMultiple = NA,
+        ..alwaysDoLong = NA,
         ..sendSample = NA,
         ..sendSamplewide = NA,
         ..sendMultiple = NA,
@@ -1980,6 +1988,7 @@ BrawSimBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param showExploreParam .
 #' @param showExploreStyle .
 #' @param whichShowMultiple .
+#' @param alwaysDoLong .
 #' @param brawHelp .
 #' @param showHistory .
 #' @param showGraphs .
@@ -2157,6 +2166,7 @@ BrawSim <- function(
     showExploreParam = "Basic",
     showExploreStyle = "stats",
     whichShowMultiple = "all",
+    alwaysDoLong = TRUE,
     brawHelp = FALSE,
     showHistory = TRUE,
     showGraphs = "HTML",
@@ -2325,6 +2335,7 @@ BrawSim <- function(
         showExploreParam = showExploreParam,
         showExploreStyle = showExploreStyle,
         whichShowMultiple = whichShowMultiple,
+        alwaysDoLong = alwaysDoLong,
         brawHelp = brawHelp,
         showHistory = showHistory,
         showGraphs = showGraphs,
