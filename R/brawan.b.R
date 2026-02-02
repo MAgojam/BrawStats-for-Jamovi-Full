@@ -40,7 +40,7 @@ BrawANClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
               dataFull<-prepareSample(self$data)
               data<-dataFull$data[c("participant",self$options$DV,self$options$IV)]
               
-              result<-generalAnalysis(data,AnalysisTerms=c(TRUE,TRUE,FALSE))
+              result<-generalAnalysis(data,AnalysisTerms=c(TRUE,TRUE,FALSE,FALSE))
               lm<-list(result=result,DV=list(name=self$options$DV),IVs=list(name=self$options$IV))
               setBrawRes("lm",lm)
               
