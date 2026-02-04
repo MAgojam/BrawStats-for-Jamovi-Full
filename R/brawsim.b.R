@@ -509,7 +509,7 @@ BrawSimClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       setBrawRes("simHistoryStore",simHistory)
 
       # now we save any results to the Jamovi spreadsheet
-      sendData2Jamovi(outputNow,"Simulation",self)
+      sendData2Jamovi(outputNow,"Simulation",self,private)
 
       # end of .run()
     },

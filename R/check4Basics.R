@@ -218,7 +218,7 @@ check4basics<-function(self,private) {
   statusStore$lastOutput<-"basics"
   setBrawRes("statusStore",statusStore)
   
-  if (doingMultiple) sendData2Jamovi("Multiple","Basics",self,private)
-  else sendData2Jamovi("Single","Basics",self,private)
+  if (doingMultiple) sendData2Jamovi("Multiple","Basics",self,private,alwaysDoLong=self$options$alwaysDoLong)
+  else sendData2Jamovi("Single","Basics",self,private,alwaysDoLong=self$options$alwaysDoLong)
   return(TRUE)
 }

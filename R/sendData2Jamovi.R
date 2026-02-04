@@ -1,7 +1,5 @@
 
-sendData2Jamovi<-function(outputNow,whichSource,self,private) {
-  
-  alwaysDoLong<-self$options$alwaysDoLong
+sendData2Jamovi<-function(outputNow,whichSource,self,private,alwaysDoLong=TRUE) {
   
     # single result first
     if (self$options$sendSample && !is.null(braw.res$result)) {
