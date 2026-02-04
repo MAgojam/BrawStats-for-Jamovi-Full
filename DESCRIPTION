@@ -1,7 +1,7 @@
 Package: BrawStats
 Type: Package
 Title: Some BrawStats functions (Title Case)
-Version: 2.4.1
+Version: 2.4.2
 Author: Roger Watt
 Maintainer: Roger Watt <r.j.watt@stir.ac.uk>
 Description: This implements BrawStats in Jamovi.
